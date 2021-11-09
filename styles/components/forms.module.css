@@ -1,0 +1,41 @@
+.loginContainer{
+    border: solid 1px black;
+    margin: 21px;
+    padding: 9px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+.anInputRow{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 6px 0;
+    align-items: center;
+}
+.aFormLabel{
+    font-weight: 600;
+}
+.aFormInput{
+    width: 210px;
+    border: solid 3px black;
+    border-radius: 5px;
+    margin: 9px;
+}
+.submitBTN{
+    border-radius: 5px;
+    border: solid 3px black;
+    margin: 9px;
+    width: 90%;
+    padding: 12px;
+    text-align: center;
+    background-color: white;
+    transition: 1s;
+    
+}
+
+.submitBTN:hover{
+    border: solid 3px blue;
+    box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.17);
+}

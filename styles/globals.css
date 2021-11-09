@@ -14,3 +14,12 @@ a {
 * {
   box-sizing: border-box;
 }
+
+h1{
+  font-weight: 300;
+  margin: 21px;
+}
+h2{
+  margin: 12px;
+  font-weight: 300;
+}
