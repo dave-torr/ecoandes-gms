@@ -17,9 +17,10 @@ a {
 
 h1{
   font-weight: 300;
-  margin: 21px;
+  margin: 21px 0;
 }
 h2{
-  margin: 12px;
+  margin: 15px 0;
   font-weight: 300;
 }
+

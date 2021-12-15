@@ -34,8 +34,34 @@
     transition: 1s;
     
 }
-
 .submitBTN:hover{
     border: solid 3px blue;
     box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.17);
+}
+/* ////////////// */
+/* Image Pickers */
+
+.imageThumbnailDisp{
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 96%;
+    border: solid 1px black;
+}
+
+.imageThumbnail{
+    margin: 15px;
+    min-width: 200px;
+    box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.296);
+}
+
+/* Tour Highlights */
+.highlightInputCont{
+    display: flex;
+    align-items: center;
+    font-size: 1.3em;
+    margin-top: 21px;
+    padding-top: 12px;
+    border-top: solid 1px black;
 }
