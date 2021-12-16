@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 import ExploreIcon from '@mui/icons-material/Explore';
-import {ItineraryImagePicker, LogoSwitcher, HighlightAdder} from "./../components/forms"
+import {ItineraryImagePicker, LogoSwitcher, HighlightAdder, TourDateAdder, DayByDayAdder} from "./../components/forms"
 import CancelIcon from '@mui/icons-material/Cancel';
 
 import styles from "../styles/pages/tourExplorer.module.css"
@@ -10,7 +10,8 @@ export default function TourExplorerPage(props){
 
     const [aTourCreator, setTourCreator]=useState({
         "ecoAndesLogo": true,
-        "highlights":[]
+        "highlights":[],
+        "dayByDay":[],
     })
     const tourExplorerIntro=()=>{
         return(<>
@@ -33,7 +34,7 @@ export default function TourExplorerPage(props){
         let theHighlights;
         if(aTourCreator.highlights){
             theHighlights = aTourCreator.highlights.map((elem, i)=>
-            <div className={styles.tourHighlightCont}>
+            <div className={styles.tourHighlightCont} key={i}>
                 <div className={styles.aHighlight}> - {elem}</div>
                 <CancelIcon onClick={()=>{
                     removeHighlight(aTourCreator.highlights, i)
@@ -55,6 +56,7 @@ export default function TourExplorerPage(props){
         </>)
     }
 
+console.log(aTourCreator)
 
     return(<>
         <div className={styles.generalPageCont}>
@@ -68,7 +70,14 @@ export default function TourExplorerPage(props){
                 tourEditor={setTourCreator} 
             />
             {highlightDispAdder()}
-
+            <TourDateAdder
+                aTour={aTourCreator} 
+                tourEditor={setTourCreator} 
+            />
+            <DayByDayAdder 
+                aTour={aTourCreator} 
+                tourEditor={setTourCreator} 
+            />
         </div>
     </>)
 }

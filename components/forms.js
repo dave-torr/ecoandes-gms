@@ -86,6 +86,14 @@ export function ItineraryImagePicker(props){
 import AddBoxIcon from '@mui/icons-material/AddBox';
 export function HighlightAdder(props){
     const [aHighlight, setAHighlight]=useState('')
+    const highlightSubmit=()=>{
+        let highlightArr=props.aTour.highlights.concat(aHighlight)
+        props.tourEditor({
+            ...props.aTour,
+            "highlights": highlightArr
+        })
+        setAHighlight('')
+    }
     return(
         <div className={styles.highlightInputCont}>
             <input
@@ -95,22 +103,137 @@ export function HighlightAdder(props){
                 }}
                 style={{width: "250px"}}
                 value={aHighlight}
+                onKeyPress={(e)=>{
+                    e.key === 'Enter' && highlightSubmit()
+                }}
             /> &nbsp;
             {aHighlight===''?<>
                 <AddBoxIcon />
             </>:<>
-                <AddBoxIcon onClick={()=>{
-                    let highlightArr=props.aTour.highlights.concat(aHighlight)
-                    props.tourEditor({
-                        ...props.aTour,
-                        "highlights": highlightArr
-                    })
-                    setAHighlight('')
-                }} />
+                <AddBoxIcon onClick={()=>highlightSubmit()} />
             </>}
         </div>
     )
 }
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+export function TourDateAdder(props){
+    return(
+        <>
+        <div className={styles.datePickersCont}>
+        
+            <div className={styles.aDatePickerCont}>
+                <label htmlFor="tourDepartureInput">
+                    <h3>
+                        Departure Date
+                    </h3>
+                </label>
+                <input 
+                    className={styles.aDateInput}
+                    id="tourDepartureInput"
+                    type="date"
+                    onChange={(e)=>{props.tourEditor({
+                        ...props.aTour,
+                        "departureDate":e.target.value
+                    })}}
+                />
+            </div>
+            <div className={styles.aDatePickerCont}>
+                <label htmlFor="tourArrivalInput">
+                    <h3>
+                        Arrival Date
+                    </h3>
+                </label>
+                <input 
+                    className={styles.aDateInput}
+                    id="tourArrivalInput"
+                    type="date"
+                    min={props.aTour.departureDate}
+                    onChange={(e)=>{props.tourEditor({
+                        ...props.aTour,
+                        "arrivalDate":e.target.value
+                    })}}
+                />
+            </div>
+        </div>
+        </>
+    )
+}
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+export function DayByDayAdder(props){
+    // props.aTour
+    // props.tourEditor
+    const [aTravelDay, setTravelDay] = useState({})
+    const [pickUpTimes, setPickupTimes]=useState([])
+    const [aPickupData, setPickupData]=useState('')
+    useEffect(()=>{
+        setTravelDay({
+            ...aTravelDay,
+            "pickUpTimes": pickUpTimes
+        })
+    },[pickUpTimes])
+    const timeAdder=()=>{
+        return(<>
+            <div className={styles.highlightInputCont}>
+                <input
+                    placeholder="Time and location of PickUp"
+                    onChange={(e)=>{
+                        setPickupData(e.target.value)
+                    }}
+                    style={{width: "250px"}}
+                    value={aPickupData}
+                /> &nbsp;
+                {aPickupData===''?<>
+                    <AddBoxIcon />
+                </>:<>
+                    <AddBoxIcon onClick={()=>{
+                        let timeArr=pickUpTimes.concat(aPickupData)
+                        setPickupTimes(timeArr)
+                        setPickupData('')
+                    }} />
+                </>}
+            </div>
+        </>)
+    }
+
+    console.log(aTravelDay)
+
+    return(<>
+        <form 
+            className={styles.dayAdderForm}
+            onSubmit={(e)=>{
+                e.preventDefault();
+                let dayByDay=props.aTour.dayByDay.concat(aTravelDay)
+                props.tourEditor({
+                    ...props.aTour,
+                    "dayByDay": dayByDay
+                })
+                setTravelDay({})                
+        }}>
+            <div className={styles.aDayDescrCont}>
+                <label htmlFor="dayDescriptionInput">Day Description</label>
+                <input
+                    required
+                    className={styles.aDayDescriptionInput}
+                    id="dayDescriptionInput"
+                    onChange={(e)=>{
+                        setTravelDay({
+                            ...aTravelDay,
+                            "dayDescription": e.target.value
+                        })
+                    }}
+                />
+            </div>
+            <h3>Pick Up Times:</h3>
+            {timeAdder()}
+            <input type="submit" />
+        </form>
+    </>)
+}
+
+
+
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
 export function AdminLogIn(props){

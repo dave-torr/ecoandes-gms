@@ -65,3 +65,45 @@
     padding-top: 12px;
     border-top: solid 1px black;
 }
+
+
+/* Date Pickers */
+.datePickersCont{
+    border: solid 1px black;
+    margin: 12px 0;
+    padding: 0 12px;
+}
+
+.aDatePickerCont{
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    align-items: center;
+    margin: 6px 0;
+}
+
+.aDateInput{
+    height: 30px;
+}
+
+/* Day description */
+.dayAdderForm{
+    border: solid 1px black;
+    margin: 12px 0;
+    padding: 0 12px;
+}
+
+.aDayDescrCont{
+    margin: 12px 0;
+    display: flex;
+    flex-direction: column;
+    
+}
+.aDayDescrCont label{
+    font-size: 1.1em;
+}
+
+.aDayDescriptionInput{
+    width: 300px;
+
+}
