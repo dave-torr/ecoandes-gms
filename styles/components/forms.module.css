@@ -117,15 +117,26 @@
     border: solid 2px black;
     border-radius: 5px;
     text-align: center;
+    margin: 21px 0;
 }
 .additionalOptionsCont{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    
+}
+.anInputcont{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 5px;
+    text-align: start;
+}
+.anInputLabel{
+    margin: 6px 0;
 }
 
 .eachAddiOpt{
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -133,7 +144,14 @@
     border: solid 1px black;
     border-radius: 5px;
     width: 80px;
-    height: 90px;
+    height: 70px;
     margin: 9px;
     box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.17);
+}
+
+.submitFlightsBTN{
+    margin: 4px 4px;
+    padding: 15px 0;
+    border: solid 3px black;
+    border-radius: 5px;
 }

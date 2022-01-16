@@ -172,12 +172,33 @@ export function DayByDayAdder(props){
     const [pickUpTimes, setPickupTimes]=useState([])
     const [aPickupData, setPickupData]=useState('')
     const [overNight, setOverNight]=useState('')
+    const [flightsTrigger,setFlightsTrig]=useState(false)
+    const [flightInfo, setFlightInfo]=useState({})
     useEffect(()=>{
         setTravelDay({
             ...aTravelDay,
             "pickUpTimes":pickUpTimes
         })
     },[pickUpTimes])
+    const aTextInput=(aPlaceholder, inputId, anObject, setAnObject, inputType)=>{
+        return(<>
+        <div className={styles.anInputcont}>
+            <label htmlFor={inputId} className={styles.anInputLabel}>{aPlaceholder}:</label> 
+            <input
+                placeholder={aPlaceholder}
+                type={inputType}
+                id={inputId}
+                onChange={(e)=>{
+                    e.preventDefault()
+                    setAnObject({
+                        ...anObject,
+                        [inputId]:e.target.value
+                    })
+                }}
+                />
+        </div>
+        </>)
+    }
     const addPickUpToArr=()=>{
         let timeArr=pickUpTimes.concat(aPickupData)
         setPickupTimes(timeArr)
@@ -270,10 +291,13 @@ export function DayByDayAdder(props){
     }
     const additionalsAdder=()=>{
         return(<>
+        {flightsTrigger?<>
+            {flightsAdder()}
+        </>:<>
             <div className={styles.dayAdditionalsCont}>
                 <h4>Add day additional data</h4>
                 <div className={styles.additionalOptionsCont}>
-                    <div className={styles.eachAddiOpt}>
+                    <div className={styles.eachAddiOpt} onClick={()=>setFlightsTrig(true)}>
                         <strong>FLIGHTS</strong>
                         <FlightIcon />
                     </div>
@@ -281,16 +305,41 @@ export function DayByDayAdder(props){
                         <strong>GUIDES</strong>
                         <EmojiPeopleIcon />
                     </div>
-                    <div className={styles.eachAddiOpt}>
-                        <strong>GUIDES</strong>
-                        <EmojiPeopleIcon />
-                    </div>
                 </div>
             </div>
+        </>}
+        </>)
+    }
+    const flightsAdder=()=>{
+        return(<>
+        <form className={styles.dayAdditionalsCont}>
+                <div onClick={()=>{setFlightsTrig(false)}} style={{width: "100%", textAlign: "end", cursor:"pointer" }}>x | close &nbsp;</div>
+                <h4>Add flight info here:</h4>
+                <div style={{display: "flex"}}>
+                    {aTextInput("Flight Route", "flightRoute", flightInfo, setFlightInfo, "text",)}
+                    {aTextInput("Flight Code", "flightCode", flightInfo, setFlightInfo, "text",)}
+                </div>
+                {aTextInput("Departure Date", "depDate", flightInfo, setFlightInfo, "date",)}
+                <div style={{display: "flex"}}>
+                    {aTextInput("Departure Time", "depTime", flightInfo, setFlightInfo, "time",)}
+                    {aTextInput("Arrival Time", "arriTime", flightInfo, setFlightInfo, "time",)}
+                </div>
+                {aTextInput("Confirmation Number", "confirmationNumber", flightInfo, setFlightInfo, "text",)}
+                <br></br>
+            <div className={styles.submitFlightsBTN} 
+                onClick={(e)=>{
+                    e.preventDefault();
+                    setTravelDay({
+                        ...aTravelDay,
+                        "Flights":{...flightInfo}
+                    })
+                    setFlightsTrig(false)
+                    }}> Submit! </div>
+            </form>
         </>)
     }
 
-
+    console.log(aTravelDay)
 
     return(<>
         <form 
@@ -321,6 +370,7 @@ export function DayByDayAdder(props){
                 </>:<>
                     {aTravelDay.overnightProperty}
                 </> }
+
 
             {additionalsAdder()}
 
