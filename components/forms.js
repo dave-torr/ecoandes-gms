@@ -15,10 +15,10 @@ import quitoSunrise from "../public/assets/images/tourCovers/quitoSunrise.jpg"
 import ruminahuiMountain from "../public/assets/images/tourCovers/ruminahuiMountain.jpg"
 import chimborazoVicunas from "../public/assets/images/tourCovers/chimborazoVicunas.jpg"
 import cotopaxiAerial from "../public/assets/images/tourCovers/cotopaxiAerial.jpg"
+import FlightIcon from '@mui/icons-material/Flight';
+import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 //////////////////////////////////////////////////////////
 
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 
 import styles from "../styles/components/forms.module.css"
@@ -161,18 +161,28 @@ export function TourDateAdder(props){
 }
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
+import CancelIcon from '@mui/icons-material/Cancel';
 export function DayByDayAdder(props){
     // props.aTour
     // props.tourEditor
-    const [aTravelDay, setTravelDay] = useState({})
+    const [aTravelDay, setTravelDay] = useState({
+        "pickUpTimes":[],
+        "overnightProperty":''
+    })
     const [pickUpTimes, setPickupTimes]=useState([])
     const [aPickupData, setPickupData]=useState('')
+    const [overNight, setOverNight]=useState('')
     useEffect(()=>{
         setTravelDay({
             ...aTravelDay,
-            "pickUpTimes": pickUpTimes
+            "pickUpTimes":pickUpTimes
         })
     },[pickUpTimes])
+    const addPickUpToArr=()=>{
+        let timeArr=pickUpTimes.concat(aPickupData)
+        setPickupTimes(timeArr)
+        setPickupData('')        
+    }
     const timeAdder=()=>{
         return(<>
             <div className={styles.highlightInputCont}>
@@ -181,27 +191,114 @@ export function DayByDayAdder(props){
                     onChange={(e)=>{
                         setPickupData(e.target.value)
                     }}
+                    onKeyPress={(e)=>{
+                        e.key === 'Enter' && addPickUpToArr()
+                    }}
                     style={{width: "250px"}}
                     value={aPickupData}
                 /> &nbsp;
                 {aPickupData===''?<>
                     <AddBoxIcon />
                 </>:<>
-                    <AddBoxIcon onClick={()=>{
-                        let timeArr=pickUpTimes.concat(aPickupData)
-                        setPickupTimes(timeArr)
-                        setPickupData('')
-                    }} />
+                    <AddBoxIcon onClick={()=>addPickUpToArr()} />
                 </>}
             </div>
         </>)
     }
+    const removeTimers=(aList, prodIndex)=>{
+        let tempList=[...aList];
+        tempList.splice(prodIndex, 1)
+        setPickupTimes([...tempList])
+    }
+    let pickupTimesDisp=pickUpTimes.map((elem, i)=><React.Fragment key={i}>
+        <div style={{width:"100%", display:"flex", justifyContent:"space-between"}}> 
+            <li>{elem}</li>
+            <CancelIcon onClick={()=>removeTimers(pickUpTimes, i)} />
+        </div>
+    </React.Fragment>)
+    const setHotelToDay=()=>{
+        setTravelDay({
+            ...aTravelDay,
+            "overnightProperty":overNight
+            })
+        setOverNight('')
+    }
+    const hotelAdder =()=>{
+        return(<>
+        <div className={styles.highlightInputCont}>
+            <input
+                placeholder="Add hotel here"
+                onChange={(e)=>{
+                    setOverNight(e.target.value)
+                }}
+                onKeyPress={(e)=>{
+                    e.key === 'Enter' && setHotelToDay()
+                    }}
+                style={{width: "250px"}}
+                value={overNight}
+            /> &nbsp;
+            {overNight===''?<>
+                <AddBoxIcon />
+            </>:<>
+                <AddBoxIcon onClick={()=>setHotelToDay()} />
+            </>}
+        </div>
+        </>)
+    }
+    const dayDescriptionAdder=()=>{
+        return(<>
+        <div className={styles.aDayDescrCont}>
+            {/* dayCount */}
+            <label htmlFor="dayDescriptionInput">
+            <strong>Day {props.aTour.dayByDay.length + 1}: &nbsp; 
+            </strong> 
+            Add Description*</label>
+            <textarea
+                required
+                className={styles.aDayDescriptionInput}
+                id="dayDescriptionInput"
+                placeholder={aTravelDay.dayDescription}
+                onChange={(e)=>{
+                    setTravelDay({
+                        ...aTravelDay,
+                        "dayDescription": e.target.value
+                    })
+                }}
+            />
+        </div>
+        </>)
+    }
+    const additionalsAdder=()=>{
+        return(<>
+            <div className={styles.dayAdditionalsCont}>
+                <h4>Add day additional data</h4>
+                <div className={styles.additionalOptionsCont}>
+                    <div className={styles.eachAddiOpt}>
+                        <strong>FLIGHTS</strong>
+                        <FlightIcon />
+                    </div>
+                    <div className={styles.eachAddiOpt}>
+                        <strong>GUIDES</strong>
+                        <EmojiPeopleIcon />
+                    </div>
+                    <div className={styles.eachAddiOpt}>
+                        <strong>GUIDES</strong>
+                        <EmojiPeopleIcon />
+                    </div>
+                </div>
+            </div>
+        </>)
+    }
 
-    console.log(aTravelDay)
+
 
     return(<>
         <form 
             className={styles.dayAdderForm}
+            id="dayAdderForm"
+            onKeyPress={(e)=>{
+                e.key === 'Enter' && e.preventDefault()
+            }}
             onSubmit={(e)=>{
                 e.preventDefault();
                 let dayByDay=props.aTour.dayByDay.concat(aTravelDay)
@@ -209,37 +306,35 @@ export function DayByDayAdder(props){
                     ...props.aTour,
                     "dayByDay": dayByDay
                 })
-                setTravelDay({})                
-        }}>
-            <div className={styles.aDayDescrCont}>
-                <label htmlFor="dayDescriptionInput">Day Description</label>
-                <input
-                    required
-                    className={styles.aDayDescriptionInput}
-                    id="dayDescriptionInput"
-                    onChange={(e)=>{
-                        setTravelDay({
-                            ...aTravelDay,
-                            "dayDescription": e.target.value
-                        })
-                    }}
-                />
-            </div>
+                setTravelDay({"pickUpTimes":[],"overnightProperty":''})
+                setPickupTimes([])   
+                document.getElementById("dayAdderForm").reset()                             
+            }}>
+            {dayDescriptionAdder()}
             <h3>Pick Up Times:</h3>
-            {timeAdder()}
-            <input type="submit" />
+                {pickupTimesDisp}
+                {timeAdder()}
+            <h3>Overnight Property:</h3>
+                {aTravelDay.overnightProperty===''?
+                <>
+                    {hotelAdder()}
+                </>:<>
+                    {aTravelDay.overnightProperty}
+                </> }
+
+            {additionalsAdder()}
+
+            <input type="submit" className={styles.submitDayBTN} value="Add Day to Itinerary" />
         </form>
     </>)
 }
-
-
-
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
 export function AdminLogIn(props){
     const [logInobj, setLogInOb]=useState()
     const adminLogInSubmit=async()=>{
         let strngifiedReq= JSON.stringify()
+
         // submit user login
     }
 

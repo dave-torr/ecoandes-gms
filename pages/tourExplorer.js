@@ -8,6 +8,13 @@ import styles from "../styles/pages/tourExplorer.module.css"
 
 export default function TourExplorerPage(props){
 
+///////////////////////////////////////////////
+
+    // SESSION ISSUES:
+    // difficulty in conencting with mongo-Session, trying redissession, to see wtf with sessions.
+
+//////////////////////////////////////////////
+
     const [aTourCreator, setTourCreator]=useState({
         "ecoAndesLogo": true,
         "highlights":[],
@@ -79,5 +86,13 @@ console.log(aTourCreator)
                 tourEditor={setTourCreator} 
             />
         </div>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
     </>)
 }
