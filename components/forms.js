@@ -17,11 +17,35 @@ import chimborazoVicunas from "../public/assets/images/tourCovers/chimborazoVicu
 import cotopaxiAerial from "../public/assets/images/tourCovers/cotopaxiAerial.jpg"
 import FlightIcon from '@mui/icons-material/Flight';
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
+import CancelIcon from '@mui/icons-material/Cancel';
+
 //////////////////////////////////////////////////////////
 
 import Switch from '@mui/material/Switch';
 
+
+
 import styles from "../styles/components/forms.module.css"
+const aTextInput=(aPlaceholder, inputId, anObject, setAnObject, inputType, reqBoolean)=>{
+    return(<>
+    <div className={styles.anInputcont}>
+        <label htmlFor={inputId} className={styles.anInputLabel}>{aPlaceholder}:</label> 
+        <input
+            placeholder={aPlaceholder}
+            type={inputType}
+            id={inputId}
+            required={reqBoolean}
+            onChange={(e)=>{
+                e.preventDefault()
+                setAnObject({
+                    ...anObject,
+                    [inputId]:e.target.value
+                })
+            }}
+            />
+    </div>
+    </>)
+}
 
 
 export function LogoSwitcher(props){
@@ -58,12 +82,19 @@ let imageThumbnailArr=[
     {"src": cotopaxiAerial, "alt": "Cotopaxi Aerial"},
 ]
 export function ItineraryImagePicker(props){
+
+    console.log(props)
     const [imageCap, setImageCap]=useState("Please Pick an image!")
 
     let thumbNails = imageThumbnailArr.map((elem, i)=><React.Fragment key={i}>
         <div className={styles.imageThumbnail} 
             onMouseEnter={()=>{setImageCap(elem.alt)}} 
-            onMouseLeave={()=>setImageCap("Please Pick an image!")}
+            onMouseLeave={()=>{
+                props.aTour.tourCover?
+                setImageCap("Thank you!")
+                :
+                setImageCap("Please Pick an image!")
+                }}
             onClick={()=>props.tourEditor({...props.aTour, "tourCover": elem})}
             >
         <Image 
@@ -77,7 +108,7 @@ export function ItineraryImagePicker(props){
             <div className={styles.imageThumbnailDisp}> 
             {thumbNails} 
             </div>
-            <div> {imageCap}</div>
+            <h2> {imageCap}</h2>
         </>
     )
 }
@@ -117,6 +148,7 @@ export function HighlightAdder(props){
 }
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
+
 export function TourDateAdder(props){
     return(
         <>
@@ -161,7 +193,47 @@ export function TourDateAdder(props){
 }
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
-import CancelIcon from '@mui/icons-material/Cancel';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const flightsAdder=(setDay, theTravelDay, flightInfo, setFlights, formTrigger)=>{
+    return(<>
+    <div className={styles.dayAdditionalsCont}>
+            <div onClick={()=>{formTrigger(false)}} style={{width: "100%", textAlign: "end", cursor:"pointer" }}>x | close &nbsp;</div>
+            <h4>Add flight info here:</h4>
+            {aTextInput("Flight Route", "flightRoute", flightInfo, setFlights, "text",)}
+            {aTextInput("Flight Code", "flightCode", flightInfo, setFlights, "text",)}
+            {aTextInput("Departure Date", "depDate", flightInfo, setFlights, "date",)}
+            {aTextInput("Departure Time", "depTime", flightInfo, setFlights, "time",)}
+            {aTextInput("Arrival Time", "arriTime", flightInfo, setFlights, "time",)}
+            {aTextInput("Confirmation Number", "confirmationNumber", flightInfo, setFlights, "text",)}
+            <br></br>
+        <div className={styles.submitFlightsBTN} 
+            onClick={(e)=>{
+                e.preventDefault();
+                setDay({
+                    ...theTravelDay,
+                    "Flights":{...flightInfo}
+                })
+                formTrigger(false)
+                }}> Submit! </div>
+        </div>
+    </>)
+}
+
 export function DayByDayAdder(props){
     // props.aTour
     // props.tourEditor
@@ -180,25 +252,7 @@ export function DayByDayAdder(props){
             "pickUpTimes":pickUpTimes
         })
     },[pickUpTimes])
-    const aTextInput=(aPlaceholder, inputId, anObject, setAnObject, inputType)=>{
-        return(<>
-        <div className={styles.anInputcont}>
-            <label htmlFor={inputId} className={styles.anInputLabel}>{aPlaceholder}:</label> 
-            <input
-                placeholder={aPlaceholder}
-                type={inputType}
-                id={inputId}
-                onChange={(e)=>{
-                    e.preventDefault()
-                    setAnObject({
-                        ...anObject,
-                        [inputId]:e.target.value
-                    })
-                }}
-                />
-        </div>
-        </>)
-    }
+
     const addPickUpToArr=()=>{
         let timeArr=pickUpTimes.concat(aPickupData)
         setPickupTimes(timeArr)
@@ -292,10 +346,13 @@ export function DayByDayAdder(props){
     const additionalsAdder=()=>{
         return(<>
         {flightsTrigger?<>
-            {flightsAdder()}
+
+            {flightsAdder(setTravelDay, aTravelDay, flightInfo, setFlightInfo, setFlightsTrig)}
+
+
         </>:<>
             <div className={styles.dayAdditionalsCont}>
-                <h4>Add day additional data</h4>
+                <h2>Add to this day:</h2>
                 <div className={styles.additionalOptionsCont}>
                     <div className={styles.eachAddiOpt} onClick={()=>setFlightsTrig(true)}>
                         <strong>FLIGHTS</strong>
@@ -310,36 +367,34 @@ export function DayByDayAdder(props){
         </>}
         </>)
     }
-    const flightsAdder=()=>{
-        return(<>
-        <form className={styles.dayAdditionalsCont}>
-                <div onClick={()=>{setFlightsTrig(false)}} style={{width: "100%", textAlign: "end", cursor:"pointer" }}>x | close &nbsp;</div>
-                <h4>Add flight info here:</h4>
-                <div style={{display: "flex"}}>
-                    {aTextInput("Flight Route", "flightRoute", flightInfo, setFlightInfo, "text",)}
-                    {aTextInput("Flight Code", "flightCode", flightInfo, setFlightInfo, "text",)}
-                </div>
-                {aTextInput("Departure Date", "depDate", flightInfo, setFlightInfo, "date",)}
-                <div style={{display: "flex"}}>
-                    {aTextInput("Departure Time", "depTime", flightInfo, setFlightInfo, "time",)}
-                    {aTextInput("Arrival Time", "arriTime", flightInfo, setFlightInfo, "time",)}
-                </div>
-                {aTextInput("Confirmation Number", "confirmationNumber", flightInfo, setFlightInfo, "text",)}
-                <br></br>
-            <div className={styles.submitFlightsBTN} 
-                onClick={(e)=>{
-                    e.preventDefault();
-                    setTravelDay({
-                        ...aTravelDay,
-                        "Flights":{...flightInfo}
-                    })
-                    setFlightsTrig(false)
-                    }}> Submit! </div>
-            </form>
-        </>)
-    }
 
-    console.log(aTravelDay)
+
+
+    // const flightsAdder=()=>{
+    //     return(<>
+    //     <form className={styles.dayAdditionalsCont}>
+    //             <div onClick={()=>{setFlightsTrig(false)}} style={{width: "100%", textAlign: "end", cursor:"pointer" }}>x | close &nbsp;</div>
+    //             <h4>Add flight info here:</h4>
+    //             {aTextInput("Flight Route", "flightRoute", flightInfo, setFlightInfo, "text",)}
+    //             {aTextInput("Flight Code", "flightCode", flightInfo, setFlightInfo, "text",)}
+    //             {aTextInput("Departure Date", "depDate", flightInfo, setFlightInfo, "date",)}
+    //             {aTextInput("Departure Time", "depTime", flightInfo, setFlightInfo, "time",)}
+    //             {aTextInput("Arrival Time", "arriTime", flightInfo, setFlightInfo, "time",)}
+    //             {aTextInput("Confirmation Number", "confirmationNumber", flightInfo, setFlightInfo, "text",)}
+    //             <br></br>
+    //         <div className={styles.submitFlightsBTN} 
+    //             onClick={(e)=>{
+    //                 e.preventDefault();
+    //                 setTravelDay({
+    //                     ...aTravelDay,
+    //                     "Flights":{...flightInfo}
+    //                 })
+    //                 setFlightsTrig(false)
+    //                 }}> Submit! </div>
+    //         </form>
+    //     </>)
+    // }
+
 
     return(<>
         <form 
@@ -365,19 +420,40 @@ export function DayByDayAdder(props){
                 {timeAdder()}
             <h3>Overnight Property:</h3>
                 {aTravelDay.overnightProperty===''?
-                <>
+                <>      
                     {hotelAdder()}
                 </>:<>
                     {aTravelDay.overnightProperty}
-                </> }
-
-
+                </>}
             {additionalsAdder()}
-
             <input type="submit" className={styles.submitDayBTN} value="Add Day to Itinerary" />
         </form>
     </>)
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
 export function AdminLogIn(props){
