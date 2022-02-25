@@ -155,3 +155,20 @@
     border: solid 3px black;
     border-radius: 5px;
 }
+
+/* LogInModal */
+.logInModCont{
+    min-height: 40vh;
+    width: 600px;
+    background-color: teal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.submitBtn{
+    background-color: white;
+    padding: 21px 44px;
+    width: fit-content;
+    border-radius: 6px;
+}

@@ -1,8 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import ExploreIcon from '@mui/icons-material/Explore';
 import {ItineraryImagePicker, LogoSwitcher, HighlightAdder, TourDateAdder, DayByDayAdder} from "./../components/forms"
 import CancelIcon from '@mui/icons-material/Cancel';
+
+
+import { useIntersection } from '@mantine/hooks';
 
 import styles from "../styles/pages/tourExplorer.module.css"
 
@@ -12,6 +15,8 @@ export default function TourExplorerPage(props){
 
     // SESSION ISSUES:
     // difficulty in conencting with mongo-Session, trying redissession, to see wtf with sessions.
+
+    // Intersection observer WTF
 
 //////////////////////////////////////////////
 
@@ -63,11 +68,12 @@ export default function TourExplorerPage(props){
         </>)
     }
 
-// console.log(aTourCreator)
+
 
     return(<>
         <div className={styles.generalPageCont}>
             {tourExplorerIntro()}
+
             <ItineraryImagePicker 
                 aTour={aTourCreator} 
                 tourEditor={setTourCreator} 
@@ -81,6 +87,7 @@ export default function TourExplorerPage(props){
                 aTour={aTourCreator} 
                 tourEditor={setTourCreator} 
             />
+
             <DayByDayAdder 
                 aTour={aTourCreator} 
                 tourEditor={setTourCreator} 

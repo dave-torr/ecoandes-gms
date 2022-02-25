@@ -12,7 +12,7 @@ const handler = nextConnect();
 
 handler.use(authMidWare); 
 
-
+// CREATE USER IN DB INSTANCE + LOG IN
 handler.post(async (req, res) => {
   const { name, password } = req.body;
   const email = normalizeEmail(req.body.email); 
@@ -27,6 +27,7 @@ handler.post(async (req, res) => {
   // check if email existed
   if ((await req.db.collection('users').countDocuments({ email })) > 0) {
     res.status(403).send('The email has already been used.');
+    return;
   }
 
   const hashedPassword = await bcrypt.hash(password, 10);
@@ -44,14 +45,29 @@ handler.post(async (req, res) => {
         userType: req.body.userType,
         resArray: [],
         signUpStream: req.body.signUpStream,
-      })
-    .then(({ ops }) => ops[0]);
-      req.logIn(user, (err) => {
+      },
+      function (error, response){
+        if(error){
+          console.log("some Error man")
+        } else {
+          console.log('inserted record', response)
+        }
+      }
+      )
+
+
+    // update to mongodb does not return document after insertion, need to query it from db, to auth and login
+    
+    // .then(({ ops }) => ops[0] );
+
+
+    req.login(user, (err) => {
       if (err) throw err;
     res.status(201).json({
       user: extractUser(user),
     });
   });
+
 });
 
 export default handler;

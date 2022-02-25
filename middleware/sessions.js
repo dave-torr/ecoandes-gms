@@ -1,17 +1,20 @@
 import session from 'express-session';
-import connectMongo from 'connect-mongo';
+import MongoStore from 'connect-mongo';
 
-const MongoStore = connectMongo(session);
+// const MongoStore = connectMongo(session);
 
 export function sessionMiddleware(req, res, next) {
-  const mongoStore = new MongoStore({
-    client: req.dbClient,
-    stringify: false,
-  });
+  // const mongoStore = new MongoStore({
+  //   client: req.dbClient,
+  //   stringify: false,
+  // });
 
   return session({
     secret: process.env.SESSION_SECRET,
-    store: mongoStore,
+    store: MongoStore.create({
+      client: req.dbClient,
+      stringify: false,
+    }),
     resave: false,
     saveUninitialized: false,
   })(req, res, next);

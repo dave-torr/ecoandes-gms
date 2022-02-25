@@ -83,7 +83,6 @@ let imageThumbnailArr=[
 ]
 export function ItineraryImagePicker(props){
 
-    console.log(props)
     const [imageCap, setImageCap]=useState("Please Pick an image!")
 
     let thumbNails = imageThumbnailArr.map((elem, i)=><React.Fragment key={i}>
@@ -193,21 +192,6 @@ export function TourDateAdder(props){
 }
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 const flightsAdder=(setDay, theTravelDay, flightInfo, setFlights, formTrigger)=>{
     return(<>
@@ -431,29 +415,6 @@ export function DayByDayAdder(props){
     </>)
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
 export function AdminLogIn(props){
@@ -483,4 +444,60 @@ export function AdminLogIn(props){
             <input type="submit" value="Submit" className={styles.submitBTN}/>
         </form>
     )
+}
+
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+import Dialog from '@mui/material/Dialog';
+export function UserSignupModal(props){
+
+    // create btn to submit user
+    // check user object created in API so that all info fits
+
+
+    // bring in session hook and check it login worked
+    // create log in form and change API route
+
+    const [userSignupObj, setSignUpObj]=useState({
+        // a user object specified by signup form
+        name: "David Torres",
+        email: "david@latintravelcollection.com", 
+        password: "GMSMasterPass18", 
+        company: "LTC",
+        department: "Management",
+        companyTitle: "General Manager",
+        clientType: "LTC",
+        userType: "admin",
+        resArray: [],
+        signUpStream: "website",
+    })
+
+    const submitLogin=async()=>{
+        let stringifiedUserMod= JSON.stringify(userSignupObj)
+        const res = await fetch("/api/auth/userSignUp",{
+            method: "post",
+            headers: { 'Content-Type': 'application/json' },
+            body: stringifiedUserMod
+        })
+        if(res.status===201){
+            const userObj = await res.json()
+            props.userMutation(userObj);
+            window.alert("User Created!")
+        } else {
+            props.setErrorMsg(await res.text())
+            }
+    }
+
+
+    return(<>
+        <div onClick={()=>props.setModalController(true)}> Log-In BTN</div>
+        <Dialog open={props.modalController} onClose={()=>props.setModalController(false)}>
+            <div className={styles.logInModCont}>
+
+                <div onClick={()=>submitLogin()} className={styles.submitBtn}>
+                Send to Back End
+                </div>
+            </div>
+        </Dialog>
+    </>)
 }
