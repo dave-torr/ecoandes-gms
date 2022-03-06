@@ -9,12 +9,13 @@ import Link from 'next/link'
 
 import styles from '../styles/pages/Home.module.css'
 
-import {AdminLogIn, UserSignupModal} from "../components/forms"
+import {AdminLogIn, UserSignupModal, LogInModal} from "../components/forms"
 
 export default function Home(){
   const [user, { mutate }] = useUser();
   const [errorMsg, setErrorMsg] = useState('');
   const [homeBTNSwitcher, setHomeSwitcher]=useState("btns")
+  const [signUpModalCont, setSignUpMod] = useState(false)
   const [logInModalContr, setLogInMod] = useState(false)
 
   const homeOptionsBTN=()=>{
@@ -47,9 +48,6 @@ export default function Home(){
     }
   }
 
-console.log(user)
-console.log(errorMsg)
-
   return (
     <div className={styles.container}>
       <Head>
@@ -57,12 +55,18 @@ console.log(errorMsg)
         <meta name="description" content="Guest Management System by LTC" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div><UserSignupModal 
-        modalController={logInModalContr}
-        setModalController={setLogInMod}
-        userMutation={mutate}
-        setErrorMsg={setErrorMsg}
-        /></div>
+      <div className={styles.authBar}>
+        <UserSignupModal 
+          modalController={signUpModalCont}
+          setModalController={setSignUpMod}
+          userMutation={mutate}
+          setErrorMsg={setErrorMsg}
+          />
+        <LogInModal 
+          modalController={logInModalContr}
+          setModalController={setLogInMod}
+        />
+      </div>
       <main className={styles.main}>
 
         <h2>EcoAndes Travel</h2>

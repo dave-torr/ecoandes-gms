@@ -451,12 +451,8 @@ export function AdminLogIn(props){
 import Dialog from '@mui/material/Dialog';
 export function UserSignupModal(props){
 
-    // create btn to submit user
-    // check user object created in API so that all info fits
-
-
-    // bring in session hook and check it login worked
-    // create log in form and change API route
+    // Create user sign up form
+    // if user is created open login modal
 
     const [userSignupObj, setSignUpObj]=useState({
         // a user object specified by signup form
@@ -481,23 +477,38 @@ export function UserSignupModal(props){
         })
         if(res.status===201){
             const userObj = await res.json()
-            props.userMutation(userObj);
-            window.alert("User Created!")
+            if(userObj){
+                window.alert("User Created!")
+            }
         } else {
             props.setErrorMsg(await res.text())
             }
     }
 
-
     return(<>
-        <div onClick={()=>props.setModalController(true)}> Log-In BTN</div>
+        <div 
+            onClick={()=>props.setModalController(true)} className={styles.authBTN}> 
+            Log-In BTN</div>
         <Dialog open={props.modalController} onClose={()=>props.setModalController(false)}>
-            <div className={styles.logInModCont}>
-
-                <div onClick={()=>submitLogin()} className={styles.submitBtn}>
+            <div className={styles.logInModCont} >
+                <div onClick={()=>submitLogin()} className={styles.authSubmit}>
                 Send to Back End
                 </div>
             </div>
+        </Dialog>
+    </>)
+}
+
+export function LogInModal(props){
+
+    const [logInObj, setLogInObj]=useState()
+
+    return(<>
+        <div 
+            onClick={()=>props.setModalController(true)}  className={styles.authBTN}>
+            Log In</div>
+        <Dialog open={props.modalController} onClose={()=>props.setModalController(false)}>
+            Log In Modal
         </Dialog>
     </>)
 }

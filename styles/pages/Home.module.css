@@ -1,6 +1,4 @@
-.container {
-  padding: 0 2rem;
-}
+
 
 .main {
   min-height: 81vh;
@@ -49,6 +47,12 @@
   width: fit-content;
 }
 
+.authBar{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+}
 
 @media (max-width: 600px) {
 

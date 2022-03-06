@@ -4,8 +4,6 @@ import nextConnect from 'next-connect';
 
 import isEmail from 'validator/lib/isEmail';
 import normalizeEmail from 'validator/lib/normalizeEmail';
-import { extractUser } from '../../../utils/auth/userHelper';
-
 import authMidWare from '../../../middleware/userAuthMiddleware';
 
 const handler = nextConnect();
@@ -32,9 +30,7 @@ handler.post(async (req, res) => {
 
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  const user = await req.db
-    .collection('users')
-    .insertOne({ 
+  let aUser = { 
         name,
         email, 
         password: hashedPassword, 
@@ -45,29 +41,12 @@ handler.post(async (req, res) => {
         userType: req.body.userType,
         resArray: [],
         signUpStream: req.body.signUpStream,
-      },
-      function (error, response){
-        if(error){
-          console.log("some Error man")
-        } else {
-          console.log('inserted record', response)
-        }
       }
-      )
-
-
-    // update to mongodb does not return document after insertion, need to query it from db, to auth and login
-    
-    // .then(({ ops }) => ops[0] );
-
-
-    req.login(user, (err) => {
-      if (err) throw err;
-    res.status(201).json({
-      user: extractUser(user),
-    });
-  });
-
+  const user = await req.db
+    .collection('users')
+    .insertOne({...aUser})
+    user && console.log(" user Created")
+    res.status(201).json(user)
 });
 
 export default handler;

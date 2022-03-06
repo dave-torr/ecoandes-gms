@@ -156,7 +156,14 @@
     border-radius: 5px;
 }
 
-/* LogInModal */
+/* Auth Modals */
+.authBTN{
+    border: solid 2px black;
+    border-radius: 5px;
+    padding: 6px 9px;
+    margin: 6px;
+}
+
 .logInModCont{
     min-height: 40vh;
     width: 600px;
@@ -166,9 +173,10 @@
     align-items: center;
 }
 
-.submitBtn{
+.authSubmit{
     background-color: white;
     padding: 21px 44px;
     width: fit-content;
     border-radius: 6px;
 }
+
