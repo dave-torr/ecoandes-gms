@@ -3,16 +3,14 @@ import Image from 'next/image'
 import React from 'react'
 import { useState } from 'react'
 
-import { useUser } from '../utils/auth/userHook'
 
 import Link from 'next/link'
 
 import styles from '../styles/pages/Home.module.css'
 
-import {AdminLogIn, UserSignupModal, LogInModal} from "../components/forms"
+import {AdminLogIn, UserSignupModal} from "../components/forms"
 
 export default function Home(){
-  const [user, { mutate }] = useUser();
   const [errorMsg, setErrorMsg] = useState('');
   const [homeBTNSwitcher, setHomeSwitcher]=useState("btns")
   const [signUpModalCont, setSignUpMod] = useState(false)
@@ -42,7 +40,11 @@ export default function Home(){
       return(
         <>
           {backMenuBTN()}
-            <AdminLogIn />
+  
+            {errorMsg}
+            <AdminLogIn 
+              setErrorMsg={setErrorMsg}
+            />
         </>
       )
     }
@@ -59,13 +61,8 @@ export default function Home(){
         <UserSignupModal 
           modalController={signUpModalCont}
           setModalController={setSignUpMod}
-          userMutation={mutate}
           setErrorMsg={setErrorMsg}
           />
-        <LogInModal 
-          modalController={logInModalContr}
-          setModalController={setLogInMod}
-        />
       </div>
       <main className={styles.main}>
 
