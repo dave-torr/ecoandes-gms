@@ -3,7 +3,9 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import { MongoClient } from 'mongodb';
 import { compare } from 'bcryptjs';
 
-const { MONGODB_URI, MONGODB_DB } = process.env
+const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_DB = process.env.MONGODB_DB;
+
 
 
 // New trial for sessions with next-auth package (JWT, bcrypt, & DB)

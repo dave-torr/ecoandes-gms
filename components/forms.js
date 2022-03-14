@@ -1,7 +1,7 @@
 import React from "react"
 import { useState, useEffect } from "react"
 import Image from "next/image"
-import { useSession, signIn, signOut } from "next-auth/react"
+// import { useSession, signIn, signOut } from "next-auth/react"
 
 import galapagosSunset from "../public/assets/images/tourCovers/galapagosSunset.jpg"
 import machuPicchu from "../public/assets/images/tourCovers/peruMachuPicchu.jpg"
@@ -485,19 +485,16 @@ export function UserSignupModal(props){
     const submitLogin=async()=>{
         let stringifiedUserMod= JSON.stringify(userSignupObj)
         const res = await fetch("/api/auth/signUp",{
-            method: "post",
+            method: "POST",
             body: stringifiedUserMod
         })
-        console.log(res)
+        const userSignup = await res.json()
+        console.log(userSignup)
         if(res.status===201){
-            const userObj = await res.json()
-            if(userObj){
-                // signIn()
-                window.alert("User Created!")
-            }
+            window.alert("User Created!")
         } else {
-            props.setErrorMsg(await res.text())
-            }
+            window.alert("Error with sign up")
+        }
     }
 
 

@@ -1,47 +1,51 @@
 
-import {database} from "./../../../middleware/dbMiddleware"
-import nextConnect from 'next-connect';
-
-const handler = nextConnect();
+import {connectToDatabase} from "./../../../middleware/dbMiddleware"
+import bcrypt from "bcryptjs"
 
 // New trial for sessions with next-auth package (JWT, bcrypt, & DB)
 // Adapted to our use case w/db middleware
 // https://dev.to/dawnind/authentication-with-credentials-using-next-auth-and-mongodb-part-1-m38
 
-handler.use(database)
-handler.post(async (req, res) =>{
-    const { name, password } = req.body;
-    if (!email || !email.includes('@') || !password) {
-        res.status(422).json({ message: 'Invalid Data' });
-        return;
-    }
-    if ((await req.db.collection('users')
-        .countDocuments({ email })) > 0) {
-        res.status(403).send('The email has already been used.');
+async function handler(req, res){
+  if(req.method !== 'POST'){
+    return
+  }
+  const reqData= JSON.parse(req.body)
+  const { email, password } = reqData;
+
+  if(!email || !email.includes('@') || !password) {
+      res.status(422).json({ message: 'Invalid Data' });
+      return;
+  }
+
+  const client = await connectToDatabase();
+  const db = client.db('EcoAndesGMS');
+  const existingUser = await db.collection('users').findOne({ email: email });
+  if (existingUser) {
+    res.status(422).json({ message: 'User exists already!' });
+    client.close();
     return;
   }
 
-    console.log("One")
   const hashedPassword = await bcrypt.hash(password, 10);
-    console.log(hashedPassword, "HashedPassword")
-
   let aUser = { 
-        name,
-        email, 
+        name: reqData.name,
+        email: reqData.email, 
         password: hashedPassword, 
-        company: req.body.company,
-        department: req.body.department,
-        companyTitle: req.body.companyTitle,
-        clientType: req.body.clientType,
-        userType: req.body.userType,
+        company: reqData.company,
+        department: reqData.department,
+        companyTitle: reqData.companyTitle,
+        clientType: reqData.clientType,
+        userType: reqData.userType,
         resArray: [],
-        signUpStream: req.body.signUpStream,
+        signUpStream: reqData.signUpStream,
       }
-  const user = await req.db
-    .collection('users')
+
+  const user = await db.collection('users')
     .insertOne({...aUser})
     user && console.log( user, "User Created")
-    res.status(201).json(user)
-})
+    res.status(201).json({ message: 'Created user!' })
+    client.close();
+}
 
 export default handler;
