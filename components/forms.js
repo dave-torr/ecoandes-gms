@@ -457,8 +457,6 @@ export function AdminLogIn(props){
     )
 }
 
-
-
 //////////////////////////////////////////////////////
 //////////////////////////////////////////////////////
 import Dialog from '@mui/material/Dialog';
@@ -466,24 +464,27 @@ export function UserSignupModal(props){
 
     // Create user sign up form
     // if user is created open login modal
+    const [userCreated, setUserCreated]=useState(true)
     const { data: session, status } = useSession()
-
-
     const [userSignupObj, setSignUpObj]=useState({
-        // a user object specified by signup form
-        // name: "David Torres",
-        // email: "david@latintravelcollection.com", 
-        // password: "GMSMasterPass18", 
-        // company: "LTC",
-        // department: "Management",
-        // companyTitle: "General Manager",
-        // clientType: "LTC",
-        // userType: "admin",
-        // resArray: [],
-        // signUpStream: "website",
+        name: String,
+        email: String, 
+        password: String, 
+        company: "EcoAndes Travel",
+        department: String,
+        companyTitle: String,
+        clientType: "LTC",
+        userType: String,
+        resArray: [],
+        signUpStream: "website",
+        active: false
+    })
+    const [userLogIn, setLogInObj]=useState({
+        email: String,
+        password: String
     })
 
-    const submitLogin=async()=>{
+    const submitSignUp=async()=>{
         let stringifiedUserMod= JSON.stringify(userSignupObj)
         const res = await fetch("/api/auth/signUp",{
             method: "POST",
@@ -493,41 +494,39 @@ export function UserSignupModal(props){
         console.log(userSignup)
         if(res.status===201){
             window.alert("User Created!")
+            setUserCreated(true)
         } else {
             window.alert("Error with sign up")
         }
     }
-
-    console.log(session)
+    const submitLogIn = async ()=>{
+        const status = await signIn('credentials',{
+            redirect: false,
+            email: userLogIn.email,
+            password: userLogIn.password
+        })
+        window.alert("Log In successful!")
+        props.setModalController(false)
+    }
 
     return(<>
-        <div 
-            onClick={()=>props.setModalController(true)} className={styles.authBTN}> 
+        <div onClick={()=>props.setModalController(true)} className={styles.authBTN}> 
             Sign Up</div>
         <Dialog open={props.modalController} onClose={()=>props.setModalController(false)}>
             <div className={styles.logInModCont} >
-                <div className={styles.authSubmit}>
-                ADD USER SIGNUP FORM
-                </div>
-
                 {session?<>
-                    <div className={styles.authSubmit}> 
-                        Logged In
-                    </div>
-
+                    <div onClick={()=>signOut({redirect: false})}> Sign Out</div>
                 </>:<> 
-                    <div className={styles.authSubmit} onClick={async()=>{
-                        const status = await signIn('credentials',{
-                            redirect: false,
-                            email: "david@latintravelcollection.com",
-                            password: "GMSMasterPass18"
-                        })
-                        console.log(status, "status of login")
-                    }}>
-                        Log 
-                    </div>
+                    {userCreated? <> 
+                        <form onClick={()=>submitLogIn()}> 
+                            Log In Form
+                        </form>
+                    </>: <>
+                        <form onSubmit={()=>submitSignUp()}>
+                            Create User Form
+                        </form>
+                    </>}
                 </>}
-                
             </div>
         </Dialog>
     </>)
