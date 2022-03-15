@@ -1,46 +1,76 @@
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { MongoClient } from 'mongodb';
 import { compare } from 'bcryptjs';
-
-const MONGODB_URI = process.env.MONGODB_URI;
-const MONGODB_DB = process.env.MONGODB_DB;
-
-
+import {connectToDatabase} from "./../../../middleware/dbMiddleware"
 
 // New trial for sessions with next-auth package (JWT, bcrypt, & DB)
-// Adapted to our use case w/db middleware
 // https://dev.to/dawnind/authentication-with-credentials-using-next-auth-and-mongodb-part-1-m38
 
 export default NextAuth({
-
     session:{
         jwt: true,
     },
-    providers:[
+    providers: [
         CredentialsProvider({
-            async authorize(credentials){
+        async authorize(credentials, req) {
 
-                // add db handler here, 
-                const client = await MongoClient.connect(
-                    MONGODB_URI,
-                    { useNewUrlParser: true, useUnifiedTopology: true }
-                )
+            console.log(credentials, "credentials")
+            const client = await connectToDatabase();
 
-                const db = client.db(MONGODB_DB);
+            const usersCollection = client.db("EcoAndesGMS").collection('users');
 
-                const users = await db.collection('users')
-                    .findOne({email:credentials.email})
-                if(!users){
-                    throw new Error("No user found with email")
-                }
+            const user = await usersCollection.findOne({
+            email: credentials.email,
+            });
 
-                const checkPassword = await compare(credentials.password, users.password)
-                if(!checkPassword){
-                    throw new Error("Password doesn't match")
-                }
-                return {email: users.email}
+            if (!user) {
+            client.close();
+            throw new Error('No user found!');
             }
-        })
-    ]
+
+            const isValid = await compare(
+            credentials.password,
+            user.password
+            );
+
+            if (!isValid) {
+            client.close();
+            throw new Error('Could not log you in!');
+            }
+
+            client.close();
+            return { 
+                email: user.email 
+                
+                };
+        },
+        }),
+    ],
+
+
+
+
+
+
+
+    // providers:[
+    //     CredentialsProvider({
+    //         async authorize(credentials, req){
+    //             console.log("cucu")
+
+    //             const client = await connectToDatabase()
+    //             const db = client.db('v');
+    //             const users = await db.collection('users').findOne({email: credentials.email})
+    //             if(!users){
+    //                 throw new Error("No user found with email")
+    //             }
+
+    //             const checkPassword = await compare(credentials.password, users.password)
+    //             if(!checkPassword){
+    //                 throw new Error("Password doesn't match")
+    //             }
+    //             return {email: users.email}
+    //         }
+    //     })
+    // ]
 })

@@ -1,7 +1,7 @@
 import React from "react"
 import { useState, useEffect } from "react"
 import Image from "next/image"
-// import { useSession, signIn, signOut } from "next-auth/react"
+import { useSession, signIn, signOut } from "next-auth/react"
 
 import galapagosSunset from "../public/assets/images/tourCovers/galapagosSunset.jpg"
 import machuPicchu from "../public/assets/images/tourCovers/peruMachuPicchu.jpg"
@@ -466,20 +466,21 @@ export function UserSignupModal(props){
 
     // Create user sign up form
     // if user is created open login modal
-    // const { data: session } = useSession()
+    const { data: session, status } = useSession()
+
 
     const [userSignupObj, setSignUpObj]=useState({
         // a user object specified by signup form
-        name: "David Torres",
-        email: "david@latintravelcollection.com", 
-        password: "GMSMasterPass18", 
-        company: "LTC",
-        department: "Management",
-        companyTitle: "General Manager",
-        clientType: "LTC",
-        userType: "admin",
-        resArray: [],
-        signUpStream: "website",
+        // name: "David Torres",
+        // email: "david@latintravelcollection.com", 
+        // password: "GMSMasterPass18", 
+        // company: "LTC",
+        // department: "Management",
+        // companyTitle: "General Manager",
+        // clientType: "LTC",
+        // userType: "admin",
+        // resArray: [],
+        // signUpStream: "website",
     })
 
     const submitLogin=async()=>{
@@ -497,6 +498,7 @@ export function UserSignupModal(props){
         }
     }
 
+    console.log(session)
 
     return(<>
         <div 
@@ -504,12 +506,28 @@ export function UserSignupModal(props){
             Sign Up</div>
         <Dialog open={props.modalController} onClose={()=>props.setModalController(false)}>
             <div className={styles.logInModCont} >
-                <div onClick={()=>submitLogin()} className={styles.authSubmit}>
-                Send to Back End
+                <div className={styles.authSubmit}>
+                ADD USER SIGNUP FORM
                 </div>
-                {/* {session&&<>
-                    Logged In
-                </>} */}
+
+                {session?<>
+                    <div className={styles.authSubmit}> 
+                        Logged In
+                    </div>
+
+                </>:<> 
+                    <div className={styles.authSubmit} onClick={async()=>{
+                        const status = await signIn('credentials',{
+                            redirect: false,
+                            email: "david@latintravelcollection.com",
+                            password: "GMSMasterPass18"
+                        })
+                        console.log(status, "status of login")
+                    }}>
+                        Log 
+                    </div>
+                </>}
+                
             </div>
         </Dialog>
     </>)
