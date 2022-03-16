@@ -3,10 +3,6 @@ import { useState, useEffect, useRef } from "react";
 import ExploreIcon from '@mui/icons-material/Explore';
 import {ItineraryImagePicker, LogoSwitcher, HighlightAdder, TourDateAdder, DayByDayAdder} from "./../components/forms"
 import CancelIcon from '@mui/icons-material/Cancel';
-
-
-import { useIntersection } from '@mantine/hooks';
-
 import styles from "../styles/pages/tourExplorer.module.css"
 
 export default function TourExplorerPage(props){

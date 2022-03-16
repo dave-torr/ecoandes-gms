@@ -1,8 +1,7 @@
 import React from "react"
 import { useState, useEffect } from "react"
-import Image from "next/image"
-import { useSession, signIn, signOut } from "next-auth/react"
 
+import Image from "next/image"
 import galapagosSunset from "../public/assets/images/tourCovers/galapagosSunset.jpg"
 import machuPicchu from "../public/assets/images/tourCovers/peruMachuPicchu.jpg"
 import cotopaxiClimb from "../public/assets/images/tourCovers/cotopaxiClimb.jpg"
@@ -25,7 +24,7 @@ import Switch from '@mui/material/Switch';
 import styles from "../styles/components/forms.module.css"
 
 
-const aTextInput=(aPlaceholder, inputId, anObject, setAnObject, inputType, reqBoolean)=>{
+export function aTextInput(aPlaceholder, inputId, anObject, setAnObject, inputType, reqBoolean){
     return(<>
     <div className={styles.anInputcont}>
         <label htmlFor={inputId} className={styles.anInputLabel}>{aPlaceholder}:</label> 
@@ -42,9 +41,10 @@ const aTextInput=(aPlaceholder, inputId, anObject, setAnObject, inputType, reqBo
                 })
             }}
             />
-    </div>
+        </div>
     </>)
 }
+
 export function LogoSwitcher(props){
     const handleChange=()=>{
         if(props.aTour.ecoAndesLogo){
@@ -409,125 +409,5 @@ export function DayByDayAdder(props){
             {additionalsAdder()}
             <input type="submit" className={styles.submitDayBTN} value="Add Day to Itinerary" />
         </form>
-    </>)
-}
-
-//////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////
-export function AdminLogIn(props){
-
-    const [logInobj, setLogInOb]=useState()
-
-    
-
-    return(
-        <form className={styles.loginContainer} onSubmit={async(e)=>{
-            e.preventDefault()
-            let stringifiedReq= JSON.stringify(logInobj)
-            const res = await fetch('/api/auth/signUp',{
-                method: "POST",
-                headers: { 'Content-Type': 'application/json' },
-                body: stringifiedReq,
-            });
-            if(res.status === 200){
-                const userObj = await res.json();
-                console.log(userObj)
-
-
-            } else {
-                props.setErrorMsg('Incorrect username or password. Try again!');
-            }
-        }}>
-            <div className={styles.anInputRow}>
-                <label htmlFor="logInEmailLabel" className={styles.aFormLabel}>Email:</label>
-                <input id="logInEmailInput" onChange={(e)=>setLogInOb({
-                    ...logInobj,
-                    "email": e.target.value
-                })} type="email" className={styles.aFormInput}/>
-            </div>
-            <div className={styles.anInputRow}>
-                <label htmlFor="logInEmailLabel" className={styles.aFormLabel}>Password:</label>
-                <input id="logInPasswordInput" onChange={(e)=>setLogInOb({
-                    ...logInobj,
-                    "password": e.target.value
-                })} type="password" className={styles.aFormInput}/>
-            </div>
-            <input type="submit" value="submit" className={styles.submitBTN}/>
-        </form>
-    )
-}
-
-//////////////////////////////////////////////////////
-//////////////////////////////////////////////////////
-import Dialog from '@mui/material/Dialog';
-export function UserSignupModal(props){
-
-    // Create user sign up form
-    // if user is created open login modal
-    const [userCreated, setUserCreated]=useState(true)
-    const { data: session, status } = useSession()
-    const [userSignupObj, setSignUpObj]=useState({
-        name: String,
-        email: String, 
-        password: String, 
-        company: "EcoAndes Travel",
-        department: String,
-        companyTitle: String,
-        clientType: "LTC",
-        userType: String,
-        resArray: [],
-        signUpStream: "website",
-        active: false
-    })
-    const [userLogIn, setLogInObj]=useState({
-        email: String,
-        password: String
-    })
-
-    const submitSignUp=async()=>{
-        let stringifiedUserMod= JSON.stringify(userSignupObj)
-        const res = await fetch("/api/auth/signUp",{
-            method: "POST",
-            body: stringifiedUserMod
-        })
-        const userSignup = await res.json()
-        console.log(userSignup)
-        if(res.status===201){
-            window.alert("User Created!")
-            setUserCreated(true)
-        } else {
-            window.alert("Error with sign up")
-        }
-    }
-    const submitLogIn = async ()=>{
-        const status = await signIn('credentials',{
-            redirect: false,
-            email: userLogIn.email,
-            password: userLogIn.password
-        })
-        window.alert("Log In successful!")
-        props.setModalController(false)
-    }
-
-    return(<>
-        <div onClick={()=>props.setModalController(true)} className={styles.authBTN}> 
-            Sign Up</div>
-        <Dialog open={props.modalController} onClose={()=>props.setModalController(false)}>
-            <div className={styles.logInModCont} >
-                {session?<>
-                    <div onClick={()=>signOut({redirect: false})}> Sign Out</div>
-                </>:<> 
-                    {userCreated? <> 
-                        <form onClick={()=>submitLogIn()}> 
-                            Log In Form
-                        </form>
-                    </>: <>
-                        <form onSubmit={()=>submitSignUp()}>
-                            Create User Form
-                        </form>
-                    </>}
-                </>}
-            </div>
-        </Dialog>
     </>)
 }

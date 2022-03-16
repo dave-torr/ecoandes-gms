@@ -8,7 +8,7 @@ import Link from 'next/link'
 
 import styles from '../styles/pages/Home.module.css'
 
-import {AdminLogIn, UserSignupModal} from "../components/forms"
+import {UserSignupModal} from "../components/authForms"
 
 export default function Home(){
   const [errorMsg, setErrorMsg] = useState('');
@@ -40,11 +40,6 @@ export default function Home(){
       return(
         <>
           {backMenuBTN()}
-  
-            {errorMsg}
-            <AdminLogIn 
-              setErrorMsg={setErrorMsg}
-            />
         </>
       )
     }

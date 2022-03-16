@@ -1,12 +1,4 @@
-.loginContainer{
-    border: solid 1px black;
-    margin: 21px;
-    padding: 9px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-}
+
 .anInputRow{
     display: flex;
     width: 100%;
@@ -25,19 +17,22 @@
 }
 .submitBTN{
     border-radius: 5px;
-    border: solid 3px black;
+    border: none;
     margin: 9px;
     width: 90%;
     padding: 12px;
-    text-align: center;
-    background-color: white;
+    background-color: #ffcb74;
     transition: 1s;
-    
+    font-weight: 500;
+    font-size: 1.1em;
 }
 .submitBTN:hover{
-    border: solid 3px blue;
     box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.17);
 }
+
+
+
+
 /* ////////////// */
 /* Image Pickers */
 
@@ -156,7 +151,14 @@
     border-radius: 5px;
 }
 
-/* Auth Modals */
+/* ////////////// */
+/* AUTH */
+.signUpForm{
+    background-color: #F6F6F6;
+    padding: 0 33px;
+    border-radius: 5px;
+}
+
 .authBTN{
     border: solid 2px black;
     border-radius: 5px;
@@ -167,16 +169,11 @@
 .logInModCont{
     min-height: 40vh;
     width: 600px;
-    background-color: teal;
+    background-color: #2f2f2f;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.authSubmit{
-    background-color: white;
-    padding: 21px 44px;
-    width: fit-content;
-    border-radius: 6px;
+    flex-direction: column;
+    padding: 12px;
 }
 
