@@ -9,7 +9,8 @@ import {aTextInput} from "./forms"
 import styles from "../styles/components/forms.module.css"
 
 
-export function SignIn(props){
+export function SignInForm(props){
+    const { data: session, status } = useSession()
     const [userLogIn, setLogInObj]=useState({
         email: String,
         password: String
@@ -20,10 +21,23 @@ export function SignIn(props){
             email: userLogIn.email,
             password: userLogIn.password
         })
-        window.alert("Log In successful!")
+        if(status.error){
+            window.alert(`Error logging in: ${status.error}`)
+        } else{
+            props.setMenuDisp("btns")
+        }
     }
-    return(<>
 
+    return(<>
+        <form className={styles.signInForm} onSubmit={(e)=>{
+            e.preventDefault()
+            submitLogIn()
+        }}>
+            {aTextInput("Email*", "email", userLogIn, setLogInObj, "email", true)}
+            {aTextInput("Password*", "password", userLogIn, setLogInObj, "password", true)}
+
+            <input type="submit" value="Submit!" className={styles.submitBTN} />
+        </form>
     </>)
 }
 /////////////////////////// ///////////////////////////
@@ -68,7 +82,7 @@ export function UserSignupModal(props){
 
     return(<>
         {session? <>
-            <div onClick={()=>signOut({redirect: false})}> Sign Out</div>
+            <div className={styles.authBTN} onClick={()=>signOut({redirect: false})}> Sign Out</div>
         </>:<> 
             <div onClick={()=>props.setModalController(true)} className={styles.authBTN}> 
             Sign Up</div>

@@ -1,29 +1,34 @@
-import Head from 'next/head'
-import Image from 'next/image'
 import React from 'react'
 import { useState } from 'react'
-
-
+import Head from 'next/head'
+import Image from 'next/image'
 import Link from 'next/link'
 
 import styles from '../styles/pages/Home.module.css'
 
-import {UserSignupModal} from "../components/authForms"
+import {UserSignupModal, SignInForm} from "../components/authForms"
+import { useSession, signIn, signOut } from "next-auth/react"
+
 
 export default function Home(){
-  const [errorMsg, setErrorMsg] = useState('');
   const [homeBTNSwitcher, setHomeSwitcher]=useState("btns")
   const [signUpModalCont, setSignUpMod] = useState(false)
-  const [logInModalContr, setLogInMod] = useState(false)
-
+  const { data: session, status } = useSession()
   const homeOptionsBTN=()=>{
     return(
       <>
-      <div className={styles.homeOptBTN} onClick={()=>{setHomeSwitcher("adminLogin")}}>Admin Log In</div> 
-      <div className={styles.homeOptBTN}> <Link href="/tourExplorer">Tour Explorer</Link></div> 
+        {/* PROTECTED ROUTES */}
+        {session? <>
+          <div className={styles.homeOptBTN}> <Link href="/tourExplorer">Tour Explorer</Link></div> 
+        </>:<> 
+          <div className={styles.homeOptBTN} onClick={()=>{setHomeSwitcher("adminLogin")}}>Log In!</div> 
+        </>}
       </>
     )
   }
+
+  console.log(session)
+
   const backMenuBTN=()=>{
     return(<>
       <div className={styles.backManuBTN} onClick={()=>setHomeSwitcher("btns")}> {"<"} Back </div>
@@ -33,13 +38,14 @@ export default function Home(){
     if(homeBTNSwitcher==="btns"){
       return(
         <>
-            {homeOptionsBTN()}
+          {homeOptionsBTN()}
         </>
       )
     } else if (homeBTNSwitcher==="adminLogin"){
       return(
         <>
           {backMenuBTN()}
+          <SignInForm setMenuDisp={setHomeSwitcher} />
         </>
       )
     }
@@ -56,7 +62,6 @@ export default function Home(){
         <UserSignupModal 
           modalController={signUpModalCont}
           setModalController={setSignUpMod}
-          setErrorMsg={setErrorMsg}
           />
       </div>
       <main className={styles.main}>
