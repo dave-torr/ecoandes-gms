@@ -10,7 +10,7 @@
 }
 
 .homeCarousel{
-  width: 50%;
+  width: 46%;
 }
 .carouIMG{
   padding: 6px;
@@ -32,7 +32,7 @@
   width: 150px;
 }
 .landingText{
-  width: 45%;
+  width: 46%;
   padding: 12px;
   display: flex;
   flex-direction: column;
@@ -43,6 +43,32 @@
   text-align: justify;
   font-size: 1.2em;
 }
+
+.landingCTAs{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.cta1{
+  border-radius: 5px;
+  background-color: goldenrod;
+  color: white;
+  padding: 6px 9px;
+  text-transform: capitalize;
+  width: 190px;
+  text-align: center;
+}
+.cta2{
+  border-radius: 5px;
+  background-color: orangered;
+  color: white;
+  padding: 6px 9px;
+  text-transform: capitalize;
+  width: 190px;
+  text-align: center;
+}
+
 @media (max-width: 600px) {
   /* .landingSect1{
 

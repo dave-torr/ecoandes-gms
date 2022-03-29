@@ -13,6 +13,10 @@
             "/contact"
         ],
         "brandTagline": "Since 1991, creating lifetime experiences",
+        "ctas":{
+            "ctaOne": "View our sample tours",
+            "ctaTwo": "plan your next trip"
+        },
         "partnersTitle": "Our Partners",
         "companyDescription": "EcoAndes Travel is a Receptive Tourism family business founded in 1991, with over 30 years of experience in the planning and operation of cultural tours, ecotourism, and multi-adventure tours in South America.",
         "companyDescription2": "EcoAndes Travel is part of Latin Travel Collection, with our own offices of operations in Ecuador, Peru, Bolivia, Chile and soon in Colombia.",
@@ -62,6 +66,10 @@
             "/contact"
         ],
         "brandTagline": "Desde 1991 creando experiencias de por vida",
+        "ctas":{
+            "ctaOne": "viajes modelo",
+            "ctaTwo": "planifique su viaje!"
+        },
         "partnersTitle": "Nuestros Compañeros",
         "companyDescription": "EcoAndes Travel es una empresa familiar de Turismo Receptivo fundada en 1991 y con gran experiencia en la planificación y operación de tours culturales, ecoturismo, tours de aventura en América del Sur.",
         "companyDescription2": "EcoAndes Travel es parte del grupo Latin Travel Collection, que cuenta con oficinas propias de operación turística en Ecuador, Perú, Bolivia, Chile y próximamente en Colombia.",

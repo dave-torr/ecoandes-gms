@@ -42,15 +42,15 @@ export default function Home(){
   let desktoIMGArr=[
     {
       "src": SeaLionPic,
-      "alt": "Sea Lions in the Galapagos Islands | Ecuador"
+      "alt": "Galapagos Islands | Ecuador"
     },
     {
       "src": MachuPicc,
-      "alt": "Machu Picchu Inca City | Peru"
+      "alt": "Machu Picchu | Peru"
     },
     {
       "src": CotopaxiClimb,
-      "alt": "Climbing Cotopaxi Volcano | Ecuador"
+      "alt": "Cotopaxi | Ecuador"
     },
   ]
   const carouselDisp=()=>{
@@ -66,13 +66,16 @@ export default function Home(){
     return(<>
       <div className={styles.landingSect1}>
         <div className={styles.landingText}>
-          <h2>{langContent.brandTagline}</h2>
+          <h2 style={{textTransform: "capitalize"}}>{langContent.brandTagline}</h2>
           <div className={styles.homeLandingLogo}><Image src={EcoAndLogo} alt="EcoAndes Condor Logo" />
           </div>
           <p className={styles.introText}>{langContent.companyDescription}</p>
+        <div className={styles.landingCTAs}>
+          <div className={styles.cta2}> {langContent.ctas.ctaOne} </div>
+          <div className={styles.cta1}> {langContent.ctas.ctaTwo} </div>
+        </div>
         </div>
         {carouselDisp()}
-        
       </div>
     </>)
   }
