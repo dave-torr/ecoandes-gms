@@ -1,14 +1,50 @@
 
 .homeGenCont{
-  margin-top: 100px;
+  padding-top: 100px;
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  min-height: 111vh;
+  align-items: center;
+  background-color: whitesmoke;
+}
+
+.homeCarousel{
+  width: 50%;
+}
+.carouIMG{
+  padding: 6px;
+}
+.desktopIMGCaption{
+  font-weight: 500;
+  text-align: end;
+  padding: 6px 9px;
+}
+
+.landingSect1{
+  display: flex;
+  width: 1200px;
+  justify-content: space-around;
   align-items: center;
 }
 
+.homeLandingLogo{
+  width: 150px;
+}
+.landingText{
+  width: 45%;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-
+.introText{
+  text-align: justify;
+  font-size: 1.2em;
+}
 @media (max-width: 600px) {
+  /* .landingSect1{
 
+  } */
 }

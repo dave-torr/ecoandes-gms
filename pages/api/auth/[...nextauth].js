@@ -60,9 +60,9 @@ callbacks:{
     //     },
         
     async session({ session, token, user }){
-        console.log(session, "session @ session")
-        console.log(token, "token @ session")
-        console.log(user, "user @ session")
+        // console.log(session, "session @ session")
+        // console.log(token, "token @ session")
+        // console.log(user, "user @ session")
         return session
     },
 }

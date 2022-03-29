@@ -37,7 +37,6 @@ export function GeneralDataBar(props){
         }
     }
      
-    console.log(props.navBTNS)
 
     let eachMenuItem=props.navBTNS.map((elem,i)=><React.Fragment key={i}>
         <Link href={props.navLinks[i]}><div className={styles.menuItems}>{elem}</div></Link>
