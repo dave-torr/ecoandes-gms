@@ -5,7 +5,7 @@
   top: 0%;
   flex-direction: column;
   background-color: white;
-  box-shadow: 6px 6px 9px rgba(0, 0, 0, 0.34);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.22);
   z-index: 50;
 }
 .navTop{
@@ -26,17 +26,15 @@
     width: 33%;
     display: flex;
     align-items: center;
+    padding: 12px 6px;
 }
 
 .naviLogo{
-    height: 60px;
     width: 60px;
 }
 .naviLogo2{
-    height: 60px;
     width: 160px;
-    margin-left: 6px;
-    margin-top: 6px;
+
 }
 
 .langSwitcherCont{

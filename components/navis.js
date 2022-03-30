@@ -73,3 +73,9 @@ export function GeneralDataBar(props){
         </div>
     </>)
 }
+
+export function GeneralFooter(props){
+
+    
+     
+}

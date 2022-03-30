@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from "next/link"
+import Head from "next/head"
 
 import Carousel from 'react-material-ui-carousel'
 import { Paper } from '@mui/material';
@@ -28,6 +29,22 @@ import IkalaGPSLogo from "../public/assets/logos/partners/ikalaGPS.png"
 import YacumaLogo from "../public/assets/logos/partners/yacuma.png"
 import GpsElemsLogo from "../public/assets/logos/partners/gpsElements.png"
 import UniGPSLogo from "../public/assets/logos/partners/unigalapagos.png"
+
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+
+
+  // Mobile optimisation
+  // color pallete polish
+
+
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+
+
+
+
+
 
 export default function Home(){
   const [currentLang, setCurrentLang]=useState("engl")
@@ -77,7 +94,8 @@ export default function Home(){
     </>)
   }
 
-// Section 1
+// Section 1: Intro and Carousel 
+// POLISH CTAS!!!!
   const landingSec=()=>{
     return(<>
       <div className={styles.landingSect}>
@@ -97,6 +115,7 @@ export default function Home(){
   }
 
 // Section 2
+// Each Destination Landing!!!
   const eachDestinationCard=(imgData, destination)=>{
     return(<>
       <div className={styles.destinationCardCont}>
@@ -104,6 +123,7 @@ export default function Home(){
         <Image 
           src={imgData.src}
           alt={imgData.alt}
+          placeholder="blur"
         />
         <div className={styles.destTagLine}>{destination.tagLine}</div>
         <div className={styles.destinationCTA}>{langContent.destinationsSection.CTABtn}</div>
@@ -129,7 +149,7 @@ export default function Home(){
     )
   }
 
-// Section 3
+// Section 3 Partner Links
   let partnerArr =[
     {"src": YachtAnahiLogo, "alt": "Yacht Anahi Logo", "href": "https://www.yachtanahi.com/"},
     {"src": DjoserLogo, "alt": "Djoser Company Logo", "href": "https://www.djoser.nl/"},
@@ -153,12 +173,11 @@ export default function Home(){
       </React.Fragment>)}
     </>)
   }
-
   const additionalDataAndLinks=()=>{
     return(<>
       <div className={styles.compDescr2}>
         <h1>{langContent.homeCompSubTitle} </h1>
-        <p className={styles.introText}>{langContent.companyDescription2} </p>
+        <p>{langContent.companyDescription2} </p>
         <h2> {langContent.partnersTitle} </h2>
       </div>
       <div className={styles.partnerLinks}>
@@ -167,7 +186,22 @@ export default function Home(){
     </>)
   }
 
+  // SEO
+  const pageHead=()=>{
+    return(<>
+    <Head>
+      <title>EcoAndes Travel - Since 1991 Creating Lifetime Experiences</title>
+      <meta name="description" content="EcoAndes Travel - Advet\nture and Travel Tour Operator" />
+      <meta charset="utf-8"/>
+      <meta name="keywords" content="Galapagos, Travel Ecuador, Peru, Machu Picchu Tours"/>
+      <meta name="author" content="David Torres" />
+      <meta name="copyright" content="EcoAndes Travel 2022" />
+    </Head>
+    </>)
+  }
+
   return(<>
+    {pageHead()}
     <div className={styles.homeGenCont}> 
       <GeneralDataBar 
         currentLang={currentLang} 
