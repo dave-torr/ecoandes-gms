@@ -120,6 +120,7 @@
   align-items: center;
   transition: all ease-in 0.5s;
   padding: 9px;
+  cursor: pointer;
 }
 
 .partnerLinkcont:hover{

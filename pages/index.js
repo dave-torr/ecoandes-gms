@@ -192,7 +192,7 @@ export default function Home(){
     <Head>
       <title>EcoAndes Travel - Since 1991 Creating Lifetime Experiences</title>
       <meta name="description" content="EcoAndes Travel - Advet\nture and Travel Tour Operator" />
-      <meta charset="utf-8"/>
+      <meta charSet="utf-8"/>
       <meta name="keywords" content="Galapagos, Travel Ecuador, Peru, Machu Picchu Tours"/>
       <meta name="author" content="David Torres" />
       <meta name="copyright" content="EcoAndes Travel 2022" />
@@ -215,3 +215,4 @@ export default function Home(){
     </div>
   </>)
 }
+

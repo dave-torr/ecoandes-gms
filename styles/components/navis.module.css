@@ -80,6 +80,10 @@
     transition: all ease 1s;
 }
 
+.footercont{
+    
+}
+
 @media (max-width: 1200px) {
     .generalNavBar{
         width: 100%;

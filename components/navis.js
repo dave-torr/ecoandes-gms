@@ -76,6 +76,9 @@ export function GeneralDataBar(props){
 
 export function GeneralFooter(props){
 
-    
-     
+    return(<>
+        <footer className={styles.footercont}>
+
+        </footer>
+    </>) 
 }

@@ -1,0 +1,152 @@
+[
+    {
+        "tripName": "Highland Express",
+        "id": "highlandExpress",
+        "duration": 6,
+        "countryList": ["Ecuador"],
+        "dayByDay":[
+            {
+                "dayTitle": "Arrival in Quito",
+                "dayDescription": "At your arrival in Quito, our team will greet you and transfer you to your hotel of choice."
+            },
+            {
+                "dayTitle": "Quito",
+                "dayDescription": "Your adventures begin in Quito, where we will visit the old town with its beautiful narrow streets and the colonial churches of San Francisco, La Compañia, and many more interesting landmarks of the Colonial Center. This visit is followed by a shortstop at the top of El Panecillo hill from where we get a spectacular view of the city. In the afternoon, we visit the Equator monument, the Ethnographical Museum, and a representation of the colonial towns of the past.",
+                "dayInclusions": [
+                    "Hotel breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Quito - Cotopaxi - Chugchilan",
+                "dayDescription": "From Quito, we travel southwards along the Pan-American Highway to see the constant activity of the legendary Cotopaxi Volcano, one of the tallest in the world. If weather permits and the volcano activity is not so heavy, we will make a visit to the Limpiopungo Lagoon located at 3800 m, just on the base of the towering snowcapped mountain. We will head towards one of the best spots for photography where we might be able to get some truly amazing shots if the weather permits. Then we continue our drive along scenic highlands of the western Cordillera de Los Andes and towards the village of Sigchos. From Sigchos we continue driving for about 40 minutes to finally arrive at El Vaquero, a charming hostel located near Chugchilan town.",
+                "dayInclusions": [
+                    "Hotel breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Chugchilan - Quilotoa - Ambato - Baños",
+                "dayDescription": "This day we start early in the morning for a beautiful hiking tour (3 to 4 hours) which takes us to the rim of the Quilotoa Volcano where a beautiful lagoon is located inside the crater. During the hike, we will enjoy amazing views of the highlands of Ecuador. Afterwards we will drive to Zumbahua, one of the last unspoiled highland areas of Ecuador and which offers amazing views of the Paramo and a chance to enjoy the colorful Indigenous Market (which runs every Saturday). Later, and passing the village of Pujili (Indigenous market runs every Wednesday), we continue our drive to the city of Ambato and finally in the late afternoon we will arrive in Baños, a picturesque city located at the gateway to the jungle, where we will stay overnight.",
+                "dayInclusions": [
+                    "Hotel breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Baños - Riobamba - Quito",
+                "dayDescription": "After breakfast, we drive to the city of Riobamba, before continuing to San Juan and then to the upper highlands of Chimborazo, Ecuador’s highest volcano. Here it is possible to observe graceful vicuñas and, if weather permits, admire this impressive mountain. If we all feel in good shape, perhaps we can do a walk up to the Whymper mountain hut located at an altitude of 16,400 ft/5000 m. Drive back to Quito following the route Chimborazo - Ambato - Quito.",
+                "dayInclusions": [
+                    "Hotel breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Quito Out",
+                "dayDescription": "After breakfast, we will head out to the airport, bus station or to take part in your program extension to the amazing Galapagos, Peru, or Bolivia!",
+                "dayInclusions": [
+                    "Hotel breakfast"
+                ]
+            }
+        ],
+        "difficulty": "easy",
+        "prices": {
+            "3stars":[1104,883,751,673,625,597,552,537,509,497],
+            "3StarsSS":201,
+            "4stars":[1315,1077,955,870,823,796,747,735,708,702],
+            "4StarsSS":316,
+            "5stars":[1756,1524,1396,1324,1270,1248,1204,1188,1160,1149],
+            "5StarsSS":316,
+            "priceNotice": "hotel categories will depend on locally available properties. "
+        },
+        "included": [
+            "private transport",
+            "double room accommodation with private facilities",
+            "english/spanish speaking guide services",
+            "meals as indicated", 
+            "attraction entrace fees"
+        ],
+        "notIncluded": [
+            "personal expenses",
+            "international/regional flights",
+            "travel insurance",
+            "tips",
+            "beverages",
+            "extras"
+        ]
+    },
+    {
+        "tripName": "Amazon Jungle Express",
+        "id": "jungleExpress",
+        "duration": 6,
+        "tripsDescription": "Explore the capital city of Ecuador: Quito, the amazing Amazon Jungle, and enjoy some relaxing time in an amazing mountain spa on your way back in this short but awesome journey, ideal for short weeklong vacation breaks",
+        "countryList": ["Ecuador"],
+        "dayByDay":[
+            {
+                "dayTitle": "Arrival in Quito",
+                "dayDescription": "Arrive in the amazing city of Quito, where our guide will be waiting for you at the airport. Head to the hotel of your choice and enjoy a delicious dinner."
+            },
+            {
+                "dayTitle": "Quito City Tour",
+                "dayDescription": "After breakfast, our team will take you to explore the historical city of Quito, in this amazing full day city tour, which includes the old town, the “Middle of the World” and much more",
+                "dayInclusions": [
+                    "Hotel breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Head into the Amazon Jungle!",
+                "dayDescription": "In the morning our guide and transport will take us through the majestic Andes as we head overland to the Amazon basin, the most biodiverse place on the planet. The journey itself is magical and diverse, ending in the amazing Yacuma Jungle EcoLodge and Reserve, one of the most ecologically friendly places in Ecuador.",
+                "dayInclusions": [
+                    "hotel breakfast",
+                    "jungle activities",
+                    "dinner at Yacuma EcoLodge"
+                ]
+            },
+            {
+                "dayTitle": "Yacuma full day adventure",
+                "dayDescription": "Enjoy your day filled with amazing jungle activities as you explore the wonders of nature in Yacuma Jungle EcoLodge.",
+                "dayInclusions": [
+                    "breakfast, lunch and dinner",
+                    "jungle activities"
+                ]
+            },
+            {
+                "dayTitle": "Papallacta Mountain Spa",
+                "dayDescription": "As you head back into the Andes, stop by an incredible natural hot spring in Papallacta, famous for its natural beauty and the chance to enjoy a relaxing bath in the medicinal waters of the hot springs.",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "hot springs"
+                ]
+            },
+            {
+                "dayTitle": "Papallacta - Quito Out",
+                "dayDescription": "Head back to Quito after a relaxing night in Papallacta, in time to grab your flight back home or to take part in your program extension to the amazing Galapagos, Peru, or Bolivia!",
+                "dayInclusions": [
+                    "Hotel breakfast"
+                ]
+            }
+        ],
+        "difficulty": "easy - adventurous",
+        "prices": {
+            "3stars":[1127,923,807,741,697,675,631,625,597,587],
+            "3StarsSS":195,
+            "4stars":[1259,1055,950,874,829,807,763,752,730,719],
+            "4StarsSS":377,
+            "5stars":[1419,1215,1099,1033,989,967,923,918,889,879],
+            "5StarsSS":492,
+            "priceNotice": "hotel categories will depend on locally available properties."
+        },
+        "included": [
+            "private transport",
+            "double room accommodation with private facilities",
+            "english/spanish speaking guide services",
+            "meals as indicated", 
+            "attraction entrace fees",
+            "Jungle activites at Yacuma Jungle EcoLodge"
+        ],
+        "notIncluded": [
+            "personal expenses",
+            "international/regional flights",
+            "travel insurance",
+            "tips",
+            "beverages",
+            "extras"
+        ]
+    }
+]
