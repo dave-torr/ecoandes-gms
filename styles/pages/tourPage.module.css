@@ -1,3 +1,44 @@
-.eachTourLink{
-    
+.generalTourPage{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgb(226, 225, 225);
+    align-items: center;
+    padding: 33px 0;
+}
+
+.tourContainer{
+    width: 1080px;
+}
+
+.tourOverviewCont{
+    text-align: justify;
+    padding: 21px;
+    font-size: 1.2em;
+}
+
+.inclusionsExclusionsSec{
+    display: flex;
+    justify-content: space-around;
+}
+
+.incExcCont{
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.35);
+    width: 45%;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.incExcItems{
+    text-transform: capitalize;
+}
+
+@media (max-width: 1080px) {
+    .tourContainer{
+        width: 100%;
+    }
 }

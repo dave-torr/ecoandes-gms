@@ -18,15 +18,15 @@ a {
 
 h1{
   font-weight: 300;
-  margin: 21px 0;
+  margin: 12px 0;
 }
 h2{
-  margin: 15px 0;
+  margin: 9px 0;
   font-weight: 300;
 }
 
 h3{
-  margin: 15px 0;
+  margin: 9px 0;
   font-weight: 300;
 }
 
@@ -35,3 +35,26 @@ h4{
   font-weight: 300;
   text-transform: capitalize;
 }
+
+:root{
+/* Brand colors:  */
+
+/* brown condor: */
+--brown-main: #6f522b;
+
+/* pale gold */
+--pale-gold: #ffefc6;
+
+/* dull gold */
+--dull-gold: #ae9354;
+
+/* pale yellow */
+--pale-yellow: #ffdf89;
+
+/* dark Olive */
+--dark-olive: rgb(62,60,31);
+
+/* brick red */
+--brick-red: #943a14;
+}
+
