@@ -105,8 +105,8 @@ export default function Home(){
           </div>
           <p className={styles.introText}>{langContent.companyDescription}</p>
         <div className={styles.landingCTAs}>
-          <div className={styles.cta2}> {langContent.ctas.ctaOne} </div>
-          <div className={styles.cta1}> {langContent.ctas.ctaTwo} </div>
+          <div className={styles.cta2}> <Link href="/tours">{langContent.ctas.ctaOne}</Link> </div>
+           <a target='_blank' href="mailto:info@ecoandestravel.com"><div className={styles.cta1}>{langContent.ctas.ctaTwo}</div></a>
         </div>
         </div>
         {carouselDisp()}

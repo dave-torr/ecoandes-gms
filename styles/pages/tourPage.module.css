@@ -1,44 +1,67 @@
 .generalTourPage{
+
+}
+
+.tourCardContainer{
+    min-height: 40vh;
+    width: 100%;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 33px 42px;
+}
+
+.eachTourDetails{
     display: flex;
     flex-direction: column;
     width: 100%;
-    min-height: 100vh;
-    background-color: rgb(226, 225, 225);
-    align-items: center;
-    padding: 33px 0;
 }
 
-.tourContainer{
-    width: 1080px;
-}
-
-.tourOverviewCont{
-    text-align: justify;
-    padding: 21px;
-    font-size: 1.2em;
-}
-
-.inclusionsExclusionsSec{
-    display: flex;
-    justify-content: space-around;
-}
-
-.incExcCont{
-    background-color: white;
-    border-radius: 3px;
-    box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.35);
-    width: 45%;
-    padding: 0 15px;
+.aTourCard{
+    border: solid 1px black;
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.35);
+    width: 250px;
+    min-height: 280px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    cursor: pointer;
+    margin: 21px;
 }
 
-.incExcItems{
+.tourCardDestination{
+    font-family: var(--serif-Font);
+    margin: 0 12px;
+    font-weight: 300;
+}
+.eachTourDetails h3{
+    margin: unset;
+    font-size: 1.3em;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.tourtype{
+    font-family: var(--serif-Font);
+    margin: 0 12px;
+    margin-top: 6px;
+    text-align: end;
     text-transform: capitalize;
 }
 
-@media (max-width: 1080px) {
-    .tourContainer{
-        width: 100%;
-    }
+.durationPriceDisp{
+    font-size: 0.9em;
+    text-align: center;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-style: italic;
+    color: var(--brick-red);
+    background-color: var(--pale-gold);
+    width: 100%;
 }

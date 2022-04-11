@@ -5,7 +5,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-import styles from "../../styles/pages/tourPage.module.css"
+import styles from "../../styles/pages/aTour.module.css"
 
 function TourPage({ aTour }){
 
@@ -42,9 +42,21 @@ function TourPage({ aTour }){
         let theDays = tourDayByDay.map((elem,i)=> <React.Fragment key={i} >
             {accordionDisplayer(elem.dayTitle, elem.dayDescription, false, i+1)}
         </React.Fragment>)
-
         return(<>
             {accordionDisplayer("Day by Day", theDays, false)}
+        </>)
+    }
+
+    const tourIntroDetails=()=>{
+        let countryList = aTour.countryList.map((elem, i)=><React.Fragment key={i}>
+            { i >0 &&<> / </>} <i>{elem}</i>
+        </React.Fragment>)
+        return(<>
+            <div className={styles.tourCountryList}> <strong>Countries:</strong> {countryList}</div>
+            <div className={styles.tourTitleBar}>{aTour.tripName}</div>
+            <div className={styles.tourDetails}>
+                Tour Detail Grid
+            </div>
         </>)
     }
 
@@ -52,7 +64,7 @@ function TourPage({ aTour }){
         <div className={styles.generalTourPage}> 
             <div className={styles.tourContainer}>
             
-            {aTour.tripName}
+                {tourIntroDetails()}
                 {accordionDisplayer("Overview", tourOverview, true)}
                 {accordionDisplayer("Tour Inclusions / Exclusions", incExcCont, false)}
                 {dayByDaydisp(aTour.dayByDay)}
