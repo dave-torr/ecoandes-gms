@@ -17,7 +17,7 @@ export function GeneralDataBar(props){
 
     const contactNum1 = <><a target='_blank' href="tel:+593996406954"> <PhoneForwardedIcon/></a> </> 
     const contactNum2 = <>&nbsp;<a target='_blank' href="https://wa.me/593987298410"><WhatsAppIcon /></a></> 
-    const contactEmail = <><a target='_blank' href="mailto:info@ecoandestravel.com"><MailOutlineIcon /></a> </>
+    const contactEmail = <><a target='_blank' href="mailto:info@ecoandestravel.com"><MailOutlineIcon /></a></>
 
     const flagSwitcher =(langCont)=>{
         if (langCont==="engl"){

@@ -13,7 +13,7 @@ function TourPage({ aTour }){
 
     const accordionDisplayer=(accordTitle, accordContent, openContr, numerator)=>{
         return(<>
-        <Accordion defaultExpanded={openContr}>
+        <Accordion defaultExpanded={openContr} className={styles.accordionCont}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" > 
                 <h2>{numerator&&<>{numerator}.-</>}  {accordTitle} </h2></AccordionSummary>
             <AccordionDetails> 
@@ -34,9 +34,9 @@ function TourPage({ aTour }){
         </>)
     }
     const incExcCont= <div className={styles.inclusionsExclusionsSec}> 
-                        {incExcDisplayer(aTour.included, "Included in Tour")}
-                        {incExcDisplayer(aTour.notIncluded, "Not included in Tour")}
-                    </div>;
+        {incExcDisplayer(aTour.included, "Included in Tour")}
+        {incExcDisplayer(aTour.notIncluded, "Not included in Tour")}
+        </div>;
 
     const dayByDaydisp=(tourDayByDay)=>{
         let theDays = tourDayByDay.map((elem,i)=> <React.Fragment key={i} >
@@ -52,19 +52,20 @@ function TourPage({ aTour }){
             { i >0 &&<> / </>} <i>{elem}</i>
         </React.Fragment>)
         return(<>
-            <div className={styles.tourCountryList}> <strong>Countries:</strong> {countryList}</div>
-            <div className={styles.tourTitleBar}>{aTour.tripName}</div>
-            <div className={styles.tourDetails}>
-                Tour Detail Grid
+            <div className={styles.tourIntroCont}>
+                <div className={styles.tourCountryList}> <strong>Countries:</strong> {countryList}</div>
+                <div className={styles.tourTitleBar}>{aTour.tripName}</div>
+                <div className={styles.tourDetails}>
+                    Tour Detail Grid
+                </div>
             </div>
         </>)
     }
 
     return(<>
         <div className={styles.generalTourPage}> 
+            {tourIntroDetails()}
             <div className={styles.tourContainer}>
-            
-                {tourIntroDetails()}
                 {accordionDisplayer("Overview", tourOverview, true)}
                 {accordionDisplayer("Tour Inclusions / Exclusions", incExcCont, false)}
                 {dayByDaydisp(aTour.dayByDay)}

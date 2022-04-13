@@ -11,6 +11,9 @@
 .tourContainer{
     width: 1080px;
 }
+.tourIntroCont{
+    width: 1080px;
+}
 
 .tourCountryList{
     background-color: var(--pale-yellow);
@@ -39,6 +42,8 @@
     font-size: 1.2em;
 }
 
+
+
 .inclusionsExclusionsSec{
     display: flex;
     justify-content: space-around;
@@ -61,6 +66,10 @@
 
 @media (max-width: 1080px) {
     .tourContainer{
+        width: 100%;
+        padding: 9px 18px;
+    }
+    .tourIntroCont{
         width: 100%;
     }
 }
