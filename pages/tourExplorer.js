@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { useSession, signIn, signOut } from "next-auth/react"
 
 import ExploreIcon from '@mui/icons-material/Explore';
 import {ItineraryImagePicker, LogoSwitcher, HighlightAdder, TourDateAdder, DayByDayAdder} from "./../components/forms"
@@ -15,6 +16,8 @@ export default function TourExplorerPage(props){
     // Intersection observer WTF
 
 //////////////////////////////////////////////
+
+    const { data: session } = useSession()
 
     const [aTourCreator, setTourCreator]=useState({
         "ecoAndesLogo": true,
@@ -65,9 +68,12 @@ export default function TourExplorerPage(props){
     }
 
 
+    console.log(session)
 
     return(<>
         <div className={styles.generalPageCont}>
+
+
             {tourExplorerIntro()}
 
             <ItineraryImagePicker 
@@ -88,6 +94,7 @@ export default function TourExplorerPage(props){
                 aTour={aTourCreator} 
                 tourEditor={setTourCreator} 
             />
+
         </div>
         <br></br>
         <br></br>

@@ -2,7 +2,6 @@ import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { compare } from 'bcryptjs';
 import {connectToDatabase} from "./../../../middleware/dbMiddleware"
-import { MongoCursorInUseError } from 'mongodb';
 
 // https://dev.to/dawnind/authentication-with-credentials-using-next-auth-and-mongodb-part-1-m38
 
@@ -19,6 +18,7 @@ export default NextAuth({
             const user = await usersCollection.findOne({
                 email: credentials.email,
             });
+            // console.log(user, "user @ Authorizxe provider")
             if (!user) {
                 client.close();
                 throw new Error('No user found!');
@@ -32,38 +32,35 @@ export default NextAuth({
                 throw new Error('Could not log you in!');
             }
             client.close();
-            return {                    
-                    name: user.name,
-                    email: user.email,
-                    company: user.company,
-                    department: user.department,
-                    clientType: user.clientType,
-                    userType: user.userType
-                    }
+            return {...user}
             },
         }),
     ],
 
 callbacks:{
-    // async jwt({ token, user }){
-    //     if(user){
-    //         token.user = {
-    //                 ...user,
-    //                 company: user.company,
-    //                 department: user.department,
-    //                 clientType: user.clientType,
-    //                 userType: user.userType
-    //             } 
-    //         console.log(token, "@ Token")
-    //         return token;
-    //         }
-    //     },
-        
-    async session({ session, token, user }){
-        // console.log(session, "session @ session")
-        // console.log(token, "token @ session")
-        // console.log(user, "user @ session")
-        return session
+
+    async jwt({ token, user }) {
+        // Persist the OAuth access_token to the token right after signin
+        if (user) {
+        token.userType = user.userType
+        }
+        return token
     },
-}
+    async session({ session, token }) {
+
+        if( token ){
+            session.user = {
+                ...session.user,
+                "userType": token.userType
+            }
+            console.log(session, "Session @ token")
+            console.log(token, "token @ token")
+        return session  
+        }
+    }
+},
+
 })
+
+
+// new user call when user doesn't exist!!!

@@ -3,7 +3,7 @@
         "tripName": "Galapagos Cruise",
         "id": "galapagos-cruise",
         "duration": 6,
-        "imgArr": ["gpsCruise.jpg"],
+        "imgArr": ["galapagosSunset.jpg"],
         "tripDescription":"Discover the north-central highlands of Ecuador, in this short but fun trip though some of the best sights and attractions close to Quito and it's surroundings",
         "countryList": ["Ecuador", "Galapagos"],
         "dayByDay":[
@@ -78,7 +78,7 @@
         "tripName": "Highland Express",
         "id": "highlandExpress",
         "duration": 6,
-        "imgArr": ["chimborazo.jpg"],
+        "imgArr": ["ruminahuiMountain.jpg"],
         "tripDescription":"Discover the north-central highlands of Ecuador, in this short but fun trip though some of the best sights and attractions close to Quito and it's surroundings",
         "countryList": ["Ecuador", "Peru"],
         "dayByDay":[
@@ -150,10 +150,10 @@
     },
     {
         "tripName": "Highland Express Bo+Pe",
-        "id": "highlandExpress",
+        "id": "highlandExpressBoPe",
         "duration": 6,
-        "imgArr": ["tiwanakuGate.jpg"],
-        "tripDescription":"Discover the north-central highlands of Ecuador, in this short but fun trip though some of the best sights and attractions close to Quito and it's surroundings",
+        "imgArr": ["hikingsouthAmerica.jpg"],
+        "tripDescription":"Discover the north-central highlands of La Paz, in this short but fun trip though some of the best sights and attractions close to Titicaka and it's surroundings",
         "countryList": ["Bolivia", "Peru"],
         "dayByDay":[
             {

@@ -42,7 +42,14 @@
     font-size: 1.2em;
 }
 
-
+.tourIMGCarousel{
+    width: 80%;
+    height: 60%;
+    padding: 9px 15px;
+    background-color: white;
+    margin-bottom: 2%;
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.338);
+}
 
 .inclusionsExclusionsSec{
     display: flex;

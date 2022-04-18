@@ -1,15 +1,20 @@
 import React from "react"
+import Image from "next/image"
+
 import TourData from "../../data/ecuItinEng"
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Carousel from 'react-material-ui-carousel'
+import { Paper } from '@mui/material';
+
+
 
 import styles from "../../styles/pages/aTour.module.css"
 
-function TourPage({ aTour }){
 
-    console.log(aTour)
+function TourPage({ aTour }){
 
     const accordionDisplayer=(accordTitle, accordContent, openContr, numerator)=>{
         return(<>
@@ -47,6 +52,33 @@ function TourPage({ aTour }){
         </>)
     }
 
+    function Imagedisp(props){
+        console.log(props.imgData)
+        return(<>
+        <Paper className={styles.carouIMG}><div className={styles.homeSliderIMG}>
+            <Image
+                src={`/assets/images/tourCovers/${props.imgData}`}
+                alt={aTour.tripName}      
+                width={2000}
+                height={1500}
+            />
+        </div>
+        <div className={styles.desktopIMGCaption}>{props.imgData.alt}</div>
+        </Paper>
+        </>)
+    }
+
+    const carouselDisp=(theIMGArr)=>{
+        return(<>
+        <div className={styles.tourIMGCarousel}>
+            <Carousel>
+                {theIMGArr.map((elem, i)=>
+                <Imagedisp key={i} imgData={elem} /> )}
+            </Carousel>
+        </div>
+        </>)
+    }
+
     const tourIntroDetails=()=>{
         let countryList = aTour.countryList.map((elem, i)=><React.Fragment key={i}>
             { i >0 &&<> / </>} <i>{elem}</i>
@@ -63,7 +95,8 @@ function TourPage({ aTour }){
     }
 
     return(<>
-        <div className={styles.generalTourPage}> 
+        <div className={styles.generalTourPage}>
+            {carouselDisp(aTour.imgArr)} 
             {tourIntroDetails()}
             <div className={styles.tourContainer}>
                 {accordionDisplayer("Overview", tourOverview, true)}

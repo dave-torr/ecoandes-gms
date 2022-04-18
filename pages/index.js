@@ -41,11 +41,6 @@ import UniGPSLogo from "../public/assets/logos/partners/unigalapagos.png"
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
 
-
-
-
-
-
 export default function Home(){
   const [currentLang, setCurrentLang]=useState("engl")
   const [langContent, setLangCont]=useState(LanguageData.englCont)
@@ -85,10 +80,10 @@ export default function Home(){
       "alt": "Cotopaxi | Ecuador"
     },
   ]
-  const carouselDisp=()=>{
+  const carouselDisp=(theIMGArr)=>{
     return(<>
       <Carousel className={styles.homeCarousel}>
-        {desktoIMGArr.map((elem, i)=>
+        {theIMGArr.map((elem, i)=>
         <Imagedisp key={i} imgData={elem} /> )}
       </Carousel>
     </>)
@@ -109,7 +104,7 @@ export default function Home(){
            <a target='_blank' href="mailto:info@ecoandestravel.com"><div className={styles.cta1}>{langContent.ctas.ctaTwo}</div></a>
         </div>
         </div>
-        {carouselDisp()}
+        {carouselDisp(desktoIMGArr)}
       </div>
     </>)
   }

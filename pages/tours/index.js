@@ -65,7 +65,7 @@ export default function TourPage(props){
 
                             <div className={styles.tourImg}>
                                 <Image 
-                                    src={`/assets/images/ecoAndesSite/${elem.imgArr[0]}`}
+                                    src={`/assets/images/tourCovers/${elem.imgArr[0]}`}
                                     width={250}
                                     height={180}
                                     alt="IMG"
