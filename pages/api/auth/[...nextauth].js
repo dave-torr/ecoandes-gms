@@ -7,9 +7,11 @@ import {connectToDatabase} from "./../../../middleware/dbMiddleware"
 
 export default NextAuth({
     session:{
+        // defines sesh to be stored as JWT.
         strategy: "jwt"
     },
     providers: [
+        // self hosted auth, with mongodb lookup & hashing/unhashing of passwords.
         CredentialsProvider({
         async authorize(credentials) {
 
@@ -37,30 +39,29 @@ export default NextAuth({
         }),
     ],
 
-callbacks:{
+//////////////////////////
+//////////////////////////
+// passing on user object to session:
+//////////////////////////
 
-    async jwt({ token, user }) {
-        // Persist the OAuth access_token to the token right after signin
-        if (user) {
-        token.userType = user.userType
-        }
-        return token
-    },
-    async session({ session, token }) {
-
-        if( token ){
-            session.user = {
-                ...session.user,
-                "userType": token.userType
+    callbacks:{
+        async jwt({ token, user }) {
+            if (user) {
+            token.userType = user.userType
             }
-            console.log(session, "Session @ token")
-            console.log(token, "token @ token")
-        return session  
+            return token
+        },
+        async session({ session, token }) {
+            // if other elems of user Data are needed on front end add them here
+            if( token ){
+                session.user = {
+                    ...session.user,
+                    "userType": token.userType
+                }
+            return session  
+            }
         }
-    }
-},
-
+    },
+////////////////////////////////
+////////////////////////////////
 })
-
-
-// new user call when user doesn't exist!!!

@@ -24,6 +24,7 @@
   text-align: center;
   background-color: whitesmoke;
   transition: all ease-in 0.3s;
+  margin-top: 21px;
 }
 
 .gmsOptBTN:hover{

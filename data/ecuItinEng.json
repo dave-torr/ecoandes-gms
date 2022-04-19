@@ -226,7 +226,7 @@
         "tripName": "Highland Express EC",
         "id": "highlandExpress",
         "duration": 6,
-        "imgArr": ["chimborazo.jpg"],
+        "imgArr": ["chimborazoVicunas.jpg"],
         "tripDescription":"Discover the north-central highlands of Ecuador, in this short but fun trip though some of the best sights and attractions close to Quito and it's surroundings",
         "countryList": ["Ecuador", "Peru"],
         "dayByDay":[
@@ -300,7 +300,7 @@
         "tripName": "Amazon Jungle Express",
         "id": "jungleExpress",
         "duration": 6,
-        "imgArr": ["gironEC.jpg"],
+        "imgArr": ["galapagosCruising.jpg"],
         "tripDescription": "Explore the capital city of Ecuador: Quito, the amazing Amazon Jungle, and enjoy some relaxing time in an amazing mountain spa on your way back in this short but awesome journey, ideal for short weeklong vacation breaks",
         "countryList": ["Ecuador"],
         "dayByDay":[
@@ -379,7 +379,7 @@
         "tripName": "Amazon Jungle Express 2",
         "id": "jungleExpress",
         "duration": 6,
-        "imgArr": ["gironEC.jpg"],
+        "imgArr": ["galapagosExploration.jpg"],
         "tripDescription": "Explore the capital city of Ecuador: Quito, the amazing Amazon Jungle, and enjoy some relaxing time in an amazing mountain spa on your way back in this short but awesome journey, ideal for short weeklong vacation breaks",
         "countryList": ["Ecuador"],
         "dayByDay":[

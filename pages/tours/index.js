@@ -6,9 +6,35 @@ import TourData from "../../data/ecuItinEng"
 import styles from "./../../styles/pages/tourPage.module.css"
 
 
+///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+
+//  TOUR DISPLAYER IN ECOANDES TRAVEL TRIPS LANDING.
+
+///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+// VER. 1: 
+// FILTERS AND ORDERS HARD CODED ITINERARIES AVIL @ "./DATA"
+// COUNTRY BANNERS WITH A TOP PICK AND VIEW MORE OPTION.
+
+// VER 2: 
+// 
+
+// DYNAMICALLY CHANGING TOURS BY: 
+//  // MOST LIKED
+//  // BEST SELLERS
+//  // COUNTRY HIGHLIGHTS
+
+
+
+/////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
+//  FFM => general To Do's
 // Creating a wishlist:
 //  // Click on item heart => access local storage, create wishlistArray, add item's nameAnd[index] 
 // // additional items, pushed into a new arr, replaced in local storage
+/////////////////////////////////////////////////////////////////
 
 
 // FILTERS:
@@ -16,6 +42,10 @@ import styles from "./../../styles/pages/tourPage.module.css"
 //  // Tour Type
 //  // Category
 
+// AARRANGE BY
+//  // price
+//  // departure date?
+//  // number of days
 
 
 let tourTypes = ["active", "family", "cruise", "expedition", "private", "voyage"]
