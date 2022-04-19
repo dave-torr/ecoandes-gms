@@ -196,7 +196,7 @@
                 ]
             }
         ],
-        "tourType": "Cultural",
+        "tourType": "cultural",
         "prices": {
             "3stars":[1104,883,751,673,625,597,552,537,509,497],
             "3StarsSS":201,
@@ -348,7 +348,7 @@
                 ]
             }
         ],
-        "tourType": "Active",
+        "tourType": "active",
         "prices": {
             "3stars":[1127,923,807,741,697,675,631,625,597,587],
             "3StarsSS":195,

@@ -7,10 +7,11 @@ export function generalTourDisplayer(props){
     useEffect(()=>{
         console.log("cucu mofo")
     },[])
-    
+
     console.log(TourData, " Tour data @ tourdispComponent")
 
     return(<>
-
+        CUCU 
+        -bring in tourCardComp
     </>)
 }
