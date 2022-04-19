@@ -53,7 +53,7 @@ function TourPage({ aTour }){
     }
 
     function Imagedisp(props){
-        console.log(props.imgData)
+        // console.log(props.imgData)
         return(<>
         <Paper className={styles.carouIMG}><div className={styles.homeSliderIMG}>
             <Image

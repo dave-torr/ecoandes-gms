@@ -131,20 +131,32 @@ console.log(destFilter)
         let eachDestinationOpt = ecoAndesDestinations.map((elem, i)=><React.Fragment key={i}><option value={elem}>{elem}</option></React.Fragment>)
         let eachTourType = tourTypes.map((elem, i)=><React.Fragment key={i +1}><option value={elem}>{elem}</option></React.Fragment>)
         return(<>
-            <div className={styles.userIUFilterCont}>
-                <div className={styles.userUISec}>
-                    <label htmlFor="destinationPickerUI">Filter By:</label>
-                    <select name="destinationPickerUI" className={styles.aPickerUI} onChange={(e)=>{setDestFilter(e.target.value)}}>
-                        <option value={0} key={0}>Destination</option>
-                        {eachDestinationOpt}
-                    </select>
-                </div>
-                <div className={styles.userUISec}>
-                    <label htmlFor="tourTypenPickerUI">Order By:</label>
-                    <select name="tourTypenPickerUI" className={styles.aPickerUI} onChange={(e)=>setTourTypeFilter(e.target.value)}>
-                        <option value={0} key={0}>Tour Type</option>
-                        {eachTourType}
-                    </select>
+            <div className={styles.UIBTNCont}> 
+                <div className={styles.userIUFilterCont}>
+                    <div className={styles.userUISec}>
+                        <label htmlFor="destinationPickerUI">Filter By:</label>
+                        <select name="destinationPickerUI" className={styles.aPickerUI} 
+                            onChange={(e)=>{
+                                if(e.target.value==='0'){
+                                    setDestFilter(false)
+                                } else {setDestFilter(e.target.value)}
+                            }}>
+                            <option value={0} key={0}>Destination</option>
+                            {eachDestinationOpt}
+                        </select>
+                    </div>
+                    <div className={styles.userUISec}>
+                        <label htmlFor="tourTypenPickerUI">Order By:</label>
+                        <select name="tourTypenPickerUI" className={styles.aPickerUI} 
+                            onChange={(e)=>{
+                                if(e.target.value==='0'){
+                                    setTourTypeFilter(false)
+                                } else {setTourTypeFilter(e.target.value)}
+                            }}>
+                            <option value={0} key={0}>Tour Type</option>
+                            {eachTourType}
+                        </select>
+                    </div>
                 </div>
             </div>
         </>)
