@@ -5,7 +5,8 @@ import Image from "next/image"
 import TourData from "../../data/ecuItinEng"
 import styles from "./../../styles/pages/tours.module.css"
 
-
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 ///////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////
@@ -76,18 +77,8 @@ export default function TourPage(){
         if(destFilter){
             let destFiltArr= filteredTourArr.filter((elem) =>  elem.countryList.includes(destFilter)===true  )
             setFilteredTourArr(destFiltArr)
-        } else {setFilteredTourArr(TourData)}
-        
-        // console.log(elem.countryList.includes(destFilter), "elem")
-
-        console.log(destFiltArr)
-
+        } else {setFilteredTourArr(TourData)}        
     },[destFilter])
-
-console.log(destFilter, "destfilter", tourTypeFilter, "typeFilter")
-
-
-
 
 
 
@@ -122,7 +113,7 @@ console.log(destFilter, "destfilter", tourTypeFilter, "typeFilter")
                         />
                     </div>
                     <div className={styles.durationPriceDisp}>
-                        {TourData.duration} Day Itinerary <br/>
+                        {tourData.duration} Day Itinerary <br/>
                         from usd $ 699 .- per person
                     </div>
                 </div>
@@ -178,10 +169,68 @@ console.log(destFilter, "destfilter", tourTypeFilter, "typeFilter")
             </div>
         </>)
     }
+    const [sortContr, setSortContr]=useState(false)
+    const [sortOrder, setSortOrder]=useState("descending")
+    const sortingFunct=()=>{
+        return(<>
+        <div className={styles.sortingUICont}>
+            <div style={{display: "flex", alignItems:"center"}}>
+                <div className={styles.userSortUISec}>
+                    Sort By: 
+                </div>
+                <select className={styles.sortPicker} onChange={(e)=>{
+                    e.target.value==="0"? setSortContr(false) : setSortContr(e.target.value)
+                }}>
+                    <option value={0} >default</option>
+                    <option value="duration">duration</option>
+                </select>
+            </div>
+            {sortContr&&<>
+            {sortOrder==="descending"?
+                <><div className={styles.orderArrCont}>
+                    <div className={styles.checkedArr}>
+                        <ArrowUpwardIcon/> &nbsp; Descending Order
+                    </div>
+                    <div className={styles.unCheckedArr} onClick={()=>{
+                        sortOrder==="descending"? setSortOrder("ascending"): setSortOrder("descending")
+                    }}>
+                        <ArrowDownwardIcon/> &nbsp; Ascending Order
+                    </div>
+                </div> </>
+            :
+                <><div className={styles.orderArrCont}>
+                    <div className={styles.unCheckedArr} onClick={()=>{
+                        sortOrder==="descending"? setSortOrder("ascending"): setSortOrder("descending")
+                    }}>
+                        <ArrowUpwardIcon/> &nbsp; Descending Order
+                    </div>
+                    <div className={styles.checkedArr}>
+                        <ArrowDownwardIcon/> &nbsp; Ascending Order
+                    </div>
+                </div> </>}
+            </>}
+            
+        </div>
+        </>)
+    }
+    useEffect(()=>{
+        sortOrder==="descending"? 
+        setFilteredTourArr([...filteredTourArr].sort((a,b)=> a.duration - b.duration)) 
+        :
+        setFilteredTourArr([...filteredTourArr].sort(((a,b)=> b.duration - a.duration)))
+    },[sortContr])
+    useEffect(()=>{
+        sortOrder==="descending"? 
+        setFilteredTourArr([...filteredTourArr].sort((a,b)=> a.duration - b.duration)) 
+        :
+        setFilteredTourArr([...filteredTourArr].sort(((a,b)=> b.duration - a.duration)))
+    },[sortOrder])
+
 
     return(<>
-        <div className={styles.generalTourPage}> 
+        <div className={styles.generalTourPage}>  
             {filtersUI()}
+            {sortingFunct()}
             {tourdisplayer()}
 
             {/* Page Footer */}

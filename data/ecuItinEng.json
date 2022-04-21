@@ -2,7 +2,7 @@
     {
         "tripName": "Galapagos Cruise",
         "id": "galapagos-cruise",
-        "duration": 6,
+        "duration": 8,
         "imgArr": ["galapagosSunset.jpg"],
         "tripDescription":"Discover the north-central highlands of Ecuador, in this short but fun trip though some of the best sights and attractions close to Quito and it's surroundings",
         "countryList": ["ecuador", "galapagos"],
@@ -77,7 +77,7 @@
     {
         "tripName": "Highland Express",
         "id": "highlandExpress",
-        "duration": 6,
+        "duration": 12,
         "imgArr": ["ruminahuiMountain.jpg"],
         "tripDescription":"Discover the north-central highlands of Ecuador, in this short but fun trip though some of the best sights and attractions close to Quito and it's surroundings",
         "countryList": ["ecuador", "peru"],
@@ -151,7 +151,7 @@
     {
         "tripName": "Highland Express Bo+Pe",
         "id": "highlandExpressBoPe",
-        "duration": 6,
+        "duration": 9,
         "imgArr": ["hikingsouthAmerica.jpg"],
         "tripDescription":"Discover the north-central highlands of La Paz, in this short but fun trip though some of the best sights and attractions close to Titicaka and it's surroundings",
         "countryList": ["bolivia", "peru"],
@@ -428,6 +428,85 @@
             }
         ],
         "tourType": "expedition",
+        "prices": {
+            "3stars":[1127,923,807,741,697,675,631,625,597,587],
+            "3StarsSS":195,
+            "4stars":[1259,1055,950,874,829,807,763,752,730,719],
+            "4StarsSS":377,
+            "5stars":[1419,1215,1099,1033,989,967,923,918,889,879],
+            "5StarsSS":492,
+            "priceNotice": "hotel categories will depend on locally available properties."
+        },
+        "included": [
+            "private transport",
+            "double room accommodation with private facilities",
+            "english/spanish speaking guide services",
+            "meals as indicated", 
+            "attraction entrace fees",
+            "Jungle activites at Yacuma Jungle EcoLodge"
+        ],
+        "notIncluded": [
+            "personal expenses",
+            "international/regional flights",
+            "travel insurance",
+            "tips",
+            "beverages",
+            "extras"
+        ]
+    },
+    {
+        "tripName": "Amazon Jungle Express 3",
+        "id": "jungleExpress",
+        "duration": 6,
+        "imgArr": ["galapagosExploration.jpg"],
+        "tripDescription": "Explore the capital city of Ecuador: Quito, the amazing Amazon Jungle, and enjoy some relaxing time in an amazing mountain spa on your way back in this short but awesome journey, ideal for short weeklong vacation breaks",
+        "countryList": ["bolivia"],
+        "dayByDay":[
+            {
+                "dayTitle": "Arrival in Quito",
+                "dayDescription": "Arrive in the amazing city of Quito, where our guide will be waiting for you at the airport. Head to the hotel of your choice and enjoy a delicious dinner."
+            },
+            {
+                "dayTitle": "Quito City Tour",
+                "dayDescription": "After breakfast, our team will take you to explore the historical city of Quito, in this amazing full day city tour, which includes the old town, the “Middle of the World” and much more",
+                "dayInclusions": [
+                    "Hotel breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Head into the Amazon Jungle!",
+                "dayDescription": "In the morning our guide and transport will take us through the majestic Andes as we head overland to the Amazon basin, the most biodiverse place on the planet. The journey itself is magical and diverse, ending in the amazing Yacuma Jungle EcoLodge and Reserve, one of the most ecologically friendly places in Ecuador.",
+                "dayInclusions": [
+                    "hotel breakfast",
+                    "jungle activities",
+                    "dinner at Yacuma EcoLodge"
+                ]
+            },
+            {
+                "dayTitle": "Yacuma full day adventure",
+                "dayDescription": "Enjoy your day filled with amazing jungle activities as you explore the wonders of nature in Yacuma Jungle EcoLodge.",
+                "dayInclusions": [
+                    "breakfast, lunch and dinner",
+                    "jungle activities"
+                ]
+            },
+            {
+                "dayTitle": "Papallacta Mountain Spa",
+                "dayDescription": "As you head back into the Andes, stop by an incredible natural hot spring in Papallacta, famous for its natural beauty and the chance to enjoy a relaxing bath in the medicinal waters of the hot springs.",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "hot springs"
+                ]
+            },
+            {
+                "dayTitle": "Papallacta - Quito Out",
+                "dayDescription": "Head back to Quito after a relaxing night in Papallacta, in time to grab your flight back home or to take part in your program extension to the amazing Galapagos, Peru, or Bolivia!",
+                "dayInclusions": [
+                    "Hotel breakfast"
+                ]
+            }
+        ],
+        "tourType": "family",
         "prices": {
             "3stars":[1127,923,807,741,697,675,631,625,597,587],
             "3StarsSS":195,

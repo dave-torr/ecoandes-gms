@@ -8,6 +8,7 @@
     position: absolute;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .UIBTNCont{
@@ -64,6 +65,61 @@
     border-radius: 5px;
 }
 
+.sortingUICont{
+    width: 1080px;
+    border-bottom: solid 1px black;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+
+.sortingUICont select{
+    border-radius: 5px;
+    margin: 9px;
+    padding: 5px 11px;
+    width: 170px;
+    background-color: transparent;
+    text-align: center;
+    text-transform: capitalize;
+    font-size: 1.1em;
+}
+
+.userSortUISec{
+    align-items: center;
+    display: flex;
+    font-weight: 600;
+}
+
+.orderArrCont{
+    display: flex;
+}
+
+.checkedArr{
+    cursor: default;
+    display: flex;
+    align-items: center;
+    margin: 12px 12px;
+    padding: 6px 12px;
+    border: solid 2px black;
+    border-radius: 8px;
+}
+.unCheckedArr{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin: 12px 12px;
+    padding: 6px 12px;
+    border: solid 2px transparent;
+    border-radius: 8px;
+    transition: all ease 0.5s;
+}
+
+.unCheckedArr:hover{
+    border: solid 2px var(--brick-red);
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.392);
+}
+
 .tourCardContainer{
     min-height: 40vh;
     width: 100%;
@@ -71,7 +127,7 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    padding: 33px 42px;
+    padding: 15px 42px;
 }
 
 .eachTourDetails{
@@ -82,8 +138,7 @@
 
 .aTourCard{
     border: solid 1px black;
-    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.35);
-    width: 250px;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.35);
     min-height: 280px;
     display: flex;
     flex-direction: column;
@@ -92,6 +147,11 @@
     background-color: white;
     cursor: pointer;
     margin: 21px;
+    transition: all ease-in 0.5s;
+}
+
+.aTourCard:hover{
+    box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.35);
 }
 
 .tourCardDestination{
@@ -136,6 +196,11 @@
         width: 100%;
     }
 
+    .sortingUICont{
+        width: 90%;
+        min-height: 55px;
+        border-bottom: solid 1px black;
+    }
 
 }
 @media (max-width: 668px) {
