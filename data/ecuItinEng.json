@@ -5,7 +5,7 @@
         "duration": 6,
         "imgArr": ["galapagosSunset.jpg"],
         "tripDescription":"Discover the north-central highlands of Ecuador, in this short but fun trip though some of the best sights and attractions close to Quito and it's surroundings",
-        "countryList": ["Ecuador", "Galapagos"],
+        "countryList": ["ecuador", "galapagos"],
         "dayByDay":[
             {
                 "dayTitle": "Arrival in Quito",
@@ -80,7 +80,7 @@
         "duration": 6,
         "imgArr": ["ruminahuiMountain.jpg"],
         "tripDescription":"Discover the north-central highlands of Ecuador, in this short but fun trip though some of the best sights and attractions close to Quito and it's surroundings",
-        "countryList": ["Ecuador", "Peru"],
+        "countryList": ["ecuador", "peru"],
         "dayByDay":[
             {
                 "dayTitle": "Arrival in Quito",
@@ -154,7 +154,7 @@
         "duration": 6,
         "imgArr": ["hikingsouthAmerica.jpg"],
         "tripDescription":"Discover the north-central highlands of La Paz, in this short but fun trip though some of the best sights and attractions close to Titicaka and it's surroundings",
-        "countryList": ["Bolivia", "Peru"],
+        "countryList": ["bolivia", "peru"],
         "dayByDay":[
             {
                 "dayTitle": "Arrival in Quito",
@@ -196,7 +196,7 @@
                 ]
             }
         ],
-        "tourType": "cultural",
+        "tourType": "active",
         "prices": {
             "3stars":[1104,883,751,673,625,597,552,537,509,497],
             "3StarsSS":201,
@@ -228,7 +228,7 @@
         "duration": 6,
         "imgArr": ["chimborazoVicunas.jpg"],
         "tripDescription":"Discover the north-central highlands of Ecuador, in this short but fun trip though some of the best sights and attractions close to Quito and it's surroundings",
-        "countryList": ["Ecuador", "Peru"],
+        "countryList": ["ecuador", "peru"],
         "dayByDay":[
             {
                 "dayTitle": "Arrival in Quito",
@@ -302,7 +302,7 @@
         "duration": 6,
         "imgArr": ["galapagosCruising.jpg"],
         "tripDescription": "Explore the capital city of Ecuador: Quito, the amazing Amazon Jungle, and enjoy some relaxing time in an amazing mountain spa on your way back in this short but awesome journey, ideal for short weeklong vacation breaks",
-        "countryList": ["Ecuador"],
+        "countryList": ["ecuador"],
         "dayByDay":[
             {
                 "dayTitle": "Arrival in Quito",
@@ -381,7 +381,7 @@
         "duration": 6,
         "imgArr": ["galapagosExploration.jpg"],
         "tripDescription": "Explore the capital city of Ecuador: Quito, the amazing Amazon Jungle, and enjoy some relaxing time in an amazing mountain spa on your way back in this short but awesome journey, ideal for short weeklong vacation breaks",
-        "countryList": ["Ecuador"],
+        "countryList": ["ecuador"],
         "dayByDay":[
             {
                 "dayTitle": "Arrival in Quito",

@@ -56,24 +56,41 @@ export default function TourPage(){
 
     const [destFilter, setDestFilter]= useState(0)
     const [tourTypeFilter, setTourTypeFilter]= useState(0)
-    const [filteredTourArr, setFilteredTourAtt]= useState(TourData)
+    const [filteredTourArr, setFilteredTourArr]= useState(TourData)
 
     useEffect(()=>{
-        // console.log(tourArr, "tourArr @ tour/index")
+
         if(TourData){
-            setFilteredTourAtt(TourData)
+            setFilteredTourArr(TourData)
             if(tourTypeFilter){
                 let workerTourArr = TourData.filter(elem => elem.tourType===tourTypeFilter)
-                setFilteredTourAtt(workerTourArr)
+                setFilteredTourArr(workerTourArr)
             } else if (!tourTypeFilter){
-                setFilteredTourAtt(TourData)
+                setFilteredTourArr(TourData)
             }
         }
+
     },[tourTypeFilter])
 
+    useEffect(()=>{
+        if(destFilter){
+            let destFiltArr= filteredTourArr.filter((elem) =>  elem.countryList.includes(destFilter)===true  )
+            setFilteredTourArr(destFiltArr)
+        } else {setFilteredTourArr(TourData)}
+        
+        // console.log(elem.countryList.includes(destFilter), "elem")
 
-console.log(tourTypeFilter)
-console.log(destFilter)
+        console.log(destFiltArr)
+
+    },[destFilter])
+
+console.log(destFilter, "destfilter", tourTypeFilter, "typeFilter")
+
+
+
+
+
+
 
 // FLAGGED FOR EXPORT
     const aMapFunction=(theArray)=>{
@@ -134,26 +151,26 @@ console.log(destFilter)
             <div className={styles.UIBTNCont}> 
                 <div className={styles.userIUFilterCont}>
                     <div className={styles.userUISec}>
-                        <label htmlFor="destinationPickerUI">Filter By:</label>
+                        <label htmlFor="destinationPickerUI">Destination:</label>
                         <select name="destinationPickerUI" className={styles.aPickerUI} 
                             onChange={(e)=>{
                                 if(e.target.value==='0'){
                                     setDestFilter(false)
                                 } else {setDestFilter(e.target.value)}
                             }}>
-                            <option value={0} key={0}>Destination</option>
+                            <option value={0} key={0}>All destinations</option>
                             {eachDestinationOpt}
                         </select>
                     </div>
                     <div className={styles.userUISec}>
-                        <label htmlFor="tourTypenPickerUI">Order By:</label>
+                        <label htmlFor="tourTypenPickerUI">Tour type:</label>
                         <select name="tourTypenPickerUI" className={styles.aPickerUI} 
                             onChange={(e)=>{
                                 if(e.target.value==='0'){
                                     setTourTypeFilter(false)
                                 } else {setTourTypeFilter(e.target.value)}
                             }}>
-                            <option value={0} key={0}>Tour Type</option>
+                            <option value={0} key={0}>All Types</option>
                             {eachTourType}
                         </select>
                     </div>
