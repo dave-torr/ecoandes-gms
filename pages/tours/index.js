@@ -2,11 +2,12 @@ import React, {useEffect, useState} from "react"
 import Link from 'next/link'
 import Image from "next/image"
 
-import TourData from "../../data/ecuItinEng"
+import TourData from "../../data/itineraries"
 import styles from "./../../styles/pages/tours.module.css"
 
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import { MultiSelect, Select } from '@mantine/core';
 ///////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////
@@ -49,7 +50,7 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 //  // number of days
 
 
-let tourTypes = ["active", "family", "cruise", "expedition", "private", "voyage"]
+let tourTypes = ["all types", "active", "family", "cruise", "expedition", "voyage"]
 
 let ecoAndesDestinations= ['ecuador', 'galapagos', 'peru', 'bolivia', 'chile', 'argentina']
 
@@ -60,28 +61,21 @@ export default function TourPage(){
     const [filteredTourArr, setFilteredTourArr]= useState(TourData)
 
     useEffect(()=>{
-
-        if(TourData){
-            setFilteredTourArr(TourData)
             if(tourTypeFilter){
                 let workerTourArr = TourData.filter(elem => elem.tourType===tourTypeFilter)
                 setFilteredTourArr(workerTourArr)
             } else if (!tourTypeFilter){
                 setFilteredTourArr(TourData)
             }
-        }
 
     },[tourTypeFilter])
 
     useEffect(()=>{
         if(destFilter){
-            let destFiltArr= filteredTourArr.filter((elem) =>  elem.countryList.includes(destFilter)===true  )
+            let destFiltArr= TourData.filter((elem) =>  elem.countryList.includes(destFilter)===true  )
             setFilteredTourArr(destFiltArr)
         } else {setFilteredTourArr(TourData)}        
     },[destFilter])
-
-
-
 
 // FLAGGED FOR EXPORT
     const aMapFunction=(theArray)=>{
@@ -113,8 +107,10 @@ export default function TourPage(){
                         />
                     </div>
                     <div className={styles.durationPriceDisp}>
-                        {tourData.duration} Day Itinerary <br/>
-                        from usd $ 699 .- per person
+                        <div className={styles.tourCardDurtion}>
+                            {tourData.duration} Day Itinerary
+                        </div>
+                            {priceDisplayer(tourData.prices)}
                     </div>
                 </div>
             </Link>
@@ -129,46 +125,63 @@ export default function TourPage(){
                         {eachTourCard(elem)}
                     </React.Fragment>)}
             </>:<>
-                PLACEHOLDER
+                <div className="={styles.placeholderCont"> 
+                    Oops! We do not have any scheduled trips available for your filters. 
+                    get in contact with oue of our team members to make your dream trip happen!
+                    <div className={styles.placeholderCTA}> Email our team! </div>
+                </div>
             </>}
         </div>)
     }
+    const priceDisplayer=(priceObj)=>{
+        if(priceObj.priceType==="fixedDeparture"){
+            return(<>from usd ${priceObj.pricePerPerson}.- per person</>)
+        } else {
+            return (<>from usd ${priceObj['4stars'][9]}.- per person</>)
+        }
+    }
+
+    const [destPickerList, setDestList] = useState()
+
     const filtersUI=()=>{
-        // switcher to turn on "all countries"
-        // switcher to turn on "all ecoAndesDestinations"
-        let eachDestinationOpt = ecoAndesDestinations.map((elem, i)=><React.Fragment key={i}><option value={elem}>{elem}</option></React.Fragment>)
-        let eachTourType = tourTypes.map((elem, i)=><React.Fragment key={i +1}><option value={elem}>{elem}</option></React.Fragment>)
         return(<>
             <div className={styles.UIBTNCont}> 
                 <div className={styles.userIUFilterCont}>
+
+                    {/* Destinations filter */}
                     <div className={styles.userUISec}>
                         <label htmlFor="destinationPickerUI">Destination:</label>
-                        <select name="destinationPickerUI" className={styles.aPickerUI} 
-                            onChange={(e)=>{
-                                if(e.target.value==='0'){
-                                    setDestFilter(false)
-                                } else {setDestFilter(e.target.value)}
-                            }}>
-                            <option value={0} key={0}>All destinations</option>
-                            {eachDestinationOpt}
-                        </select>
+                        <MultiSelect
+                            // className={styles.aPickerUI} 
+                            placeholder="Our Destinations"
+                            data={[...ecoAndesDestinations]}
+                            searchable
+                            nothingFound="Nothing found..."
+                            onChange={setDestList}
+                            id="destinationPickerUI"
+                        />
                     </div>
+
+                    {/* Tour Types Filter */}
                     <div className={styles.userUISec}>
                         <label htmlFor="tourTypenPickerUI">Tour type:</label>
-                        <select name="tourTypenPickerUI" className={styles.aPickerUI} 
-                            onChange={(e)=>{
-                                if(e.target.value==='0'){
-                                    setTourTypeFilter(false)
-                                } else {setTourTypeFilter(e.target.value)}
-                            }}>
-                            <option value={0} key={0}>All Types</option>
-                            {eachTourType}
-                        </select>
+                        <Select 
+                            placeholder="Tour Types"
+                            data={[...tourTypes]}
+                            onChange={setTourTypeFilter}
+                            id="tourTypenPickerUI"
+                        />
                     </div>
                 </div>
             </div>
         </>)
     }
+
+    useEffect(()=>{
+        console.log(destPickerList)
+    },[destPickerList])
+
+    // Sort Functions
     const [sortContr, setSortContr]=useState(false)
     const [sortOrder, setSortOrder]=useState("descending")
     const sortingFunct=()=>{
@@ -214,16 +227,17 @@ export default function TourPage(){
         </>)
     }
     useEffect(()=>{
+        // add conditional if selectedDestination => sort by all tourData, else by filtered tour data.
         sortOrder==="descending"? 
-        setFilteredTourArr([...filteredTourArr].sort((a,b)=> a.duration - b.duration)) 
+            setFilteredTourArr([...filteredTourArr].sort((a,b)=> a.duration - b.duration)) 
         :
-        setFilteredTourArr([...filteredTourArr].sort(((a,b)=> b.duration - a.duration)))
+            setFilteredTourArr([...filteredTourArr].sort(((a,b)=> b.duration - a.duration)))
     },[sortContr])
     useEffect(()=>{
         sortOrder==="descending"? 
-        setFilteredTourArr([...filteredTourArr].sort((a,b)=> a.duration - b.duration)) 
+            setFilteredTourArr([...filteredTourArr].sort((a,b)=> a.duration - b.duration)) 
         :
-        setFilteredTourArr([...filteredTourArr].sort(((a,b)=> b.duration - a.duration)))
+            setFilteredTourArr([...filteredTourArr].sort(((a,b)=> b.duration - a.duration)))
     },[sortOrder])
 
 

@@ -1,0 +1,874 @@
+[
+    {
+        "tripName": "Best of Peru",
+        "id": "best-of-peru",
+        "duration": 12,
+        "imgArr": ["galapagosSunset.jpg"],
+        "tripDescription":"We will visit Lima the Capital of Peru and the most important city in South America during the spanish colonial time. Then we flight to Arequipa, the 'White City' due to the beautiful buildings and churches. On this area we will also visit the famous Colca Canyon. Then our next stop will be at the legendary Titicaca Lake located at 3800 masl. Then we will travel to Cusco, the capital of the Inca Empire before enjoying the views of the magnificent Inca Citadel of Machu Picchu, one of the marvels of our planet",
+        "countryList": ["peru"],
+        "dayByDay":[
+            {
+                "dayTitle": "Saturday: Arrival in Lima",
+                "dayDescription": "Arrival in Lima International airport and transfer to the Hotel."
+            },
+            {
+                "dayTitle": "Sunday: Lima",
+                "dayDescription": "Lima City Tour and visit to the Gold Museum",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Lunch"
+                ]
+            },
+            {
+                "dayTitle": "Monday: Arequipa",
+                "dayDescription": "A.m. Flight to the city of Arequipa. P.m. City Tour in Arequipa",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Lunch"
+                ]
+            },
+            {
+                "dayTitle": "Tuesday: Colca Canyon",
+                "dayDescription": "Along the Volcanos valley, travel to Chivay for our Colca Canyon Tour.",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Lunch"
+                ]
+            },
+            {
+                "dayTitle": "Wednesday: Colca Canyon - Titicaca",
+                "dayDescription": "A.m. Morning visit to the Colca Canyon. P.m. Travel to Puno at the Titicaca Lake",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Lunch"
+                ]
+            },
+            {
+                "dayTitle": "Thursday: Lake Titicaca",
+                "dayDescription": "Full day tour to visit Uros and Taquile Islands on the Titicaca Lake",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Lunch"
+                ]
+            },
+            {
+                "dayTitle": "Friday: Lake Titicaca - Cusco",
+                "dayDescription": "Travel to Cusco on the way visiting Pukara, Raqchi and Andawaylillas",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Lunch"
+                ]
+            },
+            {
+                "dayTitle": "Saturday: Cusco",
+                "dayDescription": "Enjoy a Cusco City tour",
+                "dayInclusions": [
+                    "Hotel breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Sunday: Sacred Valley",
+                "dayDescription": "Transfer to the Incas Sacred Valley. Visit Pisac & Ollantaytambo. Overnight in Aguas Calientes",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Monday: Machu Picchu",
+                "dayDescription": "A.m. Visit Machu Picchu Citadel. P.m. Train to Ollantaytambo and transfer to Cusco",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Tuesday: Cusco",
+                "dayDescription": "Cusco Free Day",
+                "dayInclusions": [
+                    "Hotel breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Wednesday: Departure to Lima & Home",
+                "dayDescription": "A.m. Enjoy Cusco. P.m. Transfer to the airport. Flight to Lima where you will arrive in time for your international flight back home",
+                "dayInclusions": [
+                    "Hotel breakfast"
+                ]
+            }
+        ],
+        "tourType": "voyage",
+        "prices": {
+            "priceType": "fixedDeparture",
+            "pricePerPerson": 2490,
+            "singlesupp": 900,
+            "dblOccupancy": true,
+            "departureDates": ["Saturdays - May through December"],
+            "priceNotice": "hotel categories will depend on locally available properties. "
+        },
+        "included": [
+            "Vista Dome (or similar) train ticket",
+            "private transport",
+            "double room accommodation with private facilities",
+            "english/spanish speaking local guide services",
+            "meals as indicated: 11 breakfasts, 6 lunches, 2 dinners", 
+            "attraction entrance fees",
+            "noted excursions"
+        ],
+        "notIncluded": [
+            "personal expenses",
+            "international/regional flights",
+            "travel insurance",
+            "tips",
+            "beverages",
+            "extras"
+        ]
+    },
+    {
+        "tripName": "Highlands, forests and Island Hopping",
+        "id": "ecuador-highlands-galapagos-island-hopping",
+        "duration": 12,
+        "imgArr": ["galapagosSunset.jpg"],
+        "tripDescription":"This tour is designed for families and travelers looking for a close contact with nature while enjoying the fantastic landscapes and the marvelous ﬂora and fauna of Ecuador and of the Galapagos Islands. In Ecuador Continental, we visit the Middle of the World, the enchanting Otavalo Indian Market, and we amaze with the exuberant flora of the Cloud Forest Mindo. Then we fly to the world-famous Galapagos Islands where we visit magniﬁcent spots on Santa Cruz Island, such a farm where we find Giant Galapagos land tortoises, the beautiful beach of Tortuga Bay & the well-known Charles Darwin Research Station. Then we navigate to the historical Floreana Island to visit Asilo de La Paz (Peace Asylum), once home of the legendary Wittmer family and where we can also snorkel with playful sea lions and marine turtles. Our next destination will be Isabela Island, where we enjoy the fantastic “Las Tintoreras” area where we observe marine iguanas, Galapagos penguins, sea lions, etc. On Isabela we will also hike to the rim of the impressive Sierra Negra Volcano Crater and hike at “Los Humedales” (Wetlands).",
+        "countryList": ["ecuador", "galapagos"],
+        "dayByDay":[
+            {
+                "dayTitle": "Monday: Quito Arrival",
+                "dayDescription": "Arrival in Quito and transfer to the hotel located in a nice, safe area of the Capital of Ecuador"
+            },
+            {
+                "dayTitle": "Tuesday: Middle of the World - Otavalo",
+                "dayDescription": " A.m. Visit to the Middle of the World. P.m. Transfer to Otavalo. Hacienda Hotel",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Lunch"
+                ]
+            },
+            {
+                "dayTitle": "Wednesday: Otavalo - Mindo",
+                "dayDescription": "A.m. Visit to the Indigenous Market of Otavalo and transfer to Mindo Cloud Forest",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Thursday: Mindo Cloud Forest",
+                "dayDescription": "A.m. Enjoy hiking in the Cloud Forest Reserve. P.m. Transfer to Quito hotel",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Lunch"
+                ]
+            },
+            {
+                "dayTitle": "Friday: Quito - Galapagos",
+                "dayDescription": "A.m. Transfer to the airport and fly to Galapagos Baltra Island. P.m. Transfer to Santa Cruz Highlands to observe Giant Galapagos Land Turtles. Puerto Ayora Hotel",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Lunch"
+                ]
+            },
+            {
+                "dayTitle": "Saturday: Galapagos",
+                "dayDescription": " A.m. Visit Tortuga Bay Beach. P.m. Interpretation Center and C. Darwin Station.",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Sunday: Floreana",
+                "dayDescription": "A.m. Navigation to Floreana Island. Visit Peace Asylum. P.m. Enjoy snorkeling activities. Overnight in the Lava Lodge",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Lunch",
+                    "Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Monday: Isabela",
+                "dayDescription": "A.m. Navigation to Isabela Island. Visit Wetlands. P.m. Visit Tintoreras Islets.",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Lunch"
+                ]
+            },
+            {
+                "dayTitle": "Tuesday: Isabela",
+                "dayDescription": "A.m. Soft hike to Sierra Negra Volcano. P.m. Navigation to Pto. Ayora.",
+                "dayInclusions": [
+                    "Hotel breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Wednesday: Santa Cruz",
+                "dayDescription": "A.m. Visit a coffee plantation. P.m. Visit Las Grietas. Free time",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Thursday: Santa Cruz - Quito",
+                "dayDescription": "Transfer to the airport for the flight to Quito",
+                "dayInclusions": [
+                    "Hotel breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Friday: Quito Exploration & Departure",
+                "dayDescription": "a.m. Morning using the “Teleferico” (Cable Way) we will go up to the Cruz Loma Hill for a marvelous view of Quito and of the surrounding volcanoes.  P.m. Visit Quito's Colonial Town. In the late afternoon transfer to the airport for your flight back home",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Lunch"
+                ]
+            }
+        ],
+        "tourType": "voyage",
+        "prices": {
+            "priceType": "fixedDeparture",
+            "hotelCat": "4 stars",
+            "pricePerPerson": 3190,
+            "singlesupp": 1100,
+            "dblOccupancy": true,
+            "departureDates": ["May 9th, 2022", "June 13th, 2022", "July 4th, 2022", "July 18th, 2022", "August 8th, 2022", "August 22nd, 2022", "September 5th, 2022", "October 10th, 2022", "November 7th, 2022", "December 12th, 2022", "December 26th, 2022"],
+            "priceNotice": "Our accommodations will be in small boutique hotels located in Ecuador and on each of the islands we will be visiting during our enjoyable trip. Navigations will be on board of our First-Class Galapagos Element Yacht"
+        },
+        "included": [
+            "private transport",
+            "double room accommodation with private facilities",
+            "english/spanish speaking local guide services",
+            "meals as indicated: 10 breakfasts, 5 lunches, 4 dinners", 
+            "attraction entrance fees",
+            "noted excursions"
+        ],
+        "notIncluded": [
+            "personal expenses",
+            "international/regional flights",
+            "Galapagos Entrance Fees $100 per person",
+            "Galapagos Transit Card $25 per person",
+            "travel insurance",
+            "tips",
+            "beverages",
+            "extras"
+        ]
+    },
+    {
+        "tripName": "Galapagos Cruise, Otavalo & Quito",
+        "id": "ecuador-highlands-galapagos-cruise",
+        "duration": 10,
+        "imgArr": ["galapagosSunset.jpg"],
+        "tripDescription": "Latin Travel Collection (LTC) oﬀers an amazing 10 days / 9 nights tour to enjoy first an 8-day Galapagos Islands Cruise navigation on board of the First-Class Yacht Anahi with a group of maximum 16 passengers who will be accommodated in comfortable cabins provided with private facilities, A.C. and ample social areas. The small group will permit you to experience in a better way the extraordinary fauna, flora, and geology of the Galapagos Islands. The tours in Galapagos, in Quito and in Otavalo will be conducted by charming, experienced English/Spanish local guides trained by the Galapagos National Park and who being from the Islands know the area very well. In Ecuador Continental, we will visit the enchanting Otavalo Indian Market located in the Imbabura province and then we will also visit Quito, the Capital of Ecuador and which along with the city of Krakow, was in 1978 the first city to be awarded the title of 'Cultural Heritage of Humanity' ",
+        "countryList": ["ecuador", "galapagos"],
+        "dayByDay":[
+            {
+                "dayTitle": "Thursday: Quito Arrival",
+                "dayDescription": "Arrival in Quito International airport and transfer to the Wyndham First Class Airport Hotel"
+            },
+            {
+                "dayTitle": "Friday: Quito - Galapagos",
+                "dayDescription": "A.m. Transfer to the airport & fly to Galapagos Baltra Island. P.m. Visit Highlands of Santa Cruz Island to observe Giant Galapagos Tortoises in natural state",
+                "dayInclusions": [
+                    "Breakfast",
+                    "Lunch",
+                    "Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Saturday: Galapagos - Isabela",
+                "dayDescription": " A.m. Visit Sierra Negra Volcano (or Tintoreras depending on weather conditions). P.m. Hike the Wetlands & Tortoises Breading Center",
+                "dayInclusions": [
+                    "Breakfast",
+                    "Lunch",
+                    "Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Sunday: Galapagos - Isabela",
+                "dayDescription": "A.m. Visit Moreno Point (hike). P.m. Visit Elizabeth Bay panga ride to observe marine wildlife",
+                "dayInclusions": [
+                    "Breakfast",
+                    "Lunch",
+                    "Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Monday: Isabela",
+                "dayDescription": "A.m. Visit Urbina Bay to observe yellow land iguanas and tortoises. P.m. Visit Caleta Tagus and observe and hike on its beautiful scenery.",
+                "dayInclusions": [
+                    "Breakfast",
+                    "Lunch",
+                    "Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Tuesday: Fernandina",
+                "dayDescription": "A.m. Fernandina Island visit Espinoza Point (hike). P.m. Visit Point Vicente Roca (snorkel)",
+                "dayInclusions": [
+                    "Breakfast",
+                    "Lunch",
+                    "Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Wednesday: Santiago",
+                "dayDescription": "A.m. Santiago Island visit Egas Port. P.m. Visit Rabida Island",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Lunch",
+                    "Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Thursday: Chinese Hat - Bartolome",
+                "dayDescription": "A.m. Visit Chinese Hat Island (Hike). P.m. Visit Bartolome Island. Panga Ride and Hike",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Lunch",
+                    "Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Friday: Galapagos - Quito - Otavalo",
+                "dayDescription": "A.m. Visit Seymour Island (Hike) and transfer to Baltra airport. Flight to Quito. Transfer to the City of Otavalo. Hotel Hacienda Pinsaqui",
+                "dayInclusions": [
+                    "Hotel breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Saturday: Otavalo - Quito",
+                "dayDescription": "A.m. Visit to the Indigenous Market of Otavalo. Transfer to Quito. P.m. Visit Quito Colonial Town. Rest in the hotel in Quito and in the late evening transfer to the airport for your flight back to USA",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Dinner"
+                ]
+            }
+        ],
+        "tourType": "cruise",
+        "prices": {
+            "priceType": "fixedDeparture",
+            "hotelCat": "4 stars",
+            "pricePerPerson": 5290,
+            "singlesupp": 3000,
+            "dblOccupancy": true,
+            "departureDates": ["May 5th, 2022", "May 19th, 2022", "June 2th, 2022", "June 16th, 2022", "June 30th, 2022", "July 14th, 2022", "July 28th, 2022", "August 11th, 2022", "August 25nd, 2022", "September 8th, 2022", "September 22th, 2022", "October 6th, 2022", "October 20th, 2022", "November 3th, 2022", "November 17th, 2022", "December 1th, 2022", "December 15th, 2022", "December 29th, 2022"],
+            "priceNotice": "Our accommodations will be in small boutique hotels located in Ecuador and on each of the islands we will be visiting during our enjoyable trip. Navigations will be on board of our First-Class M/Y Catamaran Anahi"
+        },
+        "included": [
+            "private transport",
+            "double room accommodation with private facilities",
+            "Galapagos cruise onboard M/C Yacht Catamaran Anahi",
+            "english/spanish speaking local guide services",
+            "meals as indicated: 9 breakfasts, 7 lunches, 8 dinners", 
+            "attraction entrance fees",
+            "noted excursions"
+        ],
+        "notIncluded": [
+            "personal expenses",
+            "international/regional flights",
+            "Galapagos Entrance Fees $100 per person",
+            "Galapagos Transit Card $25 per person",
+            "travel insurance",
+            "tips",
+            "beverages",
+            "extras"
+        ]
+    },
+    {
+        "tripName": "Machu Picchu & Galapagos Cruise",
+        "id": "machupicchu-galapagos-cruise",
+        "duration": 12,
+        "imgArr": ["galapagosSunset.jpg"],
+        "tripDescription": "Latin Travel Collection (LTC) oﬀers an extraordinary 12 days / 11 nights tour combining 2 of the best tourist destinations in South America: The Incas Land in Peru and the Galapagos Islands. In Peru we will enjoy visits to Lima, Cusco and to the amazing Inca Citadel of Machu Picchu.  In Ecuador Continental, we will visit Quito, the Capital of Ecuador and which, along with the city of Krakow, was in 1978 the first city to be awarded the title of “Cultural Heritage of Humanity”. We will also visit the Equator Line monument and museum.In Galapagos you will enjoy the navigation on board of the First-Class Yacht Anahi with a group of maximum 16 passengers who will be accommodated in comfortable cabins provided with private facilities, A.C., and ample social areas. The small group will permit you to experience in a better way the extraordinary fauna, flora, and geology of the Galapagos Islands. The tours in Peru, in Galapagos and in Quito, will be conducted by charming, experienced English/Spanish local guides.",
+        "countryList": ["ecuador", "galapagos", "peru"],
+        "dayByDay":[
+            {
+                "dayTitle": "Friday: Lima Arrival",
+                "dayDescription": "Arrival in Lima International airport and transfer to the Hotel."
+            },
+            {
+                "dayTitle": "Saturday: Lima- Cusco",
+                "dayDescription": "A.m. Lima City Tour. P.m. Flight to Cusco",
+                "dayInclusions": [
+                    "Breakfast",
+                    "Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Sunday: Cusco",
+                "dayDescription": "A.m. Cusco City Tour. P.m. Free in Cusco",
+                "dayInclusions": [
+                    "Breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Monday: Sacred Valley",
+                "dayDescription": "Transfer to Incas Sacred Valley. Visit Pisac & Ollantaytambo. Train to Aguas Calientes.",
+                "dayInclusions": [
+                    "Breakfast",
+                    "Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Tuesday: Machu Picchu",
+                "dayDescription": "A.m. Visit Machu Picchu Citadel. P.m. Train to Ollantaytambo and transfer to Cusco",
+                "dayInclusions": [
+                    "Breakfast",
+                    "Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Wednesday: Cusco - Lima - Quito",
+                "dayDescription": "A.m. Transfer to the airport. Flight to Lima and to Quito. Hotel in Quito",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Thursday: Quito City Tour",
+                "dayDescription": "Quito city tour & visit to the Middle of the World, to the Equator Line",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Lunch"
+                ]
+            },
+            {
+                "dayTitle": "Friday: Quito - Galapagos",
+                "dayDescription": "A.m. Flight to Galapagos, board M/Y Catamaran Anahi. P.m. First visit to Bachas Beach on Santa Cruz Island",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Lunch",
+                    "Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Saturday: Genovesa",
+                "dayDescription": "Genovesa Island: a.m. visit Darwin Bay. P.m. Visit Prince Philip's Steps",
+                "dayInclusions": [
+                    "Breakfast",
+                    "Lunch",
+                    "Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Sunday: Plazas - Santa Fe",
+                "dayDescription": "A.m. Visit Plazas Island. P.m. Visit Santa Fe Island",
+                "dayInclusions": [
+                    "Breakfast",
+                    "Lunch",
+                    "Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Monday: San Cristobal",
+                "dayDescription": "A.m. Visit Pitt Point. P.m. Visit Kicker Rock & Sea Lions Island",
+                "dayInclusions": [
+                    "Breakfast",
+                    "Lunch",
+                    "Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Tuesday: San Cristobal - Out",
+                "dayDescription": "A.m. Visit San Cristobal Interpretation Center & El Junco Lagoon. Transfer to the airport and flight to Quito airport where you will be connecting with your international flight back home",
+                "dayInclusions": [
+                    "Breakfast"
+                ]
+            }
+        ],
+        "tourType": "cruise",
+        "prices": {
+            "priceType": "fixedDeparture",
+            "hotelCat": "4 stars",
+            "pricePerPerson": 5690,
+            "singlesupp": 2660,
+            "dblOccupancy": true,
+            "departureDates": ["May 6th, 2022", "June 3th, 2022", "July 1th, 2022", "July 15th, 2022", "August 12th, 2022", "September 9th, 2022", "October 7th, 2022", "November 4th, 2022", "December 2th, 2022", "December 16th, 2022"],
+            "priceNotice": "Our accommodations will be in small boutique hotels located in Ecuador and on each of the islands we will be visiting during our enjoyable trip. Navigations will be on board of our First-Class M/Y Catamaran Anahi"
+        },
+        "included": [
+            "private transport",
+            "double room accommodation with private facilities",
+            "Galapagos cruise onboard M/C Yacht Catamaran Anahi",
+            "english/spanish speaking local guide services",
+            "meals as indicated: 11 breakfasts, 5 lunches, 8 dinners", 
+            "attraction entrance fees",
+            "noted excursions"
+        ],
+        "notIncluded": [
+            "personal expenses",
+            "international/regional flights",
+            "Galapagos Entrance Fees $100 per person",
+            "Galapagos Transit Card $25 per person",
+            "travel insurance",
+            "tips",
+            "beverages",
+            "extras"
+        ]
+    },
+    {
+        "tripName": "Machu Picchu & Galapagos Island Hopping",
+        "id": "machupicchu-galapagos-island-hopping",
+        "duration": 13,
+        "imgArr": ["galapagosSunset.jpg"],
+        "tripDescription": "Latin Travel Collection (LTC) oﬀers an amazing 13 days / 12 nights tour combining 2 of the best tourist destinations in South America: The Incas Land in Peru and the Galapagos Islands. In Peru we will enjoy visits to Lima, Cusco and to the amazing Inca Citadel of Machu Picchu.  In Ecuador Continental, we will visit Quito, the Capital of Ecuador and which, along with the city of Krakow, was in 1978 the first city to be awarded the title of 'Cultural Heritage of Humanity'. We will also visit the Equator Line monument and museum. In Galapagos you will enjoy the navigation on board of the First-Class Yacht Galapagos Element Wind with a group of maximum 20 passengers. For overnight you will be accommodated in first class hotels. The small group will permit you to experience in a better way the extraordinary fauna, flora, and geology of the Galapagos Islands. The tours in Peru, in Galapagos and in Quito, will be conducted by charming, experienced English/Spanish local guides",
+        "countryList": ["ecuador", "galapagos", "peru"],
+        "dayByDay":[
+            {
+                "dayTitle": "Saturday: Lima Arrival",
+                "dayDescription": "Arrival in Lima International airport and transfer to the Hotel."
+            },
+            {
+                "dayTitle": "Sunday: Lima- Cusco",
+                "dayDescription": "A.m. Lima City Tour. P.m. Flight to Cusco",
+                "dayInclusions": [
+                    "Breakfast",
+                    "Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Monday: Cusco",
+                "dayDescription": "A.m. Cusco City Tour. P.m. Free time in Cusco",
+                "dayInclusions": [
+                    "Breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Tuesday: Sacred Valley",
+                "dayDescription": "Transfer to Incas Sacred Valley. Visit Pisac & Ollantaytambo. Train to Aguas Calientes.",
+                "dayInclusions": [
+                    "Breakfast",
+                    "Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Wednesday: Machu Picchu",
+                "dayDescription": "A.m. Visit Machu Picchu Citadel. P.m. Train to Ollantaytambo and transfer to Cusco",
+                "dayInclusions": [
+                    "Breakfast",
+                    "Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Thursday: Cusco - Lima - Quito",
+                "dayDescription": "A.m. Transfer to the airport. Flight to Lima and to Quito. Hotel in Quito",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Friday: Quito City Tour",
+                "dayDescription": "Quito city tour & visit to the Middle of the World, to the Equator Line",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Lunch"
+                ]
+            },
+            {
+                "dayTitle": "Saturday: Quito - Galapagos",
+                "dayDescription": "A.m. Flight to Galapagos. P.m. Observe Giant Galapagos Turtles on Santa Cruz Island",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Lunch"
+                ]
+            },
+            {
+                "dayTitle": "Sunday: Santa Cruz",
+                "dayDescription": "A.m. Visit Tortuga Bay Beach. P.m. Visit the Interpretation Center of Santa Cruz",
+                "dayInclusions": [
+                    "Breakfast",
+                    "Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Monday: Floreana - Isabela",
+                "dayDescription": "A.m. Visit Floreana Island. P.m. Navigation to Isabela Island",
+                "dayInclusions": [
+                    "Breakfast",
+                    "Lunch"
+                ]
+            },
+            {
+                "dayTitle": "Tuesday: Isabela",
+                "dayDescription": "A.m. Visit the Wetlands & Breading Center. P.m. Visit Tintoreras Islets",
+                "dayInclusions": [
+                    "Breakfast",
+                    "Lunch"
+                ]
+            },
+            {
+                "dayTitle": "Wednesday: Isabela - Santa Cruz",
+                "dayDescription": "A.m. Navigation to Puerto Ayora. P.m. Bay Tour and Playa de Los Perros",
+                "dayInclusions": [
+                    "Breakfast",
+                    "Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Thursday: Galapagos - Quito - Out",
+                "dayDescription": "A.m. Transfer to the airport for your flight back to Quito and connection with your international flight back home",
+                "dayInclusions": [
+                    "Breakfast"
+                ]
+            }
+        ],
+        "tourType": "active",
+        "prices": {
+            "priceType": "fixedDeparture",
+            "hotelCat": "4 stars",
+            "pricePerPerson": 4470,
+            "singlesupp": 1225,
+            "dblOccupancy": true,
+            "departureDates": ["May 14th, 2022", "June 4th, 2022", "July 9th, 2022", "July 23th, 2022", "August 6th, 2022", "August 20th, 2022", "September 17th, 2022", "October 15th, 2022", "November 12th, 2022", "December 3th, 2022", "December 17th, 2022"],
+            "priceNotice": "Our accommodations will be in small boutique hotels located in Ecuador and on each of the islands we will be visiting during our enjoyable trip. Navigations will be on board of our First-Class M/Y Catamaran Anahi"
+        },
+        "included": [
+            "private transport",
+            "double room accommodation with private facilities",
+            "Island Hopping onboard Galapagos Elements Yacht",
+            "english/spanish speaking local guide services",
+            "meals as indicated: 11 breakfasts, 5 lunches, 8 dinners", 
+            "attraction entrance fees",
+            "noted excursions"
+        ],
+        "notIncluded": [
+            "personal expenses",
+            "international/regional flights",
+            "Galapagos Entrance Fees $100 per person",
+            "Galapagos Transit Card $25 per person",
+            "travel insurance",
+            "tips",
+            "beverages",
+            "extras"
+        ]
+    },
+    {
+        "tripName": "The Inca Trail",
+        "id": "inca-trail-peru",
+        "duration": 9,
+        "imgArr": ["galapagosSunset.jpg"],
+        "tripDescription": "Ecoandes Travel & Adventures operates on the high Andes of Peru amazing hiking and trekking tours, including some of the most interesting adventures such as the Ausangate Trek (6 days), the Salcantay Trek (5 days), Santa Cruz Gorge & Alpamayo Trek (5 days), Cordillera de Huayhuash Trek (8 or 12 days), etc. Among these hikes and treks we also operate the famous Inca Trail on which and after an amazing adventure visiting Lima, Cusco, observing beautiful Inca ruins, hiking along lush green cloud forest, going up to high Andean mountains passes and observing impressive landscapes, we will arrive to the Sun Gate for that first magical sighting of Machu Picchu, the fabulous 'lost city of the Incas'.Our first-class trekking services include the complete camping equipment, entrance fees, porters, meals, professional trekking guides, 4 stars hotel accommodations in Lima, Cusco and Ollantaytambo, and our constant support from our office staff in Cusco",
+        "countryList": ["peru"],
+        "dayByDay":[
+            {
+                "dayTitle": "Saturday: Lima Arrival",
+                "dayDescription": "Arrival in Lima International airport and transfer to the Hotel."
+            },
+            {
+                "dayTitle": "Sunday: Lima",
+                "dayDescription": "A.m. Lima City Tour",
+                "dayInclusions": [
+                    "Breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Monday: Lima - Cusco",
+                "dayDescription": "Flight to the city of Cusco (11,152 ft). Transfer and hotel accommodations. City Tour",
+                "dayInclusions": [
+                    "Breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Tuesday: Cusco - Sacred Valley",
+                "dayDescription": "Cusco - Incas Sacred Valley - Ollantaytambo (9,160 ft).",
+                "dayInclusions": [
+                    "Breakfast",
+                    "Lunch"
+                ]
+            },
+            {
+                "dayTitle": "Wednesday: Inca Trail Trailhead",
+                "dayDescription": "Ollantaytambo - Piskacucho - Ayapata Camp site (or similar) (10,824 ft).",
+                "dayInclusions": [
+                    "Breakfast",
+                    "Box Lunch",
+                    "Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Thursday: Inca Trail",
+                "dayDescription": "Ayapata - Dead Woman Pass (13,776 ft) - Chaquiccocha Camp site (or similar) (11,808 ft)",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Box Lunch",
+                    "Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Friday: Inca Trail",
+                "dayDescription": "Chaquiccocha Camp site - Wiñaywayna (or similar) (8,856 ft)",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Box Lunch",
+                    "Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Saturday: Inca Trail - Machu Picchu",
+                "dayDescription": "Wiñaywayna - Sun Gate - Machu Picchu (7,972 ft) - Ollantaytambo - Cusco. Hotel",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Box Lunch",
+                    "Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Sunday: Cusco - Lima -Out",
+                "dayDescription": "Morning transfer to airport for flight Cusco - Lima - USA.",
+                "dayInclusions": [
+                    "Breakfast"
+                ]
+            }
+        ],
+        "tourType": "expedition",
+        "prices": {
+            "priceType": "fixedDeparture",
+            "hotelCat": "4 Stars + Campsites",
+            "pricePerPerson": 2090,
+            "singlesupp": 450,
+            "privateTour": "Starting at $2,590 per person (based on 2 participants)",
+            "dblOccupancy": true,
+            "departureDates": ["Saturdays - April through December (depending on Inca Trail Permits)"],
+            "priceNotice": "Our accommodations will be in small boutique hotels located in Ecuador and on each of the islands we will be visiting during our enjoyable trip. Navigations will be on board of our First-Class M/Y Catamaran Anahi"
+        },
+        "included": [
+            "private transport",
+            "double room accommodation with private facilities",
+            "english/spanish speaking local guide services",
+            "trekking guide services",
+            "Vista Dome (or similar) train ticket",
+            "meals as indicated: 8 breakfasts, 1 lunch, 3 box lunches, 4 dinners", 
+            "attraction entrance fees",
+            "noted excursions"
+        ],
+        "notIncluded": [
+            "personal expenses",
+            "international/regional flights",
+            "travel insurance",
+            "tips",
+            "beverages",
+            "extras"
+        ]
+    },
+    {
+        "tripName": "The Best of Argentina",
+        "id": "best-of-argentina",
+        "duration": 12,
+        "imgArr": ["galapagosSunset.jpg"],
+        "tripDescription": " Latin Travel Collection (LTC) and its company Ecoandes Travel & Adventures, oﬀers a 12-day enjoyable itinerary in Argentina covering the most important tourist attractions of this country.We will start visiting Buenos Aires, the capital of Argentina. Then we flight to the End of the World, to the city of Ushuaia where we will visit the Tierra del Fuego National Park and do a spectacular boat tour to observe penguins. Our next visit will be to Calafate and to the amazing Glacier Perito Moreno National Park. Our tour will end with a visit to the fabulous Iguazu Waterfalls. A fantastic trip which combines the best of Argentina.",
+        "countryList": ["argentina"],
+        "dayByDay":[
+            {
+                "dayTitle": "Arrival to Buenos Aires",
+                "dayDescription": "Transfer and Hotel accommodations"
+            },
+            {
+                "dayTitle": "Buenos Aires",
+                "dayDescription": "Full day tour to visit this magnificent European style city",
+                "dayInclusions": [
+                    "Hotel Breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Buenos Aires to Ushuaia",
+                "dayDescription": "Flight (3.5 h) from Buenos Aires to Ushuaia. Hotel accommodations and day free at your leisure",
+                "dayInclusions": [
+                    "Hotel Breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Ushuaia",
+                "dayDescription": "Ushuaia: Visit Tierra del Fuego National Park",
+                "dayInclusions": [
+                    "Hotel Breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Ushuaia",
+                "dayDescription": "Half day trip to Beagle channel and Pinguin Colony",
+                "dayInclusions": [
+                    "Hotel Breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Ushuaia - Calafate",
+                "dayDescription": "Flight (1.5 h) to Calafate. Hotel accommodations and day at your leisure",
+                "dayInclusions": [
+                    "Hotel breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Calafate - Glacier Perito Moreno",
+                "dayDescription": "Full day tour to the Perito Moreno National Park",
+                "dayInclusions": [
+                    "Hotel breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Calafate - Buenos Aires",
+                "dayDescription": "Flight (3h) to Buenos Aires. Hotel accommodations and day at your leisure",
+                "dayInclusions": [
+                    "Hotel breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Buenos Aires to Iguazu",
+                "dayDescription": "Flight (2 h) from Buenos Aires to Iguazu. Hotel accommodations and day free at your leisure",
+                "dayInclusions": [
+                    "Hotel Breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Buenos Aires to Iguazu",
+                "dayDescription": "Flight (2 h) from Buenos Aires to Iguazu. Hotel accommodations and day free at your leisure",
+                "dayInclusions": [
+                    "Hotel Breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Iguazu",
+                "dayDescription": "Iguazu Great Adventure Tour & Visit the Argentinian side of the Iguazu Waterfalls",
+                "dayInclusions": [
+                    "Hotel Breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Iguazu - Buenos Aires",
+                "dayDescription": "Morning Flight to B.A. Hotel accommodations and day at your leisure",
+                "dayInclusions": [
+                    "Hotel Breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Buenos Aires - Home",
+                "dayDescription": "After breakfast transfer to the airport for your flight back home",
+                "dayInclusions": [
+                    "Hotel Breakfast"
+                ]
+            }
+        ],
+        "tourType": "active",
+        "prices": {
+            "4stars":[4590,4000,3590,3250,2990,2885,2790,2695,2580,2545],
+            "4StarsSS":1000
+        },
+        "included": [
+            "private transport",
+            "double room accommodation with private facilities",
+            "english/spanish speaking local guide services",
+            "meals as indicated: 11 breakfasts", 
+            "attraction entrance fees",
+            "noted excursions"
+        ],
+        "notIncluded": [
+            "personal expenses",
+            "international/regional flights",
+            "travel insurance",
+            "tips",
+            "beverages",
+            "extras"
+        ]
+    }
+]

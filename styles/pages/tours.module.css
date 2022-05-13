@@ -55,14 +55,18 @@
 
 .aPickerUI{
     width: 180px;
+    height: 36px;
     padding: 3px 9px;
-    font-size: 1.2em;
-    text-align: center;
     text-transform: capitalize;
-    background-color: var(--brown-main);
-    color: var(--pale-yellow);
-    border: solid 2.5px var(--pale-gold);
+    background-color: white;
+    color: rgba(128, 128, 128, 0.692);
+    border: solid 2.5px transparent;
     border-radius: 5px;
+}
+
+.aPickerOption{
+    height: 36px;
+    padding: 9px;
 }
 
 .sortingUICont{
@@ -139,49 +143,65 @@
 .aTourCard{
     border: solid 1px black;
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.35);
-    min-height: 280px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     background-color: white;
     cursor: pointer;
-    margin: 21px;
-    transition: all ease-in 0.5s;
+    margin: 18px;
+    transition: all ease-in 0.2s;
+    width: 250px;
 }
 
 .aTourCard:hover{
-    box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.35);
+    box-shadow: 9px 9px 8px rgba(0, 0, 0, 0.35);
 }
 
 .tourCardDestination{
+    margin: 0 9px;
+    padding-bottom: 6px;
+    text-transform: uppercase;
+    font-size: 0.8em;
     font-family: var(--serif-Font);
-    margin: 0 12px;
-    font-weight: 300;
 }
 .eachTourDetails h3{
+    height: 46px; 
     margin: unset;
-    font-size: 1.3em;
     text-align: center;
-    margin-bottom: 12px;
+    margin-bottom: 9px;
+    word-wrap: break-word;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+    border-top: dashed 1px black;
+    padding-top: 6px;
 }
 
 .tourtype{
-    font-family: var(--serif-Font);
     margin: 0 12px;
     margin-top: 6px;
     text-align: end;
     text-transform: capitalize;
 }
 
-.durationPriceDisp{
-    font-size: 0.9em;
+.tourImg{
+    transform: translateY(2px);
+}
+
+.tourCardDurtion{
+    font-weight: 700;
     text-align: center;
+    width: 100%;
+}
+
+.durationPriceDisp{
     height: 50px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-style: italic;
     color: var(--brick-red);
     background-color: var(--pale-gold);
     width: 100%;
