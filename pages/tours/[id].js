@@ -85,11 +85,11 @@ function TourPage({ aTour }){
         </>)
     }
 
-    function Imagedisp(){
+    function Imagedisp(props){
         return(<>
         <Paper className={styles.carouIMG}><div className={styles.homeSliderIMG}>
             <Image
-                src={aTour.imgArr[0]}
+                src={props.imgData}
                 alt={aTour.tripName}      
                 width={2000}
                 height={1500}
