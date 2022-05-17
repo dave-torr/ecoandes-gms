@@ -166,7 +166,7 @@
     font-family: var(--serif-Font);
 }
 .eachTourDetails h3{
-    height: 46px; 
+    height: 50px; 
     margin: unset;
     text-align: center;
     margin-bottom: 9px;
@@ -177,6 +177,7 @@
     text-transform: capitalize;
     border-top: dashed 1px black;
     padding-top: 6px;
+    font-size: 1.3em;
 }
 
 .tourtype{
@@ -187,24 +188,25 @@
 }
 
 .tourImg{
-    transform: translateY(2px);
+    transform: translateY(3px);
 }
 
 .tourCardDurtion{
     font-weight: 700;
     text-align: center;
     width: 100%;
+    padding: 4px 0;
 }
 
 .durationPriceDisp{
-    height: 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: var(--brick-red);
-    background-color: var(--pale-gold);
+    color: var(--pale-yellow);
+    background-color: var(--brown-main);
     width: 100%;
+    padding-bottom: 5px;
 }
 
 @media (max-width: 1080px) {

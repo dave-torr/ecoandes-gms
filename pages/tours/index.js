@@ -100,10 +100,10 @@ export default function TourPage(){
                     </div>
                     <div className={styles.tourImg}>
                         <Image 
-                            src={`/assets/images/tourCovers/${tourData.imgArr[0]}`}
+                            src={tourData.imgArr[0]}
                             width={250}
                             height={180}
-                            alt="IMG"
+                            alt={tourData.tripName}
                         />
                     </div>
                     <div className={styles.durationPriceDisp}>

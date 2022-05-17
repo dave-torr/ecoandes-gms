@@ -1,7 +1,7 @@
 import React from "react"
 import Image from "next/image"
 
-import TourData from "../../data/ecuItinEng"
+import TourData from "../../data/itineraries"
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -13,9 +13,22 @@ import { Paper } from '@mui/material';
 
 import styles from "../../styles/pages/aTour.module.css"
 
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
+// itinerary updates:
+
+// // Program descriptions are too long, change for "itinerary Highlights"
+//  // image carousel, opens up image pop up dialog.
+
+
+////////////////////////////////////////////////////////////
+
+
 
 function TourPage({ aTour }){
 
+    // FFE - Components
     const accordionDisplayer=(accordTitle, accordContent, openContr, numerator)=>{
         return(<>
         <Accordion defaultExpanded={openContr} className={styles.accordionCont}>
@@ -27,13 +40,14 @@ function TourPage({ aTour }){
         </>)
     }
 
+    // FFU - Replace by highlight list
     const tourOverview = <div className={styles.tourOverviewCont}> {aTour.tripDescription} </div>
 
-    const incExcDisplayer=(itemList, controller)=>{
+    const incExcDisplayer=(itemList, listTille)=>{
         let eachItem = itemList.map((elem, i)=><React.Fragment key={i}> <li className={styles.incExcItems}>{elem}</li></React.Fragment> )
         return(<>
             <div className={styles.incExcCont}> 
-                <h3> {controller} </h3>
+                <h3> {listTille} </h3>
                 <ul> {eachItem} </ul>
             </div>
         </>)
@@ -43,27 +57,44 @@ function TourPage({ aTour }){
         {incExcDisplayer(aTour.notIncluded, "Not included in Tour")}
         </div>;
 
+    // FFU - theme colors
     const dayByDaydisp=(tourDayByDay)=>{
-        let theDays = tourDayByDay.map((elem,i)=> <React.Fragment key={i} >
-            {accordionDisplayer(elem.dayTitle, elem.dayDescription, false, i+1)}
+        const dayInclDisp=(dayIncl)=>{
+            if(dayIncl){
+                let theInclusions = dayIncl.map((elem)=><><li>{elem}</li></>)
+                return(<><div className={styles.dayInclusionCont}> 
+                    <h4>Includes:</h4>
+                    <ul>{theInclusions}</ul>
+                </div></>)
+            }
+        }
+
+        let theDays = tourDayByDay.map((elem,i)=> 
+        <React.Fragment key={i} >
+            <Accordion className={styles.accordionCont}>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" > 
+                    <h2>{i+1&&<>{i+1}.-</>}  {elem.dayTitle} </h2></AccordionSummary>
+                <AccordionDetails> 
+                    {elem.dayDescription}
+                    {dayInclDisp(elem.dayInclusions)} 
+                </AccordionDetails>
+            </Accordion>
         </React.Fragment>)
         return(<>
             {accordionDisplayer("Day by Day", theDays, false)}
         </>)
     }
 
-    function Imagedisp(props){
-        // console.log(props.imgData)
+    function Imagedisp(){
         return(<>
         <Paper className={styles.carouIMG}><div className={styles.homeSliderIMG}>
             <Image
-                src={`/assets/images/tourCovers/${props.imgData}`}
+                src={aTour.imgArr[0]}
                 alt={aTour.tripName}      
                 width={2000}
                 height={1500}
             />
         </div>
-        <div className={styles.desktopIMGCaption}>{props.imgData.alt}</div>
         </Paper>
         </>)
     }
@@ -79,20 +110,42 @@ function TourPage({ aTour }){
         </>)
     }
 
+    const priceDisplayer=(theTour)=>{
+        
+        if(theTour.prices.priceType==="private"){
+            // display last elem of price arr
+            return(<>
+                <span> PRIVATE <br/> DEPARTURE </span>
+                <span> PRICES FROM <br/> ${theTour.prices['4stars'][9]} p. person </span>
+            </>)
+        } else if(theTour.prices.priceType==="fixedDeparture"){
+            // display fixed dep price
+            return(<>
+                <span> FIXED <br/> DEPARTURE </span>
+                <span> PRICES FROM <br/> ${theTour.prices.pricePerPerson} p. person </span>
+            </>)
+        }
+    }
+
     const tourIntroDetails=()=>{
-        let countryList = aTour.countryList.map((elem, i)=><React.Fragment key={i}>
-            { i >0 &&<> / </>} <i>{elem}</i>
-        </React.Fragment>)
+        let countryList = aTour.countryList.map((elem, i)=><React.Fragment key={i}> { i >0 &&<> / </>}{elem} </React.Fragment>)
         return(<>
             <div className={styles.tourIntroCont}>
-                <div className={styles.tourCountryList}> <strong>Countries:</strong> {countryList}</div>
+                <div className={styles.tourCountryList}>        
+                    <strong>Destinations:</strong> {countryList}</div>
                 <div className={styles.tourTitleBar}>{aTour.tripName}</div>
                 <div className={styles.tourDetails}>
-                    Tour Detail Grid
+                    <span>{aTour.duration} <br/> DAYS </span>
+                    <span> TOUR TYPE: <br/> {aTour.tourType} </span>
+                    {priceDisplayer(aTour)}
                 </div>
             </div>
         </>)
     }
+
+
+
+
 
     return(<>
         <div className={styles.generalTourPage}>

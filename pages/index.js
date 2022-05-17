@@ -12,15 +12,14 @@ import LanguageData from "./../data/languagesCont.json"
 import styles from '../styles/pages/Home.module.css'
 
 import EcoAndLogo from "../public/assets/logos/condor1.png"
-import CotopaxiClimb from "../public/assets/images/ecoAndesSite/cotoClimb.jpg"
-import MachuPicc from "../public/assets/images/ecoAndesSite/maPi.jpg"
-import SeaLionPic from "../public/assets/images/ecoAndesSite/seaLionGps.jpg"
-import CuencaPic from "../public/assets/images/ecoAndesSite/cuenca.jpg"
-import GpsCruising from "../public/assets/images/ecoAndesSite/gpsCruise.jpg"
-import CuscoOne from "../public/assets/images/ecoAndesSite/cuscoOne.jpg"
-import PatagoniaOne from "../public/assets/images/ecoAndesSite/chilePatagonia.jpg"
-import Tiwanaku from "../public/assets/images/ecoAndesSite/tiwanakuGate.jpg"
-import Travellers from "../public/assets/images/ecoAndesSite/happyTravellers.jpg"
+// import MachuPicc from "../public/assets/images/ecoAndesSite/maPi.jpg"
+// import SeaLionPic from "../public/assets/images/ecoAndesSite/seaLionGps.jpg"
+// import CuencaPic from "../public/assets/images/ecoAndesSite/cuenca.jpg"
+// import GpsCruising from "../public/assets/images/ecoAndesSite/gpsCruise.jpg"
+// import CuscoOne from "../public/assets/images/ecoAndesSite/cuscoOne.jpg"
+// import PatagoniaOne from "../public/assets/images/ecoAndesSite/chilePatagonia.jpg"
+// import Tiwanaku from "../public/assets/images/ecoAndesSite/tiwanakuGate.jpg"
+// import Travellers from "../public/assets/images/ecoAndesSite/happyTravellers.jpg"
 
 import DjoserLogo from "../public/assets/logos/partners/djoser.svg"
 import YachtAnahiLogo from "../public/assets/logos/partners/yachtAnahi.png"
@@ -66,18 +65,16 @@ export default function Home(){
       </Paper>
     </>)
   }
+
+
   let desktoIMGArr=[
     {
-      "src": SeaLionPic,
+      // "src": SeaLionPic,
       "alt": "Galapagos Islands | Ecuador"
     },
     {
-      "src": MachuPicc,
+      // "src": MachuPicc,
       "alt": "Machu Picchu | Peru"
-    },
-    {
-      "src": CotopaxiClimb,
-      "alt": "Cotopaxi | Ecuador"
     },
   ]
   const carouselDisp=(theIMGArr)=>{
@@ -88,6 +85,9 @@ export default function Home(){
       </Carousel>
     </>)
   }
+
+
+
 
 // Section 1: Intro and Carousel 
 // POLISH CTAS!!!!
@@ -104,7 +104,7 @@ export default function Home(){
            <a target='_blank' href="mailto:info@ecoandestravel.com"><div className={styles.cta1}>{langContent.ctas.ctaTwo}</div></a>
         </div>
         </div>
-        {carouselDisp(desktoIMGArr)}
+        {/* {carouselDisp(desktoIMGArr)} */}
       </div>
     </>)
   }
@@ -205,7 +205,10 @@ export default function Home(){
         navLinks={langContent.naviLinks}
       />
       {landingSec()}
-      {destinationCards()}
+
+
+      {/* {destinationCards()} */}
+
       {additionalDataAndLinks()}
     </div>
   </>)

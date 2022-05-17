@@ -18,6 +18,8 @@
 .tourCountryList{
     background-color: var(--pale-yellow);
     padding: 6px 33px;
+    text-transform: capitalize;
+    font-size: 1.5em;
 }
 
 .tourTitleBar{
@@ -31,9 +33,28 @@
 }
 
 .tourDetails{
-    background-color: rgb(72, 75, 66);
-    color: white;
-    padding: 9px 12px;
+    padding: 15px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    text-align: center;  
+    font-size: 1.2em;
+}
+
+.tourDetails > span{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 9px 21px;
+    color: var(--brick-red);
+    font-weight: 500;
+    border-right: solid 2px var(--brick-red);
+    text-transform: capitalize;
+}
+
+.tourDetails > span:last-of-type{
+    /* target last span, remove border */
+    border: none;
 }
 
 .tourOverviewCont{
@@ -71,6 +92,15 @@
     text-transform: capitalize;
 }
 
+.dayInclusionCont{
+    margin-top: 12px;
+    border: solid 0.5px black;
+}
+
+.dayInclusionCont > h4{
+    margin: unset;
+    margin: 9px;
+}
 @media (max-width: 1080px) {
     .tourContainer{
         width: 100%;
