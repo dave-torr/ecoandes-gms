@@ -2,19 +2,19 @@ import React from "react"
 import { useState, useEffect } from "react"
 
 import Image from "next/image"
-import galapagosSunset from "../public/assets/images/tourCovers/galapagosSunset.jpg"
-import machuPicchu from "../public/assets/images/tourCovers/peruMachuPicchu.jpg"
-import cotopaxiClimb from "../public/assets/images/tourCovers/cotopaxiClimb.jpg"
-import galapagosCruising from "../public/assets/images/tourCovers/galapagosCruising.jpg"
-import galapagosExploration from "../public/assets/images/tourCovers/galapagosExploration.jpg"
-import galapagosBeach from "../public/assets/images/tourCovers/galapagosBeach.jpg"
-import boliviaMountains from "../public/assets/images/tourCovers/boliviaMountains.jpg"
-import hikingsouthAmerica from "../public/assets/images/tourCovers/hikingsouthAmerica.jpg"
-import sunriseMountains from "../public/assets/images/tourCovers/sunriseMountains.jpg"
-import quitoSunrise from "../public/assets/images/tourCovers/quitoSunrise.jpg"
-import ruminahuiMountain from "../public/assets/images/tourCovers/ruminahuiMountain.jpg"
-import chimborazoVicunas from "../public/assets/images/tourCovers/chimborazoVicunas.jpg"
-import cotopaxiAerial from "../public/assets/images/tourCovers/cotopaxiAerial.jpg"
+// import galapagosSunset from "../public/assets/images/tourCovers/galapagosSunset.jpg"
+// import machuPicchu from "../public/assets/images/tourCovers/peruMachuPicchu.jpg"
+// import cotopaxiClimb from "../public/assets/images/tourCovers/cotopaxiClimb.jpg"
+// import galapagosCruising from "../public/assets/images/tourCovers/galapagosCruising.jpg"
+// import galapagosExploration from "../public/assets/images/tourCovers/galapagosExploration.jpg"
+// import galapagosBeach from "../public/assets/images/tourCovers/galapagosBeach.jpg"
+// import boliviaMountains from "../public/assets/images/tourCovers/boliviaMountains.jpg"
+// import hikingsouthAmerica from "../public/assets/images/tourCovers/hikingsouthAmerica.jpg"
+// import sunriseMountains from "../public/assets/images/tourCovers/sunriseMountains.jpg"
+// import quitoSunrise from "../public/assets/images/tourCovers/quitoSunrise.jpg"
+// import ruminahuiMountain from "../public/assets/images/tourCovers/ruminahuiMountain.jpg"
+// import chimborazoVicunas from "../public/assets/images/tourCovers/chimborazoVicunas.jpg"
+// import cotopaxiAerial from "../public/assets/images/tourCovers/cotopaxiAerial.jpg"
 
 
 import FlightIcon from '@mui/icons-material/Flight';
@@ -66,46 +66,46 @@ export function LogoSwitcher(props){
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
 
-let imageThumbnailArr=[
-    {"src": galapagosSunset, "alt": "Galapagos Sunset"},
-    {"src": cotopaxiClimb, "alt": "Cotopaxi Ecuador"},
-    {"src": galapagosCruising, "alt": "Galapagos Cruising"},
-    {"src": galapagosExploration, "alt": "Galapagos Exploration"},
-    {"src": galapagosBeach, "alt": "Galapagos Beach"},
-    {"src": machuPicchu, "alt": "Machu Picchu"},
-    {"src": boliviaMountains, "alt": "Bolivia Mountains"},
-    {"src": hikingsouthAmerica, "alt": "Hiking South America"},
-    {"src": sunriseMountains, "alt": "Mountains Sunrise"},
-    {"src": quitoSunrise, "alt": "Quito Sunrise"},
-    {"src": ruminahuiMountain, "alt": "Ruminahui Hike"},
-    {"src": chimborazoVicunas, "alt": "Chimborazo Vicunas"},
-    {"src": cotopaxiAerial, "alt": "Cotopaxi Aerial"},
-]
+// let imageThumbnailArr=[
+//     {"src": galapagosSunset, "alt": "Galapagos Sunset"},
+//     {"src": cotopaxiClimb, "alt": "Cotopaxi Ecuador"},
+//     {"src": galapagosCruising, "alt": "Galapagos Cruising"},
+//     {"src": galapagosExploration, "alt": "Galapagos Exploration"},
+//     {"src": galapagosBeach, "alt": "Galapagos Beach"},
+//     {"src": machuPicchu, "alt": "Machu Picchu"},
+//     {"src": boliviaMountains, "alt": "Bolivia Mountains"},
+//     {"src": hikingsouthAmerica, "alt": "Hiking South America"},
+//     {"src": sunriseMountains, "alt": "Mountains Sunrise"},
+//     {"src": quitoSunrise, "alt": "Quito Sunrise"},
+//     {"src": ruminahuiMountain, "alt": "Ruminahui Hike"},
+//     {"src": chimborazoVicunas, "alt": "Chimborazo Vicunas"},
+//     {"src": cotopaxiAerial, "alt": "Cotopaxi Aerial"},
+// ]
 export function ItineraryImagePicker(props){
 
     const [imageCap, setImageCap]=useState("Please Pick an image!")
 
-    let thumbNails = imageThumbnailArr.map((elem, i)=><React.Fragment key={i}>
-        <div className={styles.imageThumbnail} 
-            onMouseEnter={()=>{setImageCap(elem.alt)}} 
-            onMouseLeave={()=>{
-                props.aTour.tourCover?
-                setImageCap("Thank you!")
-                :
-                setImageCap("Please Pick an image!")
-                }}
-            onClick={()=>props.tourEditor({...props.aTour, "tourCover": elem})}
-            >
-        <Image 
-            src={elem.src}
-            alt={elem.alt}
-            layout="responsive"
-        /></div>
-    </React.Fragment>)
+    // let thumbNails = imageThumbnailArr.map((elem, i)=><React.Fragment key={i}>
+    //     <div className={styles.imageThumbnail} 
+    //         onMouseEnter={()=>{setImageCap(elem.alt)}} 
+    //         onMouseLeave={()=>{
+    //             props.aTour.tourCover?
+    //             setImageCap("Thank you!")
+    //             :
+    //             setImageCap("Please Pick an image!")
+    //             }}
+    //         onClick={()=>props.tourEditor({...props.aTour, "tourCover": elem})}
+    //         >
+    //     <Image 
+    //         src={elem.src}
+    //         alt={elem.alt}
+    //         layout="responsive"
+    //     /></div>
+    // </React.Fragment>)
     return(
         <>
             <div className={styles.imageThumbnailDisp}> 
-            {thumbNails} 
+            {/* {thumbNails}  */}
             </div>
             <h2> {imageCap}</h2>
         </>
