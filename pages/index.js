@@ -3,7 +3,6 @@ import Image from 'next/image'
 import Link from "next/link"
 import Head from "next/head"
 
-import Carousel from 'react-material-ui-carousel'
 import { Paper } from '@mui/material';
 import {GeneralDataBar} from "./../components/navis"
 
@@ -12,15 +11,6 @@ import LanguageData from "./../data/languagesCont.json"
 import styles from '../styles/pages/Home.module.css'
 
 import EcoAndLogo from "../public/assets/logos/condor1.png"
-// import MachuPicc from "../public/assets/images/ecoAndesSite/maPi.jpg"
-// import SeaLionPic from "../public/assets/images/ecoAndesSite/seaLionGps.jpg"
-// import CuencaPic from "../public/assets/images/ecoAndesSite/cuenca.jpg"
-// import GpsCruising from "../public/assets/images/ecoAndesSite/gpsCruise.jpg"
-// import CuscoOne from "../public/assets/images/ecoAndesSite/cuscoOne.jpg"
-// import PatagoniaOne from "../public/assets/images/ecoAndesSite/chilePatagonia.jpg"
-// import Tiwanaku from "../public/assets/images/ecoAndesSite/tiwanakuGate.jpg"
-// import Travellers from "../public/assets/images/ecoAndesSite/happyTravellers.jpg"
-
 import DjoserLogo from "../public/assets/logos/partners/djoser.svg"
 import YachtAnahiLogo from "../public/assets/logos/partners/yachtAnahi.png"
 import IkalaUIOLogo from "../public/assets/logos/partners/ikalaUIO.png"
@@ -77,16 +67,6 @@ export default function Home(){
       "alt": "Machu Picchu | Peru"
     },
   ]
-  const carouselDisp=(theIMGArr)=>{
-    return(<>
-      <Carousel className={styles.homeCarousel}>
-        {theIMGArr.map((elem, i)=>
-        <Imagedisp key={i} imgData={elem} /> )}
-      </Carousel>
-    </>)
-  }
-
-
 
 
 // Section 1: Intro and Carousel 
@@ -104,7 +84,10 @@ export default function Home(){
            <a target='_blank' href="mailto:info@ecoandestravel.com"><div className={styles.cta1}>{langContent.ctas.ctaTwo}</div></a>
         </div>
         </div>
+
         {/* {carouselDisp(desktoIMGArr)} */}
+
+
       </div>
     </>)
   }

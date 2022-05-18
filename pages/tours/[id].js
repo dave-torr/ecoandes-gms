@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import Image from "next/image"
 
 import TourData from "../../data/itineraries"
@@ -6,13 +6,9 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Carousel from 'react-material-ui-carousel'
-import { Paper } from '@mui/material';
-
-
 
 import styles from "../../styles/pages/aTour.module.css"
-
+import Dialog from '@mui/material/Dialog';
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
 
@@ -27,6 +23,10 @@ import styles from "../../styles/pages/aTour.module.css"
 
 
 function TourPage({ aTour }){
+
+    const [imgDialogContr, srtImgDialogcontr]= useState(false)
+    const [selectedImg, setSelectedImg]=useState(false)
+
 
     // FFE - Components
     const accordionDisplayer=(accordTitle, accordContent, openContr, numerator)=>{
@@ -86,30 +86,47 @@ function TourPage({ aTour }){
     }
 
     function Imagedisp(props){
-        return(<>
-        <Paper className={styles.carouIMG}><div className={styles.homeSliderIMG}>
+        return(<>        
+        <div className={styles.aTourImage} onClick={()=>{
+            setSelectedImg({
+                "src": props.imgData,
+                "alt": aTour.tripName  
+            })
+            srtImgDialogcontr(true)
+        }}>
             <Image
                 src={props.imgData}
                 alt={aTour.tripName}      
-                width={2000}
-                height={1500}
+                layout="fill"
             />
         </div>
-        </Paper>
         </>)
     }
-
     const carouselDisp=(theIMGArr)=>{
         return(<>
         <div className={styles.tourIMGCarousel}>
-            <Carousel>
                 {theIMGArr.map((elem, i)=>
                 <Imagedisp key={i} imgData={elem} /> )}
-            </Carousel>
         </div>
+        <Dialog open={imgDialogContr} maxWidth='xl' onClose={()=>srtImgDialogcontr(false)}>
+            <div className={styles.imgDialogCont}>
+                <div onClick={()=>{srtImgDialogcontr(false)}} className={styles.closeDialogBtn}>
+                    Close | x </div>
+                <div className={styles.dialogImgCont}>
+                    {selectedImg.src &&
+                        <><Image
+                            src={selectedImg.src}
+                            alt={selectedImg.alt}      
+                            width={2000}
+                            height={1500}
+                        />
+                        <h3>{selectedImg.alt}</h3>
+                    </>}
+                </div>
+            </div>
+        </Dialog>
         </>)
     }
-
     const priceDisplayer=(theTour)=>{
         
         if(theTour.prices.priceType==="private"){
@@ -126,7 +143,6 @@ function TourPage({ aTour }){
             </>)
         }
     }
-
     const tourIntroDetails=()=>{
         let countryList = aTour.countryList.map((elem, i)=><React.Fragment key={i}> { i >0 &&<> / </>}{elem} </React.Fragment>)
         return(<>
@@ -142,10 +158,6 @@ function TourPage({ aTour }){
             </div>
         </>)
     }
-
-
-
-
 
     return(<>
         <div className={styles.generalTourPage}>

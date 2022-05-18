@@ -15,6 +15,8 @@ import quitoSunrise from "../public/assets/images/tourCovers/quitoSunrise.jpg"
 import ruminahuiMountain from "../public/assets/images/tourCovers/ruminahuiMountain.jpg"
 import chimborazoVicunas from "../public/assets/images/tourCovers/chimborazoVicunas.jpg"
 import cotopaxiAerial from "../public/assets/images/tourCovers/cotopaxiAerial.jpg"
+
+
 import FlightIcon from '@mui/icons-material/Flight';
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import CancelIcon from '@mui/icons-material/Cancel';
@@ -63,6 +65,7 @@ export function LogoSwitcher(props){
 }
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
+
 let imageThumbnailArr=[
     {"src": galapagosSunset, "alt": "Galapagos Sunset"},
     {"src": cotopaxiClimb, "alt": "Cotopaxi Ecuador"},

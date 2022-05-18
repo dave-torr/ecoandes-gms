@@ -50,7 +50,7 @@ import { MultiSelect, Select } from '@mantine/core';
 //  // number of days
 
 
-let tourTypes = ["all types", "active", "family", "cruise", "expedition", "voyage"]
+let tourTypes = ["all types", "active", "cruise", "expedition", "voyage"]
 
 let ecoAndesDestinations= ['ecuador', 'galapagos', 'peru', 'bolivia', 'chile', 'argentina']
 
@@ -62,13 +62,20 @@ export default function TourPage(){
 
     useEffect(()=>{
             if(tourTypeFilter){
-                let workerTourArr = TourData.filter(elem => elem.tourType===tourTypeFilter)
-                setFilteredTourArr(workerTourArr)
+                if (tourTypeFilter==="all types"){
+                    console.log("cucu")
+                    setFilteredTourArr(TourData)
+                } else {
+                    let workerTourArr = TourData.filter(elem => elem.tourType===tourTypeFilter)
+                    setFilteredTourArr(workerTourArr)
+                }
             } else if (!tourTypeFilter){
                 setFilteredTourArr(TourData)
             }
 
     },[tourTypeFilter])
+
+    console.log(tourTypeFilter, "filter")
 
     useEffect(()=>{
         if(destFilter){

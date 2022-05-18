@@ -32,6 +32,46 @@
     padding: 12px 44px;
 }
 
+.tourIMGCarousel{
+    background-color: white;
+    padding: 9px 9vw;
+    margin-bottom: 2%;
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.338);
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 99%;
+    border: solid 1px black;
+}
+
+.aTourImage{
+    position: relative;
+    min-width: 400px;
+    height: 300px;
+    margin: 12px 18px;
+    box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.296);
+}
+.imgDialogCont{
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.dialogImgCont{
+    padding: 6px 12px;
+    border-radius: 5px;
+}
+
+.closeDialogBtn{
+    margin: 9px;
+    border: solid 3px var(--brick-red);
+    border-radius: 5px;
+    padding: 9px 12px;
+    width: fit-content;
+}
+
 .tourDetails{
     padding: 15px 0;
     display: flex;
@@ -63,13 +103,6 @@
     font-size: 1.2em;
 }
 
-.tourIMGCarousel{
-    width: 50%;
-    padding: 9px 15px;
-    background-color: white;
-    margin-bottom: 2%;
-    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.338);
-}
 
 .inclusionsExclusionsSec{
     display: flex;
