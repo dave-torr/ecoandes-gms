@@ -12,12 +12,14 @@ import EcoAndesFontFace from "./../public/assets/logos/fontFace.png"
 import UsFlagIcon from '../public/assets/logos/usFlag.svg'
 import SpainFlagIcon from '../public/assets/logos/spainFlag.svg'
 
+// with english/spanish switcher
+
+const contactNum1 = <><a target='_blank' href="tel:+593996406954"> <PhoneForwardedIcon fontSize="inherit" /></a> </> 
+const contactNum2 = <>&nbsp;<a target='_blank' href="https://wa.me/593987298410"><WhatsAppIcon fontSize="inherit" /></a></> 
+const contactEmail = <><a target='_blank' href="mailto:info@ecoandestravel.com"><MailOutlineIcon fontSize="inherit" /></a></>
 
 export function GeneralDataBar(props){
 
-    const contactNum1 = <><a target='_blank' href="tel:+593996406954"> <PhoneForwardedIcon/></a> </> 
-    const contactNum2 = <>&nbsp;<a target='_blank' href="https://wa.me/593987298410"><WhatsAppIcon /></a></> 
-    const contactEmail = <><a target='_blank' href="mailto:info@ecoandestravel.com"><MailOutlineIcon /></a></>
 
     const flagSwitcher =(langCont)=>{
         if (langCont==="engl"){
@@ -71,6 +73,19 @@ export function GeneralDataBar(props){
                 {eachMenuItem}
             </nav>
         </div>
+    </>)
+}
+
+export function EcoAndesBar(props){
+
+    return(<>
+    <div className={styles.ecoAndesBarGenCont}> 
+        <div className={styles.ecoAndesBarLinks}> 
+            {contactNum1} &nbsp; &nbsp; &nbsp; &nbsp;
+            {contactNum2} &nbsp; &nbsp; &nbsp; &nbsp;
+            {contactEmail} 
+        </div>
+    </div>
     </>)
 }
 

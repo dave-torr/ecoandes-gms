@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 import Image from "next/image"
 
+import {EcoAndesBar} from "./../../components/navis"
+
 import TourData from "../../data/itineraries"
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -19,8 +21,6 @@ import Dialog from '@mui/material/Dialog';
 
 
 ////////////////////////////////////////////////////////////
-
-
 
 function TourPage({ aTour }){
 
@@ -84,7 +84,17 @@ function TourPage({ aTour }){
             {accordionDisplayer("Day by Day", theDays, false)}
         </>)
     }
-
+    const mainImagedisp=(imageData)=>{
+        return(<>
+            <div className={styles.mainImage}>
+                <Image
+                    src={aTour.imgArr[0]}
+                    alt={aTour.tripName}
+                    layout="fill"
+                />
+            </div>
+        </>)
+    }
     function Imagedisp(props){
         return(<>        
         <div className={styles.aTourImage} onClick={()=>{
@@ -105,8 +115,10 @@ function TourPage({ aTour }){
     const carouselDisp=(theIMGArr)=>{
         return(<>
         <div className={styles.tourIMGCarousel}>
-                {theIMGArr.map((elem, i)=>
-                <Imagedisp key={i} imgData={elem} /> )}
+                {theIMGArr.map((elem, i)=><>
+                {i>0 && <> 
+                    <Imagedisp key={i} imgData={elem} /> 
+                </>} </>)}
         </div>
         <Dialog open={imgDialogContr} maxWidth='xl' onClose={()=>srtImgDialogcontr(false)}>
             <div className={styles.imgDialogCont}>
@@ -161,10 +173,14 @@ function TourPage({ aTour }){
 
     return(<>
         <div className={styles.generalTourPage}>
-            {carouselDisp(aTour.imgArr)} 
-            {tourIntroDetails()}
+        <EcoAndesBar />
             <div className={styles.tourContainer}>
-                {accordionDisplayer("Overview", tourOverview, true)}
+            {mainImagedisp()}
+            {tourIntroDetails()}
+            {accordionDisplayer("Overview", tourOverview, true)}
+            </div>
+            {carouselDisp(aTour.imgArr)} 
+            <div className={styles.tourContainer}>
                 {accordionDisplayer("Tour Inclusions / Exclusions", incExcCont, false)}
                 {dayByDaydisp(aTour.dayByDay)}
             </div>

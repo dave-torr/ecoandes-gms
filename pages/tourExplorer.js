@@ -4,7 +4,6 @@ import TourData from "../data/ecuItinEng"
 export default function TourExplorerPage(props){
 
 
-    console.log(TourData)
 
     let tourTypes = ["active", "family", "cruise", "expedition", "private", "voyage"]
 

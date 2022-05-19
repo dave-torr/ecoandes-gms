@@ -80,8 +80,24 @@
     transition: all ease 1s;
 }
 
-.footercont{
-    
+/* EcoAndes Bar */
+.ecoAndesBarGenCont{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    padding: 6px 15px;
+    justify-content: end;
+    display: flex;
+    background-color: var(--brown-main);
+    z-index: 50;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.22);
+    color: var(--pale-yellow);
+}
+
+.ecoAndesBarLinks{
+    display: flex;
+    margin-right: 33px;
+    font-size: 20px;
 }
 
 @media (max-width: 1200px) {

@@ -68,7 +68,7 @@ export default function TourExplorerPage(props){
     }
 
 
-    console.log(session)
+    // console.log(session)
 
     return(<>
         <div className={styles.generalPageCont}>

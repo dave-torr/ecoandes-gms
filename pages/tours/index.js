@@ -63,7 +63,6 @@ export default function TourPage(){
     useEffect(()=>{
             if(tourTypeFilter){
                 if (tourTypeFilter==="all types"){
-                    console.log("cucu")
                     setFilteredTourArr(TourData)
                 } else {
                     let workerTourArr = TourData.filter(elem => elem.tourType===tourTypeFilter)

@@ -6,10 +6,19 @@
     background-color: rgb(226, 225, 225);
     align-items: center;
     padding: 33px 0;
+    padding-top: 50px;
+}
+
+.accordionCont{
+    width: 100%;
 }
 
 .tourContainer{
     width: 1080px;
+    padding-bottom: 21px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .tourIntroCont{
     width: 1080px;
@@ -30,15 +39,15 @@
     letter-spacing: 2px;
     font-weight: 500;
     padding: 12px 44px;
+    text-transform: capitalize;
 }
 
 .tourIMGCarousel{
     background-color: white;
-    padding: 9px 9vw;
+    padding: 9px 33px;
     margin-bottom: 2%;
     box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.338);
     display: flex;
-    /* justify-content: center; */
     align-items: center;
     overflow-x: auto;
     white-space: nowrap;
@@ -53,6 +62,13 @@
     margin: 12px 18px;
     box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.296);
 }
+
+.mainImage{
+    width: 720px;
+    height: 540px;
+    position: relative;
+}
+
 .imgDialogCont{
     width: 90vw;
     display: flex;
@@ -70,6 +86,7 @@
     border-radius: 5px;
     padding: 9px 12px;
     width: fit-content;
+    cursor: pointer;
 }
 
 .tourDetails{
@@ -140,5 +157,36 @@
     }
     .tourIntroCont{
         width: 100%;
+    }
+    .mainImage{
+        width: 100%;
+        height: calc(100vw - 28vw );
+    }
+}
+@media (max-width: 600px) {
+    .tourCountryList{
+        font-size: 1em;
+        padding: 6px 12px;
+    }
+
+    .tourTitleBar{
+        font-size: 1.5em;
+        padding: 15px 33px;
+        text-align: center;
+    }
+    .tourDetails{
+        font-size: 0.9em;
+    }
+
+    .tourOverviewCont{
+        padding: 0 12px;
+        font-size: 1em;
+    }
+    .inclusionsExclusionsSec{
+        flex-direction: column;
+    }
+    .incExcCont{
+        width: 100%;
+        margin-bottom: 6px;
     }
 }
