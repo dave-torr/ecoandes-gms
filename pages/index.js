@@ -55,8 +55,6 @@ export default function Home(){
       </Paper>
     </>)
   }
-
-
   let desktoIMGArr=[
     {
       // "src": SeaLionPic,
@@ -84,10 +82,7 @@ export default function Home(){
            <a target='_blank' href="mailto:info@ecoandestravel.com"><div className={styles.cta1}>{langContent.ctas.ctaTwo}</div></a>
         </div>
         </div>
-
         {/* {carouselDisp(desktoIMGArr)} */}
-
-
       </div>
     </>)
   }
@@ -101,27 +96,45 @@ export default function Home(){
         <Image 
           src={imgData.src}
           alt={imgData.alt}
-          placeholder="blur"
+          height={210}
+          width={280}
         />
         <div className={styles.destTagLine}>{destination.tagLine}</div>
         <div className={styles.destinationCTA}>{langContent.destinationsSection.CTABtn}</div>
       </div>
     </>)
   }
+
+  let homeImgObj= {
+    "CuencaPic": "https://dsm01pap002files.storage.live.com/y4mmdwNmz3-EjlhRw3OP8DcKc_5PnGRDMJLb51VLY6W6g7IZLnYnqC7LW2HzVwQFouxC0Uu7b2C7GYW2QXiFHzV_m6YdNofRFURr5AxemCTCgTUnRVyry6xn-AtdYEJ6kCspHfg5ZdCaUJcGbyFwcKQhzsDsrPL8-ArJsA2IIAy5bIYSMoqLW4rHsViiz7HWa6l?width=2000&height=1325&cropmode=none",
+    "GpsCruising": "https://dsm01pap002files.storage.live.com/y4mH2mgkedRdSw08o107Q-_baPdeaopivoeurtirMHne0xu096b5Cy4booha2q_FmRK47Yv4KUWdpExNHxwLYy1OOPEWuNAI77cCl9TYRVHVZQNJSCdajn6NBN8X4cDBrJbktuUVP-d0tmuD7onmqVth6J__wusHoxetWhy7U4VOkAAKBznYhA7VdCvUOD5WP6y?width=2000&height=1500&cropmode=none",
+    "CuscoOne": "https://dsm01pap002files.storage.live.com/y4mSWo99CV1Vsb-7iUxk2FGUh3UFX8LdPZ1xNF2SPWZE2gFto2ROHZYtshF0eZslhSZ5gyawkYPULYgdYHB3BtlADhGDlvdeb_xAXFNkcfsUdWGiBQaT4-G7LQbMZmJAZ6M42DEhHRfVAV9jV1JDBYKZ1UzCnFHM69Pjq3LHnYIsN7OIFRAgd4AkfaJYCKs8065?width=2000&height=1500&cropmode=none",
+
+
+  }
   const destinationCards=()=>{
     return(
       <>
+        <div className={styles.separatorDiv}/>
         <h1>{langContent.destinationsSection.title} </h1>
-        <div className={styles.landingSect}>
-          {eachDestinationCard( {"src": CuencaPic, "alt": "Cuenca | Ecuador"}, {"country": "Ecuador", "tagLine": langContent.destinationsSection.ecuadorTag} )}
-          {eachDestinationCard( {"src": GpsCruising, "alt": "Cruise Galapagos | Ecuador"}, {"country": "Galapagos", "tagLine": langContent.destinationsSection.gpsTag} )}
-          {eachDestinationCard( {"src": CuscoOne, "alt": "Inti Raymi Cusco | Peru"}, {"country": "Peru", "tagLine": langContent.destinationsSection.peruTag} )}
+        <br></br>
+        <br></br>
+        <div className={styles.destLandingSect}>
+          
+          {eachDestinationCard( {"src": homeImgObj.CuencaPic, "alt": "Cuenca | Ecuador"}, {"country": "Ecuador", "tagLine": langContent.destinationsSection.ecuadorTag} )}
+          
+          {eachDestinationCard( {"src": homeImgObj.GpsCruising, "alt": "Cruise Galapagos | Ecuador"}, {"country": "Galapagos", "tagLine": langContent.destinationsSection.gpsTag} )}
+          
+          {eachDestinationCard( {"src": homeImgObj.CuscoOne, "alt": "Inti Raymi Cusco | Peru"}, {"country": "Peru", "tagLine": langContent.destinationsSection.peruTag} )}
         </div>
         <br></br>
         <div className={styles.landingSect}>
-          {eachDestinationCard( {"src": PatagoniaOne, "alt": "Patagonia | Chile"}, {"country": "Chile", "tagLine": langContent.destinationsSection.chileTag} )}
-          {eachDestinationCard( {"src": Tiwanaku, "alt": "Tiwanaku | Bolivia"}, {"country": "Bolivia", "tagLine": langContent.destinationsSection.boliTag} )}
-          {eachDestinationCard( {"src": Travellers, "alt": "Travelling Southamerica"}, {"country": "Best of!", "tagLine": langContent.destinationsSection.featTours} )}
+          
+          {/* {eachDestinationCard( {"src": PatagoniaOne, "alt": "Patagonia | Chile"}, {"country": "Chile", "tagLine": langContent.destinationsSection.chileTag} )} */}
+          
+          {/* {eachDestinationCard( {"src": Tiwanaku, "alt": "Tiwanaku | Bolivia"}, {"country": "Bolivia", "tagLine": langContent.destinationsSection.boliTag} )} */}
+          
+          {/* {eachDestinationCard( {"src": Travellers, "alt": "Travelling Southamerica"}, {"country": "Best of!", "tagLine": langContent.destinationsSection.featTours} )} */}
         </div>
       </>
     )
@@ -190,7 +203,7 @@ export default function Home(){
       {landingSec()}
 
 
-      {/* {destinationCards()} */}
+      {destinationCards()}
 
       {additionalDataAndLinks()}
     </div>

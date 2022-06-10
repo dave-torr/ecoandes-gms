@@ -81,7 +81,15 @@
   text-transform: capitalize;
   background-color: white;
   cursor: pointer;
+  margin: 15px;
 }
+
+.destLandingSect{
+  width: 1080px;
+  display: flex;
+  justify-content: space-around;
+}
+
 
 .destTagLine{
   font-style: italic;
@@ -97,6 +105,13 @@
   text-transform: uppercase;
   font-weight: 500;
   padding: 6px;
+}
+
+.separatorDiv{
+  margin-top: 21px;
+  width: 800px;
+  height: 1px;
+  background-color: grey;
 }
 
 .compDescr2{
@@ -128,8 +143,14 @@
   box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.353);
 }
 
-@media (max-width: 600px) {
-  /* .landingSect1{
-
-  } */
+@media (max-width: 1080px) {
+  .destLandingSect{
+    width: 100%;
+  }
+}
+@media (max-width: 900px) {
+  .destLandingSect{
+    width: 100%;
+    flex-wrap: wrap;
+  }
 }

@@ -86,7 +86,7 @@
     position: fixed;
     top: 0;
     padding: 6px 15px;
-    justify-content: end;
+    justify-content: flex-end;
     display: flex;
     background-color: var(--brown-main);
     z-index: 50;

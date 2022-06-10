@@ -8,6 +8,10 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import ExploreIcon from '@mui/icons-material/Explore';
+import EventIcon from '@mui/icons-material/Event';
+import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 
 import styles from "../../styles/pages/aTour.module.css"
 import Dialog from '@mui/material/Dialog';
@@ -144,14 +148,14 @@ function TourPage({ aTour }){
         if(theTour.prices.priceType==="private"){
             // display last elem of price arr
             return(<>
-                <span> PRIVATE <br/> DEPARTURE </span>
-                <span> PRICES FROM <br/> ${theTour.prices['4stars'][9]} p. person </span>
+                <span> <EventIcon/> PRIVATE <br/> DEPARTURE </span>
+                <span> <LocalOfferIcon /> PRICES FROM <br/> ${theTour.prices['4stars'][9]} p. person </span>
             </>)
         } else if(theTour.prices.priceType==="fixedDeparture"){
             // display fixed dep price
             return(<>
-                <span> FIXED <br/> DEPARTURE </span>
-                <span> PRICES FROM <br/> ${theTour.prices.pricePerPerson} p. person </span>
+                <span> <EventIcon/> FIXED <br/> DEPARTURE </span>
+                <span> <LocalOfferIcon /> PRICES FROM <br/> ${theTour.prices.pricePerPerson} p. person </span>
             </>)
         }
     }
@@ -163,8 +167,8 @@ function TourPage({ aTour }){
                     <strong>Destinations:</strong> {countryList}</div>
                 <div className={styles.tourTitleBar}>{aTour.tripName}</div>
                 <div className={styles.tourDetails}>
-                    <span>{aTour.duration} <br/> DAYS </span>
-                    <span> TOUR TYPE: <br/> {aTour.tourType} </span>
+                    <span> <AccessTimeIcon /> {aTour.duration} <br/> DAYS </span>
+                    <span><ExploreIcon /> TOUR TYPE: <br/> {aTour.tourType} </span>
                     {priceDisplayer(aTour)}
                 </div>
             </div>

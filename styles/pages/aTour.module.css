@@ -32,14 +32,12 @@
 }
 
 .tourTitleBar{
-    background-color: var(--brown-main);
     width: 100%;
-    color: white;
     font-size: 2.5em;
     letter-spacing: 2px;
-    font-weight: 500;
     padding: 12px 44px;
     text-transform: capitalize;
+    
 }
 
 .tourIMGCarousel{
@@ -96,14 +94,15 @@
     align-items: center; 
     text-align: center;  
     font-size: 1.2em;
+    color: var(--brick-red);
 }
 
 .tourDetails > span{
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
     padding: 9px 21px;
-    color: var(--brick-red);
     font-weight: 500;
     border-right: solid 2px var(--brick-red);
     text-transform: capitalize;

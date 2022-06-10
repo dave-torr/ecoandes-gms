@@ -74,8 +74,6 @@ export default function TourPage(){
 
     },[tourTypeFilter])
 
-    console.log(tourTypeFilter, "filter")
-
     useEffect(()=>{
         if(destFilter){
             let destFiltArr= TourData.filter((elem) =>  elem.countryList.includes(destFilter)===true  )
