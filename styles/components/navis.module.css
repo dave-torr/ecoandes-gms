@@ -34,7 +34,9 @@
 }
 .naviLogo2{
     width: 160px;
-
+}
+.naviLogo3{
+    width: 210px;
 }
 
 .langSwitcherCont{
@@ -85,7 +87,7 @@
     width: 100%;
     position: fixed;
     top: 0;
-    padding: 6px 15px;
+    padding: 2px 12px;
     justify-content: flex-end;
     display: flex;
     background-color: var(--brown-main);
@@ -98,6 +100,30 @@
     display: flex;
     margin-right: 33px;
     font-size: 20px;
+}
+
+/* Navi2 */
+.navi2GenCont{
+    width: 100%;
+    padding: 15px 5%;
+    background-color: var(--brown-main);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.naviHamburger{
+    display: flex;
+    flex-direction: column;
+    border: solid 2px transparent;
+    border-radius: 5px;
+}
+
+.naviHamburger span{
+    width: 40px;
+    height: 2px;
+    background-color: whitesmoke;
+    margin: 3px;
 }
 
 @media (max-width: 1200px) {

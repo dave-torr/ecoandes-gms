@@ -116,7 +116,10 @@ export default function Home(){
     return(
       <>
         <div className={styles.separatorDiv}/>
+        <div className={styles.destinationsSection}>
         <h1>{langContent.destinationsSection.title} </h1>
+</div>
+        
         <br></br>
         <br></br>
         <div className={styles.destLandingSect}>

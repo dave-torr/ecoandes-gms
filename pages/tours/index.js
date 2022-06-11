@@ -5,6 +5,8 @@ import Image from "next/image"
 import TourData from "../../data/itineraries"
 import styles from "./../../styles/pages/tours.module.css"
 
+import {EcoAndesBar, Navi2} from "./../../components/navis"
+
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import { MultiSelect, Select } from '@mantine/core';
@@ -247,6 +249,9 @@ export default function TourPage(){
 
     return(<>
         <div className={styles.generalTourPage}>  
+
+            <EcoAndesBar />
+            <Navi2 />
             {filtersUI()}
             {sortingFunct()}
             {tourdisplayer()}

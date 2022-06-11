@@ -6,8 +6,10 @@ import styles from "./../styles/components/navis.module.css"
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import PhoneForwardedIcon from '@mui/icons-material/PhoneForwarded';
+import Drawer from '@mui/material/Drawer';
 
 import CondorLogo from "../public/assets/logos/condor1.png"
+import EcoAndesWHT from "../public/assets/logos/ecoAndesWHT.png"
 import EcoAndesFontFace from "./../public/assets/logos/fontFace.png"
 import UsFlagIcon from '../public/assets/logos/usFlag.svg'
 import SpainFlagIcon from '../public/assets/logos/spainFlag.svg'
@@ -18,6 +20,9 @@ const contactNum1 = <><a target='_blank' href="tel:+593996406954"> <PhoneForward
 const contactNum2 = <>&nbsp;<a target='_blank' href="https://wa.me/593987298410"><WhatsAppIcon fontSize="inherit" /></a></> 
 const contactEmail = <><a target='_blank' href="mailto:info@ecoandestravel.com"><MailOutlineIcon fontSize="inherit" /></a></>
 
+
+// home menu
+// FFR Flagged for rename
 export function GeneralDataBar(props){
 
 
@@ -67,17 +72,19 @@ export function GeneralDataBar(props){
                     {contactNum2} &nbsp; | &nbsp;
                     {contactEmail}
                 </div>
+
                 {flagSwitcher(props.currentLang)}
+
             </div>
             <nav className={styles.navBtm}>
-                {eachMenuItem}
+
+                {/* {eachMenuItem} */}
             </nav>
         </div>
     </>)
 }
 
 export function EcoAndesBar(props){
-
     return(<>
     <div className={styles.ecoAndesBarGenCont}> 
         <div className={styles.ecoAndesBarLinks}> 
@@ -85,6 +92,33 @@ export function EcoAndesBar(props){
             {contactNum2} &nbsp; &nbsp; &nbsp; &nbsp;
             {contactEmail} 
         </div>
+    </div>
+    </>)
+}
+
+export function Navi2(props){
+    const [drawerToggle, setDrawerToggle] = useState(false)
+
+    return(<>
+    <div className={styles.navi2GenCont}>
+        <div className={styles.naviLogo3}>
+        <Image
+            src={EcoAndesWHT}
+            alt="EcoAndes Condor Logo"
+            layout="responsive"
+        /></div>
+        <div className={styles.naviHamburger} onClick={()=>setDrawerToggle(true)}>
+            <span />
+            <span />
+            <span />
+        </div>
+        <Drawer 
+            anchor={"top"}
+            open={drawerToggle}
+            onClose={()=>setDrawerToggle(false)}
+        >
+         NaviOpts
+        </Drawer>
     </div>
     </>)
 }

@@ -37,6 +37,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 }
 
 .introText{
@@ -58,7 +59,8 @@
   text-transform: capitalize;
   width: 190px;
   text-align: center;
-  cursor: pointer;
+  cursor: pointer; 
+
 }
 .cta2{
   border-radius: 5px;
@@ -115,10 +117,11 @@
 }
 
 .compDescr2{
-  width: 800px;
+  width: 900px;
   text-align: center;
   border-top: solid 1px black;
   margin-top: 50px;
+ 
 }
 
 .partnerLinks{
@@ -143,8 +146,27 @@
   box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.353);
 }
 
+.destinationsSection{
+  text-align: center;
+}
+
 @media (max-width: 1080px) {
+  .landingSect{
+    width: 100%;
+  }
+  .landingText{
+    width: 80%;
+  }
   .destLandingSect{
+    width: 100%;
+  }
+
+  .compDescr2{
+    width: 100%;
+    padding: 12px 33px;
+  }
+
+  .partnerLinks{
     width: 100%;
   }
 }
@@ -153,4 +175,13 @@
     width: 100%;
     flex-wrap: wrap;
   }
+
+  .landingCTAs{
+    flex-direction: column;
+    align-items: center;    
+  }
+  .cta1{
+    margin: 9px;
+  }
+
 }
