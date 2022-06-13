@@ -78,7 +78,7 @@ export function GeneralDataBar(props){
             </div>
             <nav className={styles.navBtm}>
 
-                {/* {eachMenuItem} */}
+                {eachMenuItem}
             </nav>
         </div>
     </>)
@@ -112,12 +112,8 @@ export function Navi2(props){
             <span />
             <span />
         </div>
-        <Drawer 
-            anchor={"top"}
-            open={drawerToggle}
-            onClose={()=>setDrawerToggle(false)}
-        >
-         NaviOpts
+        <Drawer anchor={"top"} open={drawerToggle} onClose={()=>setDrawerToggle(false)} >
+            
         </Drawer>
     </div>
     </>)

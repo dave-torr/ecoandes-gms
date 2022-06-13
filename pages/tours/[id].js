@@ -12,6 +12,7 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ExploreIcon from '@mui/icons-material/Explore';
 import EventIcon from '@mui/icons-material/Event';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 import styles from "../../styles/pages/aTour.module.css"
 import Dialog from '@mui/material/Dialog';
@@ -99,6 +100,12 @@ function TourPage({ aTour }){
             </div>
         </>)
     }
+
+
+
+
+
+
     function Imagedisp(props){
         return(<>        
         <div className={styles.aTourImage} onClick={()=>{
@@ -116,13 +123,19 @@ function TourPage({ aTour }){
         </div>
         </>)
     }
+
     const carouselDisp=(theIMGArr)=>{
         return(<>
-        <div className={styles.tourIMGCarousel}>
-                {theIMGArr.map((elem, i)=><>
-                {i>0 && <> 
-                    <Imagedisp key={i} imgData={elem} /> 
-                </>} </>)}
+        <div className={styles.carouselSection}>
+            <div className={styles.tourIMGCarousel}>
+                    {theIMGArr.map((elem, i)=><>
+                    {i>0 && <> 
+                        <Imagedisp key={i} imgData={elem} /> 
+                    </>} </>)}
+            </div>
+            <div className={styles.carouselIconCont}>
+                <ArrowForwardIosIcon />
+            </div>
         </div>
         <Dialog open={imgDialogContr} maxWidth='xl' onClose={()=>srtImgDialogcontr(false)}>
             <div className={styles.imgDialogCont}>
@@ -143,6 +156,12 @@ function TourPage({ aTour }){
         </Dialog>
         </>)
     }
+
+
+
+
+
+
     const priceDisplayer=(theTour)=>{
         
         if(theTour.prices.priceType==="private"){

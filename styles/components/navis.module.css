@@ -117,10 +117,17 @@
     flex-direction: column;
     border: solid 2px transparent;
     border-radius: 5px;
+    cursor: pointer;
+    transition: all ease 0.5s;
+    padding: 3px;
+}
+
+.naviHamburger:hover{
+    border: solid 2px var(--pale-yellow);
 }
 
 .naviHamburger span{
-    width: 40px;
+    width: 35px;
     height: 2px;
     background-color: whitesmoke;
     margin: 3px;
