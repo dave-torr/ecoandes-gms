@@ -1,0 +1,34 @@
+.tourCardCont{
+    width: 320px; 
+    margin: 12px;   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.tourCardTextCont{
+    width: 90%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tourCardDestination{
+    text-transform: uppercase;
+    font-family: var(--serif-Font);
+}
+
+.tourCardCTA{
+    margin: 15px;
+    background-color: var(--pale-yellow);   
+    width: fit-content; 
+    padding: 9px 18px;
+    color: var(--brick-red);
+    text-transform: uppercase;
+    font-size: 0.8em;
+    letter-spacing: 1.5px;
+    font-weight: 800;
+}

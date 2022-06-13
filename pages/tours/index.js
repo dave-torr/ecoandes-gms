@@ -6,6 +6,7 @@ import TourData from "../../data/itineraries"
 import styles from "./../../styles/pages/tours.module.css"
 
 import {EcoAndesBar, Navi2} from "./../../components/navis"
+import {ATourCard} from "./../../components/tours"
 
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
@@ -122,9 +123,18 @@ export default function TourPage(){
             </Link>
         </>)
     }
+
+
     const tourdisplayer=()=>{
         return(
         <div className={styles.tourCardContainer}>
+
+
+            {<ATourCard 
+                aTour={filteredTourArr}
+            />}
+
+
             {filteredTourArr.length > 0 ?<>
                 {filteredTourArr.map((elem,i)=>
                     <React.Fragment key ={i}>
