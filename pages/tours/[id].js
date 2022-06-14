@@ -35,6 +35,8 @@ function TourPage({ aTour }){
 
     // FFE - Components
     const accordionDisplayer=(accordTitle, accordContent, openContr, numerator)=>{
+        let contentVar = accordContent.toString()
+        console.log(accordContent)
         return(<>
         <Accordion defaultExpanded={openContr} className={styles.accordionCont}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" > 
@@ -45,8 +47,7 @@ function TourPage({ aTour }){
         </>)
     }
 
-    // FFU - Replace by highlight list
-    const tourOverview = <div className={styles.tourOverviewCont}> {aTour.tripDescription} </div>
+
 
     const incExcDisplayer=(itemList, listTille)=>{
         let eachItem = itemList.map((elem, i)=><React.Fragment key={i}> <li className={styles.incExcItems}>{elem}</li></React.Fragment> )
@@ -89,22 +90,6 @@ function TourPage({ aTour }){
             {accordionDisplayer("Day by Day", theDays, false)}
         </>)
     }
-    const mainImagedisp=(imageData)=>{
-        return(<>
-            <div className={styles.mainImage}>
-                <Image
-                    src={aTour.imgArr[0]}
-                    alt={aTour.tripName}
-                    layout="fill"
-                />
-            </div>
-        </>)
-    }
-
-
-
-
-
 
     function Imagedisp(props){
         return(<>        
@@ -129,9 +114,8 @@ function TourPage({ aTour }){
         <div className={styles.carouselSection}>
             <div className={styles.tourIMGCarousel}>
                     {theIMGArr.map((elem, i)=><>
-                    {i>0 && <> 
                         <Imagedisp key={i} imgData={elem} /> 
-                    </>} </>)}
+                    </>)}
             </div>
             <div className={styles.carouselIconCont}>
                 <ArrowForwardIosIcon />
@@ -147,7 +131,7 @@ function TourPage({ aTour }){
                             src={selectedImg.src}
                             alt={selectedImg.alt}      
                             width={2000}
-                            height={1500}
+                            height={1125}
                         />
                         <h3>{selectedImg.alt}</h3>
                     </>}
@@ -156,12 +140,6 @@ function TourPage({ aTour }){
         </Dialog>
         </>)
     }
-
-
-
-
-
-
     const priceDisplayer=(theTour)=>{
         
         if(theTour.prices.priceType==="private"){
@@ -183,8 +161,14 @@ function TourPage({ aTour }){
         return(<>
             <div className={styles.tourIntroCont}>
                 <div className={styles.tourCountryList}>        
-                    <strong>Destinations:</strong> {countryList}</div>
-                <div className={styles.tourTitleBar}>{aTour.tripName}</div>
+                    Destinations: &nbsp;{countryList}</div>
+                <div className={styles.tourTitleBar}>
+                    {aTour.tripName}</div>
+                <a className={styles.tourOverview}> 
+                    {aTour.tripDescription} </a>
+                <div className={styles.privateDeparturesTitle}>
+                    Private Departures Available <i>Here</i></div>
+
                 <div className={styles.tourDetails}>
                     <span> <AccessTimeIcon /> {aTour.duration} <br/> DAYS </span>
                     <span><ExploreIcon /> TOUR TYPE: <br/> {aTour.tourType} </span>
@@ -193,25 +177,38 @@ function TourPage({ aTour }){
             </div>
         </>)
     }
+    const CTADisplayer =()=>{
+        return(<>
 
+        </>)
+    }
+
+
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
     return(<>
-        <div className={styles.generalTourPage}>
         <EcoAndesBar />
+        <article className={styles.generalTourPage}>
+        
             <div className={styles.tourContainer}>
-            {mainImagedisp()}
-            {tourIntroDetails()}
-            {accordionDisplayer("Overview", tourOverview, true)}
-            </div>
+            {/* {mainImagedisp()} */}
             {carouselDisp(aTour.imgArr)} 
-            <div className={styles.tourContainer}>
+            {tourIntroDetails()}
+            </div>
+            <div className={styles.tourDetailsContainer}>
                 {accordionDisplayer("Tour Inclusions / Exclusions", incExcCont, false)}
                 {dayByDaydisp(aTour.dayByDay)}
             </div>
-        </div>
+        </article>
     </>)
 }
 
-// Dynamic rendering shtuff
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+// Dynamic rendering shtuff:
+///////////////////////////////////////////////////////////////////////
+
+// Static url pats\hs from dynamic info
 export async function getStaticPaths(){
     const paths = TourData.map((elem)=>({
         params: { id: elem.id.toString() }
@@ -221,9 +218,11 @@ export async function getStaticPaths(){
         fallback: false
     }
 }
+// ssr page content from dynamic info
 export async function getStaticProps({ params }){
     // const sampleTour= { "general": "cucu" }
-    const thetours = TourData.filter(elem=> elem.id.toString() ===params.id )
+    const thetours = TourData.filter(elem=> 
+        elem.id.toString() ===params.id )
 
     return{
         props: {aTour: thetours[0] }

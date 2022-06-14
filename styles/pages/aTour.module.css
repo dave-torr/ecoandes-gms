@@ -3,10 +3,9 @@
     flex-direction: column;
     width: 100%;
     min-height: 100vh;
-    background-color: rgb(226, 225, 225);
     align-items: center;
     padding: 33px 0;
-    padding-top: 50px;
+    padding-top: 28px;
 }
 
 .accordionCont{
@@ -15,29 +14,34 @@
 
 .tourContainer{
     width: 1080px;
-    padding-bottom: 21px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 .tourIntroCont{
     width: 1080px;
+    padding: 45px;
 }
 
 .tourCountryList{
-    background-color: var(--pale-yellow);
-    padding: 6px 33px;
-    text-transform: capitalize;
-    font-size: 1.5em;
+    text-transform: uppercase;
+    font-size: 1.3em;
+    font-weight: 600;
+    color: var(--brick-red);
 }
 
 .tourTitleBar{
+    text-transform: uppercase;
+    font-size: 1.8em;
     width: 100%;
-    font-size: 2.5em;
     letter-spacing: 2px;
-    padding: 12px 44px;
-    text-transform: capitalize;
-    
+    margin: 15px 0;
+    font-weight: 300;
+}
+
+.tourOverview{
+    letter-spacing: 1px;
+    margin-bottom: 15px;
 }
 
 .carouselSection{
@@ -50,7 +54,6 @@
 .tourIMGCarousel{
     background-color: rgb(60, 61, 62);
     padding: 15px 55px;
-    margin: 2% 0;
     display: flex;
     align-items: center;
     overflow-x: auto;
@@ -61,7 +64,7 @@
 .aTourImage{
     position: relative;
     min-width: 400px;
-    height: 300px;
+    height: 225px;
     margin: 33px;
     box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.296);
     cursor: pointer;
@@ -78,9 +81,9 @@
     top: 50px;
 }
 
-
-
-
+.tourDetailsContainer{
+    width: 1080px;
+}
 
 .mainImage{
     width: 720px;
@@ -108,13 +111,25 @@
     cursor: pointer;
 }
 
+.privateDeparturesTitle{
+    font-weight: 600;
+    padding: 6px 9px;
+    width: fit-content;
+    transition: all ease 0.5s;
+    cursor: pointer;
+}
+
+.privateDeparturesTitle:hover{
+    background-color: var(--brick-red);
+    color: white;
+}
+
 .tourDetails{
     padding: 15px 0;
     display: flex;
     justify-content: center;
     align-items: center; 
     text-align: center;  
-    font-size: 1.2em;
     color: var(--brick-red);
 }
 
@@ -127,17 +142,12 @@
     font-weight: 500;
     border-right: solid 2px var(--brick-red);
     text-transform: capitalize;
+    font-size: 0.9em;
 }
 
 .tourDetails > span:last-of-type{
     /* target last span, remove border */
     border: none;
-}
-
-.tourOverviewCont{
-    text-align: justify;
-    padding: 21px;
-    font-size: 1.2em;
 }
 
 
@@ -147,7 +157,6 @@
 }
 
 .incExcCont{
-    background-color: white;
     border-radius: 3px;
     box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.35);
     width: 45%;
@@ -173,7 +182,6 @@
 @media (max-width: 1080px) {
     .tourContainer{
         width: 100%;
-        padding: 9px 18px;
     }
     .tourIntroCont{
         width: 100%;
@@ -181,6 +189,9 @@
     .mainImage{
         width: 100%;
         height: calc(100vw - 28vw );
+    }
+    .tourDetailsContainer{
+        width: 96%;
     }
 }
 @media (max-width: 600px) {
@@ -190,18 +201,12 @@
     }
 
     .tourTitleBar{
-        font-size: 1.5em;
-        padding: 15px 33px;
         text-align: center;
     }
     .tourDetails{
         font-size: 0.9em;
     }
 
-    .tourOverviewCont{
-        padding: 0 12px;
-        font-size: 1em;
-    }
     .inclusionsExclusionsSec{
         flex-direction: column;
     }
