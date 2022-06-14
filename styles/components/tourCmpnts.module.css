@@ -18,6 +18,7 @@
     justify-content: space-around;
     padding: 21px 0;
     transform: translateY(-33px);
+    text-align: center;
 }
 
 .tourCardCTA{

@@ -53,6 +53,15 @@ import { MultiSelect, Select } from '@mantine/core';
 //  // number of days
 
 
+    // const priceDisplayer=(priceObj)=>{
+    //     if(priceObj.priceType==="fixedDeparture"){
+    //         return(<>from usd ${priceObj.pricePerPerson}.- per person</>)
+    //     } else {
+    //         return (<>from usd ${priceObj['4stars'][9]}.- per person</>)
+    //     }
+    // }
+
+
 let tourTypes = ["all types", "active", "cruise", "expedition", "voyage"]
 
 let ecoAndesDestinations= ['ecuador', 'galapagos', 'peru', 'bolivia', 'chile', 'argentina']
@@ -84,61 +93,16 @@ export default function TourPage(){
         } else {setFilteredTourArr(TourData)}        
     },[destFilter])
 
-// FLAGGED FOR EXPORT
-    const aMapFunction=(theArray)=>{
-        let eachArrayItem=theArray.map((elem, i)=><React.Fragment key={i}>
-            {i>0 &&<> | </>}{elem} 
-        </React.Fragment>)
-        return(<>{eachArrayItem}</>)
-    }
-// FFExp
-    const eachTourCard = (tourData)=>{
-        return(<>
-            <Link href={`/tours/${tourData.id}`}> 
-                <div className={styles.aTourCard}>
-                    <div className={styles.eachTourDetails}>
-                        <div className={styles.tourtype}>
-                            {tourData.tourType}
-                        </div>
-                        <div className={styles.tourCardDestination}>
-                            {aMapFunction(tourData.countryList)}
-                        </div>
-                        <h3>{tourData.tripName}</h3>
-                    </div>
-                    <div className={styles.tourImg}>
-                        <Image 
-                            src={tourData.imgArr[0]}
-                            width={250}
-                            height={180}
-                            alt={tourData.tripName}
-                        />
-                    </div>
-                    <div className={styles.durationPriceDisp}>
-                        <div className={styles.tourCardDurtion}>
-                            {tourData.duration} Day Itinerary
-                        </div>
-                            {priceDisplayer(tourData.prices)}
-                    </div>
-                </div>
-            </Link>
-        </>)
-    }
-
 
     const tourdisplayer=()=>{
         return(
         <div className={styles.tourCardContainer}>
-
-
-            {<ATourCard 
-                aTour={filteredTourArr}
-            />}
-
-
             {filteredTourArr.length > 0 ?<>
                 {filteredTourArr.map((elem,i)=>
                     <React.Fragment key ={i}>
-                        {eachTourCard(elem)}
+                        {<ATourCard 
+                            aTour={elem}
+                        />}
                     </React.Fragment>)}
             </>:<>
                 <div className="={styles.placeholderCont"> 
@@ -149,13 +113,7 @@ export default function TourPage(){
             </>}
         </div>)
     }
-    const priceDisplayer=(priceObj)=>{
-        if(priceObj.priceType==="fixedDeparture"){
-            return(<>from usd ${priceObj.pricePerPerson}.- per person</>)
-        } else {
-            return (<>from usd ${priceObj['4stars'][9]}.- per person</>)
-        }
-    }
+
 
     const [destPickerList, setDestList] = useState()
 

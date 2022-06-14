@@ -4,18 +4,9 @@ import Image from "next/image"
 
 import styles from "./../styles/components/tourCmpnts.module.css"
 
-// export function generalTourDisplayer(props){
-// }
-
 export function ATourCard(props){
 
-
-//  Todo: 
-// review look and feel for LTC brand
-
-
-    let theTour = props.aTour[0]
-    console.log(theTour)
+    let theTour = props.aTour
 
     const aMapFunction=(theArray)=>{
         let eachArrayItem=theArray.map((elem, i)=><React.Fragment key={i}>
@@ -25,24 +16,25 @@ export function ATourCard(props){
     }
 
     return(<>
-    <div className={styles.tourCardCont}>
-        <div className={styles.tourCardImage}>
-            <Image 
-                src={"https://dsm01pap002files.storage.live.com/y4mmdRtxsqwrE9QkPjWuZfWoaMEbnh-cYr7VY0b0oOSus6PCZOwWkVzn2bRlhfC-dyEbMdsRfOLB3yQggEWhCItazuS8zITKLtxRpb9Tn-AeaRyCAITlWcyNHlR1dNCWpxTIIm_0UZdYLwe6ppZ8_o9cVRMarzbFEFfejX0qfup9qzaW16l9wtQ0-DW3KWk-V0A?width=2000&height=1125&cropmode=none"}
-                width={320}
-                height={180}
-                alt={"test"}
-            />
-        </div>
+    <Link href={`/tours/${theTour.id}`}>
+        <div className={styles.tourCardCont} >
+            <div className={styles.tourCardImage}>
+                <Image 
+                    src={theTour.imgArr[0]}
+                    width={320}
+                    height={180}
+                    alt={`A tour image: ${theTour.tripName}`}
+                />
+            </div>
 
-        <div className={styles.tourCardTextCont}>
-            <div className={styles.tourCardDestinations} > 
-            {aMapFunction(theTour.countryList)} </div>
-            <div className={styles.tourCardTripName}> {theTour.tripName} </div>
-            <div > {theTour.duration} Day Itinerary </div>
-            <div className={styles.tourCardCTA}> see experience </div>
+            <div className={styles.tourCardTextCont}>
+                <div className={styles.tourCardDestinations} > 
+                {aMapFunction(theTour.countryList)} </div>
+                <div className={styles.tourCardTripName}> {theTour.tripName} </div>
+                <div > {theTour.duration} day itinerary &nbsp;  | &nbsp; {theTour.tourType} </div>
+                <div className={styles.tourCardCTA}> see experience </div>
+            </div>
         </div>
-
-    </div>
+    </Link>
     </>)
 }
