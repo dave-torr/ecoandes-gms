@@ -14,15 +14,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.tourCardDestination{
-    text-transform: uppercase;
-    font-family: var(--serif-Font);
+    height: 200px;
+    justify-content: space-around;
+    padding: 21px 0;
+    transform: translateY(-33px);
 }
 
 .tourCardCTA{
-    margin: 15px;
     background-color: var(--pale-yellow);   
     width: fit-content; 
     padding: 9px 18px;
@@ -31,4 +29,16 @@
     font-size: 0.8em;
     letter-spacing: 1.5px;
     font-weight: 800;
+    margin: 15px 0;
+}
+
+.tourCardDestinations{
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--brick-red);
+}
+
+.tourCardTripName{
+    font-weight: 650;
+    letter-spacing: 0.9px;
 }

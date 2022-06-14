@@ -9,6 +9,11 @@ import styles from "./../styles/components/tourCmpnts.module.css"
 
 export function ATourCard(props){
 
+
+//  Todo: 
+// review look and feel for LTC brand
+
+
     let theTour = props.aTour[0]
     console.log(theTour)
 
@@ -31,11 +36,10 @@ export function ATourCard(props){
         </div>
 
         <div className={styles.tourCardTextCont}>
-            <h1> {theTour.tripName} </h1>
-            <div className={styles.tourCardDestination}> 
-                {aMapFunction(theTour.countryList)} </div>
-            <div className={styles.tourCardDurtion}>
-                {theTour.duration} Day Itinerary </div>
+            <div className={styles.tourCardDestinations} > 
+            {aMapFunction(theTour.countryList)} </div>
+            <div className={styles.tourCardTripName}> {theTour.tripName} </div>
+            <div > {theTour.duration} Day Itinerary </div>
             <div className={styles.tourCardCTA}> see experience </div>
         </div>
 
