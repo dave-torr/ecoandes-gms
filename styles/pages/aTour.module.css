@@ -44,28 +44,36 @@
     margin-bottom: 15px;
 }
 
+
+
+
+
 .carouselSection{
     width: 100%;
     display: flex;
     flex-direction: column;
     position: relative;
+    border: solid 1px black;
 }
 
+
+
+
+
 .tourIMGCarousel{
-    background-color: rgb(60, 61, 62);
-    padding: 15px 55px;
     display: flex;
     align-items: center;
     overflow-x: auto;
     white-space: nowrap;
     width: 100%;
+    padding: 33px 66px;
 }
 
 .aTourImage{
     position: relative;
     min-width: 400px;
     height: 225px;
-    margin: 33px;
+    margin: 12px;
     box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.296);
     cursor: pointer;
 }
@@ -75,11 +83,28 @@
 /* give arrow animation, white box shadow, position center */
 
 
+.carouselIconCont2{
+    position: absolute;
+    right: 0;
+    top: 44%;
+    color: white;
+}
 .carouselIconCont{
     position: absolute;
     right: 0;
-    top: 50px;
+    top: 45%;
+    color: black;
 }
+
+@keyframes ArrowMovement{
+
+    50% { transform: translateX(-15px); }
+    100% {
+        transform: ;
+    }
+
+}
+
 
 .tourDetailsContainer{
     width: 1080px;

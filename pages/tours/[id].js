@@ -114,10 +114,15 @@ function TourPage({ aTour }){
         <div className={styles.carouselSection}>
             <div className={styles.tourIMGCarousel}>
                     {theIMGArr.map((elem, i)=><>
+                    {i>0&&<>
                         <Imagedisp key={i} imgData={elem} /> 
+                    </>}
                     </>)}
             </div>
             <div className={styles.carouselIconCont}>
+                <ArrowForwardIosIcon />
+            </div>
+            <div className={styles.carouselIconCont2}>
                 <ArrowForwardIosIcon />
             </div>
         </div>
@@ -156,6 +161,9 @@ function TourPage({ aTour }){
             </>)
         }
     }
+    // const pluralDisplayer=(theArr)=>{
+    //     if theArr.length()
+    // }
     const tourIntroDetails=()=>{
         let countryList = aTour.countryList.map((elem, i)=><React.Fragment key={i}> { i >0 &&<> / </>}{elem} </React.Fragment>)
         return(<>
@@ -183,6 +191,19 @@ function TourPage({ aTour }){
         </>)
     }
 
+    const mainImagedisp=()=>{
+        return(<>
+            <div className={styles.mainImgdisplayer}>
+                <Image
+                    src={"https://dsm01pap002files.storage.live.com/y4myB1YGB-G2w5DIakXalJn5tRo7Hopu5CD6U_iDqMHEAxLJ7-tDtoxXawSNnCOIMF9Q174dpXpFBDavlab-yGmLkQOEclAtMAJwVydTHo3OuCfW0o-oKTWa-KIWZ3FvEqWz0ZPpRCy3B0ic3sXZx8q-nh-1dJPGzkJLl2zpUiQ-YPU1THp3kYcmJqe4v8iALKF?width=2000&height=1125&cropmode=none"}
+                    height={1125}
+                    width={2000}
+                    alt="sss"
+                />
+            </div>
+        </>)
+    }
+
 
 ////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////
@@ -191,13 +212,13 @@ function TourPage({ aTour }){
         <article className={styles.generalTourPage}>
         
             <div className={styles.tourContainer}>
-            {/* {mainImagedisp()} */}
-            {carouselDisp(aTour.imgArr)} 
+            {mainImagedisp()}
             {tourIntroDetails()}
+            {carouselDisp(aTour.imgArr)} 
             </div>
             <div className={styles.tourDetailsContainer}>
-                {accordionDisplayer("Tour Inclusions / Exclusions", incExcCont, false)}
                 {dayByDaydisp(aTour.dayByDay)}
+                {accordionDisplayer("Tour Inclusions / Exclusions", incExcCont, false)}
             </div>
         </article>
     </>)
