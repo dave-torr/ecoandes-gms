@@ -210,11 +210,10 @@ function TourPage({ aTour }){
     return(<>
         <EcoAndesBar />
         <article className={styles.generalTourPage}>
-        
             <div className={styles.tourContainer}>
-            {mainImagedisp()}
-            {tourIntroDetails()}
-            {carouselDisp(aTour.imgArr)} 
+                {mainImagedisp()}
+                {tourIntroDetails()}
+                {carouselDisp(aTour.imgArr)} 
             </div>
             <div className={styles.tourDetailsContainer}>
                 {dayByDaydisp(aTour.dayByDay)}

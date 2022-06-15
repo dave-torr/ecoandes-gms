@@ -45,19 +45,12 @@
 }
 
 
-
-
-
 .carouselSection{
     width: 100%;
     display: flex;
     flex-direction: column;
     position: relative;
-    border: solid 1px black;
 }
-
-
-
 
 
 .tourIMGCarousel{
@@ -66,7 +59,8 @@
     overflow-x: auto;
     white-space: nowrap;
     width: 100%;
-    padding: 33px 66px;
+    padding: 0 66px;
+    padding-bottom: 33px;
 }
 
 .aTourImage{
@@ -83,24 +77,30 @@
 /* give arrow animation, white box shadow, position center */
 
 
-.carouselIconCont2{
-    position: absolute;
-    right: 0;
-    top: 44%;
-    color: white;
-}
 .carouselIconCont{
     position: absolute;
-    right: 0;
+    right: 15px;
     top: 45%;
     color: black;
+    animation-name: ArrowMovement;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+.carouselIconCont2{
+    position: absolute;
+    right: 15px;
+    top: 44%;
+    color: white;
+    animation-name: ArrowMovement;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
 }
 
 @keyframes ArrowMovement{
-
+    0% {transform: translateX(12px)}
     50% { transform: translateX(-15px); }
     100% {
-        transform: ;
+        transform: translateX(12px);
     }
 
 }
