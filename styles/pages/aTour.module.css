@@ -72,14 +72,9 @@
     cursor: pointer;
 }
 
-
-
-/* give arrow animation, white box shadow, position center */
-
-
 .carouselIconCont{
     position: absolute;
-    right: 15px;
+    right: 21px;
     top: 45%;
     color: black;
     animation-name: ArrowMovement;
@@ -88,7 +83,25 @@
 }
 .carouselIconCont2{
     position: absolute;
-    right: 15px;
+    right: 21px;
+    top: 44%;
+    color: white;
+    animation-name: ArrowMovement;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+.carouselIconCont3{
+    position: absolute;
+    left: 21px;
+    top: 45%;
+    transform: rotate(180deg);
+    animation-name: ArrowMovement;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+.carouselIconCont4{
+    position: absolute;
+    left: 21px;
     top: 44%;
     color: white;
     animation-name: ArrowMovement;

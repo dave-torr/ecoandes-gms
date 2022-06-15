@@ -13,6 +13,7 @@ import ExploreIcon from '@mui/icons-material/Explore';
 import EventIcon from '@mui/icons-material/Event';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 import styles from "../../styles/pages/aTour.module.css"
 import Dialog from '@mui/material/Dialog';
@@ -124,6 +125,12 @@ function TourPage({ aTour }){
             </div>
             <div className={styles.carouselIconCont2}>
                 <ArrowForwardIosIcon />
+            </div>
+            <div className={styles.carouselIconCont3}>
+                <ArrowBackIosIcon />
+            </div>
+            <div className={styles.carouselIconCont4}>
+                <ArrowBackIosIcon /> 
             </div>
         </div>
         <Dialog open={imgDialogContr} maxWidth='xl' onClose={()=>srtImgDialogcontr(false)}>
