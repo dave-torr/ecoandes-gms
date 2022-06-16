@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import Image from "next/image"
+import Link from "next/link"
 
 import {EcoAndesBar} from "./../../components/navis"
 
@@ -47,9 +48,6 @@ function TourPage({ aTour }){
         </Accordion>
         </>)
     }
-
-
-
     const incExcDisplayer=(itemList, listTille)=>{
         let eachItem = itemList.map((elem, i)=><React.Fragment key={i}> <li className={styles.incExcItems}>{elem}</li></React.Fragment> )
         return(<>
@@ -133,7 +131,7 @@ function TourPage({ aTour }){
                 <ArrowBackIosIcon /> 
             </div>
         </div>
-        <Dialog open={imgDialogContr} maxWidth='xl' onClose={()=>srtImgDialogcontr(false)}>
+        <Dialog open={imgDialogContr} fullScreen onClose={()=>srtImgDialogcontr(false)}>
             <div className={styles.imgDialogCont}>
                 <div onClick={()=>{srtImgDialogcontr(false)}} className={styles.closeDialogBtn}>
                     Close | x </div>
@@ -202,7 +200,7 @@ function TourPage({ aTour }){
         return(<>
             <div className={styles.mainImgdisplayer}>
                 <Image
-                    src={"https://dsm01pap002files.storage.live.com/y4myB1YGB-G2w5DIakXalJn5tRo7Hopu5CD6U_iDqMHEAxLJ7-tDtoxXawSNnCOIMF9Q174dpXpFBDavlab-yGmLkQOEclAtMAJwVydTHo3OuCfW0o-oKTWa-KIWZ3FvEqWz0ZPpRCy3B0ic3sXZx8q-nh-1dJPGzkJLl2zpUiQ-YPU1THp3kYcmJqe4v8iALKF?width=2000&height=1125&cropmode=none"}
+                    src={aTour.imgArr[0]}
                     height={1125}
                     width={2000}
                     alt="sss"
@@ -212,6 +210,22 @@ function TourPage({ aTour }){
     }
 
 
+    const breadcrumbNavigation=(theTour)=>{
+        return(<>
+            <div className={styles.breadcrumbNaviCont}>
+                <Link href="/" >
+                    <a >Home </a>
+                </Link>
+                <Link href="/tours" >
+                    <a > &nbsp; {"->"} &nbsp; itineraries </a>
+                </Link>
+                    <a > &nbsp; {"->"} &nbsp; {aTour.tripName} </a>
+            </div>
+        </>)
+    }
+
+
+
 ////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////
     return(<>
@@ -219,6 +233,7 @@ function TourPage({ aTour }){
         <article className={styles.generalTourPage}>
             <div className={styles.tourContainer}>
                 {mainImagedisp()}
+                {breadcrumbNavigation()}
                 {tourIntroDetails()}
                 {carouselDisp(aTour.imgArr)} 
             </div>
