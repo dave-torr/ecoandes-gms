@@ -169,6 +169,10 @@
   .partnerLinks{
     width: 100%;
   }
+
+  .separatorDiv{
+    width: 100%;
+  }
 }
 @media (max-width: 900px) {
   .destLandingSect{
