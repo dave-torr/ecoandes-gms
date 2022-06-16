@@ -208,8 +208,6 @@ function TourPage({ aTour }){
             </div>
         </>)
     }
-
-
     const breadcrumbNavigation=(theTour)=>{
         return(<>
             <div className={styles.breadcrumbNaviCont}>

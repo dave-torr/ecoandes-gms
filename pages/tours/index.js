@@ -68,9 +68,9 @@ let ecoAndesDestinations= ['ecuador', 'galapagos', 'peru', 'bolivia', 'chile', '
 
 export default function TourPage(){
 
-    const [destFilter, setDestFilter]= useState(0)
     const [tourTypeFilter, setTourTypeFilter]= useState(0)
     const [filteredTourArr, setFilteredTourArr]= useState(TourData)
+    const [destinationList, setDestList] = useState([])
 
     useEffect(()=>{
             if(tourTypeFilter){
@@ -87,14 +87,24 @@ export default function TourPage(){
     },[tourTypeFilter])
 
     useEffect(()=>{
-        if(destFilter){
-            let destFiltArr= TourData.filter((elem) =>  elem.countryList.includes(destFilter)===true  )
-            setFilteredTourArr(destFiltArr)
-        } else {setFilteredTourArr(TourData)}        
-    },[destFilter])
+
+        let tempTourArr =[]
+        if (destinationList.length>0){
+            destinationList.forEach(elem=>{
+                let tempArr = TourData.filter(tour=>{
+                    return tour.countryList.includes(elem)
+                })
+                tempTourArr= [...tempArr]
+            })
+            setFilteredTourArr(tempTourArr) 
+        } else {
+            setFilteredTourArr(TourData) 
+        }
+    },[destinationList])
 
 
     const tourdisplayer=()=>{
+        if(filteredTourArr){
         return(
         <div className={styles.tourCardContainer}>
             {filteredTourArr.length > 0 ?<>
@@ -111,11 +121,8 @@ export default function TourPage(){
                     <div className={styles.placeholderCTA}> Email our team! </div>
                 </div>
             </>}
-        </div>)
+        </div>)}
     }
-
-
-    const [destPickerList, setDestList] = useState()
 
     const filtersUI=()=>{
         return(<>
@@ -150,10 +157,6 @@ export default function TourPage(){
             </div>
         </>)
     }
-
-    useEffect(()=>{
-        console.log(destPickerList)
-    },[destPickerList])
 
     // Sort Functions
     const [sortContr, setSortContr]=useState(false)
