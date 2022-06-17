@@ -134,6 +134,32 @@
     margin: 3px;
 }
 
+.rightDrawerNaviGenCont{
+    padding: 9px 15px;
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 100vh;
+    background-color: #191919;
+    color: whitesmoke;
+}
+
+.menuItemsCont{
+    display: flex;
+    flex-direction: column;
+    text-transform: uppercase;
+    margin: 70px 0;
+}
+
+.eachMenuItem{
+    padding: 15px 0;
+    cursor: pointer;
+}
+
+.eachMenuItem:hover{
+    color: var(--pale-yellow);
+}
+
 @media (max-width: 1200px) {
     .generalNavBar{
         width: 100%;

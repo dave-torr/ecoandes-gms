@@ -207,10 +207,22 @@
     padding-bottom: 5px;
 }
 
-
-
+.tourPageIMGSection{
+    width: 100%;
+    display: flex;
+    justify-content: center;    
+    background-color: rgb(40, 40, 40);
+}
+.tourPageImageCont{
+    width: 1080px;
+}
 
 @media (max-width: 1080px) {
+
+    .tourPageImageCont{
+        width: 100%;
+        height: 56.25vw;
+    }
 
     .UIBTNCont{
         width: 100%;

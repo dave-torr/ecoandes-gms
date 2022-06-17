@@ -13,6 +13,7 @@ import EcoAndesWHT from "../public/assets/logos/ecoAndesWHT.png"
 import EcoAndesFontFace from "./../public/assets/logos/fontFace.png"
 import UsFlagIcon from '../public/assets/logos/usFlag.svg'
 import SpainFlagIcon from '../public/assets/logos/spainFlag.svg'
+import CloseIcon from '@mui/icons-material/Close';
 
 // with english/spanish switcher
 
@@ -99,6 +100,9 @@ export function EcoAndesBar(props){
 export function Navi2(props){
     const [drawerToggle, setDrawerToggle] = useState(false)
 
+    // const 
+
+
     return(<>
     <div className={styles.navi2GenCont}>
         <div className={styles.naviLogo3}>
@@ -112,8 +116,44 @@ export function Navi2(props){
             <span />
             <span />
         </div>
-        <Drawer anchor={"top"} open={drawerToggle} onClose={()=>setDrawerToggle(false)} >
+        <Drawer anchor={"right"} open={drawerToggle} onClose={()=>setDrawerToggle(false)} >
+            <div className={styles.rightDrawerNaviGenCont}> 
             
+                <div style={{width: "100%", textAlign: "end", cursor:"pointer"}} onClick={()=>setDrawerToggle(false)}> 
+                    <CloseIcon /> </div>
+                <div className={styles.menuItemsCont}> 
+
+{/* ////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////// */}
+
+{/* define WTF with these links once proposal is accepted */}
+
+
+
+
+
+                    <div className={styles.eachMenuItem}>home</div>
+                    <div className={styles.eachMenuItem}>about us</div>
+                    <div className={styles.eachMenuItem}>
+                        <Link href="/tours">
+                            itineraries
+                        </Link>
+                    </div>
+                    <div className={styles.eachMenuItem}>contact</div>
+
+
+
+
+
+
+
+                </div>
+                <div className={styles.ecoAndesBarLinks}> 
+                    {contactNum1} &nbsp; &nbsp; &nbsp; &nbsp;
+                    {contactNum2} &nbsp; &nbsp; &nbsp; &nbsp;
+                    {contactEmail} 
+                </div>
+            </div>
         </Drawer>
     </div>
     </>)

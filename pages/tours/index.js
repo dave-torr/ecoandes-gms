@@ -85,9 +85,7 @@ export default function TourPage(){
             }
 
     },[tourTypeFilter])
-
     useEffect(()=>{
-
         let tempTourArr =[]
         if (destinationList.length>0){
             destinationList.forEach(elem=>{
@@ -124,6 +122,7 @@ export default function TourPage(){
         </div>)}
     }
 
+
     const filtersUI=()=>{
         return(<>
             <div className={styles.UIBTNCont}> 
@@ -158,6 +157,7 @@ export default function TourPage(){
         </>)
     }
 
+    ///////////////////////////////////////////////
     // Sort Functions
     const [sortContr, setSortContr]=useState(false)
     const [sortOrder, setSortOrder]=useState("descending")
@@ -218,11 +218,29 @@ export default function TourPage(){
     },[sortOrder])
 
 
+    const tourPageImgDisplayer=()=>{
+
+        return(<>
+        <div className={styles.tourPageIMGSection}>
+            <div className={styles.tourPageImageCont}>
+                <Image 
+                    src={"https://dsm01pap002files.storage.live.com/y4mqelVaPOlAGHDOINMZyDPl1ZvZfb2bBvlv5OlWDV5o2FD9CODHKO7sjbN1EAWzk3NwK8YTXHofR-TEjvcFf3Vgx_uwaUuj9ELedR5rwVzaIgOBCKnQzMgZH1-is8XxSZQsGiwLbJzHbR66KqthOrZx_XhnYcR5IJee9-PIJvTJtx9e4AUjWsQZkaTGvEzM_R8?width=2000&height=1125&cropmode=none"}
+                    alt="A Trek Through the Peruvian Andes"
+                    width={2000}
+                    height={1125}
+                />
+            </div>
+        </div>
+        </>)
+    }
+
+
     return(<>
         <div className={styles.generalTourPage}>  
 
             <EcoAndesBar />
             <Navi2 />
+            {tourPageImgDisplayer()}
             {filtersUI()}
             {sortingFunct()}
             {tourdisplayer()}
