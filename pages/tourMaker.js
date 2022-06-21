@@ -2,18 +2,16 @@ import { useState, useEffect, useRef } from "react";
 import { useSession, signIn, signOut } from "next-auth/react"
 
 import ExploreIcon from '@mui/icons-material/Explore';
-import {ItineraryImagePicker, LogoSwitcher, HighlightAdder, TourDateAdder, DayByDayAdder} from "../components/forms"
+import {ItineraryImagePicker, HighlightAdder, TourDateAdder, DayByDayAdder} from "../components/forms"
 import CancelIcon from '@mui/icons-material/Cancel';
-import styles from "../styles/pages/tourExplorer.module.css"
+import styles from "../styles/pages/tourMaker.module.css"
+import { SignInForm, SignOutBtn } from "../components/authForms";
 
-export default function TourExplorerPage(props){
+export default function TourMakerPage(props){
 
 ///////////////////////////////////////////////
 
-    // SESSION ISSUES:
-    // difficulty in conencting with mongo-Session, trying redissession, to see wtf with sessions.
-
-    // Intersection observer WTF
+    // Import tour displayer and use it to build an itinerary from data filled in by user
 
 //////////////////////////////////////////////
 
@@ -24,16 +22,19 @@ export default function TourExplorerPage(props){
         "highlights":[],
         "dayByDay":[],
     })
-    const tourExplorerIntro=()=>{
+    const tourMakerIntro=()=>{
         return(<>
+            <SignOutBtn />
             <div className={styles.teIntroCont}>
-                <div className={styles.iconCont}>
-                    <ExploreIcon fontSize="large" />
-                </div>
-                <h1> Tour Explorer</h1>
+                <ExploreIcon fontSize="large" />
+                <h2>EcoAndes Travel</h2>
+                <h1>Tour Creator</h1>
             </div>
         </>)
     }
+
+    /////////////////////////////////////
+    // Tour Highlights
     const removeHighlight=(aList, prodIndex)=>{
         let tempList=[...aList];
         tempList.splice(prodIndex, 1)
@@ -55,8 +56,8 @@ export default function TourExplorerPage(props){
 
         return(<>
             <div className={styles.highlightList}> 
-            <h2> Tour Highlights: </h2>
-                {theHighlights} 
+                <h2> Tour Highlights: </h2>
+                    {theHighlights} 
             </div>
             <div>
                 <HighlightAdder 
@@ -67,42 +68,33 @@ export default function TourExplorerPage(props){
         </>)
     }
 
-
     // console.log(session)
 
     return(<>
         <div className={styles.generalPageCont}>
 
+            {tourMakerIntro()}
+            {session?<>
 
-            {tourExplorerIntro()}
+                <ItineraryImagePicker 
+                    aTour={aTourCreator} 
+                    tourEditor={setTourCreator} 
+                />
 
-            <ItineraryImagePicker 
-                aTour={aTourCreator} 
-                tourEditor={setTourCreator} 
-            />
-            <LogoSwitcher 
-                aTour={aTourCreator} 
-                tourEditor={setTourCreator} 
-            />
-            {highlightDispAdder()}
-            <TourDateAdder
-                aTour={aTourCreator} 
-                tourEditor={setTourCreator} 
-            />
+                {highlightDispAdder()}
 
-            <DayByDayAdder 
-                aTour={aTourCreator} 
-                tourEditor={setTourCreator} 
-            />
+                <TourDateAdder
+                    aTour={aTourCreator} 
+                    tourEditor={setTourCreator} 
+                />
 
+                <DayByDayAdder 
+                    aTour={aTourCreator} 
+                    tourEditor={setTourCreator} 
+                />
+            </>:<> 
+                <SignInForm />
+            </>}
         </div>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
     </>)
 }

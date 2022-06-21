@@ -1,5 +1,5 @@
 import React from "react"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { useSession, signIn, signOut } from "next-auth/react"
 
 import Dialog from '@mui/material/Dialog';
@@ -9,8 +9,7 @@ import {aTextInput} from "./forms"
 import styles from "../styles/components/forms.module.css"
 
 
-export function SignInForm(props){
-    const { data: session, status } = useSession()
+export function SignInForm(){
     const [userLogIn, setLogInObj]=useState({
         email: String,
         password: String
@@ -23,8 +22,6 @@ export function SignInForm(props){
         })
         if(status.error){
             window.alert(`Error logging in: ${status.error}`)
-        } else{
-            props.setMenuDisp("btns")
         }
     }
 
@@ -33,6 +30,7 @@ export function SignInForm(props){
             e.preventDefault()
             submitLogIn()
         }}>
+            Log In:
             {aTextInput("Email*", "email", userLogIn, setLogInObj, "email", true)}
             {aTextInput("Password*", "password", userLogIn, setLogInObj, "password", true)}
 
@@ -42,6 +40,21 @@ export function SignInForm(props){
 }
 /////////////////////////// ///////////////////////////
 //////////////////////////////////////////////////////
+
+
+export function SignOutBtn(){
+    const { data: session } = useSession()
+    return(<>
+        <div className={styles.authBar}>
+            {session&&<> 
+                <div className={styles.signOutBTN} onClick={()=>signOut()}>Sign Out</div>
+            </>}
+        </div>
+    </>)
+}
+
+
+// Only for Admins, IT department 
 export function UserSignupModal(props){
 
     // Create user sign up form

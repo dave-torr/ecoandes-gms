@@ -6,17 +6,11 @@
 }
 
 .teIntroCont{
-    margin: 21px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
     padding: 21px;
-    border-bottom: solid 1px black;
-}
-
-.iconCont{
-    text-align: center;
-}
-
-.teIntroCont h1{
-    margin: unset;
+    padding-top: 0;
 }
 
 .tourHighlightCont{

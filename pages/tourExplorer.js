@@ -12,5 +12,9 @@ export default function TourExplorerPage(props){
     return(<>
     
         <h1> Tour Exlorer Page</h1>
+
+        EcoAndes Tours
+        <br></br>
+        My Tours
     </>)
 }

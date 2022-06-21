@@ -30,7 +30,6 @@
 .gmsOptBTN:hover{
   background-color: white;
   box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.129);
-  margin: 9px 0;
   cursor: pointer;
 }
 
@@ -46,12 +45,6 @@
   width: fit-content;
 }
 
-.authBar{
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding: 12px;
-}
 
 @media (max-width: 600px) {
 

@@ -2,25 +2,12 @@ import React from "react"
 import { useState, useEffect } from "react"
 
 import Image from "next/image"
-// import galapagosSunset from "../public/assets/images/tourCovers/galapagosSunset.jpg"
-// import machuPicchu from "../public/assets/images/tourCovers/peruMachuPicchu.jpg"
-// import cotopaxiClimb from "../public/assets/images/tourCovers/cotopaxiClimb.jpg"
-// import galapagosCruising from "../public/assets/images/tourCovers/galapagosCruising.jpg"
-// import galapagosExploration from "../public/assets/images/tourCovers/galapagosExploration.jpg"
-// import galapagosBeach from "../public/assets/images/tourCovers/galapagosBeach.jpg"
-// import boliviaMountains from "../public/assets/images/tourCovers/boliviaMountains.jpg"
-// import hikingsouthAmerica from "../public/assets/images/tourCovers/hikingsouthAmerica.jpg"
-// import sunriseMountains from "../public/assets/images/tourCovers/sunriseMountains.jpg"
-// import quitoSunrise from "../public/assets/images/tourCovers/quitoSunrise.jpg"
-// import ruminahuiMountain from "../public/assets/images/tourCovers/ruminahuiMountain.jpg"
-// import chimborazoVicunas from "../public/assets/images/tourCovers/chimborazoVicunas.jpg"
-// import cotopaxiAerial from "../public/assets/images/tourCovers/cotopaxiAerial.jpg"
-
 
 import FlightIcon from '@mui/icons-material/Flight';
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import CancelIcon from '@mui/icons-material/Cancel';
 import Switch from '@mui/material/Switch';
+import AddBoxIcon from '@mui/icons-material/AddBox';
 
 //////////////////////////////////////////////////////////
 import styles from "../styles/components/forms.module.css"
@@ -63,49 +50,78 @@ export function LogoSwitcher(props){
         /> EcoAndes Travel Logo</div>
     </>)
 }
+
+export function TourMakerStepOne(){
+
+    // step one adds the following generalTourData:
+    // - Destinations
+    // - Trip Name
+    // - Client Reference (ex: Hunter x 4)
+    // - FIT | Agency | alt clientType
+    // - Days in Tour
+    // - Tour Language
+
+    // If Agency:
+    //  - Tour Code
+    //  - Company Contact
+    
+
+    // Optionals:
+    //  -- Tour Dates
+    //  -- Tour Ref?
+
+    // Hidden Details:
+    //  - Submitted by (user)
+    //  - Date of Submition
+
+
+    return(<>
+
+    </>)
+}
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
 
-// let imageThumbnailArr=[
-//     {"src": galapagosSunset, "alt": "Galapagos Sunset"},
-//     {"src": cotopaxiClimb, "alt": "Cotopaxi Ecuador"},
-//     {"src": galapagosCruising, "alt": "Galapagos Cruising"},
-//     {"src": galapagosExploration, "alt": "Galapagos Exploration"},
-//     {"src": galapagosBeach, "alt": "Galapagos Beach"},
-//     {"src": machuPicchu, "alt": "Machu Picchu"},
-//     {"src": boliviaMountains, "alt": "Bolivia Mountains"},
-//     {"src": hikingsouthAmerica, "alt": "Hiking South America"},
-//     {"src": sunriseMountains, "alt": "Mountains Sunrise"},
-//     {"src": quitoSunrise, "alt": "Quito Sunrise"},
-//     {"src": ruminahuiMountain, "alt": "Ruminahui Hike"},
-//     {"src": chimborazoVicunas, "alt": "Chimborazo Vicunas"},
-//     {"src": cotopaxiAerial, "alt": "Cotopaxi Aerial"},
-// ]
+// Image Arrays depending on destinations
+
+let imageThumbnailArr=[
+    {"src": "https://dsm01pap002files.storage.live.com/y4my2ZCpxo-_Y0Zo2hVBaeGxy70XewKRdQ2-XBX2f7WEr0H7ENC4gx2GTgdRlwQ-OAp2CQQwW780Q2CsxUBAEnCuHjvdYH-pQxAF2Sm_aGQknKJ1AozFvi-y40wq-ZiCByrxP2BXAjl1Rw6OWMJDgP0zi-n_9ucxDij9ig15AQnah7C1T3p63r0P4v3uxuJE2nH?width=2000&height=1125&cropmode=none", "alt": "Galapagos Sunset"},
+    {"src": "https://dsm01pap002files.storage.live.com/y4mTcP69dqCa6hXxDuiSMxnVH3wR59QSA3F7swcMV-WFwIPmkAIfYzv0bIpWO93Kx-e7PhlFqGb9M0wZlCD2UNGaF44eqg6HtVcCcT7VD3Hq0nfAQvEg2Py_53mMHxHq-5yxbONPA69zSIVjGTIC2dQDqCJXB4XqjRUQxg4MM9B-3Ed952f_swzd2GgHIcoepYQ?width=2000&height=1125&cropmode=none", "alt": "Cotopaxi Ecuador"},
+    {"src": "https://dsm01pap002files.storage.live.com/y4m5Gdyx7j3nkngt6qjO_svCfqRIZBld0b9kSzgBcJkJzGsAVk_fiqkSLSfxpHEYZOA2YwV4VgyRdsWNhxk47eGwgnCBoLT2MRsr-OM044Vl2Ll4qn7I8wXBXfC-GclFf_1sGZF86aZbp0CC301EO5PfOiPP1V-m7ZChs2mQk64ieoB8IA_pyT-f5RNgL8up655?width=2000&height=1125&cropmode=none", "alt": "Galapagos Cruising"},
+    {"src": "https://dsm01pap002files.storage.live.com/y4mjJUA_1Qt-mojHMzmhRfR2zc7EtZO2iZKDH4MjOwPBoIK0LPuu4Y1xlIjctwkWcxaRBwMJB1UICouSictYGFhnqA8DhaLLe24t2M8aZHn0fOXEDmG_EsmUVgHVUrP6thsYyQF5-5oDksTlajlc7AflGXjavh66J-SqOhIFQSh4-eUfMLSfPWnIPYEgD6GMqIe?width=2000&height=1125&cropmode=none", "alt": "Galapagos Exploration"},
+    {"src": "https://dsm01pap002files.storage.live.com/y4mnRVW6CzcHGKwEPATGzqaHm3iNNnBO3p2EeX4SLZNbBsev1SI8wW14XYkmAcIYWZXmVWgxkX0nRB1M7tzNQe6Mj19H86rvebriAcx400V0mztjqX_90QILfmYpFBUAAVWkDVMuokH-sJYdPo6AsOl6Jb6Imggk1yOLh5foW7G_guoyYwJj6ZTT8zlHACpoAhG?width=2000&height=1125&cropmode=none", "alt": "Galapagos Beach"},
+    {"src": "https://dsm01pap002files.storage.live.com/y4myB1YGB-G2w5DIakXalJn5tRo7Hopu5CD6U_iDqMHEAxLJ7-tDtoxXawSNnCOIMF9Q174dpXpFBDavlab-yGmLkQOEclAtMAJwVydTHo3OuCfW0o-oKTWa-KIWZ3FvEqWz0ZPpRCy3B0ic3sXZx8q-nh-1dJPGzkJLl2zpUiQ-YPU1THp3kYcmJqe4v8iALKF?width=2000&height=1125&cropmode=none", "alt": "Machu Picchu"},
+    {"src": "https://dsm01pap002files.storage.live.com/y4m3aF8TjUlNP33379Zfr9hccG-YjpT1T6XdREzzoO4fOOtuQy3SKavcNAaK8CVyuY7_kjP6_MaEKQZOMDymtILHC47-pQzJ_ye-AdLyxBsQl_ViCL1BLjYDm4Hl0FnDdiF_WHH13DtscNsEtQ2SgyOPB2mX11uMIWx2gz2mZ1488MZu9h_U0TnVyoiVRpXGyFh?width=2000&height=1125&cropmode=none", "alt": "Peru Adventures"},
+    {"src": "https://dsm01pap002files.storage.live.com/y4mR7dpVM_yJP26M4bwLpbcKd22XCcV7kImtZMNMFJCKN76CsrmnTW2WlHz2bro4s556piy0_XgW_WSw04ni9Huf5y8Uwr7vPHDarzbvixvHXmr-iKiku0rpWxWm6Jd4MISJB5RkQX7QrXkrfGOGU_wu42S5KThuI1LDsjlgKy-EeN3dEh8MvP-qLvvP1z-qKR9?width=2000&height=1125&cropmode=none", "alt": "Hiking South America"},
+    {"src": "https://dsm01pap002files.storage.live.com/y4mqdvYnDS7uW0-oeT7JCSiy0ro0ckho6-jxZxSoJItLJK0-cVJ3tr1HnUtKNiPVbuzNf7yjRM5kyfItAGvif-DT42cSfB8uzk8bGQUKeKp3ljOT8GHmsm6Yz-jgKqXDFNVZTakYUD2NhIW4Tjj2B_rznT6hiyzlmqNaM0r9LcwUBmw4WeXCkEXNqv9D49aFg2-?width=2000&height=1125&cropmode=none", "alt": "Mountains Sunrise"},
+    {"src": "https://dsm01pap002files.storage.live.com/y4mO41fd643xsoe3ffct7wDOiAx1AnuUw_jtt7EjAda2vgIPwgjIf1rRGrk6l42gc2IvTmht-SiXtFnlHELJ3KZpBfhQKeaYsTRLGPEzgXthGourdfrd1NywauKMkgqNqVndMQMAsROYqs-5keSrtvXX8WujGplaw3mC5XlLom_xtcFpTFfS7nCEOEQiiCHlks-?width=2000&height=1125&cropmode=none", "alt": "Cotopaxi Sunrise"},
+]
+
 export function ItineraryImagePicker(props){
-
     const [imageCap, setImageCap]=useState("Please Pick an image!")
 
-    // let thumbNails = imageThumbnailArr.map((elem, i)=><React.Fragment key={i}>
-    //     <div className={styles.imageThumbnail} 
-    //         onMouseEnter={()=>{setImageCap(elem.alt)}} 
-    //         onMouseLeave={()=>{
-    //             props.aTour.tourCover?
-    //             setImageCap("Thank you!")
-    //             :
-    //             setImageCap("Please Pick an image!")
-    //             }}
-    //         onClick={()=>props.tourEditor({...props.aTour, "tourCover": elem})}
-    //         >
-    //     <Image 
-    //         src={elem.src}
-    //         alt={elem.alt}
-    //         layout="responsive"
-    //     /></div>
-    // </React.Fragment>)
+    let thumbNails = imageThumbnailArr.map((elem, i)=><React.Fragment key={i}>
+        <div className={styles.imageThumbnail} 
+            onMouseEnter={()=>{setImageCap(elem.alt)}} 
+            onMouseLeave={()=>{
+                props.aTour.tourCover?
+                setImageCap("Thank you!")
+                :
+                setImageCap("Please Pick an image!")
+                }}
+            onClick={()=>props.tourEditor({...props.aTour, "tourCover": elem})}
+            >
+        <Image 
+            src={elem.src}
+            alt={elem.alt}
+            width={2000}
+            height={1125}
+        /></div>
+    </React.Fragment>)
     return(
         <>
             <div className={styles.imageThumbnailDisp}> 
-            {/* {thumbNails}  */}
+            {thumbNails} 
             </div>
             <h2> {imageCap}</h2>
         </>
@@ -113,8 +129,13 @@ export function ItineraryImagePicker(props){
 }
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
-import AddBoxIcon from '@mui/icons-material/AddBox';
+
 export function HighlightAdder(props){
+
+
+    // add highlights or add a tour comment
+
+
     const [aHighlight, setAHighlight]=useState('')
     const highlightSubmit=()=>{
         let highlightArr=props.aTour.highlights.concat(aHighlight)
