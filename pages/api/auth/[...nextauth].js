@@ -48,6 +48,7 @@ export default NextAuth({
         async jwt({ token, user }) {
             if (user) {
             token.userType = user.userType
+            token.profilePic = user.profilePic
             }
             return token
         },
@@ -56,7 +57,8 @@ export default NextAuth({
             if( token ){
                 session.user = {
                     ...session.user,
-                    "userType": token.userType
+                    "userType": token.userType,
+                    "profilePic": token.profilePic
                 }
             return session  
             }

@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import React, { useState } from 'react'
+import { useRouter } from 'next/router'
 import Link from 'next/link'
+
 import styles from "./../styles/components/navis.module.css"
 
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
@@ -166,4 +168,41 @@ export function GeneralFooter(props){
 
         </footer>
     </>) 
+}
+
+export function GmsUserNavi(props){
+    const [drawerToggle, setDrawerToggle] = useState(false)
+    const router = useRouter()
+
+    return(<>
+        <div className={styles.gmsUserNavCont}> 
+            <div className={styles.gmsUserNavBurger} onClick={()=>setDrawerToggle(true)}>
+                <span />
+                <span />
+                <span />
+            </div>
+            <div className={styles.gmsUserProfilePic}  onClick={()=>setDrawerToggle(true)}>
+                <Image 
+                    src={props.user.profilePic}
+                    alt={`${props.user.name}'s profile pic`}
+                    width={55}
+                    height={55}
+                />
+            </div>
+        </div>
+        <Drawer anchor={"right"} open={drawerToggle} onClose={()=>setDrawerToggle(false)} >
+
+            {/* Change Spans to Link when operational */}
+
+            <div className={styles.userNaviDrawer}>
+                <h3> Hi {props.user.name} </h3>
+                <div className={styles.userNaviDrawerBTNs}>
+                    {router.pathname!="/tourCreator"&&<> <span> Tour Creator</span></>}
+                    {router.pathname!="/tourExplorer"&&<> <span> Tour Explorer</span></>}
+                    {router.pathname!="/operations"&&<> <span> Tour Creator</span></>}
+                </div>
+                {props.signOut}
+            </div>
+        </Drawer>
+    </>)
 }

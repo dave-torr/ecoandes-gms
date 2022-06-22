@@ -6,6 +6,7 @@ import {ItineraryImagePicker, HighlightAdder, TourDateAdder, DayByDayAdder} from
 import CancelIcon from '@mui/icons-material/Cancel';
 import styles from "../styles/pages/tourMaker.module.css"
 import { SignInForm, SignOutBtn } from "../components/authForms";
+import { GmsUserNavi } from "../components/navis";
 
 export default function TourMakerPage(props){
 
@@ -24,7 +25,10 @@ export default function TourMakerPage(props){
     })
     const tourMakerIntro=()=>{
         return(<>
-            <SignOutBtn />
+        {/* Display Sign out btn and user options as pop up menu */}
+        {session&&<> 
+        <GmsUserNavi user={session.user} signOut={<SignOutBtn/>} />
+        </>}
             <div className={styles.teIntroCont}>
                 <ExploreIcon fontSize="large" />
                 <h2>EcoAndes Travel</h2>
@@ -68,7 +72,7 @@ export default function TourMakerPage(props){
         </>)
     }
 
-    // console.log(session)
+    console.log(session)
 
     return(<>
         <div className={styles.generalPageCont}>

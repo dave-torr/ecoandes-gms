@@ -59,6 +59,7 @@
 .tourOverview{
     letter-spacing: 1px;
     margin-bottom: 15px;
+    text-align: justify;
 }
 
 
@@ -156,6 +157,8 @@
     margin-top: 33px;
     padding: 6px 12px;
     border-radius: 5px;
+    width: 100%;
+
 }
 
 .dialogImgCont h3{

@@ -183,8 +183,7 @@
     padding: 12px;
 }
 .authBar{
-  width: 100%;
-  display: flex;
+  width: fit-content;
   justify-content: space-between;
   padding: 12px;
 }

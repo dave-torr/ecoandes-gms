@@ -28,8 +28,8 @@ export default function GMS(){
       <>
         {/* PROTECTED ROUTES */}
           {session? <>
-            <div className={styles.gmsOptBTN}> <Link href="/tourMaker">
-              Tour Maker</Link></div> 
+            <div className={styles.gmsOptBTN}> <Link href="/tourCreator">
+              Tour Creator</Link></div> 
             <div className={styles.gmsOptBTN}> <Link href="/tourExplorer">
               Tour Explorer</Link></div> 
             <div className={styles.gmsOptBTN}> <Link href="/operations">
@@ -44,6 +44,8 @@ export default function GMS(){
       </>
     )
   }
+
+
 
   return (
     <div className={styles.container}>
