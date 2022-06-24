@@ -21,7 +21,7 @@ function TourPage({ aTour }){
 ////////////////////////////////////////////////////////////////////
     return(<>
         <EcoAndesBar />
-        <TourDisplayer aTour={aTour} />
+        <TourDisplayer aTour={aTour} breadcrumb={true} />
     </>)
 }
 

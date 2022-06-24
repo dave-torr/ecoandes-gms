@@ -98,19 +98,34 @@
         "tourType": "voyage",
         "prices": {
             "priceType": "fixedDeparture",
-            "pricePerPerson": 2490,
-            "singlesupp": 900,
+            "pricePerPerson": 3300,
+            "singlesupp": 540,
             "dblOccupancy": true,
             "departureDates": ["Saturdays - May through December"],
-            "priceNotice": "hotel categories will depend on locally available properties. "
+            "priceNotice": "hotel categories will depend on locally available properties. ",
+            "privateDeparture":{
+                "startDate":"",
+                "maxDate":"",
+                "priceRange":{
+                    "2px": 3910,
+                    "2to4px":3300,
+                    "5to6px":2795,
+                    "7to8px":2665,
+                    "9to10px":2510,
+                    "11to12px":2440,
+                    "13to14px":2405,
+                    "15to16px":2350
+                }
+            }
         },
         "included": [
-            "Vista Dome (or similar) train ticket",
-            "private transport",
+            "Exclusive Archeological Dig Site Participation",
+            "Vista Dome (or similar) train ticket to Aguas Calientes",
             "double room accommodation with private facilities",
             "english/spanish speaking local guide services",
-            "meals as indicated: 11 breakfasts, 6 lunches, 2 dinners", 
+            "private transport for each day",
             "attraction entrance fees",
+            "meals as indicated", 
             "noted excursions"
         ],
         "notIncluded": [
@@ -119,9 +134,9 @@
             "Meals not mentioned in itinerary",
             "personal expenses",
             "travel insurance",
-            "tips",
             "beverages",
-            "extras"
+            "extras",
+            "tips"
         ],
         "hotelList":[
             {

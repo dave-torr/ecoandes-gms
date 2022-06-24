@@ -214,8 +214,9 @@ export function TourDisplayer(props){
                     {aTour.tripName}</div>
                 <a className={styles.tourOverview}> 
                     {aTour.tripDescription} </a>
+                {aTour.prices.privateDeparture&&<>
                 <div className={styles.privateDeparturesTitle}>
-                    Private Departures Available <i>Here</i></div>
+                    Private Departures Available <i>Here</i></div> </>}
 
                 <div className={styles.tourDetails}>
                     <span> <AccessTimeIcon /> {aTour.duration} <br/> DAYS </span>
@@ -243,6 +244,7 @@ export function TourDisplayer(props){
         </>)
     }
     const breadcrumbNavigation=()=>{
+        if(props.breadcrumb){
         return(<>
             <div className={styles.breadcrumbNaviCont}>
                 <Link href="/" >
@@ -254,6 +256,11 @@ export function TourDisplayer(props){
                     <a>{"->"} {aTour.tripName}</a>
             </div>
         </>)
+        } else if (props.partnerLogo){
+            return(<>
+                <div className={styles.partnerLogo}>{props.partnerLogo}</div>
+            </>)
+        }
     }
     const hotelList=(theTour)=>{
         if(theTour.hotelList){
