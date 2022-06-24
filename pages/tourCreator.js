@@ -72,8 +72,6 @@ export default function TourMakerPage(props){
         </>)
     }
 
-    console.log(session)
-
     return(<>
         <div className={styles.generalPageCont}>
 
