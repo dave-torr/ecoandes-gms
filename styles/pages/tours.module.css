@@ -1,4 +1,5 @@
 /* TOUR COMPONENTS */
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 .generalTourPage{
     width: 100%;
@@ -212,9 +213,39 @@
     display: flex;
     justify-content: center;    
     background-color: rgb(40, 40, 40);
+    position: relative;
 }
 .tourPageImageCont{
     width: 1080px;
+}
+
+.tourPageIntroTxt{
+    position: absolute;
+    text-transform: uppercase;
+    color: var(--brick-red);
+    font-weight: 800;
+    font-size: 2em;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px white;
+    top: 33px;
+    font-family: var(--serif-Font);
+}
+
+.introArrowIcon{
+    color: white;
+    position: absolute;
+    bottom: 12px;
+    animation-name: ArrowMovement;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes ArrowMovement{
+    0% {transform: translateY(12px)}
+    50% { transform: translateY(-15px); }
+    100% {
+        transform: translateY(12px);
+    }
 }
 
 @media (max-width: 1080px) {

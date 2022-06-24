@@ -38,6 +38,10 @@
     border-bottom: solid 0.5px black;
 }
 
+.breadcrumbNaviCont a{
+    padding: 0 6px;
+}
+
 
 
 .tourCountryList{
@@ -133,7 +137,6 @@
     100% {
         transform: translateX(12px);
     }
-
 }
 
 
@@ -277,5 +280,11 @@
     .incExcCont{
         width: 100%;
         margin-bottom: 6px;
+    }
+
+    .breadcrumbNaviCont{
+        padding: 12px;
+        word-wrap: break-word;
+        flex-direction: column;
     }
 }

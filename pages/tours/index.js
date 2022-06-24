@@ -230,6 +230,8 @@ export default function TourPage(){
                     height={1125}
                 />
             </div>
+            <div className={styles.tourPageIntroTxt}> Adventure Awaits </div>
+            <div className={styles.introArrowIcon}> <ArrowDownwardIcon fontSize="large"/> </div>
         </div>
         </>)
     }

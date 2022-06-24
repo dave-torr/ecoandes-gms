@@ -11,7 +11,7 @@ import PhoneForwardedIcon from '@mui/icons-material/PhoneForwarded';
 import Drawer from '@mui/material/Drawer';
 
 import CondorLogo from "../public/assets/logos/condor1.png"
-import EcoAndesWHT from "../public/assets/logos/ecoAndesWHT.png"
+import ecoAndesTRU from "../public/assets/logos/ecoAndesTRU.png"
 import EcoAndesFontFace from "./../public/assets/logos/fontFace.png"
 import UsFlagIcon from '../public/assets/logos/usFlag.svg'
 import SpainFlagIcon from '../public/assets/logos/spainFlag.svg'
@@ -109,7 +109,7 @@ export function Navi2(props){
     <div className={styles.navi2GenCont}>
         <div className={styles.naviLogo3}>
         <Image
-            src={EcoAndesWHT}
+            src={ecoAndesTRU}
             alt="EcoAndes Condor Logo"
             layout="responsive"
         /></div>

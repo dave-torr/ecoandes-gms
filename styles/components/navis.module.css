@@ -93,7 +93,7 @@
     background-color: var(--brown-main);
     z-index: 50;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.22);
-    color: var(--pale-yellow);
+    color: white;
 }
 
 .ecoAndesBarLinks{
@@ -107,7 +107,7 @@
 .navi2GenCont{
     width: 100%;
     padding: 15px 5%;
-    background-color: var(--brown-main);
+    background-color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -130,7 +130,7 @@
 .naviHamburger span{
     width: 35px;
     height: 2px;
-    background-color: whitesmoke;
+    background-color: var(--brick-red);
     margin: 3px;
 }
 

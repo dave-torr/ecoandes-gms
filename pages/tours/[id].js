@@ -37,8 +37,6 @@ function TourPage({ aTour }){
 
     // FFE - Components
     const accordionDisplayer=(accordTitle, accordContent, openContr, numerator)=>{
-        let contentVar = accordContent.toString()
-        console.log(accordContent)
         return(<>
         <Accordion defaultExpanded={openContr} className={styles.accordionCont}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" > 
@@ -66,7 +64,7 @@ function TourPage({ aTour }){
     const dayByDaydisp=(tourDayByDay)=>{
         const dayInclDisp=(dayIncl)=>{
             if(dayIncl){
-                let theInclusions = dayIncl.map((elem)=><><li>{elem}</li></>)
+                let theInclusions = dayIncl.map((elem, i)=><React.Fragment key={i}><li>{elem}</li></React.Fragment>)
                 return(<><div className={styles.dayInclusionCont}> 
                     <h4>Includes:</h4>
                     <ul>{theInclusions}</ul>
@@ -75,7 +73,7 @@ function TourPage({ aTour }){
         }
 
         let theDays = tourDayByDay.map((elem,i)=> 
-        <React.Fragment key={i} >
+        <React.Fragment key={i}>
             <Accordion className={styles.accordionCont}>
                 <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" > 
                     <h2>{i+1&&<>{i+1}.-</>}  {elem.dayTitle} </h2></AccordionSummary>
@@ -113,9 +111,9 @@ function TourPage({ aTour }){
         <div className={styles.carouselSection}>
             <div className={styles.tourIMGCarousel}>
                     {theIMGArr.map((elem, i)=><>
-                    {i>0&&<>
-                        <Imagedisp key={i} imgData={elem} /> 
-                    </>}
+                    {i>0&&<React.Fragment key={i}>
+                        <Imagedisp imgData={elem} /> 
+                    </React.Fragment>}
                     </>)}
             </div>
             <div className={styles.carouselIconCont}>
@@ -208,21 +206,19 @@ function TourPage({ aTour }){
             </div>
         </>)
     }
-    const breadcrumbNavigation=(theTour)=>{
+    const breadcrumbNavigation=()=>{
         return(<>
             <div className={styles.breadcrumbNaviCont}>
                 <Link href="/" >
                     <a >Home </a>
                 </Link>
                 <Link href="/tours" >
-                    <a > &nbsp; {"->"} &nbsp; itineraries </a>
+                    <a>{"->"} itineraries </a>
                 </Link>
-                    <a > &nbsp; {"->"} &nbsp; {aTour.tripName} </a>
+                    <a>{"->"} {aTour.tripName}</a>
             </div>
         </>)
     }
-
-
 
 ////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////
@@ -250,7 +246,7 @@ function TourPage({ aTour }){
 
 // Static url pats\hs from dynamic info
 export async function getStaticPaths(){
-    const paths = TourData.map((elem)=>({
+    const paths = TourData.map((elem, i)=>({
         params: { id: elem.id.toString() }
     }))
     return {
