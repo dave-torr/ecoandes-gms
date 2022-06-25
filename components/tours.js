@@ -142,7 +142,6 @@ export function TourDisplayer(props){
         </div>
         </>)
     }
-
     const carouselDisp=(theIMGArr)=>{
         return(<>
         <div className={styles.carouselSection}>
@@ -186,14 +185,7 @@ export function TourDisplayer(props){
         </>)
     }
     const priceDisplayer=(theTour)=>{
-        
-        if(theTour.prices.priceType==="private"){
-            // display last elem of price arr
-            return(<>
-                <span> <EventIcon/> PRIVATE <br/> DEPARTURE </span>
-                <span> <LocalOfferIcon /> PRICES FROM <br/> ${theTour.prices['4stars'][9]} p. person </span>
-            </>)
-        } else if(theTour.prices.priceType==="fixedDeparture"){
+        if(theTour.prices.priceType==="fixedDeparture"){
             // display fixed dep price
             return(<>
                 <span> <EventIcon/> FIXED <br/> DEPARTURE </span>
@@ -201,9 +193,6 @@ export function TourDisplayer(props){
             </>)
         }
     }
-    // const pluralDisplayer=(theArr)=>{
-    //     if theArr.length()
-    // }
     const tourIntroDetails=()=>{
         let countryList = aTour.countryList.map((elem, i)=><React.Fragment key={i}> { i >0 &&<> / </>}{elem} </React.Fragment>)
         return(<>
@@ -215,20 +204,14 @@ export function TourDisplayer(props){
                 <a className={styles.tourOverview}> 
                     {aTour.tripDescription} </a>
                 {aTour.prices.privateDeparture&&<>
-                <div className={styles.privateDeparturesTitle}>
+                    <div className={styles.privateDeparturesTitle} onClick={()=>props.bookingProcess(1)}>
                     Private Departures Available <i>Here</i></div> </>}
-
                 <div className={styles.tourDetails}>
                     <span> <AccessTimeIcon /> {aTour.duration} <br/> DAYS </span>
                     <span><ExploreIcon /> TOUR TYPE: <br/> {aTour.tourType} </span>
                     {priceDisplayer(aTour)}
                 </div>
             </div>
-        </>)
-    }
-    const CTADisplayer =()=>{
-        return(<>
-
         </>)
     }
     const mainImagedisp=()=>{
@@ -264,14 +247,24 @@ export function TourDisplayer(props){
     }
     const hotelList=(theTour)=>{
         if(theTour.hotelList){
-            let theHotels=theTour.hotelList.map((elem, i)=><div className={styles.hotelLink} key={i}>
-            <li>{elem.hotelName}</li> &nbsp;<a href={elem.hotelLink} target="_blank"><InsertLinkIcon /> </a>  </div> )
+            let theHotels=theTour.hotelList.map((elem, i)=>
+                <div className={styles.hotelLink} key={i}>
+                    <li>{elem.hotelName}</li> &nbsp;<a href={elem.hotelLink} target="_blank"><InsertLinkIcon /> </a>  
+                </div>)
+            let hotelListAndNotice=<div>
+                {theHotels}
+                {theTour.prices.priceNotice&&<h4> *{theTour.prices.priceNotice} </h4>}
+            </div>
             return(<>
-                {accordionDisplayer("Hotel List", theHotels, false )}
+                {accordionDisplayer("Hotel List", hotelListAndNotice, false)}
             </>)
         }
     }
     
+
+
+
+
     return(<>
         <article className={styles.generalTourPage}>
             <div className={styles.tourContainer}>

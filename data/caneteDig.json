@@ -98,7 +98,7 @@
         "tourType": "voyage",
         "prices": {
             "priceType": "fixedDeparture",
-            "pricePerPerson": 3300,
+            "pricePerPerson": 2795,
             "singlesupp": 540,
             "dblOccupancy": true,
             "departureDates": ["Saturdays - May through December"],
