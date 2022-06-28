@@ -99,7 +99,7 @@
         "maxGuests": 16,
         "prices": {
             "pricePerPerson": 2830,
-            "singlesupp": 540,
+            "singleSupp": 540,
             "dblOccupancy": true,
             "priceNotice": "Hotel categories will depend on locally available properties. ",
             "privateDeparture":{
@@ -114,14 +114,14 @@
                     }
                 ],
                 "priceRange":{
-                    "2px": 3970,
-                    "2to4px":3330,
-                    "5to6px":2830,
-                    "7to8px":2690,
-                    "9to10px":2530,
-                    "11to12px":2440,
-                    "13to14px":2415,
-                    "15to16px":2360
+                    "twoPx": 3970,
+                    "threeToFourPx":3330,
+                    "fiveToSixPx":2830,
+                    "sevenToEightPx":2690,
+                    "nineToTenPx":2530,
+                    "elevenToTwelvePx":2440,
+                    "thirteenToFourteenPx":2415,
+                    "fifteenToSixteenPx":2360
                 }
             }
         },

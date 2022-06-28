@@ -113,35 +113,158 @@ export function PrivDepDatePicker(props){
 export function ClientPriceAndRooming(props){
     const aBooking= props.aBooking
     const theTourData= props.theTourData
+    const priceList = props.theTourData.prices.privateDeparture.priceRange
+    const singleSupp = props.theTourData.prices.singleSupp
 
     // const [pickedPrice, setPickedPrice]= useState(theTourData.priceList[0])
 
     const [clientNumber, setClientNumber]= useState(2)
+    const [totalBookingPrice, setTotalBookingPrice]= useState(priceList.twoPx  * 2)
+    const [pricePerPerson, setPricePerPerson]= useState(priceList.twoPx)
+    const [singleSupplements, setSungleSupplements]=useState(0)
 
     useEffect(()=>{
+        switch(clientNumber){
+            case 1:
+            setTotalBookingPrice( priceList.twoPx  + singleSupp)
+            setSungleSupplements(1)
+            break;
+            case 2:
+            setTotalBookingPrice( priceList.twoPx * 2 )
+            setSungleSupplements(0)
+            break;
+            case 3:
+            setTotalBookingPrice(( priceList.threeToFourPx * 3 ) + singleSupp)
+            setSungleSupplements(1)
+            break;
+            case 4:
+            setTotalBookingPrice( priceList.threeToFourPx * 4 )
+            setSungleSupplements(0)
+            break;
+            case 5:
+            setTotalBookingPrice(( priceList.threeToFourPx * 5 ) + singleSupp)
+            setSungleSupplements(1)
+            break;
+            case 6:
+            setTotalBookingPrice( priceList.fiveToSixPx * 6 )
+            setSungleSupplements(0)
+            break;
+            case 7:
+            setTotalBookingPrice(( priceList.sevenToEightPx * 7 ) + singleSupp)
+            setSungleSupplements(1)
+            break;
+            case 8:
+            setTotalBookingPrice( priceList.sevenToEightPx * 8 )
+            setSungleSupplements(0)
+            break;
+            case 9:
+            setTotalBookingPrice( ( priceList.nineToTenPx * 9 ) + singleSupp)
+            setSungleSupplements(1)
+            break;
+            case 10:
+            setTotalBookingPrice( priceList.nineToTenPx * 10)
+            setSungleSupplements(0)
+            break;
+            case 11:
+            setTotalBookingPrice(( priceList.elevenToTwelvePx * 11 ) + singleSupp)
+            setSungleSupplements(1)
+            break;
+            case 12:
+            setTotalBookingPrice( priceList.elevenToTwelvePx * 12)
+            setSungleSupplements(0)
+            break;
+            case 13:
+            setTotalBookingPrice( ( priceList.thirteenToFourteenPx * 13 ) + singleSupp)
+            setSungleSupplements(1)
+            break;
+            case 14:
+            setTotalBookingPrice( priceList.thirteenToFourteenPx * 14)
+            setSungleSupplements(0)
+            break;
+            case 15:
+            setTotalBookingPrice(( priceList.fifteenToSixteenPx * 15 ) + singleSupp)
+            setSungleSupplements(1)
+            break;
+            case 16:
+            setTotalBookingPrice( priceList.fifteenToSixteenPx * 16)
+            setSungleSupplements(0)
+            break;
+    // should we max out at 12? give a notice to CONTACT US 
+        }
+    },[clientNumber])
+    useEffect(()=>{
+        switch(clientNumber){
+            case 1:
+            setPricePerPerson( priceList.twoPx )
+            break;
+            case 2:
+            setPricePerPerson( priceList.twoPx )
+            break;
+            case 3:
+            setPricePerPerson( priceList.threeToFourPx )
+            break;
+            case 4:
+            setPricePerPerson( priceList.threeToFourPx )
+            break;
+            case 5:
+            setPricePerPerson(priceList.fiveToSixPx )
+            break;
+            case 6:
+            setPricePerPerson(priceList.fiveToSixPx )
+            break;
+            case 7:
+            setPricePerPerson( priceList.sevenToEightPx )
+            break;
+            case 8:
+            setPricePerPerson( priceList.sevenToEightPx )
+            break;
+            case 9:
+            setPricePerPerson(priceList.nineToTenPx )
+            break;
+            case 10:
+            setPricePerPerson(priceList.nineToTenPx )
+            break;
+            case 11:
+            setPricePerPerson( priceList.elevenToTwelvePx )
+            break;
+            case 12:
+            setPricePerPerson( priceList.elevenToTwelvePx )
+            break;
+            case 13:
+            setPricePerPerson(priceList.thirteenToFourteenPx )
+            break;
+            case 14:
+            setPricePerPerson(priceList.thirteenToFourteenPx )
+            break;
+            case 15:
+            setPricePerPerson( priceList.fifteenToSixteenPx )
+            break;
+            case 16:
+            setPricePerPerson( priceList.fifteenToSixteenPx )
+            break;
+        }
+    },[clientNumber])
 
-    },[])
-
-
-    console.log(theTourData)
-    // setBookingStep(3) 
-
+    useEffect(()=>{
+        let singleSupTotal=singleSupplements*singleSupp
+        let totalPricepp = pricePerPerson*clientNumber
+        setTotalBookingPrice( totalPricepp  + singleSupTotal )
+    },[singleSupplements])
 
     const clientNumberPicker=()=>{
         return(<>
             <div className={styles.clientNumberPickerCont}>
-                <h2>This is a Private Departure for </h2>
+                <h2>This is a Private Departure for: </h2>
                 <div className={styles.clientNumberDisp}> 
                     <div className={styles.clientNumber}>
                         {clientNumber}
                         {clientNumberChanger()}
-                        guests  
+                        guest{clientNumber>1&&<>s</>}
                     </div>
                 </div>
             </div>
         </>)
     }
-
     const clientNumberChanger=()=>{
         return(<>
             <div className={styles.clientNumSwitcher}>
@@ -163,13 +286,70 @@ export function ClientPriceAndRooming(props){
             </div>
         </>)
     }
+    const clientPriceDisplayer=()=>{
+        return(<>
+            <div className={styles.priceDispCont}>
+                <div className={styles.priceppCont}> 
+                    <div className={styles.priceppDisp}>
+                        <i> Price per Person</i>
+                        ${pricePerPerson.toLocaleString("en-US")}.-
+                    </div>
+                    <div className={styles.clientNumbDisp}>x {clientNumber} guest{clientNumber>1&&<>s</>} </div>
+                </div>
 
-// This is a Private Departure for {clientNumber} people 
+                {singleSupplements>0 &&<>
+                <div className={styles.priceppCont}>
+                    <div className={styles.priceppDisp}> 
+                        <i>+ Single Supplement</i> 
+                        &nbsp; ${singleSupp.toLocaleString("en-US")}.-
+                    </div>
+                    <div className={styles.clientNumbDisp}>x {singleSupplements} guest{singleSupplements>1&&<>s</>} </div>
+                </div> 
+                </>}
+                <div className={styles.totalPriceDisp}> Total: &nbsp; USD ${totalBookingPrice.toLocaleString("en-US")}.- </div>
+            </div>
+        </>)
+    }
+    const singleSuppAdderPicker=()=>{
+        return(<>
+            <div className={styles.singleSuppAdderCont}>
+                <h4> with </h4> &nbsp;&nbsp;&nbsp;&nbsp;
+                {singleSupplements}
+                {singlesuppChanger()}
+                <h4>additional single Supplement</h4>
+            </div>
+        </>)
+    }
+    const singlesuppChanger=()=>{
+        // let singleSupTotal=singleSupplements*singleSupp
+        return(<>
+            <div className={styles.singleSupNumSwitcher}>
+                {singleSupplements<clientNumber? <>
+                    <div className={styles.singleSupSwitcherArrowUp} onClick={()=>{
+                        setSungleSupplements(singleSupplements+2)
+                    }} ><AddIcon /></div>
+                </> : <>
+                    <div className={styles.singleSupSwitcherArrowUpOFFLINE}><AddIcon /></div>
+                </>}
 
+                {singleSupplements>1?<> 
+                    <div className={styles.singleSupSwitcherArrow} onClick={()=>{
+                        setSungleSupplements(singleSupplements-2)
+                    }} ><RemoveIcon /></div>
+                </>:<> 
+                    <div className={styles.singleSupSwitcherArrowOFFLINE}><RemoveIcon /></div>
+                </>}
+            </div>
+        </>)
+    }
+
+    console.log(singleSupplements*singleSupp)
 
     return(<>
         <div className={styles.priceAndRoomingCont}>
             {clientNumberPicker()}
+            {singleSuppAdderPicker()}
+            {clientPriceDisplayer()}
         </div>
     </>)    
 }
