@@ -97,24 +97,30 @@
         ],
         "tourType": "voyage",
         "prices": {
-            "priceType": "fixedDeparture",
-            "pricePerPerson": 2795,
+            "pricePerPerson": 2830,
             "singlesupp": 540,
             "dblOccupancy": true,
-            "departureDates": ["Saturdays - May through December"],
-            "priceNotice": "hotel categories will depend on locally available properties. ",
+            "priceNotice": "Hotel categories will depend on locally available properties. ",
             "privateDeparture":{
-                "startDate":"",
-                "maxDate":"",
+                "departureDates": [
+                    {
+                        "minDate":"2022-07-15",
+                        "maxDate": "2022-07-23"
+                    },
+                    {
+                        "minDate":"2022-08-06",
+                        "maxDate": "2022-08-23"
+                    }
+                ],
                 "priceRange":{
-                    "2px": 3910,
-                    "2to4px":3300,
-                    "5to6px":2795,
-                    "7to8px":2665,
-                    "9to10px":2510,
+                    "2px": 3970,
+                    "2to4px":3330,
+                    "5to6px":2830,
+                    "7to8px":2690,
+                    "9to10px":2530,
                     "11to12px":2440,
-                    "13to14px":2405,
-                    "15to16px":2350
+                    "13to14px":2415,
+                    "15to16px":2360
                 }
             }
         },

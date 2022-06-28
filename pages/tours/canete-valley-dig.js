@@ -1,4 +1,4 @@
-import { useState } from "react"
+import React, { useState } from "react"
 import Image from "next/image"
 
 import theTourData from "./../../data/caneteDig.json"
@@ -6,6 +6,11 @@ import theTourData from "./../../data/caneteDig.json"
 import {TourDisplayer} from "./../../components/tours"
 import AncientOdysLogo from "./../../public/assets/logos/partners/ancientOdy.webp"
 import { PrivDepDatePicker } from "../../components/b2cForms"
+
+import styles from "./../../styles/components/tourCmpnts.module.css"
+
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 let toDate = new Date()
 
@@ -27,6 +32,7 @@ export default function CaneteDigTour(props){
         "flightInfo":String,
         "saleStream": "b2cWebsite",
         "confirmed": true,
+        "depDate": null
     })
 
     const [userObject, setUserObj]=useState({
@@ -40,13 +46,41 @@ export default function CaneteDigTour(props){
 
     let partnerLogo= <Image src={AncientOdysLogo} alt="Ancient Odysseys Logo" />
 
+    const tourIntro=()=>{       
+        return(<>
+            <div className={styles.bookingProcessTourData}>
+                <div className={styles.backBTN} onClick={()=>setbookingPros(0)}>
+                <ArrowBackIcon /> &nbsp; Back to Itinerary: </div>
+                <span>{partnerLogo}</span>
+                <div className={styles.tourTitleBar}>
+                    {theTourData.tripName}</div>
+                <div className={styles.bookingSteps}>Booking process: {bookingProcess} <strong>/ 4</strong></div>
+            </div>
+        </>)
+    }
+
+    const bookingStepBTN=(btnContent)=>{
+        return(<>
+            <div className={styles.bookingStepBTNCont}>
+                continue to: &nbsp; &nbsp; 
+                <div className={styles.bookingStepBTN} onClick={()=>setbookingPros(bookingProcess+1)} >{btnContent} <ArrowForwardIcon /></div>
+            </div>
+        </>)
+    }
+
     return(<>
         {bookingProcess===0&&<> 
             <TourDisplayer aTour={theTourData} breadcrumb={false} partnerLogo={partnerLogo} bookingProcess={setbookingPros} />
         </>}
-        {bookingProcess===1&&<>
-            Booking Process
-            <PrivDepDatePicker />
-        </>}
+        <div style={{width: "100%", display: "flex", justifyContent:"center"}}> 
+            <div className={styles.bookingProcessTourData}>
+                {bookingProcess>0&&<> 
+                    {tourIntro()}
+                </>}
+                {bookingProcess===1&&<>
+                    <PrivDepDatePicker tourDates={theTourData.prices.privateDeparture} setABooking={setABooking} aBooking={aBooking} bookingStepBTN={bookingStepBTN} />
+                </>}
+            </div>
+        </div>
     </>)
 }

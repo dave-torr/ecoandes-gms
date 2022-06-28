@@ -301,6 +301,103 @@
     padding: 9px;
 }
 
+.bookingProcessTourData{
+    width: 1080px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 33px;
+}
+
+.bookingSteps{
+    text-align: end;
+    width: 100%;
+    text-transform: uppercase;
+    padding: 9px 12px;
+    border-bottom: solid 1px black;
+    border-right: solid 1px black;
+}
+
+
+.datePickerContainer{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    align-items: center;
+}
+
+.eachDateOpt{
+    width: 195px;
+    border: solid 1px black;
+    padding: 9px;
+    cursor: pointer;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.294);
+    transition: all ease 0.7s;
+}
+.eachDateOpt:hover{
+    box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.514);
+}
+
+.aRow{
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    margin: 9px;
+}
+
+
+.backBTN{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.clientDatePicker{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.theDatePicker{
+    width: 90%;
+    padding-top: 15px;
+    margin-top: 33px;
+    border-top: dashed 1px black;
+    display: flex;
+    justify-content: space-around;
+}
+
+.dateInput{
+    padding: 9px 12px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.294);
+    border: solid 1px black;
+}
+
+.bookingStepBTNCont{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 33px;
+    padding-top: 12px;
+    align-items: center;
+    text-transform: uppercase;
+}
+
+.bookingStepBTN{
+    padding: 9px 12px;
+    background-color: var(--brick-red);
+    color: white;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
 @media (max-width: 1080px) {
     .tourContainer{
         width: 100%;
@@ -315,6 +412,9 @@
     .tourDetailsContainer{
         width: 96%;
     }
+    .bookingProcessTourData{
+        width: 100%;
+    }    
 }
 @media (max-width: 600px) {
     .tourCountryList{
@@ -342,4 +442,14 @@
         word-wrap: break-word;
         flex-direction: column;
     }
+
+    .eachDateOpt{margin: 12px;}
+
+    .aRow{
+        flex-direction: column;
+        align-items: center;
+        margin: 0 9px;
+    }
+
+
 }

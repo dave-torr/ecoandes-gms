@@ -191,6 +191,11 @@ export function TourDisplayer(props){
                 <span> <EventIcon/> FIXED <br/> DEPARTURE </span>
                 <span> <LocalOfferIcon /> PRICES FROM <br/> ${theTour.prices.pricePerPerson} p. person </span>
             </>)
+        } else if (theTour.prices.privateDeparture){
+            return(<>
+                <span> <EventIcon/> PRIVATE <br/> DEPARTURE </span>
+                <span> <LocalOfferIcon /> PRICES FROM <br/> ${theTour.prices.pricePerPerson} p. person </span>
+            </>)
         }
     }
     const tourIntroDetails=()=>{
@@ -260,10 +265,6 @@ export function TourDisplayer(props){
             </>)
         }
     }
-    
-
-
-
 
     return(<>
         <article className={styles.generalTourPage}>
