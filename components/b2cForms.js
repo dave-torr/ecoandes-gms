@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 import styles from "./../styles/components/tourCmpnts.module.css"
 
+import AllCountryData from "./../data/countryPhoneEdtension.json"
+
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 
@@ -90,7 +92,7 @@ export function PrivDepDatePicker(props){
                             {new Date(props.aBooking.depDate.concat(" ")).toDateString()} </div>
                         </div>
 
-                    {props.bookingStepBTN("Client Information")}
+                    {props.bookingStepBTN("price selection")}
 
                 </>:<>
                     <div className={styles.aRow}>
@@ -111,7 +113,6 @@ export function PrivDepDatePicker(props){
 ///////////////////////////////////////////////////////
 // stepTwo
 export function ClientPriceAndRooming(props){
-    const aBooking= props.aBooking
     const theTourData= props.theTourData
     const priceList = props.theTourData.prices.privateDeparture.priceRange
     const singleSupp = props.theTourData.prices.singleSupp
@@ -123,6 +124,7 @@ export function ClientPriceAndRooming(props){
     const [pricePerPerson, setPricePerPerson]= useState(priceList.twoPx)
     const [singleSupplements, setSungleSupplements]=useState(0)
 
+    // sets first calc for total price
     useEffect(()=>{
         switch(clientNumber){
             case 1:
@@ -192,6 +194,7 @@ export function ClientPriceAndRooming(props){
     // should we max out at 12? give a notice to CONTACT US 
         }
     },[clientNumber])
+    // sets price per person for display
     useEffect(()=>{
         switch(clientNumber){
             case 1:
@@ -244,12 +247,25 @@ export function ClientPriceAndRooming(props){
             break;
         }
     },[clientNumber])
-
+    // sets total price if single sups are required
     useEffect(()=>{
         let singleSupTotal=singleSupplements*singleSupp
         let totalPricepp = pricePerPerson*clientNumber
         setTotalBookingPrice( totalPricepp  + singleSupTotal )
     },[singleSupplements])
+    // sets aBooking with price and client selection
+    useEffect(()=>{
+        props.setABooking({
+            ...props.aBooking,
+            "priceObject":{
+                "totalBookingPrice": totalBookingPrice,
+                "clientNumber": clientNumber,
+                "singleSupplements": singleSupplements,
+                "singleSupRate": singleSupp,
+                "pricePerPerson": pricePerPerson
+            }
+        })
+    },[totalBookingPrice])
 
     const clientNumberPicker=()=>{
         return(<>
@@ -291,7 +307,7 @@ export function ClientPriceAndRooming(props){
             <div className={styles.priceDispCont}>
                 <div className={styles.priceppCont}> 
                     <div className={styles.priceppDisp}>
-                        <i> Price per Person</i>
+                        <i> Price per Person (in double/twin rooms) </i>
                         ${pricePerPerson.toLocaleString("en-US")}.-
                     </div>
                     <div className={styles.clientNumbDisp}>x {clientNumber} guest{clientNumber>1&&<>s</>} </div>
@@ -300,7 +316,7 @@ export function ClientPriceAndRooming(props){
                 {singleSupplements>0 &&<>
                 <div className={styles.priceppCont}>
                     <div className={styles.priceppDisp}> 
-                        <i>+ Single Supplement</i> 
+                        <i>+ Single Room{singleSupplements>1&&<>s</>} Supplement</i> 
                         &nbsp; ${singleSupp.toLocaleString("en-US")}.-
                     </div>
                     <div className={styles.clientNumbDisp}>x {singleSupplements} guest{singleSupplements>1&&<>s</>} </div>
@@ -343,13 +359,43 @@ export function ClientPriceAndRooming(props){
         </>)
     }
 
-    console.log(singleSupplements*singleSupp)
-
     return(<>
         <div className={styles.priceAndRoomingCont}>
             {clientNumberPicker()}
             {singleSuppAdderPicker()}
             {clientPriceDisplayer()}
+            {props.bookingStepBTN("Client Information")}
         </div>
     </>)    
+}
+
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+// stepThree
+export function ClientPersonalData(props){
+    let aBooking= props.aBooking
+
+    const [guestDataArr, setGeustData]=useState([])
+    const [userObject, setUserObj]=useState({
+        "userName": null,
+        "passport": null,
+        "dateOfBirth": null,
+        "nationality": null,
+        "phoneNumber": null,
+        "email": null,
+    });
+
+    const guestInputCont=(formIndex)=>{
+        return(<>
+            <div className={styles.userDataForm}>
+
+            </div>
+        </>)
+    }
+    return(<>
+        <div className={styles.guestDataIntroCont}>
+            <h2>Please provide the following guest information:</h2>
+        </div>
+
+    </>)
 }

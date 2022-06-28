@@ -383,7 +383,7 @@
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    margin-top: 33px;
+    margin-top: 12px;
     padding-top: 12px;
     align-items: center;
     text-transform: uppercase;
@@ -585,6 +585,19 @@
     border-radius: 5px;
     transition: all ease-in 0.4s;
 }
+
+
+/* __________________________________________ */
+/* Guest Data */
+
+.guestDataIntroCont{
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
 
 @media (max-width: 1080px) {
     .tourContainer{
