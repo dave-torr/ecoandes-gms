@@ -5,7 +5,7 @@ import theTourData from "./../../data/caneteDig.json"
 
 import {TourDisplayer} from "./../../components/tours"
 import AncientOdysLogo from "./../../public/assets/logos/partners/ancientOdy.webp"
-import { PrivDepDatePicker } from "../../components/b2cForms"
+import { ClientPriceAndRooming, PrivDepDatePicker } from "../../components/b2cForms"
 
 import styles from "./../../styles/components/tourCmpnts.module.css"
 
@@ -73,14 +73,17 @@ export default function CaneteDigTour(props){
             <TourDisplayer aTour={theTourData} breadcrumb={false} partnerLogo={partnerLogo} bookingProcess={setbookingPros} />
         </>}
         <div style={{width: "100%", display: "flex", justifyContent:"center"}}> 
-            <div className={styles.bookingProcessTourData}>
-                {bookingProcess>0&&<> 
-                    {tourIntro()}
-                </>}
-                {bookingProcess===1&&<>
-                    <PrivDepDatePicker tourDates={theTourData.prices.privateDeparture} setABooking={setABooking} aBooking={aBooking} bookingStepBTN={bookingStepBTN} />
-                </>}
-            </div>
+        <div className={styles.bookingProcessTourData}>
+        {bookingProcess>0&&<> 
+            {tourIntro()}
+        </>}
+        {bookingProcess===1&&<>
+            <PrivDepDatePicker tourDates={theTourData.prices.privateDeparture} setABooking={setABooking} aBooking={aBooking} bookingStepBTN={bookingStepBTN} />
+        </>}
+        {bookingProcess===2&&<> 
+            <ClientPriceAndRooming aBooking={aBooking} theTourData={theTourData} />
+        </>}
+        </div>
         </div>
     </>)
 }

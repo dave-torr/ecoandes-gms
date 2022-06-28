@@ -1,17 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import styles from "./../styles/components/tourCmpnts.module.css"
 
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
+
 // for user booking:
+// stepOne
 // pick a date from 'open' range
 
+// stepTwo
 // select number of clients to set price
-
 // select rooming type (dbl / single)
 
-// add guest info
+// stepThree
+// setGGuestInfo
 
-// payment
+// stepFour
+// payment 
 
 const aCheckbox=(anId, checkboxTitle, checkboxContent )=>{
     return(<>
@@ -25,11 +31,13 @@ const aCheckbox=(anId, checkboxTitle, checkboxContent )=>{
     </>)
 }
 
+
+
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+// stepOne
 export function PrivDepDatePicker(props){
     const [digDates, setdigDates]=useState(null)
-
-    console.log(digDates)
-    // console.log(new Date(props.tourDates.departureDates[0].minDate))
 
     const dateDisp=(theDates)=>{
         let correctedMinDate=theDates.minDate.concat(" ")
@@ -68,9 +76,6 @@ export function PrivDepDatePicker(props){
         </>)
     }
 
-    console.log(props.aBooking)
-
-
     return(<>
         <div className={styles.datePickerContainer}>
 
@@ -102,3 +107,69 @@ export function PrivDepDatePicker(props){
     </>)
 }
 
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+// stepTwo
+export function ClientPriceAndRooming(props){
+    const aBooking= props.aBooking
+    const theTourData= props.theTourData
+
+    // const [pickedPrice, setPickedPrice]= useState(theTourData.priceList[0])
+
+    const [clientNumber, setClientNumber]= useState(2)
+
+    useEffect(()=>{
+
+    },[])
+
+
+    console.log(theTourData)
+    // setBookingStep(3) 
+
+
+    const clientNumberPicker=()=>{
+        return(<>
+            <div className={styles.clientNumberPickerCont}>
+                <h2>This is a Private Departure for </h2>
+                <div className={styles.clientNumberDisp}> 
+                    <div className={styles.clientNumber}>
+                        {clientNumber}
+                        {clientNumberChanger()}
+                        guests  
+                    </div>
+                </div>
+            </div>
+        </>)
+    }
+
+    const clientNumberChanger=()=>{
+        return(<>
+            <div className={styles.clientNumSwitcher}>
+                {clientNumber<theTourData.maxGuests? <>
+                    <div className={styles.numSwitcherArrowUp} onClick={()=>{
+                        setClientNumber(clientNumber+1)
+                    }} ><AddIcon /></div>
+                </> : <>
+                    <div className={styles.numSwitcherArrowUpOFFLINE}><AddIcon /></div>
+                </>}
+
+                {clientNumber>1?<> 
+                    <div className={styles.numSwitcherArrow} onClick={()=>{
+                        setClientNumber(clientNumber-1)
+                    }} ><RemoveIcon /></div>
+                </>:<> 
+                    <div className={styles.numSwitcherArrowOFFLINE}><RemoveIcon /></div>
+                </>}
+            </div>
+        </>)
+    }
+
+// This is a Private Departure for {clientNumber} people 
+
+
+    return(<>
+        <div className={styles.priceAndRoomingCont}>
+            {clientNumberPicker()}
+        </div>
+    </>)    
+}

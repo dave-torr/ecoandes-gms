@@ -96,6 +96,7 @@
             }
         ],
         "tourType": "voyage",
+        "maxGuests": 16,
         "prices": {
             "pricePerPerson": 2830,
             "singlesupp": 540,
