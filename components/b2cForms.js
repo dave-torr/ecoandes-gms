@@ -375,7 +375,42 @@ export function ClientPriceAndRooming(props){
 export function ClientPersonalData(props){
     let aBooking= props.aBooking
 
-    const [guestDataArr, setGeustData]=useState([])
+    const [guestDataArr, setGuestData]=useState([])
+    const [dataCheckTrig, setDataCheckTrig]= useState(false)
+
+    const guestInfoTable=()=>{
+        let sampleArray = [...Array(aBooking.priceObject.clientNumber)]
+        let theGrids = sampleArray.map((elem, i)=> <React.Fragment key={i}> <ClientForm formIndex={i} guestDataArr={guestDataArr} setGuestData={setGuestData} /> </React.Fragment>)
+        return(<>
+            <div className={styles.dataGrids}> {theGrids} </div>
+        </>)
+    }
+
+    return(<>
+        <div className={styles.guestDataIntroCont}>
+            <h2>Please provide the following information for all guests:</h2>
+            {guestInfoTable()}
+            {aBooking.priceObject.clientNumber===guestDataArr.length&&<>
+                <div className={styles.clientDataChecker} >
+                    Information is correct?
+                    <div className={styles.acceptDataBTN} onClick={()=>{
+                        setDataCheckTrig(true)
+                        props.setABooking({
+                          ...props.aBooking,
+                          "clientDataObj": [...guestDataArr]
+                        })
+                        }}>yes!</div>
+                </div>
+            </>}
+            {dataCheckTrig&&<>
+                {props.bookingStepBTN("Payment")}
+            </>}
+
+        </div>
+    </>)
+}
+//////////////////////////////////////////////////////////
+const ClientForm=(props)=>{
     const [userObject, setUserObj]=useState({
         "userName": null,
         "passport": null,
@@ -385,17 +420,101 @@ export function ClientPersonalData(props){
         "email": null,
     });
 
-    const guestInputCont=(formIndex)=>{
+    function aTextInput(aPlaceholder, inputId, anObject, setAnObject, inputType, reqBoolean, disabBool){
         return(<>
-            <div className={styles.userDataForm}>
-
+        <div className={styles.anInputcont}>
+            <label htmlFor={inputId} className={styles.anInputLabel}>{aPlaceholder}:</label> 
+            <input
+                placeholder={aPlaceholder}
+                type={inputType}
+                id={inputId}
+                required={reqBoolean}
+                disabled={disabBool}
+                onChange={(e)=>{
+                    e.preventDefault()
+                    setAnObject({
+                        ...anObject,
+                        [inputId]:e.target.value
+                    })
+                }}
+                />
             </div>
         </>)
     }
-    return(<>
-        <div className={styles.guestDataIntroCont}>
-            <h2>Please provide the following guest information:</h2>
-        </div>
 
+    let formIndex=props.formIndex
+    let disableForm= false
+    if(props.guestDataArr[formIndex]){
+        disableForm=true
+    }
+    return(<>
+        <form className={styles.userDataForm} onSubmit={(e)=>{
+            e.preventDefault();
+            // props.guestDataArr.splice(formIndex, 1, userObject)
+            props.setGuestData(props.guestDataArr.concat(userObject))
+        }}>
+        <h3>Guest {formIndex+1}</h3>
+            {aTextInput("Full Name", "userName", userObject, setUserObj, "text", true, disableForm )}
+            {aTextInput("Passport/ID", "passport", userObject, setUserObj, "text", true, disableForm )}
+            {aTextInput("Nationality", "nationality", userObject, setUserObj, "text", true, disableForm )}
+            {aTextInput("Date of Birth", "dateOfBirth", userObject, setUserObj, "date", true, disableForm )}
+            {aTextInput("Email", "email", userObject, setUserObj, "email", true, disableForm )}
+            {aTextInput("Phone Number", "phoneNumber", userObject, setUserObj, "number", true, disableForm )}
+
+            {props.guestDataArr[formIndex]?<>
+                <div className={styles.recordedData}> Guest {formIndex+1} data recorded!</div>
+            </>:<>
+                <input 
+                    type="submit"
+                    value={`Submit guest ${formIndex+1} information`}
+                    className={styles.clientFormSubmitBTN}
+                />
+            </>}
+        </form>
+    </>)
+
+}
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+// stepFour
+export function ConditionsAndpayment(props){
+
+    const clientPriceSummary=(priceObj)=>{
+        return(<>
+            <div className={styles.priceSummary}>
+                <div className={styles.summaryRow}> 
+                    <i>Price per person</i>
+                    ${priceObj.pricePerPerson.toLocaleString("en-US")}.-
+                </div>
+                <div className={styles.clientCountRow}> x {priceObj.clientNumber} guests  </div>
+                {priceObj.singleSupplements?<>
+                <div className={styles.summaryRow}> 
+                    <i>+ Single Room supplements</i>
+                     ${priceObj.singleSupRate.toLocaleString("en-US")}.-
+                </div>
+                <div className={styles.clientCountRow}> x {priceObj.singleSupplements} guests  </div>
+                </>:<></>}
+                <div className={styles.summaryRowTOTAL}>
+                    <i>Total</i> &nbsp;
+                    ${priceObj.totalBookingPrice.toLocaleString("en-US")}.-
+                </div>
+            </div>
+        </>)
+    }
+
+    const clientCheckboxForm=()=>{
+
+        // checkbox with booking conditions
+        // checkbox with age agreement and on behalf of all clients
+
+        // stripe incorporation and email tests.
+
+        return(<>
+
+        </>)
+    }
+
+    return(<>
+        {clientPriceSummary(props.aBooking.priceObject)}
     </>)
 }

@@ -5,7 +5,7 @@ import theTourData from "./../../data/caneteDig.json"
 
 import {TourDisplayer} from "./../../components/tours"
 import AncientOdysLogo from "./../../public/assets/logos/partners/ancientOdy.webp"
-import { ClientPersonalData, ClientPriceAndRooming, PrivDepDatePicker } from "../../components/b2cForms"
+import { ClientPersonalData, ClientPriceAndRooming, PrivDepDatePicker, ConditionsAndpayment } from "../../components/b2cForms"
 
 import styles from "./../../styles/components/tourCmpnts.module.css"
 
@@ -26,7 +26,7 @@ export default function CaneteDigTour(props){
         "bookingDate": toDate,
         "itinerary": "Canete Valley Dig",
         "bookingType": String,
-        "clientDataObj": [],
+        "clientDataObj": null,
         "priceObject":{},
         "flightInfo":String,
         "saleStream": "b2cWebsite",
@@ -61,6 +61,9 @@ export default function CaneteDigTour(props){
         </>)
     }
 
+
+    console.log(aBooking)
+
     return(<>
         {bookingProcess===0&&<> 
             <TourDisplayer 
@@ -81,6 +84,10 @@ export default function CaneteDigTour(props){
         </>}
         {bookingProcess===3&&<> 
             <ClientPersonalData 
+                aBooking={aBooking} setABooking={setABooking} theTourData={theTourData} bookingStepBTN={bookingStepBTN} />
+        </>}
+        {bookingProcess===4&&<> 
+            <ConditionsAndpayment 
                 aBooking={aBooking} setABooking={setABooking} theTourData={theTourData} bookingStepBTN={bookingStepBTN} />
         </>}
         </div>
