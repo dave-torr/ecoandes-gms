@@ -52,8 +52,6 @@
     width: 100%;
     min-height: 100vh;
     align-items: center;
-    padding: 33px 0;
-    padding-top: 28px;
 }
 
 .accordionCont{
@@ -69,6 +67,10 @@
 .tourIntroCont{
     width: 1080px;
     padding: 9px 45px;
+}
+
+.partnerLogo{
+    margin-top: 33px;
 }
 
 .breadcrumbNaviCont{
@@ -729,7 +731,7 @@
 
 .priceSummaryDescriptor{
     text-transform: capitalize;
-    padding: 12px;
+    padding: 12px 0;
 }
 
 .summaryRowTOTAL{
@@ -825,16 +827,22 @@
     }    
 }
 @media (max-width: 600px) {
+    .bookingProcessTourData{
+        padding: 33px 21px;
+    }
+    .tourIntroCont{
+        padding: 9px 33px;
+    }
     .tourCountryList{
         font-size: 1em;
-        padding: 6px 12px;
-    }
-
-    .tourTitleBar{
-        text-align: center;
+        padding: 6px 0;
     }
     .tourDetails{
         font-size: 0.9em;
+    }
+
+    .tourDetails > span{
+        padding: 9px;
     }
 
     .inclusionsExclusionsSec{
@@ -852,7 +860,19 @@
     }
 
     .eachDateOpt{margin: 12px;}
+    .theDatePicker{
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
 
+    .tripNameDuration >h1{
+        font-size: 1.7em;
+    }
+
+    .priceDispCont{
+        height: 240px;
+    }
     .aRow{
         flex-direction: column;
         align-items: center;
@@ -869,6 +889,6 @@
         width: 96%;
     }  
     .priceSummary{
-        width: 96%;
+        width: 100%;
     }  
 }

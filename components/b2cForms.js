@@ -26,17 +26,6 @@ import RemoveIcon from '@mui/icons-material/Remove';
 // stepFour
 // payment 
 
-const aCheckbox=(anId, checkboxTitle, checkboxContent )=>{
-    return(<>
-        <div className={styles.aCheckbox}>
-            <input type="checkbox" id={anId} style={{display: "flex", alignItems: "center"}} />
-                <label htmlFor={anId} style={{display:"flex", flexDirection:"column", }}>
-                    <h4>{checkboxTitle}</h4>
-                    {checkboxContent&&<div>{checkboxContent}</div>}
-                </label>
-        </div>
-    </>)
-}
 ///////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
 // stepOne
@@ -486,13 +475,20 @@ export function ConditionsAndpayment(props){
 
     const [checkoutFormTrig, setcheckouttrig]=useState(false)
 
+    useEffect(()=>{
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
+    },[])
+
     const clientPriceSummary=(priceObj, theTour)=>{
         return(<>
             <div className={styles.priceSummary}>
                 <div className={styles.summaryColumn}>
                     <div className={styles.tripNameDuration}>
                         <h1>{theTour.tripName}</h1>
-                        <h3> {theTour.duration} d / {theTour.duration -1 } n </h3>
+                        <h3> {theTour.duration}D / {theTour.duration -1 }N</h3>
                     </div>
                     <div className={styles.priceSummaryDescriptor}> 
                         A private achaeology voyage through 
