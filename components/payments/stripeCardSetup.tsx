@@ -27,8 +27,12 @@ const CARD_OPTIONS = {
 
   export function StripeGeneralCheckout(props){
 
-    const [payment, setPayment] = useState({ status: 'initial' })
+
     const [count, setCount] = useState(0)  
+
+
+
+    const [payment, setPayment] = useState({ status: 'initial' })
     const [userEmail, setuserEmail] = useState< undefined | string >()
     const [errorMessage, setErrorMessage] = useState('')
     const stripe = useStripe()
@@ -93,24 +97,21 @@ useEffect(()=>{
   setCount(0)
 },[])    
 
-
     // Flagged for export
     const createReservation= async ()=>{
-
         if(payment.status==="succeeded"&&count===0){
             setCount(count+1)
+            let stringifiedBooking = JSON.stringify(props.aBooking)
+                const res = await fetch("/api/b2cBookings", {
+                method: "POST",
+                body: stringifiedBooking
+            })        
+            const createdBooking = await res.json()
+            console.log(createdBooking)
 
-            // let stringifiedBooking = JSON.stringify(props.aBooking)
-            //     const res = await fetch("/api/b2cBookings", {
-            //     method: "post",
-            //     body: stringifiedBooking
-            // })        
-            // const createdBooking = await res.json()
-
-
-
-            console.log("WORKED MOFOOO, send to backend")
-
+            if(createdBooking){
+                console.log("check yo backend")
+            }
 
             // if(createdBooking){ 
             //     console.log()
@@ -128,10 +129,15 @@ useEffect(()=>{
             //     const emailActions2 = await emailAct2.json()                
             // }
 
-
-
         }
     }
+
+    useEffect(()=>{
+        if(payment.status==='succeeded'){
+            createReservation()
+            setCount(count+1)
+        }
+    },[payment])
 
     ////////////////
     // Payment Stat
@@ -150,8 +156,6 @@ useEffect(()=>{
             return <h2>Additional Actions Required</h2>
 
         case 'succeeded':
-
-            createReservation()
 
             return (<>
                 <h2> Payment Succesful!</h2>

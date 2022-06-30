@@ -37,9 +37,6 @@ const aCheckbox=(anId, checkboxTitle, checkboxContent )=>{
         </div>
     </>)
 }
-
-
-
 ///////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
 // stepOne
@@ -111,15 +108,6 @@ export function PrivDepDatePicker(props){
                 </div>
             </>}
         </div>
-    </>)
-}
-
-export function DepDatePicker(props){
-
-
-
-    return(<>
-    
     </>)
 }
 
@@ -589,7 +577,7 @@ export function ConditionsAndpayment(props){
             }} > 
                 {aCheckoutBox(conditionsAgreementDisplayer)}
                 {aCheckoutBox(flightAdder)}
-                <input type="submit" className={styles.priceSummary}/>
+                <input type="submit" className={styles.paymentBtn}/>
             </form>
         </>)
     }
@@ -613,9 +601,6 @@ export function ConditionsAndpayment(props){
         </>)
         }
     }
-
-
-
 
     return(<>
         {clientPriceSummary(props.aBooking.priceObject, props.theTourData)}

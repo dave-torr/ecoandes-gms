@@ -67,9 +67,14 @@
         width: 85%;
         margin-bottom: 21px;
     }
-
     .CardInputfield{
         width: 85%;
-
+    }
+}
+@media (max-width: 820px) {
+    .stripeInfoSection{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 }

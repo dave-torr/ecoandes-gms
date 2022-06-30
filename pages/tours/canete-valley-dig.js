@@ -33,13 +33,27 @@ export default function CaneteDigTour(props){
         "confirmed": true,
         "depDate": null
     })
+    const [aPayment, setAPayment]=useState(false)
 
     let partnerLogo= <Image src={AncientOdysLogo} alt="Ancient Odysseys Logo" />
 
     const tourIntro=()=>{       
         return(<>
             <div className={styles.bookingProcessTourData}>
-                <div className={styles.backBTN} onClick={()=>setbookingPros(0)}>
+                <div className={styles.backBTN} onClick={()=>{
+                    setbookingPros(0)
+                    setABooking({
+                        "bookingDate": toDate,
+                        "itinerary": "Canete Valley Dig",
+                        "bookingType": String,
+                        "clientDataObj": null,
+                        "priceObject":{},
+                        "flightInfo":String,
+                        "saleStream": "b2cWebsite",
+                        "confirmed": true,
+                        "depDate": null
+                    }) 
+                    }}>
                 <ArrowBackIcon /> &nbsp; Back to Itinerary: </div>
                 <span>{partnerLogo}</span>
                 <div className={styles.tourTitleBar}>
@@ -54,15 +68,11 @@ export default function CaneteDigTour(props){
             <div className={styles.bookingStepBTNCont}>
                 accept & continue to: &nbsp; &nbsp; 
                 <div className={styles.bookingStepBTN} onClick={()=>{
-                    setbookingPros(bookingProcess+1) 
-                    console.log(aBooking)
+                    setbookingPros(bookingProcess+1)
                     }} >{btnContent} <ArrowForwardIcon /></div>
             </div>
         </>)
     }
-
-
-    console.log(aBooking)
 
     return(<>
         {bookingProcess===0&&<> 
@@ -89,6 +99,9 @@ export default function CaneteDigTour(props){
         {bookingProcess===4&&<> 
             <ConditionsAndpayment 
                 aBooking={aBooking} setABooking={setABooking} theTourData={theTourData} bookingStepBTN={bookingStepBTN} />
+        </>}
+        {bookingProcess===5&&<> 
+            congratulations page, contact info & send to backend via useState single rendering
         </>}
         </div>
         </div>
