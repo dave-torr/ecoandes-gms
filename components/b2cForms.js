@@ -4,8 +4,13 @@ import styles from "./../styles/components/tourCmpnts.module.css"
 
 import AllCountryData from "./../data/countryPhoneEdtension.json"
 
+import { Elements } from '@stripe/react-stripe-js'
+import getStripe from './../utils/payments/get-stripejs'
+import {StripeGeneralCheckout} from "./../components/payments/stripeCardSetup"
+
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+
 
 // for user booking:
 // stepOne
@@ -489,13 +494,9 @@ const ClientForm=(props)=>{
 
 
 
-
-
-
-
-
-
 export function ConditionsAndpayment(props){
+
+    const [checkoutFormTrig, setcheckouttrig]=useState(false)
 
     const clientPriceSummary=(priceObj, theTour)=>{
         return(<>
@@ -534,6 +535,13 @@ export function ConditionsAndpayment(props){
         </>)
     }
 
+    const aCheckoutBox=(theFunction)=>{
+        return(<>
+            <div className={styles.priceSummary}> 
+                {theFunction()}
+            </div>
+        </>)
+    }
     const clientCheckboxForm=()=>{
 
         // stripe incorporation and email tests.
@@ -552,7 +560,7 @@ export function ConditionsAndpayment(props){
                         <input type="checkbox" id="conditionsAgreementID" required/>
                     </span>
                     <label htmlFor='conditionsAgreementID' className={styles.checkboxLabel} >
-                        I confirm that I have read and agree with EcoAndes' Payment and Cancellation Policies 
+                        I confirm that I have read and agree with Latin Travel Collection's Payment and Cancellation Policies 
                         <a href="/documents/ecoAndesPaymentPolicies.pdf" download className={styles.PDFdwnlBtn}> 
                            {" "} [download PDF here]
                         </a> </label>
@@ -573,30 +581,38 @@ export function ConditionsAndpayment(props){
             </>)
         }
 
-        const aCheckoutBox=(theFunction)=>{
-            return(<>
-                <div className={styles.priceSummary}> 
-                    {theFunction()}
-                </div>
-            </>)
-        }
+
         return(<>
             <form className={styles.clientCheckoutForms} onSubmit={(e)=>{
                 e.preventDefault()
-                console.log("cucu")
+                setcheckouttrig(true)
             }} > 
-
                 {aCheckoutBox(conditionsAgreementDisplayer)}
                 {aCheckoutBox(flightAdder)}
-
-               {/* stripe Incorporation */}
-
+                <input type="submit" className={styles.priceSummary}/>
             </form>
         </>)
     }
 
+    const paymentDisplayer=()=>{
+        return(<>
+        <Elements stripe={getStripe()}>
+            <StripeGeneralCheckout 
+                aBooking={props.aBooking}
+                totalBookingPrice={props.aBooking.priceObject.totalBookingPrice} 
+                receiptDescription={"Canete Valley Dig: Total Tour Booking"}
+            /> 
+        </Elements>
+        </>)
+    }
     // add internal flights option (Lima - Cus) 
-
+    const clientPaymentBox=()=>{
+        if(checkoutFormTrig){
+        return(<>
+            {aCheckoutBox(paymentDisplayer)}
+        </>)
+        }
+    }
 
 
 
@@ -604,5 +620,6 @@ export function ConditionsAndpayment(props){
     return(<>
         {clientPriceSummary(props.aBooking.priceObject, props.theTourData)}
         {clientCheckboxForm()}
+        {clientPaymentBox()}
     </>)
 }
