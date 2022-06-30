@@ -802,6 +802,10 @@
     text-align: center;
 }
 
+.userDataForm > input[type=number] {
+  -moz-appearance: textfield;
+}
+
 @media (max-width: 1080px) {
     .tourContainer{
         width: 100%;
