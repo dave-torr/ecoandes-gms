@@ -4,9 +4,9 @@
         "duration": 10,
         "imgArr": ["https://dsm01pap002files.storage.live.com/y4m3aF8TjUlNP33379Zfr9hccG-YjpT1T6XdREzzoO4fOOtuQy3SKavcNAaK8CVyuY7_kjP6_MaEKQZOMDymtILHC47-pQzJ_ye-AdLyxBsQl_ViCL1BLjYDm4Hl0FnDdiF_WHH13DtscNsEtQ2SgyOPB2mX11uMIWx2gz2mZ1488MZu9h_U0TnVyoiVRpXGyFh?width=2000&height=1125&cropmode=none",
         "/assets/images/caneteValley-1.jpg",
-        "https://dsm01pap002files.storage.live.com/y4mt5BosLwqP60QYhXM-8Zsf_xl2vac6LuY9VZ6X2uvQmH4sjVVgkF8Eplem1r6pYy7u_4nIEQDis8avye_B4d89SIqaaH9GLP-YAxpxEfZul_zDWLv1nCXAqZkkCxk-de7IrJE3RK8nEK2qdKKRSzxLvxOqWW8Fp8prgoZVG9oaMi_NhNBY_MgBIEBhYdLtbv3?width=2000&height=1125&cropmode=none",
         "/assets/images/caneteValley-2.jpg",
         "/assets/images/caneteValley-3.jpg",
+        "https://dsm01pap002files.storage.live.com/y4mt5BosLwqP60QYhXM-8Zsf_xl2vac6LuY9VZ6X2uvQmH4sjVVgkF8Eplem1r6pYy7u_4nIEQDis8avye_B4d89SIqaaH9GLP-YAxpxEfZul_zDWLv1nCXAqZkkCxk-de7IrJE3RK8nEK2qdKKRSzxLvxOqWW8Fp8prgoZVG9oaMi_NhNBY_MgBIEBhYdLtbv3?width=2000&height=1125&cropmode=none",
         "https://dsm01pap002files.storage.live.com/y4mw16EdnSU_nQbPtsZeGjLJBBjr3zarv7erYVOTEgpHY_ofTD-cOp1fz1eo71O0bDG5E3ILAALaFHbYWUQcdwIGTd2p3ecUSMfZZ5JpL56zzl0WX5pzCKaHjzSUXvvlvQAArao202ZIoN8NYbD1QLL6vgpTcnL8RFacfR_aUurejyu_KJsGKR34lps3Eav_6gj?width=2000&height=1125&cropmode=none",
         "https://dsm01pap002files.storage.live.com/y4mqdvYnDS7uW0-oeT7JCSiy0ro0ckho6-jxZxSoJItLJK0-cVJ3tr1HnUtKNiPVbuzNf7yjRM5kyfItAGvif-DT42cSfB8uzk8bGQUKeKp3ljOT8GHmsm6Yz-jgKqXDFNVZTakYUD2NhIW4Tjj2B_rznT6hiyzlmqNaM0r9LcwUBmw4WeXCkEXNqv9D49aFg2-?width=2000&height=1125&cropmode=none"
         ],
@@ -32,7 +32,7 @@
             },
             {
                 "dayTitle": "Lima – San Vicente de Cañete – Cerro de Oro",
-                "dayDescription": "This day we will leave at 08:00, heading to Cañete located in the Sur Chico of the capital Lima, where we will visit Cerro Azul and its dock from the Republican era, as well as explore the typical gastronomy of the place where two cultures merge and Afro-Peruvian cuisine is born. , we will continue with our journey towards San Vicente where we will visit the Castle of José Unanue (One of our important precursors of Peruvian independence and founder of the School of Medicine. In the afternoon we will continue to our hotel to get ready and rest a day before our exploration.",
+                "dayDescription": "This day we will leave at 08:00, heading to Cañete located in the Sur Chico of the capital Lima, where we will visit Cerro Azul and its dock from the Republican era, as well as explore the typical gastronomy of the place where two cultures merge and Afro-Peruvian cuisine is born. , we will continue with our journey towards San Vicente where we will visit the Castle of José Unanue (One of our important precursors of Peruvian independence and founder of the School of Medicine). In the afternoon we will continue to our hotel to get ready and rest a day before our exploration.",
                 "dayInclusions": [
                     "Hotel breakfast" 
                 ]
@@ -172,7 +172,7 @@
             },
             {
                 "hotelName": "OLLANTAYTAMBO: Sol Natura 3* ",
-                "hotelLink": "http://www.hotelollantaytambo.com/es/"
+                "hotelLink": "https://sol-natura.cuzco-hotels.com/es/"
             }
         ]
     }
