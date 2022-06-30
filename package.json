@@ -20,6 +20,8 @@
     "@mui/icons-material": "^5.1.0",
     "@mui/material": "^5.0.6",
     "@mui/styles": "^5.5.3",
+    "@stripe/react-stripe-js": "^1.9.0",
+    "@stripe/stripe-js": "^1.32.0",
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
     "dayjs": "^1.11.3",

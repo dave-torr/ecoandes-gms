@@ -193,7 +193,7 @@ export function TourDisplayer(props){
             </>)
         } else if (theTour.prices.privateDeparture){
             return(<>
-                <span> <EventIcon/> PRIVATE <br/> DEPARTURE </span>
+                <span onClick={()=>props.bookingProcess(1)}> <EventIcon/> PRIVATE <br/> DEPARTURE </span>
                 <span> <LocalOfferIcon /> PRICES FROM <br/> ${theTour.prices.pricePerPerson} p. person </span>
             </>)
         }
@@ -210,7 +210,7 @@ export function TourDisplayer(props){
                     {aTour.tripDescription} </a>
                 {aTour.prices.privateDeparture&&<>
                     <div className={styles.privateDeparturesTitle} onClick={()=>props.bookingProcess(1)}>
-                    Private Departures Available <i>Here</i></div> </>}
+                    Book Trip <i>Here</i></div> </>}
                 <div className={styles.tourDetails}>
                     <span> <AccessTimeIcon /> {aTour.duration} <br/> DAYS </span>
                     <span><ExploreIcon /> TOUR TYPE: <br/> {aTour.tourType} </span>

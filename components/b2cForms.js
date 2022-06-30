@@ -109,6 +109,15 @@ export function PrivDepDatePicker(props){
     </>)
 }
 
+export function DepDatePicker(props){
+
+
+
+    return(<>
+    
+    </>)
+}
+
 ///////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
 // stepTwo
@@ -477,19 +486,42 @@ const ClientForm=(props)=>{
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
 // stepFour
+
+
+
+
+
+
+
+
+
 export function ConditionsAndpayment(props){
 
-    const clientPriceSummary=(priceObj)=>{
+    const clientPriceSummary=(priceObj, theTour)=>{
         return(<>
             <div className={styles.priceSummary}>
+                <div className={styles.summaryColumn}>
+                    <div className={styles.tripNameDuration}>
+                        <h1>{theTour.tripName}</h1>
+                        <h3> {theTour.duration} d / {theTour.duration -1 } n </h3>
+                    </div>
+                    <div className={styles.priceSummaryDescriptor}> 
+                        A private achaeology voyage through 
+                        {" "}{theTour.countryList.map((elem, i)=><React.Fragment key={i} > {elem} </React.Fragment>)}
+                    </div>
+                </div>
                 <div className={styles.summaryRow}> 
                     <i>Price per person</i>
                     ${priceObj.pricePerPerson.toLocaleString("en-US")}.-
                 </div>
-                <div className={styles.clientCountRow}> x {priceObj.clientNumber} guests  </div>
+                <div className={styles.summaryRow}>
+                    <p>In double (twin/double bed) room accommodation</p>
+                    <div className={styles.clientCountRow}> x {priceObj.clientNumber} guests  </div>
+                </div>
+
                 {priceObj.singleSupplements?<>
                 <div className={styles.summaryRow}> 
-                    <i>+ Single Room supplements</i>
+                    <i>+ single room supplement{priceObj.singleSupplements>1&&<>s</>}</i>
                      ${priceObj.singleSupRate.toLocaleString("en-US")}.-
                 </div>
                 <div className={styles.clientCountRow}> x {priceObj.singleSupplements} guests  </div>
@@ -504,17 +536,73 @@ export function ConditionsAndpayment(props){
 
     const clientCheckboxForm=()=>{
 
-        // checkbox with booking conditions
-        // checkbox with age agreement and on behalf of all clients
-
         // stripe incorporation and email tests.
 
-        return(<>
+        const conditionsAgreementDisplayer=()=>{
+            return(<>
+                <div className={styles.aCheckoutBoxCont}>
+                    <span className={styles.aCheckboxInput}>
+                        <input type="checkbox" id="ageAgreementID" required/>
+                    </span>
+                    <label htmlFor='ageAgreementID' className={styles.checkboxLabel} >
+                        I confirm that I am over 18 years of age; that all the information provided is correct; and that I am allowed to book this travel experience for myself and the other travelling passengers. </label>
+                </div>
+                <div className={styles.aCheckoutBoxCont}>
+                    <span className={styles.aCheckboxInput}>
+                        <input type="checkbox" id="conditionsAgreementID" required/>
+                    </span>
+                    <label htmlFor='conditionsAgreementID' className={styles.checkboxLabel} >
+                        I confirm that I have read and agree with EcoAndes' Payment and Cancellation Policies 
+                        <a href="/documents/ecoAndesPaymentPolicies.pdf" download className={styles.PDFdwnlBtn}> 
+                           {" "} [download PDF here]
+                        </a> </label>
+                </div>
+            </>)
+        }
+        const flightAdder=()=>{
+            return(<>
+            <div className={styles.flightsAdder}>
+                <h3>Please let us know your flight information [optional]:</h3>
+                <input type="text" onChange={(e)=>{
+                    props.setABooking({
+                        ...props.aBooking,
+                        "flightInfo": e.target.value
+                    })
+                }} />
+            </div>
+            </>)
+        }
 
+        const aCheckoutBox=(theFunction)=>{
+            return(<>
+                <div className={styles.priceSummary}> 
+                    {theFunction()}
+                </div>
+            </>)
+        }
+        return(<>
+            <form className={styles.clientCheckoutForms} onSubmit={(e)=>{
+                e.preventDefault()
+                console.log("cucu")
+            }} > 
+
+                {aCheckoutBox(conditionsAgreementDisplayer)}
+                {aCheckoutBox(flightAdder)}
+
+               {/* stripe Incorporation */}
+
+            </form>
         </>)
     }
 
+    // add internal flights option (Lima - Cus) 
+
+
+
+
+
     return(<>
-        {clientPriceSummary(props.aBooking.priceObject)}
+        {clientPriceSummary(props.aBooking.priceObject, props.theTourData)}
+        {clientCheckboxForm()}
     </>)
 }
