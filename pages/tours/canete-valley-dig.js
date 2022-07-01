@@ -33,7 +33,6 @@ export default function CaneteDigTour(props){
         "confirmed": true,
         "depDate": null
     })
-    const [aPayment, setAPayment]=useState(false)
 
     let partnerLogo= <Image src={AncientOdysLogo} alt="Ancient Odysseys Logo" />
 
@@ -77,7 +76,7 @@ export default function CaneteDigTour(props){
     return(<>
         {bookingProcess===0&&<> 
             <TourDisplayer 
-                aTour={theTourData} breadcrumb={false} partnerLogo={partnerLogo} bookingProcess={setbookingPros} />
+                aTour={theTourData} breadcrumb={false} partnerLogo={partnerLogo} bookingProcess={setbookingPros} key={"Canete Valley Dig Tour"} />
         </>}
         <div style={{width: "100%", display: "flex", justifyContent:"center"}}> 
         <div className={styles.bookingProcessTourData}>

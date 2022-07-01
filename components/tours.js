@@ -42,7 +42,7 @@ export function ATourCard(props){
 
             <div className={styles.tourCardTextCont}>
                 <div className={styles.tourCardDestinations} > 
-                {aMapFunction(theTour.countryList)} </div>
+                    {aMapFunction(theTour.countryList)} </div>
                 <div className={styles.tourCardTripName}> {theTour.tripName} </div>
                 <div > {theTour.duration} day itinerary &nbsp;  | &nbsp; {theTour.tourType} </div>
                 <div className={styles.tourCardCTA}> see experience </div>
@@ -152,7 +152,7 @@ export function TourDisplayer(props){
                     </React.Fragment>}
                     </>)}
             </div>
-            <div className={styles.carouselIconCont}>
+            {/* <div className={styles.carouselIconCont}>
                 <ArrowForwardIosIcon />
             </div>
             <div className={styles.carouselIconCont2}>
@@ -163,7 +163,7 @@ export function TourDisplayer(props){
             </div>
             <div className={styles.carouselIconCont4}>
                 <ArrowBackIosIcon /> 
-            </div>
+            </div> */}
         </div>
         <Dialog open={imgDialogContr} fullScreen onClose={()=>srtImgDialogcontr(false)}>
             <div className={styles.imgDialogCont}>
