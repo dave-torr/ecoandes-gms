@@ -57,7 +57,7 @@ export default function CaneteDigTour(props){
                 <span>{partnerLogo}</span>
                 <div className={styles.tourTitleBar}>
                     {theTourData.tripName}</div>
-                <div className={styles.bookingSteps}>Booking process: {bookingProcess} <strong>/ 4</strong></div>
+                <div className={styles.bookingSteps}>Booking process: {bookingProcess} <strong>/ 3</strong></div>
             </div>
         </>)
     }
@@ -83,23 +83,21 @@ export default function CaneteDigTour(props){
         {bookingProcess>0&&<> 
             {tourIntro()}
         </>}
-        {bookingProcess===1&&<>
+        {bookingProcess===1&&<> 
             <PrivDepDatePicker 
-                tourDates={theTourData.prices.privateDeparture} setABooking={setABooking} aBooking={aBooking} bookingStepBTN={bookingStepBTN} />
-        </>}
-        {bookingProcess===2&&<> 
+                tourDates={theTourData.prices.privateDeparture.departureDates} setABooking={setABooking} aBooking={aBooking} bookingStepBTN={bookingStepBTN} />
             <ClientPriceAndRooming 
                 aBooking={aBooking} setABooking={setABooking} theTourData={theTourData} bookingStepBTN={bookingStepBTN} />
         </>}
-        {bookingProcess===3&&<> 
+        {bookingProcess===2&&<> 
             <ClientPersonalData 
                 aBooking={aBooking} setABooking={setABooking} theTourData={theTourData} bookingStepBTN={bookingStepBTN} />
         </>}
-        {bookingProcess===4&&<> 
+        {bookingProcess===3&&<> 
             <ConditionsAndpayment 
                 aBooking={aBooking} setABooking={setABooking} theTourData={theTourData} bookingStepBTN={bookingStepBTN} />
         </>}
-        {bookingProcess===5&&<> 
+        {bookingProcess===4&&<> 
             congratulations page, contact info & send to backend via useState single rendering
         </>}
         </div>

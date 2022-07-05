@@ -108,13 +108,10 @@
             "priceNotice": "Hotel categories will depend on locally available properties. ",
             "privateDeparture":{
                 "departureDates": [
+
                     {
-                        "minDate":"2022-07-15",
-                        "maxDate": "2022-07-23"
-                    },
-                    {
-                        "minDate":"2022-08-06",
-                        "maxDate": "2022-08-23"
+                        "minDate":"2022-08-03",
+                        "maxDate": "2022-08-20"
                     }
                 ],
                 "priceRange":{
