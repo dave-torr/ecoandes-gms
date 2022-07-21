@@ -28,14 +28,15 @@
         "Puerto Velazco Ibarra",
         "Pintag",
         "Quevedo",
-        "Quito (capital)",
+        "Quito",
         "Riobamba",
         "Santo Domingo de los Colorados",
         "Salinas",
         "Santa Cruz",
         "Shell Mera",
         "Tulcán",
-        "Tena"
+        "Tena",
+        "Other"
     ],
     "peruCities":[
         "Lima",
@@ -362,5 +363,31 @@
         "Nacimiento",
         "Lebu",
         "San Javier"
+    ],
+    "ecuadorProvinces": [
+        "Azuay",
+        "Bolívar",
+        "Cañar",
+        "Carchi",
+        "Chimborazo",
+        "Cotopaxi",
+        "El Oro",
+        "Esmeraldas",
+        "Galápagos",
+        "Guayas",
+        "Imbabura",
+        "Loja",
+        "Los",
+        "Manabí",
+        "Morona Santiago",
+        "Napo",
+        "Orellana",
+        "Pastaza",
+        "Pichincha",
+        "Santa Elena",
+        "Santo Domingo de los Tsachilas",
+        "Sucumbíos",
+        "Tungurahua",
+        "Zamora Chinchipe"
     ]
 }

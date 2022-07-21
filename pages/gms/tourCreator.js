@@ -2,11 +2,11 @@ import { useState, useEffect, useRef } from "react";
 import { useSession, signIn, signOut } from "next-auth/react"
 
 import ExploreIcon from '@mui/icons-material/Explore';
-import {ItineraryImagePicker, HighlightAdder, TourDateAdder, DayByDayAdder} from "../components/forms"
+import {ItineraryImagePicker, HighlightAdder, TourDateAdder, DayByDayAdder} from "../../components/forms"
 import CancelIcon from '@mui/icons-material/Cancel';
-import styles from "../styles/pages/tourMaker.module.css"
-import { SignInForm, SignOutBtn } from "../components/authForms";
-import { GmsUserNavi } from "../components/navis";
+import styles from "../../styles/pages/tourMaker.module.css"
+import { SignInForm, SignOutBtn } from "../../components/authForms";
+import { GmsUserNavi } from "../../components/navis";
 
 export default function TourMakerPage(props){
 

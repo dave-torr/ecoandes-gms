@@ -2,9 +2,9 @@ import React from 'react'
 import { useState } from 'react'
 import Link from 'next/link'
 
-import styles from '../styles/pages/gms.module.css'
+import styles from '../../styles/pages/gms.module.css'
 
-import { SignInForm, SignOutBtn } from "../components/authForms"
+import { SignInForm, SignOutBtn } from "./../../components/authForms"
 import { useSession, signOut } from "next-auth/react"
 
 
@@ -28,12 +28,14 @@ export default function GMS(){
       <>
         {/* PROTECTED ROUTES */}
           {session? <>
-            <div className={styles.gmsOptBTN}> <Link href="/tourCreator">
+            <div className={styles.gmsOptBTN}> <Link href="/gms/tourCreator">
               Tour Creator</Link></div> 
-            <div className={styles.gmsOptBTN}> <Link href="/tourExplorer">
+            <div className={styles.gmsOptBTN}> <Link href="/gms/tourExplorer">
               Tour Explorer</Link></div> 
-            <div className={styles.gmsOptBTN}> <Link href="/operations">
+            <div className={styles.gmsOptBTN}> <Link href="/gms/operations">
               Document Generator</Link></div> 
+            <div className={styles.gmsOptBTN}> <Link href="/gms/rates">
+              Hotels & Rates</Link></div> 
           </>:<> 
             {logInTrig? <> 
               <SignInForm />
@@ -48,7 +50,7 @@ export default function GMS(){
 
 
   return (
-    <div className={styles.container}>
+    <div >
       <SignOutBtn />
 
       <main className={styles.main}>

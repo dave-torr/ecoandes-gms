@@ -136,6 +136,7 @@ useEffect(()=>{
         if(payment.status==='succeeded'){
             createReservation()
             setCount(count+1)
+            // send email to back end
         }
     },[payment])
 
