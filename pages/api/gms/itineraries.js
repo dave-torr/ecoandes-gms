@@ -1,4 +1,4 @@
-import {connectToDatabase} from "./../../middleware/dbMiddleware"
+import {connectToDatabase} from "./../../../middleware/dbMiddleware"
 
 async function handler(req, res){
     console.log("here at Req")
