@@ -389,5 +389,13 @@
         "Sucumbíos",
         "Tungurahua",
         "Zamora Chinchipe"
+    ],
+    "hotelCategories":[
+        "Hotel",
+        "Bed and Breakfast",
+        "Lodge",
+        "EcoLodge",
+        "Resort",
+        "Campsite"
     ]
 }

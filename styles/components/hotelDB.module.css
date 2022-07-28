@@ -1,0 +1,95 @@
+.hotelInfoGenCont{
+    border: solid 1px black;
+    padding: 12px 21px;
+    margin: 12px 21px;
+    box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.318);
+}
+
+.hotelDataRow{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hotelNameandDress{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.hotelName{
+    font-size: 2em;
+    font-weight: 300;
+}
+
+.categoryDisplCont{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+
+.starCount{
+    display: flex;
+    width: 100%;
+}
+
+.starCount span{
+    padding: 0 5px;
+}
+
+.categoryDisplCont h3{
+    padding: 0 6px;
+}
+
+.hotelPriceRow{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.hotelDataColumn{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.priceCatCont{
+    padding: 9px 15px;
+    min-width: 180px;
+    border-left: solid 1px black;
+    text-align: end;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.priceCatCont:first-of-type{
+  border-left: none;
+}
+
+.priceBlockCont{
+    display: flex;
+}
+
+.priceCell{
+    width: 130px;
+    border-right: solid 1px black;
+    border-top: solid 1px black;
+    text-align: center;
+}
+
+.priceCell:first-of-type{
+    border-left: solid 1px black;
+}
+
+.priceBlockCont:last-of-type {
+    border-bottom: 1px solid black;
+}
+
+.priceCatLabel{
+    margin-bottom: 6px;
+}
+
