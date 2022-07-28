@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./../../styles/pages/gms.module.css"
 import { useSession, signOut } from "next-auth/react"
 
@@ -6,13 +6,11 @@ import AddBoxIcon from '@mui/icons-material/AddBox';
 import CloseIcon from '@mui/icons-material/Close';
 import Dialog from '@mui/material/Dialog';
 
-import StarBorderIcon from '@mui/icons-material/StarBorder';
-import StarIcon from '@mui/icons-material/Star';
 import Slider from '@mui/material/Slider';
 
 import CountryData from "./../../data/ecoAndesCountryData"
 import { HotelDataDisplayer } from "../../components/hotelDB";
-
+let toDate = new Date()
 
 export default function HotelRates(props){
 
@@ -23,11 +21,20 @@ export default function HotelRates(props){
     const [hotelSchema, setHotelSchema]=useState({
         "accomodationType":"Hotel",
         "province": "Pichincha",
-
+        "submistionDate": toDate,
     })
     const [hotelAdderContr, setHotelAdd]= useState(false)
     const [roomPriceObj, setRoomPriceObj]=useState({})
     const [roomCategorySwitcher, setRoomCat] = useState("standard")
+    const [breakfastController, setBreakfastCont]=useState(true)
+    useEffect(()=>{
+        if(session){
+            setHotelSchema({
+                ...hotelSchema,
+                "submittedBy": session.user.name,
+            })
+        }
+    },[session])
 
     const aTextInput=(aPlaceholder, inputId, anObject, setAnObject, inputType, reqBoolean)=>{
         return(<>
@@ -49,7 +56,6 @@ export default function HotelRates(props){
             </div>
         </>)
     }
-
     const aPriceInput=(aPlaceholder, inputId, priceCategory, inputType, reqBoolean)=>{
         return(<>
         <div className={styles.aPriceInputcont}>
@@ -64,7 +70,6 @@ export default function HotelRates(props){
                     setRoomPriceObj({
                         ...roomPriceObj,
                         "priceCategory": priceCategory,
-                        "breakfastIncluded": true,
                         [inputId]: e.target.value
                     })
                 }}
@@ -72,7 +77,6 @@ export default function HotelRates(props){
             </div>
         </>)
     }
-
     const locationPickers=(locationList, provOrCity )=>{
         let destinationOpts=locationList.map((elem, i)=><option key={i}>{elem}</option>)
         return(<>
@@ -88,7 +92,6 @@ export default function HotelRates(props){
             </div>
         </>)
     }
-
     const addRoomPrices=( priceCategory )=>{
         return(<>
             <div className={styles.dataContTwo}>
@@ -114,14 +117,35 @@ export default function HotelRates(props){
                     {aPriceInput("Private Rates", 'triplePrivateRates', priceCategory, 'number', false )}
                 </div>
             </div>
+            <div className={styles.breakfastSwitcher}>
+                Breakfast included in {priceCategory} rooms? 
+                    <input required type="radio" name="breakfastRadio" id="breakfastTrue" onClick={()=>{
+                        setBreakfastCont(true)
+                        setRoomPriceObj({
+                            ...roomPriceObj,
+                            "breakfastIncl": true,
+                        })                        
+                    }}/><label htmlFor="breakfastTrue" > Yes </label> &nbsp; | <input required type="radio" name="breakfastRadio" id="breakfastFalse" onClick={()=>{
+                        setBreakfastCont(false)
+                        setRoomPriceObj({
+                            ...roomPriceObj,
+                            "breakfastIncl": false,
+                        })                        
+                    }} /><label htmlFor="breakfastFalse" > No </label>
+            </div>
+            {!breakfastController&&<div >
+                Please add breakfast price: <input type='number' onChange={(e)=>{setRoomPriceObj({
+                    ...roomPriceObj,
+                    "breakfastPrice": e.target.value,
+                })}} />
+            </div>}
         </>)
     }
-
     const formBtnsCont=(categoryController, catControllerTwo )=>{
         return(<>
             <div className={styles.roomVariantsBTNCont}>
                 <div className={styles.addRoomCategoryBTN} onClick={()=>{
-                    let upDatedPriceArr  
+                    let upDatedPriceArr
                     if(hotelSchema.priceArr){
                         upDatedPriceArr= hotelSchema.priceArr.concat(roomPriceObj)
                     } else {
@@ -153,7 +177,7 @@ export default function HotelRates(props){
             </div>
         </>)
     }
-    
+
     const marks = [
         {
             "value": 0,
@@ -226,7 +250,6 @@ export default function HotelRates(props){
         </div>
         </>)
     }
-
     const hotelAdderForm=()=>{
         return(<>
             <div className={styles.closeDialogBTN} onClick={()=>setHotelAdd(false)}>close&nbsp;<CloseIcon/></div>
@@ -277,8 +300,18 @@ export default function HotelRates(props){
             </form>        
         </>)
     }
+    const submitToBackEnd=async(theHotel)=>{
+        let stringifiedHotelSchema = JSON.stringify(hotelSchema)
+            const res = await fetch("/api/hotelDB", {
+            method: "POST",
+            body: stringifiedHotelSchema
+        })        
+        const createdHotelRecord = await res.json()
 
-
+        if(createdHotelRecord){
+            console.log("check yo backend", createdHotelRecord)
+        }
+    }
     ////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////
     const hotelAdderdialog=()=>{
@@ -292,11 +325,16 @@ export default function HotelRates(props){
                 <br /><br /><br />
                 <h3>Please review and accept submition to Hotel DB</h3>
                 <HotelDataDisplayer hotelSchema={hotelSchema} />
+                <div className={styles.addRoomCategoryBTN} onClick={()=>{
+                    submitToBackEnd()
+                    // add loading spinner, close Dialog, refresh db landing
+                }}> confirm + send to database</div>
             </>}
             </div>
         </Dialog>
         </>)
     }
+
 
     return(<>
         <div className={styles.main}>

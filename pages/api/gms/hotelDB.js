@@ -9,7 +9,7 @@ async function handler(req, res){
 
         const hotelRecord = client
             .db('EcoAndesGMS')
-            .collection("hotelRates");
+            .collection("hotelDB");
 
         const aHotelRecord = await hotelRecord
             .insertOne(reqData)
