@@ -5,8 +5,8 @@ import { useSession, signOut } from "next-auth/react"
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import CloseIcon from '@mui/icons-material/Close';
 import Dialog from '@mui/material/Dialog';
-
 import Slider from '@mui/material/Slider';
+import { Loader } from '@mantine/core';
 
 import CountryData from "./../../data/ecoAndesCountryData"
 import { HotelDataDisplayer } from "../../components/hotelDB";
@@ -17,11 +17,10 @@ export default function HotelRates(props){
     const { data: session } = useSession()
 
     const [hotelAdderStep, setHotelStep]= useState(0)
-
     const [hotelSchema, setHotelSchema]=useState({
         "accomodationType":"Hotel",
         "province": "Pichincha",
-        "submistionDate": toDate,
+        "submitionDate": toDate,
     })
     const [hotelAdderContr, setHotelAdd]= useState(false)
     const [roomPriceObj, setRoomPriceObj]=useState({})
@@ -300,9 +299,10 @@ export default function HotelRates(props){
             </form>        
         </>)
     }
-    const submitToBackEnd=async(theHotel)=>{
+    const submitToBackEnd=async()=>{
+        console.log("here at submit BTN")
         let stringifiedHotelSchema = JSON.stringify(hotelSchema)
-            const res = await fetch("/api/hotelDB", {
+        const res = await fetch("/api/gms/hotelDB", {
             method: "POST",
             body: stringifiedHotelSchema
         })        
@@ -310,6 +310,8 @@ export default function HotelRates(props){
 
         if(createdHotelRecord){
             console.log("check yo backend", createdHotelRecord)
+            window.alert("Hotel Registration Successful !")
+            setHotelAdd(false)
         }
     }
     ////////////////////////////////////////////////////////
@@ -324,16 +326,24 @@ export default function HotelRates(props){
             {hotelAdderStep===1&&<>
                 <br /><br /><br />
                 <h3>Please review and accept submition to Hotel DB</h3>
-                <HotelDataDisplayer hotelSchema={hotelSchema} />
-                <div className={styles.addRoomCategoryBTN} onClick={()=>{
+                <HotelDataDisplayer hotelSchema={hotelSchema} listDisp={true} />
+                <div className={styles.submittoBeBTN} onClick={()=>{
                     submitToBackEnd()
+                    setHotelStep(2)
                     // add loading spinner, close Dialog, refresh db landing
                 }}> confirm + send to database</div>
+            </>}
+            {hotelAdderStep===2&&<>
+                <div className={styles.loaderScreen}>
+                    <h2> Sending to the cloud! </h2> <br></br>
+                    <Loader color="red" size="xl"/>
+                </div>
             </>}
             </div>
         </Dialog>
         </>)
     }
+
 
 
     return(<>
@@ -347,7 +357,7 @@ export default function HotelRates(props){
             <br></br>
             <br></br>
             <br></br>
-            <HotelDataDisplayer hotelSchema={hotelSchema} />
+            {/* <HotelDataDisplayer hotelSchema={hotelSchema} /> */}
         {hotelAdderdialog()}
     </>)
 }

@@ -1,11 +1,9 @@
 import {connectToDatabase} from "./../../../middleware/dbMiddleware"
 
 async function handler(req, res){
-    console.log("Req @ hotelRates")
     if(req.method==="POST"){
-        console.log("here at POST")
-        const client = await connectToDatabase();
         const reqData= JSON.parse(req.body)
+        const client = await connectToDatabase();
 
         const hotelRecord = client
             .db('EcoAndesGMS')
@@ -16,7 +14,7 @@ async function handler(req, res){
 
         if(aHotelRecord){
             client.close();
-            return {...aHotelRecord}
+            res.json(aHotelRecord)
         }
         // error handling
     }

@@ -60,8 +60,8 @@ export function HotelDataDisplayer(props){
         }
     },[])
 
-    // let hotelSchema= props.hotelSchema
-    let hotelSchema= tempSchema
+    let hotelSchema= props.hotelSchema
+    // let hotelSchema= tempSchema
  
     let starArrDisp = [...Array(hotelSchema.accomodationCategory)].map((elem, i)=><span key={i}> <StarIcon/> </span>)
 
@@ -69,9 +69,9 @@ export function HotelDataDisplayer(props){
         <div className={styles.priceCatCont}> 
             <div className={styles.priceCatLabel}>{elem.priceCategory} room rates</div>
             {aPriceBlock("single rack rates", elem.singleRackRates )}
+            {aPriceBlock("double rack rates", elem.doubleRackRates )}
             {aPriceBlock("single net rates", elem.singleNetRates )}
             {aPriceBlock("double net rates", elem.doubleNetRates )}
-            {aPriceBlock("double rack rates", elem.doubleRackRates )}
             {elem.breakfastIncl?<> <div className={styles.breakfastIncDetail}> Breakfast included</div></>:<> Breakfast price: ${elem.breakfastPrice} </>}
         </div></React.Fragment> )
 
@@ -105,8 +105,6 @@ export function HotelDataDisplayer(props){
             </>)
         }
     }
-
-    console.log(hotelSchema)
 
     return(<>
         <div className={styles.hotelInfoGenCont}>

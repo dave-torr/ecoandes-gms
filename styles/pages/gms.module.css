@@ -179,6 +179,24 @@
   align-items: center;
 }
 
+.submittoBeBTN{
+  background-color: var(--brick-red);
+  padding: 9px 15px;
+  width: fit-content;
+  margin: 12px;
+  color: white;
+  font-size: 1.1em;
+}
+
+.loaderScreen{
+  width: 100%;
+  min-height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 @media (max-width: 740px) {
   .dataContOne{
     flex-direction: column;
