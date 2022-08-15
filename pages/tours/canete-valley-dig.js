@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import Image from "next/image"
 
 import theTourData from "./../../data/caneteDig.json"
@@ -20,8 +20,15 @@ export default function CaneteDigTour(props){
     // 0 = tour displayer
     // 1 = private departure
     // 2 = fixed departure
-
     const [bookingProcess, setbookingPros] = useState(0)
+
+    useEffect(()=>{
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
+    },[bookingProcess])
+
     const [aBooking, setABooking]= useState({
         "bookingDate": toDate,
         "itinerary": "Canete Valley Dig",

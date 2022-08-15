@@ -124,7 +124,6 @@ export function TourDisplayer(props){
             {accordionDisplayer("Day by Day", theDays, false)}
         </>)
     }
-
     function Imagedisp(props){
         return(<>        
         <div className={styles.aTourImage} onClick={()=>{

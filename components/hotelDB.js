@@ -41,7 +41,6 @@ let tempSchema={
     "province": "Galápagos",
 }
 
-
 const aPriceBlock=( priceBlockKey, thePrice)=>{
     return(<>
         <div className={styles.priceBlockCont}> 
@@ -51,6 +50,7 @@ const aPriceBlock=( priceBlockKey, thePrice)=>{
     </>)
 }
 
+////////////////////////////////////////////////////////////
 // hotel display on Database list. add filters for cities, provinces
 export function HotelDataDisplayer(props){
     const [rowOrCol, setRoworCol]= useState(styles.hotelDataRow)
@@ -127,6 +127,5 @@ export function HotelDataDisplayer(props){
         </div>
     </>)
 }
-
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////

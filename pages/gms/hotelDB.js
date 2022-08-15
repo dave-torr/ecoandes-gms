@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import styles from "./../../styles/pages/gms.module.css"
 import { useSession, signOut } from "next-auth/react"
+import useHotelDB from "./../api/gms/hotelsSWR" 
+import styles from "./../../styles/pages/gms.module.css"
+
 
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import CloseIcon from '@mui/icons-material/Close';
@@ -14,8 +16,10 @@ let toDate = new Date()
 
 export default function HotelRates(props){
 
+    // USER DATA
     const { data: session } = useSession()
 
+    // ADDING PROPERTIES TO DB
     const [hotelAdderStep, setHotelStep]= useState(0)
     const [hotelSchema, setHotelSchema]=useState({
         "accomodationType":"Hotel",
@@ -26,6 +30,15 @@ export default function HotelRates(props){
     const [roomPriceObj, setRoomPriceObj]=useState({})
     const [roomCategorySwitcher, setRoomCat] = useState("standard")
     const [breakfastController, setBreakfastCont]=useState(true)
+
+    // FETCHING HOTELS FROM DB WITH SWR
+
+    const {HotelEntries, loadingStat, errorStat}=useHotelDB()
+
+    const [orderedHotelLists, setOrderedHotels]=useState()
+
+    console.log(HotelEntries, "hotel entries at client")
+
     useEffect(()=>{
         if(session){
             setHotelSchema({
@@ -34,6 +47,14 @@ export default function HotelRates(props){
             })
         }
     },[session])
+
+    // useEffect=(()=>{
+    //     if(HotelEntries){
+    //         let orderedHotels = HotelEntries.sort((a,b)=>
+    //         (a.hotelName > b.hotelName) ? 1 :  -1);
+    //         console.log(orderedHotels)
+    //     }
+    // },[HotelEntries])
 
     const aTextInput=(aPlaceholder, inputId, anObject, setAnObject, inputType, reqBoolean)=>{
         return(<>
@@ -345,6 +366,10 @@ export default function HotelRates(props){
     }
 
 
+// main hotel landing: Ikala GPS, Ikala UIO, Yacuma iwth Incremental Static Generation
+// filter funtionality for hotels for provinces / cities.
+
+// SWR for all other hotel DB data
 
     return(<>
         <div className={styles.main}>
@@ -353,10 +378,7 @@ export default function HotelRates(props){
                 <div className={styles.addHotelBTN} onClick={()=>{setHotelAdd(true)}}> Add Hotel &nbsp;<AddBoxIcon /></div>
             </div>
         </div>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
+
             {/* <HotelDataDisplayer hotelSchema={hotelSchema} /> */}
         {hotelAdderdialog()}
     </>)

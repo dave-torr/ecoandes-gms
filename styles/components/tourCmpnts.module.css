@@ -58,6 +58,12 @@
     width: 100%;
 }
 
+.accordionCont h2{
+    text-transform: uppercase;
+    color: var(--brick-red);
+    font-weight: 400;
+}
+
 .tourContainer{
     width: 1080px;
     display: flex;
@@ -238,8 +244,6 @@
     background-color: var(--brick-red);
 }
 
-
-
 .tourDetails{
     padding: 15px 0;
     display: flex;
@@ -281,27 +285,33 @@
 
 .incExcCont{
     border-radius: 3px;
-    box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.35);
-    width: 45%;
+    width: 48%;
     padding: 0 15px;
     display: flex;
     flex-direction: column;
     border: solid 1px grey;
 }
 
+.incExcCont h3{
+    text-transform: uppercase;
+}
+
 .incExcItems{
     text-transform: capitalize;
 }
 
-.dayInclusionCont{
-    margin-top: 12px;
-    border: solid 0.5px black;
+.dayInclusionCont > h4{
+    border-top: solid 1px var(--brick-red);
+    padding-top: 12px;
+}
+.dayInclusionCont > ul{
+    margin: unset;
+    margin-top: 9px;
+}
+.dayInclusionCont li{
+    font-size: 0.9em;
 }
 
-.dayInclusionCont > h4{
-    margin: unset;
-    margin: 9px;
-}
 .hotelLink{
     display: flex;
     width: 100%;

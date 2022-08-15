@@ -121,6 +121,7 @@ export function ItineraryImagePicker(props){
             height={1125}
         /></div>
     </React.Fragment>)
+
     return(
         <>
             <div className={styles.imageThumbnailDisp}> 
@@ -130,14 +131,13 @@ export function ItineraryImagePicker(props){
         </>
     )
 }
+
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
 
 export function HighlightAdder(props){
 
-
     // add highlights or add a tour comment
-
 
     const [aHighlight, setAHighlight]=useState('')
     const highlightSubmit=()=>{
@@ -169,6 +169,7 @@ export function HighlightAdder(props){
         </div>
     )
 }
+
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
 
@@ -214,6 +215,7 @@ export function TourDateAdder(props){
         </>
     )
 }
+
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
 
@@ -241,6 +243,9 @@ const flightsAdder=(setDay, theTravelDay, flightInfo, setFlights, formTrigger)=>
         </div>
     </>)
 }
+
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
 
 export function DayByDayAdder(props){
     // props.aTour
