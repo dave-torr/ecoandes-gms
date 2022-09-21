@@ -83,7 +83,7 @@ export default function CaneteDigTour(props){
     return(<>
         {bookingProcess===0&&<> 
             <TourDisplayer 
-                aTour={theTourData} breadcrumb={false} partnerLogo={partnerLogo} bookingProcess={setbookingPros} key={"Canete Valley Dig Tour"} />
+                aTour={theTourData} breadcrumb={false} partnerLogo={partnerLogo} bookingProcess={setbookingPros} />
         </>}
         <div style={{width: "100%", display: "flex", justifyContent:"center"}}> 
         <div className={styles.bookingProcessTourData}>

@@ -30,9 +30,6 @@ import RemoveIcon from '@mui/icons-material/Remove';
 ///////////////////////////////////////////////////////
 // stepOne
 export function PrivDepDatePicker(props){
-    console.log(props.aBooking)
-
-
     const clientDatePicker=()=>{
 
         let minDate= props.tourDates[0].minDate
@@ -57,15 +54,9 @@ export function PrivDepDatePicker(props){
             </div>
         </>)
     }
-
-
-
     return(<>
         <div className={styles.datePickerContainer}>
-
-
             {clientDatePicker()}
-
         </div>
     </>)
 }
@@ -371,6 +362,7 @@ export function ClientPersonalData(props){
     </>)
 }
 //////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
 const ClientForm=(props)=>{
     const [userObject, setUserObj]=useState({
         "userName": null,
@@ -438,9 +430,6 @@ const ClientForm=(props)=>{
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
 // stepFour
-
-
-
 export function ConditionsAndpayment(props){
 
     const [checkoutFormTrig, setcheckouttrig]=useState(false)

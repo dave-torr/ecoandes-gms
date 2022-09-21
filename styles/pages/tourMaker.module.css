@@ -1,16 +1,139 @@
 .generalPageCont{
-    min-height: 100vh;
+    min-height: 101vh;
+    display: flex;
     align-items: center;
+    flex-direction: column;
+    background-color: var(--whitesmoke-background);
+    padding-bottom: 66px;
+}
+
+.tourMakerTitle{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    padding-top: 21px;
+    background-color: white;
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.145);
+    border-radius: 6px;
+    margin: 12px;
+}
+
+.tourMakerTitle h1{
+    margin-top: 0;
+    width: 70%;
+    text-align: center;
+}
+.tourMakerTitle h3{
+    margin: 33px;
+}
+
+.introQuote{
+    padding: 12px;
+    font-size: 1.3em;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+}
+
+.tourMakerTitleBar{
+    display: flex;
+    width: 100%;
+    padding-left: 21px;
+    border-bottom: solid 1px black;
+    box-shadow: 0 5px 4px rgba(0, 0, 0, 0.203);
+    margin-bottom: 33px;
+    background-color: white;
+}
+
+.aStepContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.145);
+    border-radius: 6px;
+    width: 260px;
+}
+
+.editIconCont{
+    position: absolute;
+    right: calc(50% - 170px);
+}
+
+.aStepTitleBar{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: var(--dull-gold);
+    color: white;
+    padding: 9px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.offlineStepTitleBar{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: var(--pale-gold);
+    color: black;
+    padding: 9px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.upcomingTitleBar{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-top: dotted 1px black;
+    color: black;
+    padding: 9px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.aStepForm{
+    padding: 18px;
+}
+
+
+
+.tMIntroContinput{
+    margin: 12px;
+    margin-top: 24px;
+    width: 95%;
+    padding: 6px;
+    background-color: var(--brick-red);
+    color: white;
+    font-size: 1.3em;
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.145);
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.destPicker{
+    width: 95%;
     display: flex;
     flex-direction: column;
 }
 
-.teIntroCont{
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    padding: 21px;
-    padding-top: 0;
+.destPicker label{
+    margin: 6px 5px;
+}
+
+.tourTypeSelect{
+    padding: 2px 0;
+    margin: 0 5px;
+    width: 214px;
+    text-transform: capitalize;
 }
 
 .tourHighlightCont{

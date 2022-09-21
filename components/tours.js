@@ -62,8 +62,6 @@ export function TourDisplayer(props){
     const [imgDialogContr, srtImgDialogcontr]= useState(false)
     const [selectedImg, setSelectedImg]=useState(false)
 
-
-    // FFE - Components
     const accordionDisplayer=(accordTitle, accordContent, openContr, numerator)=>{
         return(<>
         <Accordion defaultExpanded={openContr} className={styles.accordionCont}>
@@ -83,12 +81,9 @@ export function TourDisplayer(props){
             </div>
         </>)
     }
-    const incExcCont= <div className={styles.inclusionsExclusionsSec}> 
+    const incExcCont = <div className={styles.inclusionsExclusionsSec}> 
         {incExcDisplayer(aTour.included, "Included in Tour")}
-        {incExcDisplayer(aTour.notIncluded, "Not included in Tour")}
-        </div>;
-
-    // FFU - theme colors
+        {incExcDisplayer(aTour.notIncluded, "Not included in Tour")} </div>;
     const dayByDaydisp=(tourDayByDay)=>{
         const dayInclDisp=(dayIncl)=>{
             if(dayIncl){
@@ -208,7 +203,7 @@ export function TourDisplayer(props){
                 <a className={styles.tourOverview}> 
                     {aTour.tripDescription} </a>
                 {aTour.prices.privateDeparture&&<>
-                    <div className={styles.privateDeparturesTitle} onClick={()=>props.bookingProcess(1)}>
+                    <div className={styles.bookNowBTN} onClick={()=>props.bookingProcess(1)}>
                     Book Trip <i>Here</i></div> </>}
                 <div className={styles.tourDetails}>
                     <span> <AccessTimeIcon /> {aTour.duration} <br/> DAYS </span>
@@ -274,7 +269,9 @@ export function TourDisplayer(props){
                 {carouselDisp(aTour.imgArr)} 
             </div>
             <div className={styles.tourDetailsContainer}>
+                <div className={styles.sectionTitles}>Overview</div>
                 {dayByDaydisp(aTour.dayByDay)}
+                <div className={styles.sectionTitles}>additional information</div>
                 {accordionDisplayer("Tour Inclusions / Exclusions", incExcCont, false)}
                 {hotelList(aTour)}
             </div>

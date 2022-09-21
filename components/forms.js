@@ -43,7 +43,7 @@ export function LogoSwitcher(props){
         }
     }
     return(<>
-        <div style={{display: "flex", alignItems: "center", fontSize: "1.3em"}}>
+        <div style={{display: "flex", alignItems: "center"}}>
         <Switch 
             checked={props.aTour.ecoAndesLogo}
             onChange={handleChange}
@@ -51,34 +51,7 @@ export function LogoSwitcher(props){
     </>)
 }
 
-export function TourMakerStepOne(){
 
-    // step one adds the following generalTourData:
-    // - Destinations
-    // - Trip Name
-    // - Client Reference (ex: Hunter x 4)
-    // - FIT | Agency | alt clientType
-    // - Days in Tour
-    // - Tour Language
-
-    // If Agency:
-    //  - Tour Code
-    //  - Company Contact
-    
-
-    // Optionals:
-    //  -- Tour Dates
-    //  -- Tour Ref?
-
-    // Hidden Details:
-    //  - Submitted by (user)
-    //  - Date of Submition
-
-
-    return(<>
-
-    </>)
-}
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
 
@@ -155,7 +128,6 @@ export function HighlightAdder(props){
                 onChange={(e)=>{
                     setAHighlight(e.target.value)
                 }}
-                style={{width: "250px"}}
                 value={aHighlight}
                 onKeyPress={(e)=>{
                     e.key === 'Enter' && highlightSubmit()
@@ -248,8 +220,8 @@ const flightsAdder=(setDay, theTravelDay, flightInfo, setFlights, formTrigger)=>
 //////////////////////////////////////////////////////////
 
 export function DayByDayAdder(props){
-    // props.aTour
-    // props.tourEditor
+
+
     const [aTravelDay, setTravelDay] = useState({
         "pickUpTimes":[],
         "overnightProperty":''
@@ -282,7 +254,6 @@ export function DayByDayAdder(props){
                     onKeyPress={(e)=>{
                         e.key === 'Enter' && addPickUpToArr()
                     }}
-                    style={{width: "250px"}}
                     value={aPickupData}
                 /> &nbsp;
                 {aPickupData===''?<>
@@ -322,7 +293,6 @@ export function DayByDayAdder(props){
                 onKeyPress={(e)=>{
                     e.key === 'Enter' && setHotelToDay()
                     }}
-                style={{width: "250px"}}
                 value={overNight}
             /> &nbsp;
             {overNight===''?<>
@@ -360,6 +330,7 @@ export function DayByDayAdder(props){
         return(<>
         {flightsTrigger?<>
 
+
             {flightsAdder(setTravelDay, aTravelDay, flightInfo, setFlightInfo, setFlightsTrig)}
 
 
@@ -380,6 +351,13 @@ export function DayByDayAdder(props){
         </>}
         </>)
     }
+
+
+
+
+
+
+
 
 
 
@@ -427,6 +405,8 @@ export function DayByDayAdder(props){
                 setPickupTimes([])   
                 document.getElementById("dayAdderForm").reset()                             
             }}>
+
+
             {dayDescriptionAdder()}
             <h3>Pick Up Times:</h3>
                 {pickupTimesDisp}

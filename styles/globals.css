@@ -45,8 +45,17 @@ h4{
   text-transform: capitalize;
 }
 
+
+/* Brand colors */
+/* Brand colors */
+
+
 :root{
-/* Brand colors:  */
+
+/* Colors */
+/* Colors */
+
+
 
 /* brown condor: */
 --brown-main: #6f522b;
@@ -66,6 +75,17 @@ h4{
 /* brick red */
 --brick-red: #943a14;
 
+/* whitesmoke background */
+--whitesmoke-background:rgb(231, 227, 227);
+
+
+/* Fonts */
+
 --serif-Font: 'Roboto Slab', serif;
+
+
+
+
+
 }
 
