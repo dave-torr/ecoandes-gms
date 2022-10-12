@@ -243,6 +243,11 @@
     margin: 15px 0;
 }
 
+.trekDiffNotice{
+    padding-bottom: 12px;
+    font-size: 1.2em;
+}
+
 .tourDetails{
     padding: 15px 0;
     display: flex;
@@ -267,13 +272,6 @@
 .tourDetails > span:last-of-type{
     /* target last span, remove border */
     border: none;
-}
-
-
-.tourDetails > span:nth-child(3):hover{
-    cursor: pointer;
-    border-radius: 5px;
-    box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.32);
 }
 
 
@@ -316,6 +314,18 @@
 }
 .dayInclusionCont li{
     font-size: 0.9em;
+}
+
+.trekDataCont{
+    font-size: 0.9em;
+    display: flex;
+    padding: 3px 0;
+    padding-left: 18px;
+}
+.trekDataCont div{
+    width: 130px;
+    font-weight: 550;
+    text-transform: capitalize;
 }
 
 .hotelLink{
@@ -820,7 +830,7 @@
 }
 
 .userDataForm > input[type=number] {
-  -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 @media (max-width: 1080px) {

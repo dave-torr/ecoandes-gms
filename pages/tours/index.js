@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react"
 import Link from 'next/link'
 import Image from "next/image"
 
-import TourData from "../../data/itineraries"
+import TourData from "../../data/peruItineraries"
 import styles from "./../../styles/pages/tours.module.css"
 
 import {EcoAndesBar, Navi2} from "./../../components/navis"

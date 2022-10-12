@@ -3,7 +3,7 @@ import React, { useState } from "react"
 import {EcoAndesBar} from "./../../components/navis"
 import {TourDisplayer} from "./../../components/tours"
 
-import TourData from "../../data/itineraries"
+import TourData from "../../data/peruItineraries"
 
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
@@ -22,6 +22,11 @@ function TourPage({ aTour }){
     return(<>
         <EcoAndesBar />
         <TourDisplayer aTour={aTour} breadcrumb={true} key={aTour.tripName} />
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        Footer
     </>)
 }
 

@@ -54,11 +54,12 @@
     box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.145);
     border-radius: 6px;
     width: 260px;
+    margin-right: 40px;
 }
 
 .editIconCont{
     position: absolute;
-    right: calc(50% - 170px);
+    transform: translateX(150px);
 }
 
 .aStepTitleBar{
@@ -107,16 +108,16 @@
 
 
 .tMIntroContinput{
-    margin: 12px;
-    margin-top: 24px;
-    width: 95%;
+    margin: 12px 0;
+    margin-top: 15px;
+    width: 100%;
     padding: 6px;
     background-color: var(--brick-red);
     color: white;
-    font-size: 1.3em;
     box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.145);
     border-radius: 6px;
     cursor: pointer;
+    text-align: center;
 }
 
 .destPicker{
@@ -143,4 +144,15 @@
 .aHighlight{
     width: 250px;
     text-transform: capitalize;
+}
+
+
+.tourMakerLayout{
+    display: flex;
+}
+
+.tMSteps{
+    display: flex;
+    flex-direction: column;
+
 }

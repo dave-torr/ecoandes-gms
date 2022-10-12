@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSession, signIn, signOut } from "next-auth/react"
 
-import {HighlightAdder,  DayByDayAdder, aTextInput, LogoSwitcher} from "../../components/forms"
+import {HighlightAdder,  DayByDayAdder, aTextInput, LogoSwitcher, IncExclAdder} from "../../components/forms"
 import { SignInForm, SignOutBtn } from "../../components/authForms";
 import { GmsUserNavi } from "../../components/navis";
 
@@ -40,9 +40,9 @@ let tourType=["active", "family", "cruise", "expedition", "private", "voyage"]
     const [theTourtype, setTourtype]= useState()
 
 
-    const editIcon=()=>{
+    const editIcon=(setIndex)=>{
         return(<>
-        <div className={styles.editIconCont} onClick={()=>{ setTourMakerStep(tourMakerStep-1)}}>
+        <div className={styles.editIconCont} onClick={()=>{ setTourMakerStep(setIndex)}}>
             <ModeEditIcon />
         </div> 
         </>)
@@ -82,7 +82,7 @@ let tourType=["active", "family", "cruise", "expedition", "private", "voyage"]
 
                 <div className={styles.introQuote}>Let's get started!</div>
 
-                <div className={styles.aStepContainer} >
+                <div className={styles.aStepContainer}>
                     <div className={styles.aStepTitleBar}> general tour data</div>
 
                     <form className={styles.aStepForm} onSubmit={(e)=>{
@@ -126,28 +126,24 @@ let tourType=["active", "family", "cruise", "expedition", "private", "voyage"]
 
 
                         {aTextInput("Tour Reference", "tourRef", aTourModel, setTourModel, "text", false )}
-                        {aTextInput("Tour Code", "tourCode", aTourModel, setTourModel, "text", false )}
                         {aTextInput("Tour Language", "tourLanguage", aTourModel, setTourModel, "text", false )}
                         {aTextInput("Client Reference", "clientRef", aTourModel, setTourModel, "text", false )}
-                        {aTextInput("Company Contact", "companyContact", aTourModel, setTourModel, "text", false )}
+                        {aTextInput("Tour Code (if agency)", "tourCode", aTourModel, setTourModel, "text", false )}
+                        {aTextInput("Company Contact (if agency)", "companyContact", aTourModel, setTourModel, "text", false )}
                         <input type="submit" value="Next" className={styles.tMIntroContinput}/>
                     </form>
                 </div>
             </>}
 
-            {tourMakerStep===1&&<> 
-                <div className={styles.introQuote}>Step Two</div>
+            {tourMakerStep>0&&<> 
                 <div className={styles.aStepContainer}>
                     <div className={styles.offlineStepTitleBar}> general tour data</div>
-                    {editIcon()}
+                    {editIcon(0)}
                 </div>
             </>}
         </>)
     }
     const tourMakerStepTwo=()=>{
-
-
-
         return(<>
         {tourMakerStep===1&&<>
             <div className={styles.aStepContainer} > 
@@ -157,10 +153,11 @@ let tourType=["active", "family", "cruise", "expedition", "private", "voyage"]
                     <DayByDayAdder 
                         aTour={aTourModel} 
                         tourEditor={setTourModel} 
+                        setTourMakerStep={setTourMakerStep}
                     />
             </div>
             </>}
-            {tourMakerStep===2&&<> 
+            {tourMakerStep>1&&<> 
                 <div className={styles.introQuote}>Step Three</div>
                 <div className={styles.aStepContainer}>
                     <div className={styles.offlineStepTitleBar}> general tour data</div>
@@ -169,7 +166,13 @@ let tourType=["active", "family", "cruise", "expedition", "private", "voyage"]
             </>}
         </>)
     }
-
+    const tourMakerStepThree=()=>{
+        return(<>
+            {tourMakerStep===2&&<> 
+                <IncExclAdder />
+            </>}
+        </>)
+    }
 
     /////////////////////////////////////
     // Tour Highlights
@@ -206,8 +209,7 @@ let tourType=["active", "family", "cruise", "expedition", "private", "voyage"]
         </>)
     }
 
-
-console.log(aTourModel)
+    console.log(aTourModel)
 
     return(<>
         <div className={styles.generalPageCont}>
@@ -221,12 +223,19 @@ console.log(aTourModel)
                     <h1>Tour Creator</h1>
                 </div>
 
+                <div className={styles.tourMakerLayout}>
+                
+                <div className={styles.tMSteps}>
+                    {tourMakerStepOne()}
+
+                    {tourMakerStepTwo()}
+
+                    {tourMakerStepThree()}
 
 
-                {tourMakerStepOne()}
-
-                {tourMakerStepTwo()}
-
+                </div>
+                    TOUR DISPLAYER
+                </div>
 
 
 

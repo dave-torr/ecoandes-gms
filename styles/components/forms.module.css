@@ -56,11 +56,11 @@
 /* Tour Highlights */
 .highlightInputCont{
     display: flex;
-    align-items: center;
+    justify-content: space-between;
     font-size: 1.3em;
-    margin-top: 21px;
-    padding-top: 12px;
-    border-top: solid 1px black;
+    margin-top: 15px;
+    padding-bottom: 12px;
+    border-bottom: solid 1px black;
 }
 
 
@@ -83,8 +83,8 @@
     height: 30px;
 }
 
+/* //////////////// */
 /* Day description */
-
 
 .aDayDescrCont{
     margin: 12px 0;
@@ -92,17 +92,28 @@
     flex-direction: column;
 }
 
-
 .aDayDescrCont label{
     font-size: 1.1em;
 }
 
+.hotelData{
+    display: flex;
+    justify-content: space-between;
+}
 
 .submitDayBTN{
-    margin: 12px 0;
     width: 100%;
-    padding: 9px;
+    margin-top: 12px;
+    padding: 6px;
+    background-color: var(--brick-red);
+    color: white;
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.145);
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1.1em;
 }
+
 .dayAdditionalsCont{
     border-radius: 5px;
     text-align: center;
@@ -124,6 +135,11 @@
 .anInputLabel{
     margin: 6px 0;
 
+}
+
+.dayAdderForm{
+    padding: 6px 18px;
+    padding-bottom: 24px;
 }
 
 .eachAddiOpt{

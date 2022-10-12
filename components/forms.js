@@ -8,6 +8,7 @@ import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import CancelIcon from '@mui/icons-material/Cancel';
 import Switch from '@mui/material/Switch';
 import AddBoxIcon from '@mui/icons-material/AddBox';
+import { Textarea } from '@mantine/core';
 
 //////////////////////////////////////////////////////////
 import styles from "../styles/components/forms.module.css"
@@ -220,13 +221,11 @@ const flightsAdder=(setDay, theTravelDay, flightInfo, setFlights, formTrigger)=>
 //////////////////////////////////////////////////////////
 
 export function DayByDayAdder(props){
-
-
     const [aTravelDay, setTravelDay] = useState({
-        "pickUpTimes":[],
+        "dayInclusions":[],
         "overnightProperty":''
     })
-    const [pickUpTimes, setPickupTimes]=useState([])
+    const [dayInclusions, setDayInclusions]=useState([])
     const [aPickupData, setPickupData]=useState('')
     const [overNight, setOverNight]=useState('')
     const [flightsTrigger,setFlightsTrig]=useState(false)
@@ -234,20 +233,20 @@ export function DayByDayAdder(props){
     useEffect(()=>{
         setTravelDay({
             ...aTravelDay,
-            "pickUpTimes":pickUpTimes
+            "dayInclusions":dayInclusions
         })
-    },[pickUpTimes])
+    },[dayInclusions])
 
     const addPickUpToArr=()=>{
-        let timeArr=pickUpTimes.concat(aPickupData)
-        setPickupTimes(timeArr)
+        let timeArr=dayInclusions.concat(aPickupData)
+        setDayInclusions(timeArr)
         setPickupData('')        
     }
-    const timeAdder=()=>{
+    const dailyInclusionsAddr=()=>{
         return(<>
             <div className={styles.highlightInputCont}>
                 <input
-                    placeholder="Time and location of PickUp"
+                    placeholder="Inclusions"
                     onChange={(e)=>{
                         setPickupData(e.target.value)
                     }}
@@ -264,15 +263,16 @@ export function DayByDayAdder(props){
             </div>
         </>)
     }
+
     const removeTimers=(aList, prodIndex)=>{
         let tempList=[...aList];
         tempList.splice(prodIndex, 1)
-        setPickupTimes([...tempList])
+        setDayInclusions([...tempList])
     }
-    let pickupTimesDisp=pickUpTimes.map((elem, i)=><React.Fragment key={i}>
-        <div style={{width:"100%", display:"flex", justifyContent:"space-between"}}> 
+    let dayInclDisp=dayInclusions.map((elem, i)=><React.Fragment key={i}>
+        <div style={{width:"100%", display:"flex", justifyContent:"space-between", textTransform: "capitalize"}}> 
             <li>{elem}</li>
-            <CancelIcon onClick={()=>removeTimers(pickUpTimes, i)} />
+            <CancelIcon onClick={()=>removeTimers(dayInclusions, i)} />
         </div>
     </React.Fragment>)
     const setHotelToDay=()=>{
@@ -295,11 +295,7 @@ export function DayByDayAdder(props){
                     }}
                 value={overNight}
             /> &nbsp;
-            {overNight===''?<>
-                <AddBoxIcon />
-            </>:<>
-                <AddBoxIcon onClick={()=>setHotelToDay()} />
-            </>}
+            <AddBoxIcon onClick={()=>setHotelToDay()} />
         </div>
         </>)
     }
@@ -326,40 +322,27 @@ export function DayByDayAdder(props){
         </div>
         </>)
     }
-    const additionalsAdder=()=>{
-        return(<>
-        {flightsTrigger?<>
-
-
-            {flightsAdder(setTravelDay, aTravelDay, flightInfo, setFlightInfo, setFlightsTrig)}
-
-
-        </>:<>
-            <div className={styles.dayAdditionalsCont}>
-                <h2>Add to this day:</h2>
-                <div className={styles.additionalOptionsCont}>
-                    <div className={styles.eachAddiOpt} onClick={()=>setFlightsTrig(true)}>
-                        <strong>FLIGHTS</strong>
-                        <FlightIcon />
-                    </div>
-                    <div className={styles.eachAddiOpt}>
-                        <strong>GUIDES</strong>
-                        <EmojiPeopleIcon />
-                    </div>
-                </div>
-            </div>
-        </>}
-        </>)
-    }
-
-
-
-
-
-
-
-
-
+    // const additionalsAdder=()=>{
+    //     return(<>
+    //     {flightsTrigger?<>
+    //         {flightsAdder(setTravelDay, aTravelDay, flightInfo, setFlightInfo, setFlightsTrig)}
+    //     </>:<>
+    //         <div className={styles.dayAdditionalsCont}>
+    //             <h2>Add to this day:</h2>
+    //             <div className={styles.additionalOptionsCont}>
+    //                 <div className={styles.eachAddiOpt} onClick={()=>setFlightsTrig(true)}>
+    //                     <strong>FLIGHTS</strong>
+    //                     <FlightIcon />
+    //                 </div>
+    //                 <div className={styles.eachAddiOpt}>
+    //                     <strong>GUIDES</strong>
+    //                     <EmojiPeopleIcon />
+    //                 </div>
+    //             </div>
+    //         </div>
+    //     </>}
+    //     </>)
+    // }
 
     // const flightsAdder=()=>{
     //     return(<>
@@ -401,25 +384,82 @@ export function DayByDayAdder(props){
                     ...props.aTour,
                     "dayByDay": dayByDay
                 })
-                setTravelDay({"pickUpTimes":[],"overnightProperty":''})
-                setPickupTimes([])   
+                setTravelDay({"dayInclusions":[],"overnightProperty":''})
+                setDayInclusions([])   
                 document.getElementById("dayAdderForm").reset()                             
             }}>
 
 
             {dayDescriptionAdder()}
-            <h3>Pick Up Times:</h3>
-                {pickupTimesDisp}
-                {timeAdder()}
+            <h3>Daily inclusions:</h3>
+                {dayInclDisp}
+                {dailyInclusionsAddr()}
             <h3>Overnight Property:</h3>
                 {aTravelDay.overnightProperty===''?
                 <>      
                     {hotelAdder()}
                 </>:<>
-                    {aTravelDay.overnightProperty}
+                    <div className={styles.highlightInputCont}>
+                        {aTravelDay.overnightProperty}
+                        <CancelIcon onClick={()=> {
+                            setTravelDay({
+                                ...aTravelDay,
+                                "overnightProperty": ''
+                            })
+                            setOverNight('')
+                            }} />
+                    </div>
                 </>}
-            {additionalsAdder()}
+
+            {/* non MVP */}
+            {/* {additionalsAdder()} */}
+
+
             <input type="submit" className={styles.submitDayBTN} value="Add Day to Itinerary" />
+            {props.aTour.dayByDay.length>0&&<> 
+                <div className={styles.submitDayBTN} onClick={()=>props.setTourMakerStep(2)} > Continue </div>
+            </>}
         </form>
+    </>)
+}
+
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+
+export function IncExclAdder(props){
+
+    const [tourInclusions, setInclusions]=useState([])
+    const [anInclusion, setTheInclusions]=useState('')
+
+    const addDailyIncl=()=>{
+        let timeArr=tourInclusions.concat(anInclusion)
+        setInclusions(timeArr)
+        setTheInclusions('')        
+    }
+    const dailyInclusionsAddr=()=>{
+        return(<>
+            <div className={styles.highlightInputCont}>
+                <input
+                    placeholder="Inclusions"
+                    onChange={(e)=>{
+                        setTheInclusions(e.target.value)
+                    }}
+                    onKeyPress={(e)=>{
+                        e.key === 'Enter' && addDailyIncl()
+                    }}
+                    value={anInclusion}
+                /> &nbsp;
+                {anInclusion===''?<>
+                    <AddBoxIcon />
+                </>:<>
+                    <AddBoxIcon onClick={()=>addDailyIncl()} />
+                </>}
+            </div>
+        </>)
+    }
+
+    return(<>
+        <h3>Daily inclusions:</h3>
+        {dailyInclusionsAddr()}
     </>)
 }

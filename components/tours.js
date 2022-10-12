@@ -102,6 +102,28 @@ export function TourDisplayer(props){
                 </>)
             }
         }
+        const trekDataDisp=(theTrekData)=>{
+            if(theTrekData){
+                console.log(theTrekData)
+                return(<>
+                    <div className={styles.dayInclusionCont}>
+                    <h4>Daily Trekking Data::</h4>
+                        {theTrekData.distanceCovered&&<>
+                            <div className={styles.trekDataCont}> 
+                                <div>total Trek time:</div> 
+                                {theTrekData.totalTrekTime} 
+                            </div>
+                        </>}
+                        {theTrekData.distanceCovered&&<>
+                            <div className={styles.trekDataCont}> 
+                                <div>Distance Covered:</div> 
+                                {theTrekData.distanceCovered} kms || {theTrekData.distanceCovered * 0.62} mi
+                            </div>
+                        </>}
+                    </div>
+                </>)
+            }
+        }
 
         let theDays = tourDayByDay.map((elem,i)=> 
         <React.Fragment key={i}>
@@ -112,6 +134,7 @@ export function TourDisplayer(props){
                     {elem.dayDescription}
                     {dayInclDisp(elem.dayInclusions)}
                     {dayNotices(elem)} 
+                    {trekDataDisp(elem.trekData)}
                 </AccordionDetails>
             </Accordion>
         </React.Fragment>)
@@ -119,6 +142,8 @@ export function TourDisplayer(props){
             {accordionDisplayer("Day by Day", theDays, false)}
         </>)
     }
+
+
     function Imagedisp(props){
         return(<>        
         <div className={styles.aTourImage} onClick={()=>{
@@ -211,6 +236,12 @@ export function TourDisplayer(props){
                     {priceDisplayer(aTour)}
                 </div>
             </div>
+            {aTour.adventureType&& <> 
+            <div className={styles.trekDiffNotice}>
+                {aTour.tripName} includes &nbsp;
+                {aTour.difficulty&&<>{aTour.difficulty}</>} &nbsp;
+                {aTour.adventureType&&<>{aTour.adventureType}</>}
+            </div></>}
         </>)
     }
     const mainImagedisp=()=>{
