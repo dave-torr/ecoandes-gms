@@ -41,8 +41,12 @@ export function ATourCard(props){
             </div>
 
             <div className={styles.tourCardTextCont}>
-                <div className={styles.tourCardDestinations} > 
-                    {aMapFunction(theTour.countryList)} </div>
+                {theTour.startingPlace? <>
+                <div className={styles.tourStartingPlace} > 
+                    starting from {theTour.startingPlace} </div>
+                </>: <>
+                <div className={styles.tourStartingPlace}/>
+                </>}
                 <div className={styles.tourCardTripName}> {theTour.tripName} </div>
                 <div > {theTour.duration} day itinerary &nbsp;  | &nbsp; {theTour.tourType} </div>
                 <div className={styles.tourCardCTA}> see experience </div>
@@ -66,7 +70,7 @@ export function TourDisplayer(props){
         return(<>
         <Accordion defaultExpanded={openContr} className={styles.accordionCont}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" > 
-                <h2>{numerator&&<>{numerator}.-</>}  {accordTitle} </h2></AccordionSummary>
+                <h2>{numerator&&<>{numerator} -</>}  {accordTitle} </h2></AccordionSummary>
             <AccordionDetails> 
                 {accordContent} </AccordionDetails>
         </Accordion>
@@ -84,6 +88,7 @@ export function TourDisplayer(props){
     const incExcCont = <div className={styles.inclusionsExclusionsSec}> 
         {incExcDisplayer(aTour.included, "Included in Tour")}
         {incExcDisplayer(aTour.notIncluded, "Not included in Tour")} </div>;
+
     const dayByDaydisp=(tourDayByDay)=>{
         const dayInclDisp=(dayIncl)=>{
             if(dayIncl){
@@ -129,7 +134,7 @@ export function TourDisplayer(props){
         <React.Fragment key={i}>
             <Accordion className={styles.accordionCont}>
                 <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" > 
-                    <h2>{i+1&&<>{i+1}.-</>}  {elem.dayTitle} </h2></AccordionSummary>
+                    <h2>{i+1&&<>{i+1} - </>}  {elem.dayTitle} </h2></AccordionSummary>
                 <AccordionDetails> 
                     {elem.dayDescription}
                     {dayInclDisp(elem.dayInclusions)}
@@ -142,7 +147,6 @@ export function TourDisplayer(props){
             {accordionDisplayer("Day by Day", theDays, false)}
         </>)
     }
-
 
     function Imagedisp(props){
         return(<>        
@@ -225,6 +229,10 @@ export function TourDisplayer(props){
                     Destinations: &nbsp;{countryList}</div>
                 <div className={styles.tourTitleBar}>
                     {aTour.tripName}</div>
+                {aTour.startingPlace&& <>
+                <div className={styles.startingplace}>
+                    Starting from {aTour.startingPlace}</div>
+                </>}
                 <a className={styles.tourOverview}> 
                     {aTour.tripDescription} </a>
                 {aTour.prices.privateDeparture&&<>

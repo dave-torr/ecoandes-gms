@@ -33,15 +33,17 @@
     margin: 15px 0;
 }
 
-.tourCardDestinations{
-    font-weight: 600;
-    text-transform: uppercase;
+.tourStartingPlace{
+    text-transform: capitalize;
     color: var(--brick-red);
+    height: 20px;
+    font-size: 0.9em;
 }
 
 .tourCardTripName{
     font-weight: 650;
     letter-spacing: 0.9px;
+    font-size: 1.1em;
 }
 
 /*  A Tour Displayer */
@@ -75,6 +77,11 @@
 
 .partnerLogo{
     margin-top: 33px;
+}
+
+.startingplace{
+    padding-bottom: 21px;
+    font-weight: 600;
 }
 
 .breadcrumbNaviCont{
@@ -244,8 +251,11 @@
 }
 
 .trekDiffNotice{
-    padding-bottom: 12px;
-    font-size: 1.2em;
+    margin-bottom: 12px;
+    font-size: 1.1em;
+    padding: 9px 15px;
+    border: solid 1px var(--brick-red);
+    text-transform: capitalize;
 }
 
 .tourDetails{
