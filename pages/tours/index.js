@@ -47,10 +47,13 @@ import { MultiSelect, Select } from '@mantine/core';
 //  // Tour Type
 //  // Category
 
-// AARRANGE BY
+// ARRANGE BY
+//  OP:
+//  // A - Z
+//  // number of days
+//  ver. 2
 //  // price
 //  // departure date?
-//  // number of days
 
 
     // const priceDisplayer=(priceObj)=>{

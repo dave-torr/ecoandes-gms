@@ -45,7 +45,7 @@ export function ATourCard(props){
                 <div className={styles.tourStartingPlace} > 
                     starting from {theTour.startingPlace} </div>
                 </>: <>
-                <div className={styles.tourStartingPlace}/>
+                    <div className={styles.tourStartingPlace}/>
                 </>}
                 <div className={styles.tourCardTripName}> {theTour.tripName} </div>
                 <div > {theTour.duration} day itinerary &nbsp;  | &nbsp; {theTour.tourType} </div>
@@ -109,11 +109,10 @@ export function TourDisplayer(props){
         }
         const trekDataDisp=(theTrekData)=>{
             if(theTrekData){
-                console.log(theTrekData)
                 return(<>
                     <div className={styles.dayInclusionCont}>
                     <h4>Daily Trekking Data::</h4>
-                        {theTrekData.distanceCovered&&<>
+                        {theTrekData.totalTrekTime&&<>
                             <div className={styles.trekDataCont}> 
                                 <div>total Trek time:</div> 
                                 {theTrekData.totalTrekTime} 
@@ -134,9 +133,10 @@ export function TourDisplayer(props){
         <React.Fragment key={i}>
             <Accordion className={styles.accordionCont}>
                 <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" > 
-                    <h2>{i+1&&<>{i+1} - </>}  {elem.dayTitle} </h2></AccordionSummary>
+                    <h2>{i+1&&<>{i+1}: </>}  {elem.dayTitle} </h2></AccordionSummary>
                 <AccordionDetails> 
-                    {elem.dayDescription}
+                    <div style={{textAlign:"justify"}}>
+                        {elem.dayDescription}</div>
                     {dayInclDisp(elem.dayInclusions)}
                     {dayNotices(elem)} 
                     {trekDataDisp(elem.trekData)}

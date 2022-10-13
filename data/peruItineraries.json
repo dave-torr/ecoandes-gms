@@ -1,6 +1,6 @@
 [
     {
-        "tripName": "Inca Trail Voyage",
+        "tripName": "Inca Trail Expedition",
         "id": "inca-trail-9D",
         "duration": 9,
         "adventureType": "trekking",
@@ -187,7 +187,7 @@
                     "Box Lunch"
                 ],
                 "trekData":{
-                    "totalTrekTime": "3 to 3.5 hours (including visti to Machu Picchu",
+                    "totalTrekTime": "3 to 3.5 hours (including visti to Machu Picchu)",
                     "distanceCovered": 5
                 }
             }
@@ -223,7 +223,97 @@
         ]
     },
     {
-        "tripName": "Short Inca Trail",
+        "tripName": "Classic Choquequirao",
+        "id": "choquequirao-trek-4D",
+        "duration": 4,
+        "adventureType": "trekking",
+        "difficulty": "moderate",
+        "imgArr": ["https://dsm01pap002files.storage.live.com/y4m3aF8TjUlNP33379Zfr9hccG-YjpT1T6XdREzzoO4fOOtuQy3SKavcNAaK8CVyuY7_kjP6_MaEKQZOMDymtILHC47-pQzJ_ye-AdLyxBsQl_ViCL1BLjYDm4Hl0FnDdiF_WHH13DtscNsEtQ2SgyOPB2mX11uMIWx2gz2mZ1488MZu9h_U0TnVyoiVRpXGyFh?width=2000&height=1125&cropmode=none",
+        "https://dsm01pap002files.storage.live.com/y4mt5BosLwqP60QYhXM-8Zsf_xl2vac6LuY9VZ6X2uvQmH4sjVVgkF8Eplem1r6pYy7u_4nIEQDis8avye_B4d89SIqaaH9GLP-YAxpxEfZul_zDWLv1nCXAqZkkCxk-de7IrJE3RK8nEK2qdKKRSzxLvxOqWW8Fp8prgoZVG9oaMi_NhNBY_MgBIEBhYdLtbv3?width=2000&height=1125&cropmode=none",
+        "https://dsm01pap002files.storage.live.com/y4mw16EdnSU_nQbPtsZeGjLJBBjr3zarv7erYVOTEgpHY_ofTD-cOp1fz1eo71O0bDG5E3ILAALaFHbYWUQcdwIGTd2p3ecUSMfZZ5JpL56zzl0WX5pzCKaHjzSUXvvlvQAArao202ZIoN8NYbD1QLL6vgpTcnL8RFacfR_aUurejyu_KJsGKR34lps3Eav_6gj?width=2000&height=1125&cropmode=none",
+        "https://dsm01pap002files.storage.live.com/y4mqdvYnDS7uW0-oeT7JCSiy0ro0ckho6-jxZxSoJItLJK0-cVJ3tr1HnUtKNiPVbuzNf7yjRM5kyfItAGvif-DT42cSfB8uzk8bGQUKeKp3ljOT8GHmsm6Yz-jgKqXDFNVZTakYUD2NhIW4Tjj2B_rznT6hiyzlmqNaM0r9LcwUBmw4WeXCkEXNqv9D49aFg2-?width=2000&height=1125&cropmode=none"
+        ],
+        "tripDescription":"The Choquequirao, Inca Ruins rival in beauty and importance with the world-famous Machu Picchu although its popularity is not as marked. The complex is located on a high ridge spur at almost 1800 meters of altitude, above the raging glacier-fed Apurimac River, surrounded by the beautiful towering Salcantay and Humantay snow-capped peaks. It was probably built by Tupac Inca Yupanqui, and withstood its ground until after the Spanish invasion in 1532 and during the last days of the Inca Empire during the government of the Inca Pachaqutek, It was finally burned down and left deserted after the execution of the Inca Tupac Amaru I in 1572. Choquequirao is an amazing example of an elite Inca ceremonial center, a city dedicated to worship the “Pachamama”, the Andean mother earth, and “the Apus”, the mountain gods as well as other divinities such as rivers and other nature elements. The various levels of temples, palaces, canals, agricultural areas and aqueducts are fantastic, giving a vivid example of the amazing Inca building techniques. Choquequirao means 'Cradle of Gold' in Quechua and it was in 1710 when the existence of Choquequirao was first mentioned. The first drawings of the structures were made in 1836 by the Frenchmen Léonce Angrand and later by Eugene Sartigues. It was officially rediscovered in the 20th century, where the plaster covering the walls were carbonized and had disappeared for the most part. At the east side of the complex more than 110 terraces with houses and squares are being continuously recuperated. At the west side, another 170 terraces are still hidden and covered by the forest, and in some of these terraces, white colored llamas can be seen in symmetrical order as decorations. Today only 30% of the whole city is recovered from the forest, making Choquequirao the largest and most interesting Inca City in America",
+        "countryList": ["peru"],
+        "dayByDay":[
+            {
+                "dayTitle": "Cusco - Sayhuite - Cachora - Capuliyoc - Chikiska ",
+                "dayDescription": "Our tour starts with an early departure from Cusco, where our private transport will take us on a 4-hour drive to the town of Cachora. On the way, we shall stop at the archaeological site of Sayhuite before descending to the mountain village of Cachora located at 2910 meters of altitude (9543ft). After lunch, we begin our 3-hour hike to the place known as Capuliyoc (2915m / 9561ft) from where we have our first beautiful views of the Apurimac valley stretching below as well as the snow-capped peaks of Padreyoc and Wayna Cachora. From here, we make a steep downhill descent for approximately 3 hours to our campsite (1840m/6035ft). ",
+                "dayInclusions": [
+                    "Lunch Box",
+                    "Camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "6 to 7 hours (including lunch and resting time)"
+                }
+            },
+            {
+                "dayTitle": "Chikiska - Choquequirao ruins",
+                "dayDescription": "Our first hike (1hour:30 minutes) will be early in the morning, and will take us down to Playa Rosalinas, to the shores of the magnificent Apurimac River (1500m/4920ft). We will continue with our steep climb to Santa Rosa (2095m / 6873ft); where we can take a refreshing break, rest and buy water (from some local merchants!). We continue our upward climb for 4 to 5 hours towards Marampata (2800m / 9184ft), a flat place where we can rest while enjoying a splendid view of Choquequirao. This spot also has bathrooms and a nice area to have lunch. After our break, we start our final 2-hour hike to our campsite located at 3110m (10120ft) next to the Choquequirao Inca Ruins. We will spend the late evening in the ruins, where we will watch the sunset, and with some luck, see condors",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "Camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "6 to 7 hours (including lunch and resting time)"
+                }
+            },
+            {
+                "dayTitle": "Choquequirao ruins - Santa Rosa ",
+                "dayDescription": "In the morning, we will have some time to fully explore the ruins before we start descending to the Apurimac canyon for about 5 hours. We will head to our tropical campsite, located at Santa Rosa village (2090m/6855ft",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "Camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "5 hours"
+                }
+            },
+            {
+                "dayTitle": "Santa Rosa - Cachora - Cusco",
+                "dayDescription": "Early in the morning we start our descent to the shores of the river followed by an arduous climb that is rewarded with spectacular views. We ascend for about four hours until we reach our picnic spot at Capuliyoc. Afterwards we have our final 2 hours hike to the village of Cachora where our private car will be waiting to transport us back to Cusco (4 hours drive). ",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Box Lunch"
+                ],
+                "trekData":{
+                    "totalTrekTime": "2 hours"
+                }
+            }
+        ],
+        "tourType": "trek",
+        "startingPlace": "Cusco",
+        "prices": {
+            "priceType": "fixedDeparture",
+            "pricePerPerson": 2490,
+            "singlesupp": 900,
+            "dblOccupancy": true,
+            "priceNotice": "hotel categories will depend on locally available properties"
+        },
+        "included": [
+            "noted meals",
+            "entrance fees",
+            "private transport",
+            "trekking staff with cook and assistants",
+            "horse carry service (up to 8kg per person)",
+            "english/spanish speaking guide services (specialized trekking guides)",
+            "complete camping equipment (client, kitchen, dining and toilet tents)"
+        ],
+        "notIncluded": [
+            "international/regional flights",
+            "additional Inca Trail porters",
+            "personal trekking gear",
+            "personal expenses",
+            "travel insurance",
+            "beverages",
+            "extras",
+            "tips"
+        ]
+    },    
+    {
+        "tripName": "Inca Trail Express",
         "id": "inca-trail-2D",
         "duration": 2,
         "adventureType": "trekking",
@@ -233,7 +323,7 @@
         "https://dsm01pap002files.storage.live.com/y4mw16EdnSU_nQbPtsZeGjLJBBjr3zarv7erYVOTEgpHY_ofTD-cOp1fz1eo71O0bDG5E3ILAALaFHbYWUQcdwIGTd2p3ecUSMfZZ5JpL56zzl0WX5pzCKaHjzSUXvvlvQAArao202ZIoN8NYbD1QLL6vgpTcnL8RFacfR_aUurejyu_KJsGKR34lps3Eav_6gj?width=2000&height=1125&cropmode=none",
         "https://dsm01pap002files.storage.live.com/y4mqdvYnDS7uW0-oeT7JCSiy0ro0ckho6-jxZxSoJItLJK0-cVJ3tr1HnUtKNiPVbuzNf7yjRM5kyfItAGvif-DT42cSfB8uzk8bGQUKeKp3ljOT8GHmsm6Yz-jgKqXDFNVZTakYUD2NhIW4Tjj2B_rznT6hiyzlmqNaM0r9LcwUBmw4WeXCkEXNqv9D49aFg2-?width=2000&height=1125&cropmode=none"
         ],
-        "tripDescription":"This hike goes to Machu Picchu, following the last part of the ancient trail known as the Sacred Trail. Enjoy wonderful and impressive views of the Urubamba River canyon, visit the beautiful Wiñayhuayna archeological remains, and finally arrive into Machu Picchu",
+        "tripDescription":"This hike goes to Machu Picchu, following the last part of the ancient trail known as the Qapac Nan, the Sacred Inca Trail. Enjoy wonderful and impressive views of the Urubamba River canyon, visit the beautiful Wiñayhuayna archeological remains, and finally arrive into Machu Picchu",
         "countryList": ["peru"],
         "dayByDay":[
             {
@@ -274,6 +364,550 @@
         "notIncluded": [
             "international/regional flights",
             "additional Inca Trail porters",
+            "personal trekking gear",
+            "personal expenses",
+            "travel insurance",
+            "tips",
+            "beverages",
+            "extras"
+        ]
+    },
+    {
+        "tripName": "Salkantay to Machu Picchu Trek",
+        "id": "salkantay-machu-pichu-5D",
+        "duration": 5,
+        "adventureType": "trekking",
+        "difficulty": "moderate - hard",
+        "imgArr": ["https://dsm01pap002files.storage.live.com/y4m3aF8TjUlNP33379Zfr9hccG-YjpT1T6XdREzzoO4fOOtuQy3SKavcNAaK8CVyuY7_kjP6_MaEKQZOMDymtILHC47-pQzJ_ye-AdLyxBsQl_ViCL1BLjYDm4Hl0FnDdiF_WHH13DtscNsEtQ2SgyOPB2mX11uMIWx2gz2mZ1488MZu9h_U0TnVyoiVRpXGyFh?width=2000&height=1125&cropmode=none",
+        "https://dsm01pap002files.storage.live.com/y4mt5BosLwqP60QYhXM-8Zsf_xl2vac6LuY9VZ6X2uvQmH4sjVVgkF8Eplem1r6pYy7u_4nIEQDis8avye_B4d89SIqaaH9GLP-YAxpxEfZul_zDWLv1nCXAqZkkCxk-de7IrJE3RK8nEK2qdKKRSzxLvxOqWW8Fp8prgoZVG9oaMi_NhNBY_MgBIEBhYdLtbv3?width=2000&height=1125&cropmode=none",
+        "https://dsm01pap002files.storage.live.com/y4mw16EdnSU_nQbPtsZeGjLJBBjr3zarv7erYVOTEgpHY_ofTD-cOp1fz1eo71O0bDG5E3ILAALaFHbYWUQcdwIGTd2p3ecUSMfZZ5JpL56zzl0WX5pzCKaHjzSUXvvlvQAArao202ZIoN8NYbD1QLL6vgpTcnL8RFacfR_aUurejyu_KJsGKR34lps3Eav_6gj?width=2000&height=1125&cropmode=none",
+        "https://dsm01pap002files.storage.live.com/y4mqdvYnDS7uW0-oeT7JCSiy0ro0ckho6-jxZxSoJItLJK0-cVJ3tr1HnUtKNiPVbuzNf7yjRM5kyfItAGvif-DT42cSfB8uzk8bGQUKeKp3ljOT8GHmsm6Yz-jgKqXDFNVZTakYUD2NhIW4Tjj2B_rznT6hiyzlmqNaM0r9LcwUBmw4WeXCkEXNqv9D49aFg2-?width=2000&height=1125&cropmode=none"
+        ],
+        "tripDescription":"One of the best non-traditional routes leading to the famous Inca city of Machu Picchu is the trail known as the Salcantay-Machu Picchu Inca route, or Alternative Inca Trail. This remote path leads us through an amazing variety of landscapes and habitats varying from green, rich valleys full of blossoming forests and trees of different species to highland fields and glacial moraines flanked by steep rocky and icy peaks of impressive beauty. During our trip, we must cross a high pass below the spectacular glaciers of the Humantay (5917m / 19414ft) and Salcantay (6270m/20572ft.) peaks. Crossing an awesome mountain area, and lush cloud forest landscapes, from our last campsite, we trek down to the shores of the Urubamba River and from there, we go to the small town of Aguas Calientes for a well-deserved rest in a comfortable hotel by train. Next day we will enjoy a full day tour to visit the amazing “Lost City” of the Incas: The fabulous Machu Picchu. ",
+        "countryList": ["peru"],
+        "dayByDay":[
+            {
+                "dayTitle": "Cusco – Mollepata – Salcantaypampa ",
+                "dayDescription": "At 07:00 a.m. starts our expedition with a private transport from the city of Cusco. We will pass the localities of Izcuchaca and Limatambo, and after 2-hour drive, we will arrive at Mollepata town (2950m/9676ft) where we stop for a short rest and coffee. Afterwards we continue our drive (2 hours) towards the area known as Soraypampa (3850m/12628ft), a beautiful Andean valley located at the foothills of the impressive Mount Tucarhuay (5910m/19385ft), from where we start our first day trek (3 hours) to our camp at 4000m (13120ft) at the place known as Salcantaypampa. Here we can enjoy the first views of the impressive Mount Salcantay",
+                "dayInclusions": [
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "3 - 4 hours"
+                }
+            },
+            {
+                "dayTitle": "Salcantaypampa – Huayracmachay – Chaullay ",
+                "dayDescription": "From Salcantaypampa we start our trek towards Soroycocha at 4400m/14432ft. From here, we will enjoy great views of the impressive west face of Mount Salcantay (6264m/20546ft). Our hike will then continue to take us to reach the Salcantay pass at 4750m/15580ft, with a permanent view of the amazing Mount Salcantay. With luck, we can also observe the flight of the amazing Condor, known as the “King of the Andes”. During our descent from Salcantay pass, we will also observe the remains of an ancient Inca Trail and observe the beautiful Salcantaycocha Lagoon. We continue our hike down to the place known as Huayracmachay, and then descending into the deep canyon of the Salcantay River on our way to the small village of Chaullay where we set up our camp at 3500m (11480ft).  ",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "7 hours (including lunch and resting time)"
+                }
+            },
+            {
+                "dayTitle": "Chaullay camp – Lucmabamba Camp",
+                "dayDescription": "At 08:00 a.m. we will begin our trek downhill for about 1 hour until we reach the Collpapampa Valley (3200 m/10496 ft). The highland landscape suddenly turns into an amazing cloud forest with typical grass, bushes and trees covered with beautiful bromeliads (from Collpapampa the Salcantay River turns into the Santa Teresa River). We continue our descent down to the shores of the Totora River where we can enjoy a fun dip in the nearby hot water springs and afterwards, following the north side of the Santa Teresa River we will trek 3 hours until we reach the settlement known as Wiñaypoko (2800 m/ 5904 ft) from where, and after a nice meal, we descent (3 hours) down to the place known as La Playa. On the way, we will observe plantations of banana, coffee, granadillas (a typical fruit from the area), avocado trees, etc. The sound of flocking parrots will accompany us during the hike, and above the river perhaps we can observe the fast flight of the king fisher. At La Playa, we cross the river and we make our last hike until we reach the small settlement known as Lucmabamba where we will set up our last camp (1700 m/ 5576 ft).",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "6 to 7 hours (including lunch and resting time)"
+                }
+            },
+            {
+                "dayTitle": "Lucmabamba – Llactapacta – Aguas Calientes ",
+                "dayDescription": "Our last trek day, and following an Inca road (3 hours), will take us from Lucmabamba towards the Inca Ruins of Llactapacta (2800 m / 9184 ft) where we will spend about 1 hour visiting this interesting archaeological site with terraces, agriculture storage areas, etc. From here and weather permitting, we can observe the northwestern side of the Machu Picchu citadel and the summit of Huayna Picchu hill. After having our box lunch and following a steep mountainside trail, we will continue our trek (2 hours) down to the place known as “La Hidroelectrica” (operation area of the hydroelectric power plant). Here we will have time to rest and board the local train to the town of Aguas Calientes (2012 m/ 6600 ft) where we will arrive after a 1-hour ride. Then our guide will take you to your hotel for a well-deserved rest",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box"
+                ],
+                "trekData":{
+                    "totalTrekTime": "5 hours (including lunch and resting time)"
+                }
+            },
+            {
+                "dayTitle": "Aguas Calientes – Machu Picchu – Cusco",
+                "dayDescription": "In our last day, after breakfast in the hotel, we will board a public bus transport which will take you up to the main entrance of the city of Machu Picchu. A guided tour will show you this beautiful Inca City, one of the most famous in the world. You will visit the Intihuatana, the temple of the 3 windows, temple of the moon, the terraces, the ceremonial fountains, the sun gate and other sectors of the impressive citadel. In the afternoon, we take the public bus down to Aguas Calientes and by train, you will return to Ollantaytambo from where our transport will take you back to Cusco and a transfer to your hotel after your arrival. End of our program",
+                "dayInclusions": [
+                    "hotel breakfast"
+                ]
+            }
+        ],
+        "tourType": "trek",
+        "startingPlace": "Cusco",
+        "prices": {
+            "priceType": "fixedDeparture",
+            "pricePerPerson": 2490,
+            "singlesupp": 900,
+            "dblOccupancy": true,
+            "priceNotice": "hotel categories will depend on locally available properties"
+        },
+        "included": [
+            "private transport from Cusco to trailhead",
+            "entrance fees",
+            "noted meals",
+            "Vista Dome (or similar) train ticket",
+            "local train ticket from Hydroelectric plant to Aguas Calientes",
+            "local bus service to Machu Picchu Ruins",
+            "english/spanish speaking guide services (specialized trekking guides)",
+            "trekking staff with cook and assistants",
+            "complete camping equipment (client, kitchen, dining and toilet tents)",
+            "carry horses (up to 10kg per person), muleteers and emergency horse"
+        ],
+        "notIncluded": [
+            "international/regional flights",
+            "additional carry horses",
+            "personal trekking gear",
+            "personal expenses",
+            "travel insurance",
+            "tips",
+            "beverages",
+            "extras"
+        ]
+    },
+    {
+        "tripName": "Salkantay to Machu Picchu Expedition",
+        "id": "salkantay-machu-pichu-10D",
+        "duration": 10,
+        "adventureType": "trekking",
+        "difficulty": "moderate - hard",
+        "imgArr": ["https://dsm01pap002files.storage.live.com/y4m3aF8TjUlNP33379Zfr9hccG-YjpT1T6XdREzzoO4fOOtuQy3SKavcNAaK8CVyuY7_kjP6_MaEKQZOMDymtILHC47-pQzJ_ye-AdLyxBsQl_ViCL1BLjYDm4Hl0FnDdiF_WHH13DtscNsEtQ2SgyOPB2mX11uMIWx2gz2mZ1488MZu9h_U0TnVyoiVRpXGyFh?width=2000&height=1125&cropmode=none",
+        "https://dsm01pap002files.storage.live.com/y4mt5BosLwqP60QYhXM-8Zsf_xl2vac6LuY9VZ6X2uvQmH4sjVVgkF8Eplem1r6pYy7u_4nIEQDis8avye_B4d89SIqaaH9GLP-YAxpxEfZul_zDWLv1nCXAqZkkCxk-de7IrJE3RK8nEK2qdKKRSzxLvxOqWW8Fp8prgoZVG9oaMi_NhNBY_MgBIEBhYdLtbv3?width=2000&height=1125&cropmode=none",
+        "https://dsm01pap002files.storage.live.com/y4mw16EdnSU_nQbPtsZeGjLJBBjr3zarv7erYVOTEgpHY_ofTD-cOp1fz1eo71O0bDG5E3ILAALaFHbYWUQcdwIGTd2p3ecUSMfZZ5JpL56zzl0WX5pzCKaHjzSUXvvlvQAArao202ZIoN8NYbD1QLL6vgpTcnL8RFacfR_aUurejyu_KJsGKR34lps3Eav_6gj?width=2000&height=1125&cropmode=none",
+        "https://dsm01pap002files.storage.live.com/y4mqdvYnDS7uW0-oeT7JCSiy0ro0ckho6-jxZxSoJItLJK0-cVJ3tr1HnUtKNiPVbuzNf7yjRM5kyfItAGvif-DT42cSfB8uzk8bGQUKeKp3ljOT8GHmsm6Yz-jgKqXDFNVZTakYUD2NhIW4Tjj2B_rznT6hiyzlmqNaM0r9LcwUBmw4WeXCkEXNqv9D49aFg2-?width=2000&height=1125&cropmode=none"
+        ],
+        "tripDescription":"One of the best non-traditional routes leading to the famous Inca city of Machu Picchu is the trail known as the Salcantay-Machu Picchu Inca route, or Alternative Inca Trail. This remote path leads us through an amazing variety of landscapes and habitats varying from green, rich valleys full of blossoming forests and trees of different species to highland fields and glacial moraines flanked by steep rocky and icy peaks of impressive beauty. During our trip, we must cross a high pass below the spectacular glaciers of the Humantay (5917m / 19414ft) and Salcantay (6270m/20572ft.) peaks. Crossing an awesome mountain area, and lush cloud forest landscapes, from our last campsite, we trek down to the shores of the Urubamba River and from there, we go to the small town of Aguas Calientes for a well-deserved rest in a comfortable hotel by train. Next day we will enjoy a full day tour to visit the amazing “Lost City” of the Incas: The fabulous Machu Picchu. ",
+        "countryList": ["peru"],
+        "dayByDay":[
+            {
+                "dayTitle": "Arrival in Lima",
+                "dayDescription": "At your arrival in Lima, you will be welcomed and transferred to your hotel of choice. You will have a short briefing about next day activities."
+            },
+            {
+                "dayTitle": "Half Day Lima City Tour",
+                "dayDescription": "Our morning tour begins with a drive to the Huaca Puccllana pre-Inca remains where we learn about the cultural past of Lima, and the ancient civilization that inhabited this place. Later, we head towards the colonial part of town visiting the Plaza de Armas, and to enjoy a panoramic view of the Cathedral, San Francisco Church and its impressive 'Catacombs'. Afterwards, we will head towards modern Lima, to visit the districts of San Isidro and Miraflores, finally ending our tour at Larco Mar, a modern entertaining center with a splendid view of the Pacific Ocean. You will be transferred back to the hotel",
+                "dayInclusions": [
+                    "Hotel breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Lima - Cusco + City Tour",
+                "dayDescription": "Morning transfer to the airport in Lima to head to Cusco. After your arrival in Cusco, you will be welcomed and transferred to your chosen hotel. After your check in, we will have some time to settle in, and adapt to the high altitude (3400 m / 11152 ft) of the city. In the afternoon, a guided city tour of Cusco will be arranged. The tour starts with a walk to visit the Plaza de Armas with its beautiful colonial buildings and churches including the Cathedral. Then we walk to Santo Domingo Church where we find the impressive Koricancha Temple with exquisite stonework and carvings, to finally visit the nearby ruins of Cusco: the impressive Inca fortress of Sacsayhuaman, Quenko, and the Inca bath of Tambo Machay. Our transport will drop us off at the hotel in the late afternoon",
+                "dayInclusions": [
+                    "Hotel breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Cusco – Urubamba Valley - Cusco",
+                "dayDescription": "In this full day trip, we will visit Urubamba, the Sacred Valley of the Incas, where we begin with a visit to the Pisac ruins: well-preserved Inca remains with beautiful traditional style buildings. Here we can observe an Inca tunnel carved from pure rock and enjoy great views of the valley. Later, will head down into the Pisac Indian market (a great place for shopping), followed by a visit to the impressive fortress of Ollantaytambo, a village where people are still living in houses built 500 years ago, during the Inca time. During our way, back to Cusco, we will also visit the colorful Chinchero Indian market ending a fun day at our hotel back in Cusco. ",
+                "dayInclusions": [
+                    "Hotel breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Cusco – Mollepata – Salcantaypampa ",
+                "dayDescription": "At 07:00 a.m. starts our expedition with a private transport from the city of Cusco. We will pass the localities of Izcuchaca and Limatambo, and after 2-hour drive, we will arrive at Mollepata town (2950m/9676ft) where we stop for a short rest and coffee. Afterwards we continue our drive (2 hours) towards the area known as Soraypampa (3850m/12628ft), a beautiful Andean valley located at the foothills of the impressive Mount Tucarhuay (5910m/19385ft), from where we start our first day trek (3 hours) to our camp at 4000m (13120ft) at the place known as Salcantaypampa. Here we can enjoy the first views of the impressive Mount Salcantay",
+                "dayInclusions": [
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "3 - 4 hours"
+                }
+            },
+            {
+                "dayTitle": "Salcantaypampa – Huayracmachay – Chaullay ",
+                "dayDescription": "From Salcantaypampa we start our trek towards Soroycocha at 4400m/14432ft. From here, we will enjoy great views of the impressive west face of Mount Salcantay (6264m/20546ft). Our hike will then continue to take us to reach the Salcantay pass at 4750m/15580ft, with a permanent view of the amazing Mount Salcantay. With luck, we can also observe the flight of the amazing Condor, known as the “King of the Andes”. During our descent from Salcantay pass, we will also observe the remains of an ancient Inca Trail and observe the beautiful Salcantaycocha Lagoon. We continue our hike down to the place known as Huayracmachay, and then descending into the deep canyon of the Salcantay River on our way to the small village of Chaullay where we set up our camp at 3500m (11480ft).  ",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "7 hours (including lunch and resting time)"
+                }
+            },
+            {
+                "dayTitle": "Chaullay camp – Lucmabamba Camp",
+                "dayDescription": "At 08:00 a.m. we will begin our trek downhill for about 1 hour until we reach the Collpapampa Valley (3200 m/10496 ft). The highland landscape suddenly turns into an amazing cloud forest with typical grass, bushes and trees covered with beautiful bromeliads (from Collpapampa the Salcantay River turns into the Santa Teresa River). We continue our descent down to the shores of the Totora River where we can enjoy a fun dip in the nearby hot water springs and afterwards, following the north side of the Santa Teresa River we will trek 3 hours until we reach the settlement known as Wiñaypoko (2800 m/ 5904 ft) from where, and after a nice meal, we descent (3 hours) down to the place known as La Playa. On the way, we will observe plantations of banana, coffee, granadillas (a typical fruit from the area), avocado trees, etc. The sound of flocking parrots will accompany us during the hike, and above the river perhaps we can observe the fast flight of the king fisher. At La Playa, we cross the river and we make our last hike until we reach the small settlement known as Lucmabamba where we will set up our last camp (1700 m/ 5576 ft).",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "6 to 7 hours (including lunch and resting time)"
+                }
+            },
+            {
+                "dayTitle": "Lucmabamba – Llactapacta – Aguas Calientes ",
+                "dayDescription": "Our last trek day, and following an Inca road (3 hours), will take us from Lucmabamba towards the Inca Ruins of Llactapacta (2800 m / 9184 ft) where we will spend about 1 hour visiting this interesting archaeological site with terraces, agriculture storage areas, etc. From here and weather permitting, we can observe the northwestern side of the Machu Picchu citadel and the summit of Huayna Picchu hill. After having our box lunch and following a steep mountainside trail, we will continue our trek (2 hours) down to the place known as “La Hidroelectrica” (operation area of the hydroelectric power plant). Here we will have time to rest and board the local train to the town of Aguas Calientes (2012 m/ 6600 ft) where we will arrive after a 1-hour ride. Then our guide will take you to your hotel for a well-deserved rest",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box"
+                ],
+                "trekData":{
+                    "totalTrekTime": "5 hours (including lunch and resting time)"
+                }
+            },
+            {
+                "dayTitle": "Aguas Calientes – Machu Picchu – Cusco",
+                "dayDescription": "In our last day, after breakfast in the hotel, we will board a public bus transport which will take you up to the main entrance of the city of Machu Picchu. A guided tour will show you this beautiful Inca City, one of the most famous in the world. You will visit the Intihuatana, the temple of the 3 windows, temple of the moon, the terraces, the ceremonial fountains, the sun gate and other sectors of the impressive citadel. In the afternoon, we take the public bus down to Aguas Calientes and by train, you will return to Ollantaytambo from where our transport will take you back to Cusco and a transfer to your hotel after your arrival",
+                "dayInclusions": [
+                    "hotel breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Cusco - Lima Transfer out",
+                "dayDescription": "We have a morning transfer to the airport to catch our flight to Lima, where we arrive in time to connect with your international flight back home",
+                "dayInclusions": [
+                    "hotel breakfast"
+                ]
+            }
+        ],
+        "tourType": "expedition",
+        "prices": {
+            "priceType": "fixedDeparture",
+            "pricePerPerson": 2490,
+            "singlesupp": 900,
+            "dblOccupancy": true,
+            "priceNotice": "hotel categories will depend on locally available properties"
+        },
+        "included": [
+            "private transport from Cusco to trailhead",
+            "entrance fees",
+            "noted meals",
+            "Vista Dome (or similar) train ticket",
+            "local train ticket from Hydroelectric plant to Aguas Calientes",
+            "local bus service to Machu Picchu Ruins",
+            "english/spanish speaking guide services (specialized trekking guides)",
+            "trekking staff with cook and assistants",
+            "complete camping equipment (client, kitchen, dining and toilet tents)",
+            "carry horses (up to 10kg per person), muleteers and emergency horse"
+        ],
+        "notIncluded": [
+            "international/regional flights",
+            "additional carry horses",
+            "personal trekking gear",
+            "personal expenses",
+            "travel insurance",
+            "tips",
+            "beverages",
+            "extras"
+        ]
+    },
+    {
+        "tripName": "Salkantay to Machu Picchu Expedition",
+        "id": "salkantay-machu-pichu-10D",
+        "duration": 10,
+        "adventureType": "trekking",
+        "difficulty": "moderate - hard",
+        "imgArr": ["https://dsm01pap002files.storage.live.com/y4m3aF8TjUlNP33379Zfr9hccG-YjpT1T6XdREzzoO4fOOtuQy3SKavcNAaK8CVyuY7_kjP6_MaEKQZOMDymtILHC47-pQzJ_ye-AdLyxBsQl_ViCL1BLjYDm4Hl0FnDdiF_WHH13DtscNsEtQ2SgyOPB2mX11uMIWx2gz2mZ1488MZu9h_U0TnVyoiVRpXGyFh?width=2000&height=1125&cropmode=none",
+        "https://dsm01pap002files.storage.live.com/y4mt5BosLwqP60QYhXM-8Zsf_xl2vac6LuY9VZ6X2uvQmH4sjVVgkF8Eplem1r6pYy7u_4nIEQDis8avye_B4d89SIqaaH9GLP-YAxpxEfZul_zDWLv1nCXAqZkkCxk-de7IrJE3RK8nEK2qdKKRSzxLvxOqWW8Fp8prgoZVG9oaMi_NhNBY_MgBIEBhYdLtbv3?width=2000&height=1125&cropmode=none",
+        "https://dsm01pap002files.storage.live.com/y4mw16EdnSU_nQbPtsZeGjLJBBjr3zarv7erYVOTEgpHY_ofTD-cOp1fz1eo71O0bDG5E3ILAALaFHbYWUQcdwIGTd2p3ecUSMfZZ5JpL56zzl0WX5pzCKaHjzSUXvvlvQAArao202ZIoN8NYbD1QLL6vgpTcnL8RFacfR_aUurejyu_KJsGKR34lps3Eav_6gj?width=2000&height=1125&cropmode=none",
+        "https://dsm01pap002files.storage.live.com/y4mqdvYnDS7uW0-oeT7JCSiy0ro0ckho6-jxZxSoJItLJK0-cVJ3tr1HnUtKNiPVbuzNf7yjRM5kyfItAGvif-DT42cSfB8uzk8bGQUKeKp3ljOT8GHmsm6Yz-jgKqXDFNVZTakYUD2NhIW4Tjj2B_rznT6hiyzlmqNaM0r9LcwUBmw4WeXCkEXNqv9D49aFg2-?width=2000&height=1125&cropmode=none"
+        ],
+        "tripDescription":"One of the best non-traditional routes leading to the famous Inca city of Machu Picchu is the trail known as the Salcantay-Machu Picchu Inca route, or Alternative Inca Trail. This remote path leads us through an amazing variety of landscapes and habitats varying from green, rich valleys full of blossoming forests and trees of different species to highland fields and glacial moraines flanked by steep rocky and icy peaks of impressive beauty. During our trip, we must cross a high pass below the spectacular glaciers of the Humantay (5917m / 19414ft) and Salcantay (6270m/20572ft.) peaks. Crossing an awesome mountain area, and lush cloud forest landscapes, from our last campsite, we trek down to the shores of the Urubamba River and from there, we go to the small town of Aguas Calientes for a well-deserved rest in a comfortable hotel by train. Next day we will enjoy a full day tour to visit the amazing “Lost City” of the Incas: The fabulous Machu Picchu. ",
+        "countryList": ["peru"],
+        "dayByDay":[
+            {
+                "dayTitle": "Arrival in Lima",
+                "dayDescription": "At your arrival in Lima, you will be welcomed and transferred to your hotel of choice. You will have a short briefing about next day activities."
+            },
+            {
+                "dayTitle": "Half Day Lima City Tour",
+                "dayDescription": "Our morning tour begins with a drive to the Huaca Puccllana pre-Inca remains where we learn about the cultural past of Lima, and the ancient civilization that inhabited this place. Later, we head towards the colonial part of town visiting the Plaza de Armas, and to enjoy a panoramic view of the Cathedral, San Francisco Church and its impressive 'Catacombs'. Afterwards, we will head towards modern Lima, to visit the districts of San Isidro and Miraflores, finally ending our tour at Larco Mar, a modern entertaining center with a splendid view of the Pacific Ocean. You will be transferred back to the hotel",
+                "dayInclusions": [
+                    "Hotel breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Lima - Cusco + City Tour",
+                "dayDescription": "Morning transfer to the airport in Lima to head to Cusco. After your arrival in Cusco, you will be welcomed and transferred to your chosen hotel. After your check in, we will have some time to settle in, and adapt to the high altitude (3400 m / 11152 ft) of the city. In the afternoon, a guided city tour of Cusco will be arranged. The tour starts with a walk to visit the Plaza de Armas with its beautiful colonial buildings and churches including the Cathedral. Then we walk to Santo Domingo Church where we find the impressive Koricancha Temple with exquisite stonework and carvings, to finally visit the nearby ruins of Cusco: the impressive Inca fortress of Sacsayhuaman, Quenko, and the Inca bath of Tambo Machay. Our transport will drop us off at the hotel in the late afternoon",
+                "dayInclusions": [
+                    "Hotel breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Cusco – Urubamba Valley - Cusco",
+                "dayDescription": "In this full day trip, we will visit Urubamba, the Sacred Valley of the Incas, where we begin with a visit to the Pisac ruins: well-preserved Inca remains with beautiful traditional style buildings. Here we can observe an Inca tunnel carved from pure rock and enjoy great views of the valley. Later, will head down into the Pisac Indian market (a great place for shopping), followed by a visit to the impressive fortress of Ollantaytambo, a village where people are still living in houses built 500 years ago, during the Inca time. During our way, back to Cusco, we will also visit the colorful Chinchero Indian market ending a fun day at our hotel back in Cusco. ",
+                "dayInclusions": [
+                    "Hotel breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Cusco – Mollepata – Salcantaypampa ",
+                "dayDescription": "At 07:00 a.m. starts our expedition with a private transport from the city of Cusco. We will pass the localities of Izcuchaca and Limatambo, and after 2-hour drive, we will arrive at Mollepata town (2950m/9676ft) where we stop for a short rest and coffee. Afterwards we continue our drive (2 hours) towards the area known as Soraypampa (3850m/12628ft), a beautiful Andean valley located at the foothills of the impressive Mount Tucarhuay (5910m/19385ft), from where we start our first day trek (3 hours) to our camp at 4000m (13120ft) at the place known as Salcantaypampa. Here we can enjoy the first views of the impressive Mount Salcantay",
+                "dayInclusions": [
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "3 - 4 hours"
+                }
+            },
+            {
+                "dayTitle": "Salcantaypampa – Huayracmachay – Chaullay ",
+                "dayDescription": "From Salcantaypampa we start our trek towards Soroycocha at 4400m/14432ft. From here, we will enjoy great views of the impressive west face of Mount Salcantay (6264m/20546ft). Our hike will then continue to take us to reach the Salcantay pass at 4750m/15580ft, with a permanent view of the amazing Mount Salcantay. With luck, we can also observe the flight of the amazing Condor, known as the “King of the Andes”. During our descent from Salcantay pass, we will also observe the remains of an ancient Inca Trail and observe the beautiful Salcantaycocha Lagoon. We continue our hike down to the place known as Huayracmachay, and then descending into the deep canyon of the Salcantay River on our way to the small village of Chaullay where we set up our camp at 3500m (11480ft).  ",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "7 hours (including lunch and resting time)"
+                }
+            },
+            {
+                "dayTitle": "Chaullay camp – Lucmabamba Camp",
+                "dayDescription": "At 08:00 a.m. we will begin our trek downhill for about 1 hour until we reach the Collpapampa Valley (3200 m/10496 ft). The highland landscape suddenly turns into an amazing cloud forest with typical grass, bushes and trees covered with beautiful bromeliads (from Collpapampa the Salcantay River turns into the Santa Teresa River). We continue our descent down to the shores of the Totora River where we can enjoy a fun dip in the nearby hot water springs and afterwards, following the north side of the Santa Teresa River we will trek 3 hours until we reach the settlement known as Wiñaypoko (2800 m/ 5904 ft) from where, and after a nice meal, we descent (3 hours) down to the place known as La Playa. On the way, we will observe plantations of banana, coffee, granadillas (a typical fruit from the area), avocado trees, etc. The sound of flocking parrots will accompany us during the hike, and above the river perhaps we can observe the fast flight of the king fisher. At La Playa, we cross the river and we make our last hike until we reach the small settlement known as Lucmabamba where we will set up our last camp (1700 m/ 5576 ft).",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "6 to 7 hours (including lunch and resting time)"
+                }
+            },
+            {
+                "dayTitle": "Lucmabamba – Llactapacta – Aguas Calientes ",
+                "dayDescription": "Our last trek day, and following an Inca road (3 hours), will take us from Lucmabamba towards the Inca Ruins of Llactapacta (2800 m / 9184 ft) where we will spend about 1 hour visiting this interesting archaeological site with terraces, agriculture storage areas, etc. From here and weather permitting, we can observe the northwestern side of the Machu Picchu citadel and the summit of Huayna Picchu hill. After having our box lunch and following a steep mountainside trail, we will continue our trek (2 hours) down to the place known as “La Hidroelectrica” (operation area of the hydroelectric power plant). Here we will have time to rest and board the local train to the town of Aguas Calientes (2012 m/ 6600 ft) where we will arrive after a 1-hour ride. Then our guide will take you to your hotel for a well-deserved rest",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box"
+                ],
+                "trekData":{
+                    "totalTrekTime": "5 hours (including lunch and resting time)"
+                }
+            },
+            {
+                "dayTitle": "Aguas Calientes – Machu Picchu – Cusco",
+                "dayDescription": "In our last day, after breakfast in the hotel, we will board a public bus transport which will take you up to the main entrance of the city of Machu Picchu. A guided tour will show you this beautiful Inca City, one of the most famous in the world. You will visit the Intihuatana, the temple of the 3 windows, temple of the moon, the terraces, the ceremonial fountains, the sun gate and other sectors of the impressive citadel. In the afternoon, we take the public bus down to Aguas Calientes and by train, you will return to Ollantaytambo from where our transport will take you back to Cusco and a transfer to your hotel after your arrival",
+                "dayInclusions": [
+                    "hotel breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Cusco - Lima Transfer out",
+                "dayDescription": "We have a morning transfer to the airport to catch our flight to Lima, where we arrive in time to connect with your international flight back home",
+                "dayInclusions": [
+                    "hotel breakfast"
+                ]
+            }
+        ],
+        "tourType": "expedition",
+        "prices": {
+            "priceType": "fixedDeparture",
+            "pricePerPerson": 2490,
+            "singlesupp": 900,
+            "dblOccupancy": true,
+            "priceNotice": "hotel categories will depend on locally available properties"
+        },
+        "included": [
+            "private transport from Cusco to trailhead",
+            "entrance fees",
+            "noted meals",
+            "Vista Dome (or similar) train ticket",
+            "local train ticket from Hydroelectric plant to Aguas Calientes",
+            "local bus service to Machu Picchu Ruins",
+            "english/spanish speaking guide services (specialized trekking guides)",
+            "trekking staff with cook and assistants",
+            "complete camping equipment (client, kitchen, dining and toilet tents)",
+            "carry horses (up to 10kg per person), muleteers and emergency horse"
+        ],
+        "notIncluded": [
+            "international/regional flights",
+            "additional carry horses",
+            "personal trekking gear",
+            "personal expenses",
+            "travel insurance",
+            "tips",
+            "beverages",
+            "extras"
+        ]
+    },
+    {
+        "tripName": "ultimate Machu Picchu - Choquequirao Expedition",
+        "id": "machu-pichu-choquequirao -16D",
+        "duration": 16,
+        "adventureType": "trekking",
+        "difficulty": "moderate - hard",
+        "imgArr": ["https://dsm01pap002files.storage.live.com/y4m3aF8TjUlNP33379Zfr9hccG-YjpT1T6XdREzzoO4fOOtuQy3SKavcNAaK8CVyuY7_kjP6_MaEKQZOMDymtILHC47-pQzJ_ye-AdLyxBsQl_ViCL1BLjYDm4Hl0FnDdiF_WHH13DtscNsEtQ2SgyOPB2mX11uMIWx2gz2mZ1488MZu9h_U0TnVyoiVRpXGyFh?width=2000&height=1125&cropmode=none",
+        "https://dsm01pap002files.storage.live.com/y4mt5BosLwqP60QYhXM-8Zsf_xl2vac6LuY9VZ6X2uvQmH4sjVVgkF8Eplem1r6pYy7u_4nIEQDis8avye_B4d89SIqaaH9GLP-YAxpxEfZul_zDWLv1nCXAqZkkCxk-de7IrJE3RK8nEK2qdKKRSzxLvxOqWW8Fp8prgoZVG9oaMi_NhNBY_MgBIEBhYdLtbv3?width=2000&height=1125&cropmode=none",
+        "https://dsm01pap002files.storage.live.com/y4mw16EdnSU_nQbPtsZeGjLJBBjr3zarv7erYVOTEgpHY_ofTD-cOp1fz1eo71O0bDG5E3ILAALaFHbYWUQcdwIGTd2p3ecUSMfZZ5JpL56zzl0WX5pzCKaHjzSUXvvlvQAArao202ZIoN8NYbD1QLL6vgpTcnL8RFacfR_aUurejyu_KJsGKR34lps3Eav_6gj?width=2000&height=1125&cropmode=none",
+        "https://dsm01pap002files.storage.live.com/y4mqdvYnDS7uW0-oeT7JCSiy0ro0ckho6-jxZxSoJItLJK0-cVJ3tr1HnUtKNiPVbuzNf7yjRM5kyfItAGvif-DT42cSfB8uzk8bGQUKeKp3ljOT8GHmsm6Yz-jgKqXDFNVZTakYUD2NhIW4Tjj2B_rznT6hiyzlmqNaM0r9LcwUBmw4WeXCkEXNqv9D49aFg2-?width=2000&height=1125&cropmode=none"
+        ],
+        "tripDescription":"Choquequirao is perhaps one of the best-preserved major Inca ruins in southern Peru and rivals in importance with the world-famous Machu Picchu citadel. In fact, until the nineteenth century, it was thought that Choquequirao might be the famous “Lost City of the Incas”. It is in the Vilcabamba Range where trekking brings great opportunities to explore beyond the well-known hiking routes to Machu Picchu. This is a challenging and rewarding adventure: great landscapes, high altitude mountain passes, amazing views, and impressive Inca ruins are waiting for us in the heart of the Andes. The trek, dominated by the 20,000-feet peaks of Salcantay and Pumasillo, starts from the cloud forest environment below Machu Picchu, crosses the highlands of the Vilcabamba Range and descends to the spectacular canyon of the Apurimac River, to finally climb out of this immense valley up to the highlands. The Inca shrines and highways throughout the Vilcabamba, specially Rosaspata and Ñusta Ispana, are exceptionally worth the visit.",
+        "countryList": ["peru"],
+        "dayByDay":[
+            {
+                "dayTitle": "Arrival in Lima",
+                "dayDescription": "At your arrival in Lima, you will be welcomed and transferred to your hotel of choice. You will have a short briefing about next day activities."
+            },
+            {
+                "dayTitle": "Lima - Cusco - Ollantaytambo",
+                "dayDescription": "After your breakfast, we will transfer to the airport for your flight to Cusco. We will pick up you from the Airport, to begin our ride down to the valley of Urubamba, known as the Sacred Valley of the Incas. Here we start our first visit to the beautiful Pisac Inca Ruins, where during our 2 hours walk, we can admire the fine architectural work of the Inca culture. Then we continue our tour to visit the colorful market of Pisac. Our  Transport will then take us towards the Inca town of Ollantaytambo where we visit the impressive Inca fortress and walk on this ancient typical Inca town. We will overnight in a nice hotel in Ollantaytambo, where the majestic fortress will overlook us",
+                "dayInclusions": [
+                    "Hotel breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Ollantaytambo – Trekking the Sacred Way to Machu Picchu",
+                "dayDescription": "Morning transfer to Ollanta train station to pick the train that will drop us off at “Km. 104 (2250 m)” to check in at the Warden’s post of Chachabamba Incas’ Ruins. From this point, we will begin ascending over 700m along the Famous Inca Trail. Accompanied by an impressive landscape, the steps will lead us up to Wiñayhuayna, one of the largest and best-preserved Inca Ruins along the Trail. After a visit to these impressive mountain side constructions, we will continue our trek towards The Intipunku or (Sun-Gate) from where we will have an amazing view of the Machu Picchu citadel. We will join the tourist public bus transport down to Aguas Calientes to overnight in a local hotel (3 stars hotel – upgrade upon request). ",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Box Lunch",
+                    "Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "5 to 6 hours (including lunch and resting time)"
+                }
+            },
+            {
+                "dayTitle": "Machu Picchu – Ollantaytambo",
+                "dayDescription": "In the early morning, we will take the public bus up to Machu Picchu, from where we will enjoy a visit to one of the most famous citadels in the world. Our guided tour will take us through the main points of the amazing complex, including the religious, agricultural, and habitational areas. In the late afternoon, we take the public bus from Machu Picchu to Aguas Calientes to pick up our return train to Ollantaytambo",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "lunch"
+                ]
+            },
+            {
+                "dayTitle": "Ollantaytambo - Huancacalle",
+                "dayDescription": "In the morning, we drive over the Malaga Pass to the north of Mount Veronica. After the pass, we descend westward through the cloud forests, to cross the Urubamba River and follow it to the south until we reach the valley of the Vilcabamba River. We will pass small farms of tropical fruits, banana and coffee giving the trip a nice landscape. In the late afternoon, we will finally reach our camp at Huancacalle. ",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "3 - 4 hours"
+                }
+            },
+            {
+                "dayTitle": "Huancacalle - Ñusta Ispana",
+                "dayDescription": "Today’s trekking takes us up to the Inca ruins of Vitcos and Ñusta Ispana. Vitcos is a classic ceremonial plaza lined with massive Inca stonework that occupies a ridge-top site dominating the surrounding countryside. Continuing from here, after a 1-hour trek, we will reach Ñusta Ispana, a much more mystical site, where we find a granite boulder bordering a freshwater spring, considered by the Incas as a sacred site of unusual power. The natural rock has been carved with delicate niches: a beautiful place surrounded by flowers. We continue later following a paved Inca road, which takes us to our campsite",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Chuquitakarpo Pass",
+                "dayDescription": "After a hearty breakfast, we continue our ascent to Chuquitakarpo Pass at 4460 m, located in the heart of the mountain range. The Inca highway which we will use is, in some places, still in great condition. Following the route, we will descend to our campsite at 3800m",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Chuquitakarpo - Paccac",
+                "dayDescription": "This day we will reach our next pass at 4050m of altitude. To get to this point we climb through dense cloud forests, where our effort is rewarded by splendid views. Later, we cross a second ridge and, in the afternoon we reach our camp near Paccac at 3650m",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Paccac - Yanama",
+                "dayDescription": "We enjoy a leisurely morning and, in the afternoon, after lunch, we head towards the hamlet of Yanama, located in the Vilcabamba Range where we will set our camp",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Yanama - Rio Blanco",
+                "dayDescription": "Today we climb to the Victoria Pass, where we follow a beautiful and spectacular trekking descending to the shores of the Rio Blanco to find our camp at 1950m of altitude",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Rio Blanco - Choquequirao",
+                "dayDescription": "In the morning, a steep, long ascent will take us to the ridge (3150m) located high above the Blanco river shores. After a short descend we finally drop down into the ruins of Choquequirao (3085m). These beautiful ruins, with many terraces and buildings, were originally found covered by dense bushes and have recently undergone a great deal of restoration work",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Choquequirao - Apurimac River",
+                "dayDescription": "We will have the morning to explore and enjoy these amazing ruins, rarely visited but perhaps one of the most important in the Peruvian rain forest. After lunch, we start trekking down towards our next camp on the shores of Apurimac River",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Apurimac River - Cachora",
+                "dayDescription": "This day we head towards Cachora Village where we will overnight. This is a long, tiring climb from the Apurimac gorge out to the highlands of Cachora",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Sayhuite - Cusco",
+                "dayDescription": "In the morning, we will visit the ritual site of the Incas at Sayhuite. This is a place where we can find interesting carved boulders and irrigation channels. Finally, we meet our vehicle which will transport us back to Cusco and to our hotel",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box"
+                ]
+            },
+            {
+                "dayTitle": "Cusco - Lima",
+                "dayDescription": "A morning flight to Lima will be followed by a transfer to your hotel. In your free afternoon, perhaps you can visit the old Lima and the interesting museums, churches, etc",
+                "dayInclusions": [
+                    "hotel breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Lima - Transfer out",
+                "dayDescription": "A morning transfer will take you to the Airport for your flight or program extension",
+                "dayInclusions": [
+                    "hotel breakfast"
+                ]
+            }            
+        ],
+        "tourType": "expedition",
+        "prices": {
+            "priceType": "fixedDeparture",
+            "pricePerPerson": 2490,
+            "singlesupp": 900,
+            "dblOccupancy": true,
+            "priceNotice": "hotel categories will depend on locally available properties"
+        },
+        "included": [
+            "noted meals",
+            "entrance fees",
+            "private transport and transfers",
+            "Vista Dome (or similar) train ticket",
+            "local bus service to Machu Picchu Ruins",
+            "english/spanish speaking guide services (specialized trekking guides)",
+            "trekking staff with cook and assistants",
+            "complete camping equipment (client, kitchen, dining and toilet tents)",
+            "carry horses (up to 10kg per person), muleteers and emergency horse"
+        ],
+        "notIncluded": [
+            "international/regional flights",
+            "additional carry horses",
             "personal trekking gear",
             "personal expenses",
             "travel insurance",
