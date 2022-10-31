@@ -65,7 +65,7 @@ import { MultiSelect, Select } from '@mantine/core';
     // }
 
 
-let tourTypes = ["all types", "active", "cruise", "expedition", "voyage"]
+let tourTypes = ["all types", "cultural", "expedition", "climb", "trek", ]
 
 let ecoAndesDestinations= ['ecuador', 'galapagos', 'peru', 'bolivia', 'chile', 'argentina']
 
@@ -131,7 +131,7 @@ export default function TourPage(){
             <div className={styles.UIBTNCont}> 
                 <div className={styles.userIUFilterCont}>
 
-                    {/* Destinations filter */}
+                    {/* Destinations filter
                     <div className={styles.userUISec}>
                         <label htmlFor="destinationPickerUI">Destination:</label>
                         <MultiSelect
@@ -143,7 +143,7 @@ export default function TourPage(){
                             onChange={setDestList}
                             id="destinationPickerUI"
                         />
-                    </div>
+                    </div> */}
 
                     {/* Tour Types Filter */}
                     <div className={styles.userUISec}>
@@ -155,6 +155,7 @@ export default function TourPage(){
                             id="tourTypenPickerUI"
                         />
                     </div>
+                    {sortingFunct()}
                 </div>
             </div>
         </>)
@@ -162,23 +163,23 @@ export default function TourPage(){
 
     ///////////////////////////////////////////////
     // Sort Functions
-    const [sortContr, setSortContr]=useState(false)
+    const [sortContr, setSortContr]=useState("duration")
     const [sortOrder, setSortOrder]=useState("descending")
     const sortingFunct=()=>{
         return(<>
         <div className={styles.sortingUICont}>
-            <div style={{display: "flex", alignItems:"center"}}>
+            {/* <div style={{display: "flex", alignItems:"center"}}>
                 <div className={styles.userSortUISec}>
                     Sort By: 
                 </div>
                 <select className={styles.sortPicker} onChange={(e)=>{
-                    e.target.value==="0"? setSortContr(false) : setSortContr(e.target.value)
+                    setSortContr(e.target.value)
                 }}>
-                    <option value={0} >default</option>
-                    <option value="duration">duration</option>
+                    <option value="duration" >duration</option>
+                    <option value="alphabetical">a-z</option>
                 </select>
-            </div>
-            {sortContr&&<>
+            </div> */}
+
             {sortOrder==="descending"?
                 <><div className={styles.orderArrCont}>
                     <div className={styles.checkedArr}>
@@ -201,8 +202,6 @@ export default function TourPage(){
                         <ArrowDownwardIcon/> &nbsp; Ascending Order
                     </div>
                 </div> </>}
-            </>}
-            
         </div>
         </>)
     }
@@ -213,6 +212,7 @@ export default function TourPage(){
         :
             setFilteredTourArr([...filteredTourArr].sort(((a,b)=> b.duration - a.duration)))
     },[sortContr])
+
     useEffect(()=>{
         sortOrder==="descending"? 
             setFilteredTourArr([...filteredTourArr].sort((a,b)=> a.duration - b.duration)) 
@@ -247,7 +247,6 @@ export default function TourPage(){
             <Navi2 />
             {tourPageImgDisplayer()}
             {filtersUI()}
-            {sortingFunct()}
             {tourdisplayer()}
 
             {/* Page Footer */}
