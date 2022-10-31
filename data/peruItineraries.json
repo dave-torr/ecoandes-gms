@@ -918,7 +918,7 @@
     },
     {
         "tripName": "Trekking around Mount Ausangate",
-        "id": "mausangate-trek-5D",
+        "id": "ausangate-trek-5D",
         "duration": 5,
         "adventureType": "trekking",
         "difficulty": "moderate - hard",
@@ -1226,41 +1226,44 @@
         "https://dsm01pap002files.storage.live.com/y4mw16EdnSU_nQbPtsZeGjLJBBjr3zarv7erYVOTEgpHY_ofTD-cOp1fz1eo71O0bDG5E3ILAALaFHbYWUQcdwIGTd2p3ecUSMfZZ5JpL56zzl0WX5pzCKaHjzSUXvvlvQAArao202ZIoN8NYbD1QLL6vgpTcnL8RFacfR_aUurejyu_KJsGKR34lps3Eav_6gj?width=2000&height=1125&cropmode=none",
         "https://dsm01pap002files.storage.live.com/y4mqdvYnDS7uW0-oeT7JCSiy0ro0ckho6-jxZxSoJItLJK0-cVJ3tr1HnUtKNiPVbuzNf7yjRM5kyfItAGvif-DT42cSfB8uzk8bGQUKeKp3ljOT8GHmsm6Yz-jgKqXDFNVZTakYUD2NhIW4Tjj2B_rznT6hiyzlmqNaM0r9LcwUBmw4WeXCkEXNqv9D49aFg2-?width=2000&height=1125&cropmode=none"
         ],
-        "tripDescription":"This trekking is a very good alternative to the extremely busy Inca Trail. The Lares Valley is so far off the beaten track that it has changed little over the last 500 years. With original Inca trails, spectacular and diverse scenery (even more so than the main Inca Trail) and the promise of a glimpse of what life used to be in Peru hundreds of years ago, it is amazing that the area has remained relatively untouched by tourism. Somehow, it has slipped from view and retains an authenticity like nowhere else in Peru. Travel here and you will meet Andean farmers dressed in traditional brightly colored ponchos, wander markets where trading hasn’t centuries, see thatched stone and adobe houses and watch herds of llamas and alpacas roam free.",
+        "tripDescription":"The Lares Trek to Machu Picchu is known as the weavers' route. During these 4 days trek up on the high Andean mountains, you will have the opportunity to experience the living Incas culture of the communities who keep alive the traditions of yesteryear and specially the Inca fabrics. During this 34 kms of enjoyable trek, you will also find archaeological remains, great snowcapped mountains, and encounters with friendly indigenous Andean people. Definitely the Lares trail is an excellent alternative to the well-known Inca Trail",
         "countryList": ["peru"],
         "dayByDay":[
             {
-                "dayTitle": "Cusco – Quishuarani – Cuncani",
-                "dayDescription": "We depart Cusco early in the morning and travel to the town of Calca (2900m) in the Urubamba Sacred Valley of the Incas. Here we will stop for some coffee and we can visit an ancient bakery where there is a chance to snack on delicious freshly baked bread and watch traditional cooking methods. Perhaps we also visit the local market selling a multitude of Andean crops including colorful corn, seeds and spices. The markets are a fantastic place for authentic photographs or simply to spend a while soaking up the atmosphere – and everyday trading. Continuing from Calca, we drive for an hour to the highest point of the day passing Inca burial tombs, local farms and herds of llamas on route. Stopping for a short-guided walk, we visit the vast Inca ruins of Ascasmarca with stunning views of the surrounding valleys and mountains. From here, we make our way down into the Lares Valley, towards the small community of Quishuarani at 3750m above sea level. After lunch, we begin the first part of our trek up to the Huillquisaca Abra (pass) at 3940m and then descending to the Queullacocha lagoons, where there is an abundance of wildlife present. Then we continue our trek down to the village of Cuncani (3780m) where our crew is ready with our camp",
+                "dayTitle": "Cusco / Calca / Lares. Trek Lares - Huacahuasi (3,800m) - Sondor Camp (3900m)",
+                "dayDescription": "We depart from Cusco (3,450 m) at 5:00 a.m. in the morning and travel (1.5 hour) to Calca town located in the Urubamba Valley. In the local colorful indigenous market, our cook will do some last shopping of fresh bread, fresh vegetables and other items needed during the trekking.  From Calca transport (2.5 hours) up to Lares village (3,150 m) where we will take a dip in the hot thermal water springs and then enjoy breakfast. At about 10 a.m. we start our first day trek with a gentle steady 3 hours ascent up to Huacahuasi village where we will enjoy lunch and after a good rest, we continue our hike for about 2 to 3 hours until we reach the place known as Sondor where we find our first camp ready for spend the night. Teatime and after a good rest, enjoy a delicious dinner. Resting time.",
                 "dayInclusions": [
+                    "breakfast",
                     "Lunch Box",
                     "camp Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "5 - 6 hours"
+                    "totalTrekTime": "5 - 6 hours",
+                    "distanceCovered": 12
                 }
             },
             {
-                "dayTitle": "Cuncani – Huacahuasi – Ipsaycocha",
-                "dayDescription": "Rising early, we will enjoy a hearty breakfast to then prepare ourselves to continue our trek. Departing Cuncani, we climb steeply passing Huacahuasi pass at 3800m and then we continue upward reaching an altitude of around 4400m before we descend for lunch at Azul Cocha (Blue Lake) at 4200m. Surrounded by the peaks of the Andes – including the snow-capped Mount Veronica – the scenery is quite amazing. Climbing steadily once again, the open landscape is often dotted with herds of llama and alpaca. A tough but rewarding final push brings us to the highest point of the trek, the Ipsaycocha pass at 4450m, from where we enjoy spectacular views. Then we descend through the heartland of the traditional Quechua people to our second campsite at Ipsaycocha lagoons at 4200m. On these lakes, we can observe Andean Geese, Puna Ibis, mountain gulls, etc. and other water birds",
+                "dayTitle": "Sondor – Huacahuasijasa Pass (4,400 m) – Camp Mantanay (3,800 m) ",
+                "dayDescription": "In the morning and after enjoying a hearty breakfast, we start our second trekking day at about 8 a.m., hiking up for about 3 hours to the Abra (Pass) Huacahuasikasa (also known as Aurora Pass or Wakawasi pass) located at about 4,400 m of altitude. From the pass we will enjoy great views of the Nevado Pumahuanca of 5,350 meters of altitude. On this area, most probably we will have to walk on snow fields. Then we will descend towards the beautiful Aurora Cocha at 4,200 m. from where our hike then continues climbing down to Millpo Cocha (4,000m) and from here we do our last hike descending towards our camp at the place known as Mantanay which is an abandoned old mining camp.  Enjoy the amazing place surrounded by steep hills. Dinner time and rest.  ",
                 "dayInclusions": [
                     "Camp breakfast",
                     "Lunch Box",
                     "camp Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "7 - 8 hours (including lunch and resting time)"
+                    "totalTrekTime": "7 - 8 hours (including lunch and resting time)",
+                    "distanceCovered": 14
                 }
             },
             {
-                "dayTitle": "Ipsaycocha – Patacancha – Ollantaytambo – Aguas Calientes",
-                "dayDescription": "The final section of our trek begins with a steady 3 hours descent into the valley of Patacancha (3700m). Here we find the town of Patacancha with a long-established textile community with strong ancient Quechua traditions, surrounded by stunning scenery. This area is seldom visited by tourists and gives a privileged insight into the lives of the Quechua inhabitants, eager to show their way of life. Departing Patacancha by minibus, we head towards the extensive Inca ruins of Pumamarca which stand sentry on the hillside overlooking the old Inca settlement of Ollantaytambo. Clinging to the hillside, Pumamarca is a remarkably well-preserved Inca fort built to protect the Sacred Valley. Continuing down into Ollantaytambo, we visit the small Inca museum and have time to wander through the delightful streets to see many of the original Inca walls and doorways on which the new town has been built. After lunch, we take the train to Aguas Calientes, the starting point for the next day’s visit to the fabulous lost Inca City of Machu Picchu. Hotel accommodations in Aguas Calientes",
+                "dayTitle": "Mantanay – Yanahuara (3000m) – Maras - Ollantaytambo – Aguas Calientes (2040 m",
+                "dayDescription": "Early breakfast at 5:30 a.m. and at 6:00 a.m. we start our hike following a trail which crosses beautiful queñua (Polylepis) forest. After 3 hours hike, we reach the town of Yanahuara where our transport will be ready to take us to Ollantaytambo town where we will make a short tour on the impressive well-preserved Inca fortress which was built by the Incas to protect the Sacred Valley. Later we enjoy a walk in the Inca streets of Ollantaytambo village. In the afternoon we will take the train for a beautiful train ride (1 h – 40 min) along the Urubamba Valley to the town of Aguas Calientes, the starting point for the next day visit to the fabulous lost Inca City of Machu Picchu. Hotel accommodations in Aguas Calientes",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box"
+                    "Camp breakfast"
                 ],
                 "trekData":{
-                    "totalTrekTime": "3 to 4 hours (including lunch and resting time)"
+                    "totalTrekTime": "3 to 4 hours (including lunch and resting time)",
+                    "distanceCovered": 7
                 }
             },
             {
@@ -1284,10 +1287,10 @@
             "entrance fees",
             "noted meals",
             "Vista Dome (or similar) train ticket",
-            "private transport from Cusco to trailhead",
             "local bus service to Machu Picchu Ruins",
-            "english/spanish speaking guide services (specialized trekking guides)",
+            "private transport from Cusco to trailhead",
             "trekking staff with cook and assistants",
+            "english/spanish speaking guide services (specialized trekking guides)",
             "complete camping equipment (client, kitchen, dining and toilet tents)",
             "carry horses (up to 10kg per person), muleteers and emergency horse"
         ],
@@ -1376,7 +1379,7 @@
             "complete camping equipment (client, kitchen, dining and toilet tents)",
             "english/spanish speaking guide services (specialized trekking guides)",
             "carry horses (up to 8kg per person), muleteers and emergency horse",
-            "private transport from Huarz to trailhead"
+            "private transport from Huaraz to trailhead"
         ],
         "notIncluded": [
             "international/regional flights",
@@ -1392,7 +1395,7 @@
     {
         "tripName": "Trekking Alpamayo and Pisco Climbing",
         "id": "alpamayo-trek-pisco-climb-7D",
-        "duration": 4,
+        "duration": 7,
         "adventureType": "trekking",
         "difficulty": "moderate - hard",
         "imgArr": ["https://dsm01pap002files.storage.live.com/y4m3aF8TjUlNP33379Zfr9hccG-YjpT1T6XdREzzoO4fOOtuQy3SKavcNAaK8CVyuY7_kjP6_MaEKQZOMDymtILHC47-pQzJ_ye-AdLyxBsQl_ViCL1BLjYDm4Hl0FnDdiF_WHH13DtscNsEtQ2SgyOPB2mX11uMIWx2gz2mZ1488MZu9h_U0TnVyoiVRpXGyFh?width=2000&height=1125&cropmode=none",
@@ -1435,24 +1438,55 @@
                     "camp Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "3 to 4 hours (including lunch and resting time)"
+                    "totalTrekTime": "7 to 8 hours (including lunch and resting time)"
                 }
             },
             {
                 "dayTitle": "Tuctu – Huayripampa - Vaqueria Camp - Cebollapampa",
                 "dayDescription": "From Tuctu our trek will take us to pass the Huayripampa gorge and valley. On the way, we will enjoy spectacular views of the surrounding mountains: Chacraraju, Piramide, etc. After 4 hours of hiking, we will arrive to the settlement of Vaqueria where we meet our vehicle that will take us to first to the Portachuelo pass at 4750 m and then descend towards the Cebollapampa meadow. Here we will set up our camp at 3600m. ",
                 "dayInclusions": [
-                    "hotel breakfast",
+                    "Camp breakfast",
                     "Lunch Box",
                     "camp Dinner"
-                ]
-
-
-
-
-
-
-
+                ],
+                "trekData":{
+                    "totalTrekTime": "4 to 5 hours (including lunch and resting time)"
+                }
+            },
+            {
+                "dayTitle": "Cebollapampa – Pisco Base Camp",
+                "dayDescription": "From Cebollapampa we trek towards to the base camp of Mounts Pisco and Huandoy. The trail leads us along beautiful landscapes on a well-marked route with glacial water streams, gracious Andean flowers and queñua (polylepis) forest while we enjoy great views of Mounts Huascaran, Chopicalqui, Yanacocha and Mount Pisco itself. The 4 hours hike will take us to the camp at 4650m",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "4 to 5 hours (including lunch and resting time)"
+                }
+            },
+            {
+                "dayTitle": "Base Camp – Pisco Summit (5752m) – Base Camp",
+                "dayDescription": "We start our early attempt to reach the summit of Mount Pisco at about 2 a.m. First, we negotiate our way through a camp of loose rocks of the moraine. At sunrise, we will reach the base of the glacier where we put crampons on and start our climb in easy glacial and snowy terrain. At a certain point of the route, if weather permits, we will have the opportunity to enjoy marvelous views of the Artesonraju snowy peak, Mount Caraz, Pico de Garcilaso and other impressive and beautiful mountains of the Cordillera Blanca. After 7-8 hours of continuous climbing we will finally arrive to the summit of the Pisco Mountain. Our efforts will be rewarded with an incredible 360 degrees view of the Cordillera Blanca main peaks: Huascaran, Chacraraju, Chopicalqui, Huandoy, Alpamayo, Artesonraju and many others. We then return to base camp where we expect to arrive at about 2 – 3 p.m. for a well-deserved rest and dinner",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "8 to 9 hours (including lunch and resting time)"
+                }
+            },
+            {
+                "dayTitle": "Base Camp – Cebollapampa - Huaraz",
+                "dayDescription": "After a relaxed morning, we will start our trek down to the meadow of Cebollapampa where we meet our transport, which will take us back to the city of Huaraz. ",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box"
+                ],
+                "trekData":{
+                    "totalTrekTime": "2 to 3 hours (including lunch and resting time)"
+                }
             }
         ],
         "tourType": "trek",
@@ -1470,8 +1504,783 @@
             "trekking staff with cook and assistants",
             "complete camping equipment (client, kitchen, dining and toilet tents)",
             "english/spanish speaking guide services (specialized trekking guides)",
+            "carry donkeys (up to 8kg per person), muleteers and emergency horse",
+            "private transport from Huaraz to trailhead"
+        ],
+        "notIncluded": [
+            "international/regional flights",
+            "additional carry horses",
+            "personal trekking gear",
+            "personal expenses",
+            "travel insurance",
+            "beverages",
+            "extras",
+            "tips"
+        ]
+    },
+    {
+        "tripName": "Lima + Santa Cruz + Alpamayo Trek",
+        "id": "santacruz-alpamayo-10D",
+        "duration": 10,
+        "adventureType": "trekking",
+        "difficulty": "moderate - hard",
+        "imgArr": ["https://dsm01pap002files.storage.live.com/y4m3aF8TjUlNP33379Zfr9hccG-YjpT1T6XdREzzoO4fOOtuQy3SKavcNAaK8CVyuY7_kjP6_MaEKQZOMDymtILHC47-pQzJ_ye-AdLyxBsQl_ViCL1BLjYDm4Hl0FnDdiF_WHH13DtscNsEtQ2SgyOPB2mX11uMIWx2gz2mZ1488MZu9h_U0TnVyoiVRpXGyFh?width=2000&height=1125&cropmode=none",
+        "https://dsm01pap002files.storage.live.com/y4mt5BosLwqP60QYhXM-8Zsf_xl2vac6LuY9VZ6X2uvQmH4sjVVgkF8Eplem1r6pYy7u_4nIEQDis8avye_B4d89SIqaaH9GLP-YAxpxEfZul_zDWLv1nCXAqZkkCxk-de7IrJE3RK8nEK2qdKKRSzxLvxOqWW8Fp8prgoZVG9oaMi_NhNBY_MgBIEBhYdLtbv3?width=2000&height=1125&cropmode=none",
+        "https://dsm01pap002files.storage.live.com/y4mw16EdnSU_nQbPtsZeGjLJBBjr3zarv7erYVOTEgpHY_ofTD-cOp1fz1eo71O0bDG5E3ILAALaFHbYWUQcdwIGTd2p3ecUSMfZZ5JpL56zzl0WX5pzCKaHjzSUXvvlvQAArao202ZIoN8NYbD1QLL6vgpTcnL8RFacfR_aUurejyu_KJsGKR34lps3Eav_6gj?width=2000&height=1125&cropmode=none",
+        "https://dsm01pap002files.storage.live.com/y4mqdvYnDS7uW0-oeT7JCSiy0ro0ckho6-jxZxSoJItLJK0-cVJ3tr1HnUtKNiPVbuzNf7yjRM5kyfItAGvif-DT42cSfB8uzk8bGQUKeKp3ljOT8GHmsm6Yz-jgKqXDFNVZTakYUD2NhIW4Tjj2B_rznT6hiyzlmqNaM0r9LcwUBmw4WeXCkEXNqv9D49aFg2-?width=2000&height=1125&cropmode=none"
+        ],
+        "tripDescription":"The Santa Cruz Gorge is one of the Cordillera Blanca, best kept secrets. With hundreds of miles of incredible hiking trails, awe-inspiring snow capped mountians, and incredibly rich folklore, combining this hike with the Alpamayo base camp trek, creates a unique expedition that will fulfill many of your hiking objectives. Starting form Lima, this itinerary will capture the best of the Cordillera Blanca region of Peru",
+        "countryList": ["peru"],
+        "dayByDay":[
+            {
+                "dayTitle": "Arrival in Lima",
+                "dayDescription": "At your arrival in Lima, you will be welcomed and transferred to your hotel of choice. You will have a short briefing about next day activities."
+            },
+            {
+                "dayTitle": "Half Day Lima City Tour",
+                "dayDescription": "Our morning tour begins with a drive to the Huaca Puccllana pre-Inca remains where we learn about the cultural past of Lima, and the ancient civilization that inhabited this place. Later, we head towards the colonial part of town visiting the Plaza de Armas, and to enjoy a panoramic view of the Cathedral, San Francisco Church and its impressive 'Catacombs'. Afterwards, we will head towards modern Lima, to visit the districts of San Isidro and Miraflores, finally ending our tour at Larco Mar, a modern entertaining center with a splendid view of the Pacific Ocean. You will be transferred back to the hotel",
+                "dayInclusions": [
+                    "Hotel breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Lima - Huaraz",
+                "dayDescription": "In the morning, we will head out to the bus station so that we can catch our comfortable public bus transport (or flight at extra cost) to the city of Huaraz. At your arrival, our crew will greet you and transfer you to your hotel",
+                "dayInclusions": [
+                    "Hotel breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Huaraz – Wilcahuain - Monterrey – Huaraz",
+                "dayDescription": "This ½ day acclimatization hike combines a visit to the Wilcahuain ruins (3400 m) continuing afterwards with a hike (2 to 3 hours) to Lake Ahuac (4560 m), situated approximately six kilometers away from the ruins. The Wilcahuain complex is a well-preserved archaeological temple with historical significance which was built around 600 to 900 AD by the Wari empire, one of the early generations of the Andean region. The three-story temple was used to house mummies of the Wari ancestors through an intricate ventilation system which kept moisture out. Upon arriving at Lake Ahuac, you will be rewarded with magnificent views of the Cordillera Blanca. Transport back to the hotel and free afternoon",
+                "dayInclusions": [
+                    "Hotel breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Huaraz – Cashapampa Village - Camp Llama Corral (3750m",
+                "dayDescription": "Our private transport will take us from Huaraz towards Cashapampa village (2900m), the starting point of our trek. Here we meet our crew and donkeys, who will transport our heavy equipment during the whole trek. We begin our trek (5-6 hours) through the beautiful Santa Cruz valley towards our first camp. On the way, we enjoy great views of the nearby high Andean peaks before we arrive to our camp at Llama Corral (3750m)",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "5 - 6 hours"
+                }
+            },
+            {
+                "dayTitle": "Llama Corral - Taullipampa Camp (4250m",
+                "dayDescription": "After our first night in the high mountains, we continue our trek (4-5 hours) towards our next camp. On the way, we will observe the beautiful lakes known as Ichiccocha and Jatuncocha. Following the side of the Arhuaycocha gorge, we will reach the base camp of Mount Alpamayo (5947m). From here, we can enjoy splendid views of the famous Alpamayo, Artesonraju and Quitaraju. Later we will continue our walk until we reach our camp at Taullipampa at the base of the beautiful Mount Taulliraju (5830m). ",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "4 - 5 hours (including lunch and resting time)"
+                }
+            },
+            {
+                "dayTitle": "Taullipampa – Punta Union – Tuctu Camp (Paria Valley – 3900m).",
+                "dayDescription": "Today we face the hardest part of the trek: Punta Union pass at 4750m. The views over Mounts Taulliraju, Artesonraju and Alpamayo will rewards us for all our efforts. After a 4-hour ascent, we will deserve a break with a gorgeous overwhelming panorama. Descending to our next camp at Tuctu, perhaps we can see some Condors flying over the Morococha lagoon",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "6 to 7 hours (including lunch and resting time)"
+                }
+            },
+            {
+                "dayTitle": "Tuctu – Huayripampa - Vaqueria Camp - Huaraz",
+                "dayDescription": "From Tuctu, our trek will take us to the pass at the Huayripampa gorge and valley. On the way, we will enjoy spectacular views of the surrounding mountains: Chacraraju, Piramide, etc. After 4 hours of hiking, we will arrive at the settlement of Vaqueria where we meet our vehicle, which will take us back to the city of Huaraz. During our drive, we will cross the Portachuelo pass at 4750m from where we descend through the beautiful Llanganuco Lakes (3860m) and continue to Huaraz where we arrive late in the afternoon. ",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box"
+                ],
+                "trekData":{
+                    "totalTrekTime": "4 hours (including lunch and resting time)"
+                }
+            },
+            {
+                "dayTitle": "Huaraz – Lima",
+                "dayDescription": "We will head to the bus station to catch our public bus transport (or flight at extra cost) from Huaraz to Lima. We will arrange your transfer to the hotel in Lima after your arrival",
+                "dayInclusions": [
+                    "hotel breakfast"
+                ]
+            },
+            {
+                "dayTitle": " Lima Transfer out",
+                "dayDescription": "A morning transfer to the airport is included, so that you can catch your flight back home",
+                "dayInclusions": [
+                    "hotel breakfast"
+                ]
+            }
+        ],
+        "tourType": "expedition",
+        "prices": {
+            "priceType": "fixedDeparture",
+            "pricePerPerson": 2490,
+            "singlesupp": 900,
+            "dblOccupancy": true,
+            "priceNotice": "hotel categories will depend on locally available properties"
+        },
+        "included": [
+            "noted meals",
+            "entrance fees",
+            "private transport from Huaraz to trailhead",
+            "trekking staff with cook and assistants",
+            "complete camping equipment (client, kitchen, dining and toilet tents)",
+            "english/spanish speaking guide services (specialized trekking guides)",
+            "carry horses (up to 10kg per person), muleteers and emergency horse"
+        ],
+        "notIncluded": [
+            "international/regional flights",
+            "additional carry horses",
+            "personal trekking gear",
+            "personal expenses",
+            "travel insurance",
+            "beverages",
+            "extras",
+            "tips"
+        ]
+    },
+    {
+        "tripName": "Lima - Huayhuash Mountain Range Trek",
+        "id": "lima-huayhuash-12D",
+        "duration": 12,
+        "adventureType": "trekking",
+        "difficulty": "moderate - hard",
+        "imgArr": ["https://dsm01pap002files.storage.live.com/y4m3aF8TjUlNP33379Zfr9hccG-YjpT1T6XdREzzoO4fOOtuQy3SKavcNAaK8CVyuY7_kjP6_MaEKQZOMDymtILHC47-pQzJ_ye-AdLyxBsQl_ViCL1BLjYDm4Hl0FnDdiF_WHH13DtscNsEtQ2SgyOPB2mX11uMIWx2gz2mZ1488MZu9h_U0TnVyoiVRpXGyFh?width=2000&height=1125&cropmode=none",
+        "https://dsm01pap002files.storage.live.com/y4mt5BosLwqP60QYhXM-8Zsf_xl2vac6LuY9VZ6X2uvQmH4sjVVgkF8Eplem1r6pYy7u_4nIEQDis8avye_B4d89SIqaaH9GLP-YAxpxEfZul_zDWLv1nCXAqZkkCxk-de7IrJE3RK8nEK2qdKKRSzxLvxOqWW8Fp8prgoZVG9oaMi_NhNBY_MgBIEBhYdLtbv3?width=2000&height=1125&cropmode=none",
+        "https://dsm01pap002files.storage.live.com/y4mw16EdnSU_nQbPtsZeGjLJBBjr3zarv7erYVOTEgpHY_ofTD-cOp1fz1eo71O0bDG5E3ILAALaFHbYWUQcdwIGTd2p3ecUSMfZZ5JpL56zzl0WX5pzCKaHjzSUXvvlvQAArao202ZIoN8NYbD1QLL6vgpTcnL8RFacfR_aUurejyu_KJsGKR34lps3Eav_6gj?width=2000&height=1125&cropmode=none",
+        "https://dsm01pap002files.storage.live.com/y4mqdvYnDS7uW0-oeT7JCSiy0ro0ckho6-jxZxSoJItLJK0-cVJ3tr1HnUtKNiPVbuzNf7yjRM5kyfItAGvif-DT42cSfB8uzk8bGQUKeKp3ljOT8GHmsm6Yz-jgKqXDFNVZTakYUD2NhIW4Tjj2B_rznT6hiyzlmqNaM0r9LcwUBmw4WeXCkEXNqv9D49aFg2-?width=2000&height=1125&cropmode=none"
+        ],
+        "tripDescription":"Considered as one of the most beautiful treks in the world, the Cordillera de Huayhuash trek offers amazing and beautiful views of the landscapes and of the high rocky, snowy and icy peaks of this impressive mountain range situated south of the Cordillera Blanca in the Andes of Peru. ",
+        "countryList": ["peru"],
+        "dayByDay":[
+            {
+                "dayTitle": "Arrival in Lima",
+                "dayDescription": "At your arrival in Lima, you will be welcomed and transferred to your hotel of choice. You will have a short briefing about next day activities."
+            },
+            {
+                "dayTitle": "Lima - Huaraz",
+                "dayDescription": "In the morning, we will head out to the bus station so that we can catch our comfortable public bus transport (or flight at extra cost) to the city of Huaraz. At your arrival, our crew will greet you and transfer you to your hotel",
+                "dayInclusions": [
+                    "Hotel breakfast"
+                ]
+            },
+            {
+                "dayTitle": "Huaraz – Chiquian - Llamac",
+                "dayDescription": "In the morning, we will arrange transportation from Huaraz to the small village of Llamac. Our drive will take us first to the town of Chiquian from where after a short stop we will continue to Llamac village. Our first camp is located at 3250 m of altitude (10660 ft).",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Llamac – Jahuacocha",
+                "dayDescription": "From Llamac we will start our hiking circuit towards the beautiful Jahuacocha Lake. The trail follows the shores of the Llamac River, crossing beautiful natural gardens, finally arriving at the impressive campsite at 4050m of altitude (13120ft). From here, we have a great view of the amazing Cordillera de Huayhuash and its impressive mountains: Yerupaja, Jirishanca, Rasak and others. ",
+                "dayInclusions": [
+                    "camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "5 - 6 hours"
+                }
+            },
+            {
+                "dayTitle": "Jahuacocha – Matacancha",
+                "dayDescription": "Breakfast and we start the day hiking up to cross our second spectacular high Andean pass known as Caccanampunta at 4750m (15580ft). reaching the highest point, we are rewarded with great views of the east side of the Huayhuash Mountain Range. Later, we will arrive at our campsite located close to Laguna Mitucocha at 4230 m (13874 ft)",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "5 - 6 hours (including lunch and resting time)"
+                }
+            },
+            {
+                "dayTitle": "Matacancha – Mitucocha",
+                "dayDescription": "Breakfast and we start the day hiking up to cross our second spectacular high Andean pass known as Caccanampunta at 4750m (15580ft). reaching the highest point, we are rewarded with great views of the east side of the Huayhuash Mountain Range. Later, we will arrive at our campsite located close to Laguna Mitucocha at 4230 m (13874 ft)",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "5 - 6 hours (including lunch and resting time)"
+                }
+            },
+            {
+                "dayTitle": "Laguna Mitucocha – Laguna Carhuacocha ",
+                "dayDescription": "After breakfast, our trekking heads towards the next pass at Carhuac Punta at 4600 m/15090 ft from where we descend to our camp located at the beautiful Carhuacocha lagoon located at 4140 m (13579 ft). After an earlier arrival to our camp, in the afternoon you will have plenty of time for fishing, or just relax on the lake area while enjoying scenic views of the impressive mountains",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "4 to 5 hours (including lunch and resting time)"
+                }
+            },
+            {
+                "dayTitle": "Carhuacocha – Huayhuash ",
+                "dayDescription": "A morning start will take us across the Atocshayco pass at 4800m/15250ft with marvelous views of the Siula and Quesillococha lagoons and the surrounding mountains: Carnicero, Siula, Yerupaja and many more. Then we go down towards our next camp located close to the small settlement of Huayhuash",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "7 to 8 hours (including lunch and resting time)"
+                }
+            },
+            {
+                "dayTitle": "Huayhuash – Viconga Lagoon (Pumarinri camp) ",
+                "dayDescription": "Today we cross the Portachuelo-Huayhuash pass (4600 m – 15088 ft) heading west towards the Viconga Lagoon. On the way and just in front of us, we will have great views of the Cordillera Raura. We will then continue our hike until we reach our next campsite at 4150 m (13610 ft) located near the hot water springs. Here we can enjoy a relaxing dip in the thermal water",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "6 - 7 hours (including lunch and resting time)"
+                }
+            },
+            {
+                "dayTitle": "Viconga Lagoon – Punta Cuyoc – Quebrada Guanacpatay",
+                "dayDescription": "An early morning start, will lead us up to the highest pass of the entire loop: the spectacular Cuyoc pass at 5000 m. We will enjoy excellent views of the Puscanturpa massif. We then descend to the Guanacpatay gorge and walking along it we will reach our campsite at 3800 m/12464 ft",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "8 - 9 hours (including lunch and resting time)"
+                }
+            },
+            {
+                "dayTitle": "Quebrada Guanacpatay – Cajatambo – Lima ",
+                "dayDescription": "We start an early morning hiking (4 hours) along the Quebrada Guanacpatay down to the Huayllapa river and then heading west we descend until we reach the road where our private transport will be waiting for us. At this point we say goodbye to our kind helpers and mule keepers, and we start the 4 hours drive (approx. 265 kms) following the route Cajatambo – Oyon – Sayan – Chancay and Lima. Upon arrival in Lima, we transfer you to the hotel",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box"
+                ],
+                "trekData":{
+                    "totalTrekTime": "4 hours"
+                }
+            },
+
+            {
+                "dayTitle": " Lima Transfer out",
+                "dayDescription": "A morning transfer to the airport is included, so that you can catch your flight back home",
+                "dayInclusions": [
+                    "hotel breakfast"
+                ]
+            }
+        ],
+        "tourType": "expedition",
+        "prices": {
+            "priceType": "fixedDeparture",
+            "pricePerPerson": 2490,
+            "singlesupp": 900,
+            "dblOccupancy": true,
+            "priceNotice": "hotel categories will depend on locally available properties"
+        },
+        "included": [
+            "noted meals",
+            "entrance fees",
+            "private transport from Huaraz to trailhead",
+            "trekking staff with cook and assistants",
+            "complete camping equipment (client, kitchen, dining and toilet tents)",
+            "english/spanish speaking guide services (specialized trekking guides)",
+            "carry horses (up to 10kg per person), muleteers and emergency horse"
+        ],
+        "notIncluded": [
+            "international/regional flights",
+            "additional carry horses",
+            "personal trekking gear",
+            "personal expenses",
+            "travel insurance",
+            "beverages",
+            "extras",
+            "tips"
+        ]
+    },
+    {
+        "tripName": "Climbing Mt. Pisco",
+        "id": "pisco-climb-3D",
+        "duration": 3,
+        "adventureType": "trekking",
+        "difficulty": "moderate - hard",
+        "imgArr": ["https://dsm01pap002files.storage.live.com/y4m3aF8TjUlNP33379Zfr9hccG-YjpT1T6XdREzzoO4fOOtuQy3SKavcNAaK8CVyuY7_kjP6_MaEKQZOMDymtILHC47-pQzJ_ye-AdLyxBsQl_ViCL1BLjYDm4Hl0FnDdiF_WHH13DtscNsEtQ2SgyOPB2mX11uMIWx2gz2mZ1488MZu9h_U0TnVyoiVRpXGyFh?width=2000&height=1125&cropmode=none",
+        "https://dsm01pap002files.storage.live.com/y4mt5BosLwqP60QYhXM-8Zsf_xl2vac6LuY9VZ6X2uvQmH4sjVVgkF8Eplem1r6pYy7u_4nIEQDis8avye_B4d89SIqaaH9GLP-YAxpxEfZul_zDWLv1nCXAqZkkCxk-de7IrJE3RK8nEK2qdKKRSzxLvxOqWW8Fp8prgoZVG9oaMi_NhNBY_MgBIEBhYdLtbv3?width=2000&height=1125&cropmode=none",
+        "https://dsm01pap002files.storage.live.com/y4mw16EdnSU_nQbPtsZeGjLJBBjr3zarv7erYVOTEgpHY_ofTD-cOp1fz1eo71O0bDG5E3ILAALaFHbYWUQcdwIGTd2p3ecUSMfZZ5JpL56zzl0WX5pzCKaHjzSUXvvlvQAArao202ZIoN8NYbD1QLL6vgpTcnL8RFacfR_aUurejyu_KJsGKR34lps3Eav_6gj?width=2000&height=1125&cropmode=none",
+        "https://dsm01pap002files.storage.live.com/y4mqdvYnDS7uW0-oeT7JCSiy0ro0ckho6-jxZxSoJItLJK0-cVJ3tr1HnUtKNiPVbuzNf7yjRM5kyfItAGvif-DT42cSfB8uzk8bGQUKeKp3ljOT8GHmsm6Yz-jgKqXDFNVZTakYUD2NhIW4Tjj2B_rznT6hiyzlmqNaM0r9LcwUBmw4WeXCkEXNqv9D49aFg2-?width=2000&height=1125&cropmode=none"
+        ],
+        "tripDescription":"Mount Pisco gets its name after the typical Peruvian drink, Pisco. This mountain offers a great introduction to climbing the high mountains in the Cordillera Blanca. The Pisco West peak, situated in the heart of the range, is an excellent choice as a preparatory climb before confronting higher, more demanding peaks of the Cordillera Blanca.",
+        "countryList": ["peru"],
+        "dayByDay":[
+            {
+                "dayTitle": "Huaraz – Cebollapampa - Base Camp",
+                "dayDescription": "In the morning, our private transport takes us to Cebollapampa (3850 m) high plateau. From here, we trek towards the base camp of Mounts Pisco and Huandoy. The trail leads us along beautiful landscapes on a well-marked route with glacial streams, gracious Andean flowers and queñua (polylepis) forests. We can enjoy great views of Mounts Huascaran, Chopicalqui, Yanacocha and Mount Pisco itself. The 4 to 5 hours hike will take us to the camp at 4600 m. From here we have exceptional views of Mounts Huandoy and Chopicalqui. ",
+                "dayInclusions": [
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "4 - 5 hours"
+                }
+            },
+            {
+                "dayTitle": "Base Camp – Pisco Summit – Base Camp",
+                "dayDescription": "Early in the morning we start our attempt to reach the summit of Mount Pisco. At about 2 a.m. we head first through a camp of loose rock of the moraine. Around sunrise we will reach the base of the glacier, from where we put on crampons and start the climb in easy glacial and snowy terrain. At a certain point of the route, and weather permitting we will have the opportunity to enjoy marvelous views of the Artesonraju snowy peak, Mount Caraz, Piramide de Garcilaso and other impressive and beautiful mountains of the east side of the Cordillera Blanca. Finally, after 7-8 hours of continuous climbing we will get to the summit (5750 m) of the Pisco Mountain. Our effort will be rewarded with an incredible 360 degrees view of the Cordillera Blanca main peaks: Huascaran, Chacraraju, Chopicalqui, Huandoy, Alpamayo, Artesonraju, and many more. We then return to our base camp, where we expect to arrive at about 2 – 3 p.m. for a well-deserved rest and dinner",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "7 - 8  hours (including climb and resting times)"
+                }
+            },
+            {
+                "dayTitle": "Base Camp – Cebollapampa - Huaraz",
+                "dayDescription": "After a relaxed morning, we will start our trek down to the meadow of Cebollapampa where we meet our transport, which will take us back to the city of Huaraz",
+                "dayInclusions": [
+                    "Camp breakfast"
+                ],
+                "trekData":{
+                    "totalTrekTime": "2 to 3 hours"
+                }
+            }
+        ],
+        "tourType": "climb",
+        "startingPlace": "Huaraz",
+        "prices": {
+            "priceType": "fixedDeparture",
+            "pricePerPerson": 2490,
+            "singlesupp": 900,
+            "dblOccupancy": true,
+            "priceNotice": "hotel categories will depend on locally available properties"
+        },
+        "included": [
+            "noted meals",
+            "entrance fees",
+            "trekking staff with cook and assistants",
+            "complete camping equipment (client, kitchen, dining and toilet tents)",
+            "english/spanish speaking guide services (specialized trekking guides)",
             "carry horses (up to 8kg per person), muleteers and emergency horse",
-            "private transport from Huarz to trailhead"
+            "private transport from Huaraz to trailhead"
+        ],
+        "notIncluded": [
+            "international/regional flights",
+            "additional carry horses",
+            "personal trekking gear",
+            "personal expenses",
+            "travel insurance",
+            "beverages",
+            "extras",
+            "tips"
+        ]
+    },
+    {
+        "tripName": "Climbing Mt. Huascaran",
+        "id": "huascaran-climb-6D",
+        "duration": 6,
+        "adventureType": "trekking",
+        "difficulty": "hard - Extreme",
+        "imgArr": ["https://dsm01pap002files.storage.live.com/y4m3aF8TjUlNP33379Zfr9hccG-YjpT1T6XdREzzoO4fOOtuQy3SKavcNAaK8CVyuY7_kjP6_MaEKQZOMDymtILHC47-pQzJ_ye-AdLyxBsQl_ViCL1BLjYDm4Hl0FnDdiF_WHH13DtscNsEtQ2SgyOPB2mX11uMIWx2gz2mZ1488MZu9h_U0TnVyoiVRpXGyFh?width=2000&height=1125&cropmode=none",
+        "https://dsm01pap002files.storage.live.com/y4mt5BosLwqP60QYhXM-8Zsf_xl2vac6LuY9VZ6X2uvQmH4sjVVgkF8Eplem1r6pYy7u_4nIEQDis8avye_B4d89SIqaaH9GLP-YAxpxEfZul_zDWLv1nCXAqZkkCxk-de7IrJE3RK8nEK2qdKKRSzxLvxOqWW8Fp8prgoZVG9oaMi_NhNBY_MgBIEBhYdLtbv3?width=2000&height=1125&cropmode=none",
+        "https://dsm01pap002files.storage.live.com/y4mw16EdnSU_nQbPtsZeGjLJBBjr3zarv7erYVOTEgpHY_ofTD-cOp1fz1eo71O0bDG5E3ILAALaFHbYWUQcdwIGTd2p3ecUSMfZZ5JpL56zzl0WX5pzCKaHjzSUXvvlvQAArao202ZIoN8NYbD1QLL6vgpTcnL8RFacfR_aUurejyu_KJsGKR34lps3Eav_6gj?width=2000&height=1125&cropmode=none",
+        "https://dsm01pap002files.storage.live.com/y4mqdvYnDS7uW0-oeT7JCSiy0ro0ckho6-jxZxSoJItLJK0-cVJ3tr1HnUtKNiPVbuzNf7yjRM5kyfItAGvif-DT42cSfB8uzk8bGQUKeKp3ljOT8GHmsm6Yz-jgKqXDFNVZTakYUD2NhIW4Tjj2B_rznT6hiyzlmqNaM0r9LcwUBmw4WeXCkEXNqv9D49aFg2-?width=2000&height=1125&cropmode=none"
+        ],
+        "tripDescription":"Located in the famous Cordillera Blanca, Huascaran is the highest mountain in Peru. It offers a challenging ascent requiring intermediate level alpine skills. This is an excellent choice for climbers who want to experience a great high-altitude climb. FOR EXPERIENCED CLIMBERS ONLY",
+        "countryList": ["peru"],
+        "dayByDay":[
+            {
+                "dayTitle": "Huaraz – Musho - Base Camp (4350 m/14268 ft)",
+                "dayDescription": "From Huaraz we will drive for about 1 hour to the village of Musho (3050m/10004ft) and then to the Huascaran Park boundaries. From this point with the help of mules and donkeys to carry the loads, we begin our hike (4 to 5 hours) up to Huascaran Base camp",
+                "dayInclusions": [
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "4 - 5 hours"
+                }
+            },
+            {
+                "dayTitle": "Base Camp – Camp I (5250 m/17220 ft)",
+                "dayDescription": "Today, with the help of high-altitude porters, we move up to high camp 1. The day starts with a rock scramble section to continue afterwards on to granite slabs of the mountains which we surpass before we reach the Camp",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "5 - 6  hours (including climb and resting times)"
+                }
+            },
+            {
+                "dayTitle": "Camp I – Camp II (5990 m/19647 ft)",
+                "dayDescription": "This part of the climb is considered the most difficult and the most dangerous, so we will start early in the morning to arrive at the base of the “Trapecio”, a giant ice wall that descends from the South Summit. From here we will climb through seracs and cross several crevasses to finally make a traverse towards the “Garganta”. We reach our camp place at the “Col” between the North and the South Summit of the giant Huascaran",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "6 to 7 hours"
+                }
+            },
+            {
+                "dayTitle": "Camp II – South Summit (6768 m/22200 ft) – Camp II. ",
+                "dayDescription": "The day starts at about 3 a.m. Our climb will begin at the base of the south summit of Mount Huascaran where we then climb up directly to the summit. Snow conditions vary from season to season so we will look for the best route to reach the ample plateau of the summit. Weather permitting, we will enjoy amazing views of the Cordillera Blanca high peaks: Huandoy, Chacraraju, Alpamayo, Chopicalqui, Pisco and many others. Return to our camp II where we will celebrate with a hearty dinner",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "11 to 12 hours climb"
+                }
+            },
+            {
+                "dayTitle": "Camp II – Camp I – Base Camp",
+                "dayDescription": "In the morning, we will start our descent (7 to 8 hours) towards the base camp where we will enjoy a relaxing time and celebration with some beers",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "7 to 8 hours"
+                }
+            },
+            {
+                "dayTitle": "Base Camp – Musho – Huaraz",
+                "dayDescription": "From Base Camp and after a relaxing morning we hike (3 hours) back to Musho where we meet our transport that will take us back to the city of Huaraz",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box"
+                ],
+                "trekData":{
+                    "totalTrekTime": "3 hours"
+                }
+            }
+        ],
+        "tourType": "climb",
+        "startingPlace": "Huaraz",
+        "prices": {
+            "priceType": "fixedDeparture",
+            "pricePerPerson": 2490,
+            "singlesupp": 900,
+            "dblOccupancy": true,
+            "priceNotice": "hotel categories will depend on locally available properties"
+        },
+        "included": [
+            "noted meals",
+            "entrance fees",
+            "trekking staff with cook and assistants",
+            "complete camping equipment (client, kitchen, dining and toilet tents)",
+            "english/spanish speaking guide services (specialized trekking guides)",
+            "carry horses (up to 8kg per person), muleteers and emergency horse",
+            "private transport from Huaraz to trailhead"
+        ],
+        "notIncluded": [
+            "international/regional flights",
+            "additional carry horses",
+            "personal trekking gear",
+            "personal expenses",
+            "travel insurance",
+            "beverages",
+            "extras",
+            "tips"
+        ]
+    },
+    {
+        "tripName": "Climbing Mt. Alpamayo",
+        "id": "alpamayo-climb-7D",
+        "duration": 7,
+        "adventureType": "trekking",
+        "difficulty": "hard - Extreme climbing &",
+        "imgArr": ["https://dsm01pap002files.storage.live.com/y4m3aF8TjUlNP33379Zfr9hccG-YjpT1T6XdREzzoO4fOOtuQy3SKavcNAaK8CVyuY7_kjP6_MaEKQZOMDymtILHC47-pQzJ_ye-AdLyxBsQl_ViCL1BLjYDm4Hl0FnDdiF_WHH13DtscNsEtQ2SgyOPB2mX11uMIWx2gz2mZ1488MZu9h_U0TnVyoiVRpXGyFh?width=2000&height=1125&cropmode=none",
+        "https://dsm01pap002files.storage.live.com/y4mt5BosLwqP60QYhXM-8Zsf_xl2vac6LuY9VZ6X2uvQmH4sjVVgkF8Eplem1r6pYy7u_4nIEQDis8avye_B4d89SIqaaH9GLP-YAxpxEfZul_zDWLv1nCXAqZkkCxk-de7IrJE3RK8nEK2qdKKRSzxLvxOqWW8Fp8prgoZVG9oaMi_NhNBY_MgBIEBhYdLtbv3?width=2000&height=1125&cropmode=none",
+        "https://dsm01pap002files.storage.live.com/y4mw16EdnSU_nQbPtsZeGjLJBBjr3zarv7erYVOTEgpHY_ofTD-cOp1fz1eo71O0bDG5E3ILAALaFHbYWUQcdwIGTd2p3ecUSMfZZ5JpL56zzl0WX5pzCKaHjzSUXvvlvQAArao202ZIoN8NYbD1QLL6vgpTcnL8RFacfR_aUurejyu_KJsGKR34lps3Eav_6gj?width=2000&height=1125&cropmode=none",
+        "https://dsm01pap002files.storage.live.com/y4mqdvYnDS7uW0-oeT7JCSiy0ro0ckho6-jxZxSoJItLJK0-cVJ3tr1HnUtKNiPVbuzNf7yjRM5kyfItAGvif-DT42cSfB8uzk8bGQUKeKp3ljOT8GHmsm6Yz-jgKqXDFNVZTakYUD2NhIW4Tjj2B_rznT6hiyzlmqNaM0r9LcwUBmw4WeXCkEXNqv9D49aFg2-?width=2000&height=1125&cropmode=none"
+        ],
+        "tripDescription":"Alpamayo is one of the most beautiful icy peaks in the Peruvian Andes, known worldwide of its stunning runnels that inspire climbers to come from all over the world. The difficulties of this mountain are not what brings attention to its peak, but rather the location and magnificent setting among the everlasting snowcapped mountains of the Cordillera Blanca. We will climb the well-known Ferrari route on the beautiful Southwest face of the mountain. FOR EXPERIENCED CLIMBERS ONLY",
+        "countryList": ["peru"],
+        "dayByDay":[
+            {
+                "dayTitle": "Huaraz – Cashapampa – Llama Corral camp",
+                "dayDescription": "From Huaraz, our transport takes us in a 3-hour drive to Cashapampa village from where we begin our trek towards camp I at Llama Corral (3750 m)",
+                "dayInclusions": [
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "4 - 5 hours"
+                }
+            },
+            {
+                "dayTitle": "Llama Corral – Quebrada Arhuaycocha - Alpamayo base camp ",
+                "dayDescription": "From Llama Corral, we start our second hiking day towards the Alpamayo Base Camp located at 4300 m (14101 ft) of altitude",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "5 - 6  hours (including climb and resting times)"
+                }
+            },
+            {
+                "dayTitle": "Base Camp - Moraine camp",
+                "dayDescription": "This day, as part of our acclimatization process, we will trek up to the Moraine Camp located at 5100 meters of altitude (16728 ft)",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "5 to 6 hours"
+                }
+            },
+            {
+                "dayTitle": "Moraine Camp - Col camp",
+                "dayDescription": "Today we climb to the Col Camp already at a significant altitude of 5450 m (17876 ft)",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "6 to 7 hours climb"
+                }
+            },
+            {
+                "dayTitle": "Col camp – Alpamayo summit – Col Camp",
+                "dayDescription": "This day begins early as we start our arduous climb to the top (5957 m) of this amazing mountain.  Today we will have a steep & technical climb on ice to the summit with several hours of continual front pointing. Fixed ropes may be used depending on client’s skills and for our descent, several rappels are needed. Return to the Col High Camp for a well-deserved rest and celebrations on our success",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "9 to 10 hours"
+                }
+            },
+            {
+                "dayTitle": "Col Camp - Base camp",
+                "dayDescription": "After breakfast, we will descend back to our base camp",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "Camp Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Base camp – Huaraz",
+                "dayDescription": "We will trek down to Cashapampa village from where our transport will take us to Huaraz",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box"
+                ]
+            }
+        ],
+        "tourType": "climb",
+        "startingPlace": "Huaraz",
+        "prices": {
+            "priceType": "fixedDeparture",
+            "pricePerPerson": 2490,
+            "singlesupp": 900,
+            "dblOccupancy": true,
+            "priceNotice": "hotel categories will depend on locally available properties"
+        },
+        "included": [
+            "noted meals",
+            "entrance fees",
+            "high altitude porters",
+            "trekking staff with cook and assistants",
+            "private transport from Huaraz to trailhead",
+            "carry horses (up to 8kg per person), muleteers and emergency horse",
+            "english/spanish speaking guide services (specialized trekking guides)",
+            "complete camping equipment (client, kitchen, dining and toilet tents)"
+        ],
+        "notIncluded": [
+            "international/regional flights",
+            "additional carry horses",
+            "personal trekking gear",
+            "personal expenses",
+            "travel insurance",
+            "beverages",
+            "extras",
+            "tips"
+        ]
+    },
+    {
+        "tripName": "Climbing Mt. Ausangate",
+        "id": "ausangate-climb-7D",
+        "duration": 7,
+        "adventureType": "trekking",
+        "difficulty": "hard - Extreme climbing &",
+        "imgArr": ["https://dsm01pap002files.storage.live.com/y4m3aF8TjUlNP33379Zfr9hccG-YjpT1T6XdREzzoO4fOOtuQy3SKavcNAaK8CVyuY7_kjP6_MaEKQZOMDymtILHC47-pQzJ_ye-AdLyxBsQl_ViCL1BLjYDm4Hl0FnDdiF_WHH13DtscNsEtQ2SgyOPB2mX11uMIWx2gz2mZ1488MZu9h_U0TnVyoiVRpXGyFh?width=2000&height=1125&cropmode=none",
+        "https://dsm01pap002files.storage.live.com/y4mt5BosLwqP60QYhXM-8Zsf_xl2vac6LuY9VZ6X2uvQmH4sjVVgkF8Eplem1r6pYy7u_4nIEQDis8avye_B4d89SIqaaH9GLP-YAxpxEfZul_zDWLv1nCXAqZkkCxk-de7IrJE3RK8nEK2qdKKRSzxLvxOqWW8Fp8prgoZVG9oaMi_NhNBY_MgBIEBhYdLtbv3?width=2000&height=1125&cropmode=none",
+        "https://dsm01pap002files.storage.live.com/y4mw16EdnSU_nQbPtsZeGjLJBBjr3zarv7erYVOTEgpHY_ofTD-cOp1fz1eo71O0bDG5E3ILAALaFHbYWUQcdwIGTd2p3ecUSMfZZ5JpL56zzl0WX5pzCKaHjzSUXvvlvQAArao202ZIoN8NYbD1QLL6vgpTcnL8RFacfR_aUurejyu_KJsGKR34lps3Eav_6gj?width=2000&height=1125&cropmode=none",
+        "https://dsm01pap002files.storage.live.com/y4mqdvYnDS7uW0-oeT7JCSiy0ro0ckho6-jxZxSoJItLJK0-cVJ3tr1HnUtKNiPVbuzNf7yjRM5kyfItAGvif-DT42cSfB8uzk8bGQUKeKp3ljOT8GHmsm6Yz-jgKqXDFNVZTakYUD2NhIW4Tjj2B_rznT6hiyzlmqNaM0r9LcwUBmw4WeXCkEXNqv9D49aFg2-?width=2000&height=1125&cropmode=none"
+        ],
+        "tripDescription":"Located southeast of Cusco, in the impressive Cordillera de Vilcanota, Mount Ausangate is one of those beautiful sacred mountains in South America that is getting more and more interesting for climbers and trekkers every year. FOR EXPERIENCED CLIMBERS ONLY",
+        "countryList": ["peru"],
+        "dayByDay":[
+            {
+                "dayTitle": "Cusco - Tinqui",
+                "dayDescription": "From Cusco, a 3 to 4 hours drive will take us to the small village of Tinqui. Here we will set up our first camp at 3900m. ",
+                "dayInclusions": [
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "3 - 4 hours"
+                }
+            },
+            {
+                "dayTitle": "Tinqui – Upis",
+                "dayDescription": "We begin our trek, heading to the valley of Upis where we will set our camp at 4600m. On the way, we will have an impressive view of the north face of Mount Ausangate",
+                "dayInclusions": [
+                    "camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "3 - 4 hours"
+                }
+            },
+            {
+                "dayTitle": "Upis – Pucacocha",
+                "dayDescription": "This day we will trek to the Pucacocha Lake for the next camp. Today we will walk through the first high pass, Arapa Pass at 4900m heading towards our next camp at 4700m from where we will have amazing views of the hanging glaciers of the west side of Ausangate",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "5 - 6  hours (including climb and resting times)"
+                }
+            },
+            {
+                "dayTitle": "Pucacocha – Machurakay",
+                "dayDescription": "Today’s trek takes us along the next high pass, the Palomani Pass at 5100m. On the way, we will have views over the Ausangatecocha Lake and some of the beautiful peaks like Surimani and Kampa I. We will finally arrive at Machurakay camp (4600m) which also will be our base camp for the next days",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "5 to 6 hours"
+                }
+            },
+            {
+                "dayTitle": "Machurakay Rest Day",
+                "dayDescription": "We will enjoy a full resting day. We might use the day to make a gentle hike to observe the impressive glaciers of Ausangate, or simply relax at the camp. ",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Machurakay – Camp I",
+                "dayDescription": "Today, we will transport our climbing gear to camp I (5400m) on the south side of Mount Ausangate on a slow accent taking us upwards slowly",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "camp Dinner"
+                ],
+                "trekData":{
+                    "totalTrekTime": "6 to 7 hours"
+                }
+            },
+            {
+                "dayTitle": "Camp I – Camp II",
+                "dayDescription": "We will head the upper glaciers of Mount Ausangate as we reach our Camp II at 6100m.",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "Camp Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Camp II – Summit – Camp I",
+                "dayDescription": "We will trek down to Cashapampa village from where our transport will take us to Huaraz",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box"
+                ],
+                "trekData":{
+                    "totalTrekTime": "9 to 11 hours including climb and rest times"
+                }
+            },
+            {
+                "dayTitle": "Camp I – Machurakay",
+                "dayDescription": "We will begin our descent back to the Base Camp after our hearty breakfast",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "Camp Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Machurakay – Ticllacocha",
+                "dayDescription": "We will continue our trek back to Ticllacocha Lake at the base of Jatunjampa peak, where our camp is located",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "Camp Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Ticllacocha – Otorongococha",
+                "dayDescription": "Today we will cross the highest pass of the trek at 5200m, the Apacheta Pass, a mystic place in front of Pucapunta and Punta peaks. Our next camp is located by Otorongocha Lake at 4700m",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box",
+                    "Camp Dinner"
+                ]
+            },
+            {
+                "dayTitle": "Otorongococha – Pacchanta - Cusco",
+                "dayDescription": "After visiting the small sacred lakes of Minaparayoc, we trek towards the little village of Pacchanta, where we find some hot water springs at 4400m. From here our transport will take us back to the city of Cusco",
+                "dayInclusions": [
+                    "Camp breakfast",
+                    "Lunch Box"
+                ]
+            }            
+        ],
+        "tourType": "climb",
+        "startingPlace": "Cusco",
+        "prices": {
+            "priceType": "fixedDeparture",
+            "pricePerPerson": 2490,
+            "singlesupp": 900,
+            "dblOccupancy": true,
+            "priceNotice": "hotel categories will depend on locally available properties"
+        },
+        "included": [
+            "noted meals",
+            "entrance fees",
+            "high altitude porters",
+            "trekking staff with cook and assistants",
+            "private transport from Huaraz to trailhead",
+            "carry horses (up to 8kg per person), muleteers and emergency horse",
+            "english/spanish speaking guide services (specialized trekking guides)",
+            "complete camping equipment (client, kitchen, dining and toilet tents)"
         ],
         "notIncluded": [
             "international/regional flights",
@@ -1484,4 +2293,5 @@
             "tips"
         ]
     }
+
 ]
