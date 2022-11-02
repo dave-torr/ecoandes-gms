@@ -257,6 +257,7 @@
     padding: 9px 15px;
     border: solid 1px var(--brick-red);
     text-transform: capitalize;
+    margin: 0 12px;
 }
 
 .tourDetails{
@@ -867,7 +868,10 @@
     }    
     .paymentBtn{
         width: 80%;
-    }    
+    }
+    .breadcrumbNaviCont{
+        padding: 12px;
+    }
 }
 @media (max-width: 600px) {
     .bookingProcessTourData{
@@ -900,6 +904,7 @@
         padding: 12px;
         word-wrap: break-word;
         flex-direction: column;
+        font-size: 0.7em;
     }
 
     .eachDateOpt{margin: 12px;}

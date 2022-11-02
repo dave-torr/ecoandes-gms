@@ -106,7 +106,7 @@ export default function Home(){
   }
 
   let homeImgObj= {
-    "CuencaPic": "https://dsm01pap002files.storage.live.com/y4mmdwNmz3-EjlhRw3OP8DcKc_5PnGRDMJLb51VLY6W6g7IZLnYnqC7LW2HzVwQFouxC0Uu7b2C7GYW2QXiFHzV_m6YdNofRFURr5AxemCTCgTUnRVyry6xn-AtdYEJ6kCspHfg5ZdCaUJcGbyFwcKQhzsDsrPL8-ArJsA2IIAy5bIYSMoqLW4rHsViiz7HWa6l?width=2000&height=1325&cropmode=none",
+    "CuencaPic": "https://dsm04pap002files.storage.live.com/y4mJS5lap-BWYUo_sUs9zuHo5xsgozQfv_t2edJQ3d4S-Y8PoO53ORqSZ-orJMBk19uRtWwuhzJbiPLWsx1zN5n7gyLMPeyw7V7dozHUud5feMzeSD-4-Xea8IFkocsvU5TiQw3a_YP6rtafDKWZaexSQkr2Tt7kokMpLG2IzWAV6OgtrOvWjawa1sZSCFBf5dg?width=2000&height=1125&cropmode=none",
     "GpsCruising": "https://dsm01pap002files.storage.live.com/y4mH2mgkedRdSw08o107Q-_baPdeaopivoeurtirMHne0xu096b5Cy4booha2q_FmRK47Yv4KUWdpExNHxwLYy1OOPEWuNAI77cCl9TYRVHVZQNJSCdajn6NBN8X4cDBrJbktuUVP-d0tmuD7onmqVth6J__wusHoxetWhy7U4VOkAAKBznYhA7VdCvUOD5WP6y?width=2000&height=1500&cropmode=none",
     "CuscoOne": "https://dsm01pap002files.storage.live.com/y4mSWo99CV1Vsb-7iUxk2FGUh3UFX8LdPZ1xNF2SPWZE2gFto2ROHZYtshF0eZslhSZ5gyawkYPULYgdYHB3BtlADhGDlvdeb_xAXFNkcfsUdWGiBQaT4-G7LQbMZmJAZ6M42DEhHRfVAV9jV1JDBYKZ1UzCnFHM69Pjq3LHnYIsN7OIFRAgd4AkfaJYCKs8065?width=2000&height=1500&cropmode=none",
 

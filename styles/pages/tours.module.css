@@ -99,7 +99,7 @@
     display: flex;
     align-items: center;
     margin: 9px 9px;
-    padding: 6px 12px;
+    padding: 6px 9px;
     border: solid 1px black;
     border-radius: 8px;
 }
@@ -115,7 +115,7 @@
 }
 
 .unCheckedArr:hover{
-    border: solid 2px var(--brick-red);
+    border: solid 1px var(--brick-red);
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.392);
 }
 
@@ -248,7 +248,7 @@
 
     .tourPageImageCont{
         width: 100%;
-        height: 56.25vw;
+        height: 55vw;
     }
 
     .UIBTNCont{
@@ -274,6 +274,20 @@
     }
     .orderArrCont{
         flex-direction: column;
+    }
+
+    .checkedArr{
+        font-size: 0.8em;
+        padding: 3px 6px;
+
+    }
+    .unCheckedArr{
+        font-size: 0.8em;
+        padding: 3px 6px;
+    }
+    .unCheckedArr:hover{
+        border: solid 1px var(--brick-red);
+        box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.392);
     }
 
 }
