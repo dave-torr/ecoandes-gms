@@ -5,7 +5,6 @@
     width: 100%;
     min-height: 100vh;
     padding: 26px 0;
-    background-color: whitesmoke;
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -102,10 +101,12 @@
     padding: 6px 9px;
     border: solid 1px black;
     border-radius: 8px;
+    text-align: center;
 }
 .unCheckedArr{
     cursor: pointer;
     display: flex;
+    text-align: center;
     align-items: center;
     margin: 3px 9px;
     padding: 6px 9px;
@@ -124,9 +125,9 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: space-between;
     flex-wrap: wrap;
-    padding: 15px 42px;
+    padding: 15px 9%;
 }
 
 .eachTourDetails{
@@ -207,34 +208,29 @@
 .tourPageIMGSection{
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;    
-    background-color: rgb(40, 40, 40);
+    align-items: center;
     position: relative;
 }
 .tourPageImageCont{
     width: 1080px;
 }
 
-.tourPageIntroTxt{
-    position: absolute;
-    text-transform: uppercase;
-    color: var(--brick-red);
-    font-weight: 800;
-    font-size: 2em;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px white;
-    top: 33px;
-    font-family: var(--serif-Font);
-}
-
 .introArrowIcon{
     color: white;
-    position: absolute;
-    bottom: 12px;
+    position: sticky;
+    top: 81vh;
     animation-name: ArrowMovement;
     animation-duration: 3s;
     animation-iteration-count: infinite;
+    z-index: 20;
 }
+
+.tourPageImageCont{
+    transform: translateY(3px);
+}
+
 
 @keyframes ArrowMovement{
     0% {transform: translateY(12px)}

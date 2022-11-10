@@ -226,7 +226,7 @@ export function TourDisplayer(props){
         return(<>
             <div className={styles.tourIntroCont}>
                 <div className={styles.tourCountryList}>        
-                    Destinations: &nbsp;{countryList}</div>
+                    Destinations:&nbsp;{countryList}</div>
                 <div className={styles.tourTitleBar}>
                     {aTour.tripName}</div>
                 {aTour.startingPlace&& <>
@@ -246,8 +246,8 @@ export function TourDisplayer(props){
             </div>
             {aTour.adventureType&& <> 
             <div className={styles.trekDiffNotice}>
-                {aTour.tripName} includes &nbsp;
-                {aTour.difficulty&&<>{aTour.difficulty}</>} &nbsp;
+                {aTour.tripName} includes&nbsp;
+                {aTour.difficulty&&<i>{aTour.difficulty}</i>}&nbsp;
                 {aTour.adventureType&&<>{aTour.adventureType}</>}
             </div></>}
         </>)

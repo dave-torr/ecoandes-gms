@@ -225,16 +225,15 @@ export default function TourPage(){
 
         return(<>
         <div className={styles.tourPageIMGSection}>
+            <div className={styles.introArrowIcon}> <ArrowDownwardIcon fontSize="large"/> </div>
             <div className={styles.tourPageImageCont}>
                 <Image 
-                    src={"https://dsm01pap002files.storage.live.com/y4mqelVaPOlAGHDOINMZyDPl1ZvZfb2bBvlv5OlWDV5o2FD9CODHKO7sjbN1EAWzk3NwK8YTXHofR-TEjvcFf3Vgx_uwaUuj9ELedR5rwVzaIgOBCKnQzMgZH1-is8XxSZQsGiwLbJzHbR66KqthOrZx_XhnYcR5IJee9-PIJvTJtx9e4AUjWsQZkaTGvEzM_R8?width=2000&height=1125&cropmode=none"}
-                    alt="A Trek Through the Peruvian Andes"
+                    src={"https://dsm04pap002files.storage.live.com/y4mraxRR-eTxGebe-wotrpyPVPzpomguzQCGNnzXpCEw64H7BO5GMIR7J4HucAhb6Iu4aprpXuBX-LRGZOsAhlDVPBKdaTKyM2o72EZxO6aEztN-uX7Ktv_IPNtNOhcRGQcv9f-oLLjJ8siz_tZhU5EsxIxlJoanjJkcsob-TxEXq3em45ohf1bwStlIRndkEu7?width=2000&height=1346&cropmode=none"}
+                    alt="Huayhuash: A Trek Through the Peruvian Andes"
                     width={2000}
-                    height={1125}
+                    height={1346}
                 />
             </div>
-            <div className={styles.tourPageIntroTxt}> Adventure Awaits </div>
-            <div className={styles.introArrowIcon}> <ArrowDownwardIcon fontSize="large"/> </div>
         </div>
         </>)
     }
