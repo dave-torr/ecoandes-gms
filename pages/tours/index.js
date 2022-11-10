@@ -248,7 +248,7 @@ export default function TourPage(){
     return(<>
     <Head>
       <title>Our Tours: EcoAndes Adventures</title>
-      <meta name="description" content="Our advnetures and voyages in Peru - EcoAndes Adventures: since 1989" />
+      <meta name="description" content="Our adventures and voyages in Peru - EcoAndes Adventures: since 1989" />
       <meta charSet="utf-8"/>
       <meta name="keywords" content="Peru, Machu Picchu Tours, Cusco Tours, Huaraz, Huaraz Tours"/>
       <meta name="author" content="David Torres" />
