@@ -39,6 +39,14 @@ export function ATourCard(props){
                     alt={`A tour image: ${theTour.tripName}`}
                 />
             </div>
+            <div className={styles.tourCardImageMobile}>
+                <Image 
+                    src={theTour.imgArr[0]}
+                    width={430}
+                    height={240}
+                    alt={`A tour image: ${theTour.tripName}`}
+                />
+            </div>
 
             <div className={styles.tourCardTextCont}>
                 {theTour.startingPlace? <>

@@ -10,8 +10,8 @@
 }
 
 .tourCardTextCont{
-    width: 90%;
     background-color: white;
+    width: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -260,6 +260,7 @@
     border: solid 1px var(--brick-red);
     text-transform: capitalize;
     margin: 0 12px;
+    text-align: center;
 }
 
 .tourDetails{
@@ -847,8 +848,22 @@
 .userDataForm > input[type=number] {
   appearance: textfield;
 }
+.tourCardImageMobile{
+    display: none;
+}
 
 @media (max-width: 1080px) {
+    .tourCardImage{
+        display: none;
+    }
+    .tourCardImageMobile{
+        display: unset;
+    }
+    .tourCardCont{
+        width: 430px;
+        margin: 0 21px;
+    }
+
     .tourContainer{
         width: 100%;
     }
@@ -876,6 +891,7 @@
     }
 }
 @media (max-width: 600px) {
+
     .bookingProcessTourData{
         padding: 33px 21px;
     }
@@ -941,4 +957,7 @@
     .priceSummary{
         width: 100%;
     }  
+    .tourIMGCarousel{
+        padding: 0;
+    }
 }

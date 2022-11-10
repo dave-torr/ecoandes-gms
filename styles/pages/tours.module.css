@@ -127,7 +127,8 @@
     justify-content: center;
     align-items: space-between;
     flex-wrap: wrap;
-    padding: 15px 9%;
+    padding: 15px 0;
+    background-color: whitesmoke;
 }
 
 .eachTourDetails{
@@ -220,7 +221,7 @@
 .introArrowIcon{
     color: white;
     position: sticky;
-    top: 81vh;
+    top: 90vh;
     animation-name: ArrowMovement;
     animation-duration: 3s;
     animation-iteration-count: infinite;
@@ -244,7 +245,6 @@
 
     .tourPageImageCont{
         width: 100%;
-        height: 55vw;
     }
 
     .UIBTNCont{
