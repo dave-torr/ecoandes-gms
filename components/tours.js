@@ -276,13 +276,10 @@ export function TourDisplayer(props){
         if(props.breadcrumb){
         return(<>
             <div className={styles.breadcrumbNaviCont}>
-                <Link href="/" >
-                    <a >Home </a>
-                </Link>
                 <Link href="/tours" >
-                    <a>{"->"} itineraries </a>
+                    <a>itineraries </a>
                 </Link>
-                    <a>{"->"} {aTour.tripName}</a>
+                    <a>{"->"} &nbsp; {aTour.tripName}</a>
             </div>
         </>)
         } else if (props.partnerLogo){
