@@ -11,6 +11,7 @@ import {ATourCard} from "./../../components/tours"
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import { MultiSelect, Select } from '@mantine/core';
+import Head from "next/head"
 ///////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////
@@ -238,8 +239,31 @@ export default function TourPage(){
         </>)
     }
 
+//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+
+//Head
+  const pageHead=()=>{
+    return(<>
+    <Head>
+      <title>Our Tours: EcoAndes Adventures</title>
+      <meta name="description" content="Our advnetures and voyages in Peru - EcoAndes Adventures: since 1989" />
+      <meta charSet="utf-8"/>
+      <meta name="keywords" content="Peru, Machu Picchu Tours, Cusco Tours, Huaraz, Huaraz Tours"/>
+      <meta name="author" content="David Torres" />
+      <meta name="copyright" content="EcoAndes Travel 2022" />
+    </Head>
+    </>)
+  }
+
+
+
+
+
 
     return(<>
+    {pageHead()}
         <div className={styles.generalTourPage}>  
 
             <EcoAndesBar />
