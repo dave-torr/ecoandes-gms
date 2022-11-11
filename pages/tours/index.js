@@ -5,6 +5,8 @@ import Image from "next/image"
 import TourData from "../../data/peruItineraries"
 import styles from "./../../styles/pages/tours.module.css"
 
+import tourPageIMGLadning from "./../../public/assets/images/bookingLanding1.png"
+
 import {EcoAndesBar, Navi2} from "./../../components/navis"
 import {ATourCard} from "./../../components/tours"
 
@@ -165,20 +167,6 @@ export default function TourPage(){
         </>)
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     ///////////////////////////////////////////////
     ///////////////////////////////////////////////
     // Sort Functions
@@ -255,11 +243,6 @@ export default function TourPage(){
         </>)
     }
 
-
-
-
-
-
     useEffect(()=>{
         // add conditional if selectedDestination => sort by all tourData, else by filtered tour data.
         sortOrder==="descending"? 
@@ -278,13 +261,12 @@ export default function TourPage(){
 
         return(<>
         <div className={styles.tourPageIMGSection}>
+            <div className={styles.introTextIcon}> Adventure Awaits</div>
             <div className={styles.introArrowIcon}> <ArrowDownwardIcon fontSize="large"/> </div>
             <div className={styles.tourPageImageCont}>
                 <Image 
-                    src={"https://dsm04pap002files.storage.live.com/y4mraxRR-eTxGebe-wotrpyPVPzpomguzQCGNnzXpCEw64H7BO5GMIR7J4HucAhb6Iu4aprpXuBX-LRGZOsAhlDVPBKdaTKyM2o72EZxO6aEztN-uX7Ktv_IPNtNOhcRGQcv9f-oLLjJ8siz_tZhU5EsxIxlJoanjJkcsob-TxEXq3em45ohf1bwStlIRndkEu7?width=2000&height=1346&cropmode=none"}
+                    src={tourPageIMGLadning}
                     alt="Huayhuash: A Trek Through the Peruvian Andes"
-                    width={2000}
-                    height={1346}
                 />
             </div>
         </div>

@@ -70,6 +70,8 @@
     justify-content: space-between;
     width: 1080px;
     padding-top: 12px;
+    z-index: 3;
+    background-color: white;
 }
 
 .sortOptionBTN{
@@ -146,6 +148,7 @@
     align-items: space-between;
     flex-wrap: wrap;
     padding: 45px 0;
+    z-index: 4;
     background-color: whitesmoke;
 }
 
@@ -232,8 +235,21 @@
     align-items: center;
     position: relative;
 }
+
+.introTextIcon{
+    font-size: 3.5em;
+    text-transform: uppercase;
+    font-family: var(--serif-Font);
+    position: fixed;
+    top: 30vh;
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: var(--brick-red);
+}
+
 .tourPageImageCont{
-    width: 1080px;
+    width: 100%;
+    margin-top: 15vh;
 }
 
 .introArrowIcon{
@@ -310,6 +326,14 @@
     }
     .sortContrDispl{
         margin: unset;
+    }
+    .introTextIcon{
+        font-size: 2.5em;
+        padding-left: 12px;
+    }
+    .tourPageImageCont{
+        margin-top: 30vh;
+
     }
 
 }
