@@ -11,18 +11,25 @@
 
 .tourCardTextCont{
     background-color: white;
-    width: 90%;
+    width: 93%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 200px;
-    justify-content: space-around;
-    padding: 21px 0;
+    height: 180px;
+    justify-content: space-between;
+    padding:9px 6px;
     transform: translateY(-33px);
     text-align: center;
     box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.28);
 }
 
+.difficultyDispCont{
+    width: 100%;
+    text-align: end;
+    padding: 0 6px;
+    font-size: 0.9em;
+    font-weight: 600;
+}
 .tourCardCTA{
     background-color: var(--pale-yellow);   
     width: fit-content; 
@@ -32,7 +39,7 @@
     font-size: 0.8em;
     letter-spacing: 1.5px;
     font-weight: 800;
-    margin: 15px 0;
+    margin: 9px 0;
 }
 
 .tourStartingPlace{

@@ -21,16 +21,12 @@ export function ATourCard(props){
 
     let theTour = props.aTour
 
-    const aMapFunction=(theArray)=>{
-        let eachArrayItem=theArray.map((elem, i)=><React.Fragment key={i}>
-            {i>0 &&<> | </>}{elem} 
-        </React.Fragment>)
-        return(<>{eachArrayItem}</>)
-    }
+
 
     return(<>
     <Link href={`/tours/${theTour.id}`}>
         <div className={styles.tourCardCont} >
+            
             <div className={styles.tourCardImage}>
                 <Image 
                     src={theTour.imgArr[0]}
@@ -49,14 +45,18 @@ export function ATourCard(props){
             </div>
 
             <div className={styles.tourCardTextCont}>
-                {theTour.startingPlace? <>
-                <div className={styles.tourStartingPlace} > 
-                    starting from {theTour.startingPlace} </div>
-                </>: <>
-                    <div className={styles.tourStartingPlace}/>
-                </>}
-                <div className={styles.tourCardTripName}> {theTour.tripName} </div>
-                <div > {theTour.duration} day itinerary &nbsp;  | &nbsp; {theTour.tourType} </div>
+                <div className={styles.difficultyDispCont}> 
+                    Difficulty: {theTour.difficulty}/5 </div>
+                <span>
+                    {theTour.startingPlace? <>
+                    <div className={styles.tourStartingPlace} > 
+                        starting from {theTour.startingPlace} </div>
+                    </>: <>
+                        <div className={styles.tourStartingPlace}/>
+                    </>}
+                    <div className={styles.tourCardTripName}> {theTour.tripName} </div>
+                    <div> {theTour.duration} day itinerary &nbsp;  | &nbsp; {theTour.tourType} </div>
+                </span>
                 <div className={styles.tourCardCTA}> see experience </div>
             </div>
         </div>

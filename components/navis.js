@@ -101,10 +101,6 @@ export function EcoAndesBar(props){
 
 export function Navi2(props){
     const [drawerToggle, setDrawerToggle] = useState(false)
-
-    // const 
-
-
     return(<>
     <div className={styles.navi2GenCont}>
         <div className={styles.naviLogo3}>
@@ -113,11 +109,11 @@ export function Navi2(props){
             alt="EcoAndes Condor Logo"
             layout="responsive"
         /></div>
-        <div className={styles.naviHamburger} onClick={()=>setDrawerToggle(true)}>
+        {/* <div className={styles.naviHamburger} onClick={()=>setDrawerToggle(true)}>
             <span />
             <span />
             <span />
-        </div>
+        </div> */}
         <Drawer anchor={"right"} open={drawerToggle} onClose={()=>setDrawerToggle(false)} >
             <div className={styles.rightDrawerNaviGenCont}> 
             

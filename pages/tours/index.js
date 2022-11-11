@@ -11,6 +11,7 @@ import {ATourCard} from "./../../components/tours"
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import SportsGymnasticsIcon from '@mui/icons-material/SportsGymnastics';
 
 import PriceCheckIcon from '@mui/icons-material/PriceCheck';
 import { MultiSelect, Select } from '@mantine/core';
@@ -172,72 +173,87 @@ export default function TourPage(){
 
 
 
-    const sortingUI=()=>{
 
-        return(<>
-        {sortingFunct()}
-
-        
-        </>)
-    }
 
 
 
 
 
     ///////////////////////////////////////////////
+    ///////////////////////////////////////////////
     // Sort Functions
-    const [sortContr, setSortContr]=useState("duration")
+    const [sortContr, setSortContr]=useState("price")
     const [sortOrder, setSortOrder]=useState("descending")
-    const sortingFunct=()=>{
+
+    const sortingUI=()=>{
         return(<>
         <div className={styles.sortingUICont}>
-            <div style={{display: "flex", alignItems:"center"}}>
-                <div className={styles.userSortUISec}>
-                    Sort By: 
-                </div>
-                <div className={styles.sortOptionBTN} onClick={()=>{
-                    setSortContr("price")
-                    }} ><PriceCheckIcon/></div>
-                <div className={styles.sortOptionBTN} onClick={()=>{
-                    setSortContr("price")
-                    }} ><AccessTimeIcon/></div>
+
+            <div className={styles.sortBTNCont}>
+                Sort By: 
+
+                {sortContr==="duration"&&<>
+                    <div className={styles.sortOptionBTN} onClick={()=>{
+                        setSortContr("duration")
+                        }} ><AccessTimeIcon/></div>
+                    <div className={styles.sortOptionBTNOffline} onClick={()=>{
+                        setSortContr("price")
+                        }} ><PriceCheckIcon/></div>
+                    <div className={styles.sortOptionBTNOffline} onClick={()=>{
+                        setSortContr("difficulty")
+                        }} ><SportsGymnasticsIcon/></div>
+                </>}
+                {sortContr==="price"&&<>
+                    <div className={styles.sortOptionBTNOffline} onClick={()=>{
+                        setSortContr("duration")
+                        }} ><AccessTimeIcon/></div>
+                    <div className={styles.sortOptionBTN} onClick={()=>{
+                        setSortContr("price")
+                        }} ><PriceCheckIcon/></div>
+                    <div className={styles.sortOptionBTNOffline} onClick={()=>{
+                        setSortContr("difficulty")
+                        }} ><SportsGymnasticsIcon/></div>
+                </>}
+                {sortContr==="difficulty"&&<>
+                    <div className={styles.sortOptionBTNOffline} onClick={()=>{
+                        setSortContr("duration")
+                        }} ><AccessTimeIcon/></div>
+                    <div className={styles.sortOptionBTNOffline} onClick={()=>{
+                        setSortContr("price")
+                        }} ><PriceCheckIcon/></div>
+                    <div className={styles.sortOptionBTN} onClick={()=>{
+                        setSortContr("difficulty")
+                        }} ><SportsGymnasticsIcon/></div>
+                </>}
+
             </div>
 
-
-
-
-
-            {sortOrder==="descending"?
-                <><div className={styles.orderArrCont}>
-                    <div className={styles.checkedArr}>
+            <div className={styles.orderOrderCont}>
+                <div className={styles.sortContrDispl}>{sortContr}:</div>
+                {sortOrder==="descending"?<>
+                    <div className={styles.selectedOrderDisp}>
                         <ArrowUpwardIcon/>
                     </div>
-                    <div className={styles.unCheckedArr} onClick={()=>{
+                    <div className={styles.unselectedOrderDisp} onClick={()=>{
                         sortOrder==="descending"? setSortOrder("ascending"): setSortOrder("descending")
                     }}>
                         <ArrowDownwardIcon/>
                     </div>
-                </div> </>
-            :
-                <><div className={styles.orderArrCont}>
-                    <div className={styles.unCheckedArr} onClick={()=>{
+                </>:<>
+                    <div className={styles.unselectedOrderDisp} onClick={()=>{
                         sortOrder==="descending"? setSortOrder("ascending"): setSortOrder("descending")
                     }}>
                         <ArrowUpwardIcon/>
                     </div>
-                    <div className={styles.checkedArr}>
+                    <div className={styles.selectedOrderDisp}>
                         <ArrowDownwardIcon/>
                     </div>
-                </div> </>}
+                </>}
+            </div> 
+
         </div>
         </>)
     }
-
-
-
-
-
 
 
 
@@ -254,9 +270,9 @@ export default function TourPage(){
 
     useEffect(()=>{
         sortOrder==="descending"? 
-            setFilteredTourArr([...filteredTourArr].sort((a,b)=> a.duration - b.duration)) 
+            setFilteredTourArr([...filteredTourArr].sort((a,b)=> a[sortContr] - b[sortContr])) 
         :
-            setFilteredTourArr([...filteredTourArr].sort(((a,b)=> b.duration - a.duration)))
+            setFilteredTourArr([...filteredTourArr].sort(((a,b)=> b[sortContr] - a[sortContr])))
     },[sortOrder])
     const tourPageImgDisplayer=()=>{
 
@@ -274,7 +290,6 @@ export default function TourPage(){
         </div>
         </>)
     }
-
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
@@ -292,10 +307,6 @@ export default function TourPage(){
     </Head>
     </>)
   }
-
-
-
-
 
 
     return(<>
