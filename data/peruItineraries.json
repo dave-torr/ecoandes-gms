@@ -99,7 +99,7 @@
                 ]
             }
         ],
-        "tourType": "expedition",
+        "tourType": "360° Tours",
         "prices": {
             "priceType": "fixedDeparture",
             "pricePerPerson": 2490,
@@ -584,7 +584,7 @@
                 ]
             }
         ],
-        "tourType": "expedition",
+        "tourType": "360° Tours",
         "prices": {
             "priceType": "fixedDeparture",
             "pricePerPerson": 2490,
@@ -771,7 +771,7 @@
                 ]
             }            
         ],
-        "tourType": "expedition",
+        "tourType": "360° Tours",
         "prices": {
             "priceType": "fixedDeparture",
             "pricePerPerson": 2490,
@@ -1072,7 +1072,7 @@
             }
            
         ],
-        "tourType": "expedition",
+        "tourType": "360° Tours",
         "startingPlace": "Cusco",
         "prices": {
             "priceType": "fixedDeparture",
@@ -1510,7 +1510,7 @@
                 ]
             }
         ],
-        "tourType": "expedition",
+        "tourType": "360° Tours",
         "prices": {
             "priceType": "fixedDeparture",
             "pricePerPerson": 2490,
@@ -1677,7 +1677,7 @@
                 ]
             }
         ],
-        "tourType": "expedition",
+        "tourType": "360° Tours",
         "prices": {
             "priceType": "fixedDeparture",
             "pricePerPerson": 2490,
@@ -2239,7 +2239,7 @@
                 ]
             }
         ],
-        "tourType": "cultural",
+        "tourType": "historic",
         "prices": {
             "priceType": "fixedDeparture",
             "pricePerPerson": 2490,
@@ -2329,7 +2329,7 @@
                 ]
             }
         ],
-        "tourType": "cultural",
+        "tourType": "historic",
         "prices": {
             "priceType": "fixedDeparture",
             "pricePerPerson": 2490,
@@ -2457,7 +2457,7 @@
                 ]
             }
         ],
-        "tourType": "cultural",
+        "tourType": "historic",
         "prices": {
             "priceType": "fixedDeparture",
             "pricePerPerson": 2490,

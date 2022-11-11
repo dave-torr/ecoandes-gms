@@ -10,6 +10,9 @@ import {ATourCard} from "./../../components/tours"
 
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+
+import PriceCheckIcon from '@mui/icons-material/PriceCheck';
 import { MultiSelect, Select } from '@mantine/core';
 import Head from "next/head"
 ///////////////////////////////////////////////////////////////////
@@ -66,9 +69,11 @@ import Head from "next/head"
     // }
 
 
-let tourTypes = ["all types", "cultural", "expedition", "climb", "trek", ]
+let tourTypes = ["all types", "historic", "360° Trips", "climbing", "trekking", ]
 
-let ecoAndesDestinations= ['ecuador', 'galapagos', 'peru', 'bolivia', 'chile', 'argentina']
+let operationRegions= ['cusco', 'huaraz', 'lima', 'multidestination', "360°" ]
+
+let favoriteTours;
 
 export default function TourPage(){
 
@@ -125,8 +130,6 @@ export default function TourPage(){
             </>}
         </div>)}
     }
-
-
     const filtersUI=()=>{
         return(<>
             <div className={styles.UIBTNCont}> 
@@ -138,7 +141,7 @@ export default function TourPage(){
                         <MultiSelect
                             // className={styles.aPickerUI} 
                             placeholder="Our Destinations"
-                            data={[...ecoAndesDestinations]}
+                            data={[...operationRegions]}
                             searchable
                             nothingFound="Nothing found..."
                             onChange={setDestList}
@@ -156,11 +159,31 @@ export default function TourPage(){
                             id="tourTypenPickerUI"
                         />
                     </div>
-                    {sortingFunct()}
                 </div>
             </div>
         </>)
     }
+
+
+
+
+
+
+
+
+
+    const sortingUI=()=>{
+
+        return(<>
+        {sortingFunct()}
+
+        
+        </>)
+    }
+
+
+
+
 
     ///////////////////////////////////////////////
     // Sort Functions
@@ -169,27 +192,31 @@ export default function TourPage(){
     const sortingFunct=()=>{
         return(<>
         <div className={styles.sortingUICont}>
-            {/* <div style={{display: "flex", alignItems:"center"}}>
+            <div style={{display: "flex", alignItems:"center"}}>
                 <div className={styles.userSortUISec}>
                     Sort By: 
                 </div>
-                <select className={styles.sortPicker} onChange={(e)=>{
-                    setSortContr(e.target.value)
-                }}>
-                    <option value="duration" >duration</option>
-                    <option value="alphabetical">a-z</option>
-                </select>
-            </div> */}
+                <div className={styles.sortOptionBTN} onClick={()=>{
+                    setSortContr("price")
+                    }} ><PriceCheckIcon/></div>
+                <div className={styles.sortOptionBTN} onClick={()=>{
+                    setSortContr("price")
+                    }} ><AccessTimeIcon/></div>
+            </div>
+
+
+
+
 
             {sortOrder==="descending"?
                 <><div className={styles.orderArrCont}>
                     <div className={styles.checkedArr}>
-                        <ArrowUpwardIcon/> &nbsp; Descending Order
+                        <ArrowUpwardIcon/>
                     </div>
                     <div className={styles.unCheckedArr} onClick={()=>{
                         sortOrder==="descending"? setSortOrder("ascending"): setSortOrder("descending")
                     }}>
-                        <ArrowDownwardIcon/> &nbsp; Ascending Order
+                        <ArrowDownwardIcon/>
                     </div>
                 </div> </>
             :
@@ -197,15 +224,26 @@ export default function TourPage(){
                     <div className={styles.unCheckedArr} onClick={()=>{
                         sortOrder==="descending"? setSortOrder("ascending"): setSortOrder("descending")
                     }}>
-                        <ArrowUpwardIcon/> &nbsp; Descending Order
+                        <ArrowUpwardIcon/>
                     </div>
                     <div className={styles.checkedArr}>
-                        <ArrowDownwardIcon/> &nbsp; Ascending Order
+                        <ArrowDownwardIcon/>
                     </div>
                 </div> </>}
         </div>
         </>)
     }
+
+
+
+
+
+
+
+
+
+
+
     useEffect(()=>{
         // add conditional if selectedDestination => sort by all tourData, else by filtered tour data.
         sortOrder==="descending"? 
@@ -220,8 +258,6 @@ export default function TourPage(){
         :
             setFilteredTourArr([...filteredTourArr].sort(((a,b)=> b.duration - a.duration)))
     },[sortOrder])
-
-
     const tourPageImgDisplayer=()=>{
 
         return(<>
@@ -270,6 +306,7 @@ export default function TourPage(){
             <Navi2 />
             {tourPageImgDisplayer()}
             {filtersUI()}
+            {sortingUI()}
             {tourdisplayer()}
 
             {/* Page Footer */}
