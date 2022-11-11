@@ -182,7 +182,7 @@ export default function TourPage(){
     ///////////////////////////////////////////////
     ///////////////////////////////////////////////
     // Sort Functions
-    const [sortContr, setSortContr]=useState("price")
+    const [sortContr, setSortContr]=useState("duration")
     const [sortOrder, setSortOrder]=useState("descending")
 
     const sortingUI=()=>{

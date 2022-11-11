@@ -194,7 +194,7 @@
                 }
             }
         ],
-        "tourType": "trek",
+        "tourType": "trekking",
         "startingPlace": "Cusco",
         "prices": {
             "priceType": "fixedDeparture",
@@ -286,7 +286,7 @@
                 }
             }
         ],
-        "tourType": "trek",
+        "tourType": "trekking",
         "startingPlace": "Cusco",
         "prices": {
             "priceType": "fixedDeparture",
@@ -348,7 +348,7 @@
                 ]
             }
         ],
-        "tourType": "trek",
+        "tourType": "trekking",
         "startingPlace": "Cusco",
         "prices": {
             "priceType": "fixedDeparture",
@@ -450,7 +450,7 @@
                 ]
             }
         ],
-        "tourType": "trek",
+        "tourType": "trekking",
         "startingPlace": "Cusco",
         "prices": {
             "priceType": "fixedDeparture",
@@ -877,7 +877,7 @@
             }
            
         ],
-        "tourType": "trek",
+        "tourType": "trekking",
         "startingPlace": "Cusco",
         "prices": {
             "priceType": "fixedDeparture",
@@ -1162,7 +1162,7 @@
                 ]
             }
         ],
-        "tourType": "trek",
+        "tourType": "trekking",
         "startingPlace": "Cusco",
         "prices": {
             "priceType": "fixedDeparture",
@@ -1251,7 +1251,7 @@
                 ]
             }
         ],
-        "tourType": "trek",
+        "tourType": "trekking",
         "startingPlace": "Huaraz",
         "prices": {
             "priceType": "fixedDeparture",
@@ -1378,7 +1378,7 @@
                 }
             }
         ],
-        "tourType": "trek",
+        "tourType": "trekking",
         "startingPlace": "Huaraz",
         "prices": {
             "priceType": "fixedDeparture",
@@ -1754,7 +1754,7 @@
                 }
             }
         ],
-        "tourType": "climb",
+        "tourType": "climbing",
         "startingPlace": "Huaraz",
         "prices": {
             "priceType": "fixedDeparture",
@@ -1867,7 +1867,7 @@
                 }
             }
         ],
-        "tourType": "climb",
+        "tourType": "climbing",
         "startingPlace": "Huaraz",
         "prices": {
             "priceType": "fixedDeparture",
@@ -1987,7 +1987,7 @@
                 ]
             }
         ],
-        "tourType": "climb",
+        "tourType": "climbing",
         "startingPlace": "Huaraz",
         "prices": {
             "priceType": "fixedDeparture",
@@ -2154,7 +2154,7 @@
                 ]
             }            
         ],
-        "tourType": "climb",
+        "tourType": "climbing",
         "startingPlace": "Cusco",
         "prices": {
             "priceType": "fixedDeparture",

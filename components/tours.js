@@ -156,6 +156,21 @@ export function TourDisplayer(props){
         </>)
     }
 
+    const difficultySwitcher=(diffLevel)=>{
+        switch(diffLevel){
+            case 1:
+            return <> Easy </>
+            case 2:
+            return <> moderate </>            
+            case 3:
+            return <> moderate - hard </>
+            case 4:
+            return <> hard </>
+            case 5:
+            return <> extreme </>
+        }
+    }
+
     function Imagedisp(props){
         return(<>        
         <div className={styles.aTourImage} onClick={()=>{
@@ -255,7 +270,7 @@ export function TourDisplayer(props){
             {aTour.adventureType&& <> 
             <div className={styles.trekDiffNotice}>
                 {aTour.tripName} includes&nbsp;
-                {aTour.difficulty&&<i>{aTour.difficulty}</i>}&nbsp;
+                {aTour.difficulty&&<i>{difficultySwitcher(aTour.difficulty)}</i>}&nbsp;
                 {aTour.adventureType&&<>{aTour.adventureType}</>}
             </div></>}
         </>)
