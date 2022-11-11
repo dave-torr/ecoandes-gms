@@ -69,7 +69,7 @@
     align-items: center;
     justify-content: space-between;
     width: 1080px;
-
+    padding-top: 12px;
 }
 
 .sortOptionBTN{
@@ -302,6 +302,14 @@
     .unCheckedArr:hover{
         border: solid 1px var(--brick-red);
         box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.392);
+    }
+    .sortBTNCont{
+        border-right: solid 1px black;
+        padding-right: 2px;
+        margin-right: 5px;
+    }
+    .sortContrDispl{
+        margin: unset;
     }
 
 }
