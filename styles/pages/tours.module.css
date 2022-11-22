@@ -103,9 +103,17 @@
     font-weight: 600;
 }
 
-.orderOrderCont{
+.sortBTNCont span{
+    display: flex;
+}
+
+.orderBTNCont{
     display: flex;
     align-items: center;
+}
+
+.orderBTNCont span{
+    display: flex;
 }
 .sortContrDispl{
     font-weight: 600;
@@ -319,10 +327,25 @@
         border: solid 1px var(--brick-red);
         box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.392);
     }
+
+    .sortingUICont{
+        padding: 15px 0;
+    }
+
     .sortBTNCont{
+        width: 50%;
         border-right: solid 1px black;
         padding-right: 2px;
         margin-right: 5px;
+        flex-direction: column;
+    }
+    .orderBTNCont{
+        flex-direction: column;
+        justify-content: center;
+        width: 50%;
+    }
+    .sortBTNCont span{
+        margin-top: 6px;
     }
     .sortContrDispl{
         margin: unset;

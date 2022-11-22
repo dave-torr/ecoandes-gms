@@ -60,6 +60,9 @@ h4{
 /* brown condor: */
 --brown-main: #6f522b;
 
+/* dark green */
+--dark-green-main: rgb(35, 86, 37);
+
 /* pale gold */
 --pale-gold: #ffefc6;
 
@@ -82,8 +85,6 @@ h4{
 /* Fonts */
 
 --serif-Font: 'Roboto Slab', serif;
-
-
 
 
 

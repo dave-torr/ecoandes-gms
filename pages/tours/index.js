@@ -72,7 +72,7 @@ import Head from "next/head"
     // }
 
 
-let tourTypes = ["all types", "historic", "360° Trips", "climbing", "trekking", ]
+let tourTypes = ["all types", "historic", "360° tours", "climbing", "trekking", ]
 
 let operationRegions= ['cusco', 'huaraz', 'lima', 'multidestination', "360°" ]
 
@@ -179,7 +179,7 @@ export default function TourPage(){
 
             <div className={styles.sortBTNCont}>
                 Sort By: 
-
+                <span>
                 {sortContr==="duration"&&<>
                     <div className={styles.sortOptionBTN} onClick={()=>{
                         setSortContr("duration")
@@ -213,12 +213,15 @@ export default function TourPage(){
                         setSortContr("difficulty")
                         }} ><SportsGymnasticsIcon/></div>
                 </>}
+                </span>
 
             </div>
 
-            <div className={styles.orderOrderCont}>
-                <div className={styles.sortContrDispl}>{sortContr}:</div>
+            <div className={styles.orderBTNCont}>
+                <div className={styles.sortContrDispl}>
+                    {sortContr}:</div>
                 {sortOrder==="descending"?<>
+                <span>
                     <div className={styles.selectedOrderDisp}>
                         <ArrowUpwardIcon/>
                     </div>
@@ -227,6 +230,7 @@ export default function TourPage(){
                     }}>
                         <ArrowDownwardIcon/>
                     </div>
+                </span>
                 </>:<>
                     <div className={styles.unselectedOrderDisp} onClick={()=>{
                         sortOrder==="descending"? setSortOrder("ascending"): setSortOrder("descending")
@@ -246,9 +250,9 @@ export default function TourPage(){
     useEffect(()=>{
         // add conditional if selectedDestination => sort by all tourData, else by filtered tour data.
         sortOrder==="descending"? 
-            setFilteredTourArr([...filteredTourArr].sort((a,b)=> a.duration - b.duration)) 
+            setFilteredTourArr([...filteredTourArr].sort((a,b)=> a[sortContr] - b[sortContr])) 
         :
-            setFilteredTourArr([...filteredTourArr].sort(((a,b)=> b.duration - a.duration)))
+            setFilteredTourArr([...filteredTourArr].sort(((a,b)=> b[sortContr] - a[sortContr])))
     },[sortContr])
 
     useEffect(()=>{
@@ -258,7 +262,6 @@ export default function TourPage(){
             setFilteredTourArr([...filteredTourArr].sort(((a,b)=> b[sortContr] - a[sortContr])))
     },[sortOrder])
     const tourPageImgDisplayer=()=>{
-
         return(<>
         <div className={styles.tourPageIMGSection}>
             <div className={styles.introTextIcon}> Adventure Awaits</div>
@@ -267,6 +270,7 @@ export default function TourPage(){
                 <Image 
                     src={tourPageIMGLadning}
                     alt="Huayhuash: A Trek Through the Peruvian Andes"
+                    priority
                 />
             </div>
         </div>

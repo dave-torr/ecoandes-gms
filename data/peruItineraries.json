@@ -99,7 +99,7 @@
                 ]
             }
         ],
-        "tourType": "360° Tours",
+        "tourType": "360° tours",
         "prices": {
             "priceType": "fixedDeparture",
             "pricePerPerson": 2490,
@@ -584,7 +584,7 @@
                 ]
             }
         ],
-        "tourType": "360° Tours",
+        "tourType": "360° tours",
         "prices": {
             "priceType": "fixedDeparture",
             "pricePerPerson": 2490,
@@ -771,7 +771,7 @@
                 ]
             }            
         ],
-        "tourType": "360° Tours",
+        "tourType": "360° tours",
         "prices": {
             "priceType": "fixedDeparture",
             "pricePerPerson": 2490,
@@ -1072,7 +1072,7 @@
             }
            
         ],
-        "tourType": "360° Tours",
+        "tourType": "360° tours",
         "startingPlace": "Cusco",
         "prices": {
             "priceType": "fixedDeparture",
@@ -1510,7 +1510,7 @@
                 ]
             }
         ],
-        "tourType": "360° Tours",
+        "tourType": "360° tours",
         "prices": {
             "priceType": "fixedDeparture",
             "pricePerPerson": 2490,
@@ -1677,7 +1677,7 @@
                 ]
             }
         ],
-        "tourType": "360° Tours",
+        "tourType": "360° tours",
         "prices": {
             "priceType": "fixedDeparture",
             "pricePerPerson": 2490,

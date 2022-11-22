@@ -12,6 +12,7 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ExploreIcon from '@mui/icons-material/Explore';
 import EventIcon from '@mui/icons-material/Event';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
+import Filter1Icon from '@mui/icons-material/Filter1';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import InsertLinkIcon from '@mui/icons-material/InsertLink';
@@ -66,6 +67,48 @@ export function ATourCard(props){
 
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
+
+
+export function TourDifficultyCard(props){
+
+    const tourDiffSwitcher=(theDiff)=>{
+        switch(theDiff){
+            case 1:
+            return(<><p className={styles.difficultyDescriptor}>
+                Easy Adventure!
+            </p></>)
+
+            case 2:
+            return(<><p className={styles.difficultyDescriptor}>
+                moderate
+            </p></>)
+
+            case 3:
+            return(<><p className={styles.difficultyDescriptor}>
+                moderate - hard
+            </p></>)
+
+            case 4:
+            return(<><p className={styles.difficultyDescriptor}>
+                hard
+            </p></>)
+
+            case 5:
+            return(<><p className={styles.difficultyDescriptor}>
+                extreme
+            </p></>)
+        }
+    }
+
+    return(<>
+        <div className={styles.sectionTitles}> Difficulty</div>
+        {tourDiffSwitcher(props)}
+    </>)
+}
+
+
+
+
 
 export function TourDisplayer(props){
 
@@ -156,21 +199,6 @@ export function TourDisplayer(props){
         </>)
     }
 
-    const difficultySwitcher=(diffLevel)=>{
-        switch(diffLevel){
-            case 1:
-            return <> Easy </>
-            case 2:
-            return <> moderate </>            
-            case 3:
-            return <> moderate - hard </>
-            case 4:
-            return <> hard </>
-            case 5:
-            return <> extreme </>
-        }
-    }
-
     function Imagedisp(props){
         return(<>        
         <div className={styles.aTourImage} onClick={()=>{
@@ -198,18 +226,6 @@ export function TourDisplayer(props){
                     </React.Fragment>}
                     </>)}
             </div>
-            {/* <div className={styles.carouselIconCont}>
-                <ArrowForwardIosIcon />
-            </div>
-            <div className={styles.carouselIconCont2}>
-                <ArrowForwardIosIcon />
-            </div>
-            <div className={styles.carouselIconCont3}>
-                <ArrowBackIosIcon />
-            </div>
-            <div className={styles.carouselIconCont4}>
-                <ArrowBackIosIcon /> 
-            </div> */}
         </div>
         <Dialog open={imgDialogContr} fullScreen onClose={()=>srtImgDialogcontr(false)}>
             <div className={styles.imgDialogCont}>
@@ -270,7 +286,7 @@ export function TourDisplayer(props){
             {aTour.adventureType&& <> 
             <div className={styles.trekDiffNotice}>
                 {aTour.tripName} includes&nbsp;
-                {aTour.difficulty&&<i>{difficultySwitcher(aTour.difficulty)}</i>}&nbsp;
+                {aTour.difficulty&&<i>{difficultyList(aTour.difficulty)}</i>}&nbsp;
                 {aTour.adventureType&&<>{aTour.adventureType}</>}
             </div></>}
         </>)
@@ -318,6 +334,20 @@ export function TourDisplayer(props){
             </>)
         }
     }
+    const difficultyList=(diffLevel)=>{
+        switch(diffLevel){
+            case 1:
+            return(<>Easy Adventure!</>)
+            case 2:
+            return(<>moderate</>)
+            case 3:
+            return(<>moderate - hard</>)
+            case 4:
+            return(<>hard</>)
+            case 5:
+            return(<>extreme</>)
+        }
+    }
 
     return(<>
         <article className={styles.generalTourPage}>
@@ -327,13 +357,24 @@ export function TourDisplayer(props){
                 {tourIntroDetails()}
                 {carouselDisp(aTour.imgArr)} 
             </div>
-            <div className={styles.tourDetailsContainer}>
-                <div className={styles.sectionTitles}>Overview</div>
-                {dayByDaydisp(aTour.dayByDay)}
-                <div className={styles.sectionTitles}>additional information</div>
-                {accordionDisplayer("Tour Inclusions / Exclusions", incExcCont, false)}
-                {hotelList(aTour)}
+
+            <div className={styles.tourDataCont}>
+
+                <div className={styles.tourData}>
+                    <div className={styles.sectionTitles}>Overview</div>
+                    {dayByDaydisp(aTour.dayByDay)}
+                    <div className={styles.sectionTitles}>additional information</div>
+                    {accordionDisplayer("Tour Inclusions / Exclusions", incExcCont, false)}
+                    {hotelList(aTour)}
+                </div>
+                <div className={styles.supportInfoCont}>
+
+                    {TourDifficultyCard(aTour.difficulty)}
+
+
+                </div>
             </div>
+
         </article>
     </>)
 }

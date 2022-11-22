@@ -15,13 +15,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 220px;
     justify-content: space-between;
     padding:9px 6px;
     transform: translateY(-33px);
     text-align: center;
     box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.28);
 }
+
+.tourCardTextCont span{
+    margin: 12px 0;
+}
+
 
 .difficultyDispCont{
     width: 100%;
@@ -211,10 +215,6 @@
 }
 
 
-.tourDetailsContainer{
-    width: 1080px;
-}
-
 .mainImage{
     width: 720px;
     height: 540px;
@@ -249,6 +249,14 @@
     cursor: pointer;
 }
 
+
+
+
+
+/*  //////////////////////////////////////// */
+/*  //////////////////////////////////////// */
+/* export to We Travel */
+
 .bookNowBTN{
     font-weight: 600;
     padding: 9px 12px;
@@ -260,6 +268,8 @@
     margin: 15px 0;
 }
 
+
+/* ///////////////////////////////////////////// */
 .trekDiffNotice{
     margin-bottom: 12px;
     font-size: 1.1em;
@@ -297,6 +307,38 @@
 }
 
 
+.tourDataCont{
+    display: flex;
+    width: 1080px;
+    padding: 21px 0;
+    justify-content: space-between;
+
+}
+
+.tourData{
+    width: 63%;
+}
+
+.supportInfoCont{
+    position: sticky;
+    padding: 0 21px;
+    width: 33%;
+    background-color: whitesmoke;
+    box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.37);
+    top: 39px;
+    height: fit-content;
+}
+
+.sectionTitles{
+    top: 30px;
+}
+
+.difficultyDescriptor{
+    padding: 0 21px;
+}
+
+
+
 .inclusionsExclusionsSec{
     display: flex;
     justify-content: space-around;
@@ -318,11 +360,19 @@
 .incExcItems{
     text-transform: capitalize;
 }
+
+
+
+
+
+
+
+
+
 .sectionTitles{
     text-transform: uppercase;
     font-weight: 600;
-    margin: 18px 12px;
-    margin-top: 40px;
+    margin: 15px 21px;
     color: var(--brick-red);
     font-size: 1.1em;
 }
@@ -881,9 +931,6 @@
         width: 100%;
         height: calc(100vw - 28vw );
     }
-    .tourDetailsContainer{
-        width: 96%;
-    }
     .bookingProcessTourData{
         width: 100%;
     }
@@ -897,7 +944,16 @@
         padding: 12px;
     }
     .tourCardTextCont{
-        height: 180px;
+        height: 190px;
+    }
+
+    .tourDataCont{
+        width: 100%;
+        flex-direction: column;
+
+    }
+    .tourData{
+        width: 100%;
     }
 }
 @media (max-width: 600px) {
@@ -969,5 +1025,12 @@
     }  
     .tourIMGCarousel{
         padding: 0;
+    }
+
+    .tourDataCont{
+        flex-direction: column;
+    }
+    .tourCardTextCont{
+        height: fit-content;
     }
 }
