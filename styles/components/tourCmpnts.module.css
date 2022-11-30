@@ -335,9 +335,16 @@
 
 .difficultyDescriptor{
     padding: 0 21px;
+    text-align: justify;
 }
 
-
+.iconDiffDisp{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 12px;
+    padding: 9px 0;
+    font-size: 1.3em;
+}
 
 .inclusionsExclusionsSec{
     display: flex;
@@ -360,14 +367,6 @@
 .incExcItems{
     text-transform: capitalize;
 }
-
-
-
-
-
-
-
-
 
 .sectionTitles{
     text-transform: uppercase;
@@ -955,6 +954,15 @@
     .tourData{
         width: 100%;
     }
+    .tourDataCont{
+        flex-direction: column;
+        align-items: center;
+    }
+    .supportInfoCont{
+        width: 94%;
+        margin: 15px 0;
+        padding: 0;
+    }
 }
 @media (max-width: 600px) {
 
@@ -1026,11 +1034,8 @@
     .tourIMGCarousel{
         padding: 0;
     }
-
-    .tourDataCont{
-        flex-direction: column;
-    }
     .tourCardTextCont{
         height: fit-content;
     }
+
 }

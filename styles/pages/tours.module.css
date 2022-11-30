@@ -258,6 +258,8 @@
 .tourPageImageCont{
     width: 100%;
     margin-top: 15vh;
+    display: flex;
+    justify-content: center;
 }
 
 .introArrowIcon{
@@ -330,6 +332,7 @@
 
     .sortingUICont{
         padding: 15px 0;
+        padding-bottom: 5px;
     }
 
     .sortBTNCont{

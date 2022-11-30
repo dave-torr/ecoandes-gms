@@ -12,17 +12,21 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ExploreIcon from '@mui/icons-material/Explore';
 import EventIcon from '@mui/icons-material/Event';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
-import Filter1Icon from '@mui/icons-material/Filter1';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import DirectionsWalkIcon from '@mui/icons-material/DirectionsWalk';
 import InsertLinkIcon from '@mui/icons-material/InsertLink';
+import MapIcon from '@mui/icons-material/Map';
+
+import Filter1Icon from '@mui/icons-material/Filter1';
+import Filter2Icon from '@mui/icons-material/Filter2';
+import Filter3Icon from '@mui/icons-material/Filter3';
+import Filter4Icon from '@mui/icons-material/Filter4';
+import Filter5Icon from '@mui/icons-material/Filter5';
+
 import Dialog from '@mui/material/Dialog';
 
 export function ATourCard(props){
 
     let theTour = props.aTour
-
-
 
     return(<>
     <Link href={`/tours/${theTour.id}`}>
@@ -69,34 +73,65 @@ export function ATourCard(props){
 //////////////////////////////////////////////////////////////
 
 
-export function TourDifficultyCard(props){
 
+export function TourDifficultyCard(props){
     const tourDiffSwitcher=(theDiff)=>{
         switch(theDiff){
             case 1:
-            return(<><p className={styles.difficultyDescriptor}>
-                Easy Adventure!
-            </p></>)
+            return(<><div className={styles.difficultyDescriptor}>
+                <div className={styles.iconDiffDisp}>
+                    <MapIcon />
+                    <span>
+                        <DirectionsWalkIcon />
+                        &nbsp; &nbsp;
+                        <Filter1Icon /> 
+                    </span>
+                </div>
+                <strong>Easy Adventures</strong> require minimal prior knowledge and no technical skills. We enjoy our activities with in stages and at a relaxed pace, with enough time to enjoy the views and arrive at the destinations. Can be achieved by anyone with regular phisical conditions.
+            </div></>)
 
             case 2:
-            return(<><p className={styles.difficultyDescriptor}>
-                moderate
-            </p></>)
+            return(<><div className={styles.difficultyDescriptor}>
+                <div className={styles.iconDiffDisp}>
+                    <MapIcon />
+                    <span>
+                        <DirectionsWalkIcon />
+                        &nbsp; &nbsp;
+                        <Filter2Icon /> 
+                    </span>
+                </div>
+                <strong>Moderate Adventures</strong> involve a little work to reach the destinations, although can be achieved by most visitors with a basic fitness level. There is no technical knowledge required, and little to none previous experience is needed. Moderate adventures can involve activities such as hiking and cycling.
+            </div></>)
 
             case 3:
-            return(<><p className={styles.difficultyDescriptor}>
+            return(<><div className={styles.difficultyDescriptor}>
+                <div className={styles.iconDiffDisp}>
+                    <DirectionsWalkIcon />
+                    &nbsp; &nbsp;
+                    <Filter3Icon /> 
+                </div>
                 moderate - hard
-            </p></>)
+            </div></>)
 
             case 4:
-            return(<><p className={styles.difficultyDescriptor}>
-                hard
-            </p></>)
+            return(<><div className={styles.difficultyDescriptor}>
+                <div className={styles.iconDiffDisp}>
+                    <MapIcon />
+                    <span>
+                        <DirectionsWalkIcon />
+                        &nbsp; &nbsp;
+                        <Filter4Icon /> 
+                    </span>
+                </div>
+                <strong>Hard adventures</strong> include steep acents, altitudes over 13,000 ft/ 4000 meters, previous use and knowledge of technical equipment and 
+                Steepness, altitude over 4000m, 
+                technical climbing + equipment 
+            </div></>)
 
             case 5:
-            return(<><p className={styles.difficultyDescriptor}>
+            return(<><div className={styles.difficultyDescriptor}>
                 extreme
-            </p></>)
+            </div></>)
         }
     }
 
@@ -107,7 +142,30 @@ export function TourDifficultyCard(props){
 }
 
 
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+export function TourTypeCard(props){
+    const tourTypeSwitcher=(theTourType)=>{
+        switch (theTourType){
+            case "360° tours":
+            return(<> 360° tours </>)
 
+            case "historic":
+            return(<> historic </>)
+
+            case "climbing":
+            return(<> climbing </>)
+
+            case "trekking":
+            return(<> trekking </>)
+        }
+    }
+
+    return(<>
+        <div className={styles.sectionTitles}> Tour Type</div>
+        {tourTypeSwitcher(props)}
+    </>)
+}
 
 
 export function TourDisplayer(props){
@@ -349,6 +407,9 @@ export function TourDisplayer(props){
         }
     }
 
+
+    console.log(aTour)
+
     return(<>
         <article className={styles.generalTourPage}>
             <div className={styles.tourContainer}>
@@ -369,9 +430,8 @@ export function TourDisplayer(props){
                 </div>
                 <div className={styles.supportInfoCont}>
 
+                    {TourTypeCard(aTour.tourType)}
                     {TourDifficultyCard(aTour.difficulty)}
-
-
                 </div>
             </div>
 
