@@ -15,6 +15,8 @@ import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import DirectionsWalkIcon from '@mui/icons-material/DirectionsWalk';
 import InsertLinkIcon from '@mui/icons-material/InsertLink';
 import MapIcon from '@mui/icons-material/Map';
+import HikingIcon from '@mui/icons-material/Hiking';
+import TerrainIcon from '@mui/icons-material/Terrain';
 
 import Filter1Icon from '@mui/icons-material/Filter1';
 import Filter2Icon from '@mui/icons-material/Filter2';
@@ -68,17 +70,14 @@ export function ATourCard(props){
     </Link>
     </>)
 }
-
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
-
-
 
 export function TourDifficultyCard(props){
     const tourDiffSwitcher=(theDiff)=>{
         switch(theDiff){
             case 1:
-            return(<><div className={styles.difficultyDescriptor}>
+            return(<><div className={styles.tourInfoDescriptor}>
                 <div className={styles.iconDiffDisp}>
                     <MapIcon />
                     <span>
@@ -91,7 +90,7 @@ export function TourDifficultyCard(props){
             </div></>)
 
             case 2:
-            return(<><div className={styles.difficultyDescriptor}>
+            return(<><div className={styles.tourInfoDescriptor}>
                 <div className={styles.iconDiffDisp}>
                     <MapIcon />
                     <span>
@@ -104,7 +103,7 @@ export function TourDifficultyCard(props){
             </div></>)
 
             case 3:
-            return(<><div className={styles.difficultyDescriptor}>
+            return(<><div className={styles.tourInfoDescriptor}>
                 <div className={styles.iconDiffDisp}>
                     <DirectionsWalkIcon />
                     &nbsp; &nbsp;
@@ -114,23 +113,29 @@ export function TourDifficultyCard(props){
             </div></>)
 
             case 4:
-            return(<><div className={styles.difficultyDescriptor}>
+            return(<><div className={styles.tourInfoDescriptor}>
                 <div className={styles.iconDiffDisp}>
-                    <MapIcon />
+                    <TerrainIcon />
                     <span>
-                        <DirectionsWalkIcon />
+                        <HikingIcon />
                         &nbsp; &nbsp;
                         <Filter4Icon /> 
                     </span>
                 </div>
-                <strong>Hard adventures</strong> include steep acents, altitudes over 13,000 ft/ 4000 meters, previous use and knowledge of technical equipment and 
-                Steepness, altitude over 4000m, 
-                technical climbing + equipment 
+                <strong>Hard Adventures</strong> include steep ascents, altitudes over 13,000 ft/ 4,000 m, cold temperatures and previous use and knowledge of technical equipment is strongly recommended. Routes have high incline sections and can have exposed climbing in ice, glacier and rock. Good physical condition is needed
             </div></>)
 
             case 5:
-            return(<><div className={styles.difficultyDescriptor}>
-                extreme
+            return(<><div className={styles.tourInfoDescriptor}>
+                <div className={styles.iconDiffDisp}>
+                    <TerrainIcon />
+                    <span>
+                        <HikingIcon />
+                        &nbsp; &nbsp;
+                        <Filter5Icon /> 
+                    </span>
+                </div>
+                <strong>Extreme Adventures</strong> include tough, steep ascents, altitudes over 15,000 ft/ 4,000 m, very cold temperatures and previous high altitude mountaineering and climbing experience is required. Good use of technical equipment, techniques and knowledge is mandatory. Very good physical condition is needed.
             </div></>)
         }
     }
@@ -140,24 +145,34 @@ export function TourDifficultyCard(props){
         {tourDiffSwitcher(props)}
     </>)
 }
-
-
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 export function TourTypeCard(props){
     const tourTypeSwitcher=(theTourType)=>{
         switch (theTourType){
             case "360° tours":
-            return(<> 360° tours </>)
+            return(<> 
+            <div className={styles.tourInfoDescriptor}>
+                360° tours 
+            </div></>)
 
             case "historic":
-            return(<> historic </>)
+            return(<> 
+            <div className={styles.tourInfoDescriptor}>
+                historic
+            </div></>)
 
             case "climbing":
-            return(<> climbing </>)
+            return(<> 
+            <div className={styles.tourInfoDescriptor}>
+                Climbing
+            </div></>)
 
             case "trekking":
-            return(<> trekking </>)
+            return(<> 
+            <div className={styles.tourInfoDescriptor}>
+                trekking
+            </div></>)
         }
     }
 
@@ -166,7 +181,6 @@ export function TourTypeCard(props){
         {tourTypeSwitcher(props)}
     </>)
 }
-
 
 export function TourDisplayer(props){
 
@@ -407,9 +421,6 @@ export function TourDisplayer(props){
         }
     }
 
-
-    console.log(aTour)
-
     return(<>
         <article className={styles.generalTourPage}>
             <div className={styles.tourContainer}>
@@ -418,9 +429,7 @@ export function TourDisplayer(props){
                 {tourIntroDetails()}
                 {carouselDisp(aTour.imgArr)} 
             </div>
-
             <div className={styles.tourDataCont}>
-
                 <div className={styles.tourData}>
                     <div className={styles.sectionTitles}>Overview</div>
                     {dayByDaydisp(aTour.dayByDay)}
@@ -429,12 +438,10 @@ export function TourDisplayer(props){
                     {hotelList(aTour)}
                 </div>
                 <div className={styles.supportInfoCont}>
-
                     {TourTypeCard(aTour.tourType)}
                     {TourDifficultyCard(aTour.difficulty)}
                 </div>
             </div>
-
         </article>
     </>)
 }

@@ -321,21 +321,22 @@
 
 .supportInfoCont{
     position: sticky;
-    padding: 0 21px;
     width: 33%;
-    background-color: whitesmoke;
+    background-color: rgb(231, 229, 229);
     box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.37);
-    top: 39px;
+    top: 42px;
     height: fit-content;
+    padding-bottom: 21px;
 }
 
 .sectionTitles{
     top: 30px;
 }
 
-.difficultyDescriptor{
-    padding: 0 21px;
+.tourInfoDescriptor{
+    padding: 0 33px;
     text-align: justify;
+    padding-bottom: 15px;
 }
 
 .iconDiffDisp{
@@ -970,7 +971,7 @@
         padding: 33px 21px;
     }
     .tourIntroCont{
-        padding: 9px 33px;
+        padding: 9px 25px;
     }
     .tourCountryList{
         font-size: 1em;
@@ -981,7 +982,9 @@
     }
 
     .tourDetails > span{
-        padding: 9px;
+        padding: 6px;
+        height: 90px;
+        border-right: solid 1px var(--brick-red);
     }
 
     .inclusionsExclusionsSec{
