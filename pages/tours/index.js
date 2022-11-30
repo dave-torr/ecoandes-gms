@@ -232,6 +232,7 @@ export default function TourPage(){
                     </div>
                 </span>
                 </>:<>
+                <span>
                     <div className={styles.unselectedOrderDisp} onClick={()=>{
                         sortOrder==="descending"? setSortOrder("ascending"): setSortOrder("descending")
                     }}>
@@ -240,6 +241,7 @@ export default function TourPage(){
                     <div className={styles.selectedOrderDisp}>
                         <ArrowDownwardIcon/>
                     </div>
+                </span>
                 </>}
             </div> 
 

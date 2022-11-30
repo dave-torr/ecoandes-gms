@@ -86,7 +86,7 @@ export function TourDifficultyCard(props){
                         <Filter1Icon /> 
                     </span>
                 </div>
-                <strong>Easy Adventures</strong> require minimal prior knowledge and no technical skills. We enjoy our activities with in stages and at a relaxed pace, with enough time to enjoy the views and arrive at the destinations. Can be achieved by anyone with regular phisical conditions.
+                <strong>Easy Adventures</strong> require minimal prior knowledge and no technical skills. We enjoy our activities with in stages and at a relaxed pace, with enough time to enjoy the views and arrive at the destinations. Can be achieved by anyone with regular physical conditions.
             </div></>)
 
             case 2:
@@ -105,11 +105,14 @@ export function TourDifficultyCard(props){
             case 3:
             return(<><div className={styles.tourInfoDescriptor}>
                 <div className={styles.iconDiffDisp}>
+                    <TerrainIcon />
+                    <span>
                     <DirectionsWalkIcon />
                     &nbsp; &nbsp;
                     <Filter3Icon /> 
+                    </span>
                 </div>
-                moderate - hard
+                <strong>Moderate - Hard Adventures </strong> require some physical work from participants, have relatively steep ascents, moderately high altitudes and can require of good equipment and basic previous experience. 
             </div></>)
 
             case 4:
@@ -153,25 +156,25 @@ export function TourTypeCard(props){
             case "360° tours":
             return(<> 
             <div className={styles.tourInfoDescriptor}>
-                360° tours 
+                <strong>360° Tours </strong> begin and end at a specific location, include amazing visitor sites, landscapes, culture and nature, and are created for adventurous travellers looking for a unique experience. 
             </div></>)
 
             case "historic":
             return(<> 
             <div className={styles.tourInfoDescriptor}>
-                historic
+                <strong>Historic</strong> tours include visits to some of the most important archeological sites of a region, amazing landscapes, and a strong focus on local culture and nature.
             </div></>)
 
             case "climbing":
             return(<> 
             <div className={styles.tourInfoDescriptor}>
-                Climbing
+                <strong>Climbing</strong> tours include high altitude mountaneering and trekking sections, professional mountaineering guides and staff, and can include ice climbing; all in the amazing Andes Mountains.
             </div></>)
 
             case "trekking":
             return(<> 
             <div className={styles.tourInfoDescriptor}>
-                trekking
+                <strong>Trekking</strong> tours include multi-day trekking, with comfortable campsites or mountain huts, a well trained staff and guides, in gorgeous sceneries that the high Andes is known for.
             </div></>)
         }
     }

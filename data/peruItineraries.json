@@ -616,7 +616,7 @@
         ]
     },
     {
-        "tripName": "ultimate Machu Picchu - Choquequirao Expedition",
+        "tripName": "ultimate Machu Picchu + Choquequirao Expedition",
         "id": "machu-pichu-choquequirao-16D",
         "duration": 16,
         "adventureType": "trekking",
@@ -1208,7 +1208,7 @@
         "countryList": ["peru"],
         "dayByDay":[
             {
-                "dayTitle": ": Huaraz – Cashapampa Village - Camp Llama Corral (3750m)",
+                "dayTitle": "Huaraz – Cashapampa Village - Camp Llama Corral (3750m)",
                 "dayDescription": "Our private transport will take us from the town of Huaraz towards Cashapampa village (2900m), the starting point of our trek. Here we meet our crew and donkeys, who will transport our heavy equipment during the whole trek. We begin our trek (5-6 hours) through the beautiful Santa Cruz valley towards our first camp. On the way on enjoy magnificent views of the nearby high Andean peaks. Our camp at Llama Corral is located at 3750 m of altitude",
                 "dayInclusions": [
                     "Lunch Box",
@@ -1538,7 +1538,7 @@
         ]
     },
     {
-        "tripName": "Lima-Huayhuash Mountain Range Trek",
+        "tripName": "Lima + Huayhuash Mountain Range Trek",
         "id": "lima-huayhuash-12D",
         "duration": 12,
         "adventureType": "trekking",
@@ -2188,7 +2188,7 @@
 
 
     {
-        "tripName": "Lima - Cusco - Sacred Valley - Machu Picchu",
+        "tripName": "Lima + Cusco + Sacred Valley + Machu Picchu",
         "id": "lima-Cusco-Mapi-6D",
         "duration": 6,
         "difficulty": 1,
@@ -2265,7 +2265,7 @@
         ]
     },
     {
-        "tripName": "Lima - Nazca - Cusco - Sacred Valley - Machu Picchu",
+        "tripName": "Lima + Nazca + Cusco + Sacred Valley + Machu Picchu",
         "id": "lima-nazca-cusco-Mapi-8D",
         "duration": 8,
         "difficulty": 1,

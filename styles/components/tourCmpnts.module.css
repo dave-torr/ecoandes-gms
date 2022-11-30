@@ -20,6 +20,7 @@
     transform: translateY(-33px);
     text-align: center;
     box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.28);
+    text-transform: capitalize;
 }
 
 .tourCardTextCont span{
