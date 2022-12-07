@@ -22,11 +22,6 @@ function TourPage({ aTour }){
     return(<>
         <EcoAndesBar />
         <TourDisplayer aTour={aTour} breadcrumb={true} key={aTour.tripName} />
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        Footer
     </>)
 }
 

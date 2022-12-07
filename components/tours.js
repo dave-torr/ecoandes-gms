@@ -24,7 +24,12 @@ import Filter3Icon from '@mui/icons-material/Filter3';
 import Filter4Icon from '@mui/icons-material/Filter4';
 import Filter5Icon from '@mui/icons-material/Filter5';
 
+import EcoAndesLogo from "./../public/assets/logos/condor1.png"
+
 import Dialog from '@mui/material/Dialog';
+
+let theLocalStorage
+
 
 export function ATourCard(props){
 
@@ -79,7 +84,9 @@ export function TourDifficultyCard(props){
             case 1:
             return(<><div className={styles.tourInfoDescriptor}>
                 <div className={styles.iconDiffDisp}>
-                    <MapIcon />
+                    <span>
+                        <MapIcon />
+                    </span>
                     <span>
                         <DirectionsWalkIcon />
                         &nbsp; &nbsp;
@@ -92,7 +99,9 @@ export function TourDifficultyCard(props){
             case 2:
             return(<><div className={styles.tourInfoDescriptor}>
                 <div className={styles.iconDiffDisp}>
-                    <MapIcon />
+                    <span>
+                        <MapIcon />
+                    </span>
                     <span>
                         <DirectionsWalkIcon />
                         &nbsp; &nbsp;
@@ -144,8 +153,10 @@ export function TourDifficultyCard(props){
     }
 
     return(<>
-        <div className={styles.sectionTitles}> Difficulty</div>
-        {tourDiffSwitcher(props)}
+        <span>
+            <div className={styles.sectionTitles}> Difficulty</div>
+            {tourDiffSwitcher(props)}
+        </span>
     </>)
 }
 ////////////////////////////////////////////////
@@ -174,20 +185,34 @@ export function TourTypeCard(props){
             case "trekking":
             return(<> 
             <div className={styles.tourInfoDescriptor}>
-                <strong>Trekking</strong> tours include multi-day trekking, with comfortable campsites or mountain huts, a well trained staff and guides, in gorgeous sceneries that the high Andes is known for.
+                <strong>Trekking</strong> tours include multi-day trekking, with comfortable campsites or mountain huts, well trained staff and guides, all in gorgeous sceneries that the high Andes is known for.
             </div></>)
         }
     }
 
     return(<>
-        <div className={styles.sectionTitles}> Tour Type</div>
-        {tourTypeSwitcher(props)}
+        <span>
+            <div className={styles.sectionTitles}> Tour Type</div>
+            {tourTypeSwitcher(props)}
+        </span>
     </>)
 }
+
+let condorMiniLogo = <Image src={EcoAndesLogo} alt="EcoAndes Travel Logo" width={35} height={35} />
 
 export function TourDisplayer(props){
 
     let aTour = props.aTour
+
+    useEffect(()=>{
+        // let sampleObj = {
+        //     "key1": "the trip",
+        //     "key2": "some other"
+        // }
+        // let strngifiedObj = JSON.stringify(sampleObj)
+        // localStorage.setItem("theTrips", strngifiedObj)
+        console.log(window.localStorage, "cucu");
+    },[])
 
     const [imgDialogContr, srtImgDialogcontr]= useState(false)
     const [selectedImg, setSelectedImg]=useState(false)
@@ -259,7 +284,7 @@ export function TourDisplayer(props){
         <React.Fragment key={i}>
             <Accordion className={styles.accordionCont}>
                 <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" > 
-                    <h2>{i+1&&<>{i+1}: </>}  {elem.dayTitle} </h2></AccordionSummary>
+                    <h3>{i+1&&<>{i+1}: </>}  {elem.dayTitle} </h3></AccordionSummary>
                 <AccordionDetails> 
                     <div style={{textAlign:"justify"}}>
                         {elem.dayDescription}</div>
@@ -378,12 +403,14 @@ export function TourDisplayer(props){
             </div>
         </>)
     }
+
     const breadcrumbNavigation=()=>{
         if(props.breadcrumb){
         return(<>
             <div className={styles.breadcrumbNaviCont}>
+                 {condorMiniLogo}
                 <Link href="/tours" >
-                    <a>itineraries </a>
+                    <a>{"->"} &nbsp; itineraries </a>
                 </Link>
                     <a>{"->"} &nbsp; {aTour.tripName}</a>
             </div>
@@ -424,6 +451,21 @@ export function TourDisplayer(props){
         }
     }
 
+    const tourFooter=()=>{
+
+        return(<>
+        <footer>
+            <div className={styles.footerBar} >
+                {condorMiniLogo} &nbsp; &nbsp; &nbsp;
+                {aTour.tripName}
+            </div>
+            
+            <address></address>
+
+        </footer>
+        </>)
+    }
+
     return(<>
         <article className={styles.generalTourPage}>
             <div className={styles.tourContainer}>
@@ -446,5 +488,6 @@ export function TourDisplayer(props){
                 </div>
             </div>
         </article>
+        {tourFooter()}
     </>)
 }
