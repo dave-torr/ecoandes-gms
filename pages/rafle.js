@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react"
 import LocalActivityIcon from '@mui/icons-material/LocalActivity';
 
 import styles from "./../styles/pages/raflPage.module.css"
+import { useSession, signOut } from "next-auth/react"
+
 
 export default function RaflePage(){
 
@@ -18,7 +20,7 @@ export default function RaflePage(){
     // OP:
     //  - create random number generator with top limit contestant number
     //  - Display number, name and email of filtered participants
-
+    const { data: session } = useSession()
 
     const [toDate, setTodate]=useState(null)
     const [userData, setUserData] = useState(null)
@@ -93,10 +95,10 @@ export default function RaflePage(){
     function removeFirstWord(str) {
         return str.split(' ')[0]
     }
-    const aParticipant=(ParticipantData)=>{
+    const aParticipant=(ParticipantData, theKey)=>{
         return(<>
             <div className={styles.aParticipantCont}> 
-                <span>{removeFirstWord(ParticipantData.attributes.NOMBRE)} </span>
+                <span>{theKey + 1} - {removeFirstWord(ParticipantData.attributes.NOMBRE)} </span>
                 <span>{ParticipantData.attributes.CIUDAD}</span>
                 <span>{ParticipantData.email.slice(0, 5)} . . .{ParticipantData.email.slice(-3)}</span>
             </div>
@@ -115,7 +117,7 @@ export default function RaflePage(){
                 </div>
                 {userData.contacts.map((elem, i)=>
                     <React.Fragment key={i}> 
-                        {aParticipant(elem)} 
+                        {aParticipant(elem, i)} 
                     </React.Fragment>)}
             </div>
         </>)}
@@ -125,9 +127,13 @@ export default function RaflePage(){
     return(<>
         <div className={styles.generalRaflePage}>
             {rafleIntroDispl()}
-            {getClients()}
-            {randomNumberGen(userData)}
-            {participantDisplayer()}
+            {session?<>
+                {getClients()}
+                {randomNumberGen(userData)}
+                {participantDisplayer()}
+            </>:<>
+                Please sign In
+            </>}
         </div>
     </>)
 }

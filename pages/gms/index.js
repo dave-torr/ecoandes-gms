@@ -34,8 +34,8 @@ export default function GMS(){
               Tour Explorer</Link></div> 
             <div className={styles.gmsOptBTN}> <Link href="/gms/operations">
               Document Generator</Link></div> 
-            <div className={styles.gmsOptBTN}> <Link href="/gms/hotelDB">
-              Hotels & Rates</Link></div> 
+            <div className={styles.gmsOptBTN}> <Link href="/rafle">
+              T&AS Raffle</Link></div> 
           </>:<> 
             {logInTrig? <> 
               <SignInForm />
