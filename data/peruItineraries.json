@@ -1296,7 +1296,7 @@
         "countryList": ["peru"],
         "dayByDay":[
             {
-                "dayTitle": ": Huaraz – Cashapampa Village - Camp Llama Corral (3750m)",
+                "dayTitle": ": Huaraz – Cashapampa Village - Camp Llama Corral (12,300ft || 3,794)",
                 "dayDescription": "Our private transport will take us from the town of Huaraz towards Cashapampa village (2900m), the starting point of our trek. Here we meet our crew and donkeys, who will transport our heavy equipment during the whole trek. We begin our trek (5-6 hours) through the beautiful Santa Cruz valley towards our first camp. On the way on enjoy magnificent views of the nearby high Andean peaks. Our camp at Llama Corral is located at 3750 m of altitude",
                 "dayInclusions": [
                     "Lunch Box",
@@ -1307,7 +1307,7 @@
                 }
             },
             {
-                "dayTitle": "Llama Corral - Taullipampa Camp (4250m",
+                "dayTitle": "Llama Corral - Taullipampa Camp (13,900ft || 4,250m)",
                 "dayDescription": "After our first night in the high mountains, we continue our trek (4-5 hours) towards our next camp. On the way, we will observe the beautiful lakes known as Ichiccocha and Jatuncocha. Later, following the side of the Arhuaycocha gorge, we will reach the base camp of Mount Alpamayo (5947m). From here, we can enjoy splendid views of the famous Alpamayo, Artesonraju and Quitaraju. Later we will continue our walk until we reach our camp at Taullipampa at the base of the beautiful Mount Taulliraju (5830m). ",
                 "dayInclusions": [
                     "Camp breakfast",
@@ -1319,7 +1319,7 @@
                 }
             },
             {
-                "dayTitle": "Taullipampa – Punta Union – Tuctu Camp (Paria Valley – 3900m).",
+                "dayTitle": "Taullipampa – Punta Union – Tuctu Camp (Paria Valley 12,790ft || 3,900m).",
                 "dayDescription": "Today we face the hardest stage of the whole trek: Punta Union pass at 4750m. The view over Mounts Taulliraju, Artesonraju and Alpamayo, rewards us for all our efforts after a 4-hour ascent. We continue descending (2-3 hours) to our next camp at Tuctu, where perhaps we can see some Condors flying over the Morococha lagoon",
                 "dayInclusions": [
                     "Camp breakfast",
@@ -1355,7 +1355,7 @@
                 }
             },
             {
-                "dayTitle": "Base Camp – Pisco Summit (5752m) – Base Camp",
+                "dayTitle": "Base Camp – Pisco Summit (18,864ft || 5,752m) – Base Camp",
                 "dayDescription": "We start our early attempt to reach the summit of Mount Pisco at about 2 a.m. First, we negotiate our way through a camp of loose rocks of the moraine. At sunrise, we will reach the base of the glacier where we put crampons on and start our climb in easy glacial and snowy terrain. At a certain point of the route, if weather permits, we will have the opportunity to enjoy marvelous views of the Artesonraju snowy peak, Mount Caraz, Pico de Garcilaso and other impressive and beautiful mountains of the Cordillera Blanca. After 7-8 hours of continuous climbing we will finally arrive to the summit of the Pisco Mountain. Our efforts will be rewarded with an incredible 360 degrees view of the Cordillera Blanca main peaks: Huascaran, Chacraraju, Chopicalqui, Huandoy, Alpamayo, Artesonraju and many others. We then return to base camp where we expect to arrive at about 2 – 3 p.m. for a well-deserved rest and dinner",
                 "dayInclusions": [
                     "Camp breakfast",
@@ -1710,7 +1710,7 @@
         "tripName": "Climbing Mt. Pisco",
         "id": "pisco-climb-3D",
         "duration": 3,
-        "adventureType": "trekking",
+        "adventureType": "climbing",
         "difficulty": 4,
         "imgArr": ["https://dsm04pap002files.storage.live.com/y4mOkTRN6FmlZUDZxNCdDjxhzdYSnQKKbAC0Nu441rLTew2su_M5oKNFzYmmq8qeS9YnZdO3LqdsZTkUhRvKsL6GnyGPZmdfMVlHQ17QuloL_XcQ6S03sBzl_g0pDITSSOtXj53_gHMmdBesJhMtX9NRdC1wBC2FyJOhz8x2b9JIR01-rwMafF0ELK-pd__7gxy?width=2000&height=1150&cropmode=none",
         "https://dsm04pap002files.storage.live.com/y4m1W5CcbY2A3CRG8kduX-j-iV2HepKUEr-YS53wx5GSIjpRxaOalrlMNAs_4PY2QZA3TONPYXJIqF-9slMl9WvycQF8v_eserf5VUw95GHCRQIqNTTWW-HvEoA5HTsSPuLPY3w1jbTQwt0Ek7EPRmCBEtVoJtcw5Ex6BsyjmdExzJJsco6MACePQPwq3ldZ1mP?width=2000&height=1150&cropmode=none",
@@ -1786,7 +1786,7 @@
         "tripName": "Climbing Mt. Huascaran",
         "id": "huascaran-climb-6D",
         "duration": 6,
-        "adventureType": "trekking",
+        "adventureType": "climbing",
         "difficulty": 5,
         "imgArr": ["https://dsm04pap002files.storage.live.com/y4muJaSIWflwtL3VbFHoao6GIwIP7JT6orutl0Xm9op25xOCogTp5NhGBdQOYPj8F30uOVDeWTSdUWR3vaBjhSd_pTdZx-p6jCDfvddCOcP39owTcQiAw7d08HVtcT_Tanm-VDQ63DMxqk7QHw5SlinPLPLpykP4ISPLpJVXWFfENXYgjCpA6fQvmDacMOBCO1_?width=2000&height=1150&cropmode=none",
         "https://dsm01pap002files.storage.live.com/y4mt5BosLwqP60QYhXM-8Zsf_xl2vac6LuY9VZ6X2uvQmH4sjVVgkF8Eplem1r6pYy7u_4nIEQDis8avye_B4d89SIqaaH9GLP-YAxpxEfZul_zDWLv1nCXAqZkkCxk-de7IrJE3RK8nEK2qdKKRSzxLvxOqWW8Fp8prgoZVG9oaMi_NhNBY_MgBIEBhYdLtbv3?width=2000&height=1125&cropmode=none",
@@ -1900,7 +1900,7 @@
         "tripName": "Climbing Mt. Alpamayo",
         "id": "alpamayo-climb-7D",
         "duration": 7,
-        "adventureType": "trekking",
+        "adventureType": "climbing",
         "difficulty": 5,
         "imgArr": ["https://dsm04pap002files.storage.live.com/y4m77xo2jWchP7cfS44Lu-rU3gIhpzRCZ9TSsdKKUWXB15WgY1xpr3bHyK9fqH5EP6rswXuEGeqm3ObYnMl_5KLZto4I5VciRi5bxy7YItII9xz1o5tGu-yw1b0oZOchb3-j1g-hGP_SDWnNh4kLN59V0abobhYg879ehPQDQKsE10502GgZESMYXn3KYP9F1Qv?width=2000&height=1150&cropmode=none",
         "https://dsm04pap002files.storage.live.com/y4mVe7sx3ehv3o__H0upVKwKUFDF2hk8DQ8R6He_v_Rt8useRQ4tkrEnRLdomvzUd1ubVptRKdBuJV0WFq4WEJQhSv1J9DFV1kPY1VSmI0NU8EKMDBG6gKWilKHXqifaZlC-UjZJdvaWWvlFb0SEc_ny0iAhViwRVq8-Fs8iTjSEnqYqHghg2Fbv1vBU0dhp1jW?width=2000&height=1150&cropmode=none",

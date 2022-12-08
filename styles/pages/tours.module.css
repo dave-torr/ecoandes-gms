@@ -143,6 +143,10 @@
     transition: all ease 0.5s;
 }
 
+.unselectedOrderDisp:hover{
+    border: solid 1px var(--brick-red);
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.392);
+}
 .unCheckedArr:hover{
     border: solid 1px var(--brick-red);
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.392);

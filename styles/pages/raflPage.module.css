@@ -1,0 +1,96 @@
+
+.generalRaflePage{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.raffleInfoCont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top:33px ;
+    border: solid 9px rgb(244, 129, 148);
+    margin:33px 0;
+    box-shadow: 12px 12px 0 teal;
+}
+
+.raffleInfoCont h1{
+    font-weight: 600;
+    font-family: var(--serif-Font);
+    text-transform: uppercase;
+    font-size: 3.3em;
+    letter-spacing: 3px;
+    margin: unset;
+    text-shadow: 3px 3px rgb(24, 199, 199);
+}
+
+.participantTitleDisplayer2{
+    font-size: 2.5em;
+}
+
+.dateDisplayer{
+    width: 400px;
+    padding: 9px 0;
+    border-top: dotted 3px rgb(124, 124, 124);
+    text-align: center;
+}
+.dataRetrievalBTN{
+    background-color: var(--brick-red);
+    width: fit-content;
+    padding: 9px 12px;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 15px 21px;
+    cursor: pointer;
+}
+
+.randomNumberBTN{
+    background-color: olive;
+    width: fit-content;
+    padding: 9px 12px;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 15px 21px;
+    cursor: pointer;
+}
+
+.participantListCont{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.participantContBar{
+    background-color: rgb(220, 217, 217);
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.participantContBar span{
+    display: flex;
+    align-items: center;
+    font-size: 1.3em;
+}
+
+.aParticipantCont{
+    border: solid 1px black;
+    border-top: none;
+    padding: 9px 12px;
+    display: flex;
+    justify-content: space-between;
+}
+.aParticipantCont span{
+    width: 20%;
+}
+.aParticipantCont span:last-of-type{
+    text-align: end;
+    width: 44%;
+}

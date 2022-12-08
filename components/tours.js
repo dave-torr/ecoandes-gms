@@ -37,7 +37,7 @@ export function ATourCard(props){
 
     return(<>
     <Link href={`/tours/${theTour.id}`}>
-        <div className={styles.tourCardCont} >
+        <a className={styles.tourCardCont} >
             
             <div className={styles.tourCardImage}>
                 <Image 
@@ -71,7 +71,7 @@ export function ATourCard(props){
                 </span>
                 <div className={styles.tourCardCTA}> see experience </div>
             </div>
-        </div>
+        </a>
     </Link>
     </>)
 }
@@ -114,11 +114,13 @@ export function TourDifficultyCard(props){
             case 3:
             return(<><div className={styles.tourInfoDescriptor}>
                 <div className={styles.iconDiffDisp}>
-                    <TerrainIcon />
                     <span>
-                    <DirectionsWalkIcon />
-                    &nbsp; &nbsp;
-                    <Filter3Icon /> 
+                        <TerrainIcon />
+                    </span>
+                    <span>
+                        <DirectionsWalkIcon />
+                        &nbsp; &nbsp;
+                        <Filter3Icon /> 
                     </span>
                 </div>
                 <strong>Moderate - Hard Adventures </strong> require some physical work from participants, have relatively steep ascents, moderately high altitudes and can require of good equipment and basic previous experience. 
@@ -127,27 +129,31 @@ export function TourDifficultyCard(props){
             case 4:
             return(<><div className={styles.tourInfoDescriptor}>
                 <div className={styles.iconDiffDisp}>
-                    <TerrainIcon />
+                    <span>
+                        <TerrainIcon />
+                    </span>
                     <span>
                         <HikingIcon />
                         &nbsp; &nbsp;
                         <Filter4Icon /> 
                     </span>
                 </div>
-                <strong>Hard Adventures</strong> include steep ascents, altitudes over 13,000 ft/ 4,000 m, cold temperatures and previous use and knowledge of technical equipment is strongly recommended. Routes have high incline sections and can have exposed climbing in ice, glacier and rock. Good physical condition is needed
+                <strong>Hard Adventures</strong> include steep ascents, altitudes over 13,000 ft || 4,000 m, cold temperatures and previous use and knowledge of technical equipment is strongly recommended. Routes have high incline sections and can have exposed climbing in ice, glacier and rock. Good physical condition is needed
             </div></>)
 
             case 5:
             return(<><div className={styles.tourInfoDescriptor}>
                 <div className={styles.iconDiffDisp}>
-                    <TerrainIcon />
+                    <span>
+                        <TerrainIcon />
+                    </span>
                     <span>
                         <HikingIcon />
                         &nbsp; &nbsp;
                         <Filter5Icon /> 
                     </span>
                 </div>
-                <strong>Extreme Adventures</strong> include tough, steep ascents, altitudes over 15,000 ft/ 4,000 m, very cold temperatures and previous high altitude mountaineering and climbing experience is required. Good use of technical equipment, techniques and knowledge is mandatory. Very good physical condition is needed.
+                <strong>Extreme Adventures</strong> include tough, steep ascents, altitudes over 15,000 ft || 4,000 m, very cold temperatures and previous high altitude mountaineering and climbing experience is required. Good use of technical equipment, techniques and knowledge is mandatory. Very good physical condition is needed.
             </div></>)
         }
     }
@@ -173,13 +179,13 @@ export function TourTypeCard(props){
             case "historic":
             return(<> 
             <div className={styles.tourInfoDescriptor}>
-                <strong>Historic</strong> tours include visits to some of the most important archeological sites of a region, amazing landscapes, and a strong focus on local culture and nature.
+                <strong>Historic</strong> tours include visits to some of the most important archeological sites of a region, tailored itineraries, breathtaking landscapes, and a strong focus on the rich local cultures and the incredible planet that we live in.
             </div></>)
 
             case "climbing":
             return(<> 
             <div className={styles.tourInfoDescriptor}>
-                <strong>Climbing</strong> tours include high altitude mountaneering and trekking sections, professional mountaineering guides and staff, and can include ice climbing; all in the amazing Andes Mountains.
+                <strong>Climbing</strong> tours include high altitude mountaneering and trekking sections, professional mountaineering guides and staff, and can include rock, ice, and mixed climbing; all in the amazing Andes Mountains.
             </div></>)
 
             case "trekking":
@@ -210,8 +216,10 @@ export function TourDisplayer(props){
         //     "key2": "some other"
         // }
         // let strngifiedObj = JSON.stringify(sampleObj)
+
         // localStorage.setItem("theTrips", strngifiedObj)
-        console.log(window.localStorage, "cucu");
+
+
     },[])
 
     const [imgDialogContr, srtImgDialogcontr]= useState(false)

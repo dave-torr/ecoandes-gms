@@ -349,6 +349,10 @@
     font-size: 1.3em;
 }
 
+.iconDiffDisp span{
+    width: fit-content;
+}
+
 .inclusionsExclusionsSec{
     display: flex;
     justify-content: space-around;
@@ -981,6 +985,9 @@
     .supportInfoCont span{
         width: 50%;
     }
+    .iconDiffDisp span{
+        width: fit-content;
+    }
 
 }
 @media (max-width: 600px) {
@@ -1064,5 +1071,7 @@
     .supportInfoCont span{
         width: 100%;
     }    
-
+    .iconDiffDisp span{
+        width: fit-content;
+    }
 }
