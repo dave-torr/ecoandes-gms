@@ -12,38 +12,90 @@ export default function RaflePage(){
     // Rafle page
 
 
-    // - Call API from email database
     //  - Filter for each day
     //  - remove from possible winners list
     //  - if participant is there we will send email confirmation through sendinblue API Virtual Certificate!!!!!!!!! Direct to EMAILL!!! WHOAAA
 
     // OP:
+    //  - Pulls participant list Call API from email database
     //  - create random number generator with top limit contestant number
     //  - Display number, name and email of filtered participants
+
+
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+
+
+
+
     const { data: session } = useSession()
 
-    const [toDate, setTodate]=useState(null)
+    const [toDate, setToDate]=useState(null)
     const [userData, setUserData] = useState(null)
     const [randNumber, setRandNumb]= useState(0)
 
-    useEffect(()=>{
-        setTodate(new Date())
+    const [dataCallSwitch, setDataCallSwitch]=useState(false)
 
+
+    useEffect(()=>{
         // use SswitchStatement to determine date of Event, set date for filter, event name switcher, any other tooling
+        setToDate(new Date())
     },[])
+
+
+
+    // useEffect(()=>{
+    //     if (userData){
+
+    //     }
+
+    // },[dataCallSwitch])
 
     const eventNameSwitcher=(eventDate)=>{
         let eventCity;
-        let chicagoDate = new Date("2022-12-09").toDateString()
         let testDate = new Date("2022-12-10").toDateString()
+        let testDate2 = new Date("2022-12-11").toDateString()
+        let chicagoDate = new Date("2023-01-15").toDateString()
+        let chicagoDate2 = new Date("2023-01-16").toDateString()
+        let bostonDate = new Date("2023-01-22").toDateString()
+        let bostonDate2 = new Date("2023-01-23").toDateString()
+        let newYorkDate = new Date("2023-01-28").toDateString()
+        let newYorkDate2 = new Date("2023-01-30").toDateString()
+        let washingtonDate = new Date("2023-02-05").toDateString()
+        let washingtonDate2 = new Date("2023-02-06").toDateString()
+        let losAngelesDate = new Date("2023-02-19").toDateString()
+        let losAngelesDate2 = new Date("2023-02-20").toDateString()
+        let denverDate = new Date("2023-02-05").toDateString()
+        let denverDate2 = new Date("2023-02-06").toDateString()
+        let dallasDate = new Date("2023-02-05").toDateString()
+        let dallasDate2 = new Date("2023-02-06").toDateString()
 
         if(toDate!=null){
         switch(eventDate.toDateString()){
-            case chicagoDate:
+            case chicagoDate || chicagoDate2:
                 eventCity= "Chicago"
                 break;
-            case testDate:
-                eventCity= "Hell Yeah Biatch"
+            case bostonDate || bostonDate2:
+                eventCity= "Boston"
+                break;
+            case newYorkDate || newYorkDate2:
+                eventCity= "New York"
+                break;
+            case washingtonDate || washingtonDate2:
+                eventCity= "Washington"
+                break;
+            case losAngelesDate || losAngelesDate2:
+                eventCity= "Los Angeles"
+                break;
+            case denverDate || denverDate2:
+                eventCity= "Denver"
+                break;
+            case dallasDate || dallasDate2:
+                eventCity= "Dallas"
+                break;
+
+            case testDate || testDate2:
+                eventCity= "it workszz"
                 break;
         }
         return(<>{eventCity}</>)
@@ -54,8 +106,16 @@ export default function RaflePage(){
     const randomNumberGen=(topLimit)=>{
         if(topLimit!=null){
             return(<>
+                {dataCallSwitch ?<>
+
+                </>:<> 
+                
+                
+                </>}
+
                 <div className={styles.randomNumberBTN}
                     onClick={()=>{
+                        setDataCallSwitch(true)
                         setRandNumb(Math.floor(Math.random() * topLimit.count+1))
                     }}> Get Random Number </div>
                 <div>the Random Number:</div>
