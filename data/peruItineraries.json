@@ -327,12 +327,12 @@
         "https://dsm04pap002files.storage.live.com/y4mlI22F2TOXBW4mk_g_RDHvK3ZIkR5UQTmHNSXcaL9kdSWV2IrtuVii-W9PwOQ_r1UXXe1bkGidghElIJ5-ZF3CGRWMa4Yn-ImFhy9xcjTd9KrGfxwCe5BPpVu6WEoJtqHsc2OSOwQ33MBA7IeE2H3r1ZsTCWGhwEcg2Vybs3Vv8B96ehQwv6esMQCqPhpUtqb?width=2000&height=1150&cropmode=none",
         "https://dsm04pap002files.storage.live.com/y4mhNQDuNN9XKTT6lXKchSs3kKRYjv0Z-MxWPq8enC7NSPRBTDAW7btmxrZNnwXVp4nErJ9APZTRxXUTcYH1ggKlIxTtWDQBp5JNCBaqo_uLYt6UzQQ8GrML3pTHN9gTwbyrC-p0o-3IU8IFKrcC0JIYoUt4JhQY946F9WI6Q_skCyoeMf6EVHN3i1rUojYbZl0?width=2000&height=1150&cropmode=none"
         ],
-        "tripDescription":"This hike goes to Machu Picchu Trek, following the last part of the ancient trail known as the Qapac Nan, the Sacred Inca Trail. Enjoy wonderful and impressive views of the Urubamba valley, visit the beautiful Wiñayhuayna archeological remains, and finally arrive in Machu Picchu",
+        "tripDescription":"This hike goes to Machu Picchu Trek, following the last part of the ancient trail known as the Qapac Nan, the Sacred Inca Trail to Machu Picchu. Enjoy wonderful and impressive views of the Urubamba valley, visit the beautiful Wiñayhuayna archeological remains, and finally arrive in Machu Picchu",
         "countryList": ["peru"],
         "dayByDay":[
             {
                 "dayTitle": "Cusco – Wiñayhuayna – Aguas Calientes",
-                "dayDescription": "Early morning from your hotel, your tour starts with the transfer with a car to the train station in Ollantaytambo, situated at about 1.5 hours from Cusco. From here we board the train which takes (40 minutes) to the point known as “Km. 104 (2250 m)”. Here we have check in at the Warden’s post of Chachabamba Incas’ Ruins. From this point, we will begin our day hike (4 hours) to ascend 450 meters following the Inca Trail to the beautiful Wiñay Wuayna Inca remains (2700 m). Surrounded by an impressive landscape, the steps lead up to one of the largest and best-preserved Inca Ruins of the area. Once there we will spend some time visiting these impressive mountain side buildings and then we continue (1.5 to 2 hours) our hike towards The Inti Punku or (Sun-Gate) (at 2700m) from where, and weather permitting, we will enjoy an amazing view of the Machu Picchu citadel. Walk down to Machu Picchu transport down to the town of Aguas Calientes to overnight in a local hotel",
+                "dayDescription": "Early morning from your hotel, your tour starts with the transfer with a car to the train station in Ollantaytambo, situated at about 1.5 hours from Cusco. From here we board the train (1h10) to the point known as 'Km. 104' (7,380 ft || 2,250 m). Here we have check in at the Warden’s post of Chachabamba Incas’ Ruins. From this point, we will begin our day hike (4 hours) to ascend 450 meters following the Inca Trail to the beautiful Wiñay Wuayna Inca remains (2700 m). Surrounded by an impressive landscape, the steps lead up to one of the largest and best-preserved Inca Ruins of the area. Once there we will spend some time visiting these impressive mountain side buildings and then we continue (1.5 to 2 hours) our hike towards The Inti Punku or (Sun-Gate) (at 2700m) from where, and weather permitting, we will enjoy an amazing view of the Machu Picchu citadel. Walk down to the Machu Picchu transport station to return to the town of Aguas Calientes to overnight in a local hotel",
                 "dayInclusions": [
                     "Lunch Box"
                 ],
@@ -342,7 +342,7 @@
             },
             {
                 "dayTitle": "Aguas Calientes – Machu Picchu – Cusco",
-                "dayDescription": "In the early morning, we will take the public bus up to Machu Picchu where we will enjoy a visit to one of the most famous touristic places of the world. Our guided tour will take us through the main points of the amazing complex, including the religious, agricultural, and urban areas: The Intihuatana Stone, the Inca Bridge, the Sacred Rock, the funerary rock and graveyard, the Temple of the Sun, the Royal Tomb. Close to the Temple of the Sun are the Ritual Fountains, Ñusta’s Bedroom and Royal Palace. In the center of the citadel lies the Three-Windowed Temple, part of the central plaza which forms possibly the most spectacular and attractive section of the ruins. The temple’s large windows look east towards the mountains beyond the Urubamba River valley. Next is the Main Temple which boasts stonework even more impressive than the Temple of the Sun. In the afternoon, we take the public bus from Machu Picchu to Aguas Calientes to pick up our return train to Ollantaytambo from where a car transfer takes you back to Cusco",
+                "dayDescription": "In the early morning, we will take the public bus up to Machu Picchu where we will enjoy a visit to one of the most famous touristic places of the world. Our guided tour will take us through the main points of the amazing complex, including the religious, agricultural, and urban areas. In the afternoon, we take the public bus from Machu Picchu to Aguas Calientes to pick up our return train to Ollantaytambo from where a car transfer takes you back to Cusco",
                 "dayInclusions": [
                     "Hotel breakfast"
                 ]
@@ -362,12 +362,7 @@
             "entrance fees",
             "private transport",
             "Vista Dome (or similar) train ticket",
-
-
             "personal porter service (up to 8kg per person)",
-
-
-
             "hotels: double room accommodation with private facilities",
             "english/spanish speaking guide services (specialized trekking guides)"
         ],

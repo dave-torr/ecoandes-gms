@@ -16,7 +16,7 @@ import EcoAndesFontFace from "./../public/assets/logos/fontFace.png"
 import UsFlagIcon from '../public/assets/logos/usFlag.svg'
 import SpainFlagIcon from '../public/assets/logos/spainFlag.svg'
 import CloseIcon from '@mui/icons-material/Close';
-
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 // with english/spanish switcher
 
 const contactNum1 = <><a target='_blank' href="tel:+593996406954"> <PhoneForwardedIcon fontSize="inherit" /></a> </> 
@@ -90,6 +90,11 @@ export function GeneralDataBar(props){
 export function EcoAndesBar(props){
     return(<>
     <div className={styles.ecoAndesBarGenCont}> 
+        {props.inTrip?<>
+        <Link href="/tours">
+        <a><ArrowBackIosIcon />itineraries</a>
+        </Link>
+        </>:<> <div /> </>}
         <div className={styles.ecoAndesBarLinks}> 
             {contactNum1} &nbsp; &nbsp; &nbsp; &nbsp;
             {contactNum2} &nbsp; &nbsp; &nbsp; &nbsp;

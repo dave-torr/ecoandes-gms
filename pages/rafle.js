@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react"
 
 import LocalActivityIcon from '@mui/icons-material/LocalActivity';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 import styles from "./../styles/pages/raflPage.module.css"
 import { useSession, signOut } from "next-auth/react"
@@ -31,7 +33,7 @@ export default function RaflePage(){
     const { data: session } = useSession()
 
     const [toDate, setToDate]=useState(null)
-    const [userData, setUserData] = useState(null)
+    const [raffleParticipants, setRaffleParticipants] = useState(null)
     const [randNumber, setRandNumb]= useState(0)
 
     const [dataCallSwitch, setDataCallSwitch]=useState(false)
@@ -45,7 +47,7 @@ export default function RaflePage(){
 
 
     // useEffect(()=>{
-    //     if (userData){
+    //     if (raffleParticipants){
 
     //     }
 
@@ -106,18 +108,14 @@ export default function RaflePage(){
     const randomNumberGen=(topLimit)=>{
         if(topLimit!=null){
             return(<>
-                {dataCallSwitch ?<>
-
-                </>:<> 
-                
-                
-                </>}
 
                 <div className={styles.randomNumberBTN}
                     onClick={()=>{
                         setDataCallSwitch(true)
                         setRandNumb(Math.floor(Math.random() * topLimit.count+1))
                     }}> Get Random Number </div>
+
+
                 <div>the Random Number:</div>
                 <div>{randNumber}</div>
             </>)
@@ -128,16 +126,26 @@ export default function RaflePage(){
 
     const getClients=()=>{
         return(<>
-            <div className={styles.dataRetrievalBTN} 
-                onClick={async()=>{
-                const res = await fetch("/api/email/sendinBlueApi",{
-                    method: "GET"
-                })
-                const rafleParticipants = await res.json()
-                setUserData(rafleParticipants)
-            }}>
-            Get participants
-            </div>
+
+            {dataCallSwitch ?<>
+
+                {raffleParticipants==null&&<> 
+                    <CircularProgress color="secondary" />
+                </>}
+
+            </>:<> 
+                <div className={styles.dataRetrievalBTN} 
+                    onClick={async()=>{
+                        setDataCallSwitch(true)
+                        const res = await fetch("/api/email/sendinBlueApi",{
+                            method: "GET"
+                        })
+                        const rafleParticipants = await res.json()
+                        setRaffleParticipants(rafleParticipants)
+                    }}>
+                    Get participants
+                </div>
+            </>}
         </>)
     }
 
@@ -165,17 +173,17 @@ export default function RaflePage(){
         </>)
     }
     const participantDisplayer=()=>{
-        if(userData!=null){
+        if(raffleParticipants!=null){
         return(<>
             <div className={styles.participantListCont}>
                 <div className={styles.participantContBar}>
                     <h3>Participants:</h3> 
                     <span>
-                        {userData.count} &nbsp;
+                        {raffleParticipants.count} &nbsp;
                         <LocalActivityIcon /> 
                     </span>
                 </div>
-                {userData.contacts.map((elem, i)=>
+                {raffleParticipants.contacts.map((elem, i)=>
                     <React.Fragment key={i}> 
                         {aParticipant(elem, i)} 
                     </React.Fragment>)}
@@ -189,7 +197,7 @@ export default function RaflePage(){
             {rafleIntroDispl()}
             {session?<>
                 {getClients()}
-                {randomNumberGen(userData)}
+                {randomNumberGen(raffleParticipants)}
                 {participantDisplayer()}
             </>:<>
                 Please sign In

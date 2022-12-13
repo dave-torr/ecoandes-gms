@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import Head from 'next/head'
 
 import {EcoAndesBar} from "./../../components/navis"
 import {TourDisplayer} from "./../../components/tours"
@@ -19,8 +20,25 @@ import TourData from "../../data/peruItineraries"
 function TourPage({ aTour }){
 ////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////
+
+    console.log(aTour)
+
+    const tourHead=(theTour)=>{
+        return(<>
+        <Head>
+            <title>{theTour.tripName}: an EcoAndes Experience </title>
+            <meta name="description" content={`A ${theTour.tourType} tour in Peru, by Latin Travel Collection`} />
+            <meta charSet="utf-8"/>
+            <meta name="keywords" content="Peru, Machu Picchu Tours, Cusco Tours, Huaraz, Huaraz Tours"/>
+            <meta name="author" content="David Torres" />
+            <meta name="copyright" content="EcoAndes Travel 2022" />
+        </Head>
+        </>)
+    }
+
     return(<>
-        <EcoAndesBar />
+        {tourHead(aTour)}
+        <EcoAndesBar inTrip={true}/>
         <TourDisplayer aTour={aTour} breadcrumb={true} key={aTour.tripName} />
     </>)
 }

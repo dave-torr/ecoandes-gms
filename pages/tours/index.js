@@ -38,8 +38,6 @@ import Head from "next/head"
 //  // BEST SELLERS
 //  // COUNTRY HIGHLIGHTS
 
-
-
 /////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////
 //  FFM => general To Do's
@@ -47,7 +45,6 @@ import Head from "next/head"
 //  // Click on item heart => access local storage, create wishlistArray, add item's nameAnd[index] 
 // // additional items, pushed into a new arr, replaced in local storage
 /////////////////////////////////////////////////////////////////
-
 
 // FILTERS:
 //  // Country
