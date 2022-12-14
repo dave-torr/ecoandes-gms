@@ -45,6 +45,8 @@ export function ATourCard(props){
                     width={320}
                     height={180}
                     alt={`A tour image: ${theTour.tripName}`}
+                    blurDataURL="URL"
+                    placeholder="blur"
                 />
             </div>
             <div className={styles.tourCardImageMobile}>
@@ -53,6 +55,8 @@ export function ATourCard(props){
                     width={430}
                     height={240}
                     alt={`A tour image: ${theTour.tripName}`}
+                    blurDataURL="URL"
+                    placeholder="blur"
                 />
             </div>
 
@@ -320,6 +324,8 @@ export function TourDisplayer(props){
                 src={props.imgData}
                 alt={aTour.tripName}      
                 layout="fill"
+                blurDataURL="URL"
+                placeholder="blur"                
             />
         </div>
         </>)
@@ -420,7 +426,7 @@ export function TourDisplayer(props){
                 <Link href="/tours" >
                     <a>{"->"} &nbsp; itineraries </a>
                 </Link>
-                    <a>{"->"} &nbsp; {aTour.tripName}</a>
+                    <span>{"->"} &nbsp; {aTour.tripName}</span>
             </div>
         </>)
         } else if (props.partnerLogo){

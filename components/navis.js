@@ -113,6 +113,8 @@ export function Navi2(props){
             src={ecoAndesTRU}
             alt="EcoAndes Condor Logo"
             layout="responsive"
+            blurDataURL="URL"
+            placeholder="blur"
         /></div>
         {/* <div className={styles.naviHamburger} onClick={()=>setDrawerToggle(true)}>
             <span />
