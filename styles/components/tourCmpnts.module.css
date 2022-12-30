@@ -36,15 +36,16 @@
     font-weight: 600;
 }
 .tourCardCTA{
-    background-color: var(--pale-yellow);   
     width: fit-content; 
-    padding: 9px 18px;
-    color: var(--brick-red);
+    padding: 7px 15px;
+    color: var(--ltc-teal);
     text-transform: uppercase;
-    font-size: 0.8em;
+    font-size: 0.9em;
     letter-spacing: 1.5px;
     font-weight: 800;
-    margin: 9px 0;
+    margin: 7px 0;
+       
+    border: solid 1px var(--ltc-teal);
 }
 
 .tourStartingPlace{
@@ -124,8 +125,8 @@
 .tourCountryList{
     text-transform: uppercase;
     font-size: 1.3em;
-    font-weight: 600;
-    color: var(--brick-red);
+    font-weight: 700;
+    color: var(--pop-orange);
 }
 
 .tourTitleBar{
@@ -275,7 +276,7 @@
 .trekDiffNotice{
     font-size: 1.1em;
     padding: 9px 15px;
-    border: solid 1px var(--brick-red);
+    border: solid 1px var(--pop-orange);
     text-transform: capitalize;
     margin: 0 12px;
     margin-bottom: 15px;
@@ -288,7 +289,7 @@
     justify-content: center;
     align-items: center; 
     text-align: center;  
-    color: var(--brick-red);
+    color: var(--pop-orange);
 }
 
 .tourDetails > span{
@@ -298,7 +299,7 @@
     justify-content: center;
     padding: 9px 21px;
     font-weight: 500;
-    border-right: solid 2px var(--brick-red);
+    border-right: solid 2px var(--pop-orange);
     text-transform: capitalize;
     font-size: 0.9em;
 }

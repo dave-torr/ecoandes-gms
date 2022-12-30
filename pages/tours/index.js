@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react"
-import Link from 'next/link'
 import Image from "next/image"
 
 import TourData from "../../data/peruItineraries"
@@ -263,7 +262,7 @@ export default function TourPage(){
     const tourPageImgDisplayer=()=>{
         return(<>
         <div className={styles.tourPageIMGSection}>
-            <div className={styles.introTextIcon}> Adventure Awaits</div>
+            <div className={styles.introTextIcon}> Adventure <br/>Awaits</div>
             <div className={styles.introArrowIcon}> <ArrowDownwardIcon fontSize="large"/> </div>
             <div className={styles.tourPageImageCont}>
                 <Image 

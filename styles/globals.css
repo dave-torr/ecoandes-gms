@@ -49,14 +49,11 @@ h4{
 /* Brand colors */
 /* Brand colors */
 
-
 :root{
-
 /* Colors */
 /* Colors */
 
-
-
+/* EcoAndes */
 /* brown condor: */
 --brown-main: #6f522b;
 
@@ -78,15 +75,21 @@ h4{
 /* brick red */
 --brick-red: #943a14;
 
+/* LTC */
+--ltc-teal: rgb(5, 155, 155);
+
+--pop-orange: rgb(224, 132, 4);
+
+--pale-blue-grey: rgb(145, 149, 150);
+
+
+
 /* whitesmoke background */
 --whitesmoke-background:rgb(231, 227, 227);
-
 
 /* Fonts */
 
 --serif-Font: 'Roboto Slab', serif;
-
-
 
 }
 

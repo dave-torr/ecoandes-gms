@@ -45,6 +45,12 @@ export default function RaflePage(){
     },[])
 
 
+    if(raffleParticipants){
+        console.log(raffleParticipants)
+
+    }
+
+
 
     // useEffect(()=>{
     //     if (raffleParticipants){
@@ -55,8 +61,10 @@ export default function RaflePage(){
 
     const eventNameSwitcher=(eventDate)=>{
         let eventCity;
-        let testDate = new Date("2022-12-10").toDateString()
-        let testDate2 = new Date("2022-12-11").toDateString()
+        let testDate = new Date("2022-12-22").toDateString()
+        let testDate2 = new Date("2022-12-21").toDateString()
+
+
         let chicagoDate = new Date("2023-01-15").toDateString()
         let chicagoDate2 = new Date("2023-01-16").toDateString()
         let bostonDate = new Date("2023-01-22").toDateString()
@@ -96,8 +104,8 @@ export default function RaflePage(){
                 eventCity= "Dallas"
                 break;
 
-            case testDate || testDate2:
-                eventCity= "it workszz"
+            case toDate.toDateString():
+                eventCity= "Miami"
                 break;
         }
         return(<>{eventCity}</>)

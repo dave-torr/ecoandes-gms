@@ -91,7 +91,7 @@
     justify-content: space-between;
     align-items: center;
     display: flex;
-    background-color: var(--brick-red);
+    background-color: var(--ltc-teal);
     z-index: 50;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.22);
     color: white;
@@ -249,7 +249,9 @@
     .generalNavBar{
         width: 100%;
     }
-
+    .naviLogo3{
+        width: 130px;
+    }
 
 }
 @media (max-width: 600px) {
