@@ -24,7 +24,7 @@ import Filter3Icon from '@mui/icons-material/Filter3';
 import Filter4Icon from '@mui/icons-material/Filter4';
 import Filter5Icon from '@mui/icons-material/Filter5';
 
-import EcoAndesLogo from "./../public/assets/logos/condor1.png"
+import LTCTypeface from "./../public/assets/logos/LTCTypeface.png"
 
 import Dialog from '@mui/material/Dialog';
 
@@ -208,7 +208,7 @@ export function TourTypeCard(props){
     </>)
 }
 
-let condorMiniLogo = <Image src={EcoAndesLogo} alt="EcoAndes Travel Logo" width={35} height={35} />
+
 
 export function TourDisplayer(props){
 
@@ -350,7 +350,7 @@ export function TourDisplayer(props){
                         <><Image
                             src={selectedImg.src}
                             alt={selectedImg.alt}      
-                            width={2000}
+                            width={1800}
                             height={1125}
                         />
                         <h3>{selectedImg.alt}</h3>
@@ -422,7 +422,7 @@ export function TourDisplayer(props){
         if(props.breadcrumb){
         return(<>
             <div className={styles.breadcrumbNaviCont}>
-                 {condorMiniLogo}
+                <Image src={LTCTypeface} alt="LTC Travel Logo" width={55} height={30} />
                 <Link href="/tours" >
                     <a>{"->"} &nbsp; itineraries </a>
                 </Link>
@@ -470,7 +470,7 @@ export function TourDisplayer(props){
         return(<>
         <footer>
             <div className={styles.footerBar} >
-                {condorMiniLogo} &nbsp; &nbsp; &nbsp;
+                <Image src={LTCTypeface} alt="LTC Travel Logo" width={55} height={30} /> &nbsp; &nbsp; &nbsp;
                 {aTour.tripName}
             </div>
             
