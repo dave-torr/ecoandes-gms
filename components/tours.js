@@ -378,10 +378,10 @@ export function TourDisplayer(props){
         let countryList = aTour.countryList.map((elem, i)=><React.Fragment key={i}> { i >0 &&<> / </>}{elem} </React.Fragment>)
         return(<>
             <div className={styles.tourIntroCont}>
-                <div className={styles.tourCountryList}>        
+                <div className={styles.tourCountryList}>
                     Destinations:&nbsp;{countryList}</div>
                 <div className={styles.tourTitleBar}>
-                    {aTour.tripName}</div>
+                    {aTour.tripName} | {aTour.duration} Days</div>
                 {aTour.startingPlace&& <>
                 <div className={styles.startingplace}>
                     Starting from {aTour.startingPlace}</div>
