@@ -245,8 +245,6 @@
             "tips"
         ]
     },
-
-
     {
         "tripName": "Classic Choquequirao",
         "id": "choquequirao-trek-4D",
@@ -289,7 +287,7 @@
                     "carry horses/donkeys, muleteers and emergency horse"
                 ],
                 "trekData":{
-                    "totalTrekTime": "6 to 7 hours"
+                    "totalTrekTime": "7 - 8 hours"
                 }
             },
             {
@@ -342,9 +340,8 @@
             "full camping equipment (kitchen, dining and toilet tents)"
         ],
         "notIncluded": [
-            "international/regional flights",
-            "additional Inca Trail porters",
             "personal travel insurance (REQUIRED)",
+            "international/regional flights",
             "personal trekking gear",
             "personal expenses",
             "beverages",
