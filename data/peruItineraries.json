@@ -28,7 +28,7 @@
             },
             {
                 "dayTitle": "Lima - Cusco + City Tour",
-                "dayDescription": "Morning transfer to the airport in Lima to head to Cusco. After your arrival in Cusco, you will be welcomed and transferred to your chosen hotel. After your check in, we will have some time to settle in, and adapt to the high altitude (3400 m / 11152 ft) of the city. In the afternoon, a guided city tour of Cusco will be arranged. The tour starts with a walk to visit the Plaza de Armas with its beautiful colonial buildings and churches including the Cathedral. Then we walk to Santo Domingo Church where we find the impressive Koricancha Temple with exquisite stonework and carvings, to finally visit the nearby ruins of Cusco: the impressive Inca fortress of Sacsayhuaman, Quenko, and the Inca bath of Tambo Machay. Our transport will drop us off at the hotel in the late afternoon",
+                "dayDescription": "Morning transfer to the airport in Lima to head to Cusco. After your arrival in Cusco, you will be welcomed and transferred to your chosen hotel. After your check in, we will have some time to settle in, and adapt to the high altitude (11,150ft || 3,400m) of the city. In the afternoon, a guided city tour of Cusco will be arranged. The tour starts with a walk to visit the Plaza de Armas with its beautiful colonial buildings and churches including the Cathedral. Then we walk to Santo Domingo Church where we find the impressive Koricancha Temple with exquisite stonework and carvings, to finally visit the nearby ruins of Cusco: the impressive Inca fortress of Sacsayhuaman, Quenko, and the Inca bath of Tambo Machay. Our transport will drop us off at the hotel in the late afternoon",
                 "dayInclusions": [
                     "Hotel breakfast"
                 ]
@@ -41,12 +41,16 @@
                 ]
             },
             {
-                "dayTitle": "Cusco – Pisca q´uchu (Km 82) – Wuayllabamba – Ayapata Camp (3500m / 11480ft)",
-                "dayDescription": "The day begins early, between 05:00 to 5:30 a.m. with a pick-up service from the hotels in Cusco. We will drive across villages such as Yucay, Urubamba and Ollantaytambo located along the Sacred Valley of the Incas. After a 3-hour drive we will arrive at the place known as Kilometer 82 (2600m / 8528ft).  This point is where the first passenger control booth is located and here all tourists must register to be able to start the trek. From this place, 43 kms of mountains, Andean valleys, rivers and lush cloud and tropical forests separate us from Machu Picchu. On our way to our first camp at Ayapata, we trek the first part on a mainly flat path with slight ascents, taking us approximately 2 until we reach Llactapata’s (town in the heights), an interesting archaeological complex. Then we will continue into the valley of the Kusichaca River, from where our route follows a slight ascent up to Wuayllabamba village located at 3100 meters (10168feet). Here will have lunch and after a short rest we continue up to 3 Piedras and then crossing a beautiful forest oh typical Andean trees, we will arrive to our first camp on Ayapata located at 3500 meters of altitude",
+                "dayTitle": "Cusco – Pisca q´uchu (Km 82) – Wuayllabamba – Ayapata Camp (11,480ft || 3,500m)",
+                "dayDescription": "The day begins early, between 05:00 to 5:30 a.m. with a pick-up service from the hotels in Cusco. We will drive across villages such as Yucay, Urubamba and Ollantaytambo located along the Sacred Valley of the Incas. After a 3-hour drive we will arrive at the place known as Kilometer 82 (8,530ft || 2,600m).  This point is where the first passenger control booth is located and here all tourists must register to be able to start the trek. From this place, 43 kms of mountains, Andean valleys, rivers and lush cloud and tropical forests separate us from Machu Picchu. On our way to our first camp at Ayapata, we trek the first part on a mainly flat path with slight ascents, taking us approximately 2 until we reach Llactapata’s (town in the heights), an interesting archaeological complex. Then we will continue into the valley of the Kusichaca River, from where our route follows a slight ascent up to Wuayllabamba village located at 10,170ft || 3,100m. Here will have lunch and after a short rest we continue up to 3 Piedras and then crossing a beautiful forest oh typical Andean trees, we will arrive to our first camp on Ayapata located at 11,480ft || 3,500m of altitude",
                 "dayInclusions": [
                     "Hotel breakfast",
-                    "Lunch Box",
-                    "Camp Dinner"
+                    "Meals: Lunch Box + dinner",
+                    "shared camping equipment",
+                    "trekking staff with cook and assistants",
+                    "Car and Train Transportation to Trailhead",
+                    "porter service (up to 8kg per participant)",
+                    "english/spanish speaking trekking guide services"
                 ],
                 "trekData":{
                     "totalTrekTime": "6 to 7 hours",
@@ -54,12 +58,14 @@
                 }
             },
             {
-                "dayTitle": "Ayapata Camp – Chaquicocha Camp (3680m / 12033 ft)",
-                "dayDescription": "At 7 a.m. and after breakfast, we begin our second day of our adventure starting with a way up to the highest point of the whole circuit climbing an altitude of 520 meters to reach the pass known as Warmihuañusca (“dead woman”) located at 4200 m of altitude (13776 ft). The slow step ascent will take about 3 hours approximately. From the pass, we can enjoy an astonishing view of the surroundings and the magnificent landscape. This is a windy area, so it is important to wear warm clothing. After enjoying the great views, we overcome the pass and continue our way down to the Pacaymayo Camp located at 3500m (11480ft) where we will have lunch. After a short rest we continue our trek climbing up to the Inca remains known as Runkurakay at 3800m / 12465ft. Then we climb to the second-high pass located at 3940m / 12916ft and following a step descend on typical Inca stone stairs we will reach the entrance to the beautiful Sayaqmarka Inca town (3600m / 11808ft). After visiting this amazing Inca remains, we continue our hike to finally reach our Chaquicocha Camp where our porters welcome us with a nice warm tea and snacks",
+                "dayTitle": "Ayapata Camp – Chaquicocha Camp (12,070ft || 3,680m)",
+                "dayDescription": "At 7 a.m. and after breakfast, we begin our second day of our adventure starting with a way up to the highest point of the whole circuit climbing an altitude of 1,700ft || 520m to reach the pass known as Warmihuañusca (“dead woman”) located at 13,780ft || 4,200m of altitude. The slow steep ascent will take about 3 hours approximately. From the pass, we can enjoy an astonishing view of the surroundings and the magnificent landscape. This is a windy area, so it is important to wear warm clothing. After enjoying the great views, we overcome the pass and continue our way down to the Pacaymayo Camp located at 11,480ft || 3,500m  where we will have lunch. After a short rest we continue our trek climbing up to the Inca remains known as Runkurakay at 12,470ft || 3,800m. Then we climb to the second-high pass located at 12,916ft || 3,940m and following a step descend on typical Inca stone stairs we will reach the entrance to the beautiful Sayaqmarka Inca town (11,808ft || 3,600m). After visiting this amazing Inca remains, we continue our hike to finally reach our Chaquicocha Camp where our porters welcome us with a nice warm tea and snacks. Enjoy dinner and a well-deserved rest",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Camp Lunch",
-                    "Camp Dinner"
+                    "shared camping equipment",
+                    "Meals: Breakfast + Lunch Box + Dinner",
+                    "porter service (up to 8kg per participant)",
+                    "trekking staff with cook and assistants",
+                    "english/spanish speaking trekking guide services"
                 ],
                 "trekData":{
                     "totalTrekTime": "7 to 8 hours",
@@ -67,12 +73,14 @@
                 }
             },
             {
-                "dayTitle": "Chaquicocha Camp – Phuyupatamarca - Wiñayhuayna",
-                "dayDescription": "In our third day we begin hiking along a beautiful cloud forest with impressive views of the profound mountain gorges located on the northwest side of the Inca Trail. Along the way we will cross the tunnels carved in granitic rock and later, we reach the 3rd high pass at 3670m / 12038ft and then promptly we will arrive to the site known as Phuyupatamarka (“town above the clouds”) located at 3600m / 11808ft) from where weather permitting we can enjoy fabulous views of the Urubamba gorge. Then continuing out descend, we face an impressive array of endless rock steps until we arrive to the Intipata site located at 2850m (9348ft), an incredible complex of terraces and platforms built in the middle of the hillside of a mountain covered by thick vegetation. Our today’s hike finally leads us to Wiñay Wuayna camp (“Forever Young”) located at 2700m (8856ft). after enjoying a hearty lunch, we will make a visit to the amazing Inca remains of Wiñay Wuayna situated not far from our camp. Enjoy dinner and a well-deserved rest",
+                "dayTitle": "Chaquicocha Camp – Phuyupatamarca - Wiñay Huayna",
+                "dayDescription": "In our third day we begin hiking along a beautiful cloud forest with impressive views of the profound mountain gorges located on the northwest side of the Inca Trail. Along the way we will cross the tunnels carved in granitic rock and later, we reach the 3rd high pass at 12,040ft || 3,670m  and then promptly we will arrive to the site known as Phuyupatamarka (“town above the clouds”) located at 11,808ft || 3,600m, from where, weather permitting we can enjoy fabulous views of the Urubamba gorge. Then continuing out descend, we face an impressive array of endless rock steps until we arrive to the Intipata site located at 9,350ft || 2,850m, an incredible complex of terraces and platforms built in the middle of the hillside of a mountain covered by thick vegetation. Our today’s hike finally leads us to Wiñay Huayna camp (“Forever Young”) located at 8,856ft || 2,700m. after enjoying a hearty lunch, we will make a visit to the amazing Inca remains of Wiñay Huayna situated not far from our camp with snacks and tea. Dinner and rest will follow ",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Camp Lunch",
-                    "Camp Dinner"
+                    "shared camping equipment",
+                    "Meals: Breakfast + Lunch Box + Dinner",
+                    "porter service (up to 8kg per participant)",
+                    "trekking staff with cook and assistants",
+                    "english/spanish speaking trekking guide services"
                 ],
                 "trekData":{
                     "totalTrekTime": "4 to 5 hours",
@@ -80,14 +88,14 @@
                 }
             },
             {
-                "dayTitle": "Wiñay Wuayna Camp – Machu Picchu – Cusco",
-                "dayDescription": "The day begins earlier (3:30 a.m.) than usually with a light breakfast and then we walk to the control post where we must wait for about 1.5 hours until the sky starts clearing and the park guard will permit us to start the hike in the last part of the Inca Trail. After 1.5 hours of a nice hike along cloud forest, we arrive at the famous Inti Punku ('Sun Gate') at 2700m (8856ft) from where and weather permitting, we will have the first impressive views of the majestic Inca City of Machu Picchu. This view is overwhelming, making to our senses to fill with an indescriptible emotion when observing that fabulous view of the Inca City and of the amazing landscape surrounding it. From the Inti Punku it is only 1km more to arrive to the city and enjoy a guided visit to the most important archeological discoveries of recent times. At about 13:00 we will be transported, by bus, from the citadel down to the village of Aguas Calientes where we will enjoy a farewell lunch and afterwards, we go to the train station for our train ride back to Ollantaytambo town where our private car and driver is waiting to transport us back to our hotels in Cusco",
+                "dayTitle": "Wiñay Huayna Camp – Machu Picchu – Cusco",
+                "dayDescription": "The day begins very early (3:30 a.m.) with a light breakfast and then we walk to the control post where we must wait for about 1.5 hours until the sky starts clearing and the park guard will permit us to start the hike in the last part of the Inca Trail. After 1.5 hours of a nice hike along cloud forest, we arrive at the famous Inti Punku ('Sun Gate') at 8,856ft || 2,700m from where and weather permitting, we will have the first impressive views of the majestic Inca City of Machu Picchu. This view is overwhelming, making to our senses to fill with an indescriptible emotion when observing that fabulous view of the Inca City and of the amazing landscape surrounding it. From the Inti Punku it is only about 0.6m || 1km more to arrive to the citadel where we will enjoy of a guided visit to the most important archeological discoveries of recent times. At about 13:00 we will be transported, by bus, from the citadel down to the village of Aguas Calientes where we will enjoy a farewell lunch and afterwards, we go to the train station for our train ride back to Ollantaytambo town where our private car and driver is waiting to transport us back to our hotels in Cusco",
                 "dayInclusions": [
                     "Camp breakfast",
-                    "Box Lunch"
+                    "Farewell Lunch"
                 ],
                 "trekData":{
-                    "totalTrekTime": "3 to 3.5 hours (including visti to Machu Picchu",
+                    "totalTrekTime": "3 to 3.5 hours (including visit to Machu Picchu)",
                     "distanceCovered": 5
                 }
             },
@@ -147,7 +155,7 @@
         "dayByDay":[
             {
                 "dayTitle": "Cusco – Pisca q´uchu (Km 82) – Wuayllabamba – Ayapata Camp (11,480ft || 3,500m)",
-                "dayDescription": "The day begins early, between 05:00 to 5:30 a.m. with a pick-up service from the hotels in Cusco. We will drive across villages such as Yucay, Urubamba and Ollantaytambo located along the Sacred Valley of the Incas. After a 3-hour drive we will arrive at the place known as Kilometer 82 (8,528ft || 2,600m). This point is where the first passenger control booth is located and here all tourists must register to be able to start the trek. From this place, 43 kms of mountains, Andean valleys, rivers and lush cloud and tropical forests separate us from Machu Picchu. On our way to our first camp at Ayapata, we trek the first part on a mainly flat path with slight ascents, taking us approximately 2 until we reach Llactapata’s (town in the heights), an interesting archaeological complex. Then we will continue into the valley of the Kusichaca River, from where our route follows a slight ascent up to Wuayllabamba village (10,168ft || 3,100m). Here will have lunch and after a short rest and following the sides of the Llullucha river, we continue up to 3 Piedras and then crossing a beautiful forest oh typical Andean trees, we will arrive to our first camp on Ayapata located at 11,480 ft || 3,500 m of altitude where our porters welcome us with a nice warm tea and snacks",
+                "dayDescription": "The day begins early, between 05:00 to 5:30 a.m. with a pick-up service from the hotels in Cusco. We will drive across villages such as Yucay, Urubamba and Ollantaytambo located along the Sacred Valley of the Incas. After a 3-hour drive we will arrive at the place known as Kilometer 82 (8,530ft || 2,600m). This point is where the first passenger control booth is located and here all tourists must register to be able to start the trek. From this place, 43 kms of mountains, Andean valleys, rivers and lush cloud and tropical forests separate us from Machu Picchu. On our way to our first camp at Ayapata, we trek the first part on a mainly flat path with slight ascents, taking us approximately 2 until we reach Llactapata’s (town in the heights), an interesting archaeological complex. Then we will continue into the valley of the Kusichaca River, from where our route follows a slight ascent up to Wuayllabamba village (10,170ft || 3,100m). Here will have lunch and after a short rest and following the sides of the Llullucha river, we continue up to 3 Piedras and then crossing a beautiful forest oh typical Andean trees, we will arrive to our first camp on Ayapata located at 11,480ft || 3,500m of altitude where our porters welcome us with a nice warm tea and snacks. Enjoy dinner and a well-deserved rest",
                 "dayInclusions": [
                     "Meals: Lunch Box + dinner",
                     "shared camping equipment",
@@ -162,14 +170,13 @@
                 }
             },
             {
-                "dayTitle": "Ayapata Camp – Chaquicocha Camp (12,033 ft || 3,680m)",
-                "dayDescription": "At 7 a.m. and after breakfast, we begin our second day of our adventure starting with a way up to the highest point of the whole circuit climbing an altitude of 1,700ft || 520 meters to reach the pass known as Warmihuañusca (“dead woman”) located at 13,776 ft || 4,200 m of altitude. The slow steep ascent will take about 3 hours approximately. From the pass, we can enjoy an astonishing view of the surroundings and the magnificent landscape. This is a windy area, so it is important to wear warm clothing. After enjoying the great views, we overcome the pass and continue our way down to the Pacaymayo Camp located at 11,480ft || 3,500m  where we will have lunch. After a short rest we continue our trek climbing up to the Inca remains known as Runkurakay at 12,465ft || 3,800m. Then we climb to the second-high pass located at 12,916ft || 3,940m and following a step descend on typical Inca stone stairs we will reach the entrance to the beautiful Sayaqmarka Inca town (11,808ft || 3,600m). After visiting this amazing Inca remains, we continue our hike to finally reach our Chaquicocha Camp where our porters welcome us with a nice warm tea and snacks",
+                "dayTitle": "Ayapata Camp – Chaquicocha Camp (12,070ft || 3,680m)",
+                "dayDescription": "At 7 a.m. and after breakfast, we begin our second day of our adventure starting with a way up to the highest point of the whole circuit climbing an altitude of 1,700ft || 520m to reach the pass known as Warmihuañusca (“dead woman”) located at 13,776ft || 4,200 m of altitude. The slow steep ascent will take about 3 hours approximately. From the pass, we can enjoy an astonishing view of the surroundings and the magnificent landscape. This is a windy area, so it is important to wear warm clothing. After enjoying the great views, we overcome the pass and continue our way down to the Pacaymayo Camp located at 11,480ft || 3,500m  where we will have lunch. After a short rest we continue our trek climbing up to the Inca remains known as Runkurakay at 12,470ft || 3,800m. Then we climb to the second-high pass located at 12,916ft || 3,940m and following a step descend on typical Inca stone stairs we will reach the entrance to the beautiful Sayaqmarka Inca town (11,808ft || 3,600m). After visiting this amazing Inca remains, we continue our hike to finally reach our Chaquicocha Camp where our porters welcome us with a nice warm tea and snacks. Enjoy dinner and a well-deserved rest",
                 "dayInclusions": [
                     "shared camping equipment",
                     "Meals: Breakfast + Lunch Box + Dinner",
                     "porter service (up to 8kg per participant)",
                     "trekking staff with cook and assistants",
-                    "Car and Train Transportation to Trailhead",
                     "english/spanish speaking trekking guide services"
                 ],
                 "trekData":{
@@ -178,12 +185,14 @@
                 }
             },
             {
-                "dayTitle": "Chaquicocha Camp – Phuyupatamarca - Wiñayhuayna",
-                "dayDescription": "In our third day we begin hiking along a beautiful cloud forest with impressive views of the profound mountain gorges located on the northwest side of the Inca Trail. Along the way we will cross the tunnels carved in granitic rock and later, we reach the 3rd high pass at 12,038ft ||3,670m  and then promptly we will arrive to the site known as Phuyupatamarka (“town above the clouds”) located at 11,808ft || 3,600m, from where, weather permitting we can enjoy fabulous views of the Urubamba gorge. Then continuing out descend, we face an impressive array of endless rock steps until we arrive to the Intipata site located at 9,348ft || 2,850m, an incredible complex of terraces and platforms built in the middle of the hillside of a mountain covered by thick vegetation. Our today’s hike finally leads us to Wiñay Wuayna camp (“Forever Young”) located at 8,856ft || 2,700m. after enjoying a hearty lunch, we will make a visit to the amazing Inca remains of Wiñay Wuayna situated not far from our camp. Enjoy dinner and a well-deserved rest",
+                "dayTitle": "Chaquicocha Camp – Phuyupatamarca - Wiñay Huayna",
+                "dayDescription": "In our third day we begin hiking along a beautiful cloud forest with impressive views of the profound mountain gorges located on the northwest side of the Inca Trail. Along the way we will cross the tunnels carved in granitic rock and later, we reach the 3rd high pass at 12,040ft || 3,670m  and then promptly we will arrive to the site known as Phuyupatamarka (“town above the clouds”) located at 11,808ft || 3,600m, from where, weather permitting we can enjoy fabulous views of the Urubamba gorge. Then continuing out descend, we face an impressive array of endless rock steps until we arrive to the Intipata site located at 9,350ft || 2,850m, an incredible complex of terraces and platforms built in the middle of the hillside of a mountain covered by thick vegetation. Our today’s hike finally leads us to Wiñay Huayna camp (“Forever Young”) located at 8,856ft || 2,700m. after enjoying a hearty lunch, we will make a visit to the amazing Inca remains of Wiñay Huayna situated not far from our camp with snacks and tea. Dinner and rest will follow ",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Camp Lunch",
-                    "Camp Dinner"
+                    "shared camping equipment",
+                    "Meals: Breakfast + Lunch Box + Dinner",
+                    "porter service (up to 8kg per participant)",
+                    "trekking staff with cook and assistants",
+                    "english/spanish speaking trekking guide services"
                 ],
                 "trekData":{
                     "totalTrekTime": "4 to 5 hours",
@@ -191,18 +200,21 @@
                 }
             },
             {
-                "dayTitle": "Wiñay Wuayna Camp – Machu Picchu – Cusco",
-                "dayDescription": "The day begins earlier (3:30 a.m.) than usually with a light breakfast and then we walk to the control post where we must wait for about 1.5 hours until the sky starts clearing and the park guard will permit us to start the hike in the last part of the Inca Trail. After 1.5 hours of a nice hike along cloud forest, we arrive at the famous Inti Punku ('Sun Gate') at 2700m (8856ft) from where and weather permitting, we will have the first impressive views of the majestic Inca City of Machu Picchu. This view is overwhelming, making to our senses to fill with an indescriptible emotion when observing that fabulous view of the Inca City and of the amazing landscape surrounding it. From the Inti Punku it is only 1km more to arrive to the city and enjoy a guided visit to the most important archeological discoveries of recent times. At about 13:00 we will be transported, by bus, from the citadel down to the village of Aguas Calientes where we will enjoy a farewell lunch and afterwards, we go to the train station for our train ride back to Ollantaytambo town where our private car and driver is waiting to transport us back to our hotels in Cusco",
+                "dayTitle": "Wiñay Huayna Camp – Machu Picchu – Cusco",
+                "dayDescription": "The day begins very early (3:30 a.m.) with a light breakfast and then we walk to the control post where we must wait for about 1.5 hours until the sky starts clearing and the park guard will permit us to start the hike in the last part of the Inca Trail. After 1.5 hours of a nice hike along cloud forest, we arrive at the famous Inti Punku ('Sun Gate') at 8,856ft || 2,700m from where and weather permitting, we will have the first impressive views of the majestic Inca City of Machu Picchu. This view is overwhelming, making to our senses to fill with an indescriptible emotion when observing that fabulous view of the Inca City and of the amazing landscape surrounding it. From the Inti Punku it is only about 0.6m || 1km more to arrive to the citadel where we will enjoy of a guided visit to the most important archeological discoveries of recent times. At about 13:00 we will be transported, by bus, from the citadel down to the village of Aguas Calientes where we will enjoy a farewell lunch and afterwards, we go to the train station for our train ride back to Ollantaytambo town where our private car and driver is waiting to transport us back to our hotels in Cusco",
                 "dayInclusions": [
                     "Camp breakfast",
-                    "Box Lunch"
+                    "Farewell Lunch",
+                    "english/spanish speaking trekking guide services",
+                    "car and Train Transportation to Cusco"
                 ],
                 "trekData":{
-                    "totalTrekTime": "3 to 3.5 hours (including visti to Machu Picchu)",
+                    "totalTrekTime": "3 to 3.5 hours (including visit to Machu Picchu)",
                     "distanceCovered": 5
                 }
             }
         ],
+        "recomendedMonths": "May to December",
         "tourType": "trekking",
         "startingPlace": "Cusco",
         "prices": {
@@ -248,15 +260,14 @@
         "https://dsm04pap002files.storage.live.com/y4msLGxmKG_8w-SSRvdT3jv1gsvA2LeXuW0_acOPC03P-b6nwm_x18153psCOiESClmQwoPuv11Ajaqnbl-vwgEzSHb4FxiQy1pJNaL9l1P_ZTwCpeWnacVAdZFAjkCBbhANAPcFCW5BBwRDO-JrR-KlzR9pm5_Ij8puM2d3AoMSxlYQsmf7r2_ydwg6WVfebfg?width=2000&height=1150&cropmode=none",
         "https://dsm04pap002files.storage.live.com/y4mI-6_lXzn-2ZDlcwOLKDycyHkQ0DTLhdcRzWvlh6XfGInVBVHbLP4eE-o20Be58V7Cx6--TvjYvMJI7MBnQ_v5XcoYJZiaC5hCa2ZH3mUhrh5W8t0hZnV8UnRvWEl2ywF4r6Q12F3MwGmZXlPXQd7LZ35X9tMJcc2Xxe93Vu4IcELlgZtPbFi7slbJ57u3ZMX?width=2000&height=1150&cropmode=none"
         ],
-        "tripDescription":"The Choquequirao Trail and Inca Ruins rival in beauty and importance with the world-famous Machu Picchu although its popularity is not as marked. The complex is located on a high ridge spur at almost 1800 meters of altitude, above the raging glacier-fed Apurimac River, surrounded by the beautiful towering Salcantay and Humantay snow-capped peaks. Choquequirao is an amazing example of an elite Inca ceremonial center, a city dedicated to worship the “Pachamama”, the Andean mother earth, and “the Apus”, the mountain gods as well as other divinities such as rivers and other nature elements. The various levels of temples, palaces, canals, agricultural areas and aqueducts are fantastic, giving a vivid example of the amazing Inca building techniques. Choquequirao means 'Cradle of Gold' in Quechua and it was in 1710 when the existence of Choquequirao was first mentioned. Today only 30% of the whole city is recovered from the forest, making Choquequirao archaeological park the largest and most interesting Inca City in America",
+        "tripDescription":"The Choquequirao Trail and Inca Ruins rival in beauty and importance with the world-famous Machu Picchu although its popularity is not as marked. The complex is located on a high ridge spur at almost 5,900 ft || 1,800 m of altitude, above the raging glacier-fed Apurimac River, surrounded by the beautiful towering Salcantay and Humantay snow-capped peaks. Choquequirao is an amazing example of an elite Inca ceremonial center, a city dedicated to worship the “Pachamama”, the Andean mother earth, and “the Apus”, the mountain gods as well as other divinities such as rivers and other nature elements. The various levels of temples, palaces, canals, agricultural areas and aqueducts are fantastic, giving a vivid example of the amazing Inca building techniques. Choquequirao means 'Cradle of Gold' in Quechua and it was in 1710 when the existence of Choquequirao was first mentioned. Today only 30% of the whole city is recovered from the forest, making Choquequirao archaeological park the largest and most interesting Inca City in America",
         "countryList": ["peru"],
         "dayByDay":[
             {
                 "dayTitle": "Cusco - Sayhuite - Cachora - Capuliyoc - Chikiska ",
-                "dayDescription": "Our tour starts with an early departure from Cusco, where our private transport will take us on a 4-hour drive to the town of Cachora. On the way, we shall stop at the archaeological site of Sayhuite before descending to the mountain village of Cachora located at 2910 meters of altitude (9543ft). After lunch, we begin our 3-hour hike to the place known as Capuliyoc (2915m / 9561ft) from where we have our first beautiful views of the Apurimac valley stretching below as well as the snow-capped peaks of Padreyoc and Wayna Cachora. From here, we make a steep downhill descent for approximately 3 hours to our campsite (1840m/6035ft). ",
+                "dayDescription": "Our tour starts with an early departure from Cusco, where our private transport will take us on a 4-hour drive to the town of Cachora. On the way, we shall stop at the archaeological site of Sayhuite before descending to the mountain village of Cachora located at 9,550ft || 2,910m of altitude. After lunch, we begin our 3-hour hike to the place known as Capuliyoc (9,560ft || 2915m) from where we have our first beautiful views of the Apurimac valley stretching below as well as the snow-capped peaks of Padreyoc and Wayna Cachora. From here, we make a steep downhill descent for approximately 3 hours to our campsite (1840 m/6035ft). ",
                 "dayInclusions": [
-                    "Lunch Box",
-                    "Camp Dinner"
+                    "Meals: Lunch Box + dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "6 to 7 hours"
@@ -266,9 +277,7 @@
                 "dayTitle": "Chikiska - Choquequirao ruins",
                 "dayDescription": "Our first hike (1hour:30 minutes) will be early in the morning, and will take us down to Playa Rosalinas, to the shores of the magnificent Apurimac River (1500m/4920ft). We will continue with our steep climb to Santa Rosa (2095m / 6873ft); where we can take a refreshing break, rest and buy water (from some local merchants!). We continue our upward climb for 4 to 5 hours towards Marampata (2800m / 9184ft), a flat place where we can rest while enjoying a splendid view of Choquequirao. This spot also has bathrooms and a nice area to have lunch. After our break, we start our final 2-hour hike to our campsite located at 3110m (10120ft) next to the Choquequirao Inca Ruins. We will spend the late evening in the ruins, where we will watch the sunset, and with some luck, see condors",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "Camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "6 to 7 hours"
@@ -278,9 +287,7 @@
                 "dayTitle": "Choquequirao ruins - Santa Rosa ",
                 "dayDescription": "In the morning, we will have some time to fully explore the ruins before we start descending to the Apurimac canyon for about 5 hours. We will head to our tropical campsite, located at Santa Rosa village (2090m/6855ft",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "Camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "5 hours"
@@ -290,14 +297,14 @@
                 "dayTitle": "Santa Rosa - Cachora - Cusco",
                 "dayDescription": "Early in the morning we start our descent to the shores of the river followed by an arduous climb that is rewarded with spectacular views. We ascend for about four hours until we reach our picnic spot at Capuliyoc. Afterwards we have our final 2 hours hike to the village of Cachora where our private car will be waiting to transport us back to Cusco (4 hours drive). ",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Box Lunch"
+                    "Meals: Breakfast + Lunch Box"
                 ],
                 "trekData":{
                     "totalTrekTime": "2 hours"
                 }
             }
         ],
+        "recomendedMonths": "May to December",
         "tourType": "trekking",
         "startingPlace": "Cusco",
         "prices": {
@@ -341,12 +348,12 @@
         "https://dsm04pap002files.storage.live.com/y4mlI22F2TOXBW4mk_g_RDHvK3ZIkR5UQTmHNSXcaL9kdSWV2IrtuVii-W9PwOQ_r1UXXe1bkGidghElIJ5-ZF3CGRWMa4Yn-ImFhy9xcjTd9KrGfxwCe5BPpVu6WEoJtqHsc2OSOwQ33MBA7IeE2H3r1ZsTCWGhwEcg2Vybs3Vv8B96ehQwv6esMQCqPhpUtqb?width=2000&height=1150&cropmode=none",
         "https://dsm04pap002files.storage.live.com/y4mhNQDuNN9XKTT6lXKchSs3kKRYjv0Z-MxWPq8enC7NSPRBTDAW7btmxrZNnwXVp4nErJ9APZTRxXUTcYH1ggKlIxTtWDQBp5JNCBaqo_uLYt6UzQQ8GrML3pTHN9gTwbyrC-p0o-3IU8IFKrcC0JIYoUt4JhQY946F9WI6Q_skCyoeMf6EVHN3i1rUojYbZl0?width=2000&height=1150&cropmode=none"
         ],
-        "tripDescription":"This hike goes to Machu Picchu Trek, following the last part of the ancient trail known as the Qapac Nan, the Sacred Inca Trail to Machu Picchu. Enjoy wonderful and impressive views of the Urubamba valley, visit the beautiful Wiñayhuayna archeological remains, and finally arrive in Machu Picchu",
+        "tripDescription":"This hike goes to Machu Picchu Trek, following the last part of the ancient trail known as the Qapac Nan, the Sacred Inca Trail to Machu Picchu. Enjoy wonderful and impressive views of the Urubamba valley, visit the beautiful Wiñay Huayna archeological remains, and finally arrive in Machu Picchu",
         "countryList": ["peru"],
         "dayByDay":[
             {
-                "dayTitle": "Cusco – Wiñayhuayna – Aguas Calientes",
-                "dayDescription": "Early morning from your hotel, your tour starts with the transfer with a car to the train station in Ollantaytambo, situated at about 1h30 from Cusco. From here we board the train (1h30) to the point known as 'Km. 104' (7,380 ft || 2,250 m). Here we have our check-in at the Warden’s post of Chachabamba Incas’ Ruins. From this point, we will begin our day hike (4 hours) to ascend 1,500 ft. || 450 m; following the Inca Trail to the beautiful Wiñay Wuayna Inca ruins (at 8,850 ft. || 2700 m above sea level). Surrounded by an impressive landscape, the steps lead up to one of the largest and best-preserved Inca Ruins of the area. Once there we will spend some time visiting these impressive mountain side buildings and then we continue a 1.5 to 2 hours hike towards The Inti Punku or Sun-Gate (at 8,850 ft. || 2700 m above sea level) from where, and weather permitting, we will enjoy an amazing view of the Machu Picchu citadel. Walk down to the Machu Picchu transport station to return to the town of Aguas Calientes to overnight in a local hotel",
+                "dayTitle": "Cusco – Wiñay Huayna – Aguas Calientes",
+                "dayDescription": "Early morning from your hotel, your tour starts with the transfer with a car to the train station in Ollantaytambo, situated at about 1h30 from Cusco. From here we board the train (1h30) to the point known as 'Km. 104' (7,380 ft || 2,250 m). Here we have our check-in at the Warden’s post of Chachabamba Incas’ Ruins. From this point, we will begin our day hike (4 hours) to ascend 1,500 ft. || 450 m; following the Inca Trail to the beautiful Wiñay Huayna Inca ruins (at 8,850 ft. || 2700 m above sea level). Surrounded by an impressive landscape, the steps lead up to one of the largest and best-preserved Inca Ruins of the area. Once there we will spend some time visiting these impressive mountain side buildings and then we continue a 1.5 to 2 hours hike towards The Inti Punku or Sun-Gate (at 8,850 ft. || 2700 m above sea level) from where, and weather permitting, we will enjoy an amazing view of the Machu Picchu citadel. Walk down to the Machu Picchu transport station to return to the town of Aguas Calientes to overnight in a local hotel",
                 "dayInclusions": [
                     "Lunch Box",
                     "Guide Services",
@@ -362,17 +369,15 @@
                 "dayTitle": "Aguas Calientes – Machu Picchu – Cusco",
                 "dayDescription": "In the early morning, we will take the Machu Picchu public bus up to the citadel (7,972 ft || 2,430 m) where we will enjoy a visit to one of the most famous touristic places of the world. Our guided tour will take us through the main points of the amazing complex, including the religious, agricultural, and urban areas. In the afternoon, we take the public bus from Machu Picchu to Aguas Calientes to pick up our return train to Ollantaytambo from where a car transfer takes you back to Cusco",
                 "dayInclusions": [
-                    "Guide Services",
                     "Hotel breakfast",
+                    "Guide Services",
                     "Machu Picchu Entrance Fee",
                     "Machu Picchu Public Bus Service",
-                    "Bus and Train Transportation to Cusco"
+                    "car and Train Transportation to Cusco"
                 ]
             }
-        ],
-
-        "recomendedMonths": [],
-
+    ],
+        "recomendedMonths": "May to December",
         "tourType": "trekking",
         "startingPlace": "Cusco",
         "prices": {
@@ -415,23 +420,25 @@
         "https://dsm04pap002files.storage.live.com/y4mlI22F2TOXBW4mk_g_RDHvK3ZIkR5UQTmHNSXcaL9kdSWV2IrtuVii-W9PwOQ_r1UXXe1bkGidghElIJ5-ZF3CGRWMa4Yn-ImFhy9xcjTd9KrGfxwCe5BPpVu6WEoJtqHsc2OSOwQ33MBA7IeE2H3r1ZsTCWGhwEcg2Vybs3Vv8B96ehQwv6esMQCqPhpUtqb?width=2000&height=1150&cropmode=none",
         "https://dsm04pap002files.storage.live.com/y4mhNQDuNN9XKTT6lXKchSs3kKRYjv0Z-MxWPq8enC7NSPRBTDAW7btmxrZNnwXVp4nErJ9APZTRxXUTcYH1ggKlIxTtWDQBp5JNCBaqo_uLYt6UzQQ8GrML3pTHN9gTwbyrC-p0o-3IU8IFKrcC0JIYoUt4JhQY946F9WI6Q_skCyoeMf6EVHN3i1rUojYbZl0?width=2000&height=1150&cropmode=none"
         ],
-        "tripDescription":"This short voyage takes you through the sacred valley of the Incas and to Machu Picchu with a short trek, following the last part of the ancient trail known as the Qapac Nan, the Sacred Inca Trail to Machu Picchu. Explore Pisac and Ollantaytambo, two impressive ruins located in the Sacred Valley, enjoy wonderful and impressive views of the Urubamba valley, visit the beautiful Wiñayhuayna archeological remains, and finally arrive in Machu Picchu",
+        "tripDescription":"This short voyage takes you through the Sacred Valley of the Incas and to Machu Picchu with a short trek, following the last part of the ancient trail known as the Qapac Nan, the Sacred Inca Trail to Machu Picchu. Explore Pisac and Ollantaytambo, two impressive ruins located in the Sacred Valley, enjoy wonderful and impressive views of the Urubamba valley, visit the beautiful Wiñay Huayna archeological remains, and finally arrive in Machu Picchu",
         "countryList": ["peru"],
         "dayByDay":[
             {
                 "dayTitle": "Cusco – Pisac – Ollantaytambo",
-                "dayDescription": "Early morning from your hotel, our guide will pick us up and we will begin our adventure heading to the historic Pisac site on the upper edges of the Urubamba Sacred Valley. We will explore the ancient ruins of the traditional trading post, followed by a visit to the colorful Pisac Market where even today, locals proudly sell their traditional crafts. We will stop by lunch at a local restaurant, before heading to Ollantaytambo, the amazing Inca Fortress. Our last visit of the day in this site before a rejuvenating rest at a local hotel.",
+                "dayDescription": "In the morning, from your hotel, our guide will pick us up and we will begin our adventure heading to the historic Pisac site on the upper edges of the Urubamba Sacred Valley. We will explore the ancient ruins of the traditional trading post, followed by a visit to the colorful Pisac Market where even today, locals proudly sell their traditional crafts. We will stop by lunch at a local restaurant, before heading to Ollantaytambo, the amazing Inca Fortress. Our last visit of the day in this site before a rejuvenating rest at a local hotel.",
                 "dayInclusions": [
                     "Guide Services",
                     "Local Urubamba lunch",
-                    "Car Transportation to Sacred Valley and visit sites",
+                    "Entrance fee to visitor sites",
+                    "Car Transportation to Sacred Valley mentioned sites",
                     "Hotel accommodation in Ollantaytambo"
                 ]
             },
             {
-                "dayTitle": "Ollantaytambo – Wiñayhuayna – Aguas Calientes",
-                "dayDescription": "From Ollantaytambo, we board the train (1h30) to the point known as 'Km. 104' (7,380 ft || 2,250 m). Here we have our check-in at the Warden’s post of Chachabamba Incas’ Ruins. From this point, we will begin our day hike (4 hours) to ascend 1,500 ft. || 450 m; following the Inca Trail to the beautiful Wiñay Wuayna Inca ruins (at 8,850 ft. || 2700 m above sea level). Surrounded by an impressive landscape, the steps lead up to one of the largest and best-preserved Inca Ruins of the area. Once there we will spend some time visiting these impressive mountain side buildings and then we continue a 1.5 to 2 hours hike towards The Inti Punku or Sun-Gate (at 8,850 ft. || 2700 m above sea level) from where, and weather permitting, we will enjoy an amazing view of the Machu Picchu citadel. Walk down to the Machu Picchu transport station to return to the town of Aguas Calientes to overnight in a local hotel",
+                "dayTitle": "Ollantaytambo – Wiñay Huayna – Aguas Calientes",
+                "dayDescription": "From Ollantaytambo, we board the train (1h30) to the point known as 'Km. 104' (7,380 ft || 2,250 m). Here we have our check-in at the Warden’s post of Chachabamba Incas’ Ruins. From this point, we will begin our day hike (4 hours) to ascend 1,500 ft. || 450 m; following the Inca Trail to the beautiful Wiñay Huayna Inca ruins (at 8,850 ft. || 2700 m above sea level). Surrounded by an impressive landscape, the steps lead up to one of the largest and best-preserved Inca Ruins of the area. Once there we will spend some time visiting these impressive mountain side buildings and then we continue a 1.5 to 2 hours hike towards The Inti Punku or Sun-Gate (at 8,850 ft. || 2700 m above sea level) from where, and weather permitting, we will enjoy an amazing view of the Machu Picchu citadel. Walk down to the Machu Picchu transport station to return to the town of Aguas Calientes to overnight in a local hotel",
                 "dayInclusions": [
+                    "Hotel breakfast",
                     "Lunch Box",
                     "Guide Services",
                     "Hotel accommodation in Aguas Calientes",
@@ -445,17 +452,15 @@
                 "dayTitle": "Aguas Calientes – Machu Picchu – Cusco",
                 "dayDescription": "In the early morning, we will take the Machu Picchu public bus up to the citadel (7,972 ft || 2,430 m) where we will enjoy a visit to one of the most famous touristic places of the world. Our guided tour will take us through the main points of the amazing complex, including the religious, agricultural, and urban areas. In the afternoon, we take the public bus from Machu Picchu to Aguas Calientes to pick up our return train to Ollantaytambo from where a car transfer takes you back to Cusco",
                 "dayInclusions": [
-                    "Guide Services",
                     "Hotel breakfast",
+                    "Guide Services",
                     "Machu Picchu Entrance Fee",
                     "Machu Picchu Public Bus Service",
-                    "Bus and Train Transportation to Cusco"
+                    "car and Train Transportation to Cusco"
                 ]
             }
         ],
-
-        "recomendedMonths": [],
-
+        "recomendedMonths": "May to December",
         "tourType": "trekking",
         "startingPlace": "Cusco",
         "prices": {
@@ -514,11 +519,9 @@
             },
             {
                 "dayTitle": "Salcantaypampa – Huayracmachay – Chaullay ",
-                "dayDescription": "From Salcantaypampa we start our trek towards Soroycocha at 4400m/14432ft. From here, we will enjoy great views of the impressive west face of Mount Salcantay (6264m/20546ft). Our hike will then continue to take us to reach the Salcantay pass at 4750m/15580ft, with a permanent view of the amazing Mount Salcantay. With luck, we can also observe the flight of the amazing Condor, known as the “King of the Andes”. During our descent from Salcantay pass, we will also observe the remains of an ancient Inca Trail and observe the beautiful Salcantaycocha Lagoon. We continue our hike down to the place known as Huayracmachay, and then descending into the deep canyon of the Salcantay River on our way to the small village of Chaullay where we set up our camp at 3500m (11480ft).  ",
+                "dayDescription": "From Salcantaypampa we start our trek towards Soroycocha at 4400m/14432ft. From here, we will enjoy great views of the impressive west face of Mount Salcantay (6264m/20546ft). Our hike will then continue to take us to reach the Salcantay pass at 4750m/15580ft, with a permanent view of the amazing Mount Salcantay. With luck, we can also observe the flight of the amazing Condor, known as the “King of the Andes”. During our descent from Salcantay pass, we will also observe the remains of an ancient Inca Trail and observe the beautiful Salcantaycocha Lagoon. We continue our hike down to the place known as Huayracmachay, and then descending into the deep canyon of the Salcantay River on our way to the small village of Chaullay where we set up our camp at 11,480ft || 3,500m.  ",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "7 hours"
@@ -528,9 +531,7 @@
                 "dayTitle": "Chaullay camp – Lucmabamba Camp",
                 "dayDescription": "At 08:00 a.m. we will begin our trek downhill for about 1 hour until we reach the Collpapampa Valley (3200 m/10496 ft). The highland landscape suddenly turns into an amazing cloud forest with typical grass, bushes and trees covered with beautiful bromeliads (from Collpapampa the Salcantay River turns into the Santa Teresa River). We continue our descent down to the shores of the Totora River where we can enjoy a fun dip in the nearby hot water springs and afterwards, following the north side of the Santa Teresa River we will trek 3 hours until we reach the settlement known as Wiñaypoko (2800 m/ 5904 ft) from where, and after a nice meal, we descent (3 hours) down to the place known as La Playa. On the way, we will observe plantations of banana, coffee, granadillas (a typical fruit from the area), avocado trees, etc. The sound of flocking parrots will accompany us during the hike, and above the river perhaps we can observe the fast flight of the king fisher. At La Playa, we cross the river and we make our last hike until we reach the small settlement known as Lucmabamba where we will set up our last camp (1700 m/ 5576 ft).",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "6 to 7 hours"
@@ -540,8 +541,7 @@
                 "dayTitle": "Lucmabamba – Llactapacta – Aguas Calientes ",
                 "dayDescription": "Our last trek day, and following an Inca road (3 hours), will take us from Lucmabamba towards the Inca Ruins of Llactapacta (2800 m / 9184 ft) where we will spend about 1 hour visiting this interesting archaeological site with terraces, agriculture storage areas, etc. From here and weather permitting, we can observe the northwestern side of the Machu Picchu citadel and the summit of Huayna Picchu hill. After having our box lunch and following a steep mountainside trail, we will continue our trek (2 hours) down to the place known as “La Hidroelectrica” (operation area of the hydroelectric power plant). Here we will have time to rest and board the local train to the town of Aguas Calientes (2012 m/ 6600 ft) where we will arrive after a 1-hour ride. Then our guide will take you to your hotel for a well-deserved rest",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box"
+                    "Meals: Breakfast + Lunch Box"
                 ],
                 "trekData":{
                     "totalTrekTime": "5 hours"
@@ -555,6 +555,7 @@
                 ]
             }
         ],
+        "recomendedMonths": "May to December",
         "tourType": "trekking",
         "startingPlace": "Cusco",
         "prices": {
@@ -617,7 +618,7 @@
             },
             {
                 "dayTitle": "Lima - Cusco + City Tour",
-                "dayDescription": "Morning transfer to the airport in Lima to head to Cusco. After your arrival in Cusco, you will be welcomed and transferred to your chosen hotel. After your check in, we will have some time to settle in, and adapt to the high altitude (3400 m / 11152 ft) of the city. In the afternoon, a guided city tour of Cusco will be arranged. The tour starts with a walk to visit the Plaza de Armas with its beautiful colonial buildings and churches including the Cathedral. Then we walk to Santo Domingo Church where we find the impressive Koricancha Temple with exquisite stonework and carvings, to finally visit the nearby ruins of Cusco: the impressive Inca fortress of Sacsayhuaman, Quenko, and the Inca bath of Tambo Machay. Our transport will drop us off at the hotel in the late afternoon",
+                "dayDescription": "Morning transfer to the airport in Lima to head to Cusco. After your arrival in Cusco, you will be welcomed and transferred to your chosen hotel. After your check in, we will have some time to settle in, and adapt to the high altitude (11,150ft || 3,400m) of the city. In the afternoon, a guided city tour of Cusco will be arranged. The tour starts with a walk to visit the Plaza de Armas with its beautiful colonial buildings and churches including the Cathedral. Then we walk to Santo Domingo Church where we find the impressive Koricancha Temple with exquisite stonework and carvings, to finally visit the nearby ruins of Cusco: the impressive Inca fortress of Sacsayhuaman, Quenko, and the Inca bath of Tambo Machay. Our transport will drop us off at the hotel in the late afternoon",
                 "dayInclusions": [
                     "Hotel breakfast"
                 ]
@@ -642,11 +643,9 @@
             },
             {
                 "dayTitle": "Salcantaypampa – Huayracmachay – Chaullay ",
-                "dayDescription": "From Salcantaypampa we start our trek towards Soroycocha at 4400m/14432ft. From here, we will enjoy great views of the impressive west face of Mount Salcantay (6264m/20546ft). Our hike will then continue to take us to reach the Salcantay pass at 4750m/15580ft, with a permanent view of the amazing Mount Salcantay. With luck, we can also observe the flight of the amazing Condor, known as the “King of the Andes”. During our descent from Salcantay pass, we will also observe the remains of an ancient Inca Trail and observe the beautiful Salcantaycocha Lagoon. We continue our hike down to the place known as Huayracmachay, and then descending into the deep canyon of the Salcantay River on our way to the small village of Chaullay where we set up our camp at 3500m (11480ft).  ",
+                "dayDescription": "From Salcantaypampa we start our trek towards Soroycocha at 4400m/14432ft. From here, we will enjoy great views of the impressive west face of Mount Salcantay (6264m/20546ft). Our hike will then continue to take us to reach the Salcantay pass at 4750m/15580ft, with a permanent view of the amazing Mount Salcantay. With luck, we can also observe the flight of the amazing Condor, known as the “King of the Andes”. During our descent from Salcantay pass, we will also observe the remains of an ancient Inca Trail and observe the beautiful Salcantaycocha Lagoon. We continue our hike down to the place known as Huayracmachay, and then descending into the deep canyon of the Salcantay River on our way to the small village of Chaullay where we set up our camp at 11,480ft || 3,500m.  ",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "7 hours"
@@ -656,9 +655,7 @@
                 "dayTitle": "Chaullay camp – Lucmabamba Camp",
                 "dayDescription": "At 08:00 a.m. we will begin our trek downhill for about 1 hour until we reach the Collpapampa Valley (3200 m/10496 ft). The highland landscape suddenly turns into an amazing cloud forest with typical grass, bushes and trees covered with beautiful bromeliads (from Collpapampa the Salcantay River turns into the Santa Teresa River). We continue our descent down to the shores of the Totora River where we can enjoy a fun dip in the nearby hot water springs and afterwards, following the north side of the Santa Teresa River we will trek 3 hours until we reach the settlement known as Wiñaypoko (2800 m/ 5904 ft) from where, and after a nice meal, we descent (3 hours) down to the place known as La Playa. On the way, we will observe plantations of banana, coffee, granadillas (a typical fruit from the area), avocado trees, etc. The sound of flocking parrots will accompany us during the hike, and above the river perhaps we can observe the fast flight of the king fisher. At La Playa, we cross the river and we make our last hike until we reach the small settlement known as Lucmabamba where we will set up our last camp (1700 m/ 5576 ft).",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "6 to 7 hours"
@@ -668,8 +665,7 @@
                 "dayTitle": "Lucmabamba – Llactapacta – Aguas Calientes ",
                 "dayDescription": "Our last trek day, and following an Inca road (3 hours), will take us from Lucmabamba towards the Inca Ruins of Llactapacta (2800 m / 9184 ft) where we will spend about 1 hour visiting this interesting archaeological site with terraces, agriculture storage areas, etc. From here and weather permitting, we can observe the northwestern side of the Machu Picchu citadel and the summit of Huayna Picchu hill. After having our box lunch and following a steep mountainside trail, we will continue our trek (2 hours) down to the place known as “La Hidroelectrica” (operation area of the hydroelectric power plant). Here we will have time to rest and board the local train to the town of Aguas Calientes (2012 m/ 6600 ft) where we will arrive after a 1-hour ride. Then our guide will take you to your hotel for a well-deserved rest",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box"
+                    "Meals: Breakfast + Lunch Box"
                 ],
                 "trekData":{
                     "totalTrekTime": "5 hours"
@@ -737,7 +733,7 @@
         "https://dsm04pap002files.storage.live.com/y4m0bXf7pFPEo7JFJfBAoPv1CBYJoRMRuvy4U6VtHfUxxIkXr3_s_u9jVtblBhrKW7JdIVzgibMzXgaC8vsrvtkmfmf-kD1SHMWeSDQJTDBzDPkqg5anQsyiEmrTy2LU8J9y6NQCY39X50q9ONLEJvA9ielM07rdaDHYjAsX3InGSlLC19fQDhFPvtqNVfStk6b?width=2000&height=1150&cropmode=none",
         "https://dsm04pap002files.storage.live.com/y4mVAjnTJGIZr7P0x_ms1gGl4ziQYW_GvZdy3OepENSn6d0xj1MHUtpBKg05f9LdbUGeBSV6QrEJayTGczMcQDX5RfQO8gdQ-t9kVoW_ekYkEomZqLim1I2aqE2cVqQhc7j2XvfooyA_-m-DxoAX7WiQBVx-Tl2NqEnFVnbXUXWxbu8utdqkH2sgGdDsSIqt0FY?width=2000&height=1150&cropmode=none"
         ],
-        "tripDescription":"The Choquequirao complexis perhaps one of the best-preserved major Inca ruins in southern Peru and rivals in importance with the world-famous Machu Picchu citadel. In fact, until the nineteenth century, it was thought that Choquequirao might be the famous “Lost City of the Incas”. It is in the Vilcabamba Range where trekking brings great opportunities to explore beyond the well-known hiking routes to Machu Picchu trek. This is a challenging and rewarding adventure: great landscapes, high altitude mountain passes, amazing views, and impressive Inca ruins are waiting for us in the heart of the Andes. The trek, dominated by the 20,000-feet peaks of Salcantay and Pumasillo, starts from the cloud forest environment below Machu Picchu, crosses the highlands of the Vilcabamba Range and descends to the spectacular canyon of the Apurimac River, to finally climb out of this immense valley up to the highlands. The Inca shrines and highways throughout the Vilcabamba, specially Rosaspata and Ñusta Ispana, are exceptionally worth the visit.",
+        "tripDescription":"The Choquequirao complexis perhaps one of the best-preserved major Inca ruins in southern Peru and rivals in importance with the world-famous Machu Picchu citadel. In fact, until the nineteenth century, it was thought that Choquequirao might be the famous “Lost City of the Incas”. It is in the Vilcabamba Range where trekking brings great opportunities to explore beyond the well-known hiking routes to Machu Picchu trek. This is a challenging and rewarding adventure: great landscapes, high altitude mountain passes, amazing views, and impressive Inca ruins are waiting for us in the heart of the Andes. The trek, dominated by the 20,000ft peaks of Salcantay and Pumasillo, starts from the cloud forest environment below Machu Picchu, crosses the highlands of the Vilcabamba Range and descends to the spectacular canyon of the Apurimac River, to finally climb out of this immense valley up to the highlands. The Inca shrines and highways throughout the Vilcabamba, specially Rosaspata and Ñusta Ispana, are exceptionally worth the visit.",
         "countryList": ["peru"],
         "dayByDay":[
             {
@@ -753,7 +749,7 @@
             },
             {
                 "dayTitle": "Ollantaytambo – Trekking the Sacred Way to Machu Picchu",
-                "dayDescription": "Morning transfer to Ollanta train station to pick the train that will drop us off at “Km. 104 (2250 m)” to check in at the Warden’s post of Chachabamba Incas’ Ruins. From this point, we will begin ascending over 700m along the Famous Inca Trail. Accompanied by an impressive landscape, the steps will lead us up to Wiñayhuayna, one of the largest and best-preserved Inca Ruins along the Trail. After a visit to these impressive mountain side constructions, we will continue our trek towards The Intipunku or (Sun-Gate) from where we will have an amazing view of the Machu Picchu citadel. We will join the tourist public bus transport down to Aguas Calientes to overnight in a local hotel (3 stars hotel – upgrade upon request). ",
+                "dayDescription": "Morning transfer to Ollanta train station to pick the train that will drop us off at “Km. 104 (2250 m)” to check in at the Warden’s post of Chachabamba Incas’ Ruins. From this point, we will begin ascending over 700m along the Famous Inca Trail. Accompanied by an impressive landscape, the steps will lead us up to Wiñay Huayna, one of the largest and best-preserved Inca Ruins along the Trail. After a visit to these impressive mountain side constructions, we will continue our trek towards The Intipunku or (Sun-Gate) from where we will have an amazing view of the Machu Picchu citadel. We will join the tourist public bus transport down to Aguas Calientes to overnight in a local hotel (3 stars hotel – upgrade upon request). ",
                 "dayInclusions": [
                     "Hotel breakfast",
                     "Box Lunch",
@@ -787,80 +783,63 @@
                 "dayTitle": "Huancacalle - Ñusta Ispana",
                 "dayDescription": "Today’s trekking takes us up to the Inca ruins of Vitcos and Ñusta Ispana. Vitcos is a classic ceremonial plaza lined with massive Inca stonework that occupies a ridge-top site dominating the surrounding countryside. Continuing from here, after a 1-hour trek, we will reach Ñusta Ispana, a much more mystical site, where we find a granite boulder bordering a freshwater spring, considered by the Incas as a sacred site of unusual power. The natural rock has been carved with delicate niches: a beautiful place surrounded by flowers. We continue later following a paved Inca road, which takes us to our campsite",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ]
             },
             {
                 "dayTitle": "Chuquitakarpo Pass",
-                "dayDescription": "After a hearty breakfast, we continue our ascent to Chuquitakarpo Pass at 4460 m, located in the heart of the mountain range. The Inca highway which we will use is, in some places, still in great condition. Following the route, we will descend to our campsite at 3800m",
+                "dayDescription": "After a hearty breakfast, we continue our ascent to Chuquitakarpo Pass at 4460 m, located in the heart of the mountain range. The Inca highway which we will use is, in some places, still in great condition. Following the route, we will descend to our campsite at 12,470ft || 3,800m",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ]
             },
             {
                 "dayTitle": "Chuquitakarpo - Paccac",
                 "dayDescription": "This day we will reach our next pass at 4050m of altitude. To get to this point we climb through dense cloud forests, where our effort is rewarded by splendid views. Later, we cross a second ridge and, in the afternoon we reach our camp near Paccac at 3650m",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ]
             },
             {
                 "dayTitle": "Paccac - Yanama",
                 "dayDescription": "We enjoy a leisurely morning and, in the afternoon, after lunch, we head towards the hamlet of Yanama, located in the Vilcabamba Range where we will set our camp",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ]
             },
             {
                 "dayTitle": "Yanama - Rio Blanco",
                 "dayDescription": "Today we climb to the Victoria Pass, where we follow a beautiful and spectacular trekking descending to the shores of the Rio Blanco to find our camp at 1950m of altitude",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ]
             },
             {
                 "dayTitle": "Rio Blanco - Choquequirao",
                 "dayDescription": "In the morning, a steep, long ascent will take us to the ridge (3150m) located high above the Blanco river shores. After a short descend we finally drop down into the ruins of Choquequirao (3085m). These beautiful ruins, with many terraces and buildings, were originally found covered by dense bushes and have recently undergone a great deal of restoration work",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ]
             },
             {
                 "dayTitle": "Choquequirao - Apurimac River",
                 "dayDescription": "We will have the morning to explore and enjoy these amazing ruins, rarely visited but perhaps one of the most important in the Peruvian rain forest. After lunch, we start trekking down towards our next camp on the shores of Apurimac River",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ]
             },
             {
                 "dayTitle": "Apurimac River - Cachora",
                 "dayDescription": "This day we head towards Cachora Village where we will overnight. This is a long, tiring climb from the Apurimac gorge out to the highlands of Cachora",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ]
             },
             {
                 "dayTitle": "Sayhuite - Cusco",
                 "dayDescription": "In the morning, we will visit the ritual site of the Incas at Sayhuite. This is a place where we can find interesting carved boulders and irrigation channels. Finally, we meet our vehicle which will transport us back to Cusco and to our hotel",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box"
+                    "Meals: Breakfast + Lunch Box"
                 ]
             },
             {
@@ -926,11 +905,10 @@
         "countryList": ["peru"],
         "dayByDay":[
             {
-                "dayTitle": "Cusco – Tinqui village (3800 m / 12464 ft) – Upis Camp (4380 m / 14366 ft).",
-                "dayDescription": "From Cusco, at about 8 a.m. starts our 3-hour drive on paved road and after passing several small towns and villages we will arrive to the little village of Tinqui from where another 20-minute drive, takes us to the point where we meet our muleteers and while they will prepare the heavy loads to be carried by our horses, we enjoy a delicious lunch. Then we start our trekking along the trail which crosses through colorful farming areas as we head to the valley of Upis where we will set our first camp at 4380 meters above sea level. This beautiful spot is located right under the magnificent North-West face of Mount Ausangate. Here we also find some hot water springs where we can enjoy a nice soak",
+                "dayTitle": "Cusco – Tinqui village (12,470ft || 3,800m) – Upis Camp (14,370ft || 4,380m).",
+                "dayDescription": "From Cusco, at about 8 a.m. starts our 3-hour drive on paved road and after passing several small towns and villages we will arrive to the little village of Tinqui from where another 20-minute drive, takes us to the point where we meet our muleteers and while they will prepare the heavy loads to be carried by our horses, we enjoy a delicious lunch. Then we start our trekking along the trail which crosses through colorful farming areas as we head to the valley of Upis where we will set our first camp at 14,370ft || 4,380m above sea level. This beautiful spot is located right under the magnificent North-West face of Mount Ausangate. Here we also find some hot water springs where we can enjoy a nice soak",
                 "dayInclusions": [
-                    "Box Lunch",
-                    "camp Dinner"
+                    "Meals: Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "3 to 4 hours"
@@ -940,9 +918,7 @@
                 "dayTitle": "Upis – Pucacocha Lagoons – Ausangate Cocha Camp (4500 m / 14760 ft)",
                 "dayDescription": "After an early awake up and breakfast, we start our morning trek going up to cross the high point known as Arapa pass (4700 m/ 15416 ft). From here, we make a descend to the low valleys surrounding the west side of Mount Ausangate and passing the green lake of Uchuy Pucacocha we reach the turquoise lake Jatun Pucacocha. On our right, we can observe the Sorimani and Tacusiri rocky peaks. From here we make a slow ascend to the second-high pass of the day and known as Ausangate Apacheta pass (4900 m / 16072 ft). From the summit of the pass we enjoy stunning views of the west glaciers of Mt. Ausangate and below the Ausangate Cocha lagoon which is fed from the melting snow of these glaciers. We descend to our next Ausangate Cocha camp located at 4500 m / 14760 ft",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Box Lunch",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "7 to 8 hours"
@@ -952,21 +928,17 @@
                 "dayTitle": "Ausangate Cocha – Palomani Pass (5200 m / 17056 ft) – Sorapata Camp (4480 m / 14694 ft)",
                 "dayDescription": "Today’s trek will take us up to the next high pass, the Palomani Pass at 5200 m / 17056 ft, which is the highest point we will reach during our entire trek. After 2 hours of steady hike up, we will reach the summit of the pass from where we will enjoy wonderful views over the south-west glaciers of Mt. Ausangate, the summit and glaciers of the beautiful Mount Santa Catalina (5808 m / 19024 ft) and the rocky peaks of Mt. Sorimani and Mt. Tacusiri. During the descend to the Machurakay valley, we will meet charming llamas and alpacas pastoring on the highlands of the area. Then we continue our trek to the settlement known as hacienda Uchuy Finaya and from here we continue our hike until we reach our camp at Sorapata (known also as Wanu Wanu camp) located in a flat valley of the south-east side of the Ausangate massif and from where we can enjoy towards northeast, beautiful views of the Nevados Acero (6093 m) and Japu Japu (6093 m). ",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Box Lunch",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "6 to 7 hours"
                 }
             },
             {
-                "dayTitle": "Sorapata (Wanu Wanu) – Jhampa Pass (5050 m / 16564 ft) – Minaparayoc Camp (4700 m / 15580 ft)",
+                "dayTitle": "Sorapata (Wanu Wanu) – Jhampa Pass (16,564ft || 5,050m) – Minaparayoc Camp (15,580ft || 4,700m)",
                 "dayDescription": "After a hearty breakfast, we start our today’s trek heading first northeast in a relative flat valley while enjoying the views of Nevados Acero and Japu Japu. Then we start a slow ascend northwest until we reach the highest point of the place known as Jhampa pass. At the right, we can enjoy exciting views of the steep peaks known as Puca Punta and Jatun Punta with their glaciers hanging down to the narrow valley located at our feet. From the pass, we descend to our last camp at the place known as Minaparayoc",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Box Lunch",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "6 to 7 hours"
@@ -974,10 +946,9 @@
             },
             {
                 "dayTitle": "Minaparayoc – Pacchanta - Cusco",
-                "dayDescription": "In the morning, we enjoy our last breakfast, and afterwards we start our descend towards Pacchanta village (4100 m / 13448 m). On the way, we shall visit the small lagoons known a Uturungucocha Macho and Uturungucocha Hembra. These two beautiful lagoons are considered by the locals sacred places and frequently they receive the ceremony known as “pagos” to receive the spiritual and material benefits of these lagoons. After this we continue descending until we finally arrive to Pacchanta where we find hot water springs at 4400 m. Here we will have lunch and meet our transport which will take us back to the City of Cusco. Transfer to your hotel and end of our services",
+                "dayDescription": "In the morning, we enjoy our last breakfast, and afterwards we start our descend towards Pacchanta village (13,448ft || 4,100m ). On the way, we shall visit the small lagoons known a Uturungucocha Macho and Uturungucocha Hembra. These two beautiful lagoons are considered by the locals sacred places and frequently they receive the ceremony known as “pagos” to receive the spiritual and material benefits of these lagoons. After this we continue descending until we finally arrive to Pacchanta where we find hot water springs at 14,430ft || 4,400m. Here we will have lunch and meet our transport which will take us back to the City of Cusco. Transfer to your hotel and end of our services",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Box Lunch"
+                    "Meals: Breakfast + Lunch Box"
                 ],
                 "trekData":{
                     "totalTrekTime": "3 hours"
@@ -985,6 +956,7 @@
             }
            
         ],
+        "recomendedMonths": "May to December",
         "tourType": "trekking",
         "startingPlace": "Cusco",
         "prices": {
@@ -1036,14 +1008,14 @@
             },
             {
                 "dayTitle": "Half Day Lima City Tour",
-                "dayDescription": "Morning transfer to the airport in Lima to head to Cusco. After your arrival in Cusco, you will be welcomed and transferred to your chosen hotel. After your check in, we will have some time to settle in, and adapt to the high altitude (3400 m / 11152 ft) of the city. In the afternoon, a city tour of Cusco will be arranged. The tour starts with a walk to visit the Plaza de Armas with its beautiful colonial buildings and churches including the Cathedral. Then we walk to Santo Domingo Church where we find the impressive Koricancha Temple with exquisite stone work and carvings, to finally visit the nearby ruins of Cusco: the impressive Inca fortress of Sacsayhuaman, Quenko, and the Inca bath of Tambo Machay. Our transport will drop us off at the hotel in the late afternoon",
+                "dayDescription": "Morning transfer to the airport in Lima to head to Cusco. After your arrival in Cusco, you will be welcomed and transferred to your chosen hotel. After your check in, we will have some time to settle in, and adapt to the high altitude (11,150ft || 3,400m) of the city. In the afternoon, a city tour of Cusco will be arranged. The tour starts with a walk to visit the Plaza de Armas with its beautiful colonial buildings and churches including the Cathedral. Then we walk to Santo Domingo Church where we find the impressive Koricancha Temple with exquisite stone work and carvings, to finally visit the nearby ruins of Cusco: the impressive Inca fortress of Sacsayhuaman, Quenko, and the Inca bath of Tambo Machay. Our transport will drop us off at the hotel in the late afternoon",
                 "dayInclusions": [
                     "Hotel breakfast"
                 ]
             },
             {
                 "dayTitle": "Lima - Cusco + City Tour",
-                "dayDescription": "Morning transfer to the airport in Lima to head to Cusco. After your arrival in Cusco, you will be welcomed and transferred to your chosen hotel. After your check in, we will have some time to settle in, and adapt to the high altitude (3400 m / 11152 ft) of the city. In the afternoon, a city tour of Cusco will be arranged. The tour starts with a walk to visit the Plaza de Armas with its beautiful colonial buildings and churches including the Cathedral. Then we walk to Santo Domingo Church where we find the impressive Koricancha Temple with exquisite stone work and carvings, to finally visit the nearby ruins of Cusco: the impressive Inca fortress of Sacsayhuaman, Quenko, and the Inca bath of Tambo Machay. Our transport will drop us off at the hotel in the late afternoon",
+                "dayDescription": "Morning transfer to the airport in Lima to head to Cusco. After your arrival in Cusco, you will be welcomed and transferred to your chosen hotel. After your check in, we will have some time to settle in, and adapt to the high altitude (11,150ft || 3,400m) of the city. In the afternoon, a city tour of Cusco will be arranged. The tour starts with a walk to visit the Plaza de Armas with its beautiful colonial buildings and churches including the Cathedral. Then we walk to Santo Domingo Church where we find the impressive Koricancha Temple with exquisite stone work and carvings, to finally visit the nearby ruins of Cusco: the impressive Inca fortress of Sacsayhuaman, Quenko, and the Inca bath of Tambo Machay. Our transport will drop us off at the hotel in the late afternoon",
                 "dayInclusions": [
                     "Hotel breakfast"
                 ]
@@ -1057,11 +1029,10 @@
             },
             {
                 "dayTitle": "Trekking the Inca Trail: First Steps ",
-                "dayDescription": "The day begins early, between 05:00 to 5:30 a.m. with a pick-up service from the hotels in Cusco. We will drive across villages such as Yucay, Urubamba and Ollantaytambo located along the Sacred Valley of the Incas. After a 3-hour drive we will arrive at the place known as Kilometer 82 (2600m / 8528ft).  This point is where the first passenger control booth is located and here all tourists must register to be able to start the trek. From this place, 43 kms of mountains, Andean valleys, rivers and lush cloud and tropical forests separate us from Machu Picchu. On our way to our first camp at Ayapata, we trek the first part on a mainly flat path with slight ascents, taking us approximately 2 until we reach Llactapata’s (town in the heights), an interesting archaeological complex. Then we will continue into the valley of the Kusichaca River, from where our route follows a slight ascent up to Wuayllabamba village located at 3100 meters (10168feet). Here will have lunch and after a short rest we continue up to 3 Piedras and then crossing a beautiful forest oh typical Andean trees, we will arrive to our first camp on Ayapata located at 3500 meters of altitude",
+                "dayDescription": "The day begins early, between 05:00 to 5:30 a.m. with a pick-up service from the hotels in Cusco. We will drive across villages such as Yucay, Urubamba and Ollantaytambo located along the Sacred Valley of the Incas. After a 3-hour drive we will arrive at the place known as Kilometer 82 (8,530ft || 2,600m).  This point is where the first passenger control booth is located and here all tourists must register to be able to start the trek. From this place, 43 kms of mountains, Andean valleys, rivers and lush cloud and tropical forests separate us from Machu Picchu. On our way to our first camp at Ayapata, we trek the first part on a mainly flat path with slight ascents, taking us approximately 2 until we reach Llactapata’s (town in the heights), an interesting archaeological complex. Then we will continue into the valley of the Kusichaca River, from where our route follows a slight ascent up to Wuayllabamba village located at 10,170ft || 3,100m. Here will have lunch and after a short rest we continue up to 3 Piedras and then crossing a beautiful forest oh typical Andean trees, we will arrive to our first camp on Ayapata located at 11,480ft || 3,500m of altitude",
                 "dayInclusions": [
                     "Hotel breakfast",
-                    "Box Lunch",
-                    "camp Dinner"
+                    "Meals: Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "6 to 7 hours",
@@ -1070,11 +1041,9 @@
             },
             {
                 "dayTitle": "Ayapata Camp – Chaquicocha Camp",
-                "dayDescription": "At 7 a.m. and after breakfast, we begin our second day of our adventure starting with a way up to the highest point of the whole circuit climbing an altitude of 520 meters to reach the pass known as Warmihuañusca (“dead woman”) located at 4200 m of altitude (13776 ft). The slow step ascent will take about 3 hours approximately. From the pass, we can enjoy an astonishing view of the surroundings and the magnificent landscape. This is a windy area, so it is important to wear warm clothing. After enjoying the great views, we overcome the pass and continue our way down to the Pacaymayo Camp located at 3500m (11480ft) where we will have lunch. After a short rest we continue our hike climbing up to the Inca remains known as Runkurakay at 3800m / 12465ft. Then we climb to the second-high pass located at 3940m / 12916ft and following a step descend on typical Inca stone stairs we will reach the entrance to the beautiful Sayaqmarka Inca town (3600m / 11808ft). After visiting this amazing Inca remains, we continue our hike to finally reach our Chaquicocha Camp where our porters welcome us with a nice warm tea and snacks",
+                "dayDescription": "At 7 a.m. and after breakfast, we begin our second day of our adventure starting with a way up to the highest point of the whole circuit climbing an altitude of 520 meters to reach the pass known as Warmihuañusca (“dead woman”) located at 4200 m of altitude (13776 ft). The slow step ascent will take about 3 hours approximately. From the pass, we can enjoy an astonishing view of the surroundings and the magnificent landscape. This is a windy area, so it is important to wear warm clothing. After enjoying the great views, we overcome the pass and continue our way down to the Pacaymayo Camp located at 11,480ft || 3,500m where we will have lunch. After a short rest we continue our hike climbing up to the Inca remains known as Runkurakay at 12,470ft || 3,800m. Then we climb to the second-high pass located at 3940m / 12916ft and following a step descend on typical Inca stone stairs we will reach the entrance to the beautiful Sayaqmarka Inca town (3600m / 11808ft). After visiting this amazing Inca remains, we continue our hike to finally reach our Chaquicocha Camp where our porters welcome us with a nice warm tea and snacks",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Box Lunch",
-                    "Camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "7 to 8 hours",
@@ -1082,12 +1051,10 @@
                 }
             },
             {
-                "dayTitle": "Chaquicocha Camp – Phuyupatamarca - Wiñayhuayna",
-                "dayDescription": "In our third day we begin hiking along a beautiful cloud forest with impressive views of the profound mountain gorges located on the northwest side of the Inca Trail. Along the way we will cross the tunnels carved in granitic rock and later, we reach the 3rd high pass at 3670m / 12038ft and then promptly we will arrive to the site known as Phuyupatamarka (“town above the clouds”) located at 3600m / 11808ft) from where weather permitting we can enjoy fabulous views of the Urubamba gorge. Then continuing out descend, we face an impressive array of endless rock steps until we arrive to the Intipata site located at 2850m (9348ft), an incredible complex of terraces and platforms built in the middle of the hillside of a mountain covered by thick vegetation. Our today’s hike finally leads us to Wiñay Wuayna camp (“Forever Young”) located at 2700m (8856ft). after enjoying a hearty lunch, we will make a visit to the amazing Inca remains of Wiñay Wuayna situated not far from our camp. Enjoy dinner and a well-deserved rest",
+                "dayTitle": "Chaquicocha Camp – Phuyupatamarca - Wiñay Huayna",
+                "dayDescription": "In our third day we begin hiking along a beautiful cloud forest with impressive views of the profound mountain gorges located on the northwest side of the Inca Trail. Along the way we will cross the tunnels carved in granitic rock and later, we reach the 3rd high pass at 3670m / 12038ft and then promptly we will arrive to the site known as Phuyupatamarka (“town above the clouds”) located at 3600m / 11808ft) from where weather permitting we can enjoy fabulous views of the Urubamba gorge. Then continuing out descend, we face an impressive array of endless rock steps until we arrive to the Intipata site located at 9,350ft || 2,850m, an incredible complex of terraces and platforms built in the middle of the hillside of a mountain covered by thick vegetation. Our today’s hike finally leads us to Wiñay Huayna camp (“Forever Young”) located at 2700m (8856ft). after enjoying a hearty lunch, we will make a visit to the amazing Inca remains of Wiñay Huayna situated not far from our camp. Enjoy dinner and a well-deserved rest",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Box Lunch",
-                    "Camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "4 to 5 hours",
@@ -1095,11 +1062,10 @@
                 }
             },
             {
-                "dayTitle": "Wiñay Wuayna Camp – Machu Picchu – Cusco",
+                "dayTitle": "Wiñay Huayna Camp – Machu Picchu – Cusco",
                 "dayDescription": "The day begins earlier (3:30 a.m.) than usually with a light breakfast and then we walk to the control post where we must wait for about 1.5 hours until the sky starts clearing and the park guard will permit us to start the hike in the last part of the Inca Trail. After 1.5 hours of a nice hike along cloud forest, we arrive at the famous Inti Punku ('Sun Gate') at 2700m (8856ft) from where and weather permitting, we will have the first impressive views of the majestic Inca City of Machu Picchu. This view is overwhelming, making to our senses to fill with an indescriptible emotion when observing that fabulous view of the Inca City and of the amazing landscape surrounding it. From the Inti Punku it is only 1km more to arrive to the city and enjoy a guided visit to the most important archeological discoveries of recent times. At about 13:00 we will be transported, by bus, from the citadel down to the village of Aguas Calientes where we will enjoy a farewell lunch and afterwards we go to the train station for our train ride back to Ollantaytambo town where our private car and driver is waiting to transport us back to our hotels in Cusco",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Box Lunch"
+                    "Meals: Breakfast + Lunch Box"
                 ],
                 "trekData":{
                     "totalTrekTime": "3 to 3.5 hours",
@@ -1115,7 +1081,7 @@
             },
             {
                 "dayTitle": "Ausangate Trek: Cusco - Tinqui",
-                "dayDescription": "From Cusco, at about 8 a.m. starts our 3-hour drive on paved road and after passing several small towns and villages we will arrive to the little village of Tinqui from where another 20-minute drive, takes us to the point where we meet our muleteers and while they will prepare the heavy loads to be carried by our horses, we enjoy a delicious lunch. Then we start our trekking along the trail which crosses through colorful farming areas as we head to the valley of Upis where we will set our first camp at 4380 meters above sea level. This beautiful spot is located right under the magnificent North-West face of Mount Ausangate. Here we also find some hot water springs where we can enjoy a nice soak",
+                "dayDescription": "From Cusco, at about 8 a.m. starts our 3-hour drive on paved road and after passing several small towns and villages we will arrive to the little village of Tinqui from where another 20-minute drive, takes us to the point where we meet our muleteers and while they will prepare the heavy loads to be carried by our horses, we enjoy a delicious lunch. Then we start our trekking along the trail which crosses through colorful farming areas as we head to the valley of Upis where we will set our first camp at 14,370ft || 4,380m above sea level. This beautiful spot is located right under the magnificent North-West face of Mount Ausangate. Here we also find some hot water springs where we can enjoy a nice soak",
                 "dayInclusions": [
                     "hotel breakfast",
                     "camp Lunch",
@@ -1129,9 +1095,7 @@
                 "dayTitle": "Upis – Pucacocha Lagoons – Ausangate Cocha Camp",
                 "dayDescription": "After an early awake up and breakfast, we start our morning trek going up to cross the high point known as Arapa pass (4700 m/ 15416 ft). From here, we make a descend to the low valleys surrounding the west side of Mount Ausangate and passing the green lake of Uchuy Pucacocha we reach the turquoise lake Jatun Pucacocha. On our right, we can observe the Sorimani and Tacusiri rocky peaks. From here we make a slow ascend to the second-high pass of the day and known as Ausangate Apacheta pass (4900 m / 16072 ft). From the summit of the pass we enjoy stunning views of the west glaciers of Mt. Ausangate and below the Ausangate Cocha lagoon which is fed from the melting snow of these glaciers. We descend to our next Ausangate Cocha camp located at 4500 m / 14760 ft",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Box Lunch",
-                    "Camp dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "7 to 8 hours"
@@ -1141,9 +1105,7 @@
                 "dayTitle": "Ausangate Cocha – Palomani Pass (5200 m / 17056 ft) – Sorapata Camp",
                 "dayDescription": "Today’s trek will take us up to the next high pass, the Palomani Pass at 5200 m / 17056 ft, which is the highest point we will reach during our entire trek. After 2 hours of steady hike up, we will reach the summit of the pass from where we will enjoy wonderful views over the south-west glaciers of Mt. Ausangate, the summit and glaciers of the beautiful Mount Santa Catalina (5808 m / 19024 ft) and the rocky peaks of Mt. Sorimani and Mt. Tacusiri. During the descend to the Machurakay valley, we will meet charming llamas and alpacas pastoring on the highlands of the area. Then we continue our trek to the settlement known as hacienda Uchuy Finaya and from here we continue our hike until we reach our camp at Sorapata (known also as Wanu Wanu camp) located in a flat valley of the south-east side of the Ausangate massif and from where we can enjoy towards northeast, beautiful views of the Nevados Acero (6093 m) and Japu Japu (6093 m)",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Box Lunch",
-                    "Camp dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "6 to 7 hours"
@@ -1153,9 +1115,7 @@
                 "dayTitle": "Sorapata (Wanu Wanu) – Jhampa Pass (5050 m / 16564 ft) – Minaparayoc Camp (4700 m / 15580 ft)",
                 "dayDescription": "After a hearty breakfast, we start our today’s trek heading first northeast in a relative flat valley while enjoying the views of Nevados Acero and Japu Japu. Then we start a slow ascend northwest until we reach the highest point of the place known as Jhampa pass. At the right, we can enjoy exciting views of the steep peaks known as Puca Punta and Jatun Punta with their glaciers hanging down to the narrow valley located at our feet. From the pass, we descend to our last camp at the place known as Minaparayoc",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Box Lunch",
-                    "Camp dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "6 to 7 hours"
@@ -1163,10 +1123,9 @@
             },
             {
                 "dayTitle": "Minaparayoc – Pacchanta - Cusco",
-                "dayDescription": "In the morning, we enjoy our last breakfast, and afterwards we start descending towards Pacchanta village (4100 m / 13448 m). On the way, we shall visit the small lagoons known a Uturungucocha Macho and Uturungucocha Hembra. These two beautiful lagoons are considered by the locals sacred places and frequently they are visited for the ceremony known as “pagos” to receive the spiritual and material benefits of these lagoons. After this, we continue descending until we finally arrive to Pacchanta where we find hot water springs at 4400 m. Here we will have lunch and meet our transport which will take us back to the City of Cusco where we transfer you to the hotel",
+                "dayDescription": "In the morning, we enjoy our last breakfast, and afterwards we start descending towards Pacchanta village (4100 m / 13448 m). On the way, we shall visit the small lagoons known a Uturungucocha Macho and Uturungucocha Hembra. These two beautiful lagoons are considered by the locals sacred places and frequently they are visited for the ceremony known as “pagos” to receive the spiritual and material benefits of these lagoons. After this, we continue descending until we finally arrive to Pacchanta where we find hot water springs at 14,430ft || 4,400m. Here we will have lunch and meet our transport which will take us back to the City of Cusco where we transfer you to the hotel",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Box Lunch"
+                    "Meals: Breakfast + Lunch Box"
                 ],
                 "trekData":{
                     "totalTrekTime": "3 hours"
@@ -1227,7 +1186,7 @@
         "countryList": ["peru"],
         "dayByDay":[
             {
-                "dayTitle": "Cusco / Calca / Lares. Trek Lares - Huacahuasi (3,800m) - Sondor Camp (3900m)",
+                "dayTitle": "Cusco / Calca / Lares. Trek Lares - Huacahuasi (12,470ft || 3,800m) - Sondor Camp (3900m)",
                 "dayDescription": "We depart from Cusco (3,450 m) at 5:00 a.m. in the morning and travel (1.5 hour) to Calca town located in the Urubamba Valley. In the local colorful indigenous market, our cook will do some last shopping of fresh bread, fresh vegetables and other items needed during the trekking.  From Calca transport (2.5 hours) up to Lares village (3,150 m) where we will take a dip in the hot thermal water springs and then enjoy breakfast. At about 10 a.m. we start our first day trek with a gentle steady 3 hours ascent up to Huacahuasi village where we will enjoy lunch and after a good rest, we continue our hike for about 2 to 3 hours until we reach the place known as Sondor where we find our first camp ready for spend the night. Teatime and after a good rest, enjoy a delicious dinner. Resting time.",
                 "dayInclusions": [
                     "breakfast",
@@ -1243,9 +1202,7 @@
                 "dayTitle": "Sondor – Huacahuasijasa Pass (4,400 m) – Camp Mantanay (3,800 m) ",
                 "dayDescription": "In the morning and after enjoying a hearty breakfast, we start our second trekking day at about 8 a.m., hiking up for about 3 hours to the Abra (Pass) Huacahuasikasa (also known as Aurora Pass or Wakawasi pass) located at about 4,400 m of altitude. From the pass we will enjoy great views of the Nevado Pumahuanca of 5,350 meters of altitude. On this area, most probably we will have to walk on snow fields. Then we will descend towards the beautiful Aurora Cocha at 4,200 m. from where our hike then continues climbing down to Millpo Cocha (4,000m) and from here we do our last hike descending towards our camp at the place known as Mantanay which is an abandoned old mining camp.  Enjoy the amazing place surrounded by steep hills. Dinner time and rest.  ",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "7 - 8 hours",
@@ -1271,6 +1228,7 @@
                 ]
             }
         ],
+        "recomendedMonths": "May to December",
         "tourType": "trekking",
         "startingPlace": "Cusco",
         "prices": {
@@ -1332,9 +1290,7 @@
                 "dayTitle": "Llama Corral - Taullipampa Camp (4250m",
                 "dayDescription": "After our first night in the high mountains, we continue our trek (4-5 hours) towards our next camp. On the way, we will observe the beautiful lakes known as Ichiccocha and Jatuncocha. Later, following the side of the Arhuaycocha gorge, we will reach the base camp of Mount Alpamayo (5947m). From here, we can enjoy splendid views of the famous Alpamayo, Artesonraju and Quitaraju. Later we will continue our walk until we reach our camp at Taullipampa at the base of the beautiful Mount Taulliraju (5830m). ",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "4 - 5 hours"
@@ -1344,9 +1300,7 @@
                 "dayTitle": "Taullipampa – Punta Union – Tuctu Camp (Paria Valley – 3900m).",
                 "dayDescription": "Today we face the hardest stage of the whole trek: Punta Union pass at 4750m. The view over Mounts Taulliraju, Artesonraju and Alpamayo, rewards us for all our efforts after a 4-hour ascent. We continue descending (2-3 hours) to our next camp at Tuctu, where perhaps we can see some Condors flying over the Morococha lagoon",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "3 to 4 hours"
@@ -1361,6 +1315,7 @@
                 ]
             }
         ],
+        "recomendedMonths": "May to December",
         "tourType": "trekking",
         "startingPlace": "Huaraz",
         "prices": {
@@ -1421,9 +1376,7 @@
                 "dayTitle": "Llama Corral - Taullipampa Camp (13,900ft || 4,250m)",
                 "dayDescription": "After our first night in the high mountains, we continue our trek (4-5 hours) towards our next camp. On the way, we will observe the beautiful lakes known as Ichiccocha and Jatuncocha. Later, following the side of the Arhuaycocha gorge, we will reach the base camp of Mount Alpamayo (5947m). From here, we can enjoy splendid views of the famous Alpamayo, Artesonraju and Quitaraju. Later we will continue our walk until we reach our camp at Taullipampa at the base of the beautiful Mount Taulliraju (5830m). ",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "4 - 5 hours"
@@ -1433,9 +1386,7 @@
                 "dayTitle": "Taullipampa – Punta Union – Tuctu Camp (Paria Valley 12,790ft || 3,900m).",
                 "dayDescription": "Today we face the hardest stage of the whole trek: Punta Union pass at 4750m. The view over Mounts Taulliraju, Artesonraju and Alpamayo, rewards us for all our efforts after a 4-hour ascent. We continue descending (2-3 hours) to our next camp at Tuctu, where perhaps we can see some Condors flying over the Morococha lagoon",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "7 to 8 hours"
@@ -1445,9 +1396,7 @@
                 "dayTitle": "Tuctu – Huayripampa - Vaqueria Camp - Cebollapampa",
                 "dayDescription": "From Tuctu our trek will take us to pass the Huayripampa gorge and valley. On the way, we will enjoy spectacular views of the surrounding mountains: Chacraraju, Piramide, etc. After 4 hours of hiking, we will arrive to the settlement of Vaqueria where we meet our vehicle that will take us to first to the Portachuelo pass at 4750 m and then descend towards the Cebollapampa meadow. Here we will set up our camp at 3600m. ",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "4 to 5 hours"
@@ -1457,9 +1406,7 @@
                 "dayTitle": "Cebollapampa – Pisco Base Camp",
                 "dayDescription": "From Cebollapampa we trek towards to the base camp of Mounts Pisco and Huandoy. The trail leads us along beautiful landscapes on a well-marked route with glacial water streams, gracious Andean flowers and queñua (polylepis) forest while we enjoy great views of Mounts Huascaran, Chopicalqui, Yanacocha and Mount Pisco itself. The 4 hours hike will take us to the camp at 4650m",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "4 to 5 hours"
@@ -1469,9 +1416,7 @@
                 "dayTitle": "Base Camp – Pisco Summit (18,864ft || 5,752m) – Base Camp",
                 "dayDescription": "We start our early attempt to reach the summit of Mount Pisco at about 2 a.m. First, we negotiate our way through a camp of loose rocks of the moraine. At sunrise, we will reach the base of the glacier where we put crampons on and start our climb in easy glacial and snowy terrain. At a certain point of the route, if weather permits, we will have the opportunity to enjoy marvelous views of the Artesonraju snowy peak, Mount Caraz, Pico de Garcilaso and other impressive and beautiful mountains of the Cordillera Blanca. After 7-8 hours of continuous climbing we will finally arrive to the summit of the Pisco Mountain. Our efforts will be rewarded with an incredible 360 degrees view of the Cordillera Blanca main peaks: Huascaran, Chacraraju, Chopicalqui, Huandoy, Alpamayo, Artesonraju and many others. We then return to base camp where we expect to arrive at about 2 – 3 p.m. for a well-deserved rest and dinner",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "8 to 9 hours"
@@ -1481,14 +1426,14 @@
                 "dayTitle": "Base Camp – Cebollapampa - Huaraz",
                 "dayDescription": "After a relaxed morning, we will start our trek down to the meadow of Cebollapampa where we meet our transport, which will take us back to the city of Huaraz. ",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box"
+                    "Meals: Breakfast + Lunch Box"
                 ],
                 "trekData":{
                     "totalTrekTime": "2 to 3 hours"
                 }
             }
         ],
+        "recomendedMonths": "May to December",
         "tourType": "trekking",
         "startingPlace": "Huaraz",
         "prices": {
@@ -1576,9 +1521,7 @@
                 "dayTitle": "Llama Corral - Taullipampa Camp (4250m",
                 "dayDescription": "After our first night in the high mountains, we continue our trek (4-5 hours) towards our next camp. On the way, we will observe the beautiful lakes known as Ichiccocha and Jatuncocha. Following the side of the Arhuaycocha gorge, we will reach the base camp of Mount Alpamayo (5947m). From here, we can enjoy splendid views of the famous Alpamayo, Artesonraju and Quitaraju. Later we will continue our walk until we reach our camp at Taullipampa at the base of the beautiful Mount Taulliraju (5830m). ",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "4 - 5 hours"
@@ -1588,9 +1531,7 @@
                 "dayTitle": "Taullipampa – Punta Union – Tuctu Camp (Paria Valley – 3900m).",
                 "dayDescription": "Today we face the hardest part of the trek: Punta Union pass at 4750m. The views over Mounts Taulliraju, Artesonraju and Alpamayo will rewards us for all our efforts. After a 4-hour ascent, we will deserve a break with a gorgeous overwhelming panorama. Descending to our next camp at Tuctu, perhaps we can see some Condors flying over the Morococha lagoon",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "6 to 7 hours"
@@ -1600,8 +1541,7 @@
                 "dayTitle": "Tuctu – Huayripampa - Vaqueria Camp - Huaraz",
                 "dayDescription": "From Tuctu, our trek will take us to the pass at the Huayripampa gorge and valley. On the way, we will enjoy spectacular views of the surrounding mountains: Chacraraju, Piramide, etc. After 4 hours of hiking, we will arrive at the settlement of Vaqueria where we meet our vehicle, which will take us back to the city of Huaraz. During our drive, we will cross the Portachuelo pass at 4750m from where we descend through the beautiful Llanganuco Lakes (3860m) and continue to Huaraz where we arrive late in the afternoon. ",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box"
+                    "Meals: Breakfast + Lunch Box"
                 ],
                 "trekData":{
                     "totalTrekTime": "4 hours"
@@ -1702,9 +1642,7 @@
                 "dayTitle": "Jahuacocha – Matacancha",
                 "dayDescription": "Breakfast and we start the day hiking up to cross our second spectacular high Andean pass known as Caccanampunta at 4750m (15580ft). reaching the highest point, we are rewarded with great views of the east side of the Huayhuash Mountain Range. Later, we will arrive at our campsite located close to Laguna Mitucocha at 4230 m (13874 ft)",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "5 - 6 hours"
@@ -1714,9 +1652,7 @@
                 "dayTitle": "Matacancha – Mitucocha",
                 "dayDescription": "Breakfast and we start the day hiking up to cross our second spectacular high Andean pass known as Caccanampunta at 4750m (15580ft). reaching the highest point, we are rewarded with great views of the east side of the Huayhuash Mountain Range. Later, we will arrive at our campsite located close to Laguna Mitucocha at 4230 m (13874 ft)",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "5 - 6 hours"
@@ -1726,9 +1662,7 @@
                 "dayTitle": "Laguna Mitucocha – Laguna Carhuacocha ",
                 "dayDescription": "After breakfast, our trekking heads towards the next pass at Carhuac Punta at 4600 m/15090 ft from where we descend to our camp located at the beautiful Carhuacocha lagoon located at 4140 m (13579 ft). After an earlier arrival to our camp, in the afternoon you will have plenty of time for fishing, or just relax on the lake area while enjoying scenic views of the impressive mountains",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "4 to 5 hours"
@@ -1738,9 +1672,7 @@
                 "dayTitle": "Carhuacocha – Huayhuash ",
                 "dayDescription": "A morning start will take us across the Atocshayco pass at 4800m/15250ft with marvelous views of the Siula and Quesillococha lagoons and the surrounding mountains: Carnicero, Siula, Yerupaja and many more. Then we go down towards our next camp located close to the small settlement of Huayhuash",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "7 to 8 hours"
@@ -1748,11 +1680,9 @@
             },
             {
                 "dayTitle": "Huayhuash – Viconga Lagoon (Pumarinri camp) ",
-                "dayDescription": "Today we cross the Portachuelo-Huayhuash pass (4600 m – 15088 ft) heading west towards the Viconga Lagoon. On the way and just in front of us, we will have great views of the Cordillera Raura. We will then continue our hike until we reach our next campsite at 4150 m (13610 ft) located near the hot water springs. Here we can enjoy a relaxing dip in the thermal water",
+                "dayDescription": "Today we cross the Portachuelo-Huayhuash pass (4600 m – 15088 ft) heading west towards the Viconga Lagoon. On the way and just in front of us, we will have great views of the Cordillera Raura. We will then continue our hike until we reach our next campsite at 13,620ft || 4,150m located near the hot water springs. Here we can enjoy a relaxing dip in the thermal water",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "6 - 7 hours"
@@ -1760,11 +1690,9 @@
             },
             {
                 "dayTitle": "Viconga Lagoon – Punta Cuyoc – Quebrada Guanacpatay",
-                "dayDescription": "An early morning start, will lead us up to the highest pass of the entire loop: the spectacular Cuyoc pass at 5000 m. We will enjoy excellent views of the Puscanturpa massif. We then descend to the Guanacpatay gorge and walking along it we will reach our campsite at 3800 m/12464 ft",
+                "dayDescription": "An early morning start, will lead us up to the highest pass of the entire loop: the spectacular Cuyoc pass at 5000 m. We will enjoy excellent views of the Puscanturpa massif. We then descend to the Guanacpatay gorge and walking along it we will reach our campsite at 12,470ft || 3,800m",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "8 - 9 hours"
@@ -1774,8 +1702,7 @@
                 "dayTitle": "Quebrada Guanacpatay – Cajatambo – Lima ",
                 "dayDescription": "We start an early morning hiking (4 hours) along the Quebrada Guanacpatay down to the Huayllapa river and then heading west we descend until we reach the road where our private transport will be waiting for us. At this point we say goodbye to our kind helpers and mule keepers, and we start the 4 hours drive (approx. 265 kms) following the route Cajatambo – Oyon – Sayan – Chancay and Lima. Upon arrival in Lima, we transfer you to the hotel",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box"
+                    "Meals: Breakfast + Lunch Box"
                 ],
                 "trekData":{
                     "totalTrekTime": "4 hours"
@@ -1849,9 +1776,7 @@
                 "dayTitle": "Base Camp – Pisco Summit – Base Camp",
                 "dayDescription": "Early in the morning we start our attempt to reach the summit of Mount Pisco. At about 2 a.m. we head first through a camp of loose rock of the moraine. Around sunrise we will reach the base of the glacier, from where we put on crampons and start the climb in easy glacial and snowy terrain. At a certain point of the route, and weather permitting we will have the opportunity to enjoy marvelous views of the Artesonraju snowy peak, Mount Caraz, Piramide de Garcilaso and other impressive and beautiful mountains of the east side of the Cordillera Blanca. Finally, after 7-8 hours of continuous climbing we will get to the summit (5750 m) of the Pisco Mountain. Our effort will be rewarded with an incredible 360 degrees view of the Cordillera Blanca main peaks: Huascaran, Chacraraju, Chopicalqui, Huandoy, Alpamayo, Artesonraju, and many more. We then return to our base camp, where we expect to arrive at about 2 – 3 p.m. for a well-deserved rest and dinner",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "7 - 8  hours (including climb and resting times)"
@@ -1926,9 +1851,7 @@
                 "dayTitle": "Base Camp – Camp I (5250 m/17220 ft)",
                 "dayDescription": "Today, with the help of high-altitude porters, we move up to high camp 1. The day starts with a rock scramble section to continue afterwards on to granite slabs of the mountains which we surpass before we reach the Camp",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "5 - 6  hours (including climb and resting times)"
@@ -1938,9 +1861,7 @@
                 "dayTitle": "Camp I – Camp II (5990 m/19647 ft)",
                 "dayDescription": "This part of the climb is considered the most difficult and the most dangerous, so we will start early in the morning to arrive at the base of the “Trapecio”, a giant ice wall that descends from the South Summit. From here we will climb through seracs and cross several crevasses to finally make a traverse towards the “Garganta”. We reach our camp place at the “Col” between the North and the South Summit of the giant Huascaran",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "6 to 7 hours"
@@ -1950,9 +1871,7 @@
                 "dayTitle": "Camp II – South Summit (6768 m/22200 ft) – Camp II. ",
                 "dayDescription": "The day starts at about 3 a.m. Our climb will begin at the base of the south summit of Mount Huascaran where we then climb up directly to the summit. Snow conditions vary from season to season so we will look for the best route to reach the ample plateau of the summit. Weather permitting, we will enjoy amazing views of the Cordillera Blanca high peaks: Huandoy, Chacraraju, Alpamayo, Chopicalqui, Pisco and many others. Return to our camp II where we will celebrate with a hearty dinner",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "11 to 12 hours climb"
@@ -1962,9 +1881,7 @@
                 "dayTitle": "Camp II – Camp I – Base Camp",
                 "dayDescription": "In the morning, we will start our descent (7 to 8 hours) towards the base camp where we will enjoy a relaxing time and celebration with some beers",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "7 to 8 hours"
@@ -1974,8 +1891,7 @@
                 "dayTitle": "Base Camp – Musho – Huaraz",
                 "dayDescription": "From Base Camp and after a relaxing morning we hike (3 hours) back to Musho where we meet our transport that will take us back to the city of Huaraz",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box"
+                    "Meals: Breakfast + Lunch Box"
                 ],
                 "trekData":{
                     "totalTrekTime": "3 hours"
@@ -2041,9 +1957,7 @@
                 "dayTitle": "Llama Corral – Quebrada Arhuaycocha - Alpamayo base camp ",
                 "dayDescription": "From Llama Corral, we start our second hiking day towards the Alpamayo Base Camp located at 4300 m (14101 ft) of altitude",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "5 - 6  hours (including climb and resting times)"
@@ -2053,9 +1967,7 @@
                 "dayTitle": "Base Camp - Moraine camp",
                 "dayDescription": "This day, as part of our acclimatization process, we will trek up to the Moraine Camp located at 5100 meters of altitude (16728 ft)",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "5 to 6 hours"
@@ -2065,9 +1977,7 @@
                 "dayTitle": "Moraine Camp - Col camp",
                 "dayDescription": "Today we climb to the Col Camp already at a significant altitude of 5450 m (17876 ft)",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "6 to 7 hours climb"
@@ -2077,9 +1987,7 @@
                 "dayTitle": "Col camp – Alpamayo summit – Col Camp",
                 "dayDescription": "This day begins early as we start our arduous climb to the top (5957 m) of this amazing mountain.  Today we will have a steep & technical climb on ice to the summit with several hours of continual front pointing. Fixed ropes may be used depending on client’s skills and for our descent, several rappels are needed. Return to the Col High Camp for a well-deserved rest and celebrations on our success",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "9 to 10 hours"
@@ -2089,17 +1997,14 @@
                 "dayTitle": "Col Camp - Base camp",
                 "dayDescription": "After breakfast, we will descend back to our base camp",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "Camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ]
             },
             {
                 "dayTitle": "Base camp – Huaraz",
                 "dayDescription": "We will trek down to Cashapampa village from where our transport will take us to Huaraz",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box"
+                    "Meals: Breakfast + Lunch Box"
                 ]
             }
         ],
@@ -2174,9 +2079,7 @@
                 "dayTitle": "Upis – Pucacocha",
                 "dayDescription": "This day we will trek to the Pucacocha Lake for the next camp. Today we will walk through the first high pass, Arapa Pass at 4900m heading towards our next camp at 4700m from where we will have amazing views of the hanging glaciers of the west side of Ausangate",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "5 - 6  hours (including climb and resting times)"
@@ -2186,9 +2089,7 @@
                 "dayTitle": "Pucacocha – Machurakay",
                 "dayDescription": "Today’s trek takes us along the next high pass, the Palomani Pass at 5100m. On the way, we will have views over the Ausangatecocha Lake and some of the beautiful peaks like Surimani and Kampa I. We will finally arrive at Machurakay camp (4600m) which also will be our base camp for the next days",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "5 to 6 hours"
@@ -2198,18 +2099,14 @@
                 "dayTitle": "Machurakay Rest Day",
                 "dayDescription": "We will enjoy a full resting day. We might use the day to make a gentle hike to observe the impressive glaciers of Ausangate, or simply relax at the camp. ",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ]
             },
             {
                 "dayTitle": "Machurakay – Camp I",
                 "dayDescription": "Today, we will transport our climbing gear to camp I (5400m) on the south side of Mount Ausangate on a slow accent taking us upwards slowly",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ],
                 "trekData":{
                     "totalTrekTime": "6 to 7 hours"
@@ -2219,17 +2116,14 @@
                 "dayTitle": "Camp I – Camp II",
                 "dayDescription": "We will head the upper glaciers of Mount Ausangate as we reach our Camp II at 6100m.",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "Camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ]
             },
             {
                 "dayTitle": "Camp II – Summit – Camp I",
                 "dayDescription": "We will trek down to Cashapampa village from where our transport will take us to Huaraz",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box"
+                    "Meals: Breakfast + Lunch Box"
                 ],
                 "trekData":{
                     "totalTrekTime": "9 to 11 hours including climb and rest times"
@@ -2239,35 +2133,28 @@
                 "dayTitle": "Camp I – Machurakay",
                 "dayDescription": "We will begin our descent back to the Base Camp after our hearty breakfast",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "Camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ]
             },
             {
                 "dayTitle": "Machurakay – Ticllacocha",
                 "dayDescription": "We will continue our trek back to Ticllacocha Lake at the base of Jatunjampa peak, where our camp is located",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "Camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ]
             },
             {
                 "dayTitle": "Ticllacocha – Otorongococha",
                 "dayDescription": "Today we will cross the highest pass of the trek at 5200m, the Apacheta Pass, a mystic place in front of Pucapunta and Punta peaks. Our next camp is located by Otorongocha Lake at 4700m",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box",
-                    "Camp Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner"
                 ]
             },
             {
                 "dayTitle": "Otorongococha – Pacchanta - Cusco",
                 "dayDescription": "After visiting the small sacred lakes of Minaparayoc, we trek towards the little village of Pacchanta, where we find some hot water springs at 4400m. From here our transport will take us back to the city of Cusco",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Lunch Box"
+                    "Meals: Breakfast + Lunch Box"
                 ]
             }            
         ],
