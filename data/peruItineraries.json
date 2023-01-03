@@ -332,9 +332,12 @@
         "dayByDay":[
             {
                 "dayTitle": "Cusco – Wiñayhuayna – Aguas Calientes",
-                "dayDescription": "Early morning from your hotel, your tour starts with the transfer with a car to the train station in Ollantaytambo, situated at about 1.5 hours from Cusco. From here we board the train (1h10) to the point known as 'Km. 104' (7,380 ft || 2,250 m). Here we have check in at the Warden’s post of Chachabamba Incas’ Ruins. From this point, we will begin our day hike (4 hours) to ascend 450 meters following the Inca Trail to the beautiful Wiñay Wuayna Inca remains (2700 m). Surrounded by an impressive landscape, the steps lead up to one of the largest and best-preserved Inca Ruins of the area. Once there we will spend some time visiting these impressive mountain side buildings and then we continue (1.5 to 2 hours) our hike towards The Inti Punku or (Sun-Gate) (at 2700m) from where, and weather permitting, we will enjoy an amazing view of the Machu Picchu citadel. Walk down to the Machu Picchu transport station to return to the town of Aguas Calientes to overnight in a local hotel",
+                "dayDescription": "Early morning from your hotel, your tour starts with the transfer with a car to the train station in Ollantaytambo, situated at about 1h30 from Cusco. From here we board the train (1h30) to the point known as 'Km. 104' (7,380 ft || 2,250 m). Here we have our check-in at the Warden’s post of Chachabamba Incas’ Ruins. From this point, we will begin our day hike (4 hours) to ascend 1,500 ft. || 450 m; following the Inca Trail to the beautiful Wiñay Wuayna Inca ruins (at 8,850 ft. || 2700 m above sea level). Surrounded by an impressive landscape, the steps lead up to one of the largest and best-preserved Inca Ruins of the area. Once there we will spend some time visiting these impressive mountain side buildings and then we continue a 1.5 to 2 hours hike towards The Inti Punku or Sun-Gate (at 8,850 ft. || 2700 m above sea level) from where, and weather permitting, we will enjoy an amazing view of the Machu Picchu citadel. Walk down to the Machu Picchu transport station to return to the town of Aguas Calientes to overnight in a local hotel",
                 "dayInclusions": [
-                    "Lunch Box"
+                    "Lunch Box",
+                    "Bus and Train Transportation to Trailhead",
+                    "Guide Services",
+                    "Hotel accommodation"
                 ],
                 "trekData":{
                     "totalTrekTime": "5 to 6 hours (including lunch and resting time)"
@@ -342,9 +345,13 @@
             },
             {
                 "dayTitle": "Aguas Calientes – Machu Picchu – Cusco",
-                "dayDescription": "In the early morning, we will take the public bus up to Machu Picchu where we will enjoy a visit to one of the most famous touristic places of the world. Our guided tour will take us through the main points of the amazing complex, including the religious, agricultural, and urban areas. In the afternoon, we take the public bus from Machu Picchu to Aguas Calientes to pick up our return train to Ollantaytambo from where a car transfer takes you back to Cusco",
+                "dayDescription": "In the early morning, we will take the Machu Picchu public bus up to the citadel where we will enjoy a visit to one of the most famous touristic places of the world. Our guided tour will take us through the main points of the amazing complex, including the religious, agricultural, and urban areas. In the afternoon, we take the public bus from Machu Picchu to Aguas Calientes to pick up our return train to Ollantaytambo from where a car transfer takes you back to Cusco",
                 "dayInclusions": [
-                    "Hotel breakfast"
+                    "Hotel breakfast",
+                    "Machu Picchu Entrance Fee",
+                    "MaPi Public Bus Service",
+                    "Guide Services",
+                    "Bus and Train Transportation to Cusco"
                 ]
             }
         ],
