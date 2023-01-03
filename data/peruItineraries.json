@@ -130,7 +130,7 @@
         "notIncluded": [
             "international/regional flights",
             "additional Inca Trail porters",
-            "travel insurance (REQUIRED)",
+            "personal travel insurance (REQUIRED)",
             "personal trekking gear",
             "extras",
             "tips"
@@ -238,7 +238,7 @@
         "notIncluded": [
             "international/regional flights",
             "additional Inca Trail porters",
-            "travel insurance (REQUIRED)",
+            "personal travel insurance (REQUIRED)",
             "personal trekking gear",
             "personal expenses",
             "extras",
@@ -265,9 +265,14 @@
         "dayByDay":[
             {
                 "dayTitle": "Cusco - Sayhuite - Cachora - Capuliyoc - Chikiska ",
-                "dayDescription": "Our tour starts with an early departure from Cusco, where our private transport will take us on a 4-hour drive to the town of Cachora. On the way, we shall stop at the archaeological site of Sayhuite before descending to the mountain village of Cachora located at 9,550ft || 2,910m of altitude. After lunch, we begin our 3-hour hike to the place known as Capuliyoc (9,560ft || 2,915m) from where we have our first beautiful views of the Apurimac valley stretching below as well as the snow-capped peaks of Padreyoc and Wayna Cachora. From here, we make a steep downhill descent for approximately 3 hours to our campsite (6,040ft ||1,840m). ",
+                "dayDescription": "Our tour starts with an early departure from Cusco, where our private transport will take us on a 4-hour drive to the town of Cachora. On the way, we shall stop at the archaeological site of Sayhuite before descending to the mountain village of Cachora located at 9,550ft || 2,910m of altitude. After lunch, we begin our 3-hour hike to the place known as Capuliyoc (9,560ft || 2,915m) from where we have our first beautiful views of the Apurimac valley stretching below as well as the snow-capped peaks of Padreyoc and Wayna Cachora. From here, we make a steep downhill descent for approximately 3 hours to our campsite at Chikiska (6,040ft || 1,840m). ",
                 "dayInclusions": [
-                    "Meals: Lunch Box + dinner"
+                    "Meals: Lunch Box + dinner",
+                    "full camping equipment",
+                    "Transportation to Trailhead",
+                    "trekking staff with cook and assistants",
+                    "english/spanish speaking trekking guide services",
+                    "carry horses/donkeys, muleteers and emergency horse"
                 ],
                 "trekData":{
                     "totalTrekTime": "6 to 7 hours"
@@ -277,30 +282,42 @@
                 "dayTitle": "Chikiska - Choquequirao ruins",
                 "dayDescription": "Our first hike (1h30) will be early in the morning, and will take us down to Playa Rosalinas, to the shores of the magnificent Apurimac River (4,920ft || 1,500m). We will continue with our steep climb to Santa Rosa (6,860ft || 2,090m); where we can take a refreshing break, rest and buy water (from some local merchants!). We continue our upward climb for 4 to 5 hours towards Marampata (9,190ft || 2,800m), a flat place where we can rest while enjoying a splendid view of Choquequirao. This spot also has bathrooms and a nice area to have lunch. After our break, we start our final 2-hour hike to our campsite located at 10,200ft || 3,110m next to the Choquequirao Inca Ruins. We will spend the late evening in the ruins, where we will watch the sunset, and with some luck, see condors",
                 "dayInclusions": [
-                    "Meals: Breakfast + Lunch Box + Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner",
+                    "full camping equipment",
+                    "trekking staff with cook and assistants",
+                    "english/spanish speaking trekking guide services",
+                    "carry horses/donkeys, muleteers and emergency horse"
                 ],
                 "trekData":{
                     "totalTrekTime": "6 to 7 hours"
                 }
             },
             {
-                "dayTitle": "Choquequirao ruins - Santa Rosa ",
-                "dayDescription": "In the morning, we will have some time to fully explore the ruins before we start descending to the Apurimac canyon for about 5 hours. We will head to our tropical campsite, located at Santa Rosa village (6,860ft || 2,090m)",
+                "dayTitle": "Choquequirao ruins - Santa Rosa - Chikiska",
+                "dayDescription": "In the morning, we will have some time to fully explore the ruins before we start descending to the Apurimac canyon for about 5 hours. We will head to our tropical lunchsite, located at Santa Rosa village (6,860ft || 2,090m). Afterwards we continue our descent to Playa Rosalina followed by Chikiska, our previous campsite, where we will overnight",
                 "dayInclusions": [
-                    "Meals: Breakfast + Lunch Box + Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner",
+                    "full camping equipment",
+                    "trekking staff with cook and assistants",
+                    "english/spanish speaking trekking guide services",
+                    "carry horses/donkeys, muleteers and emergency horse"
                 ],
                 "trekData":{
-                    "totalTrekTime": "5 hours"
+                    "totalTrekTime": "5 - 6 hours"
                 }
             },
             {
-                "dayTitle": "Santa Rosa - Cachora - Cusco",
-                "dayDescription": "Early in the morning we start our descent to the shores of the river followed by an arduous climb that is rewarded with spectacular views. We ascend for about four hours until we reach our picnic spot at Capuliyoc. Afterwards we have our final 2 hours hike to the village of Cachora where our private car will be waiting to transport us back to Cusco (4 hours drive). ",
+                "dayTitle": "Chikiska - Cachora - Cusco",
+                "dayDescription": "Early in the morning we ascend for about four hours until we reach our picnic spot at Capuliyoc. Afterwards we have our final 2 hours hike to the village of Cachora where our private car will be waiting to transport us back to Cusco (4 hours drive).",
                 "dayInclusions": [
-                    "Meals: Breakfast + Lunch Box"
+                    "Meals: Breakfast + Lunch Box",
+                    "Transportation to Cusco",
+                    "trekking staff with cook and assistants",
+                    "english/spanish speaking trekking guide services",
+                    "carry horses/donkeys, muleteers and emergency horse"
                 ],
                 "trekData":{
-                    "totalTrekTime": "2 hours"
+                    "totalTrekTime": "6 hours"
                 }
             }
         ],
@@ -327,7 +344,7 @@
         "notIncluded": [
             "international/regional flights",
             "additional Inca Trail porters",
-            "travel insurance (REQUIRED)",
+            "personal travel insurance (REQUIRED)",
             "personal trekking gear",
             "personal expenses",
             "beverages",
@@ -579,7 +596,7 @@
         ],
         "notIncluded": [
             "international/regional flights",
-            "travel insurance (REQUIRED)",
+            "personal travel insurance (REQUIRED)",
             "additional carry horses",
             "personal trekking gear",
             "personal expenses",
@@ -708,176 +725,7 @@
         ],
         "notIncluded": [
             "international/regional flights",
-            "travel insurance (REQUIRED)",
-            "additional carry horses",
-            "personal trekking gear",
-            "personal expenses",
-            "extras",
-            "tips"
-        ]
-    },
-    {
-        "tripName": "ultimate Machu Picchu + Choquequirao Expedition",
-        "id": "machu-pichu-choquequirao-16D",
-        "duration": 16,
-        "adventureType": "trekking",
-        "difficulty": 4,
-        "imgArr": [
-        "https://dsm04pap002files.storage.live.com/y4mLFJm_sLT8V8fqT4TPHtNZCUVD-Mg5rlQFmjuZbfHFBNN-lqiRrB4lVcb3x6WSwAmI4cB4ePC0bBMvofvnmA-kbgCjovnNMDJghBzmXfGgyBL8Cn-p-qaSFIT415G9mbig_poMjSXsC1BzP6rVkbBbX3aCxPW6K8I4QRHdu_r5mBf-ngPC50uvypQU_RdQWg2?width=2000&height=1150&cropmode=none",
-        "https://dsm04pap002files.storage.live.com/y4mpdigr0Z3n_EFPGOtMRr_foHEDVmZSsLXUXab3s0CI0ZR_u4F4b_kEK2mTjpAmrRMqh1C4ZMAMfv3mVYiFN_Snnu_7zl09kPsxyBxASgiYKmUz73iXph3jUq3dvSkRWhYx9wmCZEZw5QgKA4BhS1_504p9vD_ozrq1cSu5l8oZuwuXhUhweyUrtyuwOLorjjD?width=2000&height=1150&cropmode=none",
-        "https://dsm04pap002files.storage.live.com/y4mSQCLohq0Vly5HLteZLDNM1VYFbeNvDSYTmrnJVzf3QIvatz6wtQRd0q3GBV4saAPst1McDYoJ1wtvISxiYqEzR_QyjncMTd9EPimYnrA4FKXB8Ejn6lTqcaSCg9VZqZpUZKTjizZsrDnNc8P1vXn9BgX8OILi-fDxathSLNRTrHhU5Y2INxtq3l_5yujwlE6?width=2000&height=1150&cropmode=none",
-        "https://dsm04pap002files.storage.live.com/y4m1O68b2BLXdQHq0rZIeuPZiA5weK3bzI5SNkQg8b9VQlJ1itE5ZaMh_-FXuDqAExjOOymRnsmIoU3buxBlYZ8HASV7zLkg4QUtpsWlmTyD_8sapnrh6ZoieDWYVONRZm0KzfAy4F0CflAQ7_WQrISX66ge_9TsL-zYHCdNsp0ZQeyzyG3pGvdEeykkIZxtnnI?width=2000&height=1150&cropmode=none",
-        "https://dsm04pap002files.storage.live.com/y4mrQXTzZUtcBYCjOx-588q7_wTaVgiJ31Iq0CzGOrQ8QYtYEcmXAs3n-xTCWW3tJsv65oMpvDJ704fKxe-dAmcm8LIM5yxL7Wy2NiWOijD8VTUeqS9lVmiR-YmoTCRn76MxviMNq6W6phME3zJxNY0Cx6BY61si5bp_VFrEFv16KINePiye84MrxYAbLkrXzO4?width=2000&height=1150&cropmode=none",
-        "https://dsm04pap002files.storage.live.com/y4m0bXf7pFPEo7JFJfBAoPv1CBYJoRMRuvy4U6VtHfUxxIkXr3_s_u9jVtblBhrKW7JdIVzgibMzXgaC8vsrvtkmfmf-kD1SHMWeSDQJTDBzDPkqg5anQsyiEmrTy2LU8J9y6NQCY39X50q9ONLEJvA9ielM07rdaDHYjAsX3InGSlLC19fQDhFPvtqNVfStk6b?width=2000&height=1150&cropmode=none",
-        "https://dsm04pap002files.storage.live.com/y4mVAjnTJGIZr7P0x_ms1gGl4ziQYW_GvZdy3OepENSn6d0xj1MHUtpBKg05f9LdbUGeBSV6QrEJayTGczMcQDX5RfQO8gdQ-t9kVoW_ekYkEomZqLim1I2aqE2cVqQhc7j2XvfooyA_-m-DxoAX7WiQBVx-Tl2NqEnFVnbXUXWxbu8utdqkH2sgGdDsSIqt0FY?width=2000&height=1150&cropmode=none"
-        ],
-        "tripDescription":"The Choquequirao complexis perhaps one of the best-preserved major Inca ruins in southern Peru and rivals in importance with the world-famous Machu Picchu citadel. In fact, until the nineteenth century, it was thought that Choquequirao might be the famous “Lost City of the Incas”. It is in the Vilcabamba Range where trekking brings great opportunities to explore beyond the well-known hiking routes to Machu Picchu trek. This is a challenging and rewarding adventure: great landscapes, high altitude mountain passes, amazing views, and impressive Inca ruins are waiting for us in the heart of the Andes. The trek, dominated by the 20,000ft peaks of Salcantay and Pumasillo, starts from the cloud forest environment below Machu Picchu, crosses the highlands of the Vilcabamba Range and descends to the spectacular canyon of the Apurimac River, to finally climb out of this immense valley up to the highlands. The Inca shrines and highways throughout the Vilcabamba, specially Rosaspata and Ñusta Ispana, are exceptionally worth the visit.",
-        "countryList": ["peru"],
-        "dayByDay":[
-            {
-                "dayTitle": "Arrival in Lima",
-                "dayDescription": "At your arrival in Lima, you will be welcomed and transferred to your hotel of choice. You will have a short briefing about next day activities."
-            },
-            {
-                "dayTitle": "Lima - Cusco - Ollantaytambo",
-                "dayDescription": "After your breakfast, we will transfer to the airport for your flight to Cusco. We will pick up you from the Airport, to begin our ride down to the valley of Urubamba, known as the Sacred Valley of the Incas. Here we start our first visit to the beautiful Pisac Inca Ruins, where during our 2 hours walk, we can admire the fine architectural work of the Inca culture. Then we continue our tour to visit the colorful market of Pisac. Our  Transport will then take us towards the Inca town of Ollantaytambo where we visit the impressive Inca fortress and walk on this ancient typical Inca town. We will overnight in a nice hotel in Ollantaytambo, where the majestic fortress will overlook us",
-                "dayInclusions": [
-                    "Hotel breakfast"
-                ]
-            },
-            {
-                "dayTitle": "Ollantaytambo – Trekking the Sacred Way to Machu Picchu",
-                "dayDescription": "Morning transfer to Ollanta train station to pick the train that will drop us off at “Km. 104 (2250 m)” to check in at the Warden’s post of Chachabamba Incas’ Ruins. From this point, we will begin ascending over 700m along the Famous Inca Trail. Accompanied by an impressive landscape, the steps will lead us up to Wiñay Huayna, one of the largest and best-preserved Inca Ruins along the Trail. After a visit to these impressive mountain side constructions, we will continue our trek towards The Intipunku or (Sun-Gate) from where we will have an amazing view of the Machu Picchu citadel. We will join the tourist public bus transport down to Aguas Calientes to overnight in a local hotel (3 stars hotel – upgrade upon request). ",
-                "dayInclusions": [
-                    "Hotel breakfast",
-                    "Box Lunch",
-                    "Dinner"
-                ],
-                "trekData":{
-                    "totalTrekTime": "5 to 6 hours"
-                }
-            },
-            {
-                "dayTitle": "Machu Picchu – Ollantaytambo",
-                "dayDescription": "In the early morning, we will take the public bus up to Machu Picchu, from where we will enjoy a visit to one of the most famous citadels in the world. Our guided tour will take us through the main points of the amazing complex, including the religious, agricultural, and habitational areas. In the late afternoon, we take the public bus from Machu Picchu to Aguas Calientes to pick up our return train to Ollantaytambo",
-                "dayInclusions": [
-                    "Hotel breakfast",
-                    "lunch"
-                ]
-            },
-            {
-                "dayTitle": "Ollantaytambo - Huancacalle",
-                "dayDescription": "In the morning, we drive over the Malaga Pass to the north of Mount Veronica. After the pass, we descend westward through the cloud forests, to cross the Urubamba River and follow it to the south until we reach the valley of the Vilcabamba River. We will pass small farms of tropical fruits, banana and coffee giving the trip a nice landscape. In the late afternoon, we will finally reach our camp at Huancacalle. ",
-                "dayInclusions": [
-                    "Hotel breakfast",
-                    "Meals: Lunch Box + Dinner"
-                ],
-                "trekData":{
-                    "totalTrekTime": "3 - 4 hours"
-                }
-            },
-            {
-                "dayTitle": "Huancacalle - Ñusta Ispana",
-                "dayDescription": "Today’s trekking takes us up to the Inca ruins of Vitcos and Ñusta Ispana. Vitcos is a classic ceremonial plaza lined with massive Inca stonework that occupies a ridge-top site dominating the surrounding countryside. Continuing from here, after a 1-hour trek, we will reach Ñusta Ispana, a much more mystical site, where we find a granite boulder bordering a freshwater spring, considered by the Incas as a sacred site of unusual power. The natural rock has been carved with delicate niches: a beautiful place surrounded by flowers. We continue later following a paved Inca road, which takes us to our campsite",
-                "dayInclusions": [
-                    "Meals: Breakfast + Lunch Box + Dinner"
-                ]
-            },
-            {
-                "dayTitle": "Chuquitakarpo Pass",
-                "dayDescription": "After a hearty breakfast, we continue our ascent to Chuquitakarpo Pass at 4460 m, located in the heart of the mountain range. The Inca highway which we will use is, in some places, still in great condition. Following the route, we will descend to our campsite at 12,470ft || 3,800m",
-                "dayInclusions": [
-                    "Meals: Breakfast + Lunch Box + Dinner"
-                ]
-            },
-            {
-                "dayTitle": "Chuquitakarpo - Paccac",
-                "dayDescription": "This day we will reach our next pass at 4050m of altitude. To get to this point we climb through dense cloud forests, where our effort is rewarded by splendid views. Later, we cross a second ridge and, in the afternoon we reach our camp near Paccac at 3,650m",
-                "dayInclusions": [
-                    "Meals: Breakfast + Lunch Box + Dinner"
-                ]
-            },
-            {
-                "dayTitle": "Paccac - Yanama",
-                "dayDescription": "We enjoy a leisurely morning and, in the afternoon, after lunch, we head towards the hamlet of Yanama, located in the Vilcabamba Range where we will set our camp",
-                "dayInclusions": [
-                    "Meals: Breakfast + Lunch Box + Dinner"
-                ]
-            },
-            {
-                "dayTitle": "Yanama - Rio Blanco",
-                "dayDescription": "Today we climb to the Victoria Pass, where we follow a beautiful and spectacular trekking descending to the shores of the Rio Blanco to find our camp at 1950m of altitude",
-                "dayInclusions": [
-                    "Meals: Breakfast + Lunch Box + Dinner"
-                ]
-            },
-            {
-                "dayTitle": "Rio Blanco - Choquequirao",
-                "dayDescription": "In the morning, a steep, long ascent will take us to the ridge (3150m) located high above the Blanco river shores. After a short descend we finally drop down into the ruins of Choquequirao (3085m). These beautiful ruins, with many terraces and buildings, were originally found covered by dense bushes and have recently undergone a great deal of restoration work",
-                "dayInclusions": [
-                    "Meals: Breakfast + Lunch Box + Dinner"
-                ]
-            },
-            {
-                "dayTitle": "Choquequirao - Apurimac River",
-                "dayDescription": "We will have the morning to explore and enjoy these amazing ruins, rarely visited but perhaps one of the most important in the Peruvian rain forest. After lunch, we start trekking down towards our next camp on the shores of Apurimac River",
-                "dayInclusions": [
-                    "Meals: Breakfast + Lunch Box + Dinner"
-                ]
-            },
-            {
-                "dayTitle": "Apurimac River - Cachora",
-                "dayDescription": "This day we head towards Cachora Village where we will overnight. This is a long, tiring climb from the Apurimac gorge out to the highlands of Cachora",
-                "dayInclusions": [
-                    "Meals: Breakfast + Lunch Box + Dinner"
-                ]
-            },
-            {
-                "dayTitle": "Sayhuite - Cusco",
-                "dayDescription": "In the morning, we will visit the ritual site of the Incas at Sayhuite. This is a place where we can find interesting carved boulders and irrigation channels. Finally, we meet our vehicle which will transport us back to Cusco and to our hotel",
-                "dayInclusions": [
-                    "Meals: Breakfast + Lunch Box"
-                ]
-            },
-            {
-                "dayTitle": "Cusco - Lima",
-                "dayDescription": "A morning flight to Lima will be followed by a transfer to your hotel. In your free afternoon, perhaps you can visit the old Lima and the interesting museums, churches, etc",
-                "dayInclusions": [
-                    "hotel breakfast"
-                ]
-            },
-            {
-                "dayTitle": "Lima - Transfer out",
-                "dayDescription": "A morning transfer will take you to the Airport for your flight or program extension",
-                "dayInclusions": [
-                    "hotel breakfast"
-                ]
-            }            
-        ],
-        "tourType": "360° tours",
-        "prices": {
-            "priceType": "fixedDeparture",
-            "pricePerPerson": 2490,
-            "singlesupp": 900,
-            "dblOccupancy": true,
-            "priceNotice": "hotel categories will depend on locally available properties"
-        },
-        "included": [
-            "noted meals",
-            "entrance fees",
-            "private transport and transfers",
-            "Vista Dome (or similar) train ticket",
-            "trekking staff with cook and assistants",
-            "local bus service to Machu Picchu Ruins",
-            "hotels: double room accommodation with private facilities",
-            "carry horses (up to 10kg per person), muleteers and emergency horse",
-            "english/spanish speaking guide services (specialized trekking guides)",
-            "high-quality tents (2 participants per tent)",
-            "full camping equipment (kitchen, dining and toilet tents)"
-        ],
-        "notIncluded": [
-            "international/regional flights",
-            "travel insurance (REQUIRED)",
+            "personal travel insurance (REQUIRED)",
             "additional carry horses",
             "personal trekking gear",
             "personal expenses",
@@ -975,7 +823,7 @@
         ],
         "notIncluded": [
             "international/regional flights",
-            "travel insurance (REQUIRED)",
+            "personal travel insurance (REQUIRED)",
             "additional carry horses",
             "personal trekking gear",
             "personal expenses",
@@ -1159,7 +1007,7 @@
         ],
         "notIncluded": [
             "international/regional flights",
-            "travel insurance (REQUIRED)",
+            "personal travel insurance (REQUIRED)",
             "additional carry horses",
             "personal trekking gear",
             "personal expenses",
@@ -1248,7 +1096,7 @@
         ],
         "notIncluded": [
             "international/regional flights",
-            "travel insurance (REQUIRED)",
+            "personal travel insurance (REQUIRED)",
             "additional carry horses",
             "personal trekking gear",
             "personal expenses",
@@ -1332,7 +1180,7 @@
         ],
         "notIncluded": [
             "international/regional flights",
-            "travel insurance (REQUIRED)",
+            "personal travel insurance (REQUIRED)",
             "additional carry horses",
             "personal trekking gear",
             "personal expenses",
@@ -1442,16 +1290,16 @@
             "entrance fees",
             "trekking staff with cook and assistants",
             "private transport from Huaraz to trailhead",
-            "carry donkeys (up to 8kg per participant), muleteers and emergency horse",
+            "carry donkeys muleteers and emergency horse",
             "high-quality tents (2 participants per tent)",
             "full camping equipment (kitchen, dining and toilet tents)",
             "english/spanish speaking guide services (specialized trekking guides)"
         ],
         "notIncluded": [
             "international/regional flights",
-            "travel insurance (REQUIRED)",
+            "personal travel insurance (REQUIRED)",
             "additional carry horses",
-            "personal trekking gear",
+            "personal trekking/climbing gear",
             "personal expenses",
             "beverages",
             "extras",
@@ -1575,7 +1423,7 @@
         ],
         "notIncluded": [
             "international/regional flights",
-            "travel insurance (REQUIRED)",
+            "personal travel insurance (REQUIRED)",
             "additional carry horses",
             "personal trekking gear",
             "personal expenses",
@@ -1731,7 +1579,7 @@
         ],
         "notIncluded": [
             "international/regional flights",
-            "travel insurance (REQUIRED)",
+            "personal travel insurance (REQUIRED)",
             "additional carry horses",
             "personal trekking gear",
             "personal expenses",
@@ -1765,7 +1613,7 @@
                     "Private transport to Trailhead",
                     "trekking staff with cook and assistants",
                     "english/spanish speaking mountain guide services",
-                    "carry horses/donkeys (up to 10kg per participant), muleteers and emergency horse"
+                    "carry horses/donkeys, and muleteers"
                 ],
                 "trekData":{
                     "totalTrekTime": "4 - 5 hours"
@@ -1780,7 +1628,7 @@
                     "trekking staff with cook and assistants",
                     "english/spanish speaking mountain guide services",
                     "Communal climbing equipment (rope, belays, etc.)",
-                    "carry horses/donkeys (up to 10kg per participant), muleteers and emergency horse"
+                    "carry horses/donkeys and muleteers"
                 ],
                 "trekData":{
                     "totalTrekTime": "7 - 8  hours (depending on fitness level)"
@@ -1792,9 +1640,9 @@
                 "dayInclusions": [
                     "Camp breakfast",
                     "Private transport to Trailhead",
+                    "carry horses/donkeys and muleteers",
                     "trekking staff with cook and assistants",
-                    "english/spanish speaking mountain guide services",
-                    "carry horses/donkeys (up to 10kg per participant), muleteers and emergency horse"
+                    "english/spanish speaking mountain guide services"
                 ],
                 "trekData":{
                     "totalTrekTime": "2 to 3 hours"
@@ -1813,18 +1661,18 @@
         "included": [
             "noted meals",
             "entrance fees",
+            "carry horses/donkeys and muleteers",
             "trekking staff with cook and assistants",
             "private transport from Huaraz to trailhead",
             "high-quality tents (2 participants per tent)",
             "full camping equipment (kitchen, dining and toilet tents)",
-            "carry horses/donkeys (up to 10kg per participant), muleteers and emergency horse",
             "english/spanish speaking guide services (specialized mountain guides)"
         ],
         "notIncluded": [
             "international/regional flights",
-            "travel insurance (REQUIRED)",
+            "personal travel insurance (REQUIRED)",
             "additional carry horses",
-            "personal trekking gear",
+            "personal trekking/climbing gear",
             "personal expenses",
             "extras",
             "tips"
@@ -1853,7 +1701,7 @@
                     "Private transport to Trailhead",
                     "trekking staff with cook and assistants",
                     "english/spanish speaking mountain guide services",
-                    "carry horses/donkeys (up to 10kg per participant), muleteers and emergency horse"
+                    "carry horses/donkeys, muleteers and emergency horse"
                 ],
                 "trekData":{
                     "totalTrekTime": "4 - 5 hours"
@@ -1868,7 +1716,7 @@
                     "trekking staff with cook and assistants",
                     "Communal climbing equipment (rope, belays, etc.)",
                     "english/spanish speaking mountain guide services",
-                    "porter service (up to 8kg per participant)"
+                    "porter service"
                 ],
                 "trekData":{
                     "totalTrekTime": "5 - 6  hours"
@@ -1883,7 +1731,7 @@
                     "trekking staff with cook and assistants",
                     "Communal climbing equipment (rope, belays, etc.)",
                     "english/spanish speaking mountain guide services",
-                    "porter service (up to 8kg per participant)"
+                    "porter service"
                 ],
                 "trekData":{
                     "totalTrekTime": "6 to 7 hours"
@@ -1898,7 +1746,7 @@
                     "trekking staff with cook and assistants",
                     "Communal climbing equipment (rope, belays, etc.)",
                     "english/spanish speaking mountain guide services",
-                    "porter service (up to 8kg per participant)"
+                    "porter service"
                 ],
                 "trekData":{
                     "totalTrekTime": "11 to 12 hours climb"
@@ -1913,7 +1761,7 @@
                     "trekking staff with cook and assistants",
                     "Communal climbing equipment (rope, belays, etc.)",
                     "english/spanish speaking mountain guide services",
-                    "porter service (up to 8kg per participant)"
+                    "porter service"
                 ],
                 "trekData":{
                     "totalTrekTime": "7 to 8 hours"
@@ -1927,7 +1775,7 @@
                     "Private transport to Huaraz",
                     "trekking staff with cook and assistants",
                     "english/spanish speaking mountain guide services",
-                    "carry horses/donkeys (up to 10kg per participant), muleteers and emergency horse"
+                    "carry horses/donkeys, muleteers and emergency horse"
                 ],
                 "trekData":{
                     "totalTrekTime": "3 hours"
@@ -1946,18 +1794,18 @@
         "included": [
             "noted meals",
             "entrance fees",
-            "trekking staff with cook and assistants",
+            "staff with cook and assistants",
             "private transport from Huaraz to trailhead",
             "high-quality tents (2 participants per tent)",
             "full camping equipment (kitchen, dining and toilet tents)",
-            "carry horses (up to 8kg per participant), muleteers and emergency horse",
+            "carry horses/donkeys, muleteers and emergency horse",
             "english/spanish speaking guide services (specialized climbing guides)"
         ],
         "notIncluded": [
             "international/regional flights",
-            "travel insurance (REQUIRED)",
+            "personal travel insurance (REQUIRED)",
             "additional carry horses",
-            "personal trekking gear",
+            "personal trekking/climbing gear",
             "personal expenses",
             "beverages",
             "extras",
@@ -2061,18 +1909,18 @@
             "noted meals",
             "entrance fees",
             "high altitude porters",
-            "trekking staff with cook and assistants",
+            "staff with cook and assistants",
             "private transport from Huaraz to trailhead",
-            "carry horses (up to 8kg per participant), muleteers and emergency horse",
+            "carry horses/donkeys, muleteers and emergency horse",
             "english/spanish speaking guide services (specialized trekking guides)",
             "high-quality tents (2 participants per tent)",
             "full camping equipment (kitchen, dining and toilet tents)"
         ],
         "notIncluded": [
             "international/regional flights",
-            "travel insurance (REQUIRED)",
+            "personal travel insurance (REQUIRED)",
             "additional carry horses",
-            "personal trekking gear",
+            "personal trekking/climbing gear",
             "personal expenses",
             "extras",
             "tips"
@@ -2094,7 +1942,7 @@
         "dayByDay":[
             {
                 "dayTitle": "Cusco - Tinqui",
-                "dayDescription": "From Cusco, a 3 to 4 hours drive will take us to the small village of Tinqui. Here we will set up our first camp at 12,800ft || 3900m. ",
+                "dayDescription": "From Cusco, a 3 to 4 hours drive will take us to the small village of Tinqui. Here we will set up our first camp at 12,800ft || 3,900m. ",
                 "dayInclusions": [
                     "Meals: Lunch Box + Dinner"
                 ],
@@ -2104,7 +1952,7 @@
             },
             {
                 "dayTitle": "Tinqui – Upis",
-                "dayDescription": "We begin our trek, heading to the valley of Upis where we will set our camp at 4600m. On the way, we will have an impressive view of the north face of Mount Ausangate",
+                "dayDescription": "We begin our trek, heading to the valley of Upis where we will set our camp at 15,090ft || 4,600m. On the way, we will have an impressive view of the north face of Mount Ausangate",
                 "dayInclusions": [
                     "camp breakfast",
                     "Meals: Lunch Box + Dinner"
@@ -2115,7 +1963,7 @@
             },
             {
                 "dayTitle": "Upis – Pucacocha",
-                "dayDescription": "This day we will trek to the Pucacocha Lake for the next camp. Today we will walk through the first high pass, Arapa Pass at 4900m heading towards our next camp at 4700m from where we will have amazing views of the hanging glaciers of the west side of Ausangate",
+                "dayDescription": "This day we will trek to the Pucacocha Lake for the next camp. Today we will walk through the first high pass, Arapa Pass at 16,080ft || 4,900m heading towards our next camp at 15,420ft || 4,700m from where we will have amazing views of the hanging glaciers of the west side of Ausangate",
                 "dayInclusions": [
                     "Meals: Breakfast + Lunch Box + Dinner"
                 ],
@@ -2211,16 +2059,16 @@
             "high altitude porters",
             "trekking staff with cook and assistants",
             "private transport from Huaraz to trailhead",
-            "carry horses (up to 8kg per participant), muleteers and emergency horse",
+            "carry horses/donkeys, muleteers and emergency horse",
             "english/spanish speaking guide services (specialized trekking guides)",
             "high-quality tents (2 participants per tent)",
             "full camping equipment (kitchen, dining and toilet tents)"
         ],
         "notIncluded": [
             "international/regional flights",
-            "travel insurance (REQUIRED)",
+            "personal travel insurance (REQUIRED)",
             "additional carry horses",
-            "personal trekking gear",
+            "personal trekking/climbing gear",
             "personal expenses",
             "extras",
             "tips"
@@ -2297,7 +2145,7 @@
         ],
         "notIncluded": [
             "international/regional flights",
-            "travel insurance (REQUIRED)",
+            "personal travel insurance (REQUIRED)",
             "personal expenses",
             "extras",
             "tips"
@@ -2389,7 +2237,7 @@
         ],
         "notIncluded": [
             "international/regional flights",
-            "travel insurance (REQUIRED)",
+            "personal travel insurance (REQUIRED)",
             "personal expenses",
             "extras",
             "tips"
@@ -2519,7 +2367,7 @@
         ],
         "notIncluded": [
             "international/regional flights Lima - Cusco - Lima, Lima Quito, Quito - Galapagos.",
-            "travel insurance (REQUIRED)",
+            "personal travel insurance (REQUIRED)",
             "personal expenses",
             "extras",
             "tips"

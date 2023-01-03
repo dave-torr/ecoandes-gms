@@ -105,7 +105,7 @@
     width: 100%;
     padding: 6px 45px;
     position: sticky;
-    top: 30px;
+    top: 36px;
     background-color: white;
     z-index: 30;
     text-transform: uppercase;
@@ -959,6 +959,7 @@
     .breadcrumbNaviCont{
         padding: 6px 12px;
         padding-top: 15px;
+        top: 32px;
     }
     .tourCardTextCont{
         height: 190px;
