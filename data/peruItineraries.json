@@ -1753,14 +1753,19 @@
         "https://dsm04pap002files.storage.live.com/y4mwe5dHLK4xQ9VSL8-JZNHRv00QSfJwbu5MV3ufbfwm4Y_WdNoDM3CNlfpds1yEVJvADbHt1_mBnkpF-qQfdGxvxxjU5-qEAFC_kRSI7ykl7UrztY9DFMH_A6zUq9RzOcV7JetJYWfYdG4gDPecMdDQCMvSIrxFZb0nFI2ssuIeqRXn7X3ZhCM1tiOFfMDVMhV?width=1920&height=1440&cropmode=none",
         "https://dsm04pap002files.storage.live.com/y4muJaSIWflwtL3VbFHoao6GIwIP7JT6orutl0Xm9op25xOCogTp5NhGBdQOYPj8F30uOVDeWTSdUWR3vaBjhSd_pTdZx-p6jCDfvddCOcP39owTcQiAw7d08HVtcT_Tanm-VDQ63DMxqk7QHw5SlinPLPLpykP4ISPLpJVXWFfENXYgjCpA6fQvmDacMOBCO1_?width=2000&height=1150&cropmode=none"
         ],
-        "tripDescription":"Mount Pisco gets its name after the typical Peruvian drink, Pisco Sour. This mountain offers a great introduction to climbing the high mountains in the Cordillera Blanca, considered amongst the best things to do in Peru. The Pisco West peak Peru climbing tour, situated in the heart of the range, is an excellent choice as a preparatory climb before confronting higher, more demanding peaks of the Cordillera Blanca.",
+        "tripDescription":"Mount Pisco (originally known as Mataraju), gets its name after the typical Peruvian drink, Pisco. It is in the famous Cordillera Blanca, considered amongst one of the most beautiful mountain ranges in South America. The climbing of Mount Pisco highest summit (18,860ft || 5,750m) is an excellent choice as a preparatory climb before confronting higher, more demanding peaks of the Cordillera Blanca. From the summit of Pisco, you can get an extraordinary 360 degrees panoramic views of the impressive mounts Chacraraju, Martesana, Quitaraju, Huandoy, Alpamayo, North and South Huascaran and other smaller altitude nearby peaks",
         "countryList": ["peru"],
         "dayByDay":[
             {
                 "dayTitle": "Huaraz – Cebollapampa - Base Camp",
-                "dayDescription": "In the morning, our private transport takes us to Cebollapampa (12,630ft || 3850m) high plateau. From here, we trek towards the base camp of Mounts Pisco and Huandoy. The trail leads us along beautiful landscapes on a well-marked route with glacial streams, gracious Andean flowers and queñua (polylepis) forests. We can enjoy great views of Mounts Huascaran, Chopicalqui, Yanacocha and Mount Pisco itself. The 4 to 5 hours hike will take us to the camp at 15,090 || 4600m. From here we have exceptional views of Mounts Huandoy and Chopicalqui. ",
+                "dayDescription": "In the morning, our private transport takes us to Cebollapampa (12,630ft || 3,850m) high plateau. From here, we trek towards the base camp of Mounts Pisco and Huandoy. The trail leads us along beautiful landscapes on a well-marked route with glacial streams, gracious Andean flowers and queñua (polylepis) forests. We can enjoy great views of Mounts Huascaran, Chopicalqui, Yanacocha and Mount Pisco itself. The 4 to 5 hours hike will take us to the base camp at 15,260 || 4,650m. From here we have exceptional views of Mounts Huandoy and Chopicalqui. ",
                 "dayInclusions": [
-                    "Meals: Lunch Box + Dinner"
+                    "Meals: Lunch Box + Dinner",
+                    "full camping equipment",
+                    "Private transport to Trailhead",
+                    "trekking staff with cook and assistants",
+                    "english/spanish speaking mountain guide services",
+                    "carry horses/donkeys (up to 10kg per participant), muleteers and emergency horse"
                 ],
                 "trekData":{
                     "totalTrekTime": "4 - 5 hours"
@@ -1768,9 +1773,14 @@
             },
             {
                 "dayTitle": "Base Camp – Pisco Summit – Base Camp",
-                "dayDescription": "Early in the morning we start our attempt to reach the summit of Mount Pisco. At about 2 a.m. we head first through a camp of loose rock of the moraine. Around sunrise we will reach the base of the glacier, from where we put on crampons and start the climb in easy glacial and snowy terrain. At a certain point of the route, and weather permitting we will have the opportunity to enjoy marvelous views of the Artesonraju snowy peak, Mount Caraz, Piramide de Garcilaso and other impressive and beautiful mountains of the east side of the Cordillera Blanca. Finally, after 7-8 hours of continuous climbing we will get to the summit (18,860ft || 5750m) of the Pisco Mountain. Our effort will be rewarded with an incredible 360 degrees view of the Cordillera Blanca main peaks: Huascaran, Chacraraju, Chopicalqui, Huandoy, Alpamayo, Artesonraju, and many more. We then return to our base camp, where we expect to arrive at about 2 – 3 p.m. for a well-deserved rest and dinner",
+                "dayDescription": "At about 2 a.m. in the morning we start our attempt to reach the summit of Mount Pisco. We headfirst through a camp of loose rock of the moraine. Around sunrise we will reach the base of the glacier, where we put on crampons, rope up and start the climb in glacial and snowy terrain. At a certain point of the route, and weather permitting we will have the opportunity to enjoy marvelous views of the peaks Artesonraju, Mount Caraz, Garcilaso Pyramid and other impressive and beautiful mountains of the Cordillera Blanca. Finally, after 7-8 hours of continuous climbing we will get to the summit of the Pisco Mountain. Our effort will be rewarded with an incredible 360 degrees view of the Cordillera Blanca main peaks: Huascaran, Chacraraju, Chopicalqui, Huandoy, Alpamayo, Artesonraju, and many more. We then return to our base camp, where we expect to arrive at about 2 – 3 p.m. for a well-deserved dinner and rest",
                 "dayInclusions": [
-                    "Meals: Breakfast + Lunch Box + Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner",
+                    "full camping equipment",
+                    "trekking staff with cook and assistants",
+                    "english/spanish speaking mountain guide services",
+                    "Communal climbing equipment (rope, belays, etc.)",
+                    "carry horses/donkeys (up to 10kg per participant), muleteers and emergency horse"
                 ],
                 "trekData":{
                     "totalTrekTime": "7 - 8  hours (depending on fitness level)"
@@ -1780,7 +1790,11 @@
                 "dayTitle": "Base Camp – Cebollapampa - Huaraz",
                 "dayDescription": "After a relaxed morning, we will start our trek down to the meadow of Cebollapampa where we meet our transport, which will take us back to the city of Huaraz",
                 "dayInclusions": [
-                    "Camp breakfast"
+                    "Camp breakfast",
+                    "Private transport to Trailhead",
+                    "trekking staff with cook and assistants",
+                    "english/spanish speaking mountain guide services",
+                    "carry horses/donkeys (up to 10kg per participant), muleteers and emergency horse"
                 ],
                 "trekData":{
                     "totalTrekTime": "2 to 3 hours"
@@ -1801,10 +1815,10 @@
             "entrance fees",
             "trekking staff with cook and assistants",
             "private transport from Huaraz to trailhead",
-            "carry horses (up to 8kg per participant), muleteers and emergency horse",
             "high-quality tents (2 participants per tent)",
             "full camping equipment (kitchen, dining and toilet tents)",
-            "english/spanish speaking guide services (specialized trekking guides)"
+            "carry horses/donkeys (up to 10kg per participant), muleteers and emergency horse",
+            "english/spanish speaking guide services (specialized mountain guides)"
         ],
         "notIncluded": [
             "international/regional flights",
@@ -1832,39 +1846,59 @@
         "dayByDay":[
             {
                 "dayTitle": "Huaraz – Musho - Base Camp (14,270ft || 4,350m)",
-                "dayDescription": "From Huaraz we will drive for about 1 hour to the village of Musho (10,000ft || 3050m) and then to the Huascaran Park boundaries. From this point with the help of mules and donkeys to carry the loads, we begin our hike (4 to 5 hours) up to Huascaran Base camp",
+                "dayDescription": "From Huaraz we will drive for about 1 hour to the village of Musho (10,000ft || 3,050m) and then to the Huascaran Park boundaries. From this point with the help of mules and donkeys to carry the loads, we begin our hike (4 to 5 hours) up to Huascaran Base camp",
                 "dayInclusions": [
-                    "Meals: Lunch Box + Dinner"
+                    "Meals: Lunch Box + Dinner",
+                    "full camping equipment",
+                    "Private transport to Trailhead",
+                    "trekking staff with cook and assistants",
+                    "english/spanish speaking mountain guide services",
+                    "carry horses/donkeys (up to 10kg per participant), muleteers and emergency horse"
                 ],
                 "trekData":{
                     "totalTrekTime": "4 - 5 hours"
                 }
             },
             {
-                "dayTitle": "Base Camp – Camp I (17,220ft || 5250m)",
-                "dayDescription": "Today, with the help of high-altitude porters, we move up to high camp 1. The day starts with a rock scramble section to continue afterwards on to granite slabs of the mountains which we surpass before we reach the Camp",
+                "dayTitle": "Base Camp – Camp I (17,220ft || 5,250m)",
+                "dayDescription": "Today, with the help of high-altitude porters, we move up to high Camp I. The day starts with a rock scramble section to continue afterwards on to granite slabs of the mountains which we surpass before we reach Camp I",
                 "dayInclusions": [
-                    "Meals: Breakfast + Lunch Box + Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner",
+                    "full camping equipment",
+                    "trekking staff with cook and assistants",
+                    "Communal climbing equipment (rope, belays, etc.)",
+                    "english/spanish speaking mountain guide services",
+                    "porter service (up to 8kg per participant)"
                 ],
                 "trekData":{
                     "totalTrekTime": "5 - 6  hours"
                 }
             },
             {
-                "dayTitle": "Camp I – Camp II (19,650ft || 5990m)",
+                "dayTitle": "Camp I – Camp II (19,650ft || 5,990m)",
                 "dayDescription": "This part of the climb is considered the most difficult and the most dangerous, so we will start early in the morning to arrive at the base of the “Trapecio”, a giant ice wall that descends from the South Summit. From here we will climb through seracs and cross several crevasses to finally make a traverse towards the “Garganta”. We reach our camp place at the “Col” between the North and the South Summit of the giant Huascaran",
                 "dayInclusions": [
-                    "Meals: Breakfast + Lunch Box + Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner",
+                    "full camping equipment",
+                    "trekking staff with cook and assistants",
+                    "Communal climbing equipment (rope, belays, etc.)",
+                    "english/spanish speaking mountain guide services",
+                    "porter service (up to 8kg per participant)"
                 ],
                 "trekData":{
                     "totalTrekTime": "6 to 7 hours"
                 }
             },
             {
-                "dayTitle": "Camp II – South Summit (22,200ft || 6768m) – Camp II. ",
-                "dayDescription": "The day starts at about 3 a.m. Our climb will begin at the base of the south summit of Mount Huascaran where we then climb up directly to the summit. Snow conditions vary from season to season so we will look for the best route to reach the ample plateau of the summit. Weather permitting, we will enjoy amazing views of the Cordillera Blanca high peaks: Huandoy, Chacraraju, Alpamayo, Chopicalqui, Pisco and many others. Return to our camp II where we will celebrate with a hearty dinner",
+                "dayTitle": "Camp II – South Summit (22,210ft || 6,770m) – Camp II. ",
+                "dayDescription": "The day starts at about 3 a.m. Our climb will begin at the base of the south summit of Mount Huascaran where we then climb up directly to the summit. Snow conditions vary from season to season so we will look for the best route to reach the ample plateau of the summit. Weather permitting, we will enjoy amazing views of the Cordillera Blanca high peaks: Huandoy, Chacraraju, Alpamayo, Chopicalqui, Pisco and many others. Return to our Camp II where we will celebrate with a hearty dinner",
                 "dayInclusions": [
-                    "Meals: Breakfast + Lunch Box + Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner",
+                    "full camping equipment",
+                    "trekking staff with cook and assistants",
+                    "Communal climbing equipment (rope, belays, etc.)",
+                    "english/spanish speaking mountain guide services",
+                    "porter service (up to 8kg per participant)"
                 ],
                 "trekData":{
                     "totalTrekTime": "11 to 12 hours climb"
@@ -1874,7 +1908,12 @@
                 "dayTitle": "Camp II – Camp I – Base Camp",
                 "dayDescription": "In the morning, we will start our descent (7 to 8 hours) towards the base camp where we will enjoy a relaxing time and celebration with some beers",
                 "dayInclusions": [
-                    "Meals: Breakfast + Lunch Box + Dinner"
+                    "Meals: Breakfast + Lunch Box + Dinner",
+                    "full camping equipment",
+                    "trekking staff with cook and assistants",
+                    "Communal climbing equipment (rope, belays, etc.)",
+                    "english/spanish speaking mountain guide services",
+                    "porter service (up to 8kg per participant)"
                 ],
                 "trekData":{
                     "totalTrekTime": "7 to 8 hours"
@@ -1884,7 +1923,11 @@
                 "dayTitle": "Base Camp – Musho – Huaraz",
                 "dayDescription": "From Base Camp and after a relaxing morning we hike (3 hours) back to Musho where we meet our transport that will take us back to the city of Huaraz",
                 "dayInclusions": [
-                    "Meals: Breakfast + Lunch Box"
+                    "Meals: Breakfast + Lunch Box",
+                    "Private transport to Huaraz",
+                    "trekking staff with cook and assistants",
+                    "english/spanish speaking mountain guide services",
+                    "carry horses/donkeys (up to 10kg per participant), muleteers and emergency horse"
                 ],
                 "trekData":{
                     "totalTrekTime": "3 hours"
@@ -1937,9 +1980,14 @@
         "dayByDay":[
             {
                 "dayTitle": "Huaraz – Cashapampa – Llama Corral camp",
-                "dayDescription": "From Huaraz, our transport takes us in a 3-hour drive to Cashapampa village from where we begin our trek towards camp I at Llama Corral (12,300ft || 3750m)",
+                "dayDescription": "From Huaraz, our transport takes us in a 3-hour drive to Cashapampa village from where we begin our trek towards camp I at Llama Corral (12,300ft || 3,750m)",
                 "dayInclusions": [
-                    "Meals: Lunch Box + Dinner"
+                    "Meals: Lunch Box + Dinner",
+                    "full camping equipment",
+                    "Private transport to Trailhead",
+                    "trekking staff with cook and assistants",
+                    "english/spanish speaking mountain guide services",
+                    "carry horses/donkeys (up to 10kg per participant), muleteers and emergency horse"
                 ],
                 "trekData":{
                     "totalTrekTime": "4 - 5 hours"

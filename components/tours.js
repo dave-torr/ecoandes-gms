@@ -189,7 +189,7 @@ export function TourTypeCard(props){
             case "climbing":
             return(<> 
             <div className={styles.tourInfoDescriptor}>
-                <strong>Climbing</strong> tours include high altitude mountaneering and trekking sections, professional mountaineering guides and staff, and can include rock, ice, and mixed climbing; all in the amazing Andes Mountains.
+                <strong>Climbing</strong> tours include trekking sections to base camps and high altitude mountaneering, with the support of professional mountaineering guides and staff, and can include rock, ice, and mixed climbing; all in the amazing Andes Mountains.
             </div></>)
 
             case "trekking":
