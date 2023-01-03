@@ -364,7 +364,7 @@ export function TourDisplayer(props){
         if(theTour.prices.priceType==="fixedDeparture"){
             // display fixed dep price
             return(<>
-                <span> <EventIcon/> FIXED <br/> DEPARTURE </span>
+                <span> <EventIcon/> FIXED GROUP <br/> DEPARTURE </span>
                 <span> <LocalOfferIcon /> PRICES FROM <br/> ${theTour.prices.pricePerPerson} p. person </span>
             </>)
         } else if (theTour.prices.privateDeparture){
@@ -464,7 +464,6 @@ export function TourDisplayer(props){
             return(<>extreme</>)
         }
     }
-
     const tourFooter=()=>{
 
         return(<>

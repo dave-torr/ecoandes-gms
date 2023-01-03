@@ -49,7 +49,7 @@
                     "Camp Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "6 to 7 hours (including lunch and resting time)",
+                    "totalTrekTime": "6 to 7 hours",
                     "distanceCovered": 15
                 }
             },
@@ -62,7 +62,7 @@
                     "Camp Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "7 to 8 hours (including lunch and resting time)",
+                    "totalTrekTime": "7 to 8 hours",
                     "distanceCovered": 15
                 }
             },
@@ -75,7 +75,7 @@
                     "Camp Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "4 to 5 hours (including lunch and resting time)",
+                    "totalTrekTime": "4 to 5 hours",
                     "distanceCovered": 8
                 }
             },
@@ -140,31 +140,38 @@
         "https://dsm04pap002files.storage.live.com/y4mtrKwKoLYiBceKHJ5puIj_GCHgE7A1KdUVaEa6CdeE-b7ERejvNwuKd62R4fucQyRknJCj2UV5umhvW4bBhpN9WThX4yalxO9zFtZ5TXVi0s5rh1wADEaUgHo-3w1F8AY0KxTRspgVTI0chushEYGNaGu17NWYm5h758EpNrFzlUDq3D2YnFHZavZ-0zLocHS?width=2000&height=1150&cropmode=none",
         "https://dsm04pap002files.storage.live.com/y4mhTWUlc6b2fq_MY8Szxbis2B_2XFcTJRP2759ryjB-4uWBAD12EKj-ino9B1G-URKr-0HA7YofA3Q-HzLiFSe-i06XNlvSkxZ2py1BncJQijFzuFg-IluKT7vUJhEXaNTMZ3Wv23OMtKCc3kB_qrup4cH3UndV7Doin7Yz1rQbzijV_P6ffy-8FOS37vjo2t7?width=2000&height=1150&cropmode=none"
         ],
-        "tripDescription":"A trek along the Inca Trail to Machu Picchu can be one of the most wonderful trekking experiences in South America. This trekking takes you through enchanting scenery with different landscapes, climates, a stunning mix of Inca paving stones, ruins and tunnels and ultimately arriving at the spectacular city of the Inca Empire: Machu Picchu. ",
+        "tripDescription":"A trek along the Inca Trail to Machu Picchu can be one of the most wonderful trekking experiences in South America. This trekking takes you through enchanting scenery with different landscapes, climates, a stunning mix of Inca paving stones, ruins and tunnels and ultimately arriving at the spectacular city of the Inca Empire: Machu Picchu",
         "countryList": ["peru"],
         "dayByDay":[
             {
-                "dayTitle": "Cusco – Pisca q´uchu (Km 82) – Wuayllabamba – Ayapata Camp (3500m / 11480ft)",
-                "dayDescription": "The day begins early, between 05:00 to 5:30 a.m. with a pick-up service from the hotels in Cusco. We will drive across villages such as Yucay, Urubamba and Ollantaytambo located along the Sacred Valley of the Incas. After a 3-hour drive we will arrive at the place known as Kilometer 82 (2600m / 8528ft).  This point is where the first passenger control booth is located and here all tourists must register to be able to start the trek. From this place, 43 kms of mountains, Andean valleys, rivers and lush cloud and tropical forests separate us from Machu Picchu. On our way to our first camp at Ayapata, we trek the first part on a mainly flat path with slight ascents, taking us approximately 2 until we reach Llactapata’s (town in the heights), an interesting archaeological complex. Then we will continue into the valley of the Kusichaca River, from where our route follows a slight ascent up to Wuayllabamba village located at 3100 meters (10168feet). Here will have lunch and after a short rest and following the sides of the Llullucha river, we continue up to 3 Piedras and then crossing a beautiful forest oh typical Andean trees, we will arrive to our first camp on Ayapata located at 3500 meters of altitude",
+                "dayTitle": "Cusco – Pisca q´uchu (Km 82) – Wuayllabamba – Ayapata Camp (11,480ft || 3,500m)",
+                "dayDescription": "The day begins early, between 05:00 to 5:30 a.m. with a pick-up service from the hotels in Cusco. We will drive across villages such as Yucay, Urubamba and Ollantaytambo located along the Sacred Valley of the Incas. After a 3-hour drive we will arrive at the place known as Kilometer 82 (8,528ft || 2,600m). This point is where the first passenger control booth is located and here all tourists must register to be able to start the trek. From this place, 43 kms of mountains, Andean valleys, rivers and lush cloud and tropical forests separate us from Machu Picchu. On our way to our first camp at Ayapata, we trek the first part on a mainly flat path with slight ascents, taking us approximately 2 until we reach Llactapata’s (town in the heights), an interesting archaeological complex. Then we will continue into the valley of the Kusichaca River, from where our route follows a slight ascent up to Wuayllabamba village (10,168ft || 3,100m). Here will have lunch and after a short rest and following the sides of the Llullucha river, we continue up to 3 Piedras and then crossing a beautiful forest oh typical Andean trees, we will arrive to our first camp on Ayapata located at 11,480 ft || 3,500 m of altitude where our porters welcome us with a nice warm tea and snacks",
                 "dayInclusions": [
-                    "Lunch Box",
-                    "Camp Dinner"
+                    "Meals: Lunch Box + dinner",
+                    "complete camping equipment",
+                    "trekking staff with cook and assistants",
+                    "Car and Train Transportation to Trailhead",
+                    "personal porter service (up to 8kg per person)",
+                    "english/spanish speaking trekking guide services"
                 ],
                 "trekData":{
-                    "totalTrekTime": "6 to 7 hours (including lunch and resting time)",
+                    "totalTrekTime": "6 to 7 hours",
                     "distanceCovered": 15
                 }
             },
             {
-                "dayTitle": "Ayapata Camp – Chaquicocha Camp (3680m / 12033 ft)",
-                "dayDescription": "At 7 a.m. and after breakfast, we begin our second day of our adventure starting with a way up to the highest point of the whole circuit climbing an altitude of 520 meters to reach the pass known as Warmihuañusca (“dead woman”) located at 4200 m of altitude (13776 ft). The slow step ascent will take about 3 hours approximately. From the pass, we can enjoy an astonishing view of the surroundings and the magnificent landscape. This is a windy area, so it is important to wear warm clothing. After enjoying the great views, we overcome the pass and continue our way down to the Pacaymayo Camp located at 3500m (11480ft) where we will have lunch. After a short rest we continue our trek climbing up to the Inca remains known as Runkurakay at 3800m / 12465ft. Then we climb to the second-high pass located at 3940m / 12916ft and following a step descend on typical Inca stone stairs we will reach the entrance to the beautiful Sayaqmarka Inca town (3600m / 11808ft). After visiting this amazing Inca remains, we continue our hike to finally reach our Chaquicocha Camp where our porters welcome us with a nice warm tea and snacks",
+                "dayTitle": "Ayapata Camp – Chaquicocha Camp (12,033 ft || 3,680m)",
+                "dayDescription": "At 7 a.m. and after breakfast, we begin our second day of our adventure starting with a way up to the highest point of the whole circuit climbing an altitude of 1,700ft || 520 meters to reach the pass known as Warmihuañusca (“dead woman”) located at 13,776 ft || 4,200 m of altitude. The slow steep ascent will take about 3 hours approximately. From the pass, we can enjoy an astonishing view of the surroundings and the magnificent landscape. This is a windy area, so it is important to wear warm clothing. After enjoying the great views, we overcome the pass and continue our way down to the Pacaymayo Camp located at 11,480ft || 3,500m  where we will have lunch. After a short rest we continue our trek climbing up to the Inca remains known as Runkurakay at 12,465ft || 3,800m. Then we climb to the second-high pass located at 12,916ft || 3,940m and following a step descend on typical Inca stone stairs we will reach the entrance to the beautiful Sayaqmarka Inca town (11,808ft || 3,600m). After visiting this amazing Inca remains, we continue our hike to finally reach our Chaquicocha Camp where our porters welcome us with a nice warm tea and snacks",
                 "dayInclusions": [
-                    "Camp breakfast",
-                    "Camp Lunch",
-                    "Camp Dinner"
+                    "complete camping equipment",
+                    "Meals: Breakfast + Lunch Box + Dinner",
+                    "trekking staff with cook and assistants",
+                    "Car and Train Transportation to Trailhead",
+                    "personal porter service (up to 8kg per person)",
+                    "english/spanish speaking trekking guide services"
                 ],
                 "trekData":{
-                    "totalTrekTime": "7 to 8 hours (including lunch and resting time)",
+                    "totalTrekTime": "7 to 8 hours",
                     "distanceCovered": 15
                 }
             },
@@ -177,7 +184,7 @@
                     "Camp Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "4 to 5 hours (including lunch and resting time)",
+                    "totalTrekTime": "4 to 5 hours",
                     "distanceCovered": 8
                 }
             },
@@ -205,9 +212,9 @@
         },
         "included": [
             "noted meals",
+            "Train ticket",
             "entrance fees",
             "private transport",
-            "Vista Dome (or similar) train ticket",
             "trekking staff with cook and assistants",
             "personal porter service (up to 8kg per person)",
             "complete camping equipment (client, kitchen, dining and toilet tents)",
@@ -247,7 +254,7 @@
                     "Camp Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "6 to 7 hours (including lunch and resting time)"
+                    "totalTrekTime": "6 to 7 hours"
                 }
             },
             {
@@ -259,7 +266,7 @@
                     "Camp Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "6 to 7 hours (including lunch and resting time)"
+                    "totalTrekTime": "6 to 7 hours"
                 }
             },
             {
@@ -314,7 +321,8 @@
             "extras",
             "tips"
         ]
-    },    
+    },
+
     {
         "tripName": "Inca Trail Express",
         "id": "inca-trail-2D",
@@ -335,26 +343,30 @@
                 "dayDescription": "Early morning from your hotel, your tour starts with the transfer with a car to the train station in Ollantaytambo, situated at about 1h30 from Cusco. From here we board the train (1h30) to the point known as 'Km. 104' (7,380 ft || 2,250 m). Here we have our check-in at the Warden’s post of Chachabamba Incas’ Ruins. From this point, we will begin our day hike (4 hours) to ascend 1,500 ft. || 450 m; following the Inca Trail to the beautiful Wiñay Wuayna Inca ruins (at 8,850 ft. || 2700 m above sea level). Surrounded by an impressive landscape, the steps lead up to one of the largest and best-preserved Inca Ruins of the area. Once there we will spend some time visiting these impressive mountain side buildings and then we continue a 1.5 to 2 hours hike towards The Inti Punku or Sun-Gate (at 8,850 ft. || 2700 m above sea level) from where, and weather permitting, we will enjoy an amazing view of the Machu Picchu citadel. Walk down to the Machu Picchu transport station to return to the town of Aguas Calientes to overnight in a local hotel",
                 "dayInclusions": [
                     "Lunch Box",
-                    "Bus and Train Transportation to Trailhead",
                     "Guide Services",
-                    "Hotel accommodation"
+                    "Hotel accommodation in Aguas Calientes",
+                    "Car and Train Transportation to Trailhead",
+                    "english/spanish speaking trekking guide services"
                 ],
                 "trekData":{
-                    "totalTrekTime": "5 to 6 hours (including lunch and resting time)"
+                    "totalTrekTime": "5 to 6 hours"
                 }
             },
             {
                 "dayTitle": "Aguas Calientes – Machu Picchu – Cusco",
-                "dayDescription": "In the early morning, we will take the Machu Picchu public bus up to the citadel where we will enjoy a visit to one of the most famous touristic places of the world. Our guided tour will take us through the main points of the amazing complex, including the religious, agricultural, and urban areas. In the afternoon, we take the public bus from Machu Picchu to Aguas Calientes to pick up our return train to Ollantaytambo from where a car transfer takes you back to Cusco",
+                "dayDescription": "In the early morning, we will take the Machu Picchu public bus up to the citadel (7,972 ft || 2,430 m) where we will enjoy a visit to one of the most famous touristic places of the world. Our guided tour will take us through the main points of the amazing complex, including the religious, agricultural, and urban areas. In the afternoon, we take the public bus from Machu Picchu to Aguas Calientes to pick up our return train to Ollantaytambo from where a car transfer takes you back to Cusco",
                 "dayInclusions": [
+                    "Guide Services",
                     "Hotel breakfast",
                     "Machu Picchu Entrance Fee",
-                    "MaPi Public Bus Service",
-                    "Guide Services",
+                    "Machu Picchu Public Bus Service",
                     "Bus and Train Transportation to Cusco"
                 ]
             }
         ],
+
+        "recomendedMonths": [],
+
         "tourType": "trekking",
         "startingPlace": "Cusco",
         "prices": {
@@ -366,23 +378,97 @@
         },
         "included": [
             "noted meals",
+            "Train ticket",
             "entrance fees",
-            "private transport",
-            "Vista Dome (or similar) train ticket",
-            "personal porter service (up to 8kg per person)",
+            "All transfers",
             "hotels: double room accommodation with private facilities",
             "english/spanish speaking guide services (specialized trekking guides)"
         ],
         "notIncluded": [
+            "personal travel insurance (REQUIRED)",
             "international/regional flights",
-            "additional Inca Trail porters",
-            "travel insurance (REQUIRED)",
             "personal trekking gear",
+            "Inca Trail porters",
             "personal expenses",
             "extras",
             "tips"
         ]
     },
+
+
+    {
+        "tripName": "Sacred Valley + Inca Trail Express",
+        "id": "inca-trail-3D",
+        "duration": 3,
+        "adventureType": "trekking",
+        "difficulty": 2,
+        "imgArr": ["https://dsm04pap002files.storage.live.com/y4mhTWUlc6b2fq_MY8Szxbis2B_2XFcTJRP2759ryjB-4uWBAD12EKj-ino9B1G-URKr-0HA7YofA3Q-HzLiFSe-i06XNlvSkxZ2py1BncJQijFzuFg-IluKT7vUJhEXaNTMZ3Wv23OMtKCc3kB_qrup4cH3UndV7Doin7Yz1rQbzijV_P6ffy-8FOS37vjo2t7?width=2000&height=1150&cropmode=none",
+        "https://dsm04pap002files.storage.live.com/y4mSQCLohq0Vly5HLteZLDNM1VYFbeNvDSYTmrnJVzf3QIvatz6wtQRd0q3GBV4saAPst1McDYoJ1wtvISxiYqEzR_QyjncMTd9EPimYnrA4FKXB8Ejn6lTqcaSCg9VZqZpUZKTjizZsrDnNc8P1vXn9BgX8OILi-fDxathSLNRTrHhU5Y2INxtq3l_5yujwlE6?width=2000&height=1150&cropmode=none",
+        "https://dsm04pap002files.storage.live.com/y4mOqDXA-3O4km6esZvPF6dPtWvlOGlZFZG2Z3zEXpUCvcv_PFnPgKLYK84sm9ovR_m3SxgLYcd_TSg5aIVKNUrckAUs2vYTvZMxTCJ1sycpdai6H-qnUAhYYafjyvlby0TUpKCD5TR3ZV4wm03PQzeqeD5VKPYntnQmaSqijwwAQb5ffRBdxM5mfAZqP85Yf2l?width=1920&height=1280&cropmode=none",
+        "https://dsm04pap002files.storage.live.com/y4mlI22F2TOXBW4mk_g_RDHvK3ZIkR5UQTmHNSXcaL9kdSWV2IrtuVii-W9PwOQ_r1UXXe1bkGidghElIJ5-ZF3CGRWMa4Yn-ImFhy9xcjTd9KrGfxwCe5BPpVu6WEoJtqHsc2OSOwQ33MBA7IeE2H3r1ZsTCWGhwEcg2Vybs3Vv8B96ehQwv6esMQCqPhpUtqb?width=2000&height=1150&cropmode=none",
+        "https://dsm04pap002files.storage.live.com/y4mhNQDuNN9XKTT6lXKchSs3kKRYjv0Z-MxWPq8enC7NSPRBTDAW7btmxrZNnwXVp4nErJ9APZTRxXUTcYH1ggKlIxTtWDQBp5JNCBaqo_uLYt6UzQQ8GrML3pTHN9gTwbyrC-p0o-3IU8IFKrcC0JIYoUt4JhQY946F9WI6Q_skCyoeMf6EVHN3i1rUojYbZl0?width=2000&height=1150&cropmode=none"
+        ],
+        "tripDescription":"This short voyage takes you through the sacred valley of the Incas and to Machu Picchu with a short trek, following the last part of the ancient trail known as the Qapac Nan, the Sacred Inca Trail to Machu Picchu. Enjoy wonderful and impressive views of the Urubamba valley, visit the beautiful Wiñayhuayna archeological remains, and finally arrive in Machu Picchu",
+        "countryList": ["peru"],
+        "dayByDay":[
+            {
+                "dayTitle": "Cusco – Wiñayhuayna – Aguas Calientes",
+                "dayDescription": "Early morning from your hotel, your tour starts with the transfer with a car to the train station in Ollantaytambo, situated at about 1h30 from Cusco. From here we board the train (1h30) to the point known as 'Km. 104' (7,380 ft || 2,250 m). Here we have our check-in at the Warden’s post of Chachabamba Incas’ Ruins. From this point, we will begin our day hike (4 hours) to ascend 1,500 ft. || 450 m; following the Inca Trail to the beautiful Wiñay Wuayna Inca ruins (at 8,850 ft. || 2700 m above sea level). Surrounded by an impressive landscape, the steps lead up to one of the largest and best-preserved Inca Ruins of the area. Once there we will spend some time visiting these impressive mountain side buildings and then we continue a 1.5 to 2 hours hike towards The Inti Punku or Sun-Gate (at 8,850 ft. || 2700 m above sea level) from where, and weather permitting, we will enjoy an amazing view of the Machu Picchu citadel. Walk down to the Machu Picchu transport station to return to the town of Aguas Calientes to overnight in a local hotel",
+                "dayInclusions": [
+                    "Lunch Box",
+                    "Guide Services",
+                    "Hotel accommodation in Aguas Calientes",
+                    "Car and Train Transportation to Trailhead"
+                ],
+                "trekData":{
+                    "totalTrekTime": "5 to 6 hours"
+                }
+            },
+            {
+                "dayTitle": "Aguas Calientes – Machu Picchu – Cusco",
+                "dayDescription": "In the early morning, we will take the Machu Picchu public bus up to the citadel (7,972 ft || 2,430 m) where we will enjoy a visit to one of the most famous touristic places of the world. Our guided tour will take us through the main points of the amazing complex, including the religious, agricultural, and urban areas. In the afternoon, we take the public bus from Machu Picchu to Aguas Calientes to pick up our return train to Ollantaytambo from where a car transfer takes you back to Cusco",
+                "dayInclusions": [
+                    "Guide Services",
+                    "Hotel breakfast",
+                    "Machu Picchu Entrance Fee",
+                    "Machu Picchu Public Bus Service",
+                    "Bus and Train Transportation to Cusco"
+                ]
+            }
+        ],
+
+        "recomendedMonths": [],
+
+        "tourType": "trekking",
+        "startingPlace": "Cusco",
+        "prices": {
+            "priceType": "fixedDeparture",
+            "pricePerPerson": 2490,
+            "singlesupp": 900,
+            "dblOccupancy": true,
+            "priceNotice": "hotel categories will depend on locally available properties"
+        },
+        "included": [
+            "noted meals",
+            "Train ticket",
+            "entrance fees",
+            "All transfers",
+            "hotels: double room accommodation with private facilities",
+            "english/spanish speaking guide services (specialized trekking guides)"
+        ],
+        "notIncluded": [
+            "personal travel insurance (REQUIRED)",
+            "international/regional flights",
+            "personal trekking gear",
+            "Inca Trail porters",
+            "personal expenses",
+            "extras",
+            "tips"
+        ]
+    },
+
+
+
     {
         "tripName": "Salkantay to Machu Picchu Trek",
         "id": "salkantay-machu-pichu-5D",
@@ -418,7 +504,7 @@
                     "camp Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "7 hours (including lunch and resting time)"
+                    "totalTrekTime": "7 hours"
                 }
             },
             {
@@ -430,7 +516,7 @@
                     "camp Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "6 to 7 hours (including lunch and resting time)"
+                    "totalTrekTime": "6 to 7 hours"
                 }
             },
             {
@@ -441,7 +527,7 @@
                     "Lunch Box"
                 ],
                 "trekData":{
-                    "totalTrekTime": "5 hours (including lunch and resting time)"
+                    "totalTrekTime": "5 hours"
                 }
             },
             {
@@ -545,7 +631,7 @@
                     "camp Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "7 hours (including lunch and resting time)"
+                    "totalTrekTime": "7 hours"
                 }
             },
             {
@@ -557,7 +643,7 @@
                     "camp Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "6 to 7 hours (including lunch and resting time)"
+                    "totalTrekTime": "6 to 7 hours"
                 }
             },
             {
@@ -568,7 +654,7 @@
                     "Lunch Box"
                 ],
                 "trekData":{
-                    "totalTrekTime": "5 hours (including lunch and resting time)"
+                    "totalTrekTime": "5 hours"
                 }
             },
             {
@@ -655,7 +741,7 @@
                     "Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "5 to 6 hours (including lunch and resting time)"
+                    "totalTrekTime": "5 to 6 hours"
                 }
             },
             {
@@ -839,7 +925,7 @@
                     "camp Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "7 to 8 hours (including lunch and resting time)"
+                    "totalTrekTime": "7 to 8 hours"
                 }
             },
             {
@@ -851,7 +937,7 @@
                     "camp Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "6 to 7 hours (including lunch and resting time)"
+                    "totalTrekTime": "6 to 7 hours"
                 }
             },
             {
@@ -863,7 +949,7 @@
                     "camp Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "6 to 7 hours (including lunch and resting time)"
+                    "totalTrekTime": "6 to 7 hours"
                 }
             },
             {
@@ -957,7 +1043,7 @@
                     "camp Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "6 to 7 hours (including lunch and resting time)",
+                    "totalTrekTime": "6 to 7 hours",
                     "distanceCovered": 15
                 }
             },
@@ -970,7 +1056,7 @@
                     "Camp Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "7 to 8 hours (including lunch and resting time)",
+                    "totalTrekTime": "7 to 8 hours",
                     "distanceCovered": 15
                 }
             },
@@ -983,7 +1069,7 @@
                     "Camp Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "4 to 5 hours (including lunch and resting time)",
+                    "totalTrekTime": "4 to 5 hours",
                     "distanceCovered": 8
                 }
             },
@@ -1140,7 +1226,7 @@
                     "camp Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "7 - 8 hours (including lunch and resting time)",
+                    "totalTrekTime": "7 - 8 hours",
                     "distanceCovered": 14
                 }
             },
@@ -1151,7 +1237,7 @@
                     "Camp breakfast"
                 ],
                 "trekData":{
-                    "totalTrekTime": "3 to 4 hours (including lunch and resting time)",
+                    "totalTrekTime": "3 to 4 hours",
                     "distanceCovered": 7
                 }
             },
@@ -1228,7 +1314,7 @@
                     "camp Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "4 - 5 hours (including lunch and resting time)"
+                    "totalTrekTime": "4 - 5 hours"
                 }
             },
             {
@@ -1240,7 +1326,7 @@
                     "camp Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "3 to 4 hours (including lunch and resting time)"
+                    "totalTrekTime": "3 to 4 hours"
                 }
             },
             {
@@ -1316,7 +1402,7 @@
                     "camp Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "4 - 5 hours (including lunch and resting time)"
+                    "totalTrekTime": "4 - 5 hours"
                 }
             },
             {
@@ -1328,7 +1414,7 @@
                     "camp Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "7 to 8 hours (including lunch and resting time)"
+                    "totalTrekTime": "7 to 8 hours"
                 }
             },
             {
@@ -1340,7 +1426,7 @@
                     "camp Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "4 to 5 hours (including lunch and resting time)"
+                    "totalTrekTime": "4 to 5 hours"
                 }
             },
             {
@@ -1352,7 +1438,7 @@
                     "camp Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "4 to 5 hours (including lunch and resting time)"
+                    "totalTrekTime": "4 to 5 hours"
                 }
             },
             {
@@ -1364,7 +1450,7 @@
                     "camp Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "8 to 9 hours (including lunch and resting time)"
+                    "totalTrekTime": "8 to 9 hours"
                 }
             },
             {
@@ -1375,7 +1461,7 @@
                     "Lunch Box"
                 ],
                 "trekData":{
-                    "totalTrekTime": "2 to 3 hours (including lunch and resting time)"
+                    "totalTrekTime": "2 to 3 hours"
                 }
             }
         ],
@@ -1470,7 +1556,7 @@
                     "camp Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "4 - 5 hours (including lunch and resting time)"
+                    "totalTrekTime": "4 - 5 hours"
                 }
             },
             {
@@ -1482,7 +1568,7 @@
                     "camp Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "6 to 7 hours (including lunch and resting time)"
+                    "totalTrekTime": "6 to 7 hours"
                 }
             },
             {
@@ -1493,7 +1579,7 @@
                     "Lunch Box"
                 ],
                 "trekData":{
-                    "totalTrekTime": "4 hours (including lunch and resting time)"
+                    "totalTrekTime": "4 hours"
                 }
             },
             {
@@ -1595,7 +1681,7 @@
                     "camp Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "5 - 6 hours (including lunch and resting time)"
+                    "totalTrekTime": "5 - 6 hours"
                 }
             },
             {
@@ -1607,7 +1693,7 @@
                     "camp Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "5 - 6 hours (including lunch and resting time)"
+                    "totalTrekTime": "5 - 6 hours"
                 }
             },
             {
@@ -1619,7 +1705,7 @@
                     "camp Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "4 to 5 hours (including lunch and resting time)"
+                    "totalTrekTime": "4 to 5 hours"
                 }
             },
             {
@@ -1631,7 +1717,7 @@
                     "camp Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "7 to 8 hours (including lunch and resting time)"
+                    "totalTrekTime": "7 to 8 hours"
                 }
             },
             {
@@ -1643,7 +1729,7 @@
                     "camp Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "6 - 7 hours (including lunch and resting time)"
+                    "totalTrekTime": "6 - 7 hours"
                 }
             },
             {
@@ -1655,7 +1741,7 @@
                     "camp Dinner"
                 ],
                 "trekData":{
-                    "totalTrekTime": "8 - 9 hours (including lunch and resting time)"
+                    "totalTrekTime": "8 - 9 hours"
                 }
             },
             {
