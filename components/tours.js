@@ -365,7 +365,7 @@ export function TourDisplayer(props){
             // display fixed dep price
             return(<>
                 <span> <EventIcon/> FIXED GROUP <br/> DEPARTURE </span>
-                <span> <LocalOfferIcon /> PRICES FROM <br/> ${theTour.prices.pricePerPerson} p. person </span>
+                <span> <LocalOfferIcon /> PRICES FROM <br/> ${theTour.price} p. person </span>
             </>)
         } else if (theTour.prices.privateDeparture){
             return(<>

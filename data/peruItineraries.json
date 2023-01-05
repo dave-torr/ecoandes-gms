@@ -1,6 +1,6 @@
 [
     {
-        "tripName": "Inca Trail Expedition",
+        "tripName": "Lima + Cusco + Inca Trail Expedition",
         "id": "inca-trail-expedition-10D",
         "duration": 10,
         "adventureType": "trekking",
@@ -11,8 +11,7 @@
         "https://dsm04pap002files.storage.live.com/y4mq--3EsskKM41emYJcFlUJvc7WyabCl9joBfxBjyfPzUoyteGqyN12nUSUQWy6kwXdGlQmXP9gQ7QVr7SM8tl9v2SriFTXEio767nky_sOl2elubHxfXsIyILNxsMRLXu7cvwY2cnOTkuuG4mP3eMdW90aC_jTEcPlqiE44mzyDle_4ttQSdixnJvbDPiHCQu?width=1920&height=1280&cropmode=none",
         "https://dsm04pap002files.storage.live.com/y4mHClnfRE7SLWNQE8AhdcQ1GDmyIGY1Taxy6w31LkYcIaoGH4u6-CnS74FfCuXUfWa308UOhKBdfQjJIm8CFXt7dGp9cq8S58JfxCpcQujSLOXcsjG7sW0O7FtY65EWO5-J_O1Xwuk1mKJbIh3hiibM2K_FaY_66XvTiv5WQ29bDAufJBNXYK6WlFd-jQCPC7L?width=2000&height=1150&cropmode=none",
         "https://dsm04pap002files.storage.live.com/y4mkRT4RLx9Ts5NtfVhCyWJubKDki3po6C1gE7-cVt844xvlyaN15RqvZjZQBVzGdRk_bZ5prnd0mGkRA7c0IUqTsNMlXWQhxsopDybjQDLgbjCg8eCIe2z30hxVhn1xz0KHm9LLOILM9SZvHcPuqAZ84MYQyDDCWhpelv4rpzstVCU6DweBvB316ppL6LEuhCT?width=2000&height=1150&cropmode=none",
-        "https://dsm04pap002files.storage.live.com/y4mTOw9S_YhfUuITF2CS68GuEYfMjb5VTbny5rgUu9_DNz2K-EJ6zhk9XR9bAlUvDPnzw_dk3pPPgLKCwkFeqrC6R7PfD-g-U_d9yPZf8HtAeNqaW1T8yRlq-JG0ia3cWOahxO8acoTZEr0zAblvSKF70aVss59-3Nm3_vfLR5uEoSAm2evpMQAP3LjykRGZs73?width=2000&height=1150&cropmode=none",
-        "https://dsm04pap002files.storage.live.com/y4m3bwyyNgk58hP3mbMhnFpLcm1jSzwHxK-txbL9ySGWy9hDyEkALGGWb2hkfo_hUriHX1LMDeXAO2Tb1ixEP0-CEjuKB144TPAn3rews3FA4ZzcCR_tfvyztMTfQR1nN3Hq_-2Il-PaN6O_XqSxrGF1NLG2d1Wc4zk_lwq24y9HdcWUfN8kF3LeT1W1hihdNg0?width=2000&height=1150&cropmode=none"
+        "https://dsm04pap002files.storage.live.com/y4mTOw9S_YhfUuITF2CS68GuEYfMjb5VTbny5rgUu9_DNz2K-EJ6zhk9XR9bAlUvDPnzw_dk3pPPgLKCwkFeqrC6R7PfD-g-U_d9yPZf8HtAeNqaW1T8yRlq-JG0ia3cWOahxO8acoTZEr0zAblvSKF70aVss59-3Nm3_vfLR5uEoSAm2evpMQAP3LjykRGZs73?width=2000&height=1150&cropmode=none"
         ],
         "tripDescription":"A trek along the Inca Trail to Machu Picchu can be one of the most wonderful trekking experiences in South America. This expedition starts by exploring Lima,Peru's capital, before heading to Cusco, the capital of the Inca Empire. The famous trek starts by taking you through enchanting scenery with different landscapes, climates, a stunning mix of Inca paving stones, ruins and tunnels and ultimately arriving at the spectacular city of the Incas: Machu Picchu.",
         "countryList": ["peru"],
@@ -27,7 +26,7 @@
             },
             {
                 "dayTitle": "Half Day Lima City Tour",
-                "dayDescription": "Our morning tour begins with a drive to the Huaca Puccllana pre-Inca remains where we learn about the cultural past of Lima, and the ancient civilization that inhabited this place. Later, we head towards the colonial part of town visiting the Plaza de Armas, and to enjoy a panoramic view of the Cathedral, San Francisco Church and its impressive 'Catacombs'. Afterwards, we will head towards modern Lima, to visit the districts of San Isidro and Miraflores, finally ending our tour at Larco Mar, a modern entertaining center with a splendid view of the Pacific Ocean. You will be transferred back to the hotel",
+                "dayDescription": "Our morning tour begins with a drive to the Huaca Puccllana pre-Inca remains where we learn about the cultural past of Lima, and the ancient civilization that inhabited this place. Later, we head towards the colonial part of town visiting the Plaza de Armas, and to enjoy a panoramic view of the Cathedral, visit San Francisco Church and its impressive 'Catacombs'. Afterwards, we will head towards modern Lima, to visit the districts of San Isidro and Miraflores, finally ending our tour at Larco Mar, a modern entertaining center with a splendid view of the Pacific Ocean. You will be transferred back to the hotel",
                 "dayInclusions": [
                     "Hotel breakfast",
                     "Private Transfers",
@@ -133,10 +132,10 @@
             }
         ],
         "tourType": "360° tours",
+        "price": 1220,
         "prices": {
             "priceType": "fixedDeparture",
-            "pricePerPerson": 2490,
-            "singlesupp": 900,
+            "singlesupp": 280,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties"
         },
@@ -240,9 +239,9 @@
         "recomendedMonths": "May to December",
         "tourType": "trekking",
         "startingPlace": "Cusco",
+        "price": 745,
         "prices": {
             "priceType": "fixedDeparture",
-            "pricePerPerson": 745,
             "singlesupp": 50,
             "dblOccupancy": true,
             "priceNotice": "Single Tent Supplement"
@@ -345,9 +344,9 @@
         "recomendedMonths": "May to December",
         "tourType": "trekking",
         "startingPlace": "Cusco",
+        "price": 2490,
         "prices": {
             "priceType": "fixedDeparture",
-            "pricePerPerson": 2490,
             "singlesupp": 900,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties"
@@ -416,9 +415,9 @@
         "recomendedMonths": "May to December",
         "tourType": "trekking",
         "startingPlace": "Cusco",
+        "price": 545,
         "prices": {
             "priceType": "fixedDeparture",
-            "pricePerPerson": 545,
             "singlesupp": 45,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties"
@@ -442,14 +441,14 @@
         ]
     },
     {
-        "tripName": "Sacred Valley+ Inca Trail Express",
+        "tripName": "Sacred Valley + Inca Trail Express",
         "id": "inca-trail-3D",
         "duration": 3,
         "adventureType": "trekking",
         "difficulty": 2,
         "imgArr": ["https://dsm04pap002files.storage.live.com/y4mifRFXN0YGEn9oTYlgcKl-YuSdNBvNxku6veYsxBBenEbaW3bjtvlD_zwA8OteIy-lcuLiR01oxyvc1zNChAEczsY67-aNq4j-ecsvXofFhgykS-In-Bmz2F7Q4tLtJ1bqwmte2Cc2Q2D9oI6k-VfUsrVyUqzj5hYlwLd64EHjLghLQXj4bM_hnKCZk9YUUS2?width=2000&height=1150&cropmode=none",
         "https://dsm04pap002files.storage.live.com/y4mSQCLohq0Vly5HLteZLDNM1VYFbeNvDSYTmrnJVzf3QIvatz6wtQRd0q3GBV4saAPst1McDYoJ1wtvISxiYqEzR_QyjncMTd9EPimYnrA4FKXB8Ejn6lTqcaSCg9VZqZpUZKTjizZsrDnNc8P1vXn9BgX8OILi-fDxathSLNRTrHhU5Y2INxtq3l_5yujwlE6?width=2000&height=1150&cropmode=none",
-        "https://dsm04pap002files.storage.live.com/y4mOqDXA-3O4km6esZvPF6dPtWvlOGlZFZG2Z3zEXpUCvcv_PFnPgKLYK84sm9ovR_m3SxgLYcd_TSg5aIVKNUrckAUs2vYTvZMxTCJ1sycpdai6H-qnUAhYYafjyvlby0TUpKCD5TR3ZV4wm03PQzeqeD5VKPYntnQmaSqijwwAQb5ffRBdxM5mfAZqP85Yf2l?width=1920&height=1280&cropmode=none",
+        "https://dsm04pap002files.storage.live.com/y4mGZPg_m-h-1NaDSjMayHOEmrNB6L9hT2rD0BVN_oe6Wi-QBPGsU6pLG5jCiZFhyNv0mgeMergm1fo5hhnpckfngGRJI-_bYZeNza18BhjrppHt6YCEKXsO8tEd2YryxOHr8SqzJHmFOe4Wd9kVRR5edAQeCGZINJRw5T9skg5Xtuc7G7JwFfwGVOqeT_JimhO?width=2000&height=1150&cropmode=none",
         "https://dsm04pap002files.storage.live.com/y4mhTWUlc6b2fq_MY8Szxbis2B_2XFcTJRP2759ryjB-4uWBAD12EKj-ino9B1G-URKr-0HA7YofA3Q-HzLiFSe-i06XNlvSkxZ2py1BncJQijFzuFg-IluKT7vUJhEXaNTMZ3Wv23OMtKCc3kB_qrup4cH3UndV7Doin7Yz1rQbzijV_P6ffy-8FOS37vjo2t7?width=2000&height=1150&cropmode=none",
         "https://dsm04pap002files.storage.live.com/y4mlI22F2TOXBW4mk_g_RDHvK3ZIkR5UQTmHNSXcaL9kdSWV2IrtuVii-W9PwOQ_r1UXXe1bkGidghElIJ5-ZF3CGRWMa4Yn-ImFhy9xcjTd9KrGfxwCe5BPpVu6WEoJtqHsc2OSOwQ33MBA7IeE2H3r1ZsTCWGhwEcg2Vybs3Vv8B96ehQwv6esMQCqPhpUtqb?width=2000&height=1150&cropmode=none",
         "https://dsm04pap002files.storage.live.com/y4mhNQDuNN9XKTT6lXKchSs3kKRYjv0Z-MxWPq8enC7NSPRBTDAW7btmxrZNnwXVp4nErJ9APZTRxXUTcYH1ggKlIxTtWDQBp5JNCBaqo_uLYt6UzQQ8GrML3pTHN9gTwbyrC-p0o-3IU8IFKrcC0JIYoUt4JhQY946F9WI6Q_skCyoeMf6EVHN3i1rUojYbZl0?width=2000&height=1150&cropmode=none"
@@ -497,10 +496,10 @@
         "recomendedMonths": "May to December",
         "tourType": "trekking",
         "startingPlace": "Cusco",
+        "price": 670,
         "prices": {
             "priceType": "fixedDeparture",
-            "pricePerPerson": 670,
-            "singlesupp": 75,
+            "singlesupp": 90,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties"
         },
@@ -532,6 +531,7 @@
         "https://dsm04pap002files.storage.live.com/y4mnkMpyLTm1_cQTJIc4EBDms_AncB6bQ6aMfNNFmh3E3OkBJRkxYT2_LKybJ85XPvC68yF8Re3x_ZzM8AuY1izv3ieoYQRv-s6pMEr6ee4uTiffqd4JKQVeDamKhmkKxhq9fkm1T8p2cAa1kVVFK_r7iK7Nnv0ziW2m-UxHNMkzsvZYE3bdzUousBA31nuv6v5?width=2000&height=1150&cropmode=none",
         "https://dsm04pap002files.storage.live.com/y4mbAPFHdLH3-JQWVWOiKSpX6D11yassnbrzeL9enZYArvtHPp99bzgmHVveRcitdSEcc-jE2yevyN9yaLQEhZKCIK4yjgETyseEminumKD8HYPBIUETygXf74EFjpIkkXqUgBq7eNU9-PP2IDGFsEUsaavU1hrFtOBLtH8Fl91pGNOyh6FEv_sZ3zVEX0xmKba?width=2000&height=1150&cropmode=none",
         "https://dsm04pap002files.storage.live.com/y4mrNfUCWWfyLkoL7XQN06fp9X55w6T0-XRzCqtib_Jf6OlzNGThMIAsKRj3uM6LX-MafY1kZL2Px3WkaY8URGc6teub6YzvWFHZOBKt9lF-nlVzAGy0QRrbsfxS9HYfWBzT_rdAEMwzGzELC0Peb1zvQDAdvSLxfAt4iAbpcAaiD-5zN6PfMvjVApetcWyrl3_?width=2000&height=1150&cropmode=none",
+        "https://dsm04pap002files.storage.live.com/y4mLkvgj5_K7XETu6iHrTF-oOupSIsU69t0FxIj1ObL4rrpVLHSnFTc81L8oFGVfz7DLJB_cur184UfbIEzBGnoOnf5A09DtP5TJPUovHJEv5GPQB4wOKZWNTOPkt55uWpirDxnWM1mS9YEzmwdVYPV1tDREcrqZisAuM2EBYKT3RpLsIfrhO907tz8F30gxw9r?width=2000&height=1150&cropmode=none",
         "https://dsm04pap002files.storage.live.com/y4mgL1uOB4mqNf2deXc8T-ssVXmYbqAp7t2gU627Bju4WVDnfGbmOBRFAiKDft_XoG_qPSuVG4qwmMsA3OHqRPxqZbIxopR1tLF-2AZeNkrpHjTb5AaHt6h6-buJd03dRJleB1zJ2DTQBqIohEOvqt7uwMzpmXhy0P-a4xNxUC9IzcdH_JXncREVVA0ch1mbT8B?width=2000&height=1150&cropmode=none"
         ],
         "tripDescription":"One of the best non-traditional routes leading to the famous Inca city of Machu Picchu is the trail known as the Salkantay-Machu Picchu Inca route, or Alternative Inca Trail. This remote path leads us through an amazing variety of landscapes and habitats. During our Salkantay to Machu Picchu Trek, we must cross a high pass below the spectacular glaciers of Mount Humantay and Salcantay peak.",
@@ -610,9 +610,9 @@
         "recomendedMonths": "May to December",
         "tourType": "trekking",
         "startingPlace": "Cusco",
+        "price": 2490,
         "prices": {
             "priceType": "fixedDeparture",
-            "pricePerPerson": 2490,
             "singlesupp": 900,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties"
@@ -648,6 +648,7 @@
         "difficulty": 3,
         "imgArr": ["https://dsm04pap002files.storage.live.com/y4mIxfsD-SNpdSy1TOlurVSxmstuxUN3xdolxPfSp5dVsmzxz5oajVTD4TS1ioCG71FrTDMXwLOawhxUPPtiO9saTu21Fv37FxSQXkPch-oZAHdcuVfCreeShNVcwnFLT8xXFEju5ugtDNKLQIkBNRuoL18s3PqpBgXccRqvsV1k9J87Eg2JjqS8E_fPn6skQAN?width=2000&height=1150&cropmode=none",
         "https://dsm04pap002files.storage.live.com/y4mOxHrRah9cW3pI40B5SrDVEchbVUHx0ZOiZY0JKQFmaXI36n7APnNR4SCPCcLZwYJMMJSc918ZF9xpitWgvyxRo6OwcDc7uJuH2hFwYGLuPJb17-6Nw9xqVz7eJEiIvmvZgBsJk-WpqVb7ara6sWF9TYKTFsL3-JWZrsH29uardoOx1vLvudteF875WJY-dFl?width=2000&height=1150&cropmode=none",
+        "https://dsm04pap002files.storage.live.com/y4mvmK_QA3XqyGMW708flWpg2O7E61-WMyCdywVd1gYNzQu6AysyqLK2X9-AjPR0L-MTkHQvGTFVxYe_ZB6jSa9HlwbGVxqgz7Y42FrocINLtDEN5fK7DBphq9GDq6yaORopMkVB4jp4B_-regHIpjXZCCrotoe27NQsLdHJBbvycaYgTl_IInjoOUba2_KG-56?width=2000&height=1150&cropmode=none",
         "https://dsm04pap002files.storage.live.com/y4meZV6T_jgiovgRwV3fERGyQr4OqL6moRfuIYt0nS1s_Nwe5Jakqglce7mJXnlkBBPiofXNSkV3gVbkeu4qefvctnCMwnF-KRTgQHRRZ0g52g0nJh3HMcEOh21JMqRzf2GsnJ5q4TLWp7pKyEAw56A8IaCHu5IfBg_XzK8XyYmIzekzJr43ccVkJtYphtfs-na?width=2000&height=1125&cropmode=none",
         "https://dsm04pap002files.storage.live.com/y4mifRFXN0YGEn9oTYlgcKl-YuSdNBvNxku6veYsxBBenEbaW3bjtvlD_zwA8OteIy-lcuLiR01oxyvc1zNChAEczsY67-aNq4j-ecsvXofFhgykS-In-Bmz2F7Q4tLtJ1bqwmte2Cc2Q2D9oI6k-VfUsrVyUqzj5hYlwLd64EHjLghLQXj4bM_hnKCZk9YUUS2?width=2000&height=1150&cropmode=none",
         "https://dsm04pap002files.storage.live.com/y4mMsPvCq9av5a40zBDtdzx4s5qX1AiVljEQgWKONQOaz1EZ15JME-EjD31xUfL5gTA3U5ZC49aq8isXk57bscJFWDHt0N17upgiOj7ap4vsFGmlDACsl2hvueh--OvBbaGgdlL8ncppv8j1ZmX53M82Nv_g5oaafhG-9yRsbXPLBK2xS56z3ARRrMMEt0f-dRq?width=2000&height=1150&cropmode=none",
@@ -776,9 +777,9 @@
             }
         ],
         "tourType": "360° tours",
+        "price": 2490,
         "prices": {
             "priceType": "fixedDeparture",
-            "pricePerPerson": 2490,
             "singlesupp": 900,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties"
@@ -902,9 +903,9 @@
         "recomendedMonths": "May to December",
         "tourType": "trekking",
         "startingPlace": "Cusco",
+        "price": 2490,
         "prices": {
             "priceType": "fixedDeparture",
-            "pricePerPerson": 2490,
             "singlesupp": 900,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties"
@@ -1003,9 +1004,9 @@
         "recomendedMonths": "May to December",
         "tourType": "trekking",
         "startingPlace": "Cusco",
+        "price": 2490,
         "prices": {
             "priceType": "fixedDeparture",
-            "pricePerPerson": 2490,
             "singlesupp": 900,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties"
@@ -1096,9 +1097,9 @@
         "recomendedMonths": "May to December",
         "tourType": "trekking",
         "startingPlace": "Huaraz",
+        "price": 2490,
         "prices": {
             "priceType": "fixedDeparture",
-            "pricePerPerson": 2490,
             "singlesupp": 900,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties"
@@ -1213,9 +1214,9 @@
         "recomendedMonths": "May to December",
         "tourType": "trekking",
         "startingPlace": "Huaraz",
+        "price": 2490,
         "prices": {
             "priceType": "fixedDeparture",
-            "pricePerPerson": 2490,
             "singlesupp": 900,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties"
@@ -1339,9 +1340,9 @@
             }
         ],
         "tourType": "360° tours",
+        "price": 2490,
         "prices": {
             "priceType": "fixedDeparture",
-            "pricePerPerson": 2490,
             "singlesupp": 900,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties"
@@ -1494,9 +1495,9 @@
             }
         ],
         "tourType": "360° tours",
+        "price": 2490,
         "prices": {
             "priceType": "fixedDeparture",
-            "pricePerPerson": 2490,
             "singlesupp": 900,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties"
@@ -1586,9 +1587,9 @@
         ],
         "tourType": "climbing",
         "startingPlace": "Huaraz",
+        "price": 2490,
         "prices": {
             "priceType": "fixedDeparture",
-            "pricePerPerson": 2490,
             "singlesupp": 900,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties"
@@ -1719,9 +1720,9 @@
         ],
         "tourType": "climbing",
         "startingPlace": "Huaraz",
+        "price": 2490,
         "prices": {
             "priceType": "fixedDeparture",
-            "pricePerPerson": 2490,
             "singlesupp": 900,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties"
@@ -1886,9 +1887,9 @@
         ],
         "tourType": "climbing",
         "startingPlace": "Huaraz",
+        "price": 2490,
         "prices": {
             "priceType": "fixedDeparture",
-            "pricePerPerson": 2490,
             "singlesupp": 900,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties"
@@ -2035,9 +2036,9 @@
         ],
         "tourType": "climbing",
         "startingPlace": "Cusco",
+        "price": 2490,
         "prices": {
             "priceType": "fixedDeparture",
-            "pricePerPerson": 2490,
             "singlesupp": 900,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties"
@@ -2070,6 +2071,8 @@
         "difficulty": 1,
         "imgArr": ["https://dsm04pap002files.storage.live.com/y4m-QEkQYjZR1eLqh3Oyc6af2PqWSR-ARoRt9bDAPmHMNUQj9fTbrOqFCfQhjzPZgqu4prVNs4wtbMeULD2PkXQVbbh7sY8Wuj9WNsriNRA9cUbW4T1MY8-okBwlSzZdzPFozPeG3tnUhLwh8EP2pDR0yPAEYjitS0C9UoIURGDnMFromvBnxqLyw4sMttAZOv8?width=2000&height=1150&cropmode=none",
         "https://dsm04pap002files.storage.live.com/y4mxzTqgaKG-Vnq1gvYCGDkE5h70ptKyTNJ-3oWTEf6VbjtlxJPOmMOSnOzZpy6tk90O_qeT-Jl-qceMNJgyIgknsLnFu0EaF3JYfQ-W-IZ4ZDWfKc42ZZyB0Nf00cJMYtZGKjlBJJGMcIwWQFoc6won7PkheOJAdoVXWZQx6YZI1AUh0EYynSv5rv5vAwTgQtw?width=2000&height=1150&cropmode=none",
+        "https://dsm04pap002files.storage.live.com/y4mGZPg_m-h-1NaDSjMayHOEmrNB6L9hT2rD0BVN_oe6Wi-QBPGsU6pLG5jCiZFhyNv0mgeMergm1fo5hhnpckfngGRJI-_bYZeNza18BhjrppHt6YCEKXsO8tEd2YryxOHr8SqzJHmFOe4Wd9kVRR5edAQeCGZINJRw5T9skg5Xtuc7G7JwFfwGVOqeT_JimhO?width=2000&height=1150&cropmode=none",
+        "https://dsm04pap002files.storage.live.com/y4mvm2-zW0oY7BhvhOKWMZM024ALXc6fODKji5331j6aIRVoE48uXjT6fOXqsggTa-RAfP87u0L7SfZrUx1BhivCzqUDr2-QByV_X0G3Mt48nA3YEMHnTn3lSOjELt4Iigqg32L5E7SdyEwDJloURPAyCHhrCrgGHq-yLhdEBD5crr6z8oSrzIdWthxTfZglFWn?width=2000&height=1150&cropmode=none",
         "https://dsm04pap002files.storage.live.com/y4mWQUSju7TYeY1K39cF-SUhgKoqU-Fvq7tzq1Oz1oIJeXhZJ-6kAknTRnHSYA4KHrQq1tzOlTXOLuMi3WMQa_WjIS9cl4S4qV6XR48RtwJBMB2xxrACwsXI8ly4zJmJx6MPLXiWcoorWusjzvaTvHkFyJ-cKTnDvaXAil2_qBMiWJTdbVwTuZK-D7w18aDzdSY?width=2000&height=1150&cropmode=none",
         "https://dsm04pap002files.storage.live.com/y4mq--3EsskKM41emYJcFlUJvc7WyabCl9joBfxBjyfPzUoyteGqyN12nUSUQWy6kwXdGlQmXP9gQ7QVr7SM8tl9v2SriFTXEio767nky_sOl2elubHxfXsIyILNxsMRLXu7cvwY2cnOTkuuG4mP3eMdW90aC_jTEcPlqiE44mzyDle_4ttQSdixnJvbDPiHCQu?width=1920&height=1280&cropmode=none"
         ],
@@ -2078,34 +2081,50 @@
         "dayByDay":[
             {
                 "dayTitle": "Arrival in Lima",
-                "dayDescription": "Upon your arrival in Lima, you will be welcomed and transferred to your hotel of choice. You will have a short briefing about next day activities"
+                "dayDescription": "Upon your arrival in Lima, you will be welcomed and transferred to your hotel of choice. You will have a short briefing about next day activities",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "English speaking Guide Services"
+                ]
             },
             {
                 "dayTitle": "Half Day Lima City Tour",
                 "dayDescription": "Our morning tour begins with a drive to the Huaca Puccllana pre-Inca remains where we learn about the cultural past of Lima, and the ancient civilization that inhabited this place. Later on, we head towards the colonial part of town visiting the Plaza de Armas, and to enjoy a panoramic view of the Cathedral, San Francisco Church and its impressive 'Catacombs'. Afterwards we will head towards modern Lima, to visit the districts of San Isidro and Miraflores, finally ending our tour at Larco Mar, a modern entertaining center with a splendid view of the Pacific Ocean. You will be transferred back to the hotel",
                 "dayInclusions": [
-                    "Hotel breakfast"
+                    "Hotel breakfast",
+                    "Private Transfers",
+                    "Entrance Fees",
+                    "English speaking Guide Services"
                 ]
             },
             {
                 "dayTitle": "Lima - Cusco – Incas Sacred Valley - Ollantaytambo",
                 "dayDescription": "After your breakfast, we will transfer to the airport for your flight to Cusco. We will pick up you from the Airport, to begin our ride down to the valley of Urubamba, known as the Sacred Valley of the Incas. Here we start our first visit to the beautiful Pisac Inca Ruins, where during our 2 hours walk we can admire the fine architectural work of the Inca culture. Then we continue our tour to visit the colorful market of Pisac. Our transport will then take us towards the Inca town of Ollantaytambo where we visit the impressive Inca fortress and walk on this ancient typical Inca town. We will overnight in a nice hotel in Ollantaytambo, where the majestic fortress will overlook us",
                 "dayInclusions": [
-                    "hotel breakfast"
+                    "Hotel breakfast",
+                    "Private Transfers",
+                    "Entrance Fees",
+                    "English speaking Guide Services"
                 ]
             },
             {
                 "dayTitle": "Ollantaytambo – Machu Picchu – Cusco",
                 "dayDescription": "Breakfast is followed by a transfer to the train station in Ollantaytambo. From here, we start a beautiful train ride towards Aguas Calientes village from where we will be transported (25 minutes bus ride) up to the main entrance of the famous Machu Picchu Inca citadel on a public bus. We begin out guided tour of one of the most impressive citadels of the world. In the late afternoon, by public bus we head back to Aguas Calientes to take the train back to the city of Cusco. As we arrive in Cusco, our transport will take us to our hotel",
                 "dayInclusions": [
-                    "Hotel breakfast"
+                    "Hotel breakfast",
+                    "Train tickets",
+                    "Entrance Fees",
+                    "English speaking Guide Services"
                 ]
             },
             {
                 "dayTitle": "Cusco ½ day City Tour and nearby Inca Ruins",
                 "dayDescription": "This fun tour includes a walking trip to visit the Plaza de Armas (Main Square) and the Korikancha temple in the heart of Cusco, followed by a visit to Sacsayhuaman where our tour to visit the nearby Inca remains of Cusco Begins. We will explore the ruins of Sacsayhuaman, Qenko, Tambomachay and Pucapucara in this second part of the trip. After we are finished, we will return to Cusco to enjoy a free afternoon",
                 "dayInclusions": [
-                    "hotel breakfast"
+                    "hotel breakfast",
+                    "Private Transfers",
+                    "Entrance Fees",
+                    "English speaking Guide Services"
                 ]
             },
             {
@@ -2117,9 +2136,9 @@
             }
         ],
         "tourType": "historic",
+        "price": 2490,
         "prices": {
             "priceType": "fixedDeparture",
-            "pricePerPerson": 2490,
             "singlesupp": 900,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties"
@@ -2208,9 +2227,9 @@
             }
         ],
         "tourType": "historic",
+        "price": 2490,
         "prices": {
             "priceType": "fixedDeparture",
-            "pricePerPerson": 2490,
             "singlesupp": 900,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties"
@@ -2337,9 +2356,9 @@
             }
         ],
         "tourType": "historic",
+        "price": 2490,
         "prices": {
             "priceType": "fixedDeparture",
-            "pricePerPerson": 2490,
             "singlesupp": 900,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties"
