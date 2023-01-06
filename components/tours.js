@@ -220,10 +220,7 @@ export function TourDisplayer(props){
         //     "key2": "some other"
         // }
         // let strngifiedObj = JSON.stringify(sampleObj)
-
         // localStorage.setItem("theTrips", strngifiedObj)
-
-
     },[])
 
     const [imgDialogContr, srtImgDialogcontr]= useState(false)
@@ -369,7 +366,7 @@ export function TourDisplayer(props){
             </>)
         } else if (theTour.prices.privateDeparture){
             return(<>
-                <span onClick={()=>props.bookingProcess(1)}> <EventIcon/> PRIVATE <br/> DEPARTURE </span>
+                <span> <EventIcon/> PRIVATE <br/> DEPARTURE </span>
                 <span> <LocalOfferIcon /> PRICES FROM <br/> ${theTour.prices.pricePerPerson} p. person </span>
             </>)
         }
@@ -388,9 +385,23 @@ export function TourDisplayer(props){
                 </>}
                 <a className={styles.tourOverview}> 
                     {aTour.tripDescription} </a>
-                {aTour.prices.privateDeparture&&<>
-                    <div className={styles.bookNowBTN} onClick={()=>props.bookingProcess(1)}>
-                    Book Trip <i>Here</i></div> </>}
+
+
+{/* Include We Travel Widget BTN || CONTACT US BTN for Private Departures */}
+
+                {aTour.tourType==="climbing"&&<>
+                    <a href={`mailto:info@ecoandestravel.com?subject=${aTour.tripName} Request&body=Hi! I'm interested in this climbing expedition for the following dates/season:`}>
+                    <div className={styles.bookNowBTN}>
+                        Contact Us About {aTour.tripName} <i>Here</i></div></a>
+                </>}
+
+                {/* {aTour.prices.privateDeparture&&<>
+                    <div className={styles.bookNowBTN} >
+                    Contact Us About This Itinerary <i>Here</i></div> </>} */}
+
+
+
+
                 <div className={styles.tourDetails}>
                     <span> <AccessTimeIcon /> {aTour.duration} <br/> DAYS </span>
                     <span><ExploreIcon /> TOUR TYPE: <br/> {aTour.tourType} </span>

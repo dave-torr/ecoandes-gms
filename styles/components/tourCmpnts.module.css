@@ -266,7 +266,7 @@
     transition: all ease 0.5s;
     cursor: pointer;
     color: white;
-    background-color: var(--brick-red);
+    background-color: var(--pop-orange);
     margin: 15px 0;
 }
 
