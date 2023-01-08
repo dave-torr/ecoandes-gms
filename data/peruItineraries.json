@@ -869,10 +869,6 @@
 
 
 
-
-
-
-
     {
         "tripName": "Trekking Alpamayo",
         "id": "alpamayo-trek-4D",
@@ -2096,52 +2092,75 @@
         "https://dsm04pap002files.storage.live.com/y4mJvZnnHrbbfzxfdkDTcVk6KDWuNEhxwlLsYjwxPLzz6oMsC8gGLA_xVpTmZNqeLePTvbvb9sMoaSpKJ-HDsNaEEDigIqY5xpw9v8Au8BHhtgUsDohWxy5qMJJmkQscImSDuvNMBVeUSfZLBTHkxVtUqtmS_xhLM0Ei723Ajd9xcGstWqG6oOUiWhDQtKymmyN?width=2000&height=1150&cropmode=none"
         ],
         "tripDescription":"From the ancient ruins of Machu Picchu, to the abundant biodiversity of the Galapagos Islands, this incredible voyage takes you through some of the world's best travel destinations in an adventurous and comfortable 12 day expedition. do not miss out on the opportunity to experience the highlights of South America, with first class guides, amazing hotel properties, and an unforgettable cruise through the best visitor sights of the Galapagos National Park and Marine Reserve",
-        "countryList": ["peru", "galapagos"],
+        "countryList": ["peru", "ecuador", "galapagos"],
         "dayByDay":[
             {
                 "dayTitle": "Arrival in Lima",
-                "dayDescription": "Upon your arrival in Lima, you will be welcomed and transferred to your hotel of choice. You will have a short briefing about next day activities"
+                "dayDescription": "Upon your arrival in Lima, you will be welcomed and transferred to your hotel of choice. You will have a short briefing about next day activities",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "English speaking Guide Services"
+                ]
             },
             {
                 "dayTitle": "Half Day Lima City Tour",
                 "dayDescription": "Our morning tour begins with a drive to the Huaca Puccllana pre-Inca remains where we learn about the cultural past of Lima, and the ancient civilization that inhabited this place. Later on, we head towards the colonial part of town visiting the Plaza de Armas, and to enjoy a panoramic view of the Cathedral, San Francisco Church and its impressive 'Catacombs'. Afterwards we will head towards modern Lima, to visit the districts of San Isidro and Miraflores, finally ending our tour at Larco Mar, a modern entertaining center with a splendid view of the Pacific Ocean. You will be transferred back to the hotel",
                 "dayInclusions": [
-                    "Hotel breakfast"
+                    "Hotel breakfast",
+                    "Private Transfers",
+                    "Entrance Fees",
+                    "English speaking Guide Services"
                 ]
             },          
             {
                 "dayTitle": "Lima - Cusco – Incas Sacred Valley - Ollantaytambo",
                 "dayDescription": "After breakfast we will head to the airport in Lima, to catch our flight to Cusco. After the reception at the airport we will head to the Sacred Valley of the Incas, for a visit to Pisac Inca ruins and the impressive fortress of Ollantaytambo (optional lunch in a nice local hacienda). You will overnight in a nice hotel in the town of Ollantaytambo",
                 "dayInclusions": [
-                    "hotel breakfast"
+                    "hotel breakfast",
+                    "Private Transfers",
+                    "Entrance Fees",
+                    "English speaking Guide Services"
                 ]
             },
             {
                 "dayTitle": "Ollantaytambo – Machu Picchu – Cusco",
                 "dayDescription": "From our hotel, we will transfer to Ollanta train station to catch our departure toward the village of Aguas Calientes. We will drive by public bus to the Machu Picchu main entrance, form where we will start our tour of the famous Inca Citadel. In the early afternoon transport to Aguas Calientes by public bus, from here we take our train to the town of Ollantaytambo, followed by a train ride back to Cusco. At your arrival we will transfer you to the Hotel in Cusco",
                 "dayInclusions": [
-                    "Hotel breakfast"
+                    "Hotel breakfast",
+                    "Private Transfers",
+                    "Entrance Fees",
+                    "English speaking Guide Services"
                 ]
             },
             {
                 "dayTitle": "Cusco ½ day City Tour and nearby Inca Ruins",
                 "dayDescription": "This fun tour includes a walking trip to visit the Plaza de Armas (Main Square) and the Korikancha temple in the heart of Cusco, followed by a visit to Sacsayhuaman where our tour to visit the nearby Inca remains of Cusco Begins. We will explore the ruins of Sacsayhuaman, Qenko, Tambomachay and Pucapucara in this second part of the trip. After we are finished, we will return to Cusco to enjoy a free afternoon",
                 "dayInclusions": [
-                    "hotel breakfast"
+                    "hotel breakfast",
+                    "Private Transfers",
+                    "Entrance Fees",
+                    "English speaking Guide Services"
                 ]
+                
             },
             {
                 "dayTitle": "Cusco - Lima - Quito",
                 "dayDescription": "The morning transfer to the airport to catch our flight to Lima will connect with your international flight to the city of Quito, the capital of Ecuador. After your arrival in Quito we will transfer you to your hotel. You will have free time in the afternoon to explore on your own",
                 "dayInclusions": [
-                    "Hotel breakfast"
+                    "Hotel breakfast",
+                    "Private Transfers",
+                    "Entrance Fees",
+                    "English speaking Guide Services"
                 ]
             },
             {
-                "dayTitle": "Quito",
-                "dayDescription": "In the morning we make a city tour of Quito where the Historic Center of Quito has one of the largest, least-altered and best-preserved historic centers in the Americas. Quito, along with Krakow, were the first World Cultural Heritage Sites declared by UNESCO in 1978. In the afternoon we visit the monument on the Equator Line and a nice ethnographic museum. In the afternoon, transport back to Quito to your hotel",
+                "dayTitle": "Quito City Tour",
+                "dayDescription": "In the morning we will enjoy a city tour in one of the largest, least-altered and best-preserved historic centers in the Americas. Quito, along with Krakow, were the first World Cultural Heritage Sites declared by UNESCO in 1978. In the afternoon we visit the monument on the Equator Line and a nice ethnographic museum. In the afternoon, transport back to your hotel",
                 "dayInclusions": [
-                    "Hotel breakfast"
+                    "Hotel breakfast",
+                    "Private Transfers",
+                    "Entrance Fees",
+                    "English speaking Guide Services"
                 ]
             },
             {
@@ -2149,26 +2168,27 @@
                 "dayDescription": "In the morning we will transfer to the airport to fly to San Cristobal Island on Galapagos. Upon arrival, we will transfer aboard the Yacht Catamaran Anahi. After lunch, in the afternoon we will go for a visit to San Cristobal Interpretation Center. On the visit to Cerro Tijeretas, we will observe 2 species of frigate birds and then, visit a place known as Punta Carola where we find a large sea lions community. After the visit we head back to the yacht where we will have dinner and a welcome drink with the crew.",
                 "dayInclusions": [
                     "Hotel breakfast",
-                    "Lunch",
-                    "onboard Dinner"
+                    "Private Transfers",
+                    "onboard lunch and Dinner",
+                    "Daily Yacht Activities"
                 ]
             },
             {
                 "dayTitle": "Galapagos: Española Island",
                 "dayDescription": "Española Island is considered amongst the oldest of the Galapagos Archipelago, and boasts incredible birdlife unique to the Islands and to the visitor sights which we will visit. In the morning we will stop by Punta Suarez, a spectacular site where boobies, albatross, iguanas and sea lions share this space where we can experience a fantastic immersion into the animal world. In the affternoon the beautifull beach of Gardner bay will allow us to relax in a perfect soft sandy beach setting.",
                 "dayInclusions": [
-                    "onboard breakfast",
-                    "onboard Lunch",
-                    "onboard Dinner"
+                    "onboard breakfast, lunch and dinner",
+                    "proffessional Galapagos National Park Guide services",
+                    "daily yacht activities"
                 ]
             },
             {
                 "dayTitle": "Galapagos: Floreana Island",
                 "dayDescription": "The historic Floreana Island has been the backdrop of some of the most interesting human stories of the Galapagos Islands. From pirates, to exiled Europeans, the fresh water of the highlands has drawn early settlers to explore and conquer this wild space, which we will visit during our cruise. We have the following stops scheduled: Punta Cormorant, Devil's Crown, and finally Post Office Bay in this great day",
                 "dayInclusions": [
-                    "onboard breakfast",
-                    "onboard Lunch",
-                    "onboard Dinner"
+                    "onboard breakfast, lunch and dinner",
+                    "proffessional Galapagos National Park Guide services",
+                    "daily yacht activities"
                 ]
             },
             {
@@ -2176,14 +2196,179 @@
                 "dayDescription": "Our last day of Galapagos Activities begins with a morning visit to the famous Charles Darwin Station and an observation trip of the Giant Galapagos Turtles on the highlands of Santa Cruz. Transfer to Baltra Island for your flight back to Quito. Hotel accommodations and in the evening enjoy a farewell dinner with some few drinks",
                 "dayInclusions": [
                     "onboard breakfast",
+                    "Private Transfers",
+                    "English speaking Guide Services",
                     "farewell dinner"
                 ]
             },
             {
-                "dayTitle": "Quito - out",
+                "dayTitle": "Quito - Out",
                 "dayDescription": "A morning transfer to the airport will take you for your flight back home",
                 "dayInclusions": [
-                    "hotel breakfast"
+                    "hotel breakfast",
+                    "Private Transfers",
+                    "English speaking Guide Services"
+                ]
+            }
+        ],
+        "tourType": "historic",
+        "price": 2490,
+        "prices": {
+            "priceType": "fixedDeparture",
+            "singlesupp": 900,
+            "dblOccupancy": true,
+            "priceNotice": "hotel categories will depend on locally available properties"
+        },
+        "included": [
+            "noted meals",
+            "entrance fees",
+            "noted transfers",
+            "Train tickets",
+            "flights to and from the Galapagos Islands",
+            "four day cruise on the Galapagos Islands",
+            "Galapagos N.P. Entrance fees + Transit Card",
+            "hotels: double room accommodation with private facilities",
+            "cabins: double cabon accommodation with private facilities",
+            "english/spanish speaking guide services (Peru & Galapagos)"
+        ],
+        "notIncluded": [
+            "international/regional flights Lima - Cusco - Lima, Lima - Quito",
+            "personal travel insurance (REQUIRED)",
+            "personal expenses",
+            "extras",
+            "tips"
+        ]
+    },
+    {
+        "tripName": "Ecuador + Galapagos Island Hopping",
+        "id": "ec-galapagos-island-hopping-12D",
+        "duration": 12,
+        "difficulty": 1,
+        "imgArr": ["https://dsm04pap002files.storage.live.com/y4mFu7Ztvx58a6PRxIMloUDKuS27jFf4faTA58XJEEm2WS4n538eAQbYAMHgwIQSYQ3KwbW39Za7Z3jZak_CMml15maq3RXEuIcoqR_K764iwcwN6vUCYBvlw4CGYw36S_jaHZtxo3cZPSctwFytbyDDYpt2HcJA82aaPREHew9CkA3D3dwisRzkJwV4HH96gI8?width=2000&height=1150&cropmode=none"
+
+        ],
+        "tripDescription":"In this incredible trip, we will visit the Middle of the World, the enchanting Otavalo Indian Market, the exuberant flora of Mindo Cloud Forest, see Giant Galapagos land tortoises, the beautiful beach of Tortuga Bay & the well-known Charles Darwin Research Station. We will also navigate to the historical Floreana and Isabela Island, all while staying in small boutique hotels. Navigations will be on board of our First-Class Galapagos Element Yacht",
+        "countryList": ["ecuador", "galapagos"],
+        "dayByDay":[
+            {
+                "dayTitle": "Arrival in Quito",
+                "dayDescription": "Upon your arrival in Quito, you will be welcomed and transferred to your hotel of choice. You will have a short briefing about next day activities",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "English speaking Guide Services"
+                ]
+            },
+            {
+                "dayTitle": "Quito - Otavalo - Cotacachi",
+                "dayDescription": "After breakfast we will start our journey driving north towards the Imbabura province, to the city of Otavalo. On the way we will stop for a visit to the interesting Cochasqui Pre-Inca remains and, we will visit a Roses Farm where we can learn about the Ecuadorian roses production.  Then we will continue towards Otavalo and to the Hacienda Hotel. After checking in the hotel and a short rest, we will go for a visit to the charming town of Cotacachi where the local artisans produce beautiful high quality leather goods. Our transport will take us to the Cuicocha Lagoon, a beautiful spot located at the base of the steep Cotacachi Volcano. Here we can enjoy a short hike to observe the amazing land scape. Transport back the hotel and enjoy a good rest",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Private Transfers",
+                    "Entrance Fees",
+                    "English speaking Guide Services"
+                ]
+            },          
+            {
+                "dayTitle": "Quito - Otavalo Indian Market – Mindo Cloud Forest",
+                "dayDescription": "In the early morning we visit to the well-known Indigenous Market of Otavalo considered as one of the biggest Indian markets in South America. Here the local indigenous people from the nearby communities gather every Saturday for exchange goods, but also to sell handicrafts, beautiful textiles, wood carvings, etc. We will also visit the animal’s market and visit to one of the Otavalo families artisanal shops. After this visit we will drive towards the beautiful area of Mindo where we will be staying in a nice hotel surrounded by beautiful, lush green cloud forest",
+                "dayInclusions": [
+                    "hotel breakfast",
+                    "Private Transfers",
+                    "Entrance Fees",
+                    "English speaking Guide Services",
+                    "dinner"
+                ]
+            },
+            {
+                "dayTitle": "Mindo Cloud Forest – Quito",
+                "dayDescription": "In the morning and after breakfast we can opt for an optional Zipline adventure tour, or we can go for a walk in the Cloud Forest for birdwatching and enjoy the wonderful green lush area or simple you can relax at the lodge. The area surrounding the Lodge Hotel in the cloud forest of Mindo, offers wonderful landscapes of lush green forest with rivers, waterfalls, lot of birds, wild orchids, and the possibility of see some fauna typical of the area: spectacled bears, armadillos, tail guantas, squirrel bats, woodpeckers, etc. Return to the lodge for lunch and after a good rest we will start our drive back to Quito and to the hotel to prepare ourselves for the next great adventure on the Galapagos Islands",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Private Transfers",
+                    "Entrance Fees",
+                    "flight to the Galapagos Islands",
+                    "Lunch",
+                    "English speaking Guide Services"
+                    
+                ]
+            },
+            {
+                "dayTitle": "Quito – Galapagos Highlands of Santa Cruz Island",
+                "dayDescription": "Morning transfer to the airport in Quito and flight to Baltra Island. The flight will take approximately 3 hours (with one stop in the city of Guayaquil). Upon arrival to the airport of Baltra, our local Galapagos National Park trained guide welcomes and arranges your transfer to the city of Puerto Ayora, the biggest on the Galapagos Archipelago and located on Santa Cruz Island. On the way, using a local ferry, we should cross the beautiful Itabaca Canal, which separates Baltra and Santa Cruz Islands. p.m. Once, on the other side of the canal our private transportation will take you up to the highlands of Santa Cruz Island where our ﬁrst visit starts on a private farm enjoying a nice hike in beautiful natural environment. Here we can observe Giant Galapagos Tortoises in their natural state. These animals are overly sensitive and will typically withdraw into their carapaces as soon as they see you coming close. It is especially important not to bother, touch or feed these beautiful animals.  In this area, we   can   also   observe   diﬀerent   species   of Galapagos birds including the tiny Galapagos rail and with little luck perhaps the not so common Vegetarian Finch and the endemic subspecies of Vermilion Flycatcher ﬁnches. Transport to the hotel in the town of Puerto Ayora and free time",
+                "dayInclusions": [
+                    "hotel breakfast",
+                    "Lunch",
+                    "proffessional Galapagos National Park Guide services",
+                    "Private Transfers"
+                ]
+            },
+            {
+                "dayTitle": "Santa Cruz Island: Tortuga Bay Beach & Interpretation Center",
+                "dayDescription": "After an early breakfast in the hotel, we start our day hiking towards the shores of the Paciﬁc Ocean, to Tortuga Bay Beach, known as one of the most beautiful beaches on the Archipelago. After some 40 – 60-minute walk, we arrive to the heavenly spot.  The soft coral sand and nice scenery make this a special location for anyone visiting. The ﬁrst part of the beach has strong waves and therefore is not recommended for swimming, but an additional 10 minutes’ walk to the west will get us to a beautiful bay of calm water.  Here, we can observe a colony of marine iguanas, blue footed boobies, and marine birds, as well as mangroves, cacti forest and interesting ﬂora of the coast.  Time to enjoy the beach. We return to town using a local ferry. Free time for lunch (on your own) and rest. In the afternoon, we will walk to Fausto Llerena Interpretation Center where we will learn about the Galapagos National Park´s work and observe tortoises of diﬀerent species and size, as well as some land iguanas.  At the interpretation center, we will enter in a special air-conditioned chamber where we will be able to observe the embalmed body of the world-famous tortoise: Lonesome George, who now is in exhibition. Later we visit the small museum of the well-known Charles Darwin Research Station. After enjoying this wonderful walk enjoy free time",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "proffessional Galapagos National Park Guide services"
+                ]
+            },
+            {
+                "dayTitle": "Santa Cruz Island - Floreana Island",
+                "dayDescription": "At 7:30 a.m. starts the 2.5 hours navigation on board of the ﬁrst-class Galapagos Element Wind Yacht towards the small village known as Puerto Velasco Ibarra on the historical Floreana Island. Once at the town, a local water taxi takes us to the pier of the town where we have great chances to meet right away sea lions and marine iguanas enjoying the morning sun. A short walk takes us to a beautiful, secluded spot where the lodge is located right in front of the ocean and where we will spend the night. Then, a local transport known as “Chiva” takes us for a 15-minute ride up to the highlands of Floreana Island to a place from where we start a nice walk observing the typical ﬂora of the area and encountering some giant Galapagos Tortoises. Continuing our walk, we reach a rocky area where we ﬁnd the place known as “Asilo de la Paz” (Peace Asylum), a historical place where the German Wittmer family settled down when arrived to Floreana in 1932.  After a good rest we walk to a place where we find a beautiful bay where we will perhaps enjoy snorkeling with sea lions and marine turtles. The whole area is of an amazing beauty. Dinner and enjoy a good rest while observing the sunset",
+                "dayInclusions": [
+                    "Hotel breakfast, lunch and dinner",
+                    "navigation onboard Galapagos Elements Wind yacht",
+                    "proffessional Galapagos National Park Guide services"
+                ]
+            },
+            {
+                "dayTitle": "Floreana Island – Isabela Island ",
+                "dayDescription": "In the morning and after a relaxing breakfast, at 8:30 a.m. we start sailing towards Puerto Villamil, the biggest town on Isabela Island. During our 2.5-hour navigation, there are great chances to observe marine turtles, manta rays, several species of marine birds, dolphins and perhaps whales (from June to September). Upon arrival to the bay of Puerto Villamil a local transport takes us to the Hotel. Time to relax at the long, beautiful beach of Puerto Villamil. Free time for lunch (on your own).p.m. In the afternoon at about 2 p.m. we take you to the pier to participate in an amazing, guided tour to the area known as “Las Tintoreras”.  This is a scenic area and where during the hike, you will ﬁnd colonies of marine iguanas, sea lions, and as one of the main attractions we will be able to observe White-tipped sharks known as “Tintoreras” which are resting in the channels formed by lava ﬂows.  The area is also well known for snorkeling activities perhaps in the company of sea lions, penguins, and marine turtles. Transport back to the hotel. Free time in the late afternoon. ",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "navigation onboard Galapagos Elements Wind yacht",
+                    "Lunch",
+                    "proffessional Galapagos National Park Guide services",
+                    "Private Transfers"
+                ]
+            },
+            {
+                "dayTitle": "Isabela Island: Sierra Negra Volcano & Wetlands",
+                "dayDescription": "At 7:30 a.m. we start driving (30 min) up to the highlands of Isabela Island until we reach the visitors control area of the National Park. From here we start an easy 1.5 hour walk to reach the rim of the impressive crater of the Sierra Negra Volcano, considered after the Ngorongoro crater in Africa, as the second biggest in the world. It has the largest caldera of all the Galapagos volcanoes with dimensions of 5 miles x 7 miles, with the long axis being southwest to northeast. The caldera is also the shallowest of the Isabela volcanoes at only 100 m (328 ft) deep and give us one of the most spectacular views in Galapagos, showing us how powerful nature is. Return to the hotel for lunch (on your own). In the afternoon, our transport will take you the Isabela’s Tortoise Breeding Center where we will observe Giant Galapagos Tortoises of diﬀerent species and sizes. Then we continue our walk along a well-maintained trail which leads to the place known as “Humedales” (Wetlands) where you will be amazed by the impressive scenery composed by lagoons surrounded by 4 species of exuberant mangroves and typical flora of the area.  In the lagoons, we observe ﬂamingos and migratory birds such as the charran or Gaviota de Galapagos (Creagrus furcatus), la Cerceta aliazul, etc.  The walk will end at the main road and close to the beach where you will have time to enjoy the place perhaps with the company of marine iguanas. Back to the hotel and free time before dinner.",
+                "dayInclusions": [
+                    "hotel breakfast",
+                    "proffessional Galapagos National Park Guide services",
+                    "Private Transfers",
+                    "dinner"
+                ]
+            },
+            {
+                "dayTitle": "Isabela Island – Santa Cruz",
+                "dayDescription": "The historic Floreana Island has been the backdrop of some of the most interesting human stories of the Galapagos Islands. From pirates, to exiled Europeans, the fresh water of the highlands has drawn early settlers to explore and conquer this wild space, which we will visit during our cruise. We have the following stops scheduled: Punta Cormorant, Devil's Crown, and finally Post Office Bay in this great day",
+                "dayInclusions": [
+                    "onboard breakfast",
+                    "navigation onboard Galapagos Elements Wind yacht",
+                    "Entrance Fees",
+                    "Private Transfers",
+                    "proffessional Galapagos National Park Guide services",
+                    "farewell dinner"
+                ]
+            },
+            {
+                "dayTitle": "Santa Cruz - Baltra - Quito",
+                "dayDescription": "In the morning and after breakfast, our transport will take (30 minutes) us up to the highlands of Santa Cruz Island where we will be stopping at the natural formation known as “The Twins” (Los Gemelos) Craters, that lies on the route to the Itabaca Canal. Los Gemelos in fact are not actual craters caused by impact or volcanic craters, but they are sink holes that were created when the volcanic roof of empty magma chamber collapses from tectonic shifts and erosion over time. The area surrounding “Los Gemelos” has quite a diﬀerent climate from other parts of the island and are surrounded by scalesia (scalesia pedunculata) forests and it is the habitat for different species of birds. Then, we continue our trip to the Itabaca Canal and after crossing it, an airline bus will take you to the airport where our guide will assist with the airline check-in process. Enjoy your ﬂight back to Quito where our office staff will be ready to welcome and arrange your transfer to the 4* Ikala Quito Boutique Hotel ",
+                "dayInclusions": [
+                    "hotel breakfast",
+                    "Private Transfers",
+                    "English speaking Guide Services"
+                ]
+            },
+            {
+                "dayTitle": "Quito City tour - Airport transfer",
+                "dayDescription": "After a relaxed breakfast time, at 9 a.m. starts our tour in the heart of Colonial Quito with a visit to the Independence Square where the Presidential Palace, the Cathedral and El Sagrario Church are located. We will also visit the Church of La Compañia (1605) which with its amazing gilt altars is considered as one of the finest examples of baroque art in America. Afterwards we will walk to the plaza where the Church and Monastery of San Francisco (1535) is located. This is the oldest Ecuadorian church, where the main altar inside is a spectacular example of baroque carving. There is also a fine collection of artworks including paintings, sculptures and furniture dating back to the 16th century. Then we will travel north for a visit to La Mitad del Mundo (The Middle of the World) a place located at about 25 kms from Quito. Here we find the monument which commemorates the site where the 18th-century French explorer Charles Marie de la Condamine calculated the globe's equatorial line. A trapezoidal building in the center of the park houses a viewing platform and a small museum which pays tributes to the local indigenous cultures. At the Equator line, you can enjoy the emotional experience of being on 2 hemispheres at the same time. Return to the hotel and free time to prepare the luggage for the late afternoon transfer to the International Mariscal Sucre airport of Quito. Our office representative will be accompanying the group to coordinate the proper airline check-in process. Flight back home",
+                "dayInclusions": [
+                    "hotel breakfast",
+                    "Entrance Fees",
+                    "Private Transportation",
+                    "English speaking Guide Services"
                 ]
             }
         ],
@@ -2200,17 +2385,20 @@
             "entrance fees",
             "noted transfers and transfers",
             "Train ticket",
-            "four day cruise on the Galapagos Islands",
+            "7 day Galapagos Island Hopping voyage",
             "Galapagos N.P. Entrance fees + Transit Card",
             "hotels: double room accommodation with private facilities",
             "english/spanish speaking guide services (Peru & Galapagos)"
         ],
         "notIncluded": [
-            "international/regional flights Lima - Cusco - Lima, Lima Quito, Quito - Galapagos.",
             "personal travel insurance (REQUIRED)",
             "personal expenses",
             "extras",
             "tips"
         ]
     }
+
+
+
+
 ]

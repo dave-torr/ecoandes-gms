@@ -389,15 +389,19 @@ export function TourDisplayer(props){
 
 {/* Include We Travel Widget BTN || CONTACT US BTN for Private Departures */}
 
-                {aTour.tourType==="climbing"&&<>
+                {aTour.tourType==="climbing"?<>
                     <a href={`mailto:info@ecoandestravel.com?subject=${aTour.tripName} Request&body=Hi! I'm interested in this climbing expedition for the following dates/season:`}>
                     <div className={styles.bookNowBTN}>
                         Contact Us About {aTour.tripName} <i>Here</i></div></a>
+                </>:<>
+                    
+                    {/* We travel BTN Wdget */}
+
+                    <div className={styles.bookNowBTN} >
+                    Book Now <i>Here</i></div> 
+                    
                 </>}
 
-                {/* {aTour.prices.privateDeparture&&<>
-                    <div className={styles.bookNowBTN} >
-                    Contact Us About This Itinerary <i>Here</i></div> </>} */}
 
 
 

@@ -54,8 +54,10 @@ import Head from "next/head"
 //  OP:
 //  // A - Z
 //  // number of days
-//  ver. 2
 //  // price
+
+
+//  ver. 2
 //  // departure date?
 
 
@@ -70,7 +72,7 @@ import Head from "next/head"
 
 let tourTypes = ["all types", "historic", "360° tours", "climbing", "trekking", ]
 
-let operationRegions= ['cusco', 'huaraz', 'lima', 'multidestination', "360°" ]
+let operationRegions= ['ecuador', 'galapagos', 'peru' ]
 
 let favoriteTours;
 
@@ -134,7 +136,6 @@ export default function TourPage(){
             <div className={styles.UIBTNCont}> 
                 <div className={styles.userIUFilterCont}>
 
-                    {/* Destinations filter
                     <div className={styles.userUISec}>
                         <label htmlFor="destinationPickerUI">Destination:</label>
                         <MultiSelect
@@ -146,7 +147,7 @@ export default function TourPage(){
                             onChange={setDestList}
                             id="destinationPickerUI"
                         />
-                    </div> */}
+                    </div>
 
                     {/* Tour Types Filter */}
                     <div className={styles.userUISec}>
