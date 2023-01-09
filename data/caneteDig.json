@@ -101,8 +101,8 @@
         ],
         "tourType": "voyage",
         "maxGuests": 16,
+        "price": 2830,
         "prices": {
-            "pricePerPerson": 2830,
             "singleSupp": 540,
             "dblOccupancy": true,
             "priceNotice": "Hotel categories will depend on locally available properties. ",
