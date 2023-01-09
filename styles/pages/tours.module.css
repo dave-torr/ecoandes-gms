@@ -44,7 +44,6 @@
     align-items: center;
     padding: 3px;
     justify-content: space-between;
-    border-left: solid 1px var(--brown-main);
 }
 
 .userUISec:nth-child(1){
@@ -358,6 +357,7 @@
 
     .userIUFilterCont{
         width: 100%;
+
     }
     .userUISec{
         flex-direction: column;
@@ -409,4 +409,13 @@
 
     }
 
+}
+
+@media (max-width: 600px) {
+    .UIBTNCont{
+        position: unset;   
+    }
+    .userIUFilterCont{
+        font-size: 0.8em;
+    }
 }
