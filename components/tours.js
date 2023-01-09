@@ -371,7 +371,7 @@ export function TourDisplayer(props){
             return(<>
                 <span> <EventIcon/> PRIVATE <br/> DEPARTURE </span>
                 <span> <LocalOfferIcon /> PRICES FROM <br/> 
-                {theTour.prices.pricePerPerson.toLocaleString('en-US', {
+                {theTour.price.toLocaleString('en-US', {
                     style: 'currency',
                     currency: 'USD',
                     })} p. person </span>
