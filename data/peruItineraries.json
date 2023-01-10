@@ -1,6 +1,6 @@
 [
     {
-        "tripName": "Inca TrailL 360° Expedition",
+        "tripName": "Inca Trail 360° Expedition",
         "id": "inca-trail-expedition-10D",
         "duration": 10,
         "adventureType": "trekking",
@@ -1417,7 +1417,7 @@
         "startingPlace": "Huaraz",
         "price": 2490,
         "prices": {
-            "priceType": "fixedDeparture",
+            "priceType": "privateDeparture",
             "singlesupp": 900,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties"
@@ -1550,7 +1550,7 @@
         "startingPlace": "Huaraz",
         "price": 2490,
         "prices": {
-            "priceType": "fixedDeparture",
+            "priceType": "privateDeparture",
             "singlesupp": 900,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties"
@@ -1717,7 +1717,7 @@
         "startingPlace": "Huaraz",
         "price": 2490,
         "prices": {
-            "priceType": "fixedDeparture",
+            "priceType": "privateDeparture",
             "singlesupp": 900,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties"
@@ -1866,7 +1866,7 @@
         "startingPlace": "Cusco",
         "price": 2490,
         "prices": {
-            "privateDeparture": true,
+            "priceType": "privateDeparture",
             "singlesupp": 900,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties"

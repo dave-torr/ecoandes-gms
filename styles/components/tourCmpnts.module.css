@@ -150,6 +150,62 @@
     position: relative;
 }
 
+.arrowforwardCarrousel{
+    /* position: fixed; */
+    position: relative;
+    top: 150px;
+    z-index: 5;
+    width: fit-content;
+    transition: all ease 0.3s;
+    animation-name: into;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+.arrowBackCarrousel{
+    position: relative;
+    top:-175px;
+    z-index: 5;
+    right: -95vw;
+    transition: all ease 0.3s;
+    width: fit-content;
+    animation-name: into2;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    display: flex;
+    align-items: flex-end;
+    /* background-color: teal; */
+}
+
+@keyframes into{
+  0%{
+    transform: translateX(0px);
+  }
+
+  50%{
+    transform: translateX(20px);
+  }
+
+  100%{
+    transform: translateX(00px);
+  }
+}
+@keyframes into2{
+  0%{
+    transform: translateX(0px);
+  }
+
+  50%{
+    transform: translateX(-20px);
+  }
+ 
+  100%{
+    transform: translateX(00px);
+  }
+}
+
+
+
 
 .tourIMGCarousel{
     display: flex;
@@ -256,9 +312,9 @@
 
 /*  //////////////////////////////////////// */
 /*  //////////////////////////////////////// */
-/* export to We Travel */
+/* export to mail */
 
-.bookNowBTN{
+.contactNowBTN{
     font-weight: 600;
     padding: 9px 12px;
     width: fit-content;
@@ -267,6 +323,23 @@
     color: white;
     background-color: var(--pop-orange);
     margin: 15px 0;
+}
+
+
+/* //////////////////// */
+/* //////////////////// */
+
+/* export to we travel */
+.bookNowBTN{
+    border: solid 2px var(--pop-orange);
+    width: fit-content;
+    padding: 9px 12px;
+    color: var(--pop-orange);
+    text-transform: uppercase;
+    font-weight: 800;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 

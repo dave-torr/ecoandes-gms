@@ -17,6 +17,11 @@ import InsertLinkIcon from '@mui/icons-material/InsertLink';
 import MapIcon from '@mui/icons-material/Map';
 import HikingIcon from '@mui/icons-material/Hiking';
 import TerrainIcon from '@mui/icons-material/Terrain';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+
+import AirplaneTicketIcon from '@mui/icons-material/AirplaneTicket';
+import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
 
 import Filter1Icon from '@mui/icons-material/Filter1';
 import Filter2Icon from '@mui/icons-material/Filter2';
@@ -330,6 +335,8 @@ export function TourDisplayer(props){
     const carouselDisp=(theIMGArr)=>{
         return(<>
         <div className={styles.carouselSection}>
+            <div className={styles.arrowforwardCarrousel}>
+                <ArrowBackIosNewIcon /></div>
             <div className={styles.tourIMGCarousel}>
                     {theIMGArr.map((elem, i)=><>
                     {i>0&&<React.Fragment key={i}>
@@ -337,6 +344,12 @@ export function TourDisplayer(props){
                     </React.Fragment>}
                     </>)}
             </div>
+            
+            <div className={styles.arrowBackCarrousel}>
+                <ArrowForwardIosIcon /></div>
+
+
+
         </div>
         <Dialog open={imgDialogContr} fullScreen onClose={()=>srtImgDialogcontr(false)}>
             <div className={styles.imgDialogCont}>
@@ -367,7 +380,7 @@ export function TourDisplayer(props){
                     currency: 'USD',
                     })} p. person </span>
             </>)
-        } else if (theTour.prices.privateDeparture){
+        } else if (theTour.prices.priceType==="privateDeparture"){
             return(<>
                 <span> <EventIcon/> PRIVATE <br/> DEPARTURE </span>
                 <span> <LocalOfferIcon /> PRICES FROM <br/> 
@@ -396,20 +409,17 @@ export function TourDisplayer(props){
 
 {/* Include We Travel Widget BTN || CONTACT US BTN for Private Departures */}
 
-                {aTour.tourType==="climbing"?<>
+                {aTour.tourType==="climbing"&&<>
                     <a href={`mailto:info@ecoandestravel.com?subject=${aTour.tripName} Request&body=Hi! I'm interested in this climbing expedition for the following dates/season:`}>
-                    <div className={styles.bookNowBTN}>
+                    <div className={styles.contactNowBTN}>
                         Contact Us About {aTour.tripName} <i>Here</i></div></a>
-                </>:<>
-                    
-                    {/* We travel BTN Wdget */}
-
-                    <div className={styles.bookNowBTN} >
-                    Book Now <i>Here</i></div> 
-                    
                 </>}
 
 
+                {aTour.prices.priceType==="fixedDeparture"&&<>
+                    <div className={styles.bookNowBTN}>
+                        Book Now &nbsp; &nbsp; <ConfirmationNumberIcon /> </div>
+                </>}
 
 
 
