@@ -153,20 +153,23 @@
 .arrowforwardCarrousel{
     /* position: fixed; */
     position: relative;
-    top: 150px;
+    top: 179px;
     z-index: 5;
     width: fit-content;
     transition: all ease 0.3s;
     animation-name: into;
     animation-duration: 3s;
     animation-iteration-count: infinite;
+    line-height: 0;
+    overflow-x: unset;
 }
 
 .arrowBackCarrousel{
+    line-height: 0;
     position: relative;
-    top:-175px;
+    top:155px;
     z-index: 5;
-    right: -95vw;
+    right: -93vw;
     transition: all ease 0.3s;
     width: fit-content;
     animation-name: into2;
@@ -174,7 +177,6 @@
     animation-iteration-count: infinite;
     display: flex;
     align-items: flex-end;
-    /* background-color: teal; */
 }
 
 @keyframes into{

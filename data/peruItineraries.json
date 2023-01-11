@@ -867,8 +867,6 @@
         ]
     },
 
-
-
     {
         "tripName": "Trekking Alpamayo",
         "id": "alpamayo-trek-4D",
@@ -2420,6 +2418,138 @@
         ],
         "tripDescription":"In this amazing 10 days / 9 nights tour to enjoy first an 8-day Galapagos Islands Cruise with navigation on board of the First-Class Yacht Anahi with a group of maximum 16 passengers, the best way to experience in a better way the extraordinary fauna, flora, and geology of the Galapagos Islands. Complementing the Galapagos Islands, we will also head out to Otavalo and it’s incredible indigenous market, and explore Quito, the Capital of Ecuador a ‘Cultural Heritage of Humanity’",
         "countryList": ["ecuador", "galapagos"],
+        "dayByDay":[
+            {
+                "dayTitle": "Thursday: Arrival in Quito",
+                "dayDescription": "Upon your arrival in Quito, you will be welcomed and transferred to your hotel of choice. You will have a short briefing about next day activities",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "English speaking Guide Services"
+                ]
+            },
+            {
+                "dayTitle": "Quito - Galapagos",
+                "dayDescription": "After breakfast we will head to the airport to take our regional flight to the Galapagos Islands. We will begin our 8 day Yacht Catamaran Anahi Itinerary throught eh fabulous Galapagos Islands. Upon arriving to Galapagos we will begin our Daily yacht activities, with our porffessional Galapagos Naturalist guide and crew in the highlands of Santa Cruz. ",
+                "dayInclusions": [
+                    "Hotel breakfast & Highland ranch lunch",
+                    "Private Transfers",
+                    "Entrance Fees",
+                    "flight to the Galapagos Islands",
+                    "Galapagos National Park Guide services",
+                    "onboard dinner"
+                ]
+            },          
+            {
+                "dayTitle": "Isabela Island",
+                "dayDescription": " DAY 2 Cruise               ",
+                "dayInclusions": [
+                    "onboard breakfast, lunch and dinner",
+                    "Galapagos National Park Guide services"
+                ]
+            },
+            {
+                "dayTitle": "Day 3 Cruise",
+                "dayDescription": "Day 3 Cruise",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Private Transfers",
+                    "Entrance Fees",
+                    "flight to the Galapagos Islands",
+                    "Lunch",
+                    "English speaking Guide Services"
+                    
+                ]
+            },
+            {
+                "dayTitle": "Day 4 Cruise",
+                "dayDescription": "Day 4 cruise",
+                "dayInclusions": [
+                    "hotel breakfast",
+                    "Lunch",
+                    "Galapagos National Park Guide services",
+                    "Private Transfers"
+                ]
+            },
+            {
+                "dayTitle": "Day 5 cruise",
+                "dayDescription": "sssss",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Galapagos National Park Guide services"
+                ]
+            },
+            {
+                "dayTitle": "Day 6 cruise",
+                "dayDescription": "day 6 cruise",
+                "dayInclusions": [
+                    "Hotel breakfast, lunch and dinner",
+                    "navigation onboard Galapagos Elements Wind yacht",
+                    "Galapagos National Park Guide services"
+                ]
+            },
+            {
+                "dayTitle": "Day 7 cruise",
+                "dayDescription": "day 7 cruise",
+                "dayInclusions": [
+                    "Galapagos National Park Guide services"
+                ]
+            },
+            {
+                "dayTitle": "Final cruise day",
+                "dayDescription": "final cruise day",
+                "dayInclusions": [
+                    "Galapagos National Park Guide services"
+                ]
+            },
+            {
+                "dayTitle": "Otavalo tour - Airport transfer",
+                "dayDescription": "Otavalo Indigenous Market - Irport Transfer",
+                "dayInclusions": [
+                    "hotel breakfast",
+                    "Entrance Fees",
+                    "Private Transportation",
+                    "English speaking Guide Services"
+                ]
+            }
+        ],
+        "tourType": "historic",
+        "price": 6460,
+        "prices": {
+            "priceType": "fixedDeparture",
+            "singlesupp": 3850,
+            "dblOccupancy": true,
+            "priceNotice": "hotel categories will depend on locally available properties"
+        },
+        "included": [
+            "noted meals",
+            "entrance fees",
+            "noted transfers and transfers",
+            "flights to and from the Galapagos Islands",
+            "Galapagos N.P. Entrance fees + Transit Card",
+            "8 day Galapagos Cruise onboard M/C Yacht Anahi",
+            "hotels: double room accommodation with private facilities",
+            "english/spanish speaking guide services (Peru & Galapagos)"
+        ],
+        "notIncluded": [
+            "personal travel insurance (REQUIRED)",
+            "personal expenses",
+            "extras",
+            "tips"
+        ]
+    },
+    {
+        "tripName": "Amazon Jungle Express",
+        "id": "amazon-jungle-7D",
+        "duration": 7,
+        "difficulty": 1,
+        "imgArr": ["https://dsm04pap002files.storage.live.com/y4mErBtxz6hHX1NjMtG7cwvUNDdiC-wM9-I4xL0z3AIbynCbs4LRAoZwBfBpMW8AQ5BbZorvCRLhDKz5paPT1sDrx2BzlfKaa8vsaxX1V3Km4bOVWN07y4PPMYvpO9ZznWdVWINVrX8q-AGYlj3BQ9BRUxFbZchOak4x5M047NxyIIecgcFUuaJ-u7lEmWC_rGq?width=2000&height=1150&cropmode=none",
+        "https://dsm04pap002files.storage.live.com/y4mle51wOkVGuzBLw3y5vNUUcJZrVV5N2HixVv-A4tBM35-OzBkkqtSiMoCSnTK_krhh3GUTVmLoUn6wdahGl3GRS98NtcPwj4FFhN2unW70j9M03OGXH7glzxFHGSw9D7RoZ0ZHJ_aJk7buq0oHKAKf3DlB43YKhnXL-Hwwe93MjsmcfLbvCVzD2S9WMy-vpTD?width=2000&height=1150&cropmode=none",
+        "https://dsm04pap002files.storage.live.com/y4mWJCVpV8XifmRhCjBzDkET3_t1VvIo0ID2-nx1loi9V5sfHojYuZvBDPiulj198bLUzUGuOdNvPVQhT5CwWWRCBrzv4w23flM1dtgjMPbLGP40WG77iCSGIK8Dt-noQqruwQ6TjJF4hnMFT3Pt9FylzDQUHuesut1Q6qTTxcCqPAHM8f-G3E8KqVMdGd6ZYSM?width=2000&height=1150&cropmode=none",
+        "https://dsm04pap002files.storage.live.com/y4mC_Z4HE0UsCJ9g0ipxRbmUVgLwnYM-e2fVz2WIytOp7PxDbBh-ZcvDSLffnUwz2SdDc3pD6grSWhh1SpOb2Hxa8itdJtzQNoqmdyP8lXGl0l6poVwiXE6_dFI1I9Y8hiR57rkJdarpG2ZP2qpYauf6jDskz6PVxfda7vFubF8ctdW24KkLaK0tiqIG187-8WW?width=2000&height=1150&cropmode=none"
+
+        ],
+        "tripDescription":"The Amazon Jungle is known as the 'Lungs of the Rearth', due to the sheer abundance of vegetable life that breathes oxigen back into the atmosphere. Explore the incredible abundance of life in the midst of the most biodiverse place on planet Earth. This 7 day voyage takes you to Yacuma EcoLodge and Rainforest Reserve, a sustainability-focused project with over 240 species of birds, over 40 species of amphibians and reptiles, all within a private 270 hectare protected reserve of the upper Amazon Basin. ",
+        "countryList": ["ecuador", "amazon"],
         "dayByDay":[
             {
                 "dayTitle": "Thursday: Arrival in Quito",

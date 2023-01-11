@@ -337,6 +337,8 @@ export function TourDisplayer(props){
         <div className={styles.carouselSection}>
             <div className={styles.arrowforwardCarrousel}>
                 <ArrowBackIosNewIcon /></div>
+            <div className={styles.arrowBackCarrousel}>
+                <ArrowForwardIosIcon /></div>
             <div className={styles.tourIMGCarousel}>
                     {theIMGArr.map((elem, i)=><>
                     {i>0&&<React.Fragment key={i}>
@@ -345,8 +347,6 @@ export function TourDisplayer(props){
                     </>)}
             </div>
             
-            <div className={styles.arrowBackCarrousel}>
-                <ArrowForwardIosIcon /></div>
 
 
 
@@ -375,10 +375,7 @@ export function TourDisplayer(props){
             // display fixed dep price
             return(<>
                 <span> <EventIcon/> FIXED GROUP <br/> DEPARTURE </span>
-                <span> <LocalOfferIcon /> PRICES FROM <br/> {theTour.price.toLocaleString('en-US', {
-                    style: 'currency',
-                    currency: 'USD',
-                    })} p. person </span>
+                <span> <LocalOfferIcon /> PRICES USD FROM <br/> ${theTour.price} p. person </span>
             </>)
         } else if (theTour.prices.priceType==="privateDeparture"){
             return(<>
@@ -418,7 +415,7 @@ export function TourDisplayer(props){
 
                 {aTour.prices.priceType==="fixedDeparture"&&<>
                     <div className={styles.bookNowBTN}>
-                        Book Now &nbsp; &nbsp; <ConfirmationNumberIcon /> </div>
+                        <ConfirmationNumberIcon /> &nbsp;&nbsp;&nbsp;Book Now </div>
                 </>}
 
 
