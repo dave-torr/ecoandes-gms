@@ -346,10 +346,6 @@ export function TourDisplayer(props){
                     </React.Fragment>}
                     </>)}
             </div>
-            
-
-
-
         </div>
         <Dialog open={imgDialogContr} fullScreen onClose={()=>srtImgDialogcontr(false)}>
             <div className={styles.imgDialogCont}>
@@ -380,11 +376,6 @@ export function TourDisplayer(props){
         } else if (theTour.prices.priceType==="privateDeparture"){
             return(<>
                 <span> <EventIcon/> PRIVATE <br/> DEPARTURE </span>
-                <span> <LocalOfferIcon /> PRICES FROM <br/> 
-                {theTour.price.toLocaleString('en-US', {
-                    style: 'currency',
-                    currency: 'USD',
-                    })} p. person </span>
             </>)
         }
     }
