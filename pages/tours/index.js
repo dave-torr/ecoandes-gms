@@ -14,6 +14,9 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import SportsGymnasticsIcon from '@mui/icons-material/SportsGymnastics';
 
+import OpenInFullIcon from '@mui/icons-material/OpenInFull';
+import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
+
 import PriceCheckIcon from '@mui/icons-material/PriceCheck';
 import { MultiSelect, Select } from '@mantine/core';
 import Head from "next/head"
@@ -109,8 +112,6 @@ export default function TourPage(){
             setFilteredTourArr(TourData) 
         }
     },[destinationList])
-
-
     const tourdisplayer=()=>{
         if(filteredTourArr){
         return(
@@ -169,6 +170,7 @@ export default function TourPage(){
     // Sort Functions
     const [sortContr, setSortContr]=useState("duration")
     const [sortOrder, setSortOrder]=useState("descending")
+    const [fullscreenCont, setFullscreenCont]=useState(false)
 
     const sortingUI=()=>{
         return(<>
@@ -293,7 +295,6 @@ export default function TourPage(){
     </>)
   }
 
-
     return(<>
     {pageHead()}
         <div className={styles.generalTourPage}>  
@@ -306,6 +307,18 @@ export default function TourPage(){
             {tourdisplayer()}
 
             {/* Page Footer */}
+            {fullscreenCont?<>
+                <div className={styles.fullscreenBTNS} onClick={()=>{
+                    document.exitFullscreen()
+                    setFullscreenCont(false)
+                }}> <CloseFullscreenIcon /> </div>
+            </>:<>
+                <div className={styles.fullscreenBTNS} onClick={()=>{
+                    var elem = document.documentElement
+                    elem.requestFullscreen()
+                    setFullscreenCont(true)
+                }}> <OpenInFullIcon /> </div>
+            </>}
         </div>
     </>)
 }

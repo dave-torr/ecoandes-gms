@@ -437,7 +437,6 @@ export function TourDisplayer(props){
             </div>
         </>)
     }
-
     const breadcrumbNavigation=()=>{
         if(props.breadcrumb){
         return(<>
@@ -492,7 +491,6 @@ export function TourDisplayer(props){
                 <Image src={LTCTypeface} alt="LTC Travel Logo" width={55} height={30} /> &nbsp; &nbsp; &nbsp;
                 {aTour.tripName}
             </div>
-            
             <address></address>
 
         </footer>
