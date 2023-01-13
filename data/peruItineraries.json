@@ -131,6 +131,7 @@
                 ]
             }
         ],
+        "recomendedMonths": "May to December",
         "tourType": "360° tours",
         "price": 1220,
         "prices": {
@@ -280,7 +281,7 @@
         "https://dsm04pap002files.storage.live.com/y4msLGxmKG_8w-SSRvdT3jv1gsvA2LeXuW0_acOPC03P-b6nwm_x18153psCOiESClmQwoPuv11Ajaqnbl-vwgEzSHb4FxiQy1pJNaL9l1P_ZTwCpeWnacVAdZFAjkCBbhANAPcFCW5BBwRDO-JrR-KlzR9pm5_Ij8puM2d3AoMSxlYQsmf7r2_ydwg6WVfebfg?width=2000&height=1150&cropmode=none",
         "https://dsm04pap002files.storage.live.com/y4mI-6_lXzn-2ZDlcwOLKDycyHkQ0DTLhdcRzWvlh6XfGInVBVHbLP4eE-o20Be58V7Cx6--TvjYvMJI7MBnQ_v5XcoYJZiaC5hCa2ZH3mUhrh5W8t0hZnV8UnRvWEl2ywF4r6Q12F3MwGmZXlPXQd7LZ35X9tMJcc2Xxe93Vu4IcELlgZtPbFi7slbJ57u3ZMX?width=2000&height=1150&cropmode=none"
         ],
-        "tripDescription":"The Choquequirao Trail and Inca Ruins rival in beauty and importance with the world-famous Machu Picchu although its popularity is not as marked. The complex is located on a high ridge spur at almost 5,900ft || 1,800m of altitude, above the raging glacier-fed Apurimac River, surrounded by the beautiful towering Salcantay and Humantay snow-capped peaks. Choquequirao is an amazing example of an elite Inca ceremonial center, a city dedicated to worship the “Pachamama”, the Andean mother earth, and “the Apus”, the mountain gods as well as other divinities such as rivers and other nature elements. The various levels of temples, palaces, canals, agricultural areas and aqueducts are fantastic, giving a vivid example of the amazing Inca building techniques. Choquequirao means 'Cradle of Gold' in Quechua and it was in 1710 when the existence of Choquequirao was first mentioned. Today only 30% of the whole city is recovered from the forest, making Choquequirao archaeological park the largest and most interesting Inca City in America",
+        "tripDescription":"The Choquequirao Trail and Inca Ruins rival in beauty and importance with the world-famous Machu Picchu, although its popularity is not as marked. The complex is located on a high ridge spur at almost 5,900ft || 1,800m of altitude, above the raging glacier-fed Apurimac River, surrounded by the beautiful towering Salcantay and Humantay snow-capped peaks. Choquequirao is an amazing example of an elite Inca ceremonial center, a city dedicated to worship the “Pachamama”, the Andean mother earth, and “the Apus”, the mountain gods as well as other divinities such as rivers and other nature elements. The various levels of temples, palaces, canals, agricultural areas and aqueducts are fantastic, giving a vivid example of the amazing Inca building techniques. Choquequirao means 'Cradle of Gold' in Quechua and it was in 1710 when the existence of Choquequirao was first mentioned. Today only 30% of the whole city is recovered from the forest, making Choquequirao archaeological park the largest and most interesting Inca City in America",
         "countryList": ["peru"],
         "dayByDay":[
             {
@@ -295,12 +296,13 @@
                     "carry horses/donkeys, muleteers and emergency horse"
                 ],
                 "trekData":{
-                    "totalTrekTime": "6 to 7 hours"
+                    "totalTrekTime": "3 to 4 hours",
+                    "distanceCovered": 7
                 }
             },
             {
-                "dayTitle": "Chikiska - Choquequirao ruins",
-                "dayDescription": "Our first hike (1h30) will be early in the morning, and will take us down to Playa Rosalinas, to the shores of the magnificent Apurimac River (4,920ft || 1,500m). We will continue with our steep climb to Santa Rosa (6,860ft || 2,090m); where we can take a refreshing break, rest and buy water (from some local merchants!). We continue our upward climb for 4 to 5 hours towards Marampata (9,190ft || 2,800m), a flat place where we can rest while enjoying a splendid view of Choquequirao. This spot also has bathrooms and a nice area to have lunch. After our break, we start our final 2-hour hike to our campsite located at 10,200ft || 3,110m next to the Choquequirao Inca Ruins. We will spend the late evening in the ruins, where we will watch the sunset, and with some luck, see condors",
+                "dayTitle": "Chikiska - Choquequirao ruins -Marapata",
+                "dayDescription": "Our first hike (1h30) will be early in the morning, and will take us down to Playa Rosalinas, to the shores of the magnificent Apurimac River (4,920ft || 1,500m). We will continue with our steep climb to Santa Rosa (6,530ft || 1,990m); where we can take a refreshing break, rest and buy water (from some local merchants!). We continue our upward climb for 4 to 5 hours towards Marampata (9,190ft || 2,800m), a flat place where we can rest while enjoying a splendid view of Choquequirao. This spot also has bathrooms and a nice area to have lunch. After our break, we start our final 2-hour hike to our campsite located at 10,200ft || 3,110m next to the Choquequirao Inca Ruins. We will spend the late evening in the ruins, where we will watch the sunset, and with some luck, see condors",
                 "dayInclusions": [
                     "Meals: Breakfast + Lunch Box + Dinner",
                     "full camping equipment",
@@ -309,7 +311,8 @@
                     "carry horses/donkeys, muleteers and emergency horse"
                 ],
                 "trekData":{
-                    "totalTrekTime": "7 - 8 hours"
+                    "totalTrekTime": "8 - 9 hours",
+                    "distanceCovered": 17
                 }
             },
             {
@@ -323,7 +326,8 @@
                     "carry horses/donkeys, muleteers and emergency horse"
                 ],
                 "trekData":{
-                    "totalTrekTime": "5 - 6 hours"
+                    "totalTrekTime": "5 - 6 hours",
+                    "distanceCovered": 12
                 }
             },
             {
@@ -337,26 +341,26 @@
                     "Transportation to Cusco"
                 ],
                 "trekData":{
-                    "totalTrekTime": "6 hours"
+                    "totalTrekTime": "6 hours",
+                    "distanceCovered": 7
                 }
             }
         ],
         "recomendedMonths": "May to December",
         "tourType": "trekking",
         "startingPlace": "Cusco",
-        "price": 2490,
+        "price": 580,
         "prices": {
             "priceType": "fixedDeparture",
-            "singlesupp": 900,
-            "dblOccupancy": true,
-            "priceNotice": "hotel categories will depend on locally available properties"
+            "singlesupp": 50,
+            "dblOccupancy": true
         },
         "included": [
             "noted meals",
             "entrance fees",
             "noted transfers",
             "trekking staff with cook and assistants",
-            "horse carry service (up to 8kg per participant)",
+            "horse carry service (up to 10kg per participant)",
             "english/spanish speaking guide services (specialized trekking guides)",
             "high-quality tents (2 participants per tent)",
             "full camping equipment (kitchen, dining and toilet tents)"
@@ -364,6 +368,7 @@
         "notIncluded": [
             "personal travel insurance (REQUIRED)",
             "international/regional flights",
+            "additional carry horses",
             "personal trekking gear",
             "personal expenses",
             "beverages",
@@ -542,44 +547,45 @@
                 "dayDescription": "At 07:00 a.m. starts our expedition with a transport from the city of Cusco. We will pass the localities of Izcuchaca and Limatambo, and after a 2 - 2h30 drive, we will arrive at Mollepata town (9,680ft || 2,950m) where we stop for a short rest and coffee. Afterwards we continue our 1h drive towards the area known as Soraypampa (12,630ft || 3,850m), a beautiful Andean valley located at the foothills of the impressive Mount Humantay (17,950ft || 5,470m) where we will have lunch. Here we start our first day trek (3 hours) to our camp at 13,120ft || 4,000m at the place known as Salcantaypampa. Here we can enjoy the first views of the impressive Mount Salcantay",
                 "dayInclusions": [
                     "Transportation to Trailhead",
+                    "Meals: Box Lunch + dinner",
+                    "full camping equipment",
                     "trekking staff with cook and assistants",
                     "english/spanish speaking trekking guide services",
-                    "full camping equipment",
-                    "Meals: Lunch + dinner",
-                    "carry horses/donkeys (up to 10kg per participant), muleteers and emergency horse"
+                    "carry horses/donkeys, muleteers and emergency horse"
                 ],
                 "trekData":{
-                    "totalTrekTime": "3 - 4 hours"
+                    "totalTrekTime": "4 - 5 hours",
+                    "distanceCovered": 7
                 }
             },
             {
                 "dayTitle": "Salcantaypampa – Huayracmachay – Chaullay ",
-                "dayDescription": "From Salcantaypampa we start our trek towards Soroycocha at 14,440ft || 4,400m From here, we will enjoy great views of the impressive west face of Mount Salcantay (20,540ft || 6,260m). Our hike will then continue to take us to reach the Salcantay pass at 15,580ft || 4,750m, with a permanent view of the amazing Mount Salcantay. With luck, we can also observe the flight of the amazing Condor, known as the “King of the Andes”. During our descent from Salcantay pass, we will also observe the remains of an ancient Inca Trail and observe the beautiful Salcantaycocha Lagoon. We continue our hike down to the place known as Huayracmachay, and then descending into the deep canyon of the Salcantay River on our way to the small village of Chaullay where we set up our camp at 11,480ft || 3,500m.",
+                "dayDescription": "From Salcantaypampa we start our trek towards Soroycocha at 14,440ft || 4,400m From here, we will enjoy great views of the impressive west face of Mount Salcantay (20,540ft || 6,260m). Our hike will then continue to take us to reach the Salcantay pass at 15,580ft || 4,750m, with a permanent view of the amazing Mount Salcantay. With luck, we can also observe the flight of the amazing Condor, known as the “King of the Andes”. During our descent from Salcantay pass, we will also observe the remains of an ancient Inca Trail and observe the beautiful Salcantaycocha Lagoon. We continue our hike down to the place known as Huayracmachay, and then descending into the deep canyon of the Salcantay River on our way to the small village of Chaullay where we set up our camp at 9,510ft || 2,900m.",
                 "dayInclusions": [
                     "Meals: Breakfast + Lunch Box + Dinner",
                     "trekking staff with cook and assistants",
                     "english/spanish speaking trekking guide services",
                     "full camping equipment",
-                    "Meals: Lunch Box + dinner",
-                    "carry horses/donkeys (up to 10kg per participant), muleteers and emergency horse"
+                    "carry horses/donkeys, muleteers and emergency horse"
                 ],
                 "trekData":{
-                    "totalTrekTime": "7 - 8 hours"
+                    "totalTrekTime": "7 - 8 hours",
+                    "distanceCovered": 18
                 }
             },
             {
                 "dayTitle": "Chaullay camp – Lucmabamba Camp",
-                "dayDescription": "At 08:00 a.m. we will begin our trek downhill for about 1 hour until we reach the Collpapampa Valley (10,500ft || 3,200m). The highland landscape suddenly turns into an amazing cloud forest with typical grass, bushes and trees covered with beautiful bromeliads (from Collpapampa the Salcantay River turns into the Santa Teresa River). We continue our descent down to the shores of the Totora River where we can enjoy a fun dip in the nearby hot water springs and afterwards, following the north side of the Santa Teresa River we will trek 3 hours until we reach the settlement known as Wiñaypoko (9,190ft || 2,800m) from where, and after a nice meal, we descent (3 hours) down to the place known as La Playa. On the way, we will observe plantations of banana, coffee, granadillas (a typical fruit from the area), avocado trees, etc. The sound of flocking parrots will accompany us during the hike, and above the river perhaps we can observe the fast flight of the king fisher. At La Playa, we cross the river and we make our last hike until we reach the small settlement known as Lucmabamba where we will set up our last camp (5,580ft || 1,700m).",
+                "dayDescription": "At 08:00 a.m. we will begin our trek downhill for about 1 hour until we reach the Collpapampa Valley (9,170ft || 2,800m). The highland landscape suddenly turns into an amazing cloud forest with typical grass, bushes and trees covered with beautiful bromeliads (from Collpapampa the Salcantay River turns into the Santa Teresa River). We continue our descent down to the shores of the Totora River where we can enjoy a fun dip in the nearby hot water springs and afterwards, following the north side of the Santa Teresa River we will trek 3 hours until we reach the settlement known as Wiñaypoko (9,190ft || 2,800m) from where, and after a nice meal, we descent (3 hours) down to the place known as La Playa. On the way, we will observe plantations of banana, coffee, granadillas (a typical fruit from the area), avocado trees, etc. The sound of flocking parrots will accompany us during the hike, and above the river perhaps we can observe the fast flight of the king fisher. At La Playa, we cross the river and we make our last hike until we reach the small settlement known as Lucmabamba where we will set up our last camp (6,890ft || 2,100m).",
                 "dayInclusions": [
                     "Meals: Breakfast + Lunch Box + Dinner",
                     "trekking staff with cook and assistants",
                     "english/spanish speaking trekking guide services",
                     "full camping equipment",
-                    "Meals: Lunch Box + dinner",
-                    "carry horses/donkeys (up to 10kg per participant), muleteers and emergency horse"
+                    "carry horses/donkeys, muleteers and emergency horse"
                 ],
                 "trekData":{
-                    "totalTrekTime": "6 to 7 hours"
+                    "totalTrekTime": "6 to 7 hours",
+                    "distanceCovered": 18
                 }
             },
             {
@@ -592,7 +598,8 @@
                     "Train Service to Aguas Calientes"
                 ],
                 "trekData":{
-                    "totalTrekTime": "5 - 6 hours"
+                    "totalTrekTime": "5 - 6 hours",
+                    "distanceCovered": 10
                 }
             },
             {
@@ -604,16 +611,19 @@
                     "Entrance Fees",
                     "Train and car Transportation to Cusco",
                     "english/spanish speaking trekking guide services"
-                ]
+                ],
+                "trekData":{
+                    "totalTrekTime": "3 hours"
+                }
             }
         ],
         "recomendedMonths": "May to December",
         "tourType": "trekking",
         "startingPlace": "Cusco",
-        "price": 690,
+        "price": 650,
         "prices": {
             "priceType": "fixedDeparture",
-            "singlesupp": 90,
+            "singlesupp": 70,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties"
         },
@@ -623,8 +633,8 @@
             "noted transfers",
             "local bus service to Machu Picchu Ruins",
             "trekking staff with cook and assistants",
-            "local train ticket from Hydroelectric plant to Aguas Calientes",
             "Train ticket from Aguas Calientes to Ollantaytambo",
+            "local train ticket from Hydroelectric plant to Aguas Calientes",
             "carry horses (up to 10kg per person), muleteers and emergency horse",
             "high-quality tents (2 participants per tent)",
             "full camping equipment (kitchen, dining and toilet tents)",
@@ -762,6 +772,10 @@
             "tips"
         ]
     },
+
+
+
+
     {
         "tripName": "Lares to Machu Picchu Trek",
         "id": "lares-trek-machu-pichu-4D",
@@ -781,7 +795,7 @@
                 "dayTitle": "Cusco / Calca / Lares. Trek Lares - Huacahuasi (12,470ft || 3,800m) - Sondor Camp (12,800ft || 3,900m)",
                 "dayDescription": "We depart from Cusco at 5:00 a.m. in the morning to travel (1.5 hour) to Calca town located in the Urubamba Valley. In the local colorful indigenous market, our cook will do some last shopping of fresh bread, fresh vegetables and other items needed during the trekking.  From Calca our transport takes us (2.5 hours) up to Lares village (10,330ft || 3,150 m) where we will take a dip in the hot thermal water springs and then enjoy breakfast. At about 10 a.m. we start our first day trek with a gentle steady 3 hours ascent up to Huacahuasi village where we will enjoy lunch and after a good rest, we continue our hike for about 2 to 3 hours until we reach the place known as Sondor where we find our first camp ready for spend the night. Teatime and after a good rest, enjoy a delicious dinner. Resting time.",
                 "dayInclusions": [
-                    "Meals: Lunch Box + dinner",
+                    "Meals: Breakfast + Lunch Box + Dinner",
                     "full camping equipment",
                     "Transportation to Trailhead",
                     "trekking staff with cook and assistants",
@@ -830,16 +844,19 @@
                     "hotel breakfast",
                     "Train and car Transportation to Cusco",
                     "Guide Services"
-                ]
+                ],
+                "trekData":{
+                    "totalTrekTime": "3 hours"
+                }
             }
         ],
         "recomendedMonths": "May to December",
         "tourType": "trekking",
         "startingPlace": "Cusco",
-        "price": 2490,
+        "price": 600,
         "prices": {
             "priceType": "fixedDeparture",
-            "singlesupp": 900,
+            "singlesupp": 80,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties"
         },
@@ -866,6 +883,10 @@
             "tips"
         ]
     },
+
+
+
+
 
     {
         "tripName": "Trekking Alpamayo",
@@ -1890,6 +1911,9 @@
             "tips"
         ]
     },
+    
+    
+    
     {
         "tripName": "Lima + Cusco + Sacred Valley + Machu Picchu",
         "id": "lima-Cusco-Mapi-6D",
@@ -2077,6 +2101,10 @@
             "tips"
         ]
     },
+
+
+
+
     {
         "tripName": "Machu Picchu & the Galapagos Islands",
         "id": "machu-picchu-galapagos-12D",
@@ -2238,10 +2266,6 @@
             "tips"
         ]
     },
-    
-    
-    
-    
     {
         "tripName": "Ecuador + Galapagos Island Hopping",
         "id": "ec-galapagos-island-hopping-12D",
@@ -2421,7 +2445,7 @@
         "dayByDay":[
             {
                 "dayTitle": "Thursday: Arrival in Quito",
-                "dayDescription": "Upon your arrival in Quito, you will be welcomed and transferred to your hotel of choice. You will have a short briefing about next day activities",
+                "dayDescription": "Upon your arrival in Quito, you will be welcomed and transferred to your hotel. You will have a short briefing about next day activities",
                 "dayInclusions": [
                     "Private Transfers",
                     "English speaking Guide Services"
@@ -2429,7 +2453,7 @@
             },
             {
                 "dayTitle": "Quito - Galapagos",
-                "dayDescription": "After breakfast we will head to the airport to take our regional flight to the Galapagos Islands. We will begin our 8 day Yacht Catamaran Anahi Itinerary throught eh fabulous Galapagos Islands. Upon arriving to Galapagos we will begin our Daily yacht activities, with our porffessional Galapagos Naturalist guide and crew in the highlands of Santa Cruz. ",
+                "dayDescription": "After breakfast we will head to the airport to take our regional flight to the Galapagos Islands. We will begin our 8 day Yacht Catamaran Anahi Itinerary throught eh fabulous Galapagos Islands. Upon arriving to Galapagos we will begin our daily yacht activities, with our porffessional Galapagos Naturalist guide and crew in the highlands of Santa Cruz. ",
                 "dayInclusions": [
                     "Hotel breakfast & Highland ranch lunch",
                     "Private Transfers",
@@ -2543,7 +2567,11 @@
         "duration": 7,
         "difficulty": 1,
         "imgArr": ["https://dsm04pap002files.storage.live.com/y4mErBtxz6hHX1NjMtG7cwvUNDdiC-wM9-I4xL0z3AIbynCbs4LRAoZwBfBpMW8AQ5BbZorvCRLhDKz5paPT1sDrx2BzlfKaa8vsaxX1V3Km4bOVWN07y4PPMYvpO9ZznWdVWINVrX8q-AGYlj3BQ9BRUxFbZchOak4x5M047NxyIIecgcFUuaJ-u7lEmWC_rGq?width=2000&height=1150&cropmode=none",
+        "https://dsm04pap002files.storage.live.com/y4muo6e3ghMUuh8ubftWrZLkXXB-nIp707rpDQzIQcqySBoIYIn86urIQpnGdDjyiDc0LHuNrLq-tgcYGpfcfNHeqc4VscM63lbQmKEAaP2lURzx-JSdEaXzyI0Wpe_ktva6pEmBDa5NMHYIlYJCyHVGP307t7rswlRESoVZhB51EMO3mpTQkkNad0bliL1DCLw?width=2000&height=1150&cropmode=none",
+        "https://dsm04pap002files.storage.live.com/y4me4ZvGKY-wIWIM6WiV9cnFv7H6cL15Y0eevmkw4Z3qphry0wVUIr8P1NxYkAsfKsY6kgZPiZ8gXZYgs36pNi_ZFv_-_-HNoT5F_xIme65a8Zps3hcPDZPW0oxvMa9UYNqIlf1BfeP42P0bJ75-YO0UOWTiPcqVo9XG8Lqmu3QriHlGYiDvlltxyDaNbiEnQlR?width=2000&height=1150&cropmode=none",
+        "https://dsm04pap002files.storage.live.com/y4m2sWwYbvTyOK2Ybef8FvxZwY-GqeVvWLA9_TlzaNN2UdGrsXZGdNuY6QiYYdAmIXqbZYZKi3W0xE3OSknO2fiTcYrmm1ctA-KmxF6vEvCpsbjxN9rlA1sMgccY9QUDQA1LDPuOZhT5gqJxmzZGGXnngF4du92yzeF6HQl7WSyuq1okwvyD_Q5IZ8haS2h4MEO?width=2000&height=1150&cropmode=none",
         "https://dsm04pap002files.storage.live.com/y4mle51wOkVGuzBLw3y5vNUUcJZrVV5N2HixVv-A4tBM35-OzBkkqtSiMoCSnTK_krhh3GUTVmLoUn6wdahGl3GRS98NtcPwj4FFhN2unW70j9M03OGXH7glzxFHGSw9D7RoZ0ZHJ_aJk7buq0oHKAKf3DlB43YKhnXL-Hwwe93MjsmcfLbvCVzD2S9WMy-vpTD?width=2000&height=1150&cropmode=none",
+        "https://dsm04pap002files.storage.live.com/y4mNaOZUNbhnNFgM3yMQDlbHefOIu-Iujp6Aukqi1Z1LHb5WRK52d2F6iHWXuIeAqTyr1Pjn2QBXSEbGO9ypmFJwaI4j0koEyaXuv3x10Wst3PeCtnukiRK5aCDodf8d3WbRv5iYP1hS9wZYrDEypsUs0Ti6QsGyvZpBgfklPEVBOQgzaS_KzC0Fyeo4lmFRNnD?width=2000&height=1150&cropmode=none",
         "https://dsm04pap002files.storage.live.com/y4mWJCVpV8XifmRhCjBzDkET3_t1VvIo0ID2-nx1loi9V5sfHojYuZvBDPiulj198bLUzUGuOdNvPVQhT5CwWWRCBrzv4w23flM1dtgjMPbLGP40WG77iCSGIK8Dt-noQqruwQ6TjJF4hnMFT3Pt9FylzDQUHuesut1Q6qTTxcCqPAHM8f-G3E8KqVMdGd6ZYSM?width=2000&height=1150&cropmode=none",
         "https://dsm04pap002files.storage.live.com/y4mC_Z4HE0UsCJ9g0ipxRbmUVgLwnYM-e2fVz2WIytOp7PxDbBh-ZcvDSLffnUwz2SdDc3pD6grSWhh1SpOb2Hxa8itdJtzQNoqmdyP8lXGl0l6poVwiXE6_dFI1I9Y8hiR57rkJdarpG2ZP2qpYauf6jDskz6PVxfda7vFubF8ctdW24KkLaK0tiqIG187-8WW?width=2000&height=1150&cropmode=none"
 
@@ -2645,10 +2673,10 @@
             }
         ],
         "tourType": "historic",
-        "price": 6460,
+        "price": 900,
         "prices": {
             "priceType": "fixedDeparture",
-            "singlesupp": 3850,
+            "singlesupp": 310,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties"
         },
@@ -2656,11 +2684,9 @@
             "noted meals",
             "entrance fees",
             "noted transfers and transfers",
-            "flights to and from the Galapagos Islands",
-            "Galapagos N.P. Entrance fees + Transit Card",
-            "8 day Galapagos Cruise onboard M/C Yacht Anahi",
+            "4 Day Yacuma EcoLodge Bromelia Package",
             "hotels: double room accommodation with private facilities",
-            "english/spanish speaking guide services (Peru & Galapagos)"
+            "english/spanish speaking guide services"
         ],
         "notIncluded": [
             "personal travel insurance (REQUIRED)",
