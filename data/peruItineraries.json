@@ -134,12 +134,13 @@
         "recomendedMonths": "May to December",
         "tourType": "360° itineraries",
         "price": 1220,
+        "paymentLink":"01492372",
         "prices": {
             "priceType": "fixedDeparture",
             "singlesupp": 280,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties",
-            "departureDates":""
+            "departureDates":"every thursday and saturday"
         },
         "included": [
             "english/spanish speaking guide services (specialized city and trekking guides)",
@@ -242,6 +243,7 @@
         "tourType": "trekking",
         "startingPlace": "Cusco",
         "price": 745,
+        "paymentLink":"24554915",
         "prices": {
             "priceType": "fixedDeparture",
             "singlesupp": 50,
@@ -352,11 +354,12 @@
         "tourType": "trekking",
         "startingPlace": "Cusco",
         "price": 580,
+        "paymentLink":"81832002",
         "prices": {
             "priceType": "fixedDeparture",
             "singlesupp": 50,
             "dblOccupancy": true,
-            "departureDates":""
+            "departureDates":"Every Monday "
         },
         "included": [
             "noted meals",
@@ -380,7 +383,7 @@
         ]
     },
     {
-        "tripName": "Inca Trail Express",
+        "tripName": "Inca Trail Spotlight",
         "id": "inca-trail-2D",
         "duration": 2,
         "adventureType": "trekking",
@@ -425,8 +428,7 @@
         "tourType": "trekking",
         "startingPlace": "Cusco",
         "price": 545,
-        "paymentLink": "<button class=\"wtrvl-checkout_button\" id=\"wetravel_button_widget\" data-env=\"https://www.wetravel.com\" data-version=\"v0.3\" data-uid=\"476590\" data-uuid=\"54252684\" href=\"https://www.wetravel.com/checkout_embed?uuid=54252684\" style=\"background-color:#ff9f18;color:#ffffff;border: 0px;border-radius: 5px;font-family: 'Poppins', sans-serif;font-weight: 400;font-size: 14px;-webkit-font-smoothing: antialiased;text-transform: capitalize;padding: 13px 24px;text-decoration: none;text-align: center;line-height: 14px;display: inline-block; cursor: pointer;\">Book Now</button> <link href=\"https://fonts.googleapis.com/css?family=Poppins\" rel=\"stylesheet\"> <script src=\"https://cdn.wetravel.com/widgets/embed_checkout.js\"></script> ",
-
+        "paymentLink":"54252684",
         "prices": {
             "priceType": "fixedDeparture",
             "singlesupp": 45,
@@ -453,7 +455,7 @@
         ]
     },
     {
-        "tripName": "Sacred Valley + Inca Trail Express",
+        "tripName": "Sacred Valley + Inca Trail Spotlight",
         "id": "inca-trail-3D",
         "duration": 3,
         "adventureType": "trekking",
@@ -509,6 +511,7 @@
         "tourType": "trekking",
         "startingPlace": "Cusco",
         "price": 670,
+        "paymentLink":"74044880",
         "prices": {
             "priceType": "fixedDeparture",
             "singlesupp": 90,
@@ -628,13 +631,14 @@
         "recomendedMonths": "May to December",
         "tourType": "trekking",
         "startingPlace": "Cusco",
-        "price": 650,
+        "price": 690,
+        "paymentLink":"29016006",
         "prices": {
             "priceType": "fixedDeparture",
-            "singlesupp": 70,
+            "singlesupp": 90,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties",
-            "departureDates":""
+            "departureDates":"Every Monday from May"
         },
         "included": [
             "noted meals",
@@ -840,6 +844,7 @@
         "tourType": "trekking",
         "startingPlace": "Cusco",
         "price": 1790,
+        "paymentLink":"29411070",
         "prices": {
             "priceType": "fixedDeparture",
             "singlesupp": 450,
@@ -947,6 +952,7 @@
         "tourType": "trekking",
         "startingPlace": "Cusco",
         "price": 600,
+        "paymentLink":"53616196",
         "prices": {
             "priceType": "fixedDeparture",
             "singlesupp": 80,
@@ -1044,6 +1050,7 @@
         "tourType": "climbing",
         "startingPlace": "Huaraz",
         "price": 2490,
+        "paymentLink":"",
         "prices": {
             "priceType": "privateDeparture",
             "singlesupp": 900,
@@ -1178,6 +1185,7 @@
         "tourType": "climbing",
         "startingPlace": "Huaraz",
         "price": 2490,
+        "paymentLink":"",
         "prices": {
             "priceType": "privateDeparture",
             "singlesupp": 900,
@@ -1346,6 +1354,7 @@
         "tourType": "climbing",
         "startingPlace": "Huaraz",
         "price": 2490,
+        "paymentLink":"",
         "prices": {
             "priceType": "privateDeparture",
             "singlesupp": 900,
@@ -1496,6 +1505,7 @@
         "tourType": "climbing",
         "startingPlace": "Cusco",
         "price": 2490,
+        "paymentLink":"",
         "prices": {
             "priceType": "privateDeparture",
             "singlesupp": 900,
@@ -1609,6 +1619,7 @@
         ],
         "tourType": "360° itineraries",
         "price": 1750,
+        "paymentLink":"66517880",
         "prices": {
             "priceType": "fixedDeparture",
             "singlesupp": 650,
@@ -1767,12 +1778,13 @@
         ],
         "tourType": "historic",
         "price": 4880,
+        "paymentLink":"73822745",
         "prices": {
             "priceType": "fixedDeparture",
-            "singlesupp": 1900,
+            "singlesupp": 1275,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties",
-            "departureDates":""
+            "departureDates":"Every other tuesday"
         },
         "included": [
             "noted meals",
@@ -1931,7 +1943,8 @@
             }
         ],
         "tourType": "historic",
-        "price": 3900,
+        "price": 3220,
+        "paymentLink":"40307514",
         "prices": {
             "priceType": "fixedDeparture",
             "singlesupp": 1055,
@@ -2067,12 +2080,13 @@
         ],
         "tourType": "historic",
         "price": 6460,
+        "paymentLink":"33424831",
         "prices": {
             "priceType": "fixedDeparture",
             "singlesupp": 3850,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties",
-            "departureDates":""
+            "departureDates":"Every Thursday"
         },
         "included": [
             "noted meals",
@@ -2092,7 +2106,7 @@
         ]
     },
     {
-        "tripName": "Amazon Jungle Express",
+        "tripName": "Amazon Jungle Spotlight",
         "id": "amazon-jungle-7D",
         "duration": 7,
         "difficulty": 1,
@@ -2204,12 +2218,13 @@
         ],
         "tourType": "historic",
         "price": 900,
+        "paymentLink":"59021713",
         "prices": {
             "priceType": "fixedDeparture",
             "singlesupp": 310,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties",
-            "departureDates":""
+            "departureDates":"Every Saturday"
         },
         "included": [
             "noted meals",
