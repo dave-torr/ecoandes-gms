@@ -138,7 +138,8 @@
             "priceType": "fixedDeparture",
             "singlesupp": 280,
             "dblOccupancy": true,
-            "priceNotice": "hotel categories will depend on locally available properties"
+            "priceNotice": "hotel categories will depend on locally available properties",
+            "departureDates":""
         },
         "included": [
             "english/spanish speaking guide services (specialized city and trekking guides)",
@@ -245,7 +246,8 @@
             "priceType": "fixedDeparture",
             "singlesupp": 50,
             "dblOccupancy": true,
-            "priceNotice": "Single Tent Supplement"
+            "priceNotice": "Single Tent Supplement",
+            "departureDates":""
         },
         "included": [
             "noted meals",
@@ -353,7 +355,8 @@
         "prices": {
             "priceType": "fixedDeparture",
             "singlesupp": 50,
-            "dblOccupancy": true
+            "dblOccupancy": true,
+            "departureDates":""
         },
         "included": [
             "noted meals",
@@ -422,11 +425,14 @@
         "tourType": "trekking",
         "startingPlace": "Cusco",
         "price": 545,
+        "paymentLink": "<button class=\"wtrvl-checkout_button\" id=\"wetravel_button_widget\" data-env=\"https://www.wetravel.com\" data-version=\"v0.3\" data-uid=\"476590\" data-uuid=\"54252684\" href=\"https://www.wetravel.com/checkout_embed?uuid=54252684\" style=\"background-color:#ff9f18;color:#ffffff;border: 0px;border-radius: 5px;font-family: 'Poppins', sans-serif;font-weight: 400;font-size: 14px;-webkit-font-smoothing: antialiased;text-transform: capitalize;padding: 13px 24px;text-decoration: none;text-align: center;line-height: 14px;display: inline-block; cursor: pointer;\">Book Now</button> <link href=\"https://fonts.googleapis.com/css?family=Poppins\" rel=\"stylesheet\"> <script src=\"https://cdn.wetravel.com/widgets/embed_checkout.js\"></script> ",
+
         "prices": {
             "priceType": "fixedDeparture",
             "singlesupp": 45,
             "dblOccupancy": true,
-            "priceNotice": "hotel categories will depend on locally available properties"
+            "priceNotice": "hotel categories will depend on locally available properties",
+            "departureDates":"Every week on Monday, Wednesday, and Friday"
         },
         "included": [
             "noted meals",
@@ -507,7 +513,8 @@
             "priceType": "fixedDeparture",
             "singlesupp": 90,
             "dblOccupancy": true,
-            "priceNotice": "hotel categories will depend on locally available properties"
+            "priceNotice": "hotel categories will depend on locally available properties",
+            "departureDates":""
         },
         "included": [
             "noted meals",
@@ -626,7 +633,8 @@
             "priceType": "fixedDeparture",
             "singlesupp": 70,
             "dblOccupancy": true,
-            "priceNotice": "hotel categories will depend on locally available properties"
+            "priceNotice": "hotel categories will depend on locally available properties",
+            "departureDates":""
         },
         "included": [
             "noted meals",
@@ -836,7 +844,8 @@
             "priceType": "fixedDeparture",
             "singlesupp": 450,
             "dblOccupancy": true,
-            "priceNotice": "hotel categories will depend on locally available properties"
+            "priceNotice": "hotel categories will depend on locally available properties",
+            "departureDates":""
         },
         "included": [
             "noted meals",
@@ -942,7 +951,8 @@
             "priceType": "fixedDeparture",
             "singlesupp": 80,
             "dblOccupancy": true,
-            "priceNotice": "hotel categories will depend on locally available properties"
+            "priceNotice": "hotel categories will depend on locally available properties",
+            "departureDates":""
         },
         "included": [
             "noted meals",
@@ -1038,7 +1048,8 @@
             "priceType": "privateDeparture",
             "singlesupp": 900,
             "dblOccupancy": true,
-            "priceNotice": "hotel categories will depend on locally available properties"
+            "priceNotice": "hotel categories will depend on locally available properties",
+            "departureDates":""
         },
         "included": [
             "noted meals",
@@ -1171,7 +1182,8 @@
             "priceType": "privateDeparture",
             "singlesupp": 900,
             "dblOccupancy": true,
-            "priceNotice": "hotel categories will depend on locally available properties"
+            "priceNotice": "hotel categories will depend on locally available properties",
+            "departureDates":""
         },
         "included": [
             "noted meals",
@@ -1338,7 +1350,8 @@
             "priceType": "privateDeparture",
             "singlesupp": 900,
             "dblOccupancy": true,
-            "priceNotice": "hotel categories will depend on locally available properties"
+            "priceNotice": "hotel categories will depend on locally available properties",
+            "departureDates":""
         },
         "included": [
             "noted meals",
@@ -1487,7 +1500,8 @@
             "priceType": "privateDeparture",
             "singlesupp": 900,
             "dblOccupancy": true,
-            "priceNotice": "hotel categories will depend on locally available properties"
+            "priceNotice": "hotel categories will depend on locally available properties",
+            "departureDates":""
         },
         "included": [
             "noted meals",
@@ -1515,7 +1529,7 @@
 
 
     {
-        "tripName": "Machu Picchu Express",
+        "tripName": "Peru Spotlight",
         "id": "lima-cusco-mapi-7D",
         "duration": 7,
         "difficulty": 1,
@@ -1599,7 +1613,8 @@
             "priceType": "fixedDeparture",
             "singlesupp": 650,
             "dblOccupancy": true,
-            "priceNotice": "hotel categories will depend on locally available properties"
+            "priceNotice": "hotel categories will depend on locally available properties",
+            "departureDates":""
         },
         "included": [
             "noted meals",
@@ -1617,7 +1632,6 @@
             "tips"
         ]
     },
-
     {
         "tripName": "Machu Picchu & the Galapagos Islands",
         "id": "machu-picchu-galapagos-12D",
@@ -1757,7 +1771,8 @@
             "priceType": "fixedDeparture",
             "singlesupp": 1900,
             "dblOccupancy": true,
-            "priceNotice": "hotel categories will depend on locally available properties"
+            "priceNotice": "hotel categories will depend on locally available properties",
+            "departureDates":""
         },
         "included": [
             "noted meals",
@@ -2056,7 +2071,8 @@
             "priceType": "fixedDeparture",
             "singlesupp": 3850,
             "dblOccupancy": true,
-            "priceNotice": "hotel categories will depend on locally available properties"
+            "priceNotice": "hotel categories will depend on locally available properties",
+            "departureDates":""
         },
         "included": [
             "noted meals",
@@ -2192,7 +2208,8 @@
             "priceType": "fixedDeparture",
             "singlesupp": 310,
             "dblOccupancy": true,
-            "priceNotice": "hotel categories will depend on locally available properties"
+            "priceNotice": "hotel categories will depend on locally available properties",
+            "departureDates":""
         },
         "included": [
             "noted meals",

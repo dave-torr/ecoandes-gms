@@ -443,8 +443,11 @@ export function TourDisplayer(props){
 
 
                 {aTour.prices.priceType==="fixedDeparture"&&<>
-                    <div className={styles.bookNowBTN}>
-                        <ConfirmationNumberIcon /> &nbsp;&nbsp;&nbsp;Book Now </div>
+                    {/* <div className={styles.bookNowBTN}>
+                        <ConfirmationNumberIcon /> &nbsp;&nbsp;&nbsp;Book Now </div> */}
+
+                        <div dangerouslySetInnerHTML={{ __html: aTour.paymentLink }}/>
+                        
                 </>}
 
 
