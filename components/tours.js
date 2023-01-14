@@ -417,6 +417,9 @@ export function TourDisplayer(props){
             </>)
         }
     }
+
+
+
     const tourIntroDetails=()=>{
         let countryList = aTour.countryList.map((elem, i)=><React.Fragment key={i}> { i >0 &&<> / </>}{elem} </React.Fragment>)
         return(<>
@@ -442,12 +445,14 @@ export function TourDisplayer(props){
                 </>}
 
 
+                {/* payment BTN */}
+
                 {aTour.prices.priceType==="fixedDeparture"&&<>
                     {/* <div className={styles.bookNowBTN}>
                         <ConfirmationNumberIcon /> &nbsp;&nbsp;&nbsp;Book Now </div> */}
 
-                        <div dangerouslySetInnerHTML={{ __html: aTour.paymentLink }}/>
-                        
+                    <div dangerouslySetInnerHTML={{ __html: aTour.paymentLink }}/>
+
                 </>}
 
 
