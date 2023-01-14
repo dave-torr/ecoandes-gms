@@ -343,6 +343,12 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    box-shadow: 5px 5px rgb(95, 95, 95, 0.5);
+    transition: all ease 0.3s;
+}
+
+.bookNowBTN:hover{
+    box-shadow: 9px 7px rgb(95, 95, 95, 0.2);
 }
 
 

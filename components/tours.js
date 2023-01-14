@@ -179,7 +179,7 @@ export function TourDifficultyCard(props){
 export function TourTypeCard(props){
     const tourTypeSwitcher=(theTourType)=>{
         switch (theTourType){
-            case "360° tours":
+            case "360° itineraries":
             return(<> 
             <div className={styles.tourInfoDescriptor}>
                 <strong>360° Tours </strong> begin and end at a specific location, include amazing visitor sites, landscapes, culture and nature, and are created for adventurous travellers looking for a unique experience. 
@@ -188,19 +188,29 @@ export function TourTypeCard(props){
             case "historic":
             return(<> 
             <div className={styles.tourInfoDescriptor}>
-                <strong>Historic</strong> tours include visits to some of the most important archeological sites of a region, tailored itineraries, breathtaking landscapes, and a strong focus on the rich local cultures and the incredible planet that we live in.
+                <strong>Historic</strong> itineraries include visits to some of the most important archeological sites of a region, breathtaking landscapes, and a strong focus on the rich local cultures and the incredible planet that we live in.
+            </div></>)
+
+
+
+// Check to see if we can add nature category. Find different name. add nature-focused itineraries
+
+            case "nature":
+            return(<> 
+            <div className={styles.tourInfoDescriptor}>
+                <strong>Nature-focused</strong> itineraries include visits to some of the most important archeological sites of a region, breathtaking landscapes, and a strong focus on the rich local cultures and the incredible planet that we live in.
             </div></>)
 
             case "climbing":
             return(<> 
             <div className={styles.tourInfoDescriptor}>
-                <strong>Climbing</strong> tours include trekking sections to base camps and high altitude mountaneering, with the support of professional mountaineering guides and staff, and can include rock, ice, and mixed climbing; all in the amazing Andes Mountains.
+                <strong>Climbing</strong> itineraries include trekking sections to base camps and high altitude mountaneering, with the support of professional mountaineering guides and staff, and can include rock, ice, and mixed climbing; all in the amazing Andes Mountains.
             </div></>)
 
             case "trekking":
             return(<> 
             <div className={styles.tourInfoDescriptor}>
-                <strong>Trekking</strong> tours include multi-day trekking, with comfortable campsites or mountain huts, well trained staff and guides, all in gorgeous sceneries that the high Andes is known for.
+                <strong>Trekking</strong> itineraries include multi-day trekking in some of the world's most impressive landscapes, with best-in-class, quality campsites or mountain huts, handpicked, professional staff and guides; surrounded by the gorgeous sceneries that the high Andes is known for.
             </div></>)
         }
     }
