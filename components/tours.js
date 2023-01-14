@@ -525,10 +525,14 @@ export function TourDisplayer(props){
 
         return(<>
         <footer>
-            <div className={styles.footerBar} >
-                <Image src={LTCTypeface} alt="LTC Travel Logo" width={55} height={30} /> &nbsp; &nbsp; &nbsp;
-                {aTour.tripName}
-            </div>
+            <Link href="/tours"><a>
+                <div className={styles.footerBar} >
+                    <Image src={LTCTypeface} alt="LTC Travel Logo" width={55} height={30} /> &nbsp; &nbsp; &nbsp;
+                    {aTour.tripName}
+                </div>
+                </a>
+            </Link>
+
             <address></address>
 
         </footer>
