@@ -50,9 +50,11 @@
 
 .tourStartingPlace{
     text-transform: capitalize;
-    color: var(--brick-red);
+    color: var(--pop-orange);
     height: 20px;
-    font-size: 0.9em;
+    font-size: 0.95em;
+    text-transform: uppercase;
+    font-weight: 800;
 }
 
 .tourCardTripName{
@@ -148,9 +150,10 @@
     display: flex;
     flex-direction: column;
     position: relative;
+    align-items: center;
 }
 
-.arrowforwardCarrousel{
+/* .arrowforwardCarrousel{
     position: relative;
     top: 179px;
     z-index: 5;
@@ -161,26 +164,29 @@
     animation-iteration-count: infinite;
     line-height: 0;
     overflow-x: unset;
+    left: 15px;
     color: white;
-}
+    background-color: var(--ltc-teal);
+    padding: 6px;
+    
+} */
 
-.arrowBackCarrousel{
-    color: white;
+/* .arrowBackCarrousel{
     line-height: 0;
     position: relative;
     top:155px;
     z-index: 5;
-    right: -93vw;
-    transition: all ease 0.3s;
+    right: -63vw;
     width: fit-content;
+    transition: all ease 0.3s;
     animation-name: into2;
     animation-duration: 3s;
     animation-iteration-count: infinite;
     display: flex;
     align-items: flex-end;
-}
+} */
 
-@keyframes into{
+/* @keyframes into{
   0%{
     transform: translateX(0px);
   }
@@ -192,8 +198,8 @@
   100%{
     transform: translateX(00px);
   }
-}
-@keyframes into2{
+} */
+/* @keyframes into2{
   0%{
     transform: translateX(0px);
   }
@@ -205,9 +211,35 @@
   100%{
     transform: translateX(00px);
   }
+} */
+
+
+.sliderV2{
+    display: flex;
+    width: fit-content;
+    transition: all ease-in 0.3s;
+    animation-name: sliderAnimation;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
 }
 
+@keyframes sliderAnimation{
+  0%{
+    transform: translateX(0px);
+  }
 
+  33%{
+    transform: translateX(-15px);
+  }
+ 
+  66%{
+    transform: translateX(15px);
+  }
+  100%{
+    transform: translateX(0px);
+  }
+
+}
 
 
 .tourIMGCarousel{
@@ -216,8 +248,9 @@
     overflow-x: auto;
     white-space: nowrap;
     width: 100%;
-    padding: 0 45px;
+    /* padding: 0 45px; */
     padding-bottom: 33px;
+    /* background-color: teal; */
 }
 
 .aTourImage{
@@ -231,7 +264,7 @@
 
 .carouselIconCont{
     position: absolute;
-    right: 21px;
+    right: 33px;
     top: 45%;
     color: black;
     animation-name: ArrowMovement;
@@ -302,7 +335,7 @@
 
 .closeDialogBtn{
     margin: 9px;
-    border: solid 3px var(--brick-red);
+    border: solid 3px var(--pop-orange);
     border-radius: 5px;
     padding: 9px 12px;
     width: fit-content;
@@ -459,12 +492,12 @@
 .sectionTitles{
     text-transform: uppercase;
     font-weight: 600;
-    margin: 15px 21px;
-    color: var(--brick-red);
+    margin: 6px 21px;
+    color: var(--pop-orange);
     font-size: 1.1em;
 }
 .dayInclusionCont > h4{
-    border-top: solid 1px var(--brick-red);
+    border-top: solid 1px var(--pop-orange);
     padding-top: 12px;
 }
 .dayInclusionCont > ul{
@@ -585,7 +618,7 @@
 
 .bookingStepBTN{
     padding: 9px 12px;
-    background-color: var(--brick-red);
+    background-color: var(--pop-orange);
     color: white;
     text-transform: uppercase;
     font-weight: 700;
@@ -825,7 +858,7 @@
     width: 320px;
     padding: 12px;
     text-transform: uppercase;
-    background-color: var(--brick-red);
+    background-color: var(--pop-orange);
     color: white;
     font-weight: 600;
     border: none;
@@ -839,7 +872,7 @@
     text-transform: uppercase;
     font-weight: 600;
     text-align: center;
-    border: solid 3px var(--brick-red);
+    border: solid 3px var(--pop-orange);
 }
 
 .dataGrids{
@@ -859,7 +892,7 @@
 
 .acceptDataBTN{
     padding: 9px 12px;
-    border: solid 2px var(--brick-red);
+    border: solid 2px var(--pop-orange);
     border-radius: 5px;
     margin: 0 15px;
     text-transform: uppercase;
@@ -1094,7 +1127,7 @@
     .tourDetails > span{
         padding: 6px;
         height: 90px;
-        border-right: solid 1px var(--brick-red);
+        border-right: solid 1px var(--pop-orange);
     }
 
     .inclusionsExclusionsSec{

@@ -17,11 +17,21 @@ import InsertLinkIcon from '@mui/icons-material/InsertLink';
 import MapIcon from '@mui/icons-material/Map';
 import HikingIcon from '@mui/icons-material/Hiking';
 import TerrainIcon from '@mui/icons-material/Terrain';
+import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
+
+
+
+
+
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-
 import AirplaneTicketIcon from '@mui/icons-material/AirplaneTicket';
-import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
+import LinearScaleIcon from '@mui/icons-material/LinearScale';
+
+
+
+import PanToolAltIcon from '@mui/icons-material/PanToolAlt';
+
 
 import Filter1Icon from '@mui/icons-material/Filter1';
 import Filter2Icon from '@mui/icons-material/Filter2';
@@ -71,7 +81,7 @@ export function ATourCard(props){
                 <span>
                     {theTour.startingPlace? <>
                     <div className={styles.tourStartingPlace} > 
-                        starting from {theTour.startingPlace} </div>
+                         from {theTour.startingPlace} </div>
                     </>: <>
                         <div className={styles.tourStartingPlace}/>
                     </>}
@@ -320,6 +330,9 @@ export function TourDisplayer(props){
         </React.Fragment>)
         return(<>
             {accordionDisplayer("Day by Day", theDays, false)}
+            <br/>
+            <br/>
+            <br/>
         </>)
     }
 
@@ -344,11 +357,21 @@ export function TourDisplayer(props){
     }
     const carouselDisp=(theIMGArr)=>{
         return(<>
+
+
         <div className={styles.carouselSection}>
-            <div className={styles.arrowforwardCarrousel}>
+
+
+        {/* Carousel Indicator ver.1 */}
+
+            {/* <div className={styles.arrowforwardCarrousel}>
                 <ArrowBackIosNewIcon /></div>
             <div className={styles.arrowBackCarrousel}>
-                <ArrowForwardIosIcon /></div>
+                <ArrowForwardIosIcon /></div> */}
+
+
+
+            
             <div className={styles.tourIMGCarousel}>
                     {theIMGArr.map((elem, i)=><>
                     {i>0&&<React.Fragment key={i}>
@@ -356,6 +379,11 @@ export function TourDisplayer(props){
                     </React.Fragment>}
                     </>)}
             </div>
+            <div className={styles.sliderV2}> <PanToolAltIcon fontSize="large" /> </div>
+            <div> BROWSE GALLERY </div>
+
+
+
         </div>
         <Dialog open={imgDialogContr} fullScreen onClose={()=>srtImgDialogcontr(false)}>
             <div className={styles.imgDialogCont}>
@@ -519,6 +547,7 @@ export function TourDisplayer(props){
                 <div className={styles.tourData}>
                     <div className={styles.sectionTitles}>Overview</div>
                     {dayByDaydisp(aTour.dayByDay)}
+
                     <div className={styles.sectionTitles}>additional information</div>
                     {accordionDisplayer("Tour Inclusions / Exclusions", incExcCont, false)}
                     {hotelList(aTour)}

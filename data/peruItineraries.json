@@ -1916,12 +1916,13 @@
             }
         ],
         "tourType": "historic",
-        "price": 4300,
+        "price": 3900,
         "prices": {
             "priceType": "fixedDeparture",
-            "singlesupp": 1481,
+            "singlesupp": 1055,
             "dblOccupancy": true,
-            "priceNotice": "hotel categories will depend on locally available properties"
+            "priceNotice": "hotel categories will depend on locally available properties",
+            "departureDates":"Year-round, every week on Thursday"
         },
         "included": [
             "noted meals",
