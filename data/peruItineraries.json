@@ -700,7 +700,7 @@
                     "English speaking Guide Services"
                 ]
             },
-                        {
+            {
                 "dayTitle": "Cusco 1/2 Day City Tour",
                 "dayDescription": "In the morning, our guided Cusco tour starts with a walk to visit the Plaza de Armas surrounded by beautiful colonial buildings and churches. Then we walk to Santo Domingo Church where we find the impressive Korikancha Temple with exquisite stonework and carvings. Then our transport will take us to the nearby hills of Cusco where we will find the impressive Inca fortress of Sacsayhuaman, Qenko, which was an Inca site where religious ceremonies were held. It has structures in the form of tunnels under the ground. Finally, we will visit the Inca bath of Tambo Machay. Transport back to the hotel",
                 "dayInclusions": [
@@ -1539,6 +1539,165 @@
 
 
     {
+        "tripName": "Best of Peru",
+        "id": "best-peru-12D",
+        "duration": 12,
+        "difficulty": 1,
+        "imgArr": ["https://dsm04pap002files.storage.live.com/y4m705ZWeY5hZ5ZR7tale5w_4M4Kr_qsR0KbdE7AnzP79lgvqaWwCxhvSVKI2ywvXxnbYOnJ-X4U1tXFNDhU8gmsqgVbUFFVPLbooP5bpgQz42qaCO8iHEGZITPHJpnTAqN3q0rmDiJ-n8tVmEezB_tTKnUO2xIRQSzp1Ejwu8FiPuJK3U0rp94EEYdoVBKTGZP?width=2000&height=1150&cropmode=none",
+        "https://dsm04pap002files.storage.live.com/y4mpsAziFs-KZPPWQKlbyPUzjE0QrT1833usUlJMPlVjXAiwVAxx-Sk2tJUr7cUcvecXF2kKnWIQcLHXyauBflf_cVXK7jeHyF41yqibH8VtQUmXJy9lX0hvbtf2h8X_HeE689P5aU8d9IBGJt_PzggGT23-14AM_ASF9j5a5px0f-ewwDXMasZDYrFv5nJ2mxk?width=2000&height=1150&cropmode=none",
+
+        "https://dsm04pap002files.storage.live.com/y4mqhrsLasZSwTLoR0p1NOS66awyXAnTqxfIlEjDh6VNtXEVb-YX_wQVq91udcueVL-0XQxYozE2UZJa7Eu787U9fEjvTptoIkqOJWVHC8H9F71gCpcnmaA0N0qRPFGNEfPMXI_F8fUcSTf-_TlnX0Ucau9yC7SfG0B6Y18I2qVhfXDj-T09T_-oOQKk8ee0OTz?width=2000&height=1150&cropmode=none",
+        "https://dsm04pap002files.storage.live.com/y4m-nkAJxS3TGdmwxBveeLHfxzbqui32g-84_ty8pgPLmQeXlrMpT8XLq7BF4jHrbydRAY-zvVCYEcdbUOZiLjF1bdf1aI6zDUFkzUh3bnI0HjSLaDdWwSWUaNNsmbUpfCN5_c9CRxeerNh_Fbxwm0sfwt9geT1iOAhl2z3e535ZfuVJZzmmj2R3-XR6BY0AIg0?width=2000&height=1150&cropmode=none",
+
+        "https://dsm04pap002files.storage.live.com/y4mWQUSju7TYeY1K39cF-SUhgKoqU-Fvq7tzq1Oz1oIJeXhZJ-6kAknTRnHSYA4KHrQq1tzOlTXOLuMi3WMQa_WjIS9cl4S4qV6XR48RtwJBMB2xxrACwsXI8ly4zJmJx6MPLXiWcoorWusjzvaTvHkFyJ-cKTnDvaXAil2_qBMiWJTdbVwTuZK-D7w18aDzdSY?width=2000&height=1150&cropmode=none",
+        "https://dsm04pap002files.storage.live.com/y4mq--3EsskKM41emYJcFlUJvc7WyabCl9joBfxBjyfPzUoyteGqyN12nUSUQWy6kwXdGlQmXP9gQ7QVr7SM8tl9v2SriFTXEio767nky_sOl2elubHxfXsIyILNxsMRLXu7cvwY2cnOTkuuG4mP3eMdW90aC_jTEcPlqiE44mzyDle_4ttQSdixnJvbDPiHCQu?width=1920&height=1280&cropmode=none"
+        ],
+        "tripDescription":"Peru is one of the most fascinating destinations in the world. With incredible biodiversity & landscapes, some of the world's most impressive archeological sites, and a unique blend of colorfull cultures, this journey has a bit of everything  We will visit Lima the Capital of Peru and the most important city in South America during the spanish colonial time. Then we fly to Arequipa, known as the 'White City' due to its unique architecture. We will explore the deepest canyon in South America Colca Canyon, and witness the incredible flight of the Condor, the King of the Andes. Then our next stop will be at the legendary Titicaca Lake located at 12,470ft || 3,800m. Then we will travel to Cusco, the famous Inca Empire capital. Then finally we will enjoy the views of the magnificent Inca Citadel of Machu Picchu, one of the marvels of our planet",
+        "countryList": ["peru"],
+        "dayByDay":[
+            {
+                "dayTitle": "Arrival in Lima",
+                "dayDescription": "Upon your arrival in Lima, you will be welcomed and transferred to your hotel of choice. You will have a short briefing about next day activities",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "English speaking Guide Services"
+                ]
+            },
+            {
+                "dayTitle": "Lima City Tour",
+                "dayDescription": "Our morning tour begins with a drive to the Huaca Puccllana pre-Inca remains where we learn about the cultural past of Lima, and the ancient civilization that inhabited this place. Later on, we head towards the colonial part of town visiting the Plaza de Armas, and to enjoy a panoramic view of the Cathedral, San Francisco Church and its impressive 'Catacombs'. Afterwards we will head towards modern Lima, to visit the districts of San Isidro and Miraflores. At at Larco Mar, a modern entertaining center with a splendid view of the Pacific Ocean we can enjoy a break. We will the head to visit the Gold Museom in the center of Lima .You will be transferred back to the hotel",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Lunch",
+                    "Entrance Fees",
+                    "Private Transfers",
+                    "English speaking Guide Services"
+                ]
+            },
+            {
+                "dayTitle": "Flight to Arequipa + City Tour",
+                "dayDescription": "Our morning transfer will take us to the airport in Lima to catch our flight towards the city of Arequipa. This is one of the most charming cities in Peru, located in a beautiful area surrounded by high volcanoes which give the city a wonderful appearance. The city has many colonial Spanish buildings made of sillar, a pearly white volcanic rock. Due to this gorgeous architecture, the city gets the nickname La Ciudad Blanca ('The White City'). The historic centre of Arequipa was declared a UNESCO world heritage site in recognition of its architectural and historic integrity. Upon arrival we will transfer you to the hotel followed by a 3-hours guided tour to visit the Plaza de Armas, Compañia de Jesus Church, Santa Catalina Monastery and Museum.",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Lunch",
+                    "Entrance Fees",
+                    "Private Transfers",
+                    "English speaking Guide Services"
+                ]
+            },
+            {
+                "dayTitle": "Along the Volcanos valley, travel to Chivay",
+                "dayDescription": "In the early morning, we begin our drive towards the Aguada National Reserve where we can observe Vicuñas wandering on the high plateaus. We then continue our drive towards the town of Chivay. On the way, we will enjoy nice views of the volcanoes: Misty, Chachani and Ampato as well as of the highlands of the Colca area. Our hotel accommodations will be in the charming town of Chivay",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Lunch",
+                    "Private Transfers",
+                    "English speaking Guide Services"
+                ]
+            },
+            {
+                "dayTitle": "Colca Canyon & The King of the Andes. Afternoon transfer to Puno",
+                "dayDescription": "Our journey towards 'Cruz del Condor' starts in the early morning, in order to observe the impressive flight of the Condor, the “King of the Andes”. From here, we get a magnificent view of the famous Colca Canyon. We return to Chivay, where you can have lunch (on your own) and then from here we will transport you to the city of Puno located on the shores of Titicaca Lake. This journey has plenty of beautiful views of the high Andean plateaus and of the high volcanoes. We will follow the road Arequipa – Juliaca – Puno. Upon your arrival in Puno, we will transfer you to your hotel",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Lunch",
+                    "Private Transfers",
+                    "English speaking Guide Services"
+                ]
+            },
+            {
+                "dayTitle": "Lake Titicaca and it's floating islands",
+                "dayDescription": "From your hotel we shall transfer to the shores of Titicaca Lake to board our boat to visit Uros, the unique floating islands located on the lake. In this group of 40 big island-like packs of floating Totora (reeds), Uros natives continue living like their ancestors, preserving their costumes and their own system of communal life. Later on, we continue to visit Taquile Island, where descendants from the Incas are still living, and where they spin the finest woven goods in Peru. After our visit, we return to Puno and head to our hotel",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Lunch",
+                    "Private Transfers",
+                    "English speaking Guide Services"
+                ]
+            },
+            {
+                "dayTitle": "Overland to Cusco",
+                "dayDescription": "In the morning we take the comfortable tourist bus Inka Express to Cusco. During the 8-hour drive to Cusco, we visit the communities of Pukara to see the interesting museum and learn about the traditional Pukara Bulls. Later on, we will make a stop at La Raya where we can enjoy nice views of the high snow-covered Andean peaks and observe herds of the cute Vicuñas. Our lunch stop will be at Sicuani. Afterwards we continue towards Raqchi to visit the interesting Temple of Viracocha, followed by our last stop in Andahuaylillas to visit the beautiful Temple of San Pedro and San Pablo. As we arrive to Cusco, you will be taken to your hotel. ",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Lunch",
+                    "Private Transfers",
+                    "English speaking Guide Services"
+                ]
+            },
+            {
+                "dayTitle": "Cusco 1/2 Day City Tour",
+                "dayDescription": "In the morning, our guided Cusco tour starts with a walk to visit the Plaza de Armas surrounded by beautiful colonial buildings and churches. Then we walk to Santo Domingo Church where we find the impressive Korikancha Temple with exquisite stonework and carvings. Then our transport will take us to the nearby hills of Cusco where we will find the impressive Inca fortress of Sacsayhuaman, Qenko, which was an Inca site where religious ceremonies were held. It has structures in the form of tunnels under the ground. Finally, we will visit the Inca bath of Tambo Machay. Transport back to the hotel",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Private Transfers",
+                    "Entrance Fees",
+                    "English speaking Guide Services"
+                ]
+            },
+            {
+                "dayTitle": "Cusco – Incas Sacred Valley – Ollantaytambo – Aguas Calientes",
+                "dayDescription": "After breakfast in the hotel, early in the morning we will start our drive down to the valley of Urubamba, known as the Incas Sacred Valley. Here we start our first visit to the beautiful Pisac Inca Ruins where we can admire the fine architectural work of the Inca culture. Continue our tour we visit the colorful traditional market of Pisac and then our transport will then take us towards the Inca town of Ollantaytambo where we visit the impressive Inca fortress and walk on this ancient typical Inca town. In the late afternoon we will board the train which will take us for amazing ride along the sides of Urubamba River course which is surrounded by beautiful, lush green valleys and high towering mountains. After a 1.5 hour of a pleasant train ride, we will arrive to the train station of Aguas Calientes Village. Hotel accommodations",
+                "dayInclusions": [
+                    "Hotel breakfast - Lunch",
+                    "Train tickets",
+                    "Entrance Fees",
+                    "English speaking Guide Services"
+                ]
+            },
+            {
+                "dayTitle": "Aguas Calientes – Machu Picchu – Cusco",
+                "dayDescription": "In our last day, after breakfast in the hotel, we will board a public bus transport which will take you up to the main entrance of the city of Machu Picchu. A 3 hour guided tour will show you this beautiful Inca City, one of the most famous in the world. You will visit the main highlights of this impressive inca citadel. In the afternoon, we take the public bus down to Aguas Calientes and by train, you will return to Ollantaytambo from where our transport will take you back to Cusco and a transfer to your hotel after your arrival",
+                "dayInclusions": [
+                    "hotel breakfast",
+                    "Entrance Fees",
+                    "Machu Picchu Public Bus Service",
+                    "Train and car Transportation to Cusco",
+                    "english/spanish speaking trekking guide services"
+                ]
+            },
+                        {
+                "dayTitle": "Cusco Free Day",
+                "dayDescription": "Enjoy this free day in Cusco, where you can explore some of the local highlights such as the San Pedro Market and San Blas Square, savor tasty craft coffee, try some delicious food or simply relax. Cusco was the capital of the Inca Empire, and has a rich history that has helped develop this vibrant city",
+                "dayInclusions": [
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Cusco - Lima out",
+                "dayDescription": "After breakfast we transfer you from the hotel to the airport to take your flight to the city of Lima arriving there in time to catch the flight back home",
+                "dayInclusions": [
+                    "Hotel breakfast"
+                ]
+            }
+        ],
+        "tourType": "360° itineraries",
+        "price": 2215,
+        "paymentLink":"66517880",
+        "prices": {
+            "priceType": "fixedDeparture",
+            "singlesupp": 770,
+            "dblOccupancy": true,
+            "priceNotice": "hotel categories will depend on locally available properties",
+            "departureDates":"April to December"
+        },
+        "included": [
+            "noted meals",
+            "entrance fees",
+            "noted transfers and transfers",
+            "Train ticket",
+            "english/spanish speaking guide services",
+            "hotels: double room accommodation with private facilities"
+        ],
+        "notIncluded": [
+            "international/regional flights",
+            "personal travel insurance (REQUIRED)",
+            "personal expenses",
+            "extras",
+            "tips"
+        ]
+    },
+    {
         "tripName": "Peru Spotlight",
         "id": "lima-cusco-mapi-7D",
         "duration": 7,
@@ -1550,7 +1709,7 @@
         "https://dsm04pap002files.storage.live.com/y4mWQUSju7TYeY1K39cF-SUhgKoqU-Fvq7tzq1Oz1oIJeXhZJ-6kAknTRnHSYA4KHrQq1tzOlTXOLuMi3WMQa_WjIS9cl4S4qV6XR48RtwJBMB2xxrACwsXI8ly4zJmJx6MPLXiWcoorWusjzvaTvHkFyJ-cKTnDvaXAil2_qBMiWJTdbVwTuZK-D7w18aDzdSY?width=2000&height=1150&cropmode=none",
         "https://dsm04pap002files.storage.live.com/y4mq--3EsskKM41emYJcFlUJvc7WyabCl9joBfxBjyfPzUoyteGqyN12nUSUQWy6kwXdGlQmXP9gQ7QVr7SM8tl9v2SriFTXEio767nky_sOl2elubHxfXsIyILNxsMRLXu7cvwY2cnOTkuuG4mP3eMdW90aC_jTEcPlqiE44mzyDle_4ttQSdixnJvbDPiHCQu?width=1920&height=1280&cropmode=none"
         ],
-        "tripDescription":"The Inca Empire covered thousands of kilometers of land in South America, from the south of Colombia to the north part of Chile & Argentina. In this short trip, we invite you to explore some of the highlights of this incredible destination, starting from the gastronomic capital of South America: Lima, the cultural capital of Peru: Cusco, and the grand jewel of Archaeology of Peru: Machu Picchu. ",
+        "tripDescription":"The Inca Empire covered thousands of kilometers of land in South America, from the south of Colombia to the north part of Chile & Argentina. In this short trip, we invite you to explore some of the highlights of this Peru, the homeland of the Incas, starting from the gastronomic capital of South America: Lima, the cultural capital of Peru: Cusco, and the grand jewel of Archaeology of South America: Machu Picchu. ",
         "countryList": ["peru"],
         "dayByDay":[
             {
@@ -1831,7 +1990,7 @@
                 ]
             },
             {
-                "dayTitle": "Quito - Otavalo - Cotacachi",
+                "dayTitle": "Quito - Otavalo - Cotacachi - Otavalo",
                 "dayDescription": "After breakfast we will start our journey driving north towards the Imbabura province, to the city of Otavalo. On the way we will stop for a visit to the interesting Cochasqui Pre-Inca remains and, we will visit a Roses Farm where we can learn about the Ecuadorian roses production.  Then we will continue towards Otavalo and to the Hacienda Hotel. After checking in the hotel and a short rest, we will go for a visit to the charming town of Cotacachi where the local artisans produce beautiful high quality leather goods. Our transport will take us to the Cuicocha Lagoon, a beautiful spot located at the base of the steep Cotacachi Volcano. Here we can enjoy a short hike to observe the amazing land scape. Transport back the hotel and enjoy a good rest",
                 "dayInclusions": [
                     "Hotel breakfast",
@@ -1841,7 +2000,7 @@
                 ]
             },          
             {
-                "dayTitle": "Quito - Otavalo traditional Market – Mindo Cloud Forest",
+                "dayTitle": "Otavalo traditional Market – Mindo Cloud Forest",
                 "dayDescription": "In the early morning we visit to the well-known Indigenous Market of Otavalo considered as one of the biggest traditional markets in South America. Here the local traditional people from the nearby communities gather every Saturday for exchange goods, but also to sell handicrafts, beautiful textiles, wood carvings, etc. We will also visit the animal’s market and visit to one of the Otavalo families artisanal shops. After this visit we will drive towards the beautiful area of Mindo where we will be staying in a nice hotel surrounded by beautiful, lush green cloud forest",
                 "dayInclusions": [
                     "hotel breakfast",

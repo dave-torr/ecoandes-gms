@@ -207,6 +207,9 @@ export default function RaflePage(){
                 {getClients()}
                 {randomNumberGen(raffleParticipants)}
                 {participantDisplayer()}
+                <br/>
+                <br/>
+                <br/>
             </>:<>
                 Please sign In
             </>}

@@ -452,20 +452,17 @@ export function TourDisplayer(props){
                         <ConfirmationNumberIcon /> &nbsp;&nbsp;&nbsp;Book Now </div> */}
 
                     {/* <div dangerouslySetInnerHTML={{ __html: aTour.paymentLink }}/> */}
-
-
-
                 </>}
 
+                
+
                 {aTour.paymentLink&&<>
-                    <button class="wtrvl-checkout_button" id="wetravel_button_widget" data-env="https://www.wetravel.com" data-version="v0.3" data-uid="476590" data-uuid={aTour.paymentLink} href={`https://www.wetravel.com/checkout_embed?uuid=${aTour.paymentLink}`} 
+                    <button className="wtrvl-checkout_button" id="wetravel_button_widget" data-env="https://www.wetravel.com" data-version="v0.3" data-uid="476590" data-uuid={aTour.paymentLink} href={`https://www.wetravel.com/checkout_embed?uuid=${aTour.paymentLink}`} 
                     style={{border: "solid 2px var(--pop-orange)", color:"var(--pop-orange)", backgroundColor:"white", borderRadius: "5px", textTransform: "uppercase", fontWeight: "800", fontSize: "14px", webkitFontSmoothing: "antialiased", padding: "13px 24px", textDecoration: "none", textAlign: "center", lineHeight: "14px", display: "inline-block", cursor: "pointer"}} >
                     
                         Book Now</button> <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet"/> <script src="https://cdn.wetravel.com/widgets/embed_checkout.js"></script>
 
                 </>}
-
-
 
                 <div className={styles.tourDetails}>
                     <span> <AccessTimeIcon /> {aTour.duration} <br/> DAYS </span>
