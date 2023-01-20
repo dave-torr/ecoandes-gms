@@ -60,7 +60,7 @@ export function ATourCard(props){
                     width={320}
                     height={180}
                     alt={`A tour image: ${theTour.tripName}`}
-                    blurDataURL="URL"
+                    blurDataURL={theTour.imgArr[0]}
                     placeholder="blur"
                 />
             </div>
@@ -70,7 +70,7 @@ export function ATourCard(props){
                     width={430}
                     height={240}
                     alt={`A tour image: ${theTour.tripName}`}
-                    blurDataURL="URL"
+                    blurDataURL={theTour.imgArr[0]}
                     placeholder="blur"
                 />
             </div>
@@ -345,11 +345,14 @@ export function TourDisplayer(props){
             })
             srtImgDialogcontr(true)
         }}>
+
+            {console.log(props.imgData)}
+
             <Image
                 src={props.imgData}
                 alt={aTour.tripName}      
                 layout="fill"
-                blurDataURL="URL"
+                blurDataURL={props.imgData}
                 placeholder="blur"                
             />
         </div>
@@ -418,8 +421,6 @@ export function TourDisplayer(props){
         }
     }
 
-
-
     const tourIntroDetails=()=>{
         let countryList = aTour.countryList.map((elem, i)=><React.Fragment key={i}> { i >0 &&<> / </>}{elem} </React.Fragment>)
         return(<>
@@ -439,7 +440,7 @@ export function TourDisplayer(props){
 {/* Include We Travel Widget BTN || CONTACT US BTN for Private Departures */}
 
                 {aTour.tourType==="climbing"&&<>
-                    <a href={`mailto:info@ecoandestravel.com?subject=${aTour.tripName} Request&body=Hi! I'm interested in this climbing expedition for the following dates/season:`}>
+                    <a href={`mailto:info@ecoandestravel.com?cc=planificacion@ecoandestravel.com, david@latintravelcollection.com&subject=${aTour.tripName} Request&body=Hi! I'm interested in ${aTour.tripName} for the following dates/season:`}>
                     <div className={styles.contactNowBTN}>
                         Contact Us About {aTour.tripName} <i>Here</i></div></a>
                 </>}
@@ -454,7 +455,7 @@ export function TourDisplayer(props){
                     {/* <div dangerouslySetInnerHTML={{ __html: aTour.paymentLink }}/> */}
                 </>}
 
-                
+
 
                 {aTour.paymentLink&&<>
                     <button className="wtrvl-checkout_button" id="wetravel_button_widget" data-env="https://www.wetravel.com" data-version="v0.3" data-uid="476590" data-uuid={aTour.paymentLink} href={`https://www.wetravel.com/checkout_embed?uuid=${aTour.paymentLink}`} 
@@ -564,10 +565,10 @@ export function TourDisplayer(props){
             </div>
             <div className={styles.tourDataCont}>
                 <div className={styles.tourData}>
-                    <div className={styles.sectionTitles}>Overview</div>
+                    <div className={styles.sectionTitles}> &nbsp;Overview</div>
                     {dayByDaydisp(aTour.dayByDay)}
 
-                    <div className={styles.sectionTitles}>additional information</div>
+                    <div className={styles.sectionTitles}>&nbsp;additional information</div>
                     {accordionDisplayer("Tour Inclusions / Exclusions", incExcCont, false)}
                     {hotelList(aTour)}
                 </div>
@@ -579,4 +580,37 @@ export function TourDisplayer(props){
         </article>
         {tourFooter()}
     </>)
+}
+
+
+
+
+
+
+
+
+export function SquaredTourCard(props){
+    if(props.tripName){
+    return(<>
+
+    
+        <Link href={`/tours/${props.id}`}>  
+        
+        <div className={styles.aSquaredCont} style={{ cursor:"pointer" }}> 
+            <Image 
+                src={props.imgSrc}
+                width={500}
+                height={500}
+                alt={`${props.tripName}, by L.T.C.`}
+                blurDataURL={props.imgSrc}
+                placeholder="blur"                
+            />
+            <div className={styles.sqTourTitle}>
+                {props.tripName} 
+                </div>
+        </div>
+        
+        </Link>
+    </>)
+    } else return(<> cu cu </>)
 }

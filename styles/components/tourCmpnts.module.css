@@ -61,11 +61,38 @@
     font-family: 'Roboto Slab', serif;
     letter-spacing: 0.9px;
     font-size: 1.1em;
+    height: 48px;
     text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/*  A Tour Displayer */
+/* Squared Tour Highlight Disp */
 
+.aSquaredCont{
+    margin: 0 21px;
+    position: inherit;
+    width: 500px;
+}
+
+.sqTourTitle{
+    font-size: 1.5em;
+    position: absolute;
+    width: 433px;
+    height: 70px;
+    bottom: 12px;
+    padding: 6px 15px;
+    color: white;
+    background-color: rgb(0, 0, 0, 0.46);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+}
+
+
+/*  A Tour Displayer */
 .generalTourPage{
     display: flex;
     flex-direction: column;
@@ -442,7 +469,7 @@
     box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.37);
     top: 42px;
     height: fit-content;
-    padding-bottom: 15px;
+    padding: 15px 3px;
 }
 
 .sectionTitles{
@@ -494,8 +521,9 @@
     font-weight: 600;
     margin: 6px 21px;
     color: var(--pop-orange);
-    font-size: 1.1em;
+    font-size: 1.15em;
 }
+
 .dayInclusionCont > h4{
     border-top: solid 1px var(--pop-orange);
     padding-top: 12px;
@@ -1106,6 +1134,10 @@
     .dialogImgCont{
         width: 100%;
     }
+    .sqTourTitle{
+        width: 43%;
+        height: 99px;
+    }
 
 }
 @media (max-width: 600px) {
@@ -1191,5 +1223,10 @@
     }    
     .iconDiffDisp span{
         width: fit-content;
+    }
+
+    .sqTourTitle{
+        font-size: 1em;
+        height: 86px;
     }
 }

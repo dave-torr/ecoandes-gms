@@ -7,7 +7,7 @@ import styles from "./../../styles/pages/tours.module.css"
 import tourPageIMGLadning from "./../../public/assets/images/bookingLanding1.png"
 
 import {EcoAndesBar, Navi2} from "./../../components/navis"
-import {ATourCard} from "./../../components/tours"
+import {ATourCard, SquaredTourCard} from "./../../components/tours"
 
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
@@ -136,7 +136,6 @@ export default function TourPage(){
         return(<>
             <div className={styles.UIBTNCont}> 
                 <div className={styles.userIUFilterCont}>
-
                     <div className={styles.userUISec}>
                         <label htmlFor="destinationPickerUI">Destination:</label>
                         <MultiSelect
@@ -277,6 +276,31 @@ export default function TourPage(){
         </div>
         </>)
     }
+
+    const tourHighlightDisp=(aTrip)=>{
+
+        console.log(TourData)
+
+        if(TourData){
+
+        return(<>
+            <div> 
+                <div className={styles.tourHighlightCont}> 
+                    <div className={styles.tourHighlightBar}>Experience South America </div>
+                    <div className={styles.sqrHighlightCont}>
+
+                        
+                        <SquaredTourCard tripName={TourData[13].tripName} imgSrc={TourData[13].sqrImg} id={TourData[13].id}/>
+
+
+                        <SquaredTourCard tripName={TourData[16].tripName} imgSrc={TourData[16].sqrImg} id={TourData[16].id}/>
+
+                    </div>
+                </div>
+            </div>
+        </>)
+        }
+    }
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
@@ -302,6 +326,9 @@ export default function TourPage(){
             <EcoAndesBar />
             <Navi2 />
             {tourPageImgDisplayer()}
+
+            {tourHighlightDisp()}
+
             {filtersUI()}
             {sortingUI()}
             {tourdisplayer()}

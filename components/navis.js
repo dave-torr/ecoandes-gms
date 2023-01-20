@@ -112,7 +112,7 @@ export function Navi2(props){
             src={LTCTypeface}
             alt="EcoAndes Condor Logo"
             layout="responsive"
-            blurDataURL="URL"
+            blurDataURL={LTCTypeface}
             placeholder="blur"
         /></div>
         {/* <div className={styles.naviHamburger} onClick={()=>setDrawerToggle(true)}>

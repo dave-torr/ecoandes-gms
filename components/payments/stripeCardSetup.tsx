@@ -161,7 +161,7 @@ useEffect(()=>{
             return (<>
                 <h2> Payment Succesful!</h2>
                 <h3> Our team will be in contact with you soon! </h3>
-                <a href="mailto:info@ecoandestravel.com" target="_blank" rel="noopener noreferrer"> 
+                <a href="mailto:info@ecoandestravel.com?cc=planificacion@ecoandestravel.com, david@latintravelcollection.com" target="_blank" rel="noopener noreferrer"> 
                     <div className={styles.availBTN}> 
                     Email Us!</div>
                 </a>
