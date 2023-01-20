@@ -1,5 +1,5 @@
 .tourCardCont{
-    width: 320px; 
+    width: 430px;    
     margin: 12px;   
     display: flex;
     flex-direction: column;
@@ -1053,9 +1053,6 @@
 .userDataForm > input[type=number] {
   appearance: textfield;
 }
-.tourCardImageMobile{
-    display: none;
-}
 
 .footerBar{
     width: 100%;
@@ -1068,14 +1065,8 @@
 }
 
 @media (max-width: 1080px) {
-    .tourCardImage{
-        display: none;
-    }
-    .tourCardImageMobile{
-        display: unset;
-    }
+
     .tourCardCont{
-        width: 430px;
         margin: 0 21px;
     }
 
@@ -1228,5 +1219,8 @@
     .sqTourTitle{
         font-size: 1em;
         height: 86px;
+        position: unset;
+        width: 100%;
+        transform: translate(10px 10px);
     }
 }

@@ -54,16 +54,6 @@ export function ATourCard(props){
     <Link href={`/tours/${theTour.id}`}>
         <a className={styles.tourCardCont} >
             
-            <div className={styles.tourCardImage}>
-                <Image 
-                    src={theTour.imgArr[0]}
-                    width={320}
-                    height={180}
-                    alt={`A tour image: ${theTour.tripName}`}
-                    blurDataURL={theTour.imgArr[0]}
-                    placeholder="blur"
-                />
-            </div>
             <div className={styles.tourCardImageMobile}>
                 <Image 
                     src={theTour.imgArr[0]}
@@ -346,7 +336,7 @@ export function TourDisplayer(props){
             srtImgDialogcontr(true)
         }}>
 
-            {console.log(props.imgData)}
+            {/* {console.log(props.imgData)} */}
 
             <Image
                 src={props.imgData}

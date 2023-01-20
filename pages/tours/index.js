@@ -279,7 +279,7 @@ export default function TourPage(){
 
     const tourHighlightDisp=(aTrip)=>{
 
-        console.log(TourData)
+        // console.log(TourData)
 
         if(TourData){
 
