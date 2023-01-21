@@ -75,7 +75,7 @@ import Head from "next/head"
 
 let tourTypes = ["all types", "historic", "360° itineraries", "climbing", "trekking" ]
 
-let operationRegions= ['ecuador', 'galapagos', 'peru' , 'amazon', "chile", "argentina"]
+let operationRegions= ['ecuador', 'galapagos', 'peru', 'amazon', "chile", "argentina", "patagonia"]
 
 let favoriteTours;
 
@@ -124,10 +124,12 @@ export default function TourPage(){
                         />}
                     </React.Fragment>)}
             </>:<>
-                <div className="={styles.placeholderCont"> 
-                    Oops! We do not have any scheduled trips available for your filters. 
-                    get in contact with oue of our team members to make your dream trip happen!
-                    <div className={styles.placeholderCTA}> Email our team! </div>
+                <div className={styles.emptySearchResult}> 
+                    Oops! <br/>We do not have any scheduled trips available for your filters. 
+                    Get in contact with one of our team members to make your dream trip happen!
+                    <br />
+                    <br />
+                    <a href="mailto:info@ecoandestravel.com?cc=planificacion@ecoandestravel.com, david@latintravelcollection.com"> <div className={styles.placeholderCTA}> Email our team </div></a>
                 </div>
             </>}
         </div>)}
@@ -309,12 +311,12 @@ export default function TourPage(){
   const pageHead=()=>{
     return(<>
     <Head>
-      <title>Our Tours: EcoAndes Adventures</title>
-      <meta name="description" content="Our adventures and voyages in Peru - EcoAndes Adventures: since 1989" />
+      <title>Our Tours: Latin Travel Collection</title>
+      <meta name="description" content="Our adventures and voyages in South America - Latin Travel Collection: since 1989" />
       <meta charSet="utf-8"/>
-      <meta name="keywords" content="Peru, Machu Picchu Tours, Cusco Tours, Huaraz, Huaraz Tours"/>
+      <meta name="keywords" content="Peru, Machu Picchu Tours, Cusco Tours, Huaraz, Huaraz Tours, Patagonia, Galapagos"/>
       <meta name="author" content="David Torres" />
-      <meta name="copyright" content="EcoAndes Travel 2022" />
+      <meta name="copyright" content="LTC 2023" />
     </Head>
     </>)
   }

@@ -2419,7 +2419,7 @@
         "https://dsm04pap002files.storage.live.com/y4mEaLqqjcyEmk1SyfGX5HEdw7A_VCbD_vcSr5vodVztxJqX5jwMDRirtrWXztVOdXTvkeDajI8x-FYqwHpEejO6Qooc2ydA3xp2hRixcKAFKHhUH4BdbI-ZzduAHkbYNXjS4khYLqmBCnKKrAH0tBeivdtriq5dOsmQz6RzQK8jyrS7pkyPAnmMcj1kYyJdbnS?width=2000&height=1150&cropmode=none"
         ],
         "tripDescription":"We will arrive to Santiago, the capital of Chile, a lovely city located at the foothills of the Andes and where, nearby, we will find spectacular viñedos (vineyards) such as the Concha y Toro. Then we flight to Calama, to see the famous Atacama, one of the driest deserts in the world. Our next stop will be on Puerto Mont in the beautiful area known as the Lake Region. Our last visit will be to the region of the Chilean Patagonia a fantastic area with an extraordinary national park known as las Torres del Paine and the Balmaceda & Serrano Glaciers.  ",
-        "countryList": ["chile"],
+        "countryList": ["chile", "patagonia"],
         "dayByDay":[
             {
                 "dayTitle": "Arrival in Santiago",
@@ -2534,10 +2534,166 @@
         ],
         "tourType": "360° itineraries",
         "price": 2900,
-        "paymentLink":"73322059",
+        "paymentLink":"17189501",
         "prices": {
             "priceType": "fixedDeparture",
             "singlesupp": 950,
+            "dblOccupancy": true,
+            "priceNotice": "hotel categories will depend on locally available properties",
+            "departureDates":"October to March"
+        },
+        "included": [
+            "noted meals",
+            "entrance fees",
+            "noted transfers and transfers",
+            "english/spanish speaking guide services",
+            "hotels: double room accommodation with private facilities"
+        ],
+        "notIncluded": [
+            "international/regional flights",
+            "personal travel insurance (REQUIRED)",
+            "personal expenses",
+            "extras",
+            "tips"
+        ]
+    },
+    {
+        "tripName": "Best of Argentina",
+        "id": "best-argentina-12D",
+        "duration": 12,
+        "difficulty": 1,
+        "imgArr": ["https://dsm04pap002files.storage.live.com/y4mU_G2gzj-uDpWPvlNAetmlgbZe0rWLv0FKb6_wPK3tcOfuho698YcnN-M8Z9V5E-c845t-Jnd0fz5sqdY8r8KvDmGx8RoyJxNNvR622owPliIBJ_pbS_KjY6X69C3W5VTSqqfHjkCtVj7ZMNXRH5jdQ3Ys7i5WBRwqdDw5gkbRcGsI_weQrpDexJjak2WOQb3?width=2000&height=1150&cropmode=none",
+            
+        "https://dsm04pap002files.storage.live.com/y4mvN7hGI2WXUaspHjTmAHPbaw-YRhy7Il3elRLcls9YesONsqw_Nwatofr-VZ0STgTmR0OtwhlphH3cAxzzLGmXd3WahuhC96ufr1YVdYUAT9zMNnNfwj47sKcOJE1--8BWjN9h3w9lRgauDUe6qToHoDKG68B6I-x8S0cadsvWoXZTSoF8dBwiA8QIrsHj_lo?width=2000&height=1150&cropmode=none",
+
+        "https://dsm04pap002files.storage.live.com/y4mrSNDE1ha0wlltZ3Rz7LKlzmWwphhkACw0U_W0slHhiBu6JhwqS-FAlzsevjnnJRERDfJdp5TwunwKoQa6LyaoBrwWH48ucGrKhBPX4CjobHgH_hW0sbWg-Qg9Ween6n45J3Nwd6JUzxfuHuyJ1UHcGtlH340Dt7PAjfRDrB-zOec1PSRR_jo1vNy8B0p83J2?width=2000&height=1150&cropmode=none",
+
+        "https://dsm04pap002files.storage.live.com/y4mSCGfQ2EWSm-xhH_bWq_fzZ5ilZyRlK9cj710LjT0i5yX7AyQgvdvM_iaWBlVQ_Ad8P-cEK9PFLUGfJgMzFAl_ky_1nhH5vTFK-thYjOcJp90oLJiam1k-6P6lr9aR7erkv8jpmQQhNaP457-WHunNJV3efhAcLcPASYGf66uqjUxLnkIWY5ALmGxZdwBeZqY?width=2000&height=1150&cropmode=none",
+        
+        "https://dsm04pap002files.storage.live.com/y4myoc90R1M3vRmtFNg0f1_k2NVlLprzQoJX-tOSylm-pfU-pD81Lt-1MZnZyn477Vy6dXTQ5FKHyq8Juojgpz_oqPJb4gtVOLjgNv4vznVFVdGKBOfFOoICrWsSCr8oBO1z3cBKMZDUN_mGNhAlW45DDfXbzJf1VHRQEzphPskq0kK2UBl1UPa3tbdossw7xZO?width=2000&height=1150&cropmode=none",
+
+        "https://dsm04pap002files.storage.live.com/y4me6aOH4yqRlmTPvKzP3gCsW5EB1bMgHfzFUnHuzBSxKZRuv_PaSCxXw7iqQwS-OAJskbuCUmZ-xtFghnUjzmYQXjEhAb0ZJVSHGM94YzKFW2JjEXDDoDZEcJbzzagRW-CUY53mjwYuV2-VIP1MB6yFbgLa76u9npcaj49u9z0wa_Z0oNID2SMVZHcBB50LCrt?width=2000&height=1150&cropmode=none",
+
+        "https://dsm04pap002files.storage.live.com/y4mxE7RXTUeoLuyDJhqd4GeMae3hf0g9is0Yp5aW1xzxNO9eySYDK7wtoqZgwuLjbkg1L_v8Cq0tdEDkuyoLlvn57m0PICS8qWz2At6Q6NF-cODKAT2RK0hR7wE4hZqHgn-mkWpI92wpqWPzQE_syJ6W0Ec5KW7vZpISzH-cFA6mx-ORZE8Wjfs8W3jS6t7Y1ef?width=2000&height=1150&cropmode=none"
+        ],
+        "tripDescription":"in this enjoyable itinerary in Argentina you will explore the most important tourist attractions of this amazing country. We start visiting Buenos Aires, the capital of Argentina. Then we flight to the End of the World, to the city of Ushuaia where we will visit the Tierra del Fuego National Park, where we also will enjoy a spectacular boat tour to observe penguins and other interesting marine life. Our next visit will be to Calafate and to the amazing Glacier Perito Moreno National Park. Our tour will end with a visit to the fabulous Iguazu Waterfalls. A fantastic trip which combines the best of Argentina ",
+        "countryList": ["argentina", "patagonia"],
+        "dayByDay":[
+            {
+                "dayTitle": "Arrival in Buenos Aires",
+                "dayDescription": "Upon your arrival in Buenos Aires, you will be welcomed and transferred to your hotel of choice. We will enjoy of an afternoon, half day city tour of the highlights of the city",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "English speaking Guide Services"
+                ]
+            },
+            {
+                "dayTitle": "Buenos Aires",
+                "dayDescription": "6-hour day tour to visit this magnificent European style city",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Entrance Fees",
+                "Private Transfers",
+                    "English speaking Guide Services"
+                ]
+            },
+            {
+                "dayTitle": "Flight from Buenos Aires to Ushuaia",
+                "dayDescription": "Our guide and transport will take you to the airport in time for your lfight to Patagonia. In the afternoon our team will pick you up and take you to your hotel. Free afternoon in Ushuaia",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Private Transfers",
+                    "English speaking Guide Services"
+                ]
+            },
+            {
+                "dayTitle": "Ushuaia",
+                "dayDescription": "The Tierra del Fuego National Park was home to a fascinating culture known as the Fuegians, and is one of the southernmost regions of the American Continent. Today we will explore this national park, and enjoy the unique Patagonian Lanscapes.",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Private Transfers",
+                    "English speaking Guide Services"
+                ]
+            },
+            {
+                "dayTitle": "Ushuaia",
+                "dayDescription": "Today we will do a half day trip to the Beagle channel, a historically important commerce route with amazing landscapes and impressive fjords. Close to the channel we find a large Pinguin Colony which we will visit in the afternoon wth a shared tour service",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Entrance Fees",
+                    "Private Transfers",
+                    "English speaking Guide Services"
+                ]
+            },
+            {
+                "dayTitle": "Ushuaia – Calafate",
+                "dayDescription": "We will take a flight (1.5 h) to Calafate. Upon arrival our team will take you to your Hotel accommodations and we will have the afternoon free at your leisure",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Private Transfers",
+                    "English speaking Guide Services"
+                ]
+            },
+            {
+                "dayTitle": "Calafate – Glacier Perito Moreno",
+                "dayDescription": "From Calafate, we can have aeasy access to some of Argentina's Patagonia most interesting sites. We will explore the Perito Moreno National Park, including the impressive glacier and surrounding areas full of natural beauty",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Private Transfers",
+                    "English speaking Guide Services"
+                ]
+            },
+            {
+                "dayTitle": "Calafate – Buenos Aires",
+                "dayDescription": "Flight back to Buenos aires, and free afternoon",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Private Transfers",
+                    "English speaking Guide Services"
+                ]
+            },
+            {
+                "dayTitle": "Flight (2 h) from Buenos Aires to Iguazu",
+                "dayDescription": "An early morning transfer will take us to the airport to catch our flight to Iguazu, one of the most impressive waterfall systems in the world. This impressive natural formation  is located within the borders of three south american countries, and is of vital importance to the electricity grid of Argentina, Brazil and Paraguay. Upon arrival, our team will take you to your hotel",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Entrance Fees",
+                    "English speaking Guide Services"
+                ]
+            },
+            {
+                "dayTitle": "Iguazu",
+                "dayDescription": "We will begin out Iguazu Great Adventure Tour & Visit the Argentinian side of the Iguazu Waterfalls. Using the walkways and small local boats we will get close to the waterfall",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Entrance Fees",
+                    "English speaking Guide Services"
+                ]
+            },
+            {
+                "dayTitle": "Flight Iguazu – Buenos Aires",
+                "dayDescription": "Our team will take you to the airport and return back to Buenos Aires. In the evening we will witness one of South america's most delicate traditions: Tango, with an incredible dinner and show combination.",
+                "dayInclusions": [
+                    "hotel breakfast",
+                    "english/spanish speaking trekking guide services",
+                    "farewell dinner + Tango Show"
+                ]
+            },
+                        {
+                "dayTitle": "Buenos Aires",
+                "dayDescription": "After breakfast transfer to the airport for your flight back home",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Private Transfers"
+                ]
+            }
+        ],
+        "tourType": "360° itineraries",
+        "price": 1900,
+        "paymentLink":"28451499",
+        "prices": {
+            "priceType": "fixedDeparture",
+            "singlesupp": 750,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties",
             "departureDates":"October to March"

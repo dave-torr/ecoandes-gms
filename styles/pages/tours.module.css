@@ -369,6 +369,26 @@
     margin-top: 24px;
 }
 
+.emptySearchResult{
+    text-align: center;
+    font-size: 1.6em;
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.placeholderCTA{
+    border: solid 3px var(--pop-orange);
+    width: fit-content;
+    margin: 12px;
+    text-transform: uppercase;
+    padding: 9px 12px;
+    color: var(--pop-orange);
+    font-weight: 600;
+}
+
 @media (max-width: 1080px) {
 
     .tourPageImageCont{

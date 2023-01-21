@@ -24,12 +24,13 @@ function TourPage({ aTour }){
     const tourHead=(theTour)=>{
         return(<>
         <Head>
-            <title>{theTour.tripName}: an EcoAndes Experience </title>
-            <meta name="description" content={`A ${theTour.tourType} tour in Peru, by Latin Travel Collection`} />
+            <title>{theTour.tripName}: an LTC Experience </title>
+            <meta name="description" content={`A ${theTour.tourType} tour in South America, by Latin Travel Collection`} />
             <meta charSet="utf-8"/>
-            <meta name="keywords" content="Peru, Machu Picchu Tours, Cusco Tours, Huaraz, Huaraz Tours"/>
+            <meta name="keywords" content="
+            Soith America, Latin Travel Collection, Patagonia, Galapagos"/>
             <meta name="author" content="David Torres" />
-            <meta name="copyright" content="EcoAndes Travel 2022" />
+            <meta name="copyright" content="LTC 2023" />
         </Head>
         </>)
     }
