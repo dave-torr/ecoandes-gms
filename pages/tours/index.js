@@ -48,10 +48,9 @@ import Head from "next/head"
 // // additional items, pushed into a new arr, replaced in local storage
 /////////////////////////////////////////////////////////////////
 
-// FILTERS:
-//  // Country
+// FILTER:
 //  // Tour Type
-//  // Category
+//  // destination
 
 // ARRANGE BY
 //  OP:
@@ -59,25 +58,15 @@ import Head from "next/head"
 //  // number of days
 //  // price
 
-
 //  ver. 2
 //  // departure date?
 
-
-    // const priceDisplayer=(priceObj)=>{
-    //     if(priceObj.priceType==="fixedDeparture"){
-    //         return(<>from usd ${priceObj.pricePerPerson}.- per person</>)
-    //     } else {
-    //         return (<>from usd ${priceObj['4stars'][9]}.- per person</>)
-    //     }
-    // }
 
 
 let tourTypes = ["all types", "historic", "360° itineraries", "climbing", "trekking" ]
 
 let operationRegions= ['ecuador', 'galapagos', 'peru', 'amazon', "chile", "argentina", "patagonia"]
 
-let favoriteTours;
 
 export default function TourPage(){
 
@@ -85,12 +74,17 @@ export default function TourPage(){
     const [filteredTourArr, setFilteredTourArr]= useState(TourData)
     const [destinationList, setDestList] = useState([])
 
+    // work around filters:
+    // currently destination filter works. if dest, filter by destination, else, filter all tours.
+    // add filter reset BTN
+
+
     useEffect(()=>{
             if(tourTypeFilter){
                 if (tourTypeFilter==="all types"){
                     setFilteredTourArr(TourData)
                 } else {
-                    let workerTourArr = TourData.filter(elem => elem.tourType===tourTypeFilter)
+                    let workerTourArr = filteredTourArr.filter(elem => elem.tourType===tourTypeFilter)
                     setFilteredTourArr(workerTourArr)
                 }
             } else if (!tourTypeFilter){
