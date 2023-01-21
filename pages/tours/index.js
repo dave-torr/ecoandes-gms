@@ -170,7 +170,7 @@ export default function TourPage(){
     ///////////////////////////////////////////////
     // Sort Functions
     const [sortContr, setSortContr]=useState("duration")
-    const [sortOrder, setSortOrder]=useState("descending")
+    const [sortOrder, setSortOrder]=useState("ascending")
     const [fullscreenCont, setFullscreenCont]=useState(false)
 
     const sortingUI=()=>{
@@ -280,11 +280,7 @@ export default function TourPage(){
     }
 
     const tourHighlightDisp=(aTrip)=>{
-
-        // console.log(TourData)
-
         if(TourData){
-
         return(<>
             <div> 
                 <div className={styles.tourHighlightCont}> 

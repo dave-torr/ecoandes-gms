@@ -17,21 +17,8 @@ import InsertLinkIcon from '@mui/icons-material/InsertLink';
 import MapIcon from '@mui/icons-material/Map';
 import HikingIcon from '@mui/icons-material/Hiking';
 import TerrainIcon from '@mui/icons-material/Terrain';
-import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
-
-
-
-
-
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import AirplaneTicketIcon from '@mui/icons-material/AirplaneTicket';
-import LinearScaleIcon from '@mui/icons-material/LinearScale';
-
-
 
 import PanToolAltIcon from '@mui/icons-material/PanToolAlt';
-
 
 import Filter1Icon from '@mui/icons-material/Filter1';
 import Filter2Icon from '@mui/icons-material/Filter2';
@@ -42,9 +29,6 @@ import Filter5Icon from '@mui/icons-material/Filter5';
 import LTCTypeface from "./../public/assets/logos/LTCTypeface.png"
 
 import Dialog from '@mui/material/Dialog';
-
-let theLocalStorage
-
 
 export function ATourCard(props){
 
@@ -222,13 +206,10 @@ export function TourTypeCard(props){
         </span>
     </>)
 }
-
-
-
+////////////////////////////////////////////////
+////////////////////////////////////////////////
 export function TourDisplayer(props){
-
     let aTour = props.aTour
-
     useEffect(()=>{
         // let sampleObj = {
         //     "key1": "the trip",
@@ -237,7 +218,6 @@ export function TourDisplayer(props){
         // let strngifiedObj = JSON.stringify(sampleObj)
         // localStorage.setItem("theTrips", strngifiedObj)
     },[])
-
     const [imgDialogContr, srtImgDialogcontr]= useState(false)
     const [selectedImg, setSelectedImg]=useState(false)
 
@@ -571,14 +551,8 @@ export function TourDisplayer(props){
         {tourFooter()}
     </>)
 }
-
-
-
-
-
-
-
-
+////////////////////////////////////////////////
+////////////////////////////////////////////////
 export function SquaredTourCard(props){
     if(props.tripName){
     return(<>
@@ -604,3 +578,4 @@ export function SquaredTourCard(props){
     </>)
     } else return(<> cu cu </>)
 }
+
