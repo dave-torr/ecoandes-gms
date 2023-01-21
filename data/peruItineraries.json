@@ -2398,5 +2398,163 @@
             "extras",
             "tips"
         ]
+    },
+    {
+        "tripName": "Best of Chile",
+        "id": "best-chile-12D",
+        "duration": 12,
+        "difficulty": 1,
+        "imgArr": ["https://dsm04pap002files.storage.live.com/y4mnUh-RduaLNRW1AVpZ_Fd08ViS1R3G2D5ZYfJYhn-SQf-i-eSpeL8i02oFE_zVAwKeyMErcjm5EErV-Ty34PLywrnTzqYF3YOUTQUypBCelMp7IQfIe1A-lYfL_xL3BtIP7V5ffftzNSPYYNSEhV3AdOAfA5aQdqX95pL5sq0kToQkYZ54g7Hkx16l4NdPhGi?width=2000&height=1150&cropmode=none",
+            
+        "https://dsm04pap002files.storage.live.com/y4mbEfMmo2ZAZtdXyryr4Y-1Jg4B9HADNwX_iDHp3f04HEqc5hVYz381_tXGfZ04hDJBLZSvReZxlXaRj5Gh7Ogkdq06YnUQnB2tGE2Y3vPRYXt5x7xbqf7PENblee2s_tmT0x7dm8QY-zQwJytWJh-BadFdCAypbgcyxNKQKN7h-6eKop6fezfG3lFd4JbDr1-?width=2000&height=1150&cropmode=none",
+
+        "https://dsm04pap002files.storage.live.com/y4mbNNKwWcd5M84lGr1j6cl8Q4Xm7DlxbMaiUgBgF5udt5GXZOLA6JP7gv4xDF9av5qtflRUIojmw8XMQa-JjqdoGRrfm_3OS5D0iF5IaO2vXIzeZHupTNKOqz020zc6OsU2RRwhs_7f2tvCc9T7fO8-Dr0El4N-vOdUe1BG4_oRfBbWN6R9denNmUaTaFS6xcR?width=2000&height=1150&cropmode=none",
+
+        "https://dsm04pap002files.storage.live.com/y4m046Uou5CPXxZFu53JDLaI2BtitFrpUiCD4ENiqphH5a9gBDaF4Q0KLGvx5XyNmWrTD5g0ApETiQYhoNo6u4DeEj27UQ86PuCrdP8YrthD1LPbAZunolZDWnqvvcAUTnuvYDMstovXEYrHpUtzVWYpKjIEEmUEJyMz2wyDkBzNbEVyQikmlSyQgbSSHYa_GDH?width=1000&height=575&cropmode=none",
+        
+        "https://dsm04pap002files.storage.live.com/y4meoU6NvH-gbVlN4pHkyhX52hF1tW_AkJ0C8G7XGOnq6zFcmfX8ZrfyRN4LhyHqcMNFVjE63vislpo2t8ZYhJDWFjEYdRPniRJgWRpMPUg427bEHV7ltkUMyzslCs0Y6JeyKBY3VZCU0B8QeDfTOmQ5nw-X9G9eIOmjLvA46sF-nrr9A5tpEKUiKALJFe4vQug?width=2000&height=1150&cropmode=none",
+
+        "https://dsm04pap002files.storage.live.com/y4mZQu3edz3WLRn6PTQQnrybd-Z-COIndKEgA1ZQKyqSeV7GEr8hLxjhMdodx_WNzQqFcTTBqd3febhiatQq79vtOUWvIVeYCjP_NuFo6V_ftXqh1ljbEtWTp4vUoPNuUSPCFHZiB6QRVpu2vywX-oN4UQbOHPGTEWb7C4tJyqal0aj-ELyNOCsCJnl4IM_OB1_?width=1000&height=575&cropmode=none",
+
+        "https://dsm04pap002files.storage.live.com/y4mEaLqqjcyEmk1SyfGX5HEdw7A_VCbD_vcSr5vodVztxJqX5jwMDRirtrWXztVOdXTvkeDajI8x-FYqwHpEejO6Qooc2ydA3xp2hRixcKAFKHhUH4BdbI-ZzduAHkbYNXjS4khYLqmBCnKKrAH0tBeivdtriq5dOsmQz6RzQK8jyrS7pkyPAnmMcj1kYyJdbnS?width=2000&height=1150&cropmode=none"
+        ],
+        "tripDescription":"We will arrive to Santiago, the capital of Chile, a lovely city located at the foothills of the Andes and where, nearby, we will find spectacular viñedos (vineyards) such as the Concha y Toro. Then we flight to Calama, to see the famous Atacama, one of the driest deserts in the world. Our next stop will be on Puerto Mont in the beautiful area known as the Lake Region. Our last visit will be to the region of the Chilean Patagonia a fantastic area with an extraordinary national park known as las Torres del Paine and the Balmaceda & Serrano Glaciers.  ",
+        "countryList": ["chile"],
+        "dayByDay":[
+            {
+                "dayTitle": "Arrival in Santiago",
+                "dayDescription": "Upon your arrival in Santiago, you will be welcomed and transferred to your hotel of choice. We will enjoy of an afternoon, half day city tour of the highlights of the city",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "English speaking Guide Services"
+                ]
+            },
+            {
+                "dayTitle": "Flight from Santiago – Calama – San Pedro de Atacama",
+                "dayDescription": "The Atacama desert if known as one of the driest places on planet earth, attracting the interest of the scientific community for years. In the morning we will take a flight to Calama, the main hub for entry to the Atacama desert. Here we will take our transportation to head out to San Pedro de Atacama, explore the incredible nadscapes fo the moon valley and overnight at a local hotel",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Lunch",
+                    "Entrance Fees",
+                    "Private Transfers",
+                    "English speaking Guide Services"
+                ]
+            },
+            {
+                "dayTitle": "San Pedro de Atacama",
+                "dayDescription": "This day we will explore the 'altiplano' region of the Atacama desert, explore the high altitude andean lagoons, and observe the incredible diversity of creatures inhabiting this unique habitat. We will stop by a local restaurant for food in the afternoon while exploring this incredible landscape",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Lunch",
+                    "Private Transfers",
+                    "English speaking Guide Services"
+                ]
+            },
+            {
+                "dayTitle": "San Pedro de Atacama",
+                "dayDescription": "The whole region of Atacama is full of volcanic activity involving volcanoes, geysers, fumaroles, mud volcanos and hot psrings. This day we will explore the area know an El Tatio, learn about the unique volcanic activity happening int his remote area, and even enjoy of a dip in the delicious hot spring waters of the region",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Lunch",
+                    "Private Transfers",
+                    "English speaking Guide Services"
+                ]
+            },
+            {
+                "dayTitle": "San Pedro de Atacama – Calama – Santiago – Puerto Montt",
+                "dayDescription": "after breakfast we will head back to Calama to catch our flight back to Santiago, and to connect to Puerto Montt. Upon your arrival, our team will pick you up and transfer you to Puerto Varas.",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Private Transfers",
+                    "English speaking Guide Services"
+                ]
+            },
+            {
+                "dayTitle": "Puerto Varas",
+                "dayDescription": "The area of Puerto Montt is known as the province of the lakes, and is surrounded by gorgeous scenery, cristaline andean lakes and volcanoes. Today we will visit lake Llanquihue, and Frutillar, two highlights of the area, and enjoy exploring this remote location close to the sea.",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Private Transfers",
+                    "English speaking Guide Services"
+                ]
+            },
+            {
+                "dayTitle": "Puerto Varas",
+                "dayDescription": "The Osorno Volcano is known for marking the northern end of the Patagonia Region in Chile. Towering quietly over lake Llanquihue, this scenic sight will be part of our visit today. We will explore the Mountain Center, and the V. Perez National park before returning back to our hotel.",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Lunch",
+                    "Private Transfers",
+                    "English speaking Guide Services"
+                ]
+            },
+            {
+                "dayTitle": "Puerto Varas - Puerto Natales",
+                "dayDescription": "Flight to Punta Arenas and transfer to Puerto Natales",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Private Transfers",
+                    "English speaking Guide Services"
+                ]
+            },
+            {
+                "dayTitle": "Puerto Natales",
+                "dayDescription": "Ship tour (11 to 12 hours) to Balmaceda & Serrano Glaciers full day group tour",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Entrance Fees",
+                    "English speaking Guide Services"
+                ]
+            },
+            {
+                "dayTitle": "Puerto Natales",
+                "dayDescription": "Full day (10 to 12 hours) tour to the spectacular Torres del Paine National Park",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Entrance Fees",
+                    "English speaking Guide Services"
+                ]
+            },
+            {
+                "dayTitle": "Puerto Natales - Santiago",
+                "dayDescription": "Overland transfer to Punta Arenas, and flight to Santkago. Transfer services included",
+                "dayInclusions": [
+                    "hotel breakfast",
+                    "english/spanish speaking trekking guide services"
+                ]
+            },
+                        {
+                "dayTitle": "Santiago",
+                "dayDescription": "After breakfast transfer to the airport for your flight back home",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Private Transfers"
+                ]
+            }
+        ],
+        "tourType": "360° itineraries",
+        "price": 2900,
+        "paymentLink":"73322059",
+        "prices": {
+            "priceType": "fixedDeparture",
+            "singlesupp": 950,
+            "dblOccupancy": true,
+            "priceNotice": "hotel categories will depend on locally available properties",
+            "departureDates":"October to March"
+        },
+        "included": [
+            "noted meals",
+            "entrance fees",
+            "noted transfers and transfers",
+            "english/spanish speaking guide services",
+            "hotels: double room accommodation with private facilities"
+        ],
+        "notIncluded": [
+            "international/regional flights",
+            "personal travel insurance (REQUIRED)",
+            "personal expenses",
+            "extras",
+            "tips"
+        ]
     }
 ]

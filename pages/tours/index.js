@@ -73,9 +73,9 @@ import Head from "next/head"
     // }
 
 
-let tourTypes = ["all types", "historic", "360° itineraries", "climbing", "trekking", ]
+let tourTypes = ["all types", "historic", "360° itineraries", "climbing", "trekking" ]
 
-let operationRegions= ['ecuador', 'galapagos', 'peru' , 'amazon']
+let operationRegions= ['ecuador', 'galapagos', 'peru' , 'amazon', "chile", "argentina"]
 
 let favoriteTours;
 

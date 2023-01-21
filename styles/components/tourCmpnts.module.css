@@ -76,19 +76,29 @@
     width: 500px;
 }
 
-.sqTourTitle{
+.aSquaredCont img{
+    filter: brightness(70%);
+    transition: all ease-in 0.3s;
+}
+
+.aSquaredCont img:hover{
+    filter: brightness(90%)
+}
+
+.sqrTourTitle{
     font-size: 1.5em;
     position: absolute;
-    width: 433px;
-    height: 70px;
-    bottom: 12px;
+    width: 500px;
+    height: 80px;
+    bottom: 24px;
     padding: 6px 15px;
     color: white;
-    background-color: rgb(0, 0, 0, 0.46);
     text-transform: uppercase;
     letter-spacing: 1px;
     display: flex;
     align-items: center;
+    text-shadow: 2px 2px black;
+    
 }
 
 
@@ -1125,8 +1135,8 @@
     .dialogImgCont{
         width: 100%;
     }
-    .sqTourTitle{
-        width: 43%;
+    .sqrTourTitle{
+        width: 41vw;
         height: 99px;
     }
 
@@ -1215,12 +1225,18 @@
     .iconDiffDisp span{
         width: fit-content;
     }
-
-    .sqTourTitle{
+    .aSquaredCont img{
+        filter: unset;
+    }
+    .aSquaredCont{
+        margin: 0;
+    }
+    .sqrTourTitle{
         font-size: 1em;
-        height: 86px;
+        padding: 0 12px;
         position: unset;
         width: 100%;
-        transform: translate(10px 10px);
+        background-color: rgb(52, 52, 52);
+        transform: translateY(-3px);
     }
 }

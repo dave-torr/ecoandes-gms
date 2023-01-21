@@ -9,38 +9,39 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
 }
 
 .tourHighlightCont{
     position: relative;
     z-index: 33;
     background-color: var(--whitesmoke-background);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 99vw;
+
 }
 
 .tourHighlightBar{
-    background-color: var(--whitesmoke-background);
-    color: black;
     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.364);
-    padding: 3px 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 98vw;
+    width: 100%;
     height: 50px;
-    margin-bottom: 33px;
     font-weight: 800;
     letter-spacing: 3px;
     text-transform: uppercase;
-    overflow-x: unset;
     z-index: 33;
-
 }
 
 .sqrHighlightCont{
     display: flex;
     width: 100%;
     justify-content: space-around;
-    padding: 10px 10px;
+    padding: 30px 20px;
 }
 
 .UIBTNCont{
@@ -389,9 +390,7 @@
         width: 100%;
         padding: 0 18px;
     }
-    .sqrHighlightCont{
-        width: 99vw;
-    }
+    
 }
 @media (max-width: 768px) {
 
@@ -447,6 +446,9 @@
     .tourPageImageCont{
         margin-top: 30vh;
 
+    }
+    .sqrHighlightCont{
+        padding: 0;
     }
 
 }

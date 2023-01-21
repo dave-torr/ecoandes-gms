@@ -595,7 +595,7 @@ export function SquaredTourCard(props){
                 blurDataURL={props.imgSrc}
                 placeholder="blur"                
             />
-            <div className={styles.sqTourTitle}>
+            <div className={styles.sqrTourTitle}>
                 {props.tripName} 
                 </div>
         </div>
