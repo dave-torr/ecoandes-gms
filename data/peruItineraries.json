@@ -135,6 +135,7 @@
         "tourType": "360° itineraries",
         "price": 1220,
         "paymentLink":"01492372",
+        "weTravelURL": "https://www.wetravel.com/trips/inca-trail-360-expedition-latin-travel-collection-cusco-01492372",
         "prices": {
             "priceType": "fixedDeparture",
             "singlesupp": 280,
@@ -244,6 +245,7 @@
         "startingPlace": "Cusco",
         "price": 745,
         "paymentLink":"24554915",
+        "weTravelURL": "https://www.wetravel.com/trips/classic-inca-trail-latin-travel-collection-cusco-24554915",
         "prices": {
             "priceType": "fixedDeparture",
             "singlesupp": 50,
@@ -355,6 +357,7 @@
         "startingPlace": "Cusco",
         "price": 580,
         "paymentLink":"81832002",
+        "weTravelURL": "https://www.wetravel.com/trips/classic-choquequirao-latin-travel-collection-cusco-81832002",
         "prices": {
             "priceType": "fixedDeparture",
             "singlesupp": 50,
@@ -429,6 +432,7 @@
         "startingPlace": "Cusco",
         "price": 545,
         "paymentLink":"54252684",
+        "weTravelURL": "https://www.wetravel.com/trips/inca-trail-spotlight-latin-travel-collection-aguas-calientes-54252684",
         "prices": {
             "priceType": "fixedDeparture",
             "singlesupp": 45,
@@ -512,6 +516,7 @@
         "startingPlace": "Cusco",
         "price": 670,
         "paymentLink":"74044880",
+        "weTravelURL": "https://www.wetravel.com/trips/sacred-valley-inca-trail-spotlight-latin-travel-collection-cusco-74044880",
         "prices": {
             "priceType": "fixedDeparture",
             "singlesupp": 90,
@@ -633,6 +638,7 @@
         "startingPlace": "Cusco",
         "price": 690,
         "paymentLink":"29016006",
+        "weTravelURL": "https://www.wetravel.com/trips/salkantay-to-machu-picchu-trek-latin-travel-collection-cusco-29016006",
         "prices": {
             "priceType": "fixedDeparture",
             "singlesupp": 90,
@@ -845,6 +851,7 @@
         "startingPlace": "Cusco",
         "price": 1790,
         "paymentLink":"29411070",
+        "weTravelURL": "https://www.wetravel.com/trips/inca-trail-ausangate-trekking-latin-travel-collection-aguas-calientes-29411070",
         "prices": {
             "priceType": "fixedDeparture",
             "singlesupp": 450,
@@ -953,6 +960,7 @@
         "startingPlace": "Cusco",
         "price": 600,
         "paymentLink":"53616196",
+        "weTravelURL": "https://www.wetravel.com/trips/lares-to-machu-picchu-trek-latin-travel-collection-cusco-53616196",
         "prices": {
             "priceType": "fixedDeparture",
             "singlesupp": 80,
@@ -1046,7 +1054,6 @@
         "tourType": "climbing",
         "startingPlace": "Huaraz",
         "price": 2490,
-        "paymentLink":"",
         "prices": {
             "priceType": "privateDeparture",
             "singlesupp": 900,
@@ -1181,7 +1188,6 @@
         "tourType": "climbing",
         "startingPlace": "Huaraz",
         "price": 2490,
-        "paymentLink":"",
         "prices": {
             "priceType": "privateDeparture",
             "singlesupp": 900,
@@ -1350,7 +1356,7 @@
         "tourType": "climbing",
         "startingPlace": "Huaraz",
         "price": 2490,
-        "paymentLink":"",
+
         "prices": {
             "priceType": "privateDeparture",
             "singlesupp": 900,
@@ -1501,7 +1507,6 @@
         "tourType": "climbing",
         "startingPlace": "Cusco",
         "price": 2490,
-        "paymentLink":"",
         "prices": {
             "priceType": "privateDeparture",
             "singlesupp": 900,
@@ -1613,6 +1618,7 @@
         "tourType": "360° itineraries",
         "price": 1750,
         "paymentLink":"66517880",
+        "weTravelURL": "https://www.wetravel.com/trips/peru-spotlight-latin-travel-collection-cusco-66517880",
         "prices": {
             "priceType": "fixedDeparture",
             "singlesupp": 650,
@@ -1774,6 +1780,7 @@
         "tourType": "historic",
         "price": 4880,
         "paymentLink":"73822745",
+        "weTravelURL": "https://www.wetravel.com/trips/machu-picchu-the-galapagos-islands-latin-travel-collection-puerto-ayora-73822745",
         "prices": {
             "priceType": "fixedDeparture",
             "singlesupp": 1275,
@@ -1937,9 +1944,10 @@
                 ]
             }
         ],
-        "tourType": "historic",
+        "tourType": "nature",
         "price": 3220,
         "paymentLink":"40307514",
+        "weTravelURL": "https://www.wetravel.com/trips/ecuador-galapagos-island-hopping-latin-travel-collection-puerto-ayora-40307514",
         "prices": {
             "priceType": "fixedDeparture",
             "singlesupp": 1055,
@@ -2073,9 +2081,10 @@
                 ]
             }
         ],
-        "tourType": "historic",
+        "tourType": "nature",
         "price": 6460,
         "paymentLink":"33424831",
+        "weTravelURL": "https://www.wetravel.com/trips/galapagos-islands-cruise-otavalo-quito-latin-travel-collection-cusco-33424831",
         "prices": {
             "priceType": "fixedDeparture",
             "singlesupp": 3850,
@@ -2213,9 +2222,10 @@
                 ]
             }
         ],
-        "tourType": "historic",
+        "tourType": "nature",
         "price": 900,
         "paymentLink":"59021713",
+        "weTravelURL": "https://www.wetravel.com/trips/amazon-jungle-spotlight-latin-travel-collection-tena-59021713",
         "prices": {
             "priceType": "fixedDeparture",
             "singlesupp": 310,
@@ -2376,6 +2386,7 @@
         "tourType": "360° itineraries",
         "price": 2215,
         "paymentLink":"73322059",
+        "weTravelURL": "https://www.wetravel.com/trips/best-of-peru-latin-travel-collection-lima-73322059",
         "prices": {
             "priceType": "fixedDeparture",
             "singlesupp": 770,
@@ -2405,17 +2416,11 @@
         "duration": 12,
         "difficulty": 1,
         "imgArr": ["https://dsm04pap002files.storage.live.com/y4mnUh-RduaLNRW1AVpZ_Fd08ViS1R3G2D5ZYfJYhn-SQf-i-eSpeL8i02oFE_zVAwKeyMErcjm5EErV-Ty34PLywrnTzqYF3YOUTQUypBCelMp7IQfIe1A-lYfL_xL3BtIP7V5ffftzNSPYYNSEhV3AdOAfA5aQdqX95pL5sq0kToQkYZ54g7Hkx16l4NdPhGi?width=2000&height=1150&cropmode=none",
-            
         "https://dsm04pap002files.storage.live.com/y4mbEfMmo2ZAZtdXyryr4Y-1Jg4B9HADNwX_iDHp3f04HEqc5hVYz381_tXGfZ04hDJBLZSvReZxlXaRj5Gh7Ogkdq06YnUQnB2tGE2Y3vPRYXt5x7xbqf7PENblee2s_tmT0x7dm8QY-zQwJytWJh-BadFdCAypbgcyxNKQKN7h-6eKop6fezfG3lFd4JbDr1-?width=2000&height=1150&cropmode=none",
-
         "https://dsm04pap002files.storage.live.com/y4mbNNKwWcd5M84lGr1j6cl8Q4Xm7DlxbMaiUgBgF5udt5GXZOLA6JP7gv4xDF9av5qtflRUIojmw8XMQa-JjqdoGRrfm_3OS5D0iF5IaO2vXIzeZHupTNKOqz020zc6OsU2RRwhs_7f2tvCc9T7fO8-Dr0El4N-vOdUe1BG4_oRfBbWN6R9denNmUaTaFS6xcR?width=2000&height=1150&cropmode=none",
-
         "https://dsm04pap002files.storage.live.com/y4m046Uou5CPXxZFu53JDLaI2BtitFrpUiCD4ENiqphH5a9gBDaF4Q0KLGvx5XyNmWrTD5g0ApETiQYhoNo6u4DeEj27UQ86PuCrdP8YrthD1LPbAZunolZDWnqvvcAUTnuvYDMstovXEYrHpUtzVWYpKjIEEmUEJyMz2wyDkBzNbEVyQikmlSyQgbSSHYa_GDH?width=1000&height=575&cropmode=none",
-        
         "https://dsm04pap002files.storage.live.com/y4meoU6NvH-gbVlN4pHkyhX52hF1tW_AkJ0C8G7XGOnq6zFcmfX8ZrfyRN4LhyHqcMNFVjE63vislpo2t8ZYhJDWFjEYdRPniRJgWRpMPUg427bEHV7ltkUMyzslCs0Y6JeyKBY3VZCU0B8QeDfTOmQ5nw-X9G9eIOmjLvA46sF-nrr9A5tpEKUiKALJFe4vQug?width=2000&height=1150&cropmode=none",
-
         "https://dsm04pap002files.storage.live.com/y4mZQu3edz3WLRn6PTQQnrybd-Z-COIndKEgA1ZQKyqSeV7GEr8hLxjhMdodx_WNzQqFcTTBqd3febhiatQq79vtOUWvIVeYCjP_NuFo6V_ftXqh1ljbEtWTp4vUoPNuUSPCFHZiB6QRVpu2vywX-oN4UQbOHPGTEWb7C4tJyqal0aj-ELyNOCsCJnl4IM_OB1_?width=1000&height=575&cropmode=none",
-
         "https://dsm04pap002files.storage.live.com/y4mEaLqqjcyEmk1SyfGX5HEdw7A_VCbD_vcSr5vodVztxJqX5jwMDRirtrWXztVOdXTvkeDajI8x-FYqwHpEejO6Qooc2ydA3xp2hRixcKAFKHhUH4BdbI-ZzduAHkbYNXjS4khYLqmBCnKKrAH0tBeivdtriq5dOsmQz6RzQK8jyrS7pkyPAnmMcj1kYyJdbnS?width=2000&height=1150&cropmode=none"
         ],
         "tripDescription":"We will arrive to Santiago, the capital of Chile, a lovely city located at the foothills of the Andes and where, nearby, we will find spectacular viñedos (vineyards) such as the Concha y Toro. Then we flight to Calama, to see the famous Atacama, one of the driest deserts in the world. Our next stop will be on Puerto Mont in the beautiful area known as the Lake Region. Our last visit will be to the region of the Chilean Patagonia a fantastic area with an extraordinary national park known as las Torres del Paine and the Balmaceda & Serrano Glaciers.  ",
@@ -2535,6 +2540,7 @@
         "tourType": "360° itineraries",
         "price": 2900,
         "paymentLink":"17189501",
+        "weTravelURL": "https://www.wetravel.com/trips/best-of-chile-latin-travel-collection-santiago-17189501",
         "prices": {
             "priceType": "fixedDeparture",
             "singlesupp": 950,
@@ -2691,6 +2697,7 @@
         "tourType": "360° itineraries",
         "price": 1900,
         "paymentLink":"28451499",
+        "weTravelURL": "https://www.wetravel.com/trips/best-of-argentina-latin-travel-collection-buenos-aires-28451499",
         "prices": {
             "priceType": "fixedDeparture",
             "singlesupp": 750,
