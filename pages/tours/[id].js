@@ -30,7 +30,24 @@ function TourPage({ aTour }){
             <meta name="keywords" content="
             Soith America, Latin Travel Collection, Patagonia, Galapagos"/>
             <meta name="author" content="David Torres" />
-            <meta name="copyright" content="LTC 2023" />
+            <meta name="copyright" content="L.T.C. 2023" />
+
+
+            {/* OG META TAGA */}
+            <meta property="og:locale" content="en_US" />
+            <meta property="og:type" content="article" />
+            <meta property="og:title" content={`A ${theTour.tourType} tour`} />
+            <meta property="og:description" content={`${theTour.tourType} experience, is offered by Latin Travel Collection, the best of South america`} />
+            <meta property="og:url" content="https://ecoandes-gms.vercel.app/tours/machu-picchu-galapagos-hopping-13D" />
+            <meta property="og:site_name" content="Latin Travel Collection Itinerary" />
+            <meta property="article:published_time" content="2023-02-02T20:11:11+00:00" />
+            <meta property="article:published_time" content="2023-02-02T20:11:11+00:00" />
+            <meta property="og:image" content={theTour.imgArr[0]} />
+            <meta property="og:image:width" content="575" />
+            <meta property="og:image:height" content="1000" />
+            <meta property="og:image:type" content="image/jpg" /> 
+
+
         </Head>
         </>)
     }
