@@ -36,8 +36,8 @@ function TourPage({ aTour }){
             {/* OG META TAGA */}
             <meta property="og:locale" content="en_US" />
             <meta property="og:type" content="article" />
-            <meta property="og:title" content={`A ${theTour.tourType} tour`} />
-            <meta property="og:description" content={`${theTour.tourType} experience, is offered by Latin Travel Collection, the best of South america`} />
+            <meta property="og:title" content={`${theTour.tripName} tour`} />
+            <meta property="og:description" content={`${theTour.tripName}: an experience offered by Latin Travel Collection, the best of South America`} />
             <meta property="og:url" content="https://ecoandes-gms.vercel.app/tours/machu-picchu-galapagos-hopping-13D" />
             <meta property="og:site_name" content="Latin Travel Collection Itinerary" />
             <meta property="article:published_time" content="2023-02-02T20:11:11+00:00" />
