@@ -63,9 +63,9 @@ import Head from "next/head"
 
 
 
-let tourTypes = ["all types", "historic", "360° itineraries", "climbing", "trekking" ]
+let tourTypes = ["all types", "historic", "nature", "360° itineraries", "climbing", "trekking" ]
 
-let operationRegions= ['ecuador', 'galapagos', 'peru', 'amazon', "chile", "argentina", "patagonia"]
+let operationRegions= ['galapagos', "patagonia", 'amazon', 'peru', "chile", "argentina", 'ecuador', ]
 
 
 export default function TourPage(){
@@ -272,7 +272,6 @@ export default function TourPage(){
         </div>
         </>)
     }
-
     const tourHighlightDisp=(aTrip)=>{
         if(TourData){
         return(<>
@@ -280,10 +279,8 @@ export default function TourPage(){
                 <div className={styles.tourHighlightCont}> 
                     <div className={styles.tourHighlightBar}>Experience South America </div>
                     <div className={styles.sqrHighlightCont}>
-
                         
                         <SquaredTourCard tripName={TourData[13].tripName} imgSrc={TourData[13].sqrImg} id={TourData[13].id}/>
-
 
                         <SquaredTourCard tripName={TourData[16].tripName} imgSrc={TourData[16].sqrImg} id={TourData[16].id}/>
 

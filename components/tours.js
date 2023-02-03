@@ -182,7 +182,7 @@ export function TourTypeCard(props){
             case "nature":
             return(<> 
             <div className={styles.tourInfoDescriptor}>
-                <strong>Nature-focused</strong> itineraries include visits to some of the most important archeological sites of a region, breathtaking landscapes, and a strong focus on the rich local cultures and the incredible planet that we live in.
+                <strong>Nature-focused</strong> itineraries have wildlife and nature as front and center. Our focus is to explore the wild places and amazing landscapes that this beautiful world has to offer.
             </div></>)
 
             case "climbing":
@@ -210,14 +210,21 @@ export function TourTypeCard(props){
 ////////////////////////////////////////////////
 export function TourDisplayer(props){
     let aTour = props.aTour
-    useEffect(()=>{
+
+
+    // Save Local Likes!!!
+
+    // useEffect(()=>{
         // let sampleObj = {
         //     "key1": "the trip",
         //     "key2": "some other"
         // }
         // let strngifiedObj = JSON.stringify(sampleObj)
         // localStorage.setItem("theTrips", strngifiedObj)
-    },[])
+    // },[])
+
+
+
     const [imgDialogContr, srtImgDialogcontr]= useState(false)
     const [selectedImg, setSelectedImg]=useState(false)
 
@@ -284,7 +291,7 @@ export function TourDisplayer(props){
             }
         }
 
-        let theDays = tourDayByDay.map((elem,i)=> 
+    let theDays = tourDayByDay.map((elem,i)=> 
         <React.Fragment key={i}>
             <Accordion className={styles.accordionCont}>
                 <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" > 
@@ -298,11 +305,12 @@ export function TourDisplayer(props){
                 </AccordionDetails>
             </Accordion>
         </React.Fragment>)
+
+
         return(<>
-            {accordionDisplayer("Day by Day", theDays, false)}
+            {accordionDisplayer("Day by Day", theDays, true)}
             <br/>
-            <br/>
-            <br/>
+
         </>)
     }
 
@@ -316,7 +324,7 @@ export function TourDisplayer(props){
             srtImgDialogcontr(true)
         }}>
 
-            {/* {console.log(props.imgData)} */}
+            {console.log(props.imgData, "cucu")}
 
             <Image
                 src={props.imgData}
@@ -369,7 +377,12 @@ export function TourDisplayer(props){
                             alt={selectedImg.alt}      
                             width={1800}
                             height={1125}
+                            blurDataURL={selectedImg.src}
+                            placeholder="blur" 
                         />
+
+
+
                         <h3>{selectedImg.alt}</h3>
                     </>}
                 </div>
@@ -470,6 +483,8 @@ export function TourDisplayer(props){
                     height={1125}
                     width={2000}
                     alt="sss"
+                    blurDataURL={aTour.imgArr[0]}
+                    placeholder="blur" 
                 />
             </div>
         </>)

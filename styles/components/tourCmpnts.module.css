@@ -71,9 +71,10 @@
 /* Squared Tour Highlight Disp */
 
 .aSquaredCont{
-    margin: 0 21px;
+    margin: 6 21px;
     position: inherit;
     width: 500px;
+    padding: 3px;
 }
 
 .aSquaredCont img{
@@ -89,16 +90,14 @@
     font-size: 1.5em;
     position: absolute;
     width: 500px;
-    height: 80px;
-    bottom: 24px;
+    bottom: 42px;
     padding: 6px 15px;
     color: white;
     text-transform: uppercase;
     letter-spacing: 1px;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     text-shadow: 2px 2px black;
-    
 }
 
 
@@ -532,6 +531,8 @@
     margin: 6px 21px;
     color: var(--pop-orange);
     font-size: 1.15em;
+    border-top: solid 2px var(--pop-orange);
+    padding: 12px 0;
 }
 
 .dayInclusionCont > h4{
@@ -1137,7 +1138,13 @@
     }
     .sqrTourTitle{
         width: 41vw;
-        height: 99px;
+        bottom: 39px;
+        padding: 6px 15px;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        display: flex;
+        text-shadow: 2px 2px black;
     }
 
 }
@@ -1228,15 +1235,17 @@
     .aSquaredCont img{
         filter: unset;
     }
-    .aSquaredCont{
-        margin: 0;
-    }
+
     .sqrTourTitle{
         font-size: 1em;
-        padding: 0 12px;
+        padding: 0 15px;
         position: unset;
         width: 100%;
-        background-color: rgb(52, 52, 52);
+        background-color: white;
+        color: black;
         transform: translateY(-3px);
+        text-shadow: none;
+        justify-content: baseline;
+        height: auto;
     }
 }
