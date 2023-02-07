@@ -138,7 +138,7 @@ export default function TourPage(){
                             // className={styles.aPickerUI} 
                             placeholder="Our Destinations"
                             data={[...operationRegions]}
-                            searchable
+                            // searchable
                             nothingFound="Nothing found..."
                             onChange={setDestList}
                             id="destinationPickerUI"
@@ -159,6 +159,7 @@ export default function TourPage(){
             </div>
         </>)
     }
+
 
     ///////////////////////////////////////////////
     ///////////////////////////////////////////////
@@ -290,6 +291,8 @@ export default function TourPage(){
         </>)
         }
     }
+
+
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
@@ -298,15 +301,33 @@ export default function TourPage(){
   const pageHead=()=>{
     return(<>
     <Head>
-      <title>Our Tours: Latin Travel Collection</title>
-      <meta name="description" content="Our adventures and voyages in South America - Latin Travel Collection: since 1989" />
-      <meta charSet="utf-8"/>
-      <meta name="keywords" content="Peru, Machu Picchu Tours, Cusco Tours, Huaraz, Huaraz Tours, Patagonia, Galapagos"/>
-      <meta name="author" content="David Torres" />
-      <meta name="copyright" content="LTC 2023" />
+        <meta charSet="utf-8"/>
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://ecoandes-gms.vercel.app/tours" />
+        <meta property="article:published_time" content="2023-02-02T20:11:11+00:00" />
+
+
+        <title>Our Tours: Latin Travel Collection</title>
+        <meta property="og:title" content="Our Tours: Latin Travel Collection" />
+        <meta property="og:site_name" content="Our Tours: Latin Travel Collection" />
+
+        <meta name="description" content="Our adventures and voyages in South America - Latin Travel Collection: since 1989" />
+        <meta property="og:description" content="Our adventures and voyages in South America - Latin Travel Collection: since 1989" />
+        
+        
+        <meta name="keywords" content="Peru, Machu Picchu Tours, Cusco Tours, Huaraz, Huaraz Tours, Patagonia, Galapagos, Island Hopping"/>
+        <meta name="author" content="David Torres" />
+        <meta name="copyright" content="LTC 2023" />
+
+        <meta property="og:image" content="https://dsm04pap002files.storage.live.com/y4mGJNJCASdS5QyLlVsQTJntNsVYtug7sgwOPDjSI1e75oqV6UOL10A315xC2hU5xmEvMt7CUnx7hATlr0BTFNC9fGwgPMjUt5zU3Irn-Z3vp6pAMzzw6h6N-OqkAAKixDb6J8TSCzh4GVU_-9-m3R1EB9A24Q9nT8NZfDx_yMTjyqJMj2SSILP1hT3We_dsEBB?width=2000&height=1150&cropmode=none" />
+        <meta property="og:image:width" content="1000" />
+        <meta property="og:image:height" content="575" />
+        <meta property="og:image:type" content="image/jpg" /> 
     </Head>
     </>)
   }
+
 
     return(<>
     {pageHead()}

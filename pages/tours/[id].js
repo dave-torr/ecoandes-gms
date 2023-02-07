@@ -41,18 +41,16 @@ function TourPage({ aTour }){
             <meta property="og:url" content="https://ecoandes-gms.vercel.app/tours/machu-picchu-galapagos-hopping-13D" />
             <meta property="og:site_name" content="Latin Travel Collection Itinerary" />
             <meta property="article:published_time" content="2023-02-02T20:11:11+00:00" />
-            <meta property="article:published_time" content="2023-02-02T20:11:11+00:00" />
             <meta property="og:image" content={theTour.imgArr[0]} />
-            <meta property="og:image:width" content="575" />
-            <meta property="og:image:height" content="1000" />
+            <meta property="og:image:width" content="1000" />
+            <meta property="og:image:height" content="575" />
             <meta property="og:image:type" content="image/jpg" /> 
-
-
         </Head>
         </>)
     }
 
     return(<>
+            {console.log(aTour.imgArr[0])}
         {tourHead(aTour)}
         <EcoAndesBar inTrip={true}/>
         <TourDisplayer aTour={aTour} breadcrumb={true} key={aTour.tripName} />

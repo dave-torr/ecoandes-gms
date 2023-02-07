@@ -77,14 +77,7 @@
     padding: 3px;
 }
 
-.aSquaredCont img{
-    filter: brightness(70%);
-    transition: all ease-in 0.3s;
-}
 
-.aSquaredCont img:hover{
-    filter: brightness(90%)
-}
 
 .sqrTourTitle{
     font-size: 1.5em;
@@ -386,6 +379,13 @@
 /*  //////////////////////////////////////// */
 /* export to mail */
 
+
+.aTourCTACont{
+    display: flex;
+    align-items: center;
+}
+
+
 .contactNowBTN{
     font-weight: 600;
     padding: 9px 12px;
@@ -395,9 +395,19 @@
     color: white;
     background-color: var(--pop-orange);
     margin: 15px 0;
+    height: 42px;
 }
 
-
+.secondaryCTABTN{
+    height: 42px;
+    width: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--pop-orange);
+    margin-left: 9px;
+    border: solid 3px var(--pop-orange);
+}
 /* //////////////////// */
 /* //////////////////// */
 
@@ -1231,9 +1241,6 @@
     }    
     .iconDiffDisp span{
         width: fit-content;
-    }
-    .aSquaredCont img{
-        filter: unset;
     }
 
     .sqrTourTitle{

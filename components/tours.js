@@ -4,6 +4,7 @@ import Image from "next/image"
 
 import styles from "./../styles/components/tourCmpnts.module.css"
 
+
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -14,9 +15,11 @@ import EventIcon from '@mui/icons-material/Event';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import DirectionsWalkIcon from '@mui/icons-material/DirectionsWalk';
 import InsertLinkIcon from '@mui/icons-material/InsertLink';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import MapIcon from '@mui/icons-material/Map';
 import HikingIcon from '@mui/icons-material/Hiking';
 import TerrainIcon from '@mui/icons-material/Terrain';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 import PanToolAltIcon from '@mui/icons-material/PanToolAlt';
 
@@ -324,8 +327,6 @@ export function TourDisplayer(props){
             srtImgDialogcontr(true)
         }}>
 
-            {console.log(props.imgData, "cucu")}
-
             <Image
                 src={props.imgData}
                 alt={aTour.tripName}      
@@ -404,6 +405,8 @@ export function TourDisplayer(props){
         }
     }
 
+
+
     const tourIntroDetails=()=>{
         let countryList = aTour.countryList.map((elem, i)=><React.Fragment key={i}> { i >0 &&<> / </>}{elem} </React.Fragment>)
         return(<>
@@ -442,6 +445,8 @@ export function TourDisplayer(props){
 
                 {aTour.weTravelURL&&<>
 
+
+                    {/* export as separate function CALL TO ACTIONS CTAs  */}
                     {/* With widget, which is NON OP, Make further test with Dulce and team, embedded is always better. */}
 
 
@@ -451,9 +456,22 @@ export function TourDisplayer(props){
                         Book Now</button> <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet"/> <script src="https://cdn.wetravel.com/widgets/embed_checkout.js"></script> */}
 
 
+                <div className={styles.aTourCTACont}> 
+
                     <a href={aTour.weTravelURL} target="_blank" rel="noopener noreferrer">
                     <div className={styles.contactNowBTN}>
                         Book Now {aTour.tripName} <i>Here</i></div></a>
+
+                    {/* whatsAppCTA */}
+                    <a target='_blank' href="https://wa.me/593979469989"> <div className={styles.secondaryCTABTN}> 
+                        <WhatsAppIcon/> </div>
+                    </a>
+                    {/* eMailCTA */}
+                    <a href={`mailto:info@ecoandestravel.com?cc=planificacion@ecoandestravel.com, david@latintravelcollection.com&subject=${aTour.tripName} Request&body=Hi, Im interested in ${aTour.tripName} for the following dates/season:`}><div className={styles.secondaryCTABTN}> 
+                        <MailOutlineIcon/> </div>
+                    </a>
+                </div>
+
                 </>}
 
 
