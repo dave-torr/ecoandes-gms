@@ -432,9 +432,6 @@ export function TourDisplayer(props){
         return(<>
             <div className={styles.tourIntroCont}>
 
-                <div className={styles.tourTitleBar}>
-                    {aTour.tripName}</div>
-
                 {aTour.startingPlace&& <>
                 <div className={styles.startingplace}>
                     Starting from {aTour.startingPlace}</div>
