@@ -169,9 +169,11 @@ export default function TourPage(){
     const [fullscreenCont, setFullscreenCont]=useState(false)
 
     const sortingUI=()=>{
+
+        let itinCount = filteredTourArr.length
+
         return(<>
         <div className={styles.sortingUICont}>
-
             <div className={styles.sortBTNCont}>
                 Sort By: 
                 <span>
@@ -241,6 +243,7 @@ export default function TourPage(){
             </div> 
 
         </div>
+        <div className={styles.itinCount}> Trips: {itinCount} </div>
         </>)
     }
 

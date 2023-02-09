@@ -50,7 +50,6 @@ function TourPage({ aTour }){
     }
 
     return(<>
-            {console.log(aTour.imgArr[0])}
         {tourHead(aTour)}
         <EcoAndesBar inTrip={true}/>
         <TourDisplayer aTour={aTour} breadcrumb={true} key={aTour.tripName} />

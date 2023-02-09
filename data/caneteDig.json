@@ -1,7 +1,8 @@
     {
         "tripName": "Canete Valley Dig",
-        "id": "best-of-peru",
-        "duration": 10,
+        "id": "canete-dig",
+        "duration": 12,
+        "difficulty": 2,
         "imgArr": ["https://dsm01pap002files.storage.live.com/y4m3aF8TjUlNP33379Zfr9hccG-YjpT1T6XdREzzoO4fOOtuQy3SKavcNAaK8CVyuY7_kjP6_MaEKQZOMDymtILHC47-pQzJ_ye-AdLyxBsQl_ViCL1BLjYDm4Hl0FnDdiF_WHH13DtscNsEtQ2SgyOPB2mX11uMIWx2gz2mZ1488MZu9h_U0TnVyoiVRpXGyFh?width=2000&height=1125&cropmode=none",
         "/assets/images/caneteValley-1.jpg",
         "/assets/images/caneteValley-2.jpg",
@@ -99,7 +100,7 @@
                 ]
             }
         ],
-        "tourType": "voyage",
+        "tourType": "historic",
         "maxGuests": 16,
         "price": 2830,
         "prices": {

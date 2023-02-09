@@ -184,6 +184,20 @@
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.392);
 }
 
+.itinCount{
+    background-color: whitesmoke;
+    width: 100%;
+    transform: none;
+    text-align: end;
+    z-index: 1;
+    padding: 3px 0;
+    padding-right: calc(50% - 528px);
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 0.8em;
+    color: rgba(0, 0, 0, 0.673);
+}
+
 .tourCardContainer{
     min-height: 40vh;
     width: 100%;

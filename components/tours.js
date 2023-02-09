@@ -21,6 +21,9 @@ import HikingIcon from '@mui/icons-material/Hiking';
 import TerrainIcon from '@mui/icons-material/Terrain';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
+
+import PlaceIcon from '@mui/icons-material/Place';
+
 import PanToolAltIcon from '@mui/icons-material/PanToolAlt';
 
 import Filter1Icon from '@mui/icons-material/Filter1';
@@ -309,7 +312,6 @@ export function TourDisplayer(props){
             </Accordion>
         </React.Fragment>)
 
-
         return(<>
             {accordionDisplayer("Day by Day", theDays, true)}
             <br/>
@@ -391,30 +393,55 @@ export function TourDisplayer(props){
         </Dialog>
         </>)
     }
-    const priceDisplayer=(theTour)=>{
-        if(theTour.prices.priceType==="fixedDeparture"){
-            // display fixed dep price
+
+    const aTourIconDisp=()=>{
+        const anIconRow=(theIcon, theIconName, theIconContent)=>{
+            // Check if you can add some SEO to this section to be easily indexed and understood by crawlers
             return(<>
-                <span> <EventIcon/> FIXED GROUP <br/> DEPARTURE </span>
-                <span> <LocalOfferIcon /> PRICES USD FROM <br/> ${theTour.price} p. person </span>
-            </>)
-        } else if (theTour.prices.priceType==="privateDeparture"){
-            return(<>
-                <span> <EventIcon/> PRIVATE <br/> DEPARTURE </span>
+                <div className={styles.iconCont}>
+                    <div>{theIcon} &nbsp; &nbsp; </div>
+                    <div> 
+                        <strong>{theIconName}</strong>
+                        <div className={styles.iconContent}>{theIconContent}</div>
+                    </div>
+                </div>
             </>)
         }
+
+        let daysContent=<>{aTour.duration} days</>
+        let priceContent=<>${aTour.price} p. person</>
+
+        return(<>
+            <div className={styles.tourDetails}>
+                {anIconRow(<AccessTimeIcon />, "duration:", daysContent)}
+                {anIconRow(<ExploreIcon />, "tour type:", aTour.tourType )}
+
+                {aTour.prices.priceType==="fixedDeparture"&&<>
+                    {anIconRow(<EventIcon />, "Trip TYPE:", aTour.tourType )}
+                    {anIconRow(<LocalOfferIcon />, "prices from:", priceContent )}
+                </>}
+
+            </div>
+        </>)
     }
-
-
-
-    const tourIntroDetails=()=>{
+    const tourTitle=()=>{
         let countryList = aTour.countryList.map((elem, i)=><React.Fragment key={i}> { i >0 &&<> / </>}{elem} </React.Fragment>)
         return(<>
-            <div className={styles.tourIntroCont}>
+            <div className={styles.tourTitleCard}>
+                <h1 className={styles.tourTitleBar}>
+                    {aTour.tripName} | {aTour.duration} Days</h1>
                 <div className={styles.tourCountryList}>
-                    Destinations:&nbsp;{countryList}</div>
+                    <PlaceIcon /> &nbsp;{countryList}</div>
+            </div>
+        </>)
+    }
+    const tourIntroDetails=()=>{
+        return(<>
+            <div className={styles.tourIntroCont}>
+
                 <div className={styles.tourTitleBar}>
-                    {aTour.tripName} | {aTour.duration} Days</div>
+                    {aTour.tripName}</div>
+
                 {aTour.startingPlace&& <>
                 <div className={styles.startingplace}>
                     Starting from {aTour.startingPlace}</div>
@@ -431,16 +458,7 @@ export function TourDisplayer(props){
                         Contact Us About {aTour.tripName} <i>Here</i></div></a>
                 </>}
 
-
-                {/* payment BTN */}
-
-                {aTour.prices.priceType==="fixedDeparture"&&<>
-                    {/* <div className={styles.bookNowBTN}>
-                        <ConfirmationNumberIcon /> &nbsp;&nbsp;&nbsp;Book Now </div> */}
-
-                    {/* <div dangerouslySetInnerHTML={{ __html: aTour.paymentLink }}/> */}
-                </>}
-
+                {/* INCORPORATE WIDGET FROM WE TRAVEL IN VER 2.0 */}
 
 
                 {aTour.weTravelURL&&<>
@@ -473,17 +491,6 @@ export function TourDisplayer(props){
                 </div>
 
                 </>}
-
-
-
-
-
-
-                <div className={styles.tourDetails}>
-                    <span> <AccessTimeIcon /> {aTour.duration} <br/> DAYS </span>
-                    <span><ExploreIcon /> TOUR TYPE: <br/> {aTour.tourType} </span>
-                    {priceDisplayer(aTour)}
-                </div>
             </div>
             {aTour.adventureType&& <> 
             <div className={styles.trekDiffNotice}>
@@ -574,7 +581,9 @@ export function TourDisplayer(props){
     return(<>
         <article className={styles.generalTourPage}>
             <div className={styles.tourContainer}>
+                {tourTitle()}
                 {mainImagedisp()}
+                {aTourIconDisp()}
                 {breadcrumbNavigation()}
                 {tourIntroDetails()}
                 {carouselDisp(aTour.imgArr)} 

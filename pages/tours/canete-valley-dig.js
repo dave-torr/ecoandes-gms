@@ -83,13 +83,21 @@ export default function CaneteDigTour(props){
     return(<>
         {bookingProcess===0&&<> 
             <TourDisplayer 
-                aTour={theTourData} breadcrumb={false} partnerLogo={partnerLogo} bookingProcess={setbookingPros} />
+                aTour={theTourData} breadcrumb={true} partnerLogo={partnerLogo} bookingProcess={setbookingPros} />
         </>}
         <div style={{width: "100%", display: "flex", justifyContent:"center"}}> 
         <div className={styles.bookingProcessTourData}>
         {bookingProcess>0&&<> 
             {tourIntro()}
         </>}
+
+
+
+        {/* Keep as back up for booking process. */}
+        
+
+
+
         {bookingProcess===1&&<> 
             <PrivDepDatePicker 
                 tourDates={theTourData.prices.privateDeparture.departureDates} setABooking={setABooking} aBooking={aBooking} bookingStepBTN={bookingStepBTN} />

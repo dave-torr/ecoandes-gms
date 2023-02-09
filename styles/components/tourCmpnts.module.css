@@ -160,11 +160,11 @@
 
 .tourTitleBar{
     text-transform: uppercase;
-    font-size: 1.8em;
+    font-size: 2em;
     width: 100%;
     letter-spacing: 2px;
     margin: 15px 0;
-    font-weight: 300;
+    font-weight: unset;
 }
 
 .tourOverview{
@@ -289,6 +289,21 @@
     margin: 12px;
     box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.296);
     cursor: pointer;
+}
+
+.tourTitleCard{
+    margin: 33px;
+    margin-bottom: 15px;
+    width: 100%;
+    padding: 21px;
+    box-shadow: var(--frst-box-shadow);
+    z-index: 1;
+}
+
+.mainImgdisplayer{
+    box-shadow: var(--frst-box-shadow);
+    padding: 3px;
+    padding-bottom: 0;
 }
 
 .carouselIconCont{
@@ -447,26 +462,28 @@
     display: flex;
     justify-content: center;
     align-items: center; 
-    text-align: center;  
     color: black;
+    width: 100%;
+    flex-wrap: wrap;
+    transition: all ease-in 0.3s;
 }
 
-.tourDetails > span{
+
+.iconCont{
+    width: 22%;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 9px 21px;
-    font-weight: 500;
-    border-right: solid 2px var(--pop-orange);
+    font-size: 1.1em;
     text-transform: capitalize;
-    font-size: 0.9em;
+    margin: 6px 9px;
 }
 
-.tourDetails > span:last-of-type{
-    /* target last span, remove border */
-    border: none;
+
+.iconCont strong{
+    text-transform: uppercase;
 }
+
 
 
 .tourDataCont{
@@ -1101,6 +1118,23 @@
         width: 100%;
         height: calc(100vw - 28vw );
     }
+
+
+
+/* a Tour Data */
+
+    .iconCont{
+        width: 200px;
+        font-size: 1em;
+    }
+
+
+
+
+
+
+
+/* Booking Steps */
     .bookingProcessTourData{
         width: 100%;
     }
@@ -1170,14 +1204,11 @@
         font-size: 1em;
         padding: 6px 0;
     }
-    .tourDetails{
-        font-size: 0.9em;
-    }
 
-    .tourDetails > span{
-        padding: 6px;
-        height: 90px;
-        border-right: solid 1px var(--pop-orange);
+
+    .iconCont{
+        width: 150px;
+        font-size: 0.8em;
     }
 
     .inclusionsExclusionsSec{

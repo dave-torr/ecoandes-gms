@@ -1,5 +1,4 @@
 
-import TourData from "../../data/ecuItinEng"
 
 export default function TourExplorerPage(props){
 
