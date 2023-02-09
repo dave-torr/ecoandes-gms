@@ -328,7 +328,6 @@ export function TourDisplayer(props){
             })
             srtImgDialogcontr(true)
         }}>
-
             <Image
                 src={props.imgData}
                 alt={aTour.tripName}      
@@ -353,9 +352,6 @@ export function TourDisplayer(props){
             <div className={styles.arrowBackCarrousel}>
                 <ArrowForwardIosIcon /></div> */}
 
-
-
-            
             <div className={styles.tourIMGCarousel}>
                     {theIMGArr.map((elem, i)=><>
                     {i>0&&<React.Fragment key={i}>
@@ -365,9 +361,6 @@ export function TourDisplayer(props){
             </div>
             <div className={styles.sliderV2}> <PanToolAltIcon fontSize="large" /> </div>
             <div> BROWSE GALLERY </div>
-
-
-
         </div>
         <Dialog open={imgDialogContr} fullScreen onClose={()=>srtImgDialogcontr(false)}>
             <div className={styles.imgDialogCont}>
@@ -478,7 +471,7 @@ export function TourDisplayer(props){
 
                     <a href={aTour.weTravelURL} target="_blank" rel="noopener noreferrer">
                     <div className={styles.contactNowBTN}>
-                        Book Now {aTour.tripName} <i>Here</i></div></a>
+                        Book {aTour.tripName} experience</div></a>
 
                     {/* whatsAppCTA */}
                     <a target='_blank' href="https://wa.me/593979469989"> <div className={styles.secondaryCTABTN}> 

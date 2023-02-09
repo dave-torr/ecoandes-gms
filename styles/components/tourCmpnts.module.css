@@ -122,6 +122,9 @@
     padding: 9px 45px;
 }
 
+
+
+
 .partnerLogo{
     margin-top: 33px;
 }
@@ -277,9 +280,7 @@
     overflow-x: auto;
     white-space: nowrap;
     width: 100%;
-    /* padding: 0 45px; */
     padding-bottom: 33px;
-    /* background-color: teal; */
 }
 
 .aTourImage{
@@ -290,6 +291,9 @@
     box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.296);
     cursor: pointer;
 }
+
+
+
 
 .tourTitleCard{
     margin: 33px;
@@ -302,9 +306,12 @@
 
 .mainImgdisplayer{
     box-shadow: var(--frst-box-shadow);
-    padding: 3px;
-    padding-bottom: 0;
+    padding: 6px;
+    padding-bottom: 3px;
 }
+
+
+
 
 .carouselIconCont{
     position: absolute;
@@ -398,19 +405,20 @@
 .aTourCTACont{
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 
 .contactNowBTN{
     font-weight: 600;
     padding: 9px 12px;
-    width: fit-content;
     transition: all ease 0.5s;
     cursor: pointer;
     color: white;
     background-color: var(--pop-orange);
     margin: 15px 0;
-    height: 42px;
+    text-transform: capitalize;
+    min-height: 42px;
 }
 
 .secondaryCTABTN{
@@ -1108,6 +1116,16 @@
         margin: 0 21px;
     }
 
+    .tourTitleCard{
+        box-shadow: none;
+        margin-bottom: 0;
+        padding-bottom: 6px;
+    }
+
+    .aTourImage{
+        box-shadow: none;
+    }
+
     .tourContainer{
         width: 100%;
     }
@@ -1119,20 +1137,11 @@
         height: calc(100vw - 28vw );
     }
 
-
-
 /* a Tour Data */
-
     .iconCont{
         width: 200px;
         font-size: 1em;
     }
-
-
-
-
-
-
 
 /* Booking Steps */
     .bookingProcessTourData{
@@ -1151,6 +1160,15 @@
     }
     .tourCardTextCont{
         height: 190px;
+    }
+
+    .contactNowBTN{
+        height: 60px;
+    }
+
+    .secondaryCTABTN{
+        height: 53px;
+        width: 53px;
     }
 
     .tourDataCont{
@@ -1205,10 +1223,22 @@
         padding: 6px 0;
     }
 
+    .aTourCTACont{
+        justify-content: flex-end;
+    }
+
+    .contactNowBTN{
+        width: fit-content;
+        height: auto;
+    }
+
+    .tourDetails{
+        padding-bottom: 0;
+    }
 
     .iconCont{
         width: 150px;
-        font-size: 0.8em;
+        font-size: 0.9em;
     }
 
     .inclusionsExclusionsSec{
