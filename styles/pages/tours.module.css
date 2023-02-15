@@ -11,6 +11,7 @@
     align-items: center;
     justify-content: center;
     overflow-x: hidden;
+    transition: all ease-in 0.3s;
 }
 
 .tourHighlightCont{
@@ -38,11 +39,16 @@
     font-size: 1.4em;
 }
 
-.sqrHighlightCont{
+.highlightCont{
     display: flex;
     width: 100%;
-    justify-content: space-around;
-    padding: 30px 20px;
+    justify-content: center;
+    margin-top: 30px;
+    padding: 0 9px;
+}
+
+.highlightCont2{
+    padding: 0 9px;
 }
 
 .UIBTNCont{
@@ -480,8 +486,8 @@
         margin-top: 30vh;
 
     }
-    .sqrHighlightCont{
-        padding: 0;
+    .highlightCont{
+        margin-top: 9px;
     }
 
 }
@@ -492,5 +498,8 @@
     }
     .userIUFilterCont{
         font-size: 0.8em;
+    }
+    .tourHighlightBar{
+        font-size: 1.1em;
     }
 }

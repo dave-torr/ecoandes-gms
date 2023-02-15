@@ -92,7 +92,7 @@ export function TourDifficultyCard(props){
                         <Filter1Icon /> 
                     </span>
                 </div>
-                <strong>Easy Adventures</strong> require minimal prior knowledge and no technical skills. We enjoy our activities with in stages and at a relaxed pace, with enough time to enjoy the views and arrive at the destinations. Can be achieved by anyone with regular physical conditions.
+                <strong>Easy Adventures</strong> require minimal prior knowledge and no technical skills. We enjoy our activities in stages and at a relaxed pace, with enough time to enjoy the views and arrive at the destinations. Can be achieved by anyone with regular physical conditions.
             </div></>)
 
             case 2:
@@ -410,8 +410,11 @@ export function TourDisplayer(props){
                 {anIconRow(<ExploreIcon />, "tour type:", aTour.tourType )}
 
                 {aTour.prices.priceType==="fixedDeparture"&&<>
-                    {anIconRow(<EventIcon />, "Trip TYPE:", aTour.tourType )}
+                    {anIconRow(<EventIcon />, "departure type:", "Scheduled" )}
                     {anIconRow(<LocalOfferIcon />, "prices from:", priceContent )}
+                </>}
+                {aTour.prices.priceType==="privateDeparture"&&<>
+                    {anIconRow(<EventIcon />, "departure type:", "private" )}
                 </>}
 
             </div>
@@ -602,7 +605,6 @@ export function SquaredTourCard(props){
     if(props.tripName){
     return(<>
 
-    
         <Link href={`/tours/${props.id}`}>  
         
         <div className={styles.aSquaredCont} style={{ cursor:"pointer" }}> 
@@ -614,13 +616,39 @@ export function SquaredTourCard(props){
                 blurDataURL={props.imgSrc}
                 placeholder="blur"                
             />
-            <div className={styles.sqrTourTitle}>
+            <div className={styles.highlightTourTitle}>
                 {props.tripName} 
                 </div>
         </div>
         
         </Link>
     </>)
-    } else return(<> cu cu </>)
+    }
 }
 
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+export function RectangularTourCard(props){
+    if(props.tripName){
+    return(<>
+
+        <Link href={`/tours/${props.id}`}>  
+        
+        <div className={styles.aRectangCont} style={{ cursor:"pointer" }}> 
+            <Image 
+                src={props.imgSrc}
+                height={1125}
+                width={2000}
+                alt={`${props.tripName}, by L.T.C.`}
+                blurDataURL={props.imgSrc}
+                placeholder="blur"                
+            />
+            <div className={styles.highlightTourTitle}>
+                {props.tripName} 
+            </div>
+        </div>
+        
+        </Link>
+    </>)
+    } else return(<> cu cu </>)
+}

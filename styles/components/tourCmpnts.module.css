@@ -43,8 +43,7 @@
     font-size: 0.9em;
     letter-spacing: 1.5px;
     font-weight: 800;
-    margin: 7px 0;
-       
+    margin: 7px 0;       
     border: solid 1px var(--ltc-teal);
 }
 
@@ -70,20 +69,17 @@
 
 /* Squared Tour Highlight Disp */
 
+
 .aSquaredCont{
-    margin: 6 21px;
-    position: inherit;
     width: 500px;
-    padding: 3px;
+    padding: 9px;
+    
 }
 
-
-
-.sqrTourTitle{
+.highlightTourTitle{
     font-size: 1.5em;
     position: absolute;
     width: 500px;
-    bottom: 42px;
     padding: 6px 15px;
     color: white;
     text-transform: uppercase;
@@ -91,6 +87,18 @@
     display: flex;
     align-items: flex-end;
     text-shadow: 2px 2px black;
+    transform: translateY(-84px);
+}
+
+
+
+/* rec tour disp highlights */
+
+.aRectangCont{
+    margin: 6 21px;
+    position: inherit;
+    width: 1000px;
+    padding: 9px;
 }
 
 
@@ -1112,6 +1120,9 @@
 
 @media (max-width: 1080px) {
 
+    .aRectangCont{
+        width: 100%;
+    }
     .tourCardCont{
         margin: 0 21px;
     }
@@ -1198,15 +1209,15 @@
     .dialogImgCont{
         width: 100%;
     }
-    .sqrTourTitle{
+    .highlightTourTitle{
         width: 41vw;
-        bottom: 39px;
         padding: 6px 15px;
         color: white;
         text-transform: uppercase;
         letter-spacing: 1px;
         display: flex;
         text-shadow: 2px 2px black;
+        font-size: 1.2em;
     }
 
 }
@@ -1304,16 +1315,15 @@
         width: fit-content;
     }
 
-    .sqrTourTitle{
+    .highlightTourTitle{
         font-size: 1em;
         padding: 0 15px;
-        position: unset;
         width: 100%;
-        background-color: white;
         color: black;
-        transform: translateY(-3px);
         text-shadow: none;
         justify-content: baseline;
         height: auto;
+        position: relative;
+        transform: unset;
     }
 }

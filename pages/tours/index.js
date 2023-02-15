@@ -7,7 +7,7 @@ import styles from "./../../styles/pages/tours.module.css"
 import tourPageIMGLadning from "./../../public/assets/images/bookingLanding1.png"
 
 import {EcoAndesBar, Navi2} from "./../../components/navis"
-import {ATourCard, SquaredTourCard} from "./../../components/tours"
+import {ATourCard, SquaredTourCard, RectangularTourCard} from "./../../components/tours"
 
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
@@ -276,25 +276,38 @@ export default function TourPage(){
         </div>
         </>)
     }
+
+
+    // console.log(TourData)
+
     const tourHighlightDisp=(aTrip)=>{
         if(TourData){
         return(<>
             <div> 
                 <div className={styles.tourHighlightCont}> 
                     <div className={styles.tourHighlightBar}>Experience South America </div>
-                    <div className={styles.sqrHighlightCont}>
+                    <div className={styles.highlightCont}>
                         
                         <SquaredTourCard tripName={TourData[13].tripName} imgSrc={TourData[13].sqrImg} id={TourData[13].id}/>
 
                         <SquaredTourCard tripName={TourData[16].tripName} imgSrc={TourData[16].sqrImg} id={TourData[16].id}/>
 
                     </div>
+
+                    {/* WTF with positions on text */}
+
+                    <div className={styles.highlightCont2}> 
+                        <RectangularTourCard tripName={TourData[12].tripName} imgSrc={TourData[12].imgArr[0]} id={TourData[12].id}/>
+                    </div>
+
                 </div>
             </div>
         </>)
         }
     }
 
+
+console.log(TourData)
 
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
