@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSession, signOut } from "next-auth/react"
-import useHotelDB from "./../api/gms/hotelsSWR" 
+import useHotelDB from "../api/gms/hotelsSWR" 
 import styles from "./../../styles/pages/gms.module.css"
 
 
@@ -10,11 +10,14 @@ import Dialog from '@mui/material/Dialog';
 import Slider from '@mui/material/Slider';
 import { Loader } from '@mantine/core';
 
-import CountryData from "./../../data/ecoAndesCountryData"
+import GenDataTemplates from "./../../data/dataAndTemplates"
 import { HotelDataDisplayer } from "../../components/hotelDB";
 let toDate = new Date()
 
-export default function HotelRates(props){
+
+
+
+export default function HotelPage(props){
 
     // USER DATA
     const { data: session } = useSession()
@@ -240,7 +243,7 @@ export default function HotelRates(props){
         }
     }
     const categoryPicker=()=>{
-        let accommodationOpts=CountryData.hotelCategories.map((elem, i)=><React.Fragment key={i}><option value={elem}>{elem}</option> </React.Fragment> )
+        let accommodationOpts=GenDataTemplates.hotelCategories.map((elem, i)=><React.Fragment key={i}><option value={elem}>{elem}</option> </React.Fragment> )
         return(<>
         <div className={styles.dataContOne}>
             <div className={styles.dataColumn}>
@@ -293,8 +296,8 @@ export default function HotelRates(props){
                     <div className={styles.dataColumn}>
                         <h3>Name & Location</h3>
                         {aTextInput("Hotel Name *", "hotelName", hotelSchema, setHotelSchema, "text", true )}
-                        {locationPickers(CountryData.ecuadorProvinces, "province")}
-                        {locationPickers(CountryData.ecuadorCities, "city")}
+                        {locationPickers(GenDataTemplates.ecuadorProvinces, "province")}
+                        {locationPickers(GenDataTemplates.ecuadorCities, "city")}
                         {aTextInput("Address *", "address", hotelSchema, setHotelSchema, "text", true )}
                         {aTextInput("Location Notes", "locationNotes", hotelSchema, setHotelSchema, "text", false )}
                     </div>
@@ -374,7 +377,7 @@ export default function HotelRates(props){
     return(<>
         <div className={styles.main}>
             <div className={styles.ratesNavBar}>
-                <h2>EcoAndes Hotel Database</h2>
+                <h2>LTC Hotel Database</h2>
                 <div className={styles.addHotelBTN} onClick={()=>{setHotelAdd(true)}}> Add Hotel &nbsp;<AddBoxIcon /></div>
             </div>
         </div>

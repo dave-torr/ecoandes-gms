@@ -1,7 +1,7 @@
 {
     "phoneNumberTypes": ["office", "mobile" ],
     "aPartnerType": ["board member", "operations", "sales"],
-        "ecuadorCities": [
+    "ecuadorCities": [
         "Ambato",
         "Azogues",
         "Arajuno",
