@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import styles from "./../styles/components/tourCmpnts.module.css"
 
-import AllCountryData from "./../data/countryPhoneEdtension.json"
+// import AllCountryData from "./../data/countryPhoneEdtension.json"
 
 import { Elements } from '@stripe/react-stripe-js'
 import getStripe from './../utils/payments/get-stripejs'
