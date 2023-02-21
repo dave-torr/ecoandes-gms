@@ -439,8 +439,8 @@ export function TourDisplayer(props){
                 <div className={styles.startingplace}>
                     Starting from {aTour.startingPlace}</div>
                 </>}
-                <a className={styles.tourOverview}> 
-                    {aTour.tripDescription} </a>
+                <p className={styles.tourOverview}> 
+                    {aTour.tourOverview} </p>
 
 
 {/* Include We Travel Widget BTN || CONTACT US BTN for Private Departures */}
@@ -564,7 +564,7 @@ export function TourDisplayer(props){
                 </div>
                 </a>
             </Link>
-
+            
             <address></address>
 
         </footer>

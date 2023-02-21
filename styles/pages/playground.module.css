@@ -1,0 +1,71 @@
+
+
+
+
+
+.theInputContainer{
+    display: flex;
+    flex-direction: column;
+    margin: 21px;
+
+}
+
+.inputLabel{
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.inputUserUI{
+    border: none;
+    border-left: solid 3px black;
+    border-bottom: solid 3px black;
+    padding: 6px 9px;
+    background-color: rgba(128, 254, 143, 0.273);
+    margin-top: 6px;
+    font-size: 1.4em;
+    width: 100%;
+}
+
+.inputUserUI:focus{
+    background-color: unset;
+}
+
+
+.inputUserUI:focus-within::after{
+
+    background-color: red;
+}
+
+.anInputRow{
+    display: flex;
+}
+
+.anInputRow i{
+    font-size: 0.8em;
+}
+
+.addToListBTN{
+    width: 55px;
+    border-left: solid 3px black;
+    border-bottom: solid 3px black;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 2em;
+    margin: 0 9px;
+    cursor: pointer;
+}
+
+.eachListElemDisplayer{
+    display: flex;
+    justify-content: space-between;
+    margin: 3px 12px;
+    text-transform: capitalize;
+}
+
+.listDisplayer{
+    padding: 6px 15px;
+}

@@ -199,9 +199,18 @@ export function GmsUserNavi(props){
             <div className={styles.userNaviDrawer}>
                 <h3> Hi {props.user.name} </h3>
                 <div className={styles.userNaviDrawerBTNs}>
-                    {router.pathname!="/tourCreator"&&<> <span> Tour Creator</span></>}
-                    {router.pathname!="/tourExplorer"&&<> <span> Tour Explorer</span></>}
-                    {router.pathname!="/operations"&&<> <span> Tour Creator</span></>}
+                    {router.pathname!="/gms"&&<> <Link href="/gms">  
+                    <a>GMS Home</a>
+                    </Link></>}
+                    {router.pathname!="/gms/tourCreator"&&<> <Link href="/gms/tourCreator">  
+                    <a>Tour Creator</a>
+                    </Link></>}
+                    {router.pathname!="/gms/tourExplorer"&&<> <Link href="/gms/tourExplorer">  
+                    <a>Tour Explorer</a>
+                    </Link></>}
+                    {router.pathname!="/gms/operations"&&<> <Link href="/gms/operations">  
+                    <a>Tour Creator</a>
+                    </Link></>}
                 </div>
                 {props.signOut}
             </div>

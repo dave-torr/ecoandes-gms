@@ -234,7 +234,7 @@
     margin: 21px ;
 }
 
-.userNaviDrawerBTNs span{
+.userNaviDrawerBTNs a{
     margin: 12px 6px;
     text-transform: uppercase;
     border: solid 1px black;

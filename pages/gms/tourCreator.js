@@ -209,7 +209,6 @@ let tourType=["active", "family", "cruise", "expedition", "private", "voyage"]
         </>)
     }
 
-    console.log(aTourModel)
 
     return(<>
         <div className={styles.generalPageCont}>

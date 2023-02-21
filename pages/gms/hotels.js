@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useSession, signOut } from "next-auth/react"
+
+
 import useHotelDB from "../api/gms/hotelsSWR" 
+
+
+
 import styles from "./../../styles/pages/gms.module.css"
 
-
-import AddBoxIcon from '@mui/icons-material/AddBox';
 import CloseIcon from '@mui/icons-material/Close';
 import Dialog from '@mui/material/Dialog';
 import Slider from '@mui/material/Slider';
@@ -44,10 +47,13 @@ export default function HotelPage(props){
 
     useEffect(()=>{
         if(session){
+            // set user Data to submition schema
             setHotelSchema({
                 ...hotelSchema,
                 "submittedBy": session.user.name,
             })
+        } else {
+
         }
     },[session])
 
@@ -58,6 +64,10 @@ export default function HotelPage(props){
     //         console.log(orderedHotels)
     //     }
     // },[HotelEntries])
+
+    /////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////
+    // FFE - EXPORT TO FORMS COMPONENT MODULE
 
     const aTextInput=(aPlaceholder, inputId, anObject, setAnObject, inputType, reqBoolean)=>{
         return(<>
@@ -273,6 +283,7 @@ export default function HotelPage(props){
         </div>
         </>)
     }
+
     const hotelAdderForm=()=>{
         return(<>
             <div className={styles.closeDialogBTN} onClick={()=>setHotelAdd(false)}>close&nbsp;<CloseIcon/></div>
@@ -369,7 +380,8 @@ export default function HotelPage(props){
     }
 
 
-// main hotel landing: Ikala GPS, Ikala UIO, Yacuma iwth Incremental Static Generation
+
+// main hotel landing: Ikala GPS, Ikala UIO, Yacuma Incremental Static Generation
 // filter funtionality for hotels for provinces / cities.
 
 // SWR for all other hotel DB data
@@ -377,8 +389,8 @@ export default function HotelPage(props){
     return(<>
         <div className={styles.main}>
             <div className={styles.ratesNavBar}>
-                <h2>LTC Hotel Database</h2>
-                <div className={styles.addHotelBTN} onClick={()=>{setHotelAdd(true)}}> Add Hotel &nbsp;<AddBoxIcon /></div>
+                <div>LTC / hotels</div>
+                <div className={styles.addHotelBTN} onClick={()=>{setHotelAdd(true)}}> add hotel  + </div>
             </div>
         </div>
 

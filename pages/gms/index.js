@@ -51,7 +51,6 @@ export default function GMS(){
 
   return (
     <div >
-      <SignOutBtn />
 
       <main className={styles.main}>
         <h2>EcoAndes Travel</h2>

@@ -191,7 +191,7 @@ export function TourDateAdder(props){
 
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
-
+// might use in next ver of gms
 const flightsAdder=(setDay, theTravelDay, flightInfo, setFlights, formTrigger)=>{
     return(<>
     <div className={styles.dayAdditionalsCont}>
@@ -423,8 +423,6 @@ export function DayByDayAdder(props){
     </>)
 }
 
-//////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////
 
 export function IncExclAdder(props){
 
@@ -463,3 +461,6 @@ export function IncExclAdder(props){
         {dailyInclusionsAddr()}
     </>)
 }
+
+
+
