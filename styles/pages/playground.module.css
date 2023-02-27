@@ -1,6 +1,9 @@
 
 
-
+.aRow{
+    display: flex;
+    align-items: center;
+}
 
 
 .theInputContainer{
@@ -17,6 +20,19 @@
     font-weight: 600;
     letter-spacing: 1px;
     text-transform: uppercase;
+}
+
+.multiOptsCont{
+    display: flex;
+    margin: 12px 0;
+}
+
+.multiPickerOpt{
+    border-left: solid 3px black;
+    border-bottom: solid 3px black;
+    padding: 6px 9px;
+    margin-right: 9px;
+    background-color: rgba(128, 254, 143, 0.273);
 }
 
 .inputUserUI{
@@ -71,4 +87,13 @@
 
 .listDisplayer{
     padding: 6px 15px;
+}
+
+.multiElemSelects{
+    display: flex;
+    align-items: center;
+    border-right: solid 3px black;
+    border-top: solid 3px black;
+    padding: 6px 9px;
+    margin-right: 9px;
 }
