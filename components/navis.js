@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
+import {SignOutBtn} from "./../components/authForms"
+
 import styles from "./../styles/components/navis.module.css"
 
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
@@ -17,11 +19,14 @@ import UsFlagIcon from '../public/assets/logos/usFlag.svg'
 import SpainFlagIcon from '../public/assets/logos/spainFlag.svg'
 import CloseIcon from '@mui/icons-material/Close';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-// with english/spanish switcher
+
 
 const contactNum1 = <><a target='_blank' href="tel:+17862963950"> <PhoneForwardedIcon fontSize="inherit" /></a> </> 
+//  --> to DTorres US numb
 const contactNum2 = <>&nbsp;<a target='_blank' href="https://wa.me/593979469989"><WhatsAppIcon fontSize="inherit" /></a></> 
+//  --> to Juan Orozco EC Numb
 const contactEmail = <><a target='_blank' href="mailto:info@ecoandestravel.com"><MailOutlineIcon fontSize="inherit" /></a></>
+
 
 
 // home menu
@@ -86,7 +91,7 @@ export function GeneralDataBar(props){
     </>)
 }
 
-
+// Applied on Tours
 // Applied on Tours
 export function LTCNaviBar(props){
     return(<>
@@ -105,6 +110,10 @@ export function LTCNaviBar(props){
     </>)
 }
 
+//////////////////////////////////////////////
+//////////////////////////////////////////////
+// FFD (deletion)
+// FFD
 export function Navi2(props){
     const [drawerToggle, setDrawerToggle] = useState(false)
     return(<>
@@ -152,33 +161,38 @@ export function Navi2(props){
     </>)
 }
 
-export function GeneralFooter(props){
 
-    return(<>
-        <footer className={styles.footercont}>
+export function GMSNavii(props){
 
-        </footer>
-    </>) 
-}
+    // userLogIn/SignOut options all here. can reuse Drawer to dosplay login Opts
 
-export function GmsUserNavi(props){
     const [drawerToggle, setDrawerToggle] = useState(false)
     const router = useRouter()
 
     return(<>
-        <div className={styles.gmsUserNavCont}> 
-            <div className={styles.gmsUserNavBurger} onClick={()=>setDrawerToggle(true)}>
-                <span />
-                <span />
-                <span />
+
+        <div className={styles.GMSNaviCont} onClick={()=>setDrawerToggle(true)}> 
+
+            <div className={styles.GMSsNaviTitle}>
+                {router.pathname}
             </div>
-            <div className={styles.gmsUserProfilePic}  onClick={()=>setDrawerToggle(true)}>
-                <Image 
-                    src={props.user.profilePic}
-                    alt={`${props.user.name}'s profile pic`}
-                    width={55}
-                    height={55}
-                />
+
+
+            {/* User icon and Burger */}
+            <div style={{display: "flex", alignItems:"center"}}> 
+                <div className={styles.GMSNaviBurger}>
+                    <span />
+                    <span />
+                    <span />
+                </div>
+                <div className={styles.gmsUserProfilePic}>
+                    <Image 
+                        src={props.user.profilePic}
+                        alt={`${props.user.name}'s profile pic`}
+                        width={55}
+                        height={55}
+                    />
+                </div>
             </div>
         </div>
         <Drawer anchor={"right"} open={drawerToggle} onClose={()=>setDrawerToggle(false)} >
@@ -188,20 +202,27 @@ export function GmsUserNavi(props){
             <div className={styles.userNaviDrawer}>
                 <h3> Hi {props.user.name} </h3>
                 <div className={styles.userNaviDrawerBTNs}>
-                    {router.pathname!="/gms"&&<> <Link href="/gms">  
+
+                    {props.user.name==="David Torres"&&<>
+                    {router.pathname!="/playground"&&<><Link href="/playground">  
+                    <a>Playground</a>
+                    </Link></>}
+                    </>}
+
+                    {router.pathname!="/gms"&&<><Link href="/gms">  
                     <a>GMS Home</a>
                     </Link></>}
-                    {router.pathname!="/gms/tourCreator"&&<> <Link href="/gms/tourCreator">  
+                    {router.pathname!="/gms/tourCreator"&&<><Link href="/gms/tourCreator">  
                     <a>Tour Creator</a>
                     </Link></>}
-                    {router.pathname!="/gms/tourExplorer"&&<> <Link href="/gms/tourExplorer">  
+                    {router.pathname!="/gms/tourExplorer"&&<><Link href="/gms/tourExplorer">  
                     <a>Tour Explorer</a>
                     </Link></>}
-                    {router.pathname!="/gms/operations"&&<> <Link href="/gms/operations">  
+                    {router.pathname!="/gms/operations"&&<><Link href="/gms/operations">  
                     <a>Tour Creator</a>
                     </Link></>}
                 </div>
-                {props.signOut}
+                <SignOutBtn />
             </div>
         </Drawer>
     </>)

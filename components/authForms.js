@@ -41,7 +41,7 @@ export function SignInForm(){
 /////////////////////////// ///////////////////////////
 //////////////////////////////////////////////////////
 
-
+// used in GMS Nav Bar
 export function SignOutBtn(){
     const { data: session } = useSession()
     return(<>

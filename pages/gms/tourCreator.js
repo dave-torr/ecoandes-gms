@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { useSession, signIn, signOut } from "next-auth/react"
 
 import {HighlightAdder,  DayByDayAdder, aTextInput, LogoSwitcher, IncExclAdder} from "../../components/forms"
-import { SignInForm, SignOutBtn } from "../../components/authForms";
-import { GmsUserNavi } from "../../components/navis";
+import { SignInForm } from "../../components/authForms";
+import { GMSNavii } from "../../components/navis";
 
 
 import ExploreIcon from '@mui/icons-material/Explore';
@@ -209,12 +209,11 @@ let tourType=["active", "family", "cruise", "expedition", "private", "voyage"]
         </>)
     }
 
-
     return(<>
         <div className={styles.generalPageCont}>
 
             {session?<>
-                <GmsUserNavi user={session.user} signOut={<SignOutBtn/>} />
+                <GMSNavii user={session.user}/>
 
                 <div className={styles.tourMakerTitle}>
                     <ExploreIcon fontSize="large" />

@@ -157,22 +157,24 @@
 
 
 /* ___________________ */
-/* GMS User Navi */
-
-.gmsUserNavCont{
+/* GMS Navi */
+.GMSNaviCont{
     width: 100%;
     display: flex;
-    justify-content: flex-end;
-    margin: 12px;
+    justify-content: space-between;
     align-items: center;
-    border: solid 1px transparent;
+    border-bottom: solid 1px red;
+    padding: 6px 9px;
+    background-color: white;
 }
 
-.gmsUserNavCont:hover > .gmsUserNavBurger{
-    border: solid 1px black;
+.GMSsNaviTitle{
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 600;
 }
 
-.gmsUserNavBurger{
+.GMSNaviBurger{
     padding: 4px;
     cursor: pointer;
     border: solid 1px transparent;
@@ -182,7 +184,7 @@
     transition: all ease 0.7s;
 }
 
-.gmsUserNavBurger span{
+.GMSNaviBurger span{
     width: 26px;
     height: 1px;
     background-color: #191919;
@@ -203,6 +205,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    padding-bottom: 15px;
 }
 
 .userNaviDrawerBTNs{
