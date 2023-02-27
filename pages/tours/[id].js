@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import Head from 'next/head'
 
-import {EcoAndesBar} from "./../../components/navis"
+import {LTCNaviBar} from "./../../components/navis"
 import {TourDisplayer} from "./../../components/tours"
 
 import TourData from "../../data/peruItineraries"
@@ -51,7 +51,7 @@ function TourPage({ aTour }){
 
     return(<>
         {tourHead(aTour)}
-        <EcoAndesBar inTrip={true}/>
+        <LTCNaviBar inTrip={true}/>
         <TourDisplayer aTour={aTour} breadcrumb={true} key={aTour.tripName} />
     </>)
 }

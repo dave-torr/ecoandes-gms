@@ -19,8 +19,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 // with english/spanish switcher
 
-const contactNum1 = <><a target='_blank' href="tel:+593996406954"> <PhoneForwardedIcon fontSize="inherit" /></a> </> 
-const contactNum2 = <>&nbsp;<a target='_blank' href="https://wa.me/593987298410"><WhatsAppIcon fontSize="inherit" /></a></> 
+const contactNum1 = <><a target='_blank' href="tel:+17862963950"> <PhoneForwardedIcon fontSize="inherit" /></a> </> 
+const contactNum2 = <>&nbsp;<a target='_blank' href="https://wa.me/593979469989"><WhatsAppIcon fontSize="inherit" /></a></> 
 const contactEmail = <><a target='_blank' href="mailto:info@ecoandestravel.com"><MailOutlineIcon fontSize="inherit" /></a></>
 
 
@@ -86,15 +86,17 @@ export function GeneralDataBar(props){
     </>)
 }
 
-export function EcoAndesBar(props){
+
+// Applied on Tours
+export function LTCNaviBar(props){
     return(<>
-    <div className={styles.ecoAndesBarGenCont}> 
+    <div className={styles.LTCNaviGenCont}> 
         {props.inTrip?<>
         <Link href="/tours">
         <a><ArrowBackIosIcon />itineraries</a>
         </Link>
         </>:<> <div /> </>}
-        <div className={styles.ecoAndesBarLinks}> 
+        <div className={styles.LTCNaviLinks}> 
             {contactNum1} &nbsp; &nbsp; &nbsp; &nbsp;
             {contactNum2} &nbsp; &nbsp; &nbsp; &nbsp;
             {contactEmail} 
@@ -115,11 +117,7 @@ export function Navi2(props){
             blurDataURL={LTCTypeface}
             placeholder="blur"
         /></div>
-        {/* <div className={styles.naviHamburger} onClick={()=>setDrawerToggle(true)}>
-            <span />
-            <span />
-            <span />
-        </div> */}
+
         <Drawer anchor={"right"} open={drawerToggle} onClose={()=>setDrawerToggle(false)} >
             <div className={styles.rightDrawerNaviGenCont}> 
             
@@ -133,9 +131,6 @@ export function Navi2(props){
 {/* define WTF with these links once proposal is accepted */}
 
 
-
-
-
                     <div className={styles.eachMenuItem}>home</div>
                     <div className={styles.eachMenuItem}>about us</div>
                     <div className={styles.eachMenuItem}>
@@ -145,14 +140,8 @@ export function Navi2(props){
                     </div>
                     <div className={styles.eachMenuItem}>contact</div>
 
-
-
-
-
-
-
                 </div>
-                <div className={styles.ecoAndesBarLinks}> 
+                <div> 
                     {contactNum1} &nbsp; &nbsp; &nbsp; &nbsp;
                     {contactNum2} &nbsp; &nbsp; &nbsp; &nbsp;
                     {contactEmail} 

@@ -6,7 +6,7 @@ import styles from "./../../styles/pages/tours.module.css"
 
 import tourPageIMGLadning from "./../../public/assets/images/bookingLanding1.png"
 
-import {EcoAndesBar, Navi2} from "./../../components/navis"
+import {LTCNaviBar, Navi2} from "./../../components/navis"
 import {ATourCard, SquaredTourCard, RectangularTourCard} from "./../../components/tours"
 
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
@@ -347,7 +347,7 @@ export default function TourPage(){
     {pageHead()}
         <div className={styles.generalTourPage}>  
 
-            <EcoAndesBar />
+            <LTCNaviBar />
             <Navi2 />
             {tourPageImgDisplayer()}
 

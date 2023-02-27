@@ -18,8 +18,8 @@ export default function PlaygroundPage(props){
 
 
 
-// OP for text and numbs
-    const anInputDisplayer=(inputLabel, inputId, inputType, isReq, inputPlaceholder, inputLeel, numbMin )=>{
+// OP for text, numbs, dates
+    const anInputDisplayer=(inputLabel, inputId, inputType, isReq, inputPlaceholder, numbMin )=>{
         return(<>
             <div className={styles.theInputContainer}>
                 <div className={styles.anInputRow}>
@@ -35,20 +35,16 @@ export default function PlaygroundPage(props){
                     id={inputId}
                     onChange={(e)=>{
                         e.preventDefault()
-                        if(inputLeel==="first"){
-                        console.log("cucu")
                         setItinSkeleton({
                             ...itinerarySkeleton,
                             [inputId]:e.target.value
                         })
-                        }
                     }}
                     min={numbMin}
                 />
             </div>
         </>)
     }
-
 
     const [aHighlight, setAHighlight]=useState('')
     const [highlightList, setHighlightList]=useState(["cucu on a List"])
@@ -61,7 +57,6 @@ export default function PlaygroundPage(props){
                 - {elem} 
                 <div className={styles.rmvHighlightBTN} 
                     onClick={()=>{
-                        console.log("cucu")
                         let tempList=[...theList];
                         tempList.splice(i, 1)
                         setList(tempList)
@@ -111,31 +106,112 @@ export default function PlaygroundPage(props){
         </>)
     }
 
+
+    let someOptsArr=["cucu", "rice", "some", "soda"]
+    const [singlePickerElem, setPickerElem]=useState()
+    const [multiPickerArr, setMultiPickerArr]=useState([])
+
+
+
+    const [pickerOptsArray, setPickerOptsArr]=useState(someOptsArr)
+    const aDropdownPicker=(singOrMulti, theOptsArr, inputLabel, inputId, setTheResult, setMultiArr)=>{
+        if(singOrMulti==="single"){
+            let theOptions=theOptsArr.map((elem,i)=><React.Fragment key={i}> 
+                <option value={elem}> {elem} </option></React.Fragment>)
+            return(<>
+                <div className={styles.theInputContainer}>
+                    <div className={styles.anInputRow}>
+                        <label htmlFor={inputId} className={styles.inputLabel}>   
+                            {inputLabel}</label>
+                        <i> &nbsp; - &nbsp; single option picker </i>
+                    </div>
+                    <select className={styles.inputUserUI}
+                    onChange={(e)=>{
+                        e.preventDefault()
+                        setTheResult(e.target.value)
+                    }}>
+                        {theOptions}
+                    </select>
+                </div>
+            </>)} 
+        else if(singOrMulti==="multi"){
+            // add optto temp arr that displays everything
+            let theOptions=theOptsArr.map((elem,i)=><React.Fragment key={i}> 
+                <option value={elem} key={i}>{elem}</option></React.Fragment>)
+
+            const setResults=(e)=>{
+                e.preventDefault()
+                setTheResult([...multiPickerArr, e.target.value])
+                // temp array, splice, and remove from optArr
+                // setPickerOptsArr(spliced temp array)
+
+
+            }
+            return(<>
+                <div className={styles.theInputContainer}>
+                    <div className={styles.anInputRow}>
+                        <label htmlFor={inputId} className={styles.inputLabel}>   
+                            {inputLabel}</label>
+                        <i> &nbsp; - &nbsp; multi option picker </i>
+                    </div>
+                    <select className={styles.inputUserUI}
+                    onChange={(e)=>{
+                        setResults(e)
+                    }}>
+                        {theOptions}
+                    </select>
+                </div>
+            </>)}
+    }
+
+
+
+
+
+
+
+
+
+
+
+
     const formBuilder=()=>{
         return(<>
 
-
             <h1> Cucu Form Builder</h1>
 
-
             <form> 
+                <h4> Single Elem Picker  </h4>
+                    {aDropdownPicker("single", someOptsArr, "Single Opt Picker", "inputIDD", setPickerElem)}
+
+                <h4> Multi Elem Picker  </h4>
+                    {aDropdownPicker("multi", pickerOptsArray, "Multi Opt Picker", "inputIDD", setMultiPickerArr, setPickerOptsArr)}
+
+
                 <h4> Text input  </h4>
-                    {anInputDisplayer("Tester Label", "firstInputText", "text", false, "a Text Input", "first")}
+                    {anInputDisplayer("Tester Label", "firstInputText", "text", false, "a Text Input" )}
                 <h4> Number input  </h4>
-                    {anInputDisplayer("a Price", "inputKeyTwo", "number", false, "$xx.-", "first", 0  )}
+                    {anInputDisplayer("a Price", "inputKeyTwo", "number", false, "$xx.-", 0  )}
                 <h4> List Input </h4>
                     {addToList(highlightList, setHighlightList, "Voyage Inclusions", aHighlight, setAHighlight)}
+                <h4> Date Input </h4>
+                    {anInputDisplayer("departure date", "depDateKey", "date", false, "date",  )}
             </form>
         </>)
     }
 
 
+
+
+
+
+
+    console.log(multiPickerArr, "multi")
     return(<>
         Cucu
         <br/>
 
         <ul> Make a universal stylized input maker </ul>
-        <ul> Date </ul>
         <ul> Drop downs </ul>
         <ul> Img picker </ul>
         <ul> Gen Switchers </ul>

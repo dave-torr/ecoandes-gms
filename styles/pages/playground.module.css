@@ -7,7 +7,10 @@
     display: flex;
     flex-direction: column;
     margin: 21px;
+}
 
+.theInputContainer select{
+    text-transform: capitalize;
 }
 
 .inputLabel{
@@ -33,12 +36,12 @@
 
 
 .inputUserUI:focus-within::after{
-
     background-color: red;
 }
 
 .anInputRow{
     display: flex;
+    align-items: flex-end;
 }
 
 .anInputRow i{

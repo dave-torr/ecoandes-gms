@@ -83,7 +83,7 @@
 }
 
 /* EcoAndes Bar */
-.ecoAndesBarGenCont{
+.LTCNaviGenCont{
     width: 100%;
     position: fixed;
     top: 0;
@@ -97,7 +97,7 @@
     color: white;
 }
 
-.ecoAndesBarGenCont a{
+.LTCNaviGenCont a{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -109,7 +109,7 @@
     
 }
 
-.ecoAndesBarLinks{
+.LTCNaviLinks{
     display: flex;
     margin-right: 33px;
     font-size: 20px;
@@ -126,27 +126,6 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 9px;
-}
-
-.naviHamburger{
-    display: flex;
-    flex-direction: column;
-    border: solid 2px transparent;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all ease 0.5s;
-    padding: 3px;
-}
-
-.naviHamburger:hover{
-    border: solid 2px var(--pale-yellow);
-}
-
-.naviHamburger span{
-    width: 35px;
-    height: 2px;
-    background-color: var(--brick-red);
-    margin: 3px;
 }
 
 .rightDrawerNaviGenCont{
@@ -262,7 +241,7 @@
         font-size: 0.7em;
     }
 
-    .ecoAndesBarLinks{
+    .LTCNaviLinks{
         margin-right: 9px;
     }
 

@@ -322,6 +322,7 @@ export function DayByDayAdder(props){
         </div>
         </>)
     }
+    
     // const additionalsAdder=()=>{
     //     return(<>
     //     {flightsTrigger?<>
