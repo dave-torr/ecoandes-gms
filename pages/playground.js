@@ -4,24 +4,23 @@ import { useState } from 'react'
 import styles from "./../styles/pages/playground.module.css"
 
 
-import { SignInForm, SignOutBtn } from "./../components/authForms"
-import { useSession, signOut } from "next-auth/react"
+import { SignOutBtn } from "./../components/authForms"
+import { useSession } from "next-auth/react"
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import {GMSNavii} from "./../components/navis"
-
-
 
 // Bitacora logo:
 // import TrackChangesIcon from '@mui/icons-material/TrackChanges';
 
 export default function PlaygroundPage(props){
     const { data: session } = useSession()
+
     const [itinerarySkeleton, setItinSkeleton]=useState({})
 
 
 
 // OP for text, numbs, dates
-    const anInputDisplayer=(inputLabel, inputId, inputType, isReq, inputPlaceholder, numbMin )=>{
+    const anInputDisplayer=(inputLabel, inputId, inputType, isReq, inputPlaceholder, anObject, setAnObject, numbMin, )=>{
         return(<>
             <div className={styles.theInputContainer}>
                 <div className={styles.anInputRow}>
@@ -37,11 +36,8 @@ export default function PlaygroundPage(props){
                     id={inputId}
                     onChange={(e)=>{
                         e.preventDefault()
-
-// update so that it can receive any state elem and alterFunct
-
-                        setItinSkeleton({
-                            ...itinerarySkeleton,
+                        setAnObject({
+                            ...anObject,
                             [inputId]:e.target.value
                         })
                     }}
@@ -150,29 +146,32 @@ export default function PlaygroundPage(props){
     
     const multiOptPicker=(theOptsArr, inputLabel, inputId, resultingList, addToSelection, setOptsArr)=>{
 
-        let eachMultiOptDisp=theOptsArr.map((elem,i)=><React.Fragment key={i}> 
-            <div className={styles.multiPickerOpt} onClick={()=>{
-                // add to optEleem, rmv from temp arr
-                let tempList=resultingList.concat(elem)
-                addToSelection(tempList)
-                let tempListTwo = [...theOptsArr];
-                tempListTwo.splice(i,1)
-                setOptsArr(tempListTwo)
-            }} >+ {elem}</div>
-        </React.Fragment>)
+        let eachMultiOptDisp=theOptsArr.map((elem,i)=>
+            <React.Fragment key={i}> 
+                <div className={styles.multiPickerOpt} onClick={()=>{
+                    // add to optEleem, rmv from temp arr
+                    let tempList=resultingList.concat(elem)
+                    addToSelection(tempList)
+                    let tempListTwo = [...theOptsArr];
+                    tempListTwo.splice(i,1)
+                    setOptsArr(tempListTwo)
+                }} >+ {elem}</div>
+            </React.Fragment>)
 
-        let resultingMultiList=resultingList.map((elem,i)=><React.Fragment key={i}> 
-            <div className={styles.multiElemSelects} onClick={()=>{
-                // remove from selectedElems, add to OptList
-                let tempList=theOptsArr.concat(elem)
-                setOptsArr(tempList)
-                let tempListTwo = [...resultingList];
-                tempListTwo.splice(i,1)
-                addToSelection(tempListTwo)
-            }}> 
-                {elem} &nbsp; <HighlightOffIcon />
-            </div>
-        </React.Fragment>)
+        let resultingMultiList=resultingList.map((elem,i)=>
+            <React.Fragment key={i}> 
+                <div className={styles.multiElemSelects} onClick={()=>{
+                    // remove from selectedElems, add to OptList
+                    let tempList=theOptsArr.concat(elem)
+                    setOptsArr(tempList)
+                    let tempListTwo = [...resultingList];
+                    tempListTwo.splice(i,1)
+                    addToSelection(tempListTwo)
+                }}> 
+                    {elem} &nbsp; <HighlightOffIcon />
+                </div>
+            </React.Fragment>)
+            
         return(<>
             <div className={styles.theInputContainer}>
                 <div className={styles.anInputRow}>
@@ -212,7 +211,7 @@ export default function PlaygroundPage(props){
                 <h4> OP Single Elem Picker  </h4>
                     {aDropdownPicker(someOptsArr, "Single Opt Picker", "inputIDD", setPickerElem)}
 
-                <h4> Multi Option Picker </h4>
+                <h4> OP Multi Option Picker </h4>
                     {multiOptPicker(tempOptArr, "Destintions", "mulitInput", multiOptElem, setMultiOptElem, setTempOptArr )}
 
                 <h4> OP Text input</h4>
@@ -228,8 +227,10 @@ export default function PlaygroundPage(props){
     }
 
     return(<>
+
+    {/* Will we need session on per page level, or just on Navi and it can controll it all???? */}
         {session&&<> 
-            <GMSNavii  user={session.user} signOut={<SignOutBtn/>} />
+            <GMSNavii  user={session.user} />
         </>}
 
         <h1>
@@ -237,9 +238,9 @@ export default function PlaygroundPage(props){
         </h1>
         <br/>
 
-        <ul> gms and playground Navi </ul>
-        <ul> Make a universal stylized input maker </ul>
-        <ul> Drop downs </ul>
+        {/* <ul> gms and playground Navi </ul> */}
+        {/* <ul> Make a universal stylized input maker </ul> */}
+        {/* <ul> Drop downs </ul> */}
         <ul> Img picker </ul>
         <ul> Gen Switchers </ul>
 

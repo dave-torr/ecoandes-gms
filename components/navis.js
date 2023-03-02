@@ -169,14 +169,14 @@ export function GMSNavii(props){
     const [drawerToggle, setDrawerToggle] = useState(false)
     const router = useRouter()
 
+    if (props.user){
     return(<>
 
         <div className={styles.GMSNaviCont} onClick={()=>setDrawerToggle(true)}> 
 
             <div className={styles.GMSsNaviTitle}>
-                {router.pathname}
+                LTC{router.pathname}
             </div>
-
 
             {/* User icon and Burger */}
             <div style={{display: "flex", alignItems:"center"}}> 
@@ -203,15 +203,20 @@ export function GMSNavii(props){
                 <h3> Hi {props.user.name} </h3>
                 <div className={styles.userNaviDrawerBTNs}>
 
+                {/* Dave's Routes */}
                     {props.user.name==="David Torres"&&<>
                     {router.pathname!="/playground"&&<><Link href="/playground">  
                     <a>Playground</a>
                     </Link></>}
                     </>}
 
-                    {router.pathname!="/gms"&&<><Link href="/gms">  
-                    <a>GMS Home</a>
+                    {props.user.name==="David Torres"&&<>
+                    {router.pathname!="/pix"&&<><Link href="/gms/pix">  
+                    <a>Pix</a>
                     </Link></>}
+                    </>}
+
+                {/* Non admin Toutes */}
                     {router.pathname!="/gms/tourCreator"&&<><Link href="/gms/tourCreator">  
                     <a>Tour Creator</a>
                     </Link></>}
@@ -221,9 +226,13 @@ export function GMSNavii(props){
                     {router.pathname!="/gms/operations"&&<><Link href="/gms/operations">  
                     <a>Tour Creator</a>
                     </Link></>}
+                    {router.pathname!="/gms"&&<><Link href="/gms">  
+                    <a>GMS Home</a>
+                    </Link></>}
                 </div>
                 <SignOutBtn />
             </div>
         </Drawer>
     </>)
+    }
 }

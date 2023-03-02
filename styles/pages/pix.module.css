@@ -1,0 +1,30 @@
+/* Img Components */
+
+.eachImgEditor{
+    border: solid 1px teal;
+    margin: 9px;
+    padding: 9px;
+    width: 430px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--frst-box-shadow);
+}
+
+.imgDataForm{
+    width: 100%;
+}
+
+.sendToDBBTN{
+    width: calc(100% - 18px);
+    text-align: center;
+    background-color: rgb(20, 132, 176);
+    color: white;
+    padding: 6px;
+    margin: 9px 0;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+}
+/* Pix Page */

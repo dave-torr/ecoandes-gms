@@ -495,7 +495,7 @@ export function TourDisplayer(props){
     }
     const mainImagedisp=()=>{
         return(<>
-            <div className={styles.mainImgdisplayer}>
+            <div className={styles.mainImgDisplayer}>
                 <Image
                     src={aTour.imgArr[0]}
                     height={1125}

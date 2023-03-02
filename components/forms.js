@@ -13,7 +13,7 @@ import { Textarea } from '@mantine/core';
 //////////////////////////////////////////////////////////
 import styles from "../styles/components/forms.module.css"
 
-
+// Flag for Deletion
 export function aTextInput(aPlaceholder, inputId, anObject, setAnObject, inputType, reqBoolean){
     return(<>
     <div className={styles.anInputcont}>
@@ -35,6 +35,115 @@ export function aTextInput(aPlaceholder, inputId, anObject, setAnObject, inputTy
     </>)
 }
 
+
+// Updated general input displayer
+export function anInputDisplayer(inputLabel, inputId, inputType, isReq, inputPlaceholder, anObject, setAnObject, numbMin ){
+    return(<>
+        <div className={styles.theInputContainer}>
+            <div className={styles.anInputRow}>
+                <label htmlFor={inputId} className={styles.inputLabel}>   
+                    {inputLabel}</label>
+                <i> &nbsp; - &nbsp; {inputType} </i>
+            </div>
+            <input
+                className={styles.inputUserUI}
+                type={inputType}
+                required={isReq}
+                placeholder={inputPlaceholder}
+                id={inputId}
+                onChange={(e)=>{
+                    e.preventDefault()
+                    setAnObject({
+                        ...anObject,
+                        [inputId]:e.target.value
+                    })
+                }}
+                min={numbMin}
+            />
+        </div>
+    </>)
+}
+
+// multi OptDisplayer
+export function multiOptPicker(theOptsArr, inputLabel, inputId, resultingList, addToSelection, setOptsArr){
+    let eachMultiOptDisp=theOptsArr.map((elem,i)=>
+        <React.Fragment key={i}> 
+            <div className={styles.multiPickerOpt} onClick={()=>{
+                // add to optEleem, rmv from temp arr
+                let tempList=resultingList.concat(elem)
+                addToSelection(tempList)
+                let tempListTwo = [...theOptsArr];
+                tempListTwo.splice(i,1)
+                setOptsArr(tempListTwo)
+            }} >+ {elem}</div>
+        </React.Fragment>)
+    let resultingMultiList=resultingList.map((elem,i)=>
+        <React.Fragment key={i}> 
+            <div className={styles.multiElemSelects} onClick={()=>{
+                // remove from selectedElems, add to OptList
+                let tempList=theOptsArr.concat(elem)
+                setOptsArr(tempList)
+                let tempListTwo = [...resultingList];
+                tempListTwo.splice(i,1)
+                addToSelection(tempListTwo)
+            }}> 
+                {elem} &nbsp; <HighlightOffIcon />
+            </div>
+        </React.Fragment>)
+        
+    return(<>
+        <div className={styles.theInputContainer}>
+            <div className={styles.anInputRow}>
+                <label htmlFor={inputId} className={styles.inputLabel}>   
+                    {inputLabel} picker</label>
+                <i> &nbsp; - &nbsp; multi option picker </i>
+            </div>
+            <br/>
+            <div className={styles.aRow}>
+                {eachMultiOptDisp}
+            </div>
+            <div className={styles.listDisplayer}>
+                <h3> {inputLabel} </h3>
+                <div>
+                    {resultingList.length>0?<>
+                        <div className={styles.aRow}>
+                            {resultingMultiList}
+                        </div>
+                    </>:<>
+                        <div>...add to {inputLabel}</div>
+                    </>}
+                </div>
+            </div>
+        </div>
+    </>)
+}
+
+export function aDropdownPicker(theOptsArr, inputLabel, inputId, anObject, setAnObject, ){
+    let theOptions=theOptsArr.map((elem,i)=><React.Fragment key={i}> 
+        <option value={elem}> {elem} </option></React.Fragment>)
+    return(<>
+        <div className={styles.theInputContainer}>
+            <div className={styles.anInputRow}>
+                <label htmlFor={inputId} className={styles.inputLabel}>   
+                    {inputLabel}</label>
+                <i> &nbsp; - &nbsp; single option picker </i>
+            </div>
+            <select className={styles.inputUserUI}
+            placeholder="cucu"
+            onChange={(e)=>{
+                e.preventDefault()
+                    setAnObject({
+                        ...anObject,
+                        [inputId]:e.target.value
+                    })
+                }}> 
+                <option disabled> Select a {inputLabel}</option>
+                {theOptions}
+            </select>
+        </div>
+    </>) 
+}
+
 export function LogoSwitcher(props){
     const handleChange=()=>{
         if(props.aTour.ecoAndesLogo){
@@ -51,6 +160,16 @@ export function LogoSwitcher(props){
         /> EcoAndes Travel Logo</div>
     </>)
 }
+
+
+
+
+
+
+
+
+
+
 
 
 //////////////////////////////////////////////////////////

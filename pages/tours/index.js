@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react"
 import Image from "next/image"
 
-import TourData from "../../data/peruItineraries"
+import TourData from "../../data/LTCItinerary"
 import styles from "./../../styles/pages/tours.module.css"
 
 import tourPageIMGLadning from "./../../public/assets/images/bookingLanding1.png"

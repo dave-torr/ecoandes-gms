@@ -124,6 +124,9 @@
     justify-content: space-around;
     align-items: center;
 }
+
+
+/* FFDeletion */
 .anInputcont{
     display: flex;
     flex-direction: column;
@@ -136,6 +139,83 @@
     margin: 6px 0;
 
 }
+
+/* updated Inputs */
+
+.theInputContainer{
+    display: flex;
+    flex-direction: column;
+    margin: 9px;
+}
+
+.anInputRow{
+    display: flex;
+    align-items: flex-end;
+}
+
+.anInputRow i{
+    font-size: 0.8em;
+}
+
+.inputLabel{
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.inputUserUI{
+    border: none;
+    border-left: solid 3px black;
+    border-bottom: solid 3px black;
+    padding: 6px 9px;
+    background-color: rgba(128, 254, 143, 0.273);
+    margin-top: 3px;
+    width: 100%;
+}
+
+.inputUserUI:focus{
+    background-color: unset;
+}
+
+.theInputContainer select{
+    text-transform: capitalize;
+}
+
+.aRow{
+    display: flex;
+    align-items: center;
+}
+
+.listDisplayer{
+    padding: 6px 15px;
+}
+
+.multiPickerOpt{
+    border-left: solid 3px black;
+    border-bottom: solid 3px black;
+    padding: 6px 9px;
+    margin-right: 9px;
+    background-color: rgba(128, 254, 143, 0.273);
+}
+
+.multiElemSelects{
+    display: flex;
+    align-items: center;
+    border-right: solid 3px black;
+    border-top: solid 3px black;
+    padding: 6px 9px;
+    margin-right: 9px;
+}
+
+
+
+
+
+
+
+
+
+/* OLDIES */
 
 .dayAdderForm{
     padding: 6px 18px;

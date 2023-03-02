@@ -4,7 +4,7 @@ import Head from 'next/head'
 import {LTCNaviBar} from "./../../components/navis"
 import {TourDisplayer} from "./../../components/tours"
 
-import TourData from "../../data/peruItineraries"
+import TourData from "../../data/LTCItinerary"
 
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////

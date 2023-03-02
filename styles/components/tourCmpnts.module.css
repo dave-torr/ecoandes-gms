@@ -312,10 +312,11 @@
     z-index: 1;
 }
 
-.mainImgdisplayer{
+.mainImgDisplayer{
     box-shadow: var(--frst-box-shadow);
-    padding: 6px;
-    padding-bottom: 3px;
+    padding: 4px;
+    padding-bottom: 1px;
+    background-color: var(--pop-orange);
 }
 
 

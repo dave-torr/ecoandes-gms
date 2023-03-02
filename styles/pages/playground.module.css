@@ -16,6 +16,21 @@
     text-transform: capitalize;
 }
 
+.inputUserUI{
+    border: none;
+    border-left: solid 3px black;
+    border-bottom: solid 3px black;
+    padding: 6px 9px;
+    background-color: rgba(128, 254, 143, 0.273);
+    margin-top: 6px;
+    font-size: 1.3em;
+    width: 100%;
+}
+
+.inputUserUI:focus{
+    background-color: unset;
+}
+
 .inputLabel{
     font-weight: 600;
     letter-spacing: 1px;
@@ -33,26 +48,6 @@
     padding: 6px 9px;
     margin-right: 9px;
     background-color: rgba(128, 254, 143, 0.273);
-}
-
-.inputUserUI{
-    border: none;
-    border-left: solid 3px black;
-    border-bottom: solid 3px black;
-    padding: 6px 9px;
-    background-color: rgba(128, 254, 143, 0.273);
-    margin-top: 6px;
-    font-size: 1.4em;
-    width: 100%;
-}
-
-.inputUserUI:focus{
-    background-color: unset;
-}
-
-
-.inputUserUI:focus-within::after{
-    background-color: red;
 }
 
 .anInputRow{
