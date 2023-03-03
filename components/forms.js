@@ -137,7 +137,7 @@ export function aDropdownPicker(theOptsArr, inputLabel, inputId, anObject, setAn
                         [inputId]:e.target.value
                     })
                 }}> 
-                <option disabled> Select a {inputLabel}</option>
+                <option disabled selected > Select a {inputLabel}</option>
                 {theOptions}
             </select>
         </div>

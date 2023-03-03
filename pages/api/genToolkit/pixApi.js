@@ -4,21 +4,20 @@ async function handler(req, res){
 
     if(req.method==="POST"){
         const reqData= JSON.parse(req.body)
-        console.log(reqData, "Req Data At POST")
 
 
-        // const client = await connectToDatabase();
-        // const imgInstanceCreation = client
-        //     .db('EcoAndesGMS')
-        //     .collection("pixLTCWide");
-        // const imgInstace = await imgInstanceCreation
-        //     .insertOne(reqData)
+        const client = await connectToDatabase();
+        const imgInstanceCreation = client
+            .db('EcoAndesGMS')
+            .collection("pixLTCWide");
+        const imgInstace = await imgInstanceCreation
+            .insertOne({...reqData})
 
-        // if(imgInstace){
-        //     client.close();
-        //     return {...imgInstace}
-        // }
-
+        if(imgInstace){
+            res.status(201).json(imgInstace)
+            client.close();
+            // return {...imgInstace}
+        }
         // error handling
     }
 

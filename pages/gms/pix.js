@@ -15,7 +15,7 @@ import styles from "./../../styles/pages/pix.module.css"
 
 export default function PixPage(){
     const { data: session } = useSession()
-    const [ImgData, setImgStructure]= useState({})
+    const [ImgData, setImgData]= useState({})
     const [loadingStateTrig, setLoadState]=useState(false)
     
 
@@ -45,23 +45,21 @@ export default function PixPage(){
     // IMG LOGISTIX
 // join these two under IMG DATA editor funct
     const anImgDataForm=(imgSrc)=>{
-        
-        
         return(<>
             <div className={styles.imgDataForm} onClick={()=>{
                 if(!ImgData.src){
-                    setImgStructure({
+                    setImgData({
                         ...ImgData,
                         "src": imgSrc
                     })
                 }
             }}>
-                {aDropdownPicker(LTCData.countryList, "Country", "imgCountry", ImgData, setImgStructure)}
-                {aDropdownPicker(LTCData.regionList, "Region", "imgRegion", ImgData, setImgStructure)}
-                {anInputDisplayer("Location Details", "locationDetails", "text", false, "ex: Inca Trail", ImgData, setImgStructure)}
-                {anInputDisplayer("Image name", "imgName", "text", false, "The Name", ImgData, setImgStructure)}
-                {anInputDisplayer("Image Author", "imgAuthor", "text", false, "The Author", ImgData, setImgStructure)}
-                {anInputDisplayer("Image Alt Text", "imgAlt", "text", false, "Image Alt", ImgData, setImgStructure)}
+                {aDropdownPicker(LTCData.countryList, "Country", "imgCountry", ImgData, setImgData)}
+                {aDropdownPicker(LTCData.regionList, "Region", "imgRegion", ImgData, setImgData)}
+                {anInputDisplayer("Location Details", "locationDetails", "text", false, "ex: Inca Trail", ImgData, setImgData)}
+                {anInputDisplayer("Image name", "imgName", "text", false, "The Name", ImgData, setImgData)}
+                {anInputDisplayer("Image Author", "imgAuthor", "text", false, "The Author", ImgData, setImgData)}
+                {anInputDisplayer("Image Alt Text", "imgAlt", "text", false, "Image Alt", ImgData, setImgData)}
             </div>
         </>)
     }
@@ -71,7 +69,6 @@ export default function PixPage(){
                 className={styles.sendToDBBTN}
                 onClick={async()=>{
 
-
                     // setLoadState(true)
                     let stringifiedImgData= JSON.stringify(theImgData)
                     const res = await fetch("/api/genToolkit/pixApi", {
@@ -79,23 +76,27 @@ export default function PixPage(){
                         body: stringifiedImgData
                     })
                     const imgDataSubmition = await res.json()
-                    console.log(imgDataSubmition) 
+                    console.log(imgDataSubmition, "Img Submitions") 
 
 
                     if (res.status===201){
-                        // setimgDataObj to empty
-                        // setLoadState(false)
-                        // nextImg
+                        setBatchEditImgArr([...batchEditImgArr, theImgData])
+                        setLoadState(false)
+                        setImgIndex(imgBatchIndex+1)
+                        setImgData({})
+                        window.alert("Image Created and in DB")
+                        window.scrollTo({top: 0, behavior: "smooth"})
+
                         // add returned obj from DB if possible || useIMG DaTA before erasing
-                        batchEditImgArr.concat(theImgData)
 
 
 
-                    } else {
+                    } else if (res.status===201){
                         window.alert(`Error with Img data submition: ${imgDataSubmition.message}`)
                     }
                 }}>
             
+
                 Send to database 
             
             </div>
@@ -139,7 +140,11 @@ export default function PixPage(){
     const [batchSteps, setBatchSteps]=useState(0)
     const [batchEditImgArr, setBatchEditImgArr]=useState([])
     const [imgRatio, setImgRatio]=useState("LTCWide")
-    const [imgBatchIndex, setImgIndex]= useState(0)
+    const [imgBatchIndex, setImgIndex]= useState(1)
+
+
+
+
     const batchProcessSteps=()=>{
         // change to elems as props
         return(<> 
@@ -156,6 +161,8 @@ export default function PixPage(){
                 {/* Displays IMG Spread */}
                 {theSpread(theImagesArr)}
 
+
+
             </>
             :batchSteps===1&& <>
                 <div className={styles.editImgFormCont}> 
@@ -163,14 +170,11 @@ export default function PixPage(){
                         <h4>Session stats:</h4>
                         <span> count {batchEditImgArr&&<>{batchEditImgArr.length}</>}</span>
 
-                        <span> Countries: </span>
+                        {/* <span> Countries: </span> */}
+
                     </div>
 
-
-
                     {anImageDataEditor(theImagesArr[imgBatchIndex])}
-
-
 
                     <div className={styles.statsCardDisp}> 
                         <h4>Batch Stats:</h4>
