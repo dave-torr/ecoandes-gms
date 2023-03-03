@@ -45,6 +45,8 @@ export default function PixPage(){
     // IMG LOGISTIX
 // join these two under IMG DATA editor funct
     const anImgDataForm=(imgSrc)=>{
+        
+        
         return(<>
             <div className={styles.imgDataForm} onClick={()=>{
                 if(!ImgData.src){
@@ -64,11 +66,12 @@ export default function PixPage(){
         </>)
     }
     const dataSubmitionDisp=(theImgData)=>{
-
         return(<>
             <div 
                 className={styles.sendToDBBTN}
                 onClick={async()=>{
+
+
                     // setLoadState(true)
                     let stringifiedImgData= JSON.stringify(theImgData)
                     const res = await fetch("/api/genToolkit/pixApi", {
@@ -76,7 +79,7 @@ export default function PixPage(){
                         body: stringifiedImgData
                     })
                     const imgDataSubmition = await res.json()
-                    console.log(imgDataSubmition)
+                    console.log(imgDataSubmition) 
 
 
                     if (res.status===201){
@@ -101,10 +104,12 @@ export default function PixPage(){
     const anImageDataEditor=(eachImg)=>{
         // have fields to fill in pic data: location, area, country, imgname, imgalt, author, year
         // How to read meta data from Images on Chrome??
+
+
         return(<>
             <div className={styles.eachImgEditor}>
                 {anImageDisp(eachImg, 400, imgRatio, "cucu Alt")}
-                {anImgDataForm()}
+                {anImgDataForm(eachImg)}
                 {dataSubmitionDisp(ImgData)}
             </div>
         </>)
@@ -134,6 +139,7 @@ export default function PixPage(){
     const [batchSteps, setBatchSteps]=useState(0)
     const [batchEditImgArr, setBatchEditImgArr]=useState([])
     const [imgRatio, setImgRatio]=useState("LTCWide")
+    const [imgBatchIndex, setImgIndex]= useState(0)
     const batchProcessSteps=()=>{
         // change to elems as props
         return(<> 
@@ -150,7 +156,6 @@ export default function PixPage(){
                 {/* Displays IMG Spread */}
                 {theSpread(theImagesArr)}
 
-
             </>
             :batchSteps===1&& <>
                 <div className={styles.editImgFormCont}> 
@@ -161,7 +166,11 @@ export default function PixPage(){
                         <span> Countries: </span>
                     </div>
 
-                    {anImageDataEditor(CurrentImageData[0])}
+
+
+                    {anImageDataEditor(theImagesArr[imgBatchIndex])}
+
+
 
                     <div className={styles.statsCardDisp}> 
                         <h4>Batch Stats:</h4>
@@ -173,6 +182,11 @@ export default function PixPage(){
         </>)
     }
 
+
+
+    console.log(ImgData)
+
+
     return(<>
         {/* Add further session doors  */}
         {session&& <> 
@@ -183,7 +197,12 @@ export default function PixPage(){
 
         {/* Spread and cuntionality is OP. Create editor steps. ReceiveArr, spread, editorperIMG, DB submition. */}
 
+
+
         {batchProcessSteps()}
+
+
+
 
     </>)
 }

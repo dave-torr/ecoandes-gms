@@ -4,11 +4,13 @@ async function handler(req, res){
 
     if(req.method==="POST"){
         const reqData= JSON.parse(req.body)
-        console.log(reqData)
+        console.log(reqData, "Req Data At POST")
+
+
         // const client = await connectToDatabase();
         // const imgInstanceCreation = client
         //     .db('EcoAndesGMS')
-        //     .collection("pixImageAdministration");
+        //     .collection("pixLTCWide");
         // const imgInstace = await imgInstanceCreation
         //     .insertOne(reqData)
 
@@ -16,8 +18,8 @@ async function handler(req, res){
         //     client.close();
         //     return {...imgInstace}
         // }
-        // error handling
 
+        // error handling
     }
 
 
