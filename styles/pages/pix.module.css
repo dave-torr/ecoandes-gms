@@ -1,7 +1,6 @@
 /* Img Components */
 
 .eachImgEditor{
-    border: solid 1px teal;
     margin: 9px;
     padding: 9px;
     width: 430px;
@@ -9,11 +8,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: var(--frst-box-shadow);
 }
 
 .imgDataForm{
-    width: 100%;
+    width: 90%;
 }
 
 .sendToDBBTN{
@@ -27,4 +25,75 @@
     font-weight: 600;
     cursor: pointer;
 }
+
+.spreadContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-end;
+    transition: all ease-in 0,3s;
+}
+
+.eachImgSpreadCont{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: 15px;
+    margin: 6px;
+}
+
+.deleteFromSpreadBTN{
+    border-radius: 100%;
+    border: solid 3px grey;
+    height: 25px;
+    width: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: white;
+    transform: translate(12px, 12px);
+    z-index: 3;
+}
+
 /* Pix Page */
+/* General BTNS */
+.nextSepBTN{
+    text-align: center;
+    background-color: rgb(20, 132, 176);
+    color: white;
+    padding: 12px;
+    margin: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    height: fit-content;
+}
+
+.editImgFormCont{
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgb(231, 231, 231);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.statsCardDisp{
+    width: 200px;
+    background-color: white;
+    box-shadow: var(--frst-box-shadow);
+    padding: 12px;
+    padding-top: 0px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.statsCardDisp span{
+    padding-left: 6px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 0.9em;
+
+}

@@ -1,29 +1,23 @@
 import {connectToDatabase} from "../../../middleware/dbMiddleware"
 
 async function handler(req, res){
-    console.log("here at Req, Cucu")
 
     if(req.method==="POST"){
-        console.log("here at POST")
-
-        // const client = await connectToDatabase();
-        
         const reqData= JSON.parse(req.body)
         console.log(reqData)
-
-        // const bookingCreation = client
+        // const client = await connectToDatabase();
+        // const imgInstanceCreation = client
         //     .db('EcoAndesGMS')
-        //     .collection("caneteDigBookings");
-
-        // const theBooking = await bookingCreation
+        //     .collection("pixImageAdministration");
+        // const imgInstace = await imgInstanceCreation
         //     .insertOne(reqData)
 
-        // if(theBooking){
+        // if(imgInstace){
         //     client.close();
-        //     return {...theBooking}
+        //     return {...imgInstace}
         // }
-        
         // error handling
+
     }
 
 
