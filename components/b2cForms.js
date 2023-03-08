@@ -12,6 +12,9 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 
 
+// FLAGGED FOR DELETION. NOW USING WE TRAVEL FOR BOOKINGS
+
+
 // for user booking:
 // stepOne
 // pick a date from 'open' range

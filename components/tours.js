@@ -36,6 +36,21 @@ import LTCTypeface from "./../public/assets/logos/LTCTypeface.png"
 
 import Dialog from '@mui/material/Dialog';
 
+// ///////////////////
+    // v. ++: 
+    // Save Local Likes!!!
+
+    // useEffect(()=>{
+        // let sampleObj = {
+        //     "key1": "the trip",
+        //     "key2": "some other"
+        // }
+        // let strngifiedObj = JSON.stringify(sampleObj)
+        // localStorage.setItem("theTrips", strngifiedObj)
+    // },[])
+// ///////////////////
+
+
 export function ATourCard(props){
 
     let theTour = props.aTour
@@ -217,20 +232,6 @@ export function TourTypeCard(props){
 export function TourDisplayer(props){
     let aTour = props.aTour
 
-
-    // Save Local Likes!!!
-
-    // useEffect(()=>{
-        // let sampleObj = {
-        //     "key1": "the trip",
-        //     "key2": "some other"
-        // }
-        // let strngifiedObj = JSON.stringify(sampleObj)
-        // localStorage.setItem("theTrips", strngifiedObj)
-    // },[])
-
-
-
     const [imgDialogContr, srtImgDialogcontr]= useState(false)
     const [selectedImg, setSelectedImg]=useState(false)
 
@@ -340,17 +341,7 @@ export function TourDisplayer(props){
     }
     const carouselDisp=(theIMGArr)=>{
         return(<>
-
-
         <div className={styles.carouselSection}>
-
-
-        {/* Carousel Indicator ver.1 */}
-
-            {/* <div className={styles.arrowforwardCarrousel}>
-                <ArrowBackIosNewIcon /></div>
-            <div className={styles.arrowBackCarrousel}>
-                <ArrowForwardIosIcon /></div> */}
 
             <div className={styles.tourIMGCarousel}>
                     {theIMGArr.map((elem, i)=><>
@@ -376,8 +367,6 @@ export function TourDisplayer(props){
                             blurDataURL={selectedImg.src}
                             placeholder="blur" 
                         />
-
-
 
                         <h3>{selectedImg.alt}</h3>
                     </>}
@@ -422,7 +411,12 @@ export function TourDisplayer(props){
     }
     const tourTitle=()=>{
         let countryList = aTour.countryList.map((elem, i)=><React.Fragment key={i}> { i >0 &&<> / </>}{elem} </React.Fragment>)
+
         return(<>
+            {props.partnerLogo&&<>
+                <div className={styles.partnerLogo}>
+                {props.partnerLogo} </div> 
+            </>}
             <div className={styles.tourTitleCard}>
                 <h1 className={styles.tourTitleBar}>
                     {aTour.tripName} | {aTour.duration} Days</h1>
@@ -431,6 +425,7 @@ export function TourDisplayer(props){
             </div>
         </>)
     }
+    
     const tourIntroDetails=()=>{
         return(<>
             <div className={styles.tourIntroCont}>
@@ -442,7 +437,6 @@ export function TourDisplayer(props){
                 <p className={styles.tourOverview}> 
                     {aTour.tourOverview} </p>
 
-
 {/* Include We Travel Widget BTN || CONTACT US BTN for Private Departures */}
 
                 {aTour.tourType==="climbing"&&<>
@@ -453,9 +447,7 @@ export function TourDisplayer(props){
 
                 {/* INCORPORATE WIDGET FROM WE TRAVEL IN VER 2.0 */}
 
-
                 {aTour.weTravelURL&&<>
-
 
                     {/* export as separate function CALL TO ACTIONS CTAs  */}
                     {/* With widget, which is NON OP, Make further test with Dulce and team, embedded is always better. */}
@@ -468,7 +460,6 @@ export function TourDisplayer(props){
 
 
                 <div className={styles.aTourCTACont}> 
-
                     <a href={aTour.weTravelURL} target="_blank" rel="noopener noreferrer">
                     <div className={styles.contactNowBTN}>
                         Book {aTour.tripName} experience</div></a>
@@ -482,8 +473,9 @@ export function TourDisplayer(props){
                         <MailOutlineIcon/> </div>
                     </a>
                 </div>
-
                 </>}
+
+
             </div>
             {aTour.adventureType&& <> 
             <div className={styles.trekDiffNotice}>
@@ -518,10 +510,6 @@ export function TourDisplayer(props){
                     <span>{"->"} &nbsp; {aTour.tripName}</span>
             </div>
         </>)
-        } else if (props.partnerLogo){
-            return(<>
-                <div className={styles.partnerLogo}>{props.partnerLogo}</div>
-            </>)
         }
     }
     const hotelList=(theTour)=>{
@@ -570,6 +558,7 @@ export function TourDisplayer(props){
         </footer>
         </>)
     }
+
 
     return(<>
         <article className={styles.generalTourPage}>

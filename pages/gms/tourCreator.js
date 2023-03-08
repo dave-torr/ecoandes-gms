@@ -1,7 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSession, signIn, signOut } from "next-auth/react"
 
-import {HighlightAdder,  DayByDayAdder, aTextInput, LogoSwitcher, IncExclAdder} from "../../components/forms"
+import {
+    
+    HighlightAdder,  DayByDayAdder, aTextInput, LogoSwitcher, IncExclAdder,
+
+    anInputDisplayer
+
+} from "../../components/forms"
 import { SignInForm } from "../../components/authForms";
 import { GMSNavii } from "../../components/navis";
 
@@ -14,16 +20,21 @@ import { MultiSelect } from '@mantine/core';
 import styles from "../../styles/pages/tourMaker.module.css"
 
 
+import LTCGenDAta from "../../data/dataAndTemplates.json"
+
 
 
 export default function TourMakerPage(props){
 
-let ecoAndesDestinations= ['ecuador', 'galapagos', 'peru', 'bolivia', 'chile', 'argentina']
-let tourType=["active", "family", "cruise", "expedition", "private", "voyage"]
+// Import from Gen Tour Data
+let ecoAndesDestinations= LTCGenDAta.countryList
+let tourType=["all types", "historic", "nature", "360° itineraries", "climbing", "trekking"]
+
+// ver 2 add cruises
 
 ///////////////////////////////////////////////
 
-    // Import tour displayer and use it to build an itinerary from data filled in by user
+// Import tour displayer and use it to build an itinerary from data filled in by user
 
 //////////////////////////////////////////////
 
@@ -80,73 +91,88 @@ let tourType=["active", "family", "cruise", "expedition", "private", "voyage"]
 
             {tourMakerStep===0&&<>
 
-                <div className={styles.introQuote}>Let's get started!</div>
-
-                <div className={styles.aStepContainer}>
-                    <div className={styles.aStepTitleBar}> general tour data</div>
-
-                    <form className={styles.aStepForm} onSubmit={(e)=>{
-                        e.preventDefault()
-                        setTourMakerStep(1)
-                        setTourModel({
-                            ...aTourModel,
-                            "countryList": [destinationList],
-                            "tourType": theTourtype
-                        })
-                        window.scrollTo({ top: 0, behavior: "smooth"})
-                    }}>
-                        <LogoSwitcher aTour={aTourModel} tourEditor={setTourModel} />
-                        {aTextInput("Trip Name *", "tripName", aTourModel, setTourModel, "text", true )}
+                <form className={styles.tourCreatorFormCont} onSubmit={(e)=>{
+                    e.preventDefault()
+                    setTourMakerStep(1)
+                    setTourModel({
+                        ...aTourModel,
+                        "countryList": [destinationList],
+                        "tourType": theTourtype
+                    })
+                    window.scrollTo({ top: 0, behavior: "smooth"})
+                }}>
 
 
-                        <div className={styles.destPicker}>
-                        <label htmlFor="destinationPickerUI">Destination:</label>
-                            <MultiSelect
-                                placeholder="Our Destinations"
-                                data={[...ecoAndesDestinations]}
-                                searchable
-                                nothingFound="Nothing found..."
-                                onChange={setTourtype}
-                                id="destinationPickerUI"
-                            />
-                        </div>
 
-                        <div className={styles.destPicker}>
-                        <label htmlFor="tourTypePickerUI">Tour Type:</label>
-                            <select
-                                className={styles.tourTypeSelect} 
-                                placeholder="Our Destinations"
-                                onChange={setDestList}
-                                id="tourTypePickerUI"
-                            >
-                            <option value="" disabled selected>Select your Type</option>
-                            {toyrTypeOpts}
-                            </select>
-                        </div>
+                {/* Revise Logo Switcher to check how it's changing the model */}
+                    <LogoSwitcher aTour={aTourModel} tourEditor={setTourModel} />
 
 
-                        {aTextInput("Tour Reference", "tourRef", aTourModel, setTourModel, "text", false )}
-                        {aTextInput("Tour Language", "tourLanguage", aTourModel, setTourModel, "text", false )}
-                        {aTextInput("Client Reference", "clientRef", aTourModel, setTourModel, "text", false )}
-                        {aTextInput("Tour Code (if agency)", "tourCode", aTourModel, setTourModel, "text", false )}
-                        {aTextInput("Company Contact (if agency)", "companyContact", aTourModel, setTourModel, "text", false )}
-                        <input type="submit" value="Next" className={styles.tMIntroContinput}/>
-                    </form>
-                </div>
+                    {anInputDisplayer("Tour Name", "tripName", "text", true, "the noyage name", )}
+
+
+
+
+
+                    {aTextInput("Trip Name *", "tripName", aTourModel, setTourModel, "text", true )}
+
+
+
+
+                    <div className={styles.destPicker}>
+                    <label htmlFor="destinationPickerUI">Destination:</label>
+                        <MultiSelect
+                            placeholder="Our Destinations"
+                            data={[...ecoAndesDestinations]}
+                            searchable
+                            nothingFound="Nothing found..."
+                            onChange={setTourtype}
+                            id="destinationPickerUI"
+                        />
+                    </div>
+
+                    <div className={styles.destPicker}>
+                    <label htmlFor="tourTypePickerUI">Tour Type:</label>
+                        <select
+                            className={styles.tourTypeSelect} 
+                            placeholder="Our Destinations"
+                            onChange={setDestList}
+                            id="tourTypePickerUI"
+                        >
+                        <option value="" disabled selected>Select your Type</option>
+                        {toyrTypeOpts}
+                        </select>
+                    </div>
+
+
+                    {aTextInput("Tour Reference", "tourRef", aTourModel, setTourModel, "text", false )}
+                    {aTextInput("Tour Language", "tourLanguage", aTourModel, setTourModel, "text", false )}
+                    {aTextInput("Client Reference", "clientRef", aTourModel, setTourModel, "text", false )}
+                    {aTextInput("Tour Code (if agency)", "tourCode", aTourModel, setTourModel, "text", false )}
+                    {aTextInput("Company Contact (if agency)", "companyContact", aTourModel, setTourModel, "text", false )}
+                    <input type="submit" value="Next" className={styles.tMIntroContinput}/>
+                </form>
             </>}
 
             {tourMakerStep>0&&<> 
-                <div className={styles.aStepContainer}>
+                <div className={styles.tourCreatorFormCont}>
                     <div className={styles.offlineStepTitleBar}> general tour data</div>
                     {editIcon(0)}
                 </div>
             </>}
         </>)
     }
+
+
+
+
+
     const tourMakerStepTwo=()=>{
         return(<>
+
+
         {tourMakerStep===1&&<>
-            <div className={styles.aStepContainer} > 
+            <div className={styles.tourCreatorFormCont} > 
                 <div className={styles.upcomingTitleBar}>
                     Day By Day
                 </div>
@@ -157,9 +183,14 @@ let tourType=["active", "family", "cruise", "expedition", "private", "voyage"]
                     />
             </div>
             </>}
+
+
+
             {tourMakerStep>1&&<> 
-                <div className={styles.introQuote}>Step Three</div>
-                <div className={styles.aStepContainer}>
+
+
+
+                <div className={styles.tourCreatorFormCont}>
                     <div className={styles.offlineStepTitleBar}> general tour data</div>
                     {editIcon()}
                 </div>
@@ -208,6 +239,10 @@ let tourType=["active", "family", "cruise", "expedition", "private", "voyage"]
             </div>
         </>)
     }
+
+
+
+
 
     return(<>
         <div className={styles.generalPageCont}>

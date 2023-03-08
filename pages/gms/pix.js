@@ -63,12 +63,29 @@ export default function PixPage(){
             </div>
         </>)
     }
+
+
+
+
+
+
+
+
+
+
+
+
     const dataSubmitionDisp=(theImgData)=>{
         return(<>
+
+
+            {/* OP with APiu route, need to check form updating, with placeholders, or useState */}
+        
+        
+        {/* 
             <div 
                 className={styles.sendToDBBTN}
                 onClick={async()=>{
-
                     // setLoadState(true)
                     let stringifiedImgData= JSON.stringify(theImgData)
                     const res = await fetch("/api/genToolkit/pixApi", {
@@ -77,7 +94,6 @@ export default function PixPage(){
                     })
                     const imgDataSubmition = await res.json()
                     console.log(imgDataSubmition, "Img Submitions") 
-
 
                     if (res.status===201){
                         setBatchEditImgArr([...batchEditImgArr, theImgData])
@@ -89,8 +105,6 @@ export default function PixPage(){
 
                         // add returned obj from DB if possible || useIMG DaTA before erasing
 
-
-
                     } else if (res.status===201){
                         window.alert(`Error with Img data submition: ${imgDataSubmition.message}`)
                     }
@@ -99,9 +113,25 @@ export default function PixPage(){
 
                 Send to database 
             
-            </div>
+            </div> */}
+
+
+            <div className={styles.sendToDBBTN}> Placeholder BTN </div>
+
+
         </>)
     }
+
+
+
+
+
+
+
+
+
+
+
     const anImageDataEditor=(eachImg)=>{
         // have fields to fill in pic data: location, area, country, imgname, imgalt, author, year
         // How to read meta data from Images on Chrome??
@@ -115,8 +145,6 @@ export default function PixPage(){
             </div>
         </>)
     }
-
-
     // Batch Img Processing
     const theSpread=(imgArr, setImgArr)=>{
 
@@ -140,10 +168,7 @@ export default function PixPage(){
     const [batchSteps, setBatchSteps]=useState(0)
     const [batchEditImgArr, setBatchEditImgArr]=useState([])
     const [imgRatio, setImgRatio]=useState("LTCWide")
-    const [imgBatchIndex, setImgIndex]= useState(1)
-
-
-
+    const [imgBatchIndex, setImgIndex]= useState(13)
 
     const batchProcessSteps=()=>{
         // change to elems as props
@@ -187,7 +212,6 @@ export default function PixPage(){
     }
 
 
-
     console.log(ImgData)
 
 
@@ -201,11 +225,7 @@ export default function PixPage(){
 
         {/* Spread and cuntionality is OP. Create editor steps. ReceiveArr, spread, editorperIMG, DB submition. */}
 
-
-
         {batchProcessSteps()}
-
-
 
 
     </>)

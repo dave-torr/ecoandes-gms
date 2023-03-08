@@ -1,7 +1,7 @@
     {
         "tripName": "Canete Valley Dig",
         "id": "canete-dig",
-        "duration": 12,
+        "duration": 10,
         "difficulty": 2,
         "imgArr": ["https://dsm01pap002files.storage.live.com/y4m3aF8TjUlNP33379Zfr9hccG-YjpT1T6XdREzzoO4fOOtuQy3SKavcNAaK8CVyuY7_kjP6_MaEKQZOMDymtILHC47-pQzJ_ye-AdLyxBsQl_ViCL1BLjYDm4Hl0FnDdiF_WHH13DtscNsEtQ2SgyOPB2mX11uMIWx2gz2mZ1488MZu9h_U0TnVyoiVRpXGyFh?width=2000&height=1125&cropmode=none",
         "/assets/images/caneteValley-1.jpg",
@@ -11,6 +11,7 @@
         "https://dsm01pap002files.storage.live.com/y4mw16EdnSU_nQbPtsZeGjLJBBjr3zarv7erYVOTEgpHY_ofTD-cOp1fz1eo71O0bDG5E3ILAALaFHbYWUQcdwIGTd2p3ecUSMfZZ5JpL56zzl0WX5pzCKaHjzSUXvvlvQAArao202ZIoN8NYbD1QLL6vgpTcnL8RFacfR_aUurejyu_KJsGKR34lps3Eav_6gj?width=2000&height=1125&cropmode=none",
         "https://dsm01pap002files.storage.live.com/y4mqdvYnDS7uW0-oeT7JCSiy0ro0ckho6-jxZxSoJItLJK0-cVJ3tr1HnUtKNiPVbuzNf7yjRM5kyfItAGvif-DT42cSfB8uzk8bGQUKeKp3ljOT8GHmsm6Yz-jgKqXDFNVZTakYUD2NhIW4Tjj2B_rznT6hiyzlmqNaM0r9LcwUBmw4WeXCkEXNqv9D49aFg2-?width=2000&height=1125&cropmode=none"
         ],
+        "startingPlace": "Lima",
         "tourOverview":"Perched atop a rocky hill overlooking the Pacific Ocean is the 150-hectare archaeological site of Cerro de Oro. Most of Cerro de Oro remains unexplored, yet past excavations have revealed three distinct periods of densely populated occupation over a span of a thousand years. The earliest remains are of a settlement with a vast network of monumental adobe buildings, including houses and funerary structures, dating back to 550-850 AD. The burials contain elaborate funerary bundles with textiles establishing a clear link with highland Wari society (850-950 AD). A later cemetery and residential complex signals Inca occupation of the area from c. 1100 until the Spanish Conquest.",
         "tourOverview2":"Cerro de Oro in Peru is the largest and most influential settlement in the Cañete region and is located about 140 km south of Lima. The site is very well preserved, with wide, tall walls that measure over 10m that are still visible today. The site is well-known for a series of artifacts excavated in 2013 which are currently being exhibited in the Pachacamac Museum. Apart from that, the site is well-known for its monumental architecture and the interpretation center found within it",
         "countryList": ["peru"],

@@ -36,6 +36,14 @@ export function aTextInput(aPlaceholder, inputId, anObject, setAnObject, inputTy
 }
 
 
+
+
+
+
+// //////////////////////////////////////////////
+// //////////////////////////////////////////////
+// Operational Inputs
+
 // Updated general input displayer
 export function anInputDisplayer(inputLabel, inputId, inputType, isReq, inputPlaceholder, anObject, setAnObject, numbMin ){
     return(<>

@@ -130,11 +130,8 @@
     padding: 9px 45px;
 }
 
-
-
-
 .partnerLogo{
-    margin-top: 33px;
+    transform: translateY(50px);
 }
 
 .startingplace{
@@ -193,67 +190,8 @@
     align-items: center;
 }
 
-/* .arrowforwardCarrousel{
-    position: relative;
-    top: 179px;
-    z-index: 5;
-    width: fit-content;
-    transition: all ease 0.3s;
-    animation-name: into;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    line-height: 0;
-    overflow-x: unset;
-    left: 15px;
-    color: white;
-    background-color: var(--ltc-teal);
-    padding: 6px;
-    
-} */
 
-/* .arrowBackCarrousel{
-    line-height: 0;
-    position: relative;
-    top:155px;
-    z-index: 5;
-    right: -63vw;
-    width: fit-content;
-    transition: all ease 0.3s;
-    animation-name: into2;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    display: flex;
-    align-items: flex-end;
-} */
-
-/* @keyframes into{
-  0%{
-    transform: translateX(0px);
-  }
-
-  50%{
-    transform: translateX(20px);
-  }
-
-  100%{
-    transform: translateX(00px);
-  }
-} */
-/* @keyframes into2{
-  0%{
-    transform: translateX(0px);
-  }
-
-  50%{
-    transform: translateX(-20px);
-  }
- 
-  100%{
-    transform: translateX(00px);
-  }
-} */
-
-
+/* IMAGE SLIDER */
 .sliderV2{
     display: flex;
     width: fit-content;
@@ -304,8 +242,7 @@
 
 
 .tourTitleCard{
-    margin: 33px;
-    margin-bottom: 15px;
+    margin: 21px 0;
     width: 100%;
     padding: 21px;
     box-shadow: var(--frst-box-shadow);
@@ -318,9 +255,6 @@
     padding-bottom: 1px;
     background-color: var(--pop-orange);
 }
-
-
-
 
 .carouselIconCont{
     position: absolute;
@@ -368,11 +302,6 @@
 }
 
 
-.mainImage{
-    width: 720px;
-    height: 540px;
-    position: relative;
-}
 
 .imgDialogCont{
     width: 100%;
@@ -385,7 +314,6 @@
     padding: 6px 12px;
     border-radius: 5px;
     width: 1080px;
-    /* background-color: teal; */
 }
 
 .dialogImgCont h3{
@@ -404,8 +332,6 @@
 
 
 
-
-
 /*  //////////////////////////////////////// */
 /*  //////////////////////////////////////// */
 /* export to mail */
@@ -417,7 +343,6 @@
     flex-wrap: wrap;
 }
 
-
 .contactNowBTN{
     font-weight: 600;
     padding: 9px 12px;
@@ -428,6 +353,10 @@
     margin: 15px 0;
     text-transform: capitalize;
     min-height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .secondaryCTABTN{
@@ -1134,7 +1063,7 @@
         padding-bottom: 6px;
     }
 
-    .aTourImage{
+    .mainImgDisplayer{
         box-shadow: none;
     }
 
@@ -1143,10 +1072,6 @@
     }
     .tourIntroCont{
         width: 100%;
-    }
-    .mainImage{
-        width: 100%;
-        height: calc(100vw - 28vw );
     }
 
 /* a Tour Data */
@@ -1175,7 +1100,7 @@
     }
 
     .contactNowBTN{
-        height: 60px;
+        height: 53px;
     }
 
     .secondaryCTABTN{
@@ -1239,10 +1164,6 @@
         justify-content: flex-end;
     }
 
-    .contactNowBTN{
-        width: fit-content;
-        height: auto;
-    }
 
     .tourDetails{
         padding-bottom: 0;
