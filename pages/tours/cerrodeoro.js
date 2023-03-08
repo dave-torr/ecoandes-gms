@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react"
 import Image from "next/image"
 
-import theTourData from "./../../data/caneteDig.json"
+import theTourData from "../../data/caneteDig.json"
 
-import {TourDisplayer} from "./../../components/tours"
+import {TourDisplayer} from "../../components/tours"
 import AncientOdysLogo from "./../../public/assets/logos/partners/ancientOdy.webp"
 
 
