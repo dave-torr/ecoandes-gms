@@ -255,8 +255,11 @@ export function TourDisplayer(props){
         </>)
     }
     const incExcCont = <div className={styles.inclusionsExclusionsSec}> 
-        {incExcDisplayer(aTour.included, "Included in Tour")}
-        {incExcDisplayer(aTour.notIncluded, "Not included in Tour")} </div>;
+        {aTour.included&&<> 
+            {incExcDisplayer(aTour.included, "Included in Tour")} </>}
+        {aTour.included&&<>
+            {incExcDisplayer(aTour.notIncluded, "Not included in Tour")} </>}
+            </div>
 
     const dayByDaydisp=(tourDayByDay)=>{
         const dayInclDisp=(dayIncl)=>{
@@ -398,12 +401,14 @@ export function TourDisplayer(props){
                 {anIconRow(<AccessTimeIcon />, "duration:", daysContent)}
                 {anIconRow(<ExploreIcon />, "tour type:", aTour.tourType )}
 
-                {aTour.prices.priceType==="fixedDeparture"&&<>
-                    {anIconRow(<EventIcon />, "departure type:", "Scheduled" )}
-                    {anIconRow(<LocalOfferIcon />, "prices from:", priceContent )}
-                </>}
-                {aTour.prices.priceType==="privateDeparture"&&<>
-                    {anIconRow(<EventIcon />, "departure type:", "private" )}
+                {aTour.prices&&<>
+                    {aTour.prices.priceType==="fixedDeparture"&&<>
+                        {anIconRow(<EventIcon />, "departure type:", "Scheduled" )}
+                        {anIconRow(<LocalOfferIcon />, "prices from:", priceContent )}
+                    </>}
+                    {aTour.prices.priceType==="privateDeparture"&&<>
+                        {anIconRow(<EventIcon />, "departure type:", "private" )}
+                    </>}
                 </>}
 
             </div>
@@ -411,7 +416,6 @@ export function TourDisplayer(props){
     }
     const tourTitle=()=>{
         let countryList = aTour.countryList.map((elem, i)=><React.Fragment key={i}> { i >0 &&<> / </>}{elem} </React.Fragment>)
-
         return(<>
             {props.partnerLogo&&<>
                 <div className={styles.partnerLogo}>
@@ -419,7 +423,7 @@ export function TourDisplayer(props){
             </>}
             <div className={styles.tourTitleCard}>
                 <h1 className={styles.tourTitleBar}>
-                    {aTour.tripName} | {aTour.duration} Days</h1>
+                    {aTour.tripName} | {aTour.duration&&<>{aTour.duration} Days</>}</h1>
                 <div className={styles.tourCountryList}>
                     <PlaceIcon /> &nbsp;{countryList}</div>
             </div>

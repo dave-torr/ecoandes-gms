@@ -52,7 +52,6 @@ export default function PlaygroundPage(props){
 
     // OP for addint to list, displaying and erasing elems. Receives all arguments
     const addToList=(theList, setList, inputLabel, theElemToList, setElemToList)=>{
-       
         let eachListElemDisplayer=theList.map((elem, i)=><React.Fragment key={i}>
             <li className={styles.eachListElemDisplayer}>
                 - {elem} 
@@ -245,7 +244,7 @@ export default function PlaygroundPage(props){
         <ul> Gen Switchers </ul>
 
         <br/>
-        Finish tourMaker - Displayer
+        Finish tourCreator - Displayer
         <br/>
 
         {formBuilder()}

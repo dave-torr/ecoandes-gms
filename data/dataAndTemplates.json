@@ -1,7 +1,6 @@
 {
-    "countryList":["peru", "chile", "argentina", "ecuador", "colombia", "bolivia", "costa rica"],
-    "regionList":["galapagos", "patagonia", "amazon", "cusco", "uyuni", "andes", "coast" ],
-    
+    "countryList":["argentina", "bolivia", "chile", "colombia", "costa rica", "ecuador" , "peru" ],
+    "regionList":["galapagos", "patagonia", "amazon", "cusco", "uyuni", "andes", "coast" ], 
     "phoneNumberTypes": ["office", "mobile" ],
     "aPartnerType": ["board member", "operations", "sales"],
     "ecuadorCities": [

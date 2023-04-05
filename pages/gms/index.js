@@ -5,6 +5,7 @@ import Link from 'next/link'
 import styles from '../../styles/pages/gms.module.css'
 
 import { SignInForm, SignOutBtn } from "./../../components/authForms"
+import {TourDisplayer } from "./../../components/tours"
 import { useSession, signOut } from "next-auth/react"
 
 

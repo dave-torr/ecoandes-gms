@@ -120,19 +120,20 @@
 }
 
 .tourContainer{
-    width: 1080px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 .tourIntroCont{
-    width: 1080px;
+    width: 100%;
     padding: 9px 45px;
 }
 
 .partnerLogo{
-    transform: translateY(50px);
+    width: 100%;
 }
+
 
 .startingplace{
     padding-bottom: 21px;
@@ -245,7 +246,6 @@
     margin: 21px 0;
     width: 100%;
     padding: 21px;
-    box-shadow: var(--frst-box-shadow);
     z-index: 1;
 }
 
@@ -430,14 +430,11 @@
     text-transform: uppercase;
 }
 
-
-
 .tourDataCont{
     display: flex;
-    width: 1080px;
+    width: 100%;
     padding: 21px 0;
     justify-content: space-between;
-
 }
 
 .tourData{
@@ -1067,12 +1064,6 @@
         box-shadow: none;
     }
 
-    .tourContainer{
-        width: 100%;
-    }
-    .tourIntroCont{
-        width: 100%;
-    }
 
 /* a Tour Data */
     .iconCont{
@@ -1109,7 +1100,6 @@
     }
 
     .tourDataCont{
-        width: 100%;
         flex-direction: column;
 
     }
@@ -1147,6 +1137,7 @@
     }
 
 }
+
 @media (max-width: 600px) {
 
     .bookingProcessTourData{

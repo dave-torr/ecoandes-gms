@@ -6,6 +6,8 @@ import {TourDisplayer} from "./../../components/tours"
 
 import TourData from "../../data/LTCItinerary"
 
+import styles from "../../styles/pages/tourCreator.module.css"
+
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
 
@@ -16,6 +18,11 @@ import TourData from "../../data/LTCItinerary"
 
 
 ////////////////////////////////////////////////////////////
+
+
+// Window.print() set up for itineraries. 
+// check mantine markdown box for more rich html input => output
+
 
 function TourPage({ aTour }){
 ////////////////////////////////////////////////////////////////////
@@ -52,7 +59,11 @@ function TourPage({ aTour }){
     return(<>
         {tourHead(aTour)}
         <LTCNaviBar inTrip={true}/>
-        <TourDisplayer aTour={aTour} breadcrumb={true} key={aTour.tripName} />
+        <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
+        <div className={styles.tourDispCont}>
+            <TourDisplayer aTour={aTour} breadcrumb={true} key={aTour.tripName} />
+        </div>
+        </div>
     </>)
 }
 

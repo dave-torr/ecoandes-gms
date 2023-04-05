@@ -5,6 +5,8 @@ import Image from "next/image"
 
 import FlightIcon from '@mui/icons-material/Flight';
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+
 import CancelIcon from '@mui/icons-material/Cancel';
 import Switch from '@mui/material/Switch';
 import AddBoxIcon from '@mui/icons-material/AddBox';
@@ -73,29 +75,39 @@ export function anInputDisplayer(inputLabel, inputId, inputType, isReq, inputPla
 }
 
 // multi OptDisplayer
-export function multiOptPicker(theOptsArr, inputLabel, inputId, resultingList, addToSelection, setOptsArr){
+export function multiOptPicker(theOptsArr, inputLabel, inputId, resultingList, anObject, setAnObject, setOptsArr){
     let eachMultiOptDisp=theOptsArr.map((elem,i)=>
         <React.Fragment key={i}> 
             <div className={styles.multiPickerOpt} onClick={()=>{
                 // add to optEleem, rmv from temp arr
                 let tempList=resultingList.concat(elem)
-                addToSelection(tempList)
+                setAnObject({
+                        ...anObject,
+                        [inputId]: tempList
+                    })
+
                 let tempListTwo = [...theOptsArr];
                 tempListTwo.splice(i,1)
                 setOptsArr(tempListTwo)
+
             }} >+ {elem}</div>
         </React.Fragment>)
+
     let resultingMultiList=resultingList.map((elem,i)=>
         <React.Fragment key={i}> 
             <div className={styles.multiElemSelects} onClick={()=>{
                 // remove from selectedElems, add to OptList
                 let tempList=theOptsArr.concat(elem)
                 setOptsArr(tempList)
+
                 let tempListTwo = [...resultingList];
                 tempListTwo.splice(i,1)
-                addToSelection(tempListTwo)
+                setAnObject({
+                        ...anObject,
+                        [inputId]: tempListTwo
+                    })
             }}> 
-                {elem} &nbsp; <HighlightOffIcon />
+                {elem} <HighlightOffIcon />
             </div>
         </React.Fragment>)
         
@@ -103,7 +115,7 @@ export function multiOptPicker(theOptsArr, inputLabel, inputId, resultingList, a
         <div className={styles.theInputContainer}>
             <div className={styles.anInputRow}>
                 <label htmlFor={inputId} className={styles.inputLabel}>   
-                    {inputLabel} picker</label>
+                    {inputLabel}</label>
                 <i> &nbsp; - &nbsp; multi option picker </i>
             </div>
             <br/>
@@ -115,7 +127,9 @@ export function multiOptPicker(theOptsArr, inputLabel, inputId, resultingList, a
                 <div>
                     {resultingList.length>0?<>
                         <div className={styles.aRow}>
+
                             {resultingMultiList}
+
                         </div>
                     </>:<>
                         <div>...add to {inputLabel}</div>
@@ -545,7 +559,7 @@ export function DayByDayAdder(props){
 
             <input type="submit" className={styles.submitDayBTN} value="Add Day to Itinerary" />
             {props.aTour.dayByDay.length>0&&<> 
-                <div className={styles.submitDayBTN} onClick={()=>props.setTourMakerStep(2)} > Continue </div>
+                <div className={styles.submitDayBTN} onClick={()=>props.settourCreatorStep(2)} > Continue </div>
             </>}
         </form>
     </>)

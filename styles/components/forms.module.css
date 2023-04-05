@@ -145,28 +145,32 @@
 .theInputContainer{
     display: flex;
     flex-direction: column;
-    margin: 9px;
+    margin: 9px 0;
+    width: 240px;
 }
 
 .anInputRow{
     display: flex;
     align-items: flex-end;
+    justify-content: space-between;
 }
 
 .anInputRow i{
     font-size: 0.8em;
+    text-align: end;
 }
 
 .inputLabel{
     font-weight: 600;
     letter-spacing: 1px;
     text-transform: uppercase;
+
 }
 
 .inputUserUI{
     border: none;
-    border-left: solid 3px black;
-    border-bottom: solid 3px black;
+    border-left: solid 2px black;
+    border-bottom: solid 2px black;
     padding: 6px 9px;
     background-color: rgba(128, 254, 143, 0.273);
     margin-top: 3px;
@@ -184,6 +188,9 @@
 .aRow{
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
 }
 
 .listDisplayer{
@@ -191,20 +198,29 @@
 }
 
 .multiPickerOpt{
-    border-left: solid 3px black;
-    border-bottom: solid 3px black;
+    width: 44%;
+    border-left: solid 2px black;
+    border-bottom: solid 2px black;
     padding: 6px 9px;
     margin-right: 9px;
     background-color: rgba(128, 254, 143, 0.273);
+    margin: 3px 0;
+    text-transform: capitalize;
+    font-size: 0.9em;
+    cursor: pointer;
 }
 
 .multiElemSelects{
     display: flex;
     align-items: center;
-    border-right: solid 3px black;
-    border-top: solid 3px black;
+    border-right: solid 2px black;
+    border-top: solid 2px black;
     padding: 6px 9px;
     margin-right: 9px;
+    width: 110px;
+    font-size: 0.9em;
+    display: flex;
+    justify-content: space-between;
 }
 
 

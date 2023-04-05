@@ -1,14 +1,19 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef,  } from "react";
 import { useSession, signIn, signOut } from "next-auth/react"
+import Image from "next/image"
+
 
 import {
     
     HighlightAdder,  DayByDayAdder, aTextInput, LogoSwitcher, IncExclAdder,
 
-    anInputDisplayer
+    anInputDisplayer, multiOptPicker
 
 } from "../../components/forms"
+
+
 import { SignInForm } from "../../components/authForms";
+import {TourDisplayer } from "../../components/tours"
 import { GMSNavii } from "../../components/navis";
 
 
@@ -17,18 +22,19 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import { MultiSelect } from '@mantine/core';
 
-import styles from "../../styles/pages/tourMaker.module.css"
+import styles from "../../styles/pages/tourCreator.module.css"
 
 
 import LTCGenDAta from "../../data/dataAndTemplates.json"
 
+import EcoAndesLogoBLK from "../../public/assets/logos/ecoAndesBLK.png"
 
-
-export default function TourMakerPage(props){
+export default function tourCreatorPage(props){
 
 // Import from Gen Tour Data
 let ecoAndesDestinations= LTCGenDAta.countryList
 let tourType=["all types", "historic", "nature", "360° itineraries", "climbing", "trekking"]
+
 
 // ver 2 add cruises
 
@@ -39,28 +45,34 @@ let tourType=["all types", "historic", "nature", "360° itineraries", "climbing"
 //////////////////////////////////////////////
 
     const { data: session } = useSession()
+
     const [aTourModel, setTourModel]=useState({
         "ecoAndesLogo": true,
         "highlights":[],
         "dayByDay":[],
         "countryList":[],
+        "imgArr":[],
     })
 
-    const [tourMakerStep, setTourMakerStep]=useState(0)
-    const [destinationList, setDestList] = useState([])
-    const [theTourtype, setTourtype]= useState()
+    let partnerLogo;
+    if(aTourModel.ecoAndesLogo){
+        partnerLogo=<div className={styles.partnerLogoCont}><Image height={45} width={180} src={EcoAndesLogoBLK} alt="EcoAndes Travel Logo" /></div>
+    } else if(!aTourModel.ecoAndesLogo){
+        partnerLogo=false
+    }
 
+    const [tourCreatorStep, settourCreatorStep]=useState(0)
+    const [destinationList, setDestList] = useState([...ecoAndesDestinations])
 
     const editIcon=(setIndex)=>{
         return(<>
-        <div className={styles.editIconCont} onClick={()=>{ setTourMakerStep(setIndex)}}>
+        <div className={styles.editIconCont} onClick={()=>{ settourCreatorStep(setIndex)}}>
             <ModeEditIcon />
         </div> 
         </>)
     } 
 
-
-    const tourMakerStepOne=()=>{
+    const tourDetailsIntro=()=>{
         // step one adds the following generalTourData:
         // - Destinations
         // - Trip Name
@@ -83,78 +95,38 @@ let tourType=["all types", "historic", "nature", "360° itineraries", "climbing"
         //  - Submitted by (user)
         //  - Date of Submition
 
-        let toyrTypeOpts = tourType.map((elem, i)=><React.Fragment key={i}>
-        <option value={elem} style={{textTransform:"capitalize"}}> {elem} </option>
-        </React.Fragment>)
 
         return(<>
 
-            {tourMakerStep===0&&<>
+            {tourCreatorStep===0&&<>
 
                 <form className={styles.tourCreatorFormCont} onSubmit={(e)=>{
                     e.preventDefault()
-                    setTourMakerStep(1)
+                    settourCreatorStep(1)
                     setTourModel({
                         ...aTourModel,
-                        "countryList": [destinationList],
-                        "tourType": theTourtype
                     })
                     window.scrollTo({ top: 0, behavior: "smooth"})
                 }}>
 
-
-
                 {/* Revise Logo Switcher to check how it's changing the model */}
+
                     <LogoSwitcher aTour={aTourModel} tourEditor={setTourModel} />
 
 
-                    {anInputDisplayer("Tour Name", "tripName", "text", true, "the noyage name", )}
+                    {anInputDisplayer("Tour Name", "tripName", "text", true, "Trip name", aTourModel, setTourModel )}
+                    {multiOptPicker(destinationList, "Destinations", "countryList", aTourModel.countryList, aTourModel, setTourModel, setDestList )}
+                    {anInputDisplayer("Reference", "tripRef", "text", false, "Tour Reference", aTourModel, setTourModel )}
+                    {anInputDisplayer("Language", "tripLang", "text", false, "Tour Language", aTourModel, setTourModel )}
+                    {anInputDisplayer("Tour Code", "tourCode", "text", false, "Tour Code", aTourModel, setTourModel )}
+                    {anInputDisplayer("Contact", "compContact", "text", false, "Company Contact", aTourModel, setTourModel )}
 
 
-
-
-
-                    {aTextInput("Trip Name *", "tripName", aTourModel, setTourModel, "text", true )}
-
-
-
-
-                    <div className={styles.destPicker}>
-                    <label htmlFor="destinationPickerUI">Destination:</label>
-                        <MultiSelect
-                            placeholder="Our Destinations"
-                            data={[...ecoAndesDestinations]}
-                            searchable
-                            nothingFound="Nothing found..."
-                            onChange={setTourtype}
-                            id="destinationPickerUI"
-                        />
-                    </div>
-
-                    <div className={styles.destPicker}>
-                    <label htmlFor="tourTypePickerUI">Tour Type:</label>
-                        <select
-                            className={styles.tourTypeSelect} 
-                            placeholder="Our Destinations"
-                            onChange={setDestList}
-                            id="tourTypePickerUI"
-                        >
-                        <option value="" disabled selected>Select your Type</option>
-                        {toyrTypeOpts}
-                        </select>
-                    </div>
-
-
-                    {aTextInput("Tour Reference", "tourRef", aTourModel, setTourModel, "text", false )}
-                    {aTextInput("Tour Language", "tourLanguage", aTourModel, setTourModel, "text", false )}
-                    {aTextInput("Client Reference", "clientRef", aTourModel, setTourModel, "text", false )}
-                    {aTextInput("Tour Code (if agency)", "tourCode", aTourModel, setTourModel, "text", false )}
-                    {aTextInput("Company Contact (if agency)", "companyContact", aTourModel, setTourModel, "text", false )}
                     <input type="submit" value="Next" className={styles.tMIntroContinput}/>
                 </form>
             </>}
 
-            {tourMakerStep>0&&<> 
+            {tourCreatorStep>0&&<> 
                 <div className={styles.tourCreatorFormCont}>
                     <div className={styles.offlineStepTitleBar}> general tour data</div>
                     {editIcon(0)}
@@ -162,16 +134,11 @@ let tourType=["all types", "historic", "nature", "360° itineraries", "climbing"
             </>}
         </>)
     }
-
-
-
-
-
-    const tourMakerStepTwo=()=>{
+    const tourCreatorStepTwo=()=>{
         return(<>
 
 
-        {tourMakerStep===1&&<>
+        {tourCreatorStep===1&&<>
             <div className={styles.tourCreatorFormCont} > 
                 <div className={styles.upcomingTitleBar}>
                     Day By Day
@@ -179,14 +146,14 @@ let tourType=["all types", "historic", "nature", "360° itineraries", "climbing"
                     <DayByDayAdder 
                         aTour={aTourModel} 
                         tourEditor={setTourModel} 
-                        setTourMakerStep={setTourMakerStep}
+                        settourCreatorStep={settourCreatorStep}
                     />
             </div>
             </>}
 
 
 
-            {tourMakerStep>1&&<> 
+            {tourCreatorStep>1&&<> 
 
 
 
@@ -197,16 +164,16 @@ let tourType=["all types", "historic", "nature", "360° itineraries", "climbing"
             </>}
         </>)
     }
-    const tourMakerStepThree=()=>{
+    const tourCreatorStepThree=()=>{
         return(<>
-            {tourMakerStep===2&&<> 
+            {tourCreatorStep===2&&<> 
                 <IncExclAdder />
             </>}
         </>)
     }
 
     /////////////////////////////////////
-    // Tour Highlights
+    // UTILS: Tour Highlights 
     const removeHighlight=(aList, prodIndex)=>{
         let tempList=[...aList];
         tempList.splice(prodIndex, 1)
@@ -242,37 +209,34 @@ let tourType=["all types", "historic", "nature", "360° itineraries", "climbing"
 
 
 
-
-
     return(<>
         <div className={styles.generalPageCont}>
 
             {session?<>
                 <GMSNavii user={session.user}/>
 
-                <div className={styles.tourMakerTitle}>
+                <div className={styles.tourCreatorTitle}>
                     <ExploreIcon fontSize="large" />
                     <h2>EcoAndes Travel</h2>
                     <h1>Tour Creator</h1>
                 </div>
 
-                <div className={styles.tourMakerLayout}>
+                <div className={styles.tourCreatorLayout}>
                 
-                <div className={styles.tMSteps}>
-                    {tourMakerStepOne()}
+                    <div className={styles.tMSteps}>
+                        {tourDetailsIntro()}
 
-                    {tourMakerStepTwo()}
+                        {tourCreatorStepTwo()}
 
-                    {tourMakerStepThree()}
+                        {tourCreatorStepThree()}
 
+                    </div>
+
+                    <div className={styles.tourDispCont}>
+                        <TourDisplayer  aTour={aTourModel} partnerLogo={partnerLogo} />
+                    </div>
 
                 </div>
-                    TOUR DISPLAYER
-                </div>
-
-
-
-
 
                 {/* <ItineraryImagePicker 
                     aTour={aTourModel} 

@@ -7,28 +7,26 @@
     padding-bottom: 66px;
 }
 
-.tourMakerTitle{
+.tourCreatorTitle{
     align-items: center;
     display: flex;
     flex-direction: column;
-    width: 90%;
-    padding-top: 21px;
-    background-color: white;
-    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.145);
+    padding-top: 12px;
     border-radius: 6px;
     margin: 12px;
+    width: 300px;
 }
 
-.tourMakerTitle h1{
+.tourCreatorTitle h1{
     margin-top: 0;
     width: 70%;
     text-align: center;
 }
-.tourMakerTitle h3{
+.tourCreatorTitle h3{
     margin: 33px;
 }
 
-.tourMakerTitleBar{
+.tourCreatorTitleBar{
     display: flex;
     width: 100%;
     padding-left: 21px;
@@ -38,21 +36,17 @@
     background-color: white;
 }
 
-
 .tourCreatorFormCont{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-right: 40px;
 }
 
 .editIconCont{
     position: absolute;
     transform: translateX(150px);
 }
-
-
 
 .offlineStepTitleBar{
     width: 100%;
@@ -120,12 +114,30 @@
 }
 
 
-.tourMakerLayout{
+.tourCreatorLayout{
+    /* background-color: coral; */
+    width: 100%;
     display: flex;
+    padding: 12px;
+    justify-content: center;
+}
+
+.tourDispCont{
+    background-color: white;
+    margin-left: 15px;
+    width: 1080px;
 }
 
 .tMSteps{
     display: flex;
     flex-direction: column;
-
 }
+
+.partnerLogoCont{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    padding: 33px 44px;
+    padding-bottom: 0;
+}
+
