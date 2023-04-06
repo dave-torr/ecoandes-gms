@@ -28,6 +28,10 @@ import LTCGenDAta from "../../data/dataAndTemplates.json"
 
 import EcoAndesLogoBLK from "../../public/assets/logos/ecoAndesBLK.png"
 
+
+
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
 export default function tourCreatorPage(props){
 
 // Import from Gen Tour Data
@@ -40,7 +44,23 @@ let tourDiff =[1,2,3,4,5]
 
 ///////////////////////////////////////////////
 
-// Import tour displayer and use it to build an itinerary from data filled in by user
+// ver 0.1:
+// password and auth protected route, 
+// tour details: 
+    // tour name, duration, destination, tourType, startingLoc, difficulty
+    // DayByDay: with day title, includions, description, hotel
+    // inclusions, exclusions     
+
+// non OP:
+    // edit pref info: day, Basic Tour Info
+    // Image selection per itinerary
+
+
+    // Todays tasks:
+    // edit day info, prev data
+    // finish image selection tool, 
+    // implement image selection tool to itinerary creator
+
 
 //////////////////////////////////////////////
 
@@ -52,11 +72,12 @@ let tourDiff =[1,2,3,4,5]
         "dayByDay":[],
         "countryList":[],
         "imgArr":[],
-        "includes":[],
+        "included":[],
+        "notIncluded":[],
     })
-    const [tempDay, setTempDay]=useState({
+    const [tempDay, setTempDay]=useState({})
+    const [textPlaceholder, setTxtPlaceholder]=useState("")
 
-    })
     let partnerLogo;
     if(aTourModel.ecoAndesLogo){
         partnerLogo=<div className={styles.partnerLogoCont}><Image height={45} width={180} src={EcoAndesLogoBLK} alt="EcoAndes Travel Logo" /></div>
@@ -74,6 +95,7 @@ let tourDiff =[1,2,3,4,5]
         </div> 
         </>)
     } 
+
 
     const tourDetailsIntro=()=>{
         // step one adds the following generalTourData:
@@ -141,9 +163,12 @@ let tourDiff =[1,2,3,4,5]
 
     const dayByDayFormDispl=()=>{
 
+        // OP
         // day description
         // inclusions
         // overnight hotel
+
+        // ver 2
         // supplementary information
 
         return(<>
@@ -152,10 +177,13 @@ let tourDiff =[1,2,3,4,5]
                 <div className={styles.upcomingTitleBar}>
                     Day By Day
                 </div>
-                    <DayByDayAdder 
-                        aTour={aTourModel} 
+                    
+                    {/* {DayByDayAdder(aTourModel, setTourModel)} */}
+                    <DayByDayAdder
+                        aTour={aTourModel}
                         setTourModel={setTourModel}
                     />
+
                 {aTourModel.dayByDay.length>0&&<> 
                     <div className={styles.nextStepBTN} onClick={()=>{
                         settourCreatorStep(tourCreatorStep+1)
@@ -169,59 +197,20 @@ let tourDiff =[1,2,3,4,5]
     }
 
 
-    const tourCreatorStepThree=()=>{
+    const incluExluAdder=()=>{
         return(<>
             {tourCreatorStep===2&&<> 
                 <div className={styles.tourCreatorFormCont}>
-                    {inputToList("Included In Tour", "included", aTourModel, setTourModel, aTourModel.includes, )}
-                    <inputToList
-                        inputLabel="Included In Tour"
-                        inputId="included"
-                        aTourModel={aTourModel}
-                        setTourModel={setTourModel}
-                        theListe={aTourModel.includes}
 
-                    />
+                    {inputToList("Included In Tour", "notIncluded", aTourModel, setTourModel, aTourModel.notIncluded, textPlaceholder, setTxtPlaceholder)}
+                    {inputToList("Not Included In Tour", "notIncluded", aTourModel, setTourModel, aTourModel.notIncluded, textPlaceholder, setTxtPlaceholder)}
+
                 </div>
             </>}
         </>)
     }
 
-    /////////////////////////////////////
-    // UTILS: Tour Highlights 
-    const removeHighlight=(aList, prodIndex)=>{
-        let tempList=[...aList];
-        tempList.splice(prodIndex, 1)
-        setTourModel({...aTourModel,
-            "highlights": tempList
-        })
-    }
-    const highlightDispAdder=()=>{
-        let theHighlights;
-        if(aTourModel.highlights){
-            theHighlights = aTourModel.highlights.map((elem, i)=>
-            <div className={styles.tourHighlightCont} key={i}>
-                <div className={styles.aHighlight}> - {elem}</div>
-                <CancelIcon onClick={()=>{
-                    removeHighlight(aTourModel.highlights, i)
-                }} />
-            </div>)
-        }
-
-        return(<>
-            <div className={styles.highlightList}> 
-                <h2> Tour Highlights: </h2>
-                    {theHighlights} 
-            </div>
-            <div>
-                <HighlightAdder 
-                    aTour={aTourModel} 
-                    tourEditor={setTourModel} 
-                />
-            </div>
-        </>)
-    }
-
+    console.log(aTourModel)
 
 
     return(<>
@@ -243,7 +232,7 @@ let tourDiff =[1,2,3,4,5]
 
                         {dayByDayFormDispl()}
 
-                        {tourCreatorStepThree()}
+                        {incluExluAdder()}
 
                     </div>
 
@@ -268,10 +257,6 @@ let tourDiff =[1,2,3,4,5]
                     aTour={aTourModel} 
                     tourEditor={setTourModel} 
                 /> */}
-
-
-
-
 
 
 

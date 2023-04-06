@@ -208,9 +208,7 @@ export function aTextArea(inputLabel, inputId, isReq, inputPlaceholder, anObject
     </>)
 }
 
-export function inputToList( inputLabel, inputId, anObject, setAnObject, theListe ){
-    const [incluPlaceholder, setPlaceholder]=useState("")
-
+export function inputToList( inputLabel, inputId, anObject, setAnObject, theListe, incluPlaceholder,  setPlaceholder){
     const addToListFunct=()=>{
         let tempList=theListe.concat(incluPlaceholder)
         setAnObject({
@@ -250,6 +248,7 @@ export function inputToList( inputLabel, inputId, anObject, setAnObject, theList
                     onChange={(e)=>{
                         setPlaceholder(e.target.value)
                     }}
+                    onFocus={(e)=>{e.target.value=""}}
                     onKeyPress={(e)=>{
                         if(e.key === 'Enter'){
                             addToListFunct()
@@ -261,8 +260,6 @@ export function inputToList( inputLabel, inputId, anObject, setAnObject, theList
                 </>:<>
                     <AddBoxIcon onClick={()=>addToListFunct()} />
                 </>}
-
-
             </div>
             {theDisplayedList}
         </div>
@@ -270,11 +267,14 @@ export function inputToList( inputLabel, inputId, anObject, setAnObject, theList
 }
 
 
+
+
+
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
+
 
 // Image Arrays depending on destinations
-
 let imageThumbnailArr=[
     {"src": "https://dsm01pap002files.storage.live.com/y4my2ZCpxo-_Y0Zo2hVBaeGxy70XewKRdQ2-XBX2f7WEr0H7ENC4gx2GTgdRlwQ-OAp2CQQwW780Q2CsxUBAEnCuHjvdYH-pQxAF2Sm_aGQknKJ1AozFvi-y40wq-ZiCByrxP2BXAjl1Rw6OWMJDgP0zi-n_9ucxDij9ig15AQnah7C1T3p63r0P4v3uxuJE2nH?width=2000&height=1125&cropmode=none", "alt": "Galapagos Sunset"},
     {"src": "https://dsm01pap002files.storage.live.com/y4mTcP69dqCa6hXxDuiSMxnVH3wR59QSA3F7swcMV-WFwIPmkAIfYzv0bIpWO93Kx-e7PhlFqGb9M0wZlCD2UNGaF44eqg6HtVcCcT7VD3Hq0nfAQvEg2Py_53mMHxHq-5yxbONPA69zSIVjGTIC2dQDqCJXB4XqjRUQxg4MM9B-3Ed952f_swzd2GgHIcoepYQ?width=2000&height=1125&cropmode=none", "alt": "Cotopaxi Ecuador"},
@@ -287,7 +287,6 @@ let imageThumbnailArr=[
     {"src": "https://dsm01pap002files.storage.live.com/y4mqdvYnDS7uW0-oeT7JCSiy0ro0ckho6-jxZxSoJItLJK0-cVJ3tr1HnUtKNiPVbuzNf7yjRM5kyfItAGvif-DT42cSfB8uzk8bGQUKeKp3ljOT8GHmsm6Yz-jgKqXDFNVZTakYUD2NhIW4Tjj2B_rznT6hiyzlmqNaM0r9LcwUBmw4WeXCkEXNqv9D49aFg2-?width=2000&height=1125&cropmode=none", "alt": "Mountains Sunrise"},
     {"src": "https://dsm01pap002files.storage.live.com/y4mO41fd643xsoe3ffct7wDOiAx1AnuUw_jtt7EjAda2vgIPwgjIf1rRGrk6l42gc2IvTmht-SiXtFnlHELJ3KZpBfhQKeaYsTRLGPEzgXthGourdfrd1NywauKMkgqNqVndMQMAsROYqs-5keSrtvXX8WujGplaw3mC5XlLom_xtcFpTFfS7nCEOEQiiCHlks-?width=2000&height=1125&cropmode=none", "alt": "Cotopaxi Sunrise"}
 ]
-
 export function ItineraryImagePicker(props){
 
     // this image picker should receive destination opts as props display image options based on selected dest 
@@ -443,17 +442,13 @@ const flightsAdder=(setDay, theTravelDay, flightInfo, setFlights, formTrigger)=>
 
 export function DayByDayAdder(props ){
 
-    // ver. 1
+    // ver. 1 
+    // Needs to be used as component, not as function
     // OP:
     //  day detail
     //  day inclusion list
 
-    // non op:
-    //  clearing form after submition, 
-
-
-    // version.2
-    //  hotel
+    // version.2: need to figure out css to avoid wasted space
     //  flights:
     //      flightRoute, flightCode, depDate, depTime
     //      confNumber, Arrivaltimes
@@ -463,13 +458,14 @@ export function DayByDayAdder(props ){
     const [aTravelDay, setTravelDay] = useState({
         "dayInclusions":[]
     })
-
-    const [flightsTrigger,setFlightsTrig]=useState(false)
-    const [flightInfo, setFlightInfo]=useState({})
-
+    const [incluPlaceholder, setPlaceholder]=useState("")
 
 // ver 2
     
+    // const [flightsTrigger,setFlightsTrig]=useState(false)
+    // const [flightInfo, setFlightInfo]=useState({})
+
+
     // const additionalsAdder=()=>{
     //     return(<>
     //     {flightsTrigger?<>
@@ -529,17 +525,16 @@ export function DayByDayAdder(props ){
                 document.getElementById("theDayFormID").reset()
             }}>
 
-
             {/* dayCount */}
             <h3>Day {props.aTour.dayByDay.length + 1}: &nbsp; </h3> 
             
             {/* Day Description */}
             {anInputDisplayer("Day Title", "dayTitle", "text", false, "Main daily activity", aTravelDay, setTravelDay )}
             {aTextArea("Day detail", "dayDescription", true, "Describe daily activities", aTravelDay, setTravelDay)}
+            {inputToList("add to day", "dayInclusions", aTravelDay, setTravelDay, aTravelDay.dayInclusions, incluPlaceholder, setPlaceholder)}
 
-            {inputToList("add to day", "dayInclusions", aTravelDay, setTravelDay, aTravelDay.dayInclusions)}
-
-            {/* {anInputDisplayer("Overnight Property ^", "overnightProperty", "text", false, "Hotel / Lodge Name", aTravelDay, setTravelDay)} */}
+            {/* daily hotel accom */}
+            {anInputDisplayer("Overnight Property ^", "overnightProperty", "text", false, "Hotel / Lodge Name", aTravelDay, setTravelDay)}
 
             {/* non MVP */}
             {/* {additionalsAdder()} */}
@@ -552,16 +547,11 @@ export function DayByDayAdder(props ){
                             "dayByDay": tempList
                         })
                     setTravelDay({"dayInclusions":[]})
-                    document.getElementById("theDayFormID").reset()
                 }}
             >Add Day to Itinerary</div>
         </form>
     </>)
 }
-
-
-
-
 
 
 export function IncExclAdder(props){

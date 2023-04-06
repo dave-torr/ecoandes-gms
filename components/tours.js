@@ -230,6 +230,9 @@ export function TourTypeCard(props){
 }
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
+
+
+
 export function TourDisplayer(props){
     let aTour = props.aTour
 
@@ -255,10 +258,11 @@ export function TourDisplayer(props){
             </div>
         </>)
     }
+
     const incExcCont = <div className={styles.inclusionsExclusionsSec}> 
-        {aTour.included&&<> 
+        {aTour.included.length>0&&<> 
             {incExcDisplayer(aTour.included, "Included in Tour")} </>}
-        {aTour.included&&<>
+        {aTour.notIncluded.length>0&&<>
             {incExcDisplayer(aTour.notIncluded, "Not included in Tour")} </>}
             </div>
 
@@ -269,6 +273,14 @@ export function TourDisplayer(props){
                 return(<><div className={styles.dayInclusionCont}> 
                     <h4>Includes:</h4>
                     <ul>{theInclusions}</ul>
+                </div></>)
+            }
+        }
+        const hotelDetailDisp=(overnightProperty)=>{
+            if(overnightProperty){
+                return(<><div className={styles.dayInclusionCont}> 
+                    <h4>Overnight property:</h4>
+                    <ul>{overnightProperty}</ul>
                 </div></>)
             }
         }
@@ -311,6 +323,7 @@ export function TourDisplayer(props){
                     <div style={{textAlign:"justify"}}>
                         {elem.dayDescription}</div>
                     {dayInclDisp(elem.dayInclusions)}
+                    {hotelDetailDisp(elem.overnightProperty)}
                     {dayNotices(elem)} 
                     {trekDataDisp(elem.trekData)}
                 </AccordionDetails>
@@ -580,8 +593,7 @@ export function TourDisplayer(props){
                     {aTour.dayByDay.length>0&&<>
                     <div className={styles.sectionTitles}> &nbsp;Overview</div>
                         {dayByDaydisp(aTour.dayByDay)}</>}
-
-                    {aTour.included&&<>
+                    {aTour.included.length>0&&<>
                     <div className={styles.sectionTitles}>&nbsp;additional information</div>
                         {accordionDisplayer("Tour Inclusions / Exclusions", incExcCont, false)}
                         {hotelList(aTour)}</>}
