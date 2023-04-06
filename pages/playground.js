@@ -3,6 +3,8 @@ import { useState } from 'react'
 
 import styles from "./../styles/pages/playground.module.css"
 
+import { aTextArea, DayByDayAdder } from "./../components/forms"
+
 
 import { SignOutBtn } from "./../components/authForms"
 import { useSession } from "next-auth/react"
@@ -17,7 +19,17 @@ export default function PlaygroundPage(props){
 
     const [itinerarySkeleton, setItinSkeleton]=useState({})
 
+    const [sampleDayTour, setDayTour]=useState({
 
+    })
+
+    const [aTourModel, setTourModel]=useState({
+        "ecoAndesLogo": true,
+        "highlights":[],
+        "dayByDay":[],
+        "countryList":[],
+        "imgArr":[],
+    })
 
 // OP for text, numbs, dates
     const anInputDisplayer=(inputLabel, inputId, inputType, isReq, inputPlaceholder, anObject, setAnObject, numbMin, )=>{
@@ -206,7 +218,20 @@ export default function PlaygroundPage(props){
     const formBuilder=()=>{
         return(<>
             <h1> Cucu Form Builder</h1>
-            <form> 
+            <form style={{width:"350px", marginLeft:"33%", border:"solid 1px black" }}> 
+
+
+
+                <DayByDayAdder 
+                    aTour={aTourModel} 
+                />
+
+
+
+
+                <h4> Text Area </h4>
+                {aTextArea( "text Area", 'dayDetail', true, "description", sampleDayTour, setDayTour )}
+
                 <h4> OP Single Elem Picker  </h4>
                     {aDropdownPicker(someOptsArr, "Single Opt Picker", "inputIDD", setPickerElem)}
 

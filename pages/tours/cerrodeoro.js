@@ -19,6 +19,9 @@ export default function CaneteDigTour(props){
 
     return(<>
     <LTCNaviBar inTrip={true}/>
+    <br/>
+    <br/>
+    <br/>
     <TourDisplayer 
         aTour={theTourData} breadcrumb={true} partnerLogo={partnerLogo} />
     </>)

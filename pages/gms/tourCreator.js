@@ -7,7 +7,7 @@ import {
     
     HighlightAdder,  DayByDayAdder, aTextInput, LogoSwitcher, IncExclAdder,
 
-    anInputDisplayer, multiOptPicker
+    anInputDisplayer, multiOptPicker, aDropdownPicker
 
 } from "../../components/forms"
 
@@ -20,7 +20,6 @@ import { GMSNavii } from "../../components/navis";
 import ExploreIcon from '@mui/icons-material/Explore';
 import CancelIcon from '@mui/icons-material/Cancel';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
-import { MultiSelect } from '@mantine/core';
 
 import styles from "../../styles/pages/tourCreator.module.css"
 
@@ -33,7 +32,8 @@ export default function tourCreatorPage(props){
 
 // Import from Gen Tour Data
 let ecoAndesDestinations= LTCGenDAta.countryList
-let tourType=["all types", "historic", "nature", "360° itineraries", "climbing", "trekking"]
+let tourType=["historic", "nature", "360° itineraries", "climbing", "trekking"]
+let tourDiff =[1,2,3,4,5]
 
 
 // ver 2 add cruises
@@ -53,7 +53,9 @@ let tourType=["all types", "historic", "nature", "360° itineraries", "climbing"
         "countryList":[],
         "imgArr":[],
     })
+    const [tempDay, setTempDay]=useState({
 
+    })
     let partnerLogo;
     if(aTourModel.ecoAndesLogo){
         partnerLogo=<div className={styles.partnerLogoCont}><Image height={45} width={180} src={EcoAndesLogoBLK} alt="EcoAndes Travel Logo" /></div>
@@ -74,8 +76,10 @@ let tourType=["all types", "historic", "nature", "360° itineraries", "climbing"
 
     const tourDetailsIntro=()=>{
         // step one adds the following generalTourData:
-        // - Destinations
         // - Trip Name
+        // - Tour Duration
+        // - Destinations
+        // - Starting From
         // - Client Reference (ex: Hunter x 4)
         // - FIT | Agency | alt clientType
         // - Days in Tour
@@ -115,13 +119,18 @@ let tourType=["all types", "historic", "nature", "360° itineraries", "climbing"
 
 
                     {anInputDisplayer("Tour Name", "tripName", "text", true, "Trip name", aTourModel, setTourModel )}
+                    {anInputDisplayer("Duration", "duration", "number", true, "Trip duration", aTourModel, setTourModel)}
                     {multiOptPicker(destinationList, "Destinations", "countryList", aTourModel.countryList, aTourModel, setTourModel, setDestList )}
-                    {anInputDisplayer("Reference", "tripRef", "text", false, "Tour Reference", aTourModel, setTourModel )}
-                    {anInputDisplayer("Language", "tripLang", "text", false, "Tour Language", aTourModel, setTourModel )}
-                    {anInputDisplayer("Tour Code", "tourCode", "text", false, "Tour Code", aTourModel, setTourModel )}
-                    {anInputDisplayer("Contact", "compContact", "text", false, "Company Contact", aTourModel, setTourModel )}
+                    {aDropdownPicker(tourType, "tour type", "tourType", aTourModel, setTourModel)}
 
+                    {anInputDisplayer("Starting", "startingPlace", "text", false, "Starting From", aTourModel, setTourModel)}
+                    {anInputDisplayer("Overview", "tourOverview", "text", false, "Tour Overview", aTourModel, setTourModel)}
 
+                    {aDropdownPicker(tourDiff, "Difficulty", "difficulty", aTourModel, setTourModel)}
+                    {anInputDisplayer("Reference ^", "tripRef", "text", false, "Tour Reference", aTourModel, setTourModel )}
+                    {anInputDisplayer("Language ^", "tripLang", "text", false, "Tour Language", aTourModel, setTourModel )}
+                    {anInputDisplayer("Tour Code ^", "tourCode", "text", false, "Tour Code", aTourModel, setTourModel )}
+                    {anInputDisplayer("Contact ^", "compContact", "text", false, "Company Contact", aTourModel, setTourModel )}
                     <input type="submit" value="Next" className={styles.tMIntroContinput}/>
                 </form>
             </>}
@@ -129,34 +138,31 @@ let tourType=["all types", "historic", "nature", "360° itineraries", "climbing"
             {tourCreatorStep>0&&<> 
                 <div className={styles.tourCreatorFormCont}>
                     <div className={styles.offlineStepTitleBar}> general tour data</div>
-                    {editIcon(0)}
                 </div>
             </>}
         </>)
     }
     const tourCreatorStepTwo=()=>{
+
+        // day description
+        // inclusions
+        // overnight hotel
+        // supplementary information
+
         return(<>
-
-
-        {tourCreatorStep===1&&<>
+        {tourCreatorStep===0&&<>
             <div className={styles.tourCreatorFormCont} > 
                 <div className={styles.upcomingTitleBar}>
                     Day By Day
                 </div>
                     <DayByDayAdder 
                         aTour={aTourModel} 
-                        tourEditor={setTourModel} 
-                        settourCreatorStep={settourCreatorStep}
                     />
             </div>
             </>}
 
 
-
             {tourCreatorStep>1&&<> 
-
-
-
                 <div className={styles.tourCreatorFormCont}>
                     <div className={styles.offlineStepTitleBar}> general tour data</div>
                     {editIcon()}
@@ -233,7 +239,11 @@ let tourType=["all types", "historic", "nature", "360° itineraries", "climbing"
                     </div>
 
                     <div className={styles.tourDispCont}>
-                        <TourDisplayer  aTour={aTourModel} partnerLogo={partnerLogo} />
+                        <TourDisplayer  
+                            aTour={aTourModel} 
+                            partnerLogo={partnerLogo} 
+                            tempDay={tempDay}
+                            />
                     </div>
 
                 </div>

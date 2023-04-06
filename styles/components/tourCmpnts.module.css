@@ -132,6 +132,9 @@
 
 .partnerLogo{
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -243,7 +246,6 @@
 
 
 .tourTitleCard{
-    margin: 21px 0;
     width: 100%;
     padding: 21px;
     z-index: 1;

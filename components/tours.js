@@ -93,6 +93,7 @@ export function ATourCard(props){
 //////////////////////////////////////////////////////////////
 
 export function TourDifficultyCard(props){
+
     const tourDiffSwitcher=(theDiff)=>{
         switch(theDiff){
             case 1:
@@ -171,11 +172,11 @@ export function TourDifficultyCard(props){
             </div></>)
         }
     }
-
+    let prsdInt = parseInt(props)
     return(<>
         <span>
             <div className={styles.sectionTitles}> Difficulty</div>
-            {tourDiffSwitcher(props)}
+            {tourDiffSwitcher(prsdInt)}
         </span>
     </>)
 }
@@ -343,7 +344,7 @@ export function TourDisplayer(props){
         </>)
     }
     const carouselDisp=(theIMGArr)=>{
-        return(<>
+        if (theIMGArr.length>0)return(<>
         <div className={styles.carouselSection}>
 
             <div className={styles.tourIMGCarousel}>
@@ -378,7 +379,6 @@ export function TourDisplayer(props){
         </Dialog>
         </>)
     }
-
     const aTourIconDisp=()=>{
         const anIconRow=(theIcon, theIconName, theIconContent)=>{
             // Check if you can add some SEO to this section to be easily indexed and understood by crawlers
@@ -398,8 +398,8 @@ export function TourDisplayer(props){
 
         return(<>
             <div className={styles.tourDetails}>
-                {anIconRow(<AccessTimeIcon />, "duration:", daysContent)}
-                {anIconRow(<ExploreIcon />, "tour type:", aTour.tourType )}
+                {aTour.duration&&<>{anIconRow(<AccessTimeIcon />, "duration:", daysContent)}</>}
+                {aTour.tourType&&<>{anIconRow(<ExploreIcon />, "tour type:", aTour.tourType )}</>}
 
                 {aTour.prices&&<>
                     {aTour.prices.priceType==="fixedDeparture"&&<>
@@ -423,13 +423,13 @@ export function TourDisplayer(props){
             </>}
             <div className={styles.tourTitleCard}>
                 <h1 className={styles.tourTitleBar}>
-                    {aTour.tripName} | {aTour.duration&&<>{aTour.duration} Days</>}</h1>
+                    {aTour.tripName}{aTour.duration&&<> | {aTour.duration} Days</>}</h1>
                 <div className={styles.tourCountryList}>
-                    <PlaceIcon /> &nbsp;{countryList}</div>
+                    {aTour.countryList.length>0&&<>
+                    <PlaceIcon /> &nbsp;{countryList}</>}</div> 
             </div>
         </>)
     }
-    
     const tourIntroDetails=()=>{
         return(<>
             <div className={styles.tourIntroCont}>
@@ -442,11 +442,13 @@ export function TourDisplayer(props){
                     {aTour.tourOverview} </p>
 
 {/* Include We Travel Widget BTN || CONTACT US BTN for Private Departures */}
-
+                {!props.partnerLogo&&<>
+                
                 {aTour.tourType==="climbing"&&<>
                     <a href={`mailto:info@ecoandestravel.com?cc=planificacion@ecoandestravel.com, david@latintravelcollection.com&subject=${aTour.tripName} Request&body=Hi! I'm interested in ${aTour.tripName} for the following dates/season:`}>
                     <div className={styles.contactNowBTN}>
-                        Contact Us About {aTour.tripName} <i>Here</i></div></a>
+                        Contact Us About {aTour.tripName} </div></a>
+                    </>}
                 </>}
 
                 {/* INCORPORATE WIDGET FROM WE TRAVEL IN VER 2.0 */}
@@ -490,7 +492,7 @@ export function TourDisplayer(props){
         </>)
     }
     const mainImagedisp=()=>{
-        return(<>
+        if (aTour.imgArr.length>0) return(<>
             <div className={styles.mainImgDisplayer}>
                 <Image
                     src={aTour.imgArr[0]}
@@ -563,7 +565,6 @@ export function TourDisplayer(props){
         </>)
     }
 
-
     return(<>
         <article className={styles.generalTourPage}>
             <div className={styles.tourContainer}>
@@ -576,17 +577,21 @@ export function TourDisplayer(props){
             </div>
             <div className={styles.tourDataCont}>
                 <div className={styles.tourData}>
+                    {aTour.dayByDay.length>0&&<>
                     <div className={styles.sectionTitles}> &nbsp;Overview</div>
-                    {dayByDaydisp(aTour.dayByDay)}
+                        {dayByDaydisp(aTour.dayByDay)}</>}
 
+                    {aTour.included&&<>
                     <div className={styles.sectionTitles}>&nbsp;additional information</div>
-                    {accordionDisplayer("Tour Inclusions / Exclusions", incExcCont, false)}
-                    {hotelList(aTour)}
+                        {accordionDisplayer("Tour Inclusions / Exclusions", incExcCont, false)}
+                        {hotelList(aTour)}</>}
                 </div>
-                <div className={styles.supportInfoCont}>
-                    {TourTypeCard(aTour.tourType)}
-                    {TourDifficultyCard(aTour.difficulty)}
-                </div>
+                {aTour.tourType&&<>
+                    <div className={styles.supportInfoCont}>
+                        {TourTypeCard(aTour.tourType)}
+                        {TourDifficultyCard(aTour.difficulty)}
+                    </div>
+                </>}
             </div>
         </article>
         {tourFooter()}

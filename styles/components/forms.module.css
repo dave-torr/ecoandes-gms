@@ -86,14 +86,14 @@
 /* //////////////// */
 /* Day description */
 
-.aDayDescrCont{
-    margin: 12px 0;
+.inputToListRow{
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.aDayDescrCont label{
-    font-size: 1.1em;
+.inputToListRow span{
+    margin: 6px 9px;
 }
 
 .hotelData{
@@ -140,13 +140,16 @@
 
 }
 
+
+/* //////////////////////////////// */
+/* //////////////////////////////// */
 /* updated Inputs */
 
 .theInputContainer{
     display: flex;
     flex-direction: column;
     margin: 9px 0;
-    width: 240px;
+    width: 100%;
 }
 
 .anInputRow{
@@ -232,11 +235,6 @@
 
 
 /* OLDIES */
-
-.dayAdderForm{
-    padding: 6px 18px;
-    padding-bottom: 24px;
-}
 
 .eachAddiOpt{
     cursor: pointer;

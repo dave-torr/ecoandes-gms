@@ -41,6 +41,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-right: 21px;
+    width: 330px;
 }
 
 .editIconCont{
@@ -124,8 +126,8 @@
 
 .tourDispCont{
     background-color: white;
-    margin-left: 15px;
     width: 1080px;
+    margin-top: 21px;
 }
 
 .tMSteps{
@@ -135,9 +137,14 @@
 
 .partnerLogoCont{
     display: flex;
-    width: 100%;
+    width: 98%;
     justify-content: flex-end;
     padding: 33px 44px;
     padding-bottom: 0;
 }
 
+@media (max-width: 1100px)  {
+    .tourDispCont{
+        width: 98%;
+    }
+}
