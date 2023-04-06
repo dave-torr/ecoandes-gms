@@ -224,6 +224,7 @@ export default function PlaygroundPage(props){
 
                 <DayByDayAdder 
                     aTour={aTourModel} 
+                    setTourModel={setTourModel}
                 />
 
 

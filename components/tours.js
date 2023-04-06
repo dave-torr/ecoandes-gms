@@ -498,7 +498,7 @@ export function TourDisplayer(props){
                     src={aTour.imgArr[0]}
                     height={1125}
                     width={2000}
-                    alt="sss"
+                    alt="a Tour Image"
                     blurDataURL={aTour.imgArr[0]}
                     placeholder="blur" 
                 />
@@ -623,7 +623,6 @@ export function SquaredTourCard(props){
     </>)
     }
 }
-
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 export function RectangularTourCard(props){

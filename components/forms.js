@@ -217,6 +217,7 @@ export function inputToList( inputLabel, inputId, anObject, setAnObject, theList
             ...anObject,
             [inputId]: tempList
         })
+        setPlaceholder("")
     }
     const rmvFromListFunct=(aList, prodIndex)=>{
         let tempList=[...aList];
@@ -233,8 +234,6 @@ export function inputToList( inputLabel, inputId, anObject, setAnObject, theList
             <CancelIcon onClick={()=>rmvFromListFunct(theListe, i)} />
         </div>
     </React.Fragment> )
-
-    console.log(theListe)
 
     return(<>
         <div className={styles.theInputContainer}>
@@ -269,15 +268,6 @@ export function inputToList( inputLabel, inputId, anObject, setAnObject, theList
         </div>
     </>)
 }
-
-
-
-
-
-
-
-
-
 
 
 //////////////////////////////////////////////////////////
@@ -450,64 +440,35 @@ const flightsAdder=(setDay, theTravelDay, flightInfo, setFlights, formTrigger)=>
 
 
 
-export function DayByDayAdder(props ){
-    const [aTravelDay, setTravelDay] = useState({
-        "dayInclusions":[],
-        "overnightProperty":''
-    })
-    const [dayInclusions, setDayInclusions]=useState([])
-    const [aPickupData, setPickupData]=useState('')
 
-    const [overNight, setOverNight]=useState('')
+export function DayByDayAdder(props ){
+
+    // ver. 1
+    // OP:
+    //  day detail
+    //  day inclusion list
+
+    // non op:
+    //  clearing form after submition, 
+
+
+    // version.2
+    //  hotel
+    //  flights:
+    //      flightRoute, flightCode, depDate, depTime
+    //      confNumber, Arrivaltimes
+    //  Transfer pickup data: pickUpLocation & estTime
+
+
+    const [aTravelDay, setTravelDay] = useState({
+        "dayInclusions":[]
+    })
 
     const [flightsTrigger,setFlightsTrig]=useState(false)
     const [flightInfo, setFlightInfo]=useState({})
-    useEffect(()=>{
-        setTravelDay({
-            ...aTravelDay,
-            "dayInclusions":dayInclusions
-        })
-    },[dayInclusions])
 
 
-    // FFD
-
-
-    // const addPickUpToArr=()=>{
-    //     let timeArr=dayInclusions.concat(aPickupData)
-    //     setDayInclusions(timeArr)
-    //     setPickupData('')        
-    // }
-
-    // const dailyInclusionsAddr=()=>{
-    //     return(<>
-    //         <div className={styles.highlightInputCont}>
-    //             <input
-    //                 placeholder="Inclusions"
-    //                 onChange={(e)=>{
-    //                     setPickupData(e.target.value)
-    //                 }}
-    //                 onKeyPress={(e)=>{
-    //                     e.key === 'Enter' && addPickUpToArr()
-    //                 }}
-    //                 value={aPickupData}
-    //             /> &nbsp;
-    //             {aPickupData===''?<>
-    //                 <AddBoxIcon />
-    //             </>:<>
-    //                 <AddBoxIcon onClick={()=>addPickUpToArr()} />
-    //             </>}
-    //         </div>
-    //     </>)
-    // }
-
-    const removeTimers=(aList, prodIndex)=>{
-        let tempList=[...aList];
-        tempList.splice(prodIndex, 1)
-        setDayInclusions([...tempList])
-    }
-
-
+// ver 2
     
     // const additionalsAdder=()=>{
     //     return(<>
@@ -557,23 +518,15 @@ export function DayByDayAdder(props ){
     // }
 
 
-    console.log(props, "here" )
-
     return(<>
         <form style={{width:"100%"}}
+            id="theDayFormID"
             onKeyPress={(e)=>{
                 e.key === 'Enter' && e.preventDefault()
             }}
             onSubmit={(e)=>{
-                e.preventDefault();
-                let dayByDay=props.aTour.dayByDay.concat(aTravelDay)
-                tourEditor({
-                    ...props.aTour,
-                    "dayByDay": dayByDay
-                })
-                setTravelDay({"dayInclusions":[],"overnightProperty":''})
-                setDayInclusions([])   
-                document.getElementById("dayAdderForm").reset()                             
+                e.preventDefault()
+                document.getElementById("theDayFormID").reset()
             }}>
 
 
@@ -581,33 +534,27 @@ export function DayByDayAdder(props ){
             <h3>Day {props.aTour.dayByDay.length + 1}: &nbsp; </h3> 
             
             {/* Day Description */}
+            {anInputDisplayer("Day Title", "dayTitle", "text", false, "Main daily activity", aTravelDay, setTravelDay )}
             {aTextArea("Day detail", "dayDescription", true, "Describe daily activities", aTravelDay, setTravelDay)}
 
             {inputToList("add to day", "dayInclusions", aTravelDay, setTravelDay, aTravelDay.dayInclusions)}
 
-
-            {/* <h3>Overnight Property:</h3> */}
-
-            {/* {aTravelDay.overnightProperty===''?
-            <>      
-            </>:<>
-                <div className={styles.highlightInputCont}>
-                    {aTravelDay.overnightProperty}
-                    <CancelIcon onClick={()=> {
-                        setTravelDay({
-                            ...aTravelDay,
-                            "overnightProperty": ''
-                        })
-                        setOverNight('')
-                        }} />
-                </div>
-            </>} */}
+            {/* {anInputDisplayer("Overnight Property ^", "overnightProperty", "text", false, "Hotel / Lodge Name", aTravelDay, setTravelDay)} */}
 
             {/* non MVP */}
             {/* {additionalsAdder()} */}
 
-            <input type="submit" className={styles.submitDayBTN} value="Add Day to Itinerary" />
-
+            <div type="submit" className={styles.submitDayBTN} 
+                onClick={()=>{
+                    let tempList=props.aTour.dayByDay.concat(aTravelDay)
+                        props.setTourModel({
+                            ...props.aTour,
+                            "dayByDay": tempList
+                        })
+                    setTravelDay({"dayInclusions":[]})
+                    document.getElementById("theDayFormID").reset()
+                }}
+            >Add Day to Itinerary</div>
         </form>
     </>)
 }

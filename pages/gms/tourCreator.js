@@ -7,7 +7,7 @@ import {
     
     HighlightAdder,  DayByDayAdder, aTextInput, LogoSwitcher, IncExclAdder,
 
-    anInputDisplayer, multiOptPicker, aDropdownPicker
+    anInputDisplayer, multiOptPicker, aDropdownPicker, inputToList
 
 } from "../../components/forms"
 
@@ -52,6 +52,7 @@ let tourDiff =[1,2,3,4,5]
         "dayByDay":[],
         "countryList":[],
         "imgArr":[],
+        "includes":[],
     })
     const [tempDay, setTempDay]=useState({
 
@@ -98,8 +99,6 @@ let tourDiff =[1,2,3,4,5]
         // Hidden Details:
         //  - Submitted by (user)
         //  - Date of Submition
-
-
         return(<>
 
             {tourCreatorStep===0&&<>
@@ -131,18 +130,16 @@ let tourDiff =[1,2,3,4,5]
                     {anInputDisplayer("Language ^", "tripLang", "text", false, "Tour Language", aTourModel, setTourModel )}
                     {anInputDisplayer("Tour Code ^", "tourCode", "text", false, "Tour Code", aTourModel, setTourModel )}
                     {anInputDisplayer("Contact ^", "compContact", "text", false, "Company Contact", aTourModel, setTourModel )}
-                    <input type="submit" value="Next" className={styles.tMIntroContinput}/>
+                    <input type="submit" value="Next" className={styles.nextStepBTN}/>
                 </form>
             </>}
 
-            {tourCreatorStep>0&&<> 
-                <div className={styles.tourCreatorFormCont}>
-                    <div className={styles.offlineStepTitleBar}> general tour data</div>
-                </div>
-            </>}
+
         </>)
     }
-    const tourCreatorStepTwo=()=>{
+
+
+    const dayByDayFormDispl=()=>{
 
         // day description
         // inclusions
@@ -150,30 +147,42 @@ let tourDiff =[1,2,3,4,5]
         // supplementary information
 
         return(<>
-        {tourCreatorStep===0&&<>
-            <div className={styles.tourCreatorFormCont} > 
+        {tourCreatorStep===1&&<>
+            <div className={styles.tourCreatorFormCont}> 
                 <div className={styles.upcomingTitleBar}>
                     Day By Day
                 </div>
                     <DayByDayAdder 
                         aTour={aTourModel} 
+                        setTourModel={setTourModel}
                     />
+                {aTourModel.dayByDay.length>0&&<> 
+                    <div className={styles.nextStepBTN} onClick={()=>{
+                        settourCreatorStep(tourCreatorStep+1)
+                    }}>
+                        Continue with itinerary
+                    </div>
+                </>}
             </div>
-            </>}
-
-
-            {tourCreatorStep>1&&<> 
-                <div className={styles.tourCreatorFormCont}>
-                    <div className={styles.offlineStepTitleBar}> general tour data</div>
-                    {editIcon()}
-                </div>
             </>}
         </>)
     }
+
+
     const tourCreatorStepThree=()=>{
         return(<>
             {tourCreatorStep===2&&<> 
-                <IncExclAdder />
+                <div className={styles.tourCreatorFormCont}>
+                    {inputToList("Included In Tour", "included", aTourModel, setTourModel, aTourModel.includes, )}
+                    <inputToList
+                        inputLabel="Included In Tour"
+                        inputId="included"
+                        aTourModel={aTourModel}
+                        setTourModel={setTourModel}
+                        theListe={aTourModel.includes}
+
+                    />
+                </div>
             </>}
         </>)
     }
@@ -232,7 +241,7 @@ let tourDiff =[1,2,3,4,5]
                     <div className={styles.tMSteps}>
                         {tourDetailsIntro()}
 
-                        {tourCreatorStepTwo()}
+                        {dayByDayFormDispl()}
 
                         {tourCreatorStepThree()}
 
