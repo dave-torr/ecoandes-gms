@@ -31,6 +31,8 @@ export default function GMS(){
           {session? <>
             <div className={styles.gmsOptBTN}> <Link href="/gms/tourCreator">
               Tour Creator</Link></div> 
+            <div className={styles.gmsOptBTN}> <Link href="/gms/pix">
+              Pix - Image Handler</Link></div> 
             <div className={styles.gmsOptBTN}> <Link href="/gms/tourExplorer">
               Tour Explorer</Link></div> 
             <div className={styles.gmsOptBTN}> <Link href="/gms/operations">

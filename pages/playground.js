@@ -209,8 +209,29 @@ export default function PlaygroundPage(props){
             </div>
         </>)
     }
-
     const [tempOptArr, setTempOptArr]=useState(someOptsArr)
+
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+// Image Picker for itins
+
+const [fetchedImgArrs, setFetchedImgs]=useState()
+
+const imageFetcher=()=>{
+    return(<>
+        <div className={styles.utilBTN} onClick={async()=>{
+            const res = await fetch("/api/genToolkit/pixApi",{
+                method: "GET"
+            })
+            const fetchedImages = await res.json()
+            if(res.status===200){
+                setFetchedImgs(fetchedImages)
+            }
+        }} > Fetch Itin Images </div>
+    </>)
+}
+
+
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
 // Sample Form
@@ -220,14 +241,10 @@ export default function PlaygroundPage(props){
             <h1> Cucu Form Builder</h1>
             <form style={{width:"350px", marginLeft:"33%", border:"solid 1px black" }}> 
 
-
-
                 <DayByDayAdder 
                     aTour={aTourModel} 
                     setTourModel={setTourModel}
                 />
-
-
 
 
                 <h4> Text Area </h4>
@@ -251,6 +268,8 @@ export default function PlaygroundPage(props){
         </>)
     }
 
+    console.log(fetchedImgArrs, "fetched IMG ARR")
+
     return(<>
 
     {/* Will we need session on per page level, or just on Navi and it can controll it all???? */}
@@ -268,6 +287,9 @@ export default function PlaygroundPage(props){
         {/* <ul> Drop downs </ul> */}
         <ul> Img picker </ul>
         <ul> Gen Switchers </ul>
+
+        {imageFetcher()}
+
 
         <br/>
         Finish tourCreator - Displayer

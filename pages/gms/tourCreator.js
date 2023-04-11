@@ -77,6 +77,7 @@ let tourDiff =[1,2,3,4,5]
     })
     const [tempDay, setTempDay]=useState({})
     const [textPlaceholder, setTxtPlaceholder]=useState("")
+    const [textPlaceholder2, setTxtPlaceholder2]=useState("")
 
     let partnerLogo;
     if(aTourModel.ecoAndesLogo){
@@ -202,14 +203,34 @@ let tourDiff =[1,2,3,4,5]
             {tourCreatorStep===2&&<> 
                 <div className={styles.tourCreatorFormCont}>
 
-                    {inputToList("Included In Tour", "notIncluded", aTourModel, setTourModel, aTourModel.notIncluded, textPlaceholder, setTxtPlaceholder)}
-                    {inputToList("Not Included In Tour", "notIncluded", aTourModel, setTourModel, aTourModel.notIncluded, textPlaceholder, setTxtPlaceholder)}
-
+                    {inputToList("Included In Tour", "included", aTourModel, setTourModel, aTourModel.included, textPlaceholder, setTxtPlaceholder)}
+                    {inputToList("Not Included In Tour", "notIncluded", aTourModel, setTourModel, aTourModel.notIncluded, textPlaceholder2, setTxtPlaceholder2)}
+                    {aTourModel.dayByDay.length>0&&<> 
+                        <div className={styles.nextStepBTN} onClick={()=>{
+                            settourCreatorStep(tourCreatorStep+1)
+                        }}>
+                            Continue with itinerary
+                        </div>
+                    </>}
                 </div>
             </>}
         </>)
     }
 
+    const imagePickers=()=>{
+        if(tourCreatorStep===3){
+            return(<>
+            
+            IMG Picker
+            Loading Bar
+            see all imgInstace
+            Filter imgaes
+            add to itin with or without complimentary data?
+        </>)}
+    }
+
+
+    
     console.log(aTourModel)
 
 
@@ -234,6 +255,7 @@ let tourDiff =[1,2,3,4,5]
 
                         {incluExluAdder()}
 
+                        {imagePickers()}
                     </div>
 
                     <div className={styles.tourDispCont}>

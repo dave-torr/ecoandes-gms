@@ -258,14 +258,12 @@ export function TourDisplayer(props){
             </div>
         </>)
     }
-
     const incExcCont = <div className={styles.inclusionsExclusionsSec}> 
         {aTour.included.length>0&&<> 
             {incExcDisplayer(aTour.included, "Included in Tour")} </>}
         {aTour.notIncluded.length>0&&<>
             {incExcDisplayer(aTour.notIncluded, "Not included in Tour")} </>}
             </div>
-
     const dayByDaydisp=(tourDayByDay)=>{
         const dayInclDisp=(dayIncl)=>{
             if(dayIncl){
@@ -336,7 +334,6 @@ export function TourDisplayer(props){
 
         </>)
     }
-
     function Imagedisp(props){
         return(<>        
         <div className={styles.aTourImage} onClick={()=>{

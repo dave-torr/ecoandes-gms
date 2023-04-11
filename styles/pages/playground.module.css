@@ -92,3 +92,12 @@
     padding: 6px 9px;
     margin-right: 9px;
 }
+
+
+.utilBTN{
+    background-color: var(--ltc-teal);
+    width: fit-content;
+    padding: 9px;
+    margin: 12px;
+    cursor: pointer;
+}

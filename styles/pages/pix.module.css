@@ -15,15 +15,15 @@
 }
 
 .sendToDBBTN{
-    width: calc(100% - 18px);
+    width: 100%;
     text-align: center;
-    background-color: rgb(20, 132, 176);
+    background-color: var(--ltc-teal);
     color: white;
-    padding: 6px;
+    padding: 9px;
     margin: 9px 0;
     text-transform: uppercase;
-    font-weight: 600;
     cursor: pointer;
+    border: none;
 }
 
 .spreadContainer{
