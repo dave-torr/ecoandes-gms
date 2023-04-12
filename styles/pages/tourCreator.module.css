@@ -114,8 +114,9 @@
 
 .tourDispCont{
     background-color: white;
-    width: 1080px;
+    width: calc(94vw - 330px);
     margin-top: 21px;
+    height: fit-content;
 }
 
 .tMSteps{
@@ -144,8 +145,66 @@
     border: none;
 }
 
-@media (max-width: 1100px)  {
-    .tourDispCont{
-        width: 98%;
-    }
+/* IMG PICKER STYLING */
+
+.imgSelectionCont{
+    width: 360px;
+    padding-right: 9px;
 }
+.eachImgDisp{
+    margin: 9px 12px;
+    position: relative;
+    border-bottom: dotted  2px;
+}
+
+.imgPickerCont{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.imgSelectorBTN{
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    background-color: teal;
+    color: white;
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.imgRefData{
+    display: flex;
+    flex-direction: column;
+    text-transform: capitalize;
+    font-size: 0.9em;
+    width: 150px;
+}
+
+.imgRefData div:first-of-type{
+    text-align: end;
+}
+
+.imgRefData div:nth-of-type(3){
+    font-weight: 600;
+}
+
+.imgUIUtils{
+    display: flex;
+    width: calc(94vw - 330px);;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: var(--whitesmoke-background);
+    padding: 9px;
+}
+
+/* @media (max-width: 1100px)  {
+
+} */

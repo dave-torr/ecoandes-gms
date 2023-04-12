@@ -90,7 +90,6 @@ export default function TourPage(){
             } else if (!tourTypeFilter){
                 setFilteredTourArr(TourData)
             }
-
     },[tourTypeFilter])
     useEffect(()=>{
         let tempTourArr =[]

@@ -1,34 +1,29 @@
 import React, { useState, useEffect, useRef,  } from "react";
-import { useSession, signIn, signOut } from "next-auth/react"
 import Image from "next/image"
 
-
+// components
+import { useSession, signIn, signOut } from "next-auth/react"
 import {
-    
-    HighlightAdder,  DayByDayAdder, aTextInput, LogoSwitcher, IncExclAdder,
-
-    anInputDisplayer, multiOptPicker, aDropdownPicker, inputToList
-
+    DayByDayAdder, LogoSwitcher, anInputDisplayer, multiOptPicker, aDropdownPicker, inputToList
 } from "../../components/forms"
-
-
 import { SignInForm } from "../../components/authForms";
 import {TourDisplayer } from "../../components/tours"
 import { GMSNavii } from "../../components/navis";
+import { Select } from '@mantine/core';
+import {anImageDisp} from "../gms/pix"
 
 
+// icons and imgs
 import ExploreIcon from '@mui/icons-material/Explore';
-import CancelIcon from '@mui/icons-material/Cancel';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import CircularProgress from '@mui/material/CircularProgress';
-
-import styles from "../../styles/pages/tourCreator.module.css"
-
-
-import LTCGenDAta from "../../data/dataAndTemplates.json"
-
 import EcoAndesLogoBLK from "../../public/assets/logos/ecoAndesBLK.png"
 
+// Data
+import LTCGenDAta from "../../data/dataAndTemplates.json"
+
+// styles
+import styles from "../../styles/pages/tourCreator.module.css"
 
 
 ///////////////////////////////////////////////////////////////
@@ -64,9 +59,10 @@ let tourDiff =[1,2,3,4,5]
 
 
 //////////////////////////////////////////////
-
+    // sesh
     const { data: session } = useSession()
 
+    // tour model
     const [aTourModel, setTourModel]=useState({
         "ecoAndesLogo": true,
         "highlights":[],
@@ -80,9 +76,15 @@ let tourDiff =[1,2,3,4,5]
     const [textPlaceholder2, setTxtPlaceholder2]=useState("")
     const [destinationList, setDestList] = useState([...ecoAndesDestinations])
     const [tourCreatorStep, settourCreatorStep]=useState(0)
-    const [fetchedImgArr, setFetchedImgs]=useState()
-    const [loadingState, setLoadingState]=useState(false)
 
+    // img state mngmt
+    const [fetchedImgArrs, setFetchedImgs]=useState()
+    const [filteredImgArr, setFilteredImgs]=useState()
+    const [loadingState, setLoadingState]=useState(false)
+    const [imgDestFilter, setImgFilter]=useState(0)
+
+
+    // partner logo
     let partnerLogo;
     if(aTourModel.ecoAndesLogo){
         partnerLogo=<div className={styles.partnerLogoCont}><Image height={45} width={180} src={EcoAndesLogoBLK} alt="EcoAndes Travel Logo" /></div>
@@ -90,14 +92,7 @@ let tourDiff =[1,2,3,4,5]
         partnerLogo=false
     }
 
-    const editIcon=(setIndex)=>{
-        return(<>
-        <div className={styles.editIconCont} onClick={()=>{ settourCreatorStep(setIndex)}}>
-            <ModeEditIcon />
-        </div> 
-        </>)
-    }
-
+    // utils
     const stepBTNs=(nextOrPrev)=>{
         if(nextOrPrev==="next"){
             return(<>
@@ -118,6 +113,9 @@ let tourDiff =[1,2,3,4,5]
         }
     }
 
+
+    ////////////////////////////////////////////
+    ////////////////////////////////////////////
     // Tour Creator Steps
     const tourDetailsIntro=()=>{
         // step one adds the following generalTourData:
@@ -214,95 +212,154 @@ let tourDiff =[1,2,3,4,5]
         return(<>
             {tourCreatorStep===2&&<> 
                 <div className={styles.tourCreatorFormCont}>
-                    {stepBTNs("prev")}
+                {stepBTNs("prev")}
                     {inputToList("Included In Tour", "included", aTourModel, setTourModel, aTourModel.included, textPlaceholder, setTxtPlaceholder)}
                     {inputToList("Not Included In Tour", "notIncluded", aTourModel, setTourModel, aTourModel.notIncluded, textPlaceholder2, setTxtPlaceholder2)}
-                    {aTourModel.dayByDay.length>0&&<> 
-                        {stepBTNs("next")}
-                    </>}
+                {aTourModel.dayByDay.length>0&&<> 
+                    {stepBTNs("next")}  </>}
                 </div>
             </>}
         </>)
     }
+
+    // Img picker utils
+    let imcCountry= ['all countries', "ecuador", 'peru', "chile", "argentina",]
+    useEffect(()=>{
+        if(imgDestFilter){
+            if(imgDestFilter==='all countries'){
+                setFilteredImgs(fetchedImgArrs)
+            } else {
+                let tempArr = fetchedImgArrs.filter(elem=>elem.imgCountry===imgDestFilter)
+                setFilteredImgs(tempArr)
+            }
+
+        } else if (!imgDestFilter){
+            setFilteredImgs(fetchedImgArrs)
+        }
+    },[imgDestFilter])
     const imagePickers=()=>{
+        
+        // add to itin with or without complimentary data?
+        // IMG Picker
+        // Loading Bar
+        // see all imgInstace
+        // Filter imgaes
+
         if(tourCreatorStep===3){
-            return(<>
-            <div className={styles.tourCreatorFormCont}>
-
-                <div className={styles.nextStepBTN} onClick={async()=>{
-                    setLoadingState(true)
-                    // fetch Tour Images,
-                }} > 
-                    {loadingState?<>
-                        Get Tour Images 
-                    </>:<>
-                        <CircularProgress />
-                    </>}
-                
-                </div>
-            
-            IMG Picker
-            Loading Bar
-            see all imgInstace
-            Filter imgaes
-            add to itin with or without complimentary data?
+        if(!fetchedImgArrs) {return(<>
+            <div className={styles.tourCreatorFormCont} onClick={async()=>{
+                setLoadingState(true)
+                const res = await fetch("/api/genToolkit/pixApi",{
+                    method: "GET"
+                })
+                const fetchedImages = await res.json()
+                if(res.status===200){
+                    setFetchedImgs(fetchedImages)
+                    setFilteredImgs(fetchedImages)
+                    setLoadingState(false)
+                }
+            }} >
+                {loadingState? <>
+                    <CircularProgress />
+                </>:<>
+                    <div className={styles.nextStepBTN}>
+                        Fetch Itinerary Pix 
+                    </div>
+                </>}        
             </div>
-        </>)}
+        </>) } else if (filteredImgArr) {
+        let aPickerImg= filteredImgArr.map((elem, i)=>
+        <React.Fragment key={i}>
+            <div className={styles.eachImgDisp}>
+                {anImageDisp(elem.src, 150, "LTCWide", elem.imgAlt)}
+                <div className={styles.imgSelectorBTN} onClick={()=>{
+                    // addToItinImgArr
+                    let tempImgArr = aTourModel.imgArr.concat(elem.src)
+                    setTourModel({
+                        ...aTourModel,
+                        "imgArr": tempImgArr
+                    })
+                    // addIMGId to imgIDArr
+                    console.log("cucu")
+                }} >  +  </div>
+                <div className={styles.imgRefData}>
+                    <div>{elem.imgCountry}</div>
+                    <div>{elem.imgRegion}</div>
+                    <div>{elem.imgName}</div>
+                    <div>{elem.locationDetails}</div>
+                </div>
+            </div>
+        </React.Fragment>)
+
+        return(<>
+        <div className={styles.imgSelectionCont} >
+            {stepBTNs("prev")}
+            <div style={{padding: "6px 12px"}}>
+                <Select
+                    placeholder='Image Country'
+                    data={[...imcCountry]}
+                    onChange={setImgFilter}
+                    id="imgSelectUI"
+                /></div>
+            <div style={{textAlign: "end", padding: "6px 12px"}}>
+                Images: {filteredImgArr.length} </div>
+            <div className={styles.imgPickerCont} >
+                {aPickerImg}
+            </div>
+        </div> 
+        </>)
+        }}
     }
+    const imgPickerUIUitls=(imgArr)=>{
+        let eachSelectedImg=imgArr.map((elem, i)=><React.Fragment key={i}>
+            <div style={{padding: "6px", width:"120px", position: "relative"}}>
+                {anImageDisp(elem, 120, "LTCWide", elem.imgAlt)}
+                <div className={styles.imgSelectorBTN} onClick={()=>{
+                        let tempList=[...imgArr];
+                        tempList.splice(i, 1)
+                        setTourModel({
+                            ...aTourModel,
+                            "imgArr": tempList
+                        })
+                    }}> x </div>
+            </div>
+        </React.Fragment>)
 
-
-    
-    console.log(aTourModel)
-
+        return(<>
+            <div className={styles.imgUIUtils}> 
+                {eachSelectedImg}
+            </div>
+        </>)
+    }
 
     return(<>
         <div className={styles.generalPageCont}>
-
             {session?<>
                 <GMSNavii user={session.user}/>
-
                 <div className={styles.tourCreatorTitle}>
                     <ExploreIcon fontSize="large" />
                     <h2>EcoAndes Travel</h2>
                     <h1>Tour Creator</h1>
                 </div>
-
                 <div className={styles.tourCreatorLayout}>
-                
                     <div className={styles.tMSteps}>
+                        {imagePickers()}
+
                         {tourDetailsIntro()}
 
                         {dayByDayFormDispl()}
 
                         {incluExluAdder()}
-
-                        {imagePickers()}
                     </div>
-
                     <div className={styles.tourDispCont}>
+                        {aTourModel.imgArr.length>0 && <>
+                            {imgPickerUIUitls(aTourModel.imgArr)}</>}
                         <TourDisplayer  
                             aTour={aTourModel} 
                             partnerLogo={partnerLogo} 
                             />
                     </div>
-
                 </div>
-
-                {/* <ItineraryImagePicker 
-                    aTour={aTourModel} 
-                    tourEditor={setTourModel} 
-                /> */}
-
-                {/* {highlightDispAdder()} */}
-
-                {/* <TourDateAdder
-                    aTour={aTourModel} 
-                    tourEditor={setTourModel} 
-                /> */}
-
-
-
-
             </>:<> 
                 <SignInForm />
             </>}

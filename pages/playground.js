@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useSession } from "next-auth/react"
 import { SignOutBtn } from "./../components/authForms"
@@ -6,9 +6,9 @@ import { SignOutBtn } from "./../components/authForms"
 
 
 
-
 import { aTextArea, DayByDayAdder } from "./../components/forms"
 
+import { Select } from '@mantine/core';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import CircularProgress from '@mui/material/CircularProgress';
 
@@ -223,18 +223,34 @@ export default function PlaygroundPage(props){
 /////////////////////////////////////////////////////
 // Image Picker for itins
 
-const [fetchedImgArrs, setFetchedImgs]=useState()
-const [loadingState, setLoadingState]=useState(false)
 
+const [fetchedImgArrs, setFetchedImgs]=useState()
+const [filteredImgArr, setFilteredImgs]=useState()
+const [loadingState, setLoadingState]=useState(false)
+const [imgDestFilter, setImgFilter]=useState(0)
+
+let imcCountry= ['all countries', "ecuador", 'peru', "chile", "argentina",]
+
+useEffect(()=>{
+    if(imgDestFilter){
+        if(imgDestFilter==='all countries'){
+            setFilteredImgs(fetchedImgArrs)
+        } else {
+            let tempArr = fetchedImgArrs.filter(elem=>elem.imgCountry===imgDestFilter)
+            setFilteredImgs(tempArr)
+        }
+
+    } else if (!imgDestFilter){
+        setFilteredImgs(fetchedImgArrs)
+    }
+},[imgDestFilter])
 
 
 const imageFetcher=()=>{
-
     // align BTNS with rest of format
     // check display on itin picker
     // add filters per destination
     // add & rmv from img arr options
-    
 
     if(!fetchedImgArrs) {return(<>
         <div onClick={async()=>{
@@ -245,6 +261,7 @@ const imageFetcher=()=>{
             const fetchedImages = await res.json()
             if(res.status===200){
                 setFetchedImgs(fetchedImages)
+                setFilteredImgs(fetchedImages)
                 setLoadingState(false)
             }
         }} >
@@ -256,40 +273,33 @@ const imageFetcher=()=>{
                 </div>
             </>}        
         </div>
-
-
-
-
-
     </>) } else {
-
-        let aPickerImg= fetchedImgArrs.map((elem, i)=><React.Fragment key={i}>
+        let aPickerImg= filteredImgArr.map((elem, i)=><React.Fragment key={i}>
             <div className={styles.eachImgDisp}>
                 {anImageDisp(elem.src, 200, "LTCWide", elem.imgAlt)}
                 <div className={styles.imgSelectorBTN} onClick={()=>{
                     // addToItinImgArr
                     // addIMGId to imgIDArr
                     console.log("cucu")
-                }} > 
-                    +
-                </div>
+                }} >  +  </div>
                 <div className={styles.imgRefData}>
                     <div>{elem.imgCountry}</div>
-
                     <div>{elem.imgRegion}</div>
-
-                    <h4>{elem.imgName}</h4>
-
+                    <div>{elem.imgName}</div>
                     <div>{elem.locationDetails}</div>
-
                 </div>
             </div>
         </React.Fragment>)
 
         return(<> 
-
-            <div > IMAGE FILTERS: By destination, each with location info and name </div>
-
+            <div style={{padding: "6px 12px"}}>
+            <Select
+                placeholder='Image Country'
+                data={[...imcCountry]}
+                onChange={setImgFilter}
+                id="imgSelectUI"
+            /></div>
+            <div style={{textAlign: "end", padding: "6px 12px"}}>Images: {filteredImgArr.length} </div>
             <div className={styles.imgPickerCont} >
                 {aPickerImg}
             </div>
@@ -297,11 +307,6 @@ const imageFetcher=()=>{
         }
     
 }
-
-
-
-
-
 
 
 
@@ -340,8 +345,6 @@ const imageFetcher=()=>{
             </form>
         </>)
     }
-
-    console.log(fetchedImgArrs, "fetched IMG ARR")
 
     return(<>
 

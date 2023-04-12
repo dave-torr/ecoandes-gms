@@ -61,6 +61,7 @@ export function anInputDisplayer(inputLabel, inputId, inputType, isReq, inputPla
                 required={isReq}
                 placeholder={inputPlaceholder}
                 id={inputId}
+                onFocus={(e)=>{e.target.value=""}}
                 onChange={(e)=>{
                     e.preventDefault()
                     setAnObject({
@@ -195,6 +196,7 @@ export function aTextArea(inputLabel, inputId, isReq, inputPlaceholder, anObject
                 required={isReq}
                 className={styles.aDayDescriptionInput}
                 id={inputId}
+                onFocus={(e)=>{e.target.value=""}}
                 placeholder={inputPlaceholder}
                 onChange={(e)=>{
                     e.preventDefault()

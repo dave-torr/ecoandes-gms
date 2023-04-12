@@ -225,11 +225,11 @@
 
 
 .tourIMGCarousel{
+    width: 100%;
     display: flex;
     align-items: center;
     overflow-x: auto;
     white-space: nowrap;
-    width: 100%;
     padding-bottom: 33px;
 }
 
@@ -242,9 +242,6 @@
     cursor: pointer;
 }
 
-
-
-
 .tourTitleCard{
     width: 100%;
     padding: 21px;
@@ -256,51 +253,6 @@
     padding: 4px;
     padding-bottom: 1px;
     background-color: var(--pop-orange);
-}
-
-.carouselIconCont{
-    position: absolute;
-    right: 33px;
-    top: 45%;
-    color: black;
-    animation-name: ArrowMovement;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-}
-.carouselIconCont2{
-    position: absolute;
-    right: 21px;
-    top: 44%;
-    color: white;
-    animation-name: ArrowMovement;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-}
-.carouselIconCont3{
-    position: absolute;
-    left: 21px;
-    top: 45%;
-    transform: rotate(180deg);
-    animation-name: ArrowMovement;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-}
-.carouselIconCont4{
-    position: absolute;
-    left: 21px;
-    top: 44%;
-    color: white;
-    animation-name: ArrowMovement;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-}
-
-@keyframes ArrowMovement{
-    0% {transform: translateX(12px)}
-    50% { transform: translateX(-15px); }
-    100% {
-        transform: translateX(12px);
-    }
 }
 
 
