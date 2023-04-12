@@ -94,10 +94,46 @@
 }
 
 
-.utilBTN{
-    background-color: var(--ltc-teal);
-    width: fit-content;
-    padding: 9px;
-    margin: 12px;
-    cursor: pointer;
+/* FOR EXPORT */
+
+.eachImgDisp{
+    margin: 9px 12px;
+    position: relative;
+    border-bottom: dotted  2px;
+}
+
+.imgPickerCont{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.imgSelectorBTN{
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    background-color: teal;
+    color: white;
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+    align-items: center;
+    font-size: 1.3em;
+}
+
+.imgRefData{
+    display: flex;
+    flex-direction: column;
+    text-transform: capitalize;
+}
+
+.imgRefData div:first-of-type{
+    text-align: end;
+}
+
+.imgRefData h4{
+    margin: 0 6px;
 }

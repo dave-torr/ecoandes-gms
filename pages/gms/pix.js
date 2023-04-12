@@ -13,6 +13,19 @@ import styles from "./../../styles/pages/pix.module.css"
 // Pix page
 // manage, organize and cataloge pictures. Images hosted on OneDrive, with 21.1 x 10 ratio
 
+export const anImageDisp=(imgSrc, width, imgRatio, imgAlt)=>{
+        // 'ltcWide' is the 21.1 x 10 widescreen ratio
+        let theHeight
+        if(imgRatio==="LTCWide"){theHeight = width * 0.575}
+        return(<>
+            <div><Image
+                src={imgSrc}
+                alt={imgAlt}
+                width={width}
+                height={theHeight}
+            /></div>
+        </>)
+    }
 
 
 export default function PixPage(){
@@ -28,19 +41,19 @@ export default function PixPage(){
     // utils
     // utils
     // export to reuse as component, SET UP ltc RATIO sTANDARDS.
-    const anImageDisp=(imgSrc, width, imgRatio, imgAlt)=>{
-        // 'ltcWide' is the 21.1 x 10 widescreen ratio
-        let theHeight
-        if(imgRatio==="LTCWide"){theHeight = width * 0.575}
-        return(<>
-            <div><Image
-                src={imgSrc}
-                alt={imgAlt}
-                width={width}
-                height={theHeight}
-            /></div>
-        </>)
-    }
+    //  const anImageDisp=(imgSrc, width, imgRatio, imgAlt)=>{
+    //     // 'ltcWide' is the 21.1 x 10 widescreen ratio
+    //     let theHeight
+    //     if(imgRatio==="LTCWide"){theHeight = width * 0.575}
+    //     return(<>
+    //         <div><Image
+    //             src={imgSrc}
+    //             alt={imgAlt}
+    //             width={width}
+    //             height={theHeight}
+    //         /></div>
+    //     </>)
+    // }
 
     ///////////////////////////////////////
     ///////////////////////////////////////
@@ -104,7 +117,7 @@ export default function PixPage(){
 
         return(<>
             <div className={styles.eachImgEditor}>
-                {anImageDisp(eachImg, 400, imgRatio, "cucu Alt")}
+                {anImageDisp(eachImg, 400, imgRatio, "Cucu Alt")}
                 {anImgDataForm(eachImg)}
             </div>
         </>)
@@ -190,7 +203,7 @@ export default function PixPage(){
 
 
         {/* initial batch is proccesed, need to clean up repeats, install filter for img selection */}
-        {/* {batchProcessSteps()} */}
+        {batchProcessSteps()}
 
 
     </>)

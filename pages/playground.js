@@ -1,15 +1,23 @@
 import React from 'react'
 import { useState } from 'react'
+import { useSession } from "next-auth/react"
+import { SignOutBtn } from "./../components/authForms"
 
-import styles from "./../styles/pages/playground.module.css"
+
+
+
 
 import { aTextArea, DayByDayAdder } from "./../components/forms"
 
-
-import { SignOutBtn } from "./../components/authForms"
-import { useSession } from "next-auth/react"
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import CircularProgress from '@mui/material/CircularProgress';
+
+import {anImageDisp} from "../pages/gms/pix"
+
 import {GMSNavii} from "./../components/navis"
+
+import styles from "./../styles/pages/playground.module.css"
+
 
 // Bitacora logo:
 // import TrackChangesIcon from '@mui/icons-material/TrackChanges';
@@ -216,20 +224,85 @@ export default function PlaygroundPage(props){
 // Image Picker for itins
 
 const [fetchedImgArrs, setFetchedImgs]=useState()
+const [loadingState, setLoadingState]=useState(false)
+
+
 
 const imageFetcher=()=>{
-    return(<>
-        <div className={styles.utilBTN} onClick={async()=>{
+
+    // align BTNS with rest of format
+    // check display on itin picker
+    // add filters per destination
+    // add & rmv from img arr options
+    
+
+    if(!fetchedImgArrs) {return(<>
+        <div onClick={async()=>{
+            setLoadingState(true)
             const res = await fetch("/api/genToolkit/pixApi",{
                 method: "GET"
             })
             const fetchedImages = await res.json()
             if(res.status===200){
                 setFetchedImgs(fetchedImages)
+                setLoadingState(false)
             }
-        }} > Fetch Itin Images </div>
-    </>)
+        }} >
+            {loadingState? <>
+                <CircularProgress />
+            </>:<>
+                <div className={styles.fetchBTN}>
+                    Fetch Itin Images 
+                </div>
+            </>}        
+        </div>
+
+
+
+
+
+    </>) } else {
+
+        let aPickerImg= fetchedImgArrs.map((elem, i)=><React.Fragment key={i}>
+            <div className={styles.eachImgDisp}>
+                {anImageDisp(elem.src, 200, "LTCWide", elem.imgAlt)}
+                <div className={styles.imgSelectorBTN} onClick={()=>{
+                    // addToItinImgArr
+                    // addIMGId to imgIDArr
+                    console.log("cucu")
+                }} > 
+                    +
+                </div>
+                <div className={styles.imgRefData}>
+                    <div>{elem.imgCountry}</div>
+
+                    <div>{elem.imgRegion}</div>
+
+                    <h4>{elem.imgName}</h4>
+
+                    <div>{elem.locationDetails}</div>
+
+                </div>
+            </div>
+        </React.Fragment>)
+
+        return(<> 
+
+            <div > IMAGE FILTERS: By destination, each with location info and name </div>
+
+            <div className={styles.imgPickerCont} >
+                {aPickerImg}
+            </div>
+        </>)
+        }
+    
 }
+
+
+
+
+
+
 
 
 /////////////////////////////////////////////////////

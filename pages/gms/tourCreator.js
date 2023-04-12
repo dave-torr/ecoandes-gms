@@ -20,6 +20,7 @@ import { GMSNavii } from "../../components/navis";
 import ExploreIcon from '@mui/icons-material/Explore';
 import CancelIcon from '@mui/icons-material/Cancel';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import styles from "../../styles/pages/tourCreator.module.css"
 
@@ -75,9 +76,12 @@ let tourDiff =[1,2,3,4,5]
         "included":[],
         "notIncluded":[],
     })
-    const [tempDay, setTempDay]=useState({})
     const [textPlaceholder, setTxtPlaceholder]=useState("")
     const [textPlaceholder2, setTxtPlaceholder2]=useState("")
+    const [destinationList, setDestList] = useState([...ecoAndesDestinations])
+    const [tourCreatorStep, settourCreatorStep]=useState(0)
+    const [fetchedImgArr, setFetchedImgs]=useState()
+    const [loadingState, setLoadingState]=useState(false)
 
     let partnerLogo;
     if(aTourModel.ecoAndesLogo){
@@ -86,18 +90,35 @@ let tourDiff =[1,2,3,4,5]
         partnerLogo=false
     }
 
-    const [tourCreatorStep, settourCreatorStep]=useState(0)
-    const [destinationList, setDestList] = useState([...ecoAndesDestinations])
-
     const editIcon=(setIndex)=>{
         return(<>
         <div className={styles.editIconCont} onClick={()=>{ settourCreatorStep(setIndex)}}>
             <ModeEditIcon />
         </div> 
         </>)
-    } 
+    }
 
+    const stepBTNs=(nextOrPrev)=>{
+        if(nextOrPrev==="next"){
+            return(<>
+                <div className={styles.nextStepBTN} onClick={()=>{
+                    settourCreatorStep(tourCreatorStep+1)
+                    }}>
+                Continue with itinerary
+                </div>
+            </>)
+        } else if (nextOrPrev==="prev"){
+            return(<>
+                <div className={styles.nextStepBTN} onClick={()=>{
+                    settourCreatorStep(tourCreatorStep-1)
+                    }}>
+                {"< -"} Back
+                </div>
+            </>)
+        }
+    }
 
+    // Tour Creator Steps
     const tourDetailsIntro=()=>{
         // step one adds the following generalTourData:
         // - Trip Name
@@ -123,9 +144,7 @@ let tourDiff =[1,2,3,4,5]
         //  - Submitted by (user)
         //  - Date of Submition
         return(<>
-
             {tourCreatorStep===0&&<>
-
                 <form className={styles.tourCreatorFormCont} onSubmit={(e)=>{
                     e.preventDefault()
                     settourCreatorStep(1)
@@ -160,8 +179,6 @@ let tourDiff =[1,2,3,4,5]
 
         </>)
     }
-
-
     const dayByDayFormDispl=()=>{
 
         // OP
@@ -175,6 +192,7 @@ let tourDiff =[1,2,3,4,5]
         return(<>
         {tourCreatorStep===1&&<>
             <div className={styles.tourCreatorFormCont}> 
+            {stepBTNs("prev")}
                 <div className={styles.upcomingTitleBar}>
                     Day By Day
                 </div>
@@ -186,46 +204,49 @@ let tourDiff =[1,2,3,4,5]
                     />
 
                 {aTourModel.dayByDay.length>0&&<> 
-                    <div className={styles.nextStepBTN} onClick={()=>{
-                        settourCreatorStep(tourCreatorStep+1)
-                    }}>
-                        Continue with itinerary
-                    </div>
+                    {stepBTNs("next")}
                 </>}
             </div>
             </>}
         </>)
     }
-
-
     const incluExluAdder=()=>{
         return(<>
             {tourCreatorStep===2&&<> 
                 <div className={styles.tourCreatorFormCont}>
-
+                    {stepBTNs("prev")}
                     {inputToList("Included In Tour", "included", aTourModel, setTourModel, aTourModel.included, textPlaceholder, setTxtPlaceholder)}
                     {inputToList("Not Included In Tour", "notIncluded", aTourModel, setTourModel, aTourModel.notIncluded, textPlaceholder2, setTxtPlaceholder2)}
                     {aTourModel.dayByDay.length>0&&<> 
-                        <div className={styles.nextStepBTN} onClick={()=>{
-                            settourCreatorStep(tourCreatorStep+1)
-                        }}>
-                            Continue with itinerary
-                        </div>
+                        {stepBTNs("next")}
                     </>}
                 </div>
             </>}
         </>)
     }
-
     const imagePickers=()=>{
         if(tourCreatorStep===3){
             return(<>
+            <div className={styles.tourCreatorFormCont}>
+
+                <div className={styles.nextStepBTN} onClick={async()=>{
+                    setLoadingState(true)
+                    // fetch Tour Images,
+                }} > 
+                    {loadingState?<>
+                        Get Tour Images 
+                    </>:<>
+                        <CircularProgress />
+                    </>}
+                
+                </div>
             
             IMG Picker
             Loading Bar
             see all imgInstace
             Filter imgaes
             add to itin with or without complimentary data?
+            </div>
         </>)}
     }
 
@@ -262,7 +283,6 @@ let tourDiff =[1,2,3,4,5]
                         <TourDisplayer  
                             aTour={aTourModel} 
                             partnerLogo={partnerLogo} 
-                            tempDay={tempDay}
                             />
                     </div>
 
