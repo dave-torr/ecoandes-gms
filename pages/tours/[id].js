@@ -60,7 +60,7 @@ function TourPage({ aTour }){
         {tourHead(aTour)}
         <LTCNaviBar inTrip={true}/>
         <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
-        <div className={styles.tourDispCont}>
+        <div className={styles.eachTourDispl}>
             <TourDisplayer aTour={aTour} breadcrumb={true} key={aTour.tripName} />
         </div>
         </div>

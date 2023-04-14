@@ -1,22 +1,23 @@
 import {connectToDatabase} from "./../../../middleware/dbMiddleware"
 
 async function handler(req, res){
-    console.log("here at Req")
     if(req.method==="POST"){
-        console.log("here at PSOT")
+        console.log("here at POST")
         const client = await connectToDatabase();
         const reqData= JSON.parse(req.body)
 
+
+
         const bookingCreation = client
             .db('EcoAndesGMS')
-            .collection("caneteDigBookings");
+            .collection("LTCItineraries");
 
-        const theBooking = await bookingCreation
+        const aCreatedItin = await bookingCreation
             .insertOne(reqData)
 
-        if(theBooking){
+        if(aCreatedItin){
+            res.status(201).json(aCreatedItin)
             client.close();
-            return {...theBooking}
         }
         
         // error handling

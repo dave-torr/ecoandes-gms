@@ -39,6 +39,7 @@ async function handler(req, res){
         userType: reqData.userType,
         resArray: [],
         signUpStream: reqData.signUpStream,
+        active: true
       }
 
   const user = await db.collection('users')

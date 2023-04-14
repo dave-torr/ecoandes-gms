@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useSession } from "next-auth/react"
+
 import { SignOutBtn } from "./../components/authForms"
 
 
@@ -24,8 +25,6 @@ import styles from "./../styles/pages/playground.module.css"
 
 export default function PlaygroundPage(props){
     const { data: session } = useSession()
-
-    const [itinerarySkeleton, setItinSkeleton]=useState({})
 
     const [sampleDayTour, setDayTour]=useState({
 

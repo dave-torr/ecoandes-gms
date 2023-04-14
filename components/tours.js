@@ -21,6 +21,9 @@ import HikingIcon from '@mui/icons-material/Hiking';
 import TerrainIcon from '@mui/icons-material/Terrain';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
+import ForestIcon from '@mui/icons-material/Forest';
+import StadiumIcon from '@mui/icons-material/Stadium';
+import WhereToVoteIcon from '@mui/icons-material/WhereToVote';
 
 import PlaceIcon from '@mui/icons-material/Place';
 
@@ -188,22 +191,24 @@ export function TourTypeCard(props){
             case "360° itineraries":
             return(<> 
             <div className={styles.tourInfoDescriptor}>
+                <div className={styles.iconDiffDisp}>  
+                <WhereToVoteIcon/> </div>
                 <strong>360° Tours </strong> begin and end at a specific location, include amazing visitor sites, landscapes, culture and nature, and are created for adventurous travellers looking for a unique experience. 
             </div></>)
 
             case "historic":
             return(<> 
             <div className={styles.tourInfoDescriptor}>
+                <div className={styles.iconDiffDisp}> <StadiumIcon /> </div>
                 <strong>Historic</strong> itineraries include visits to some of the most important archeological sites of a region, breathtaking landscapes, and a strong focus on the rich local cultures and the incredible planet that we live in.
             </div></>)
-
-
 
 // Check to see if we can add nature category. Find different name. add nature-focused itineraries
 
             case "nature":
             return(<> 
             <div className={styles.tourInfoDescriptor}>
+                <div className={styles.iconDiffDisp}> <ForestIcon /> </div>
                 <strong>Nature-focused</strong> itineraries have wildlife and nature as front and center. Our focus is to explore the wild places and amazing landscapes that this beautiful world has to offer.
             </div></>)
 
@@ -354,7 +359,7 @@ export function TourDisplayer(props){
         </>)
     }
     const carouselDisp=(theIMGArr)=>{
-        if (theIMGArr.length>0)return(<>
+        if (theIMGArr.length>1)return(<>
         <div className={styles.carouselSection}>
 
             <div className={styles.tourIMGCarousel}>
@@ -364,7 +369,8 @@ export function TourDisplayer(props){
                     </React.Fragment>}
                     </>)}
             </div>
-            <div className={styles.sliderV2}> <PanToolAltIcon fontSize="large" /> </div>
+            <div className={styles.sliderV2}> 
+            <PanToolAltIcon fontSize="large" /></div>
             <div> BROWSE GALLERY </div>
         </div>
         <Dialog open={imgDialogContr} fullScreen onClose={()=>srtImgDialogcontr(false)}>

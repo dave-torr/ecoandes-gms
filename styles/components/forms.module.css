@@ -94,6 +94,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    text-transform: capitalize;
 }
 
 .inputToListRow span{
@@ -154,6 +155,10 @@
     flex-direction: column;
     margin: 9px 0;
     width: 100%;
+}
+
+.theInputContainer textarea{
+    height: 120px;
 }
 
 .anInputRow{

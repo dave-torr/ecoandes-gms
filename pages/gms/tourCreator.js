@@ -46,19 +46,14 @@ let tourDiff =[1,2,3,4,5]
     // tour name, duration, destination, tourType, startingLoc, difficulty
     // DayByDay: with day title, includions, description, hotel
     // inclusions, exclusions     
-
-// non OP:
-    // edit pref info: day, Basic Tour Info
     // Image selection per itinerary
 
 
-    // Todays tasks:
+    // tasks:
     // edit day info, prev data
-    // finish image selection tool, 
-    // implement image selection tool to itinerary creator
 
 
-//////////////////////////////////////////////
+    //////////////////////////////////////////////
     // sesh
     const { data: session } = useSession()
 
@@ -76,7 +71,7 @@ let tourDiff =[1,2,3,4,5]
     const [textPlaceholder2, setTxtPlaceholder2]=useState("")
     const [destinationList, setDestList] = useState([...ecoAndesDestinations])
     const [tourCreatorStep, settourCreatorStep]=useState(0)
-
+    const [editDayTrigger, setEditDayTrig]=useState(false)
     // img state mngmt
     const [fetchedImgArrs, setFetchedImgs]=useState()
     const [filteredImgArr, setFilteredImgs]=useState()
@@ -156,15 +151,13 @@ let tourDiff =[1,2,3,4,5]
 
                     <LogoSwitcher aTour={aTourModel} tourEditor={setTourModel} />
 
-
                     {anInputDisplayer("Tour Name", "tripName", "text", true, "Trip name", aTourModel, setTourModel )}
                     {anInputDisplayer("Duration", "duration", "number", true, "Trip duration", aTourModel, setTourModel)}
                     {multiOptPicker(destinationList, "Destinations", "countryList", aTourModel.countryList, aTourModel, setTourModel, setDestList )}
-                    {aDropdownPicker(tourType, "tour type", "tourType", aTourModel, setTourModel)}
 
                     {anInputDisplayer("Starting", "startingPlace", "text", false, "Starting From", aTourModel, setTourModel)}
                     {anInputDisplayer("Overview", "tourOverview", "text", false, "Tour Overview", aTourModel, setTourModel)}
-
+                    {aDropdownPicker(tourType, "tour type", "tourType", aTourModel, setTourModel)}
                     {aDropdownPicker(tourDiff, "Difficulty", "difficulty", aTourModel, setTourModel)}
                     {anInputDisplayer("Reference ^", "tripRef", "text", false, "Tour Reference", aTourModel, setTourModel )}
                     {anInputDisplayer("Language ^", "tripLang", "text", false, "Tour Language", aTourModel, setTourModel )}
@@ -187,6 +180,13 @@ let tourDiff =[1,2,3,4,5]
         // ver 2
         // supplementary information
 
+        let eachDayEditDisp = aTourModel.dayByDay.map((elem, i)=><React.Fragment key={i}> 
+            <div className={styles.editDayBTN} onClick={()=>{
+                setEditDayTrig(i+1)
+            }} > D {i+1}</div>
+        </React.Fragment>)
+        
+
         return(<>
         {tourCreatorStep===1&&<>
             <div className={styles.tourCreatorFormCont}> 
@@ -194,11 +194,17 @@ let tourDiff =[1,2,3,4,5]
                 <div className={styles.upcomingTitleBar}>
                     Day By Day
                 </div>
+
+                {aTourModel.dayByDay.length>0&& <>
+                <div className={styles.editDayCont} >
+                    <strong>Edit:</strong> {eachDayEditDisp}
+                </div></>}
                     
-                    {/* {DayByDayAdder(aTourModel, setTourModel)} */}
                     <DayByDayAdder
                         aTour={aTourModel}
                         setTourModel={setTourModel}
+                        editDayTrigger={editDayTrigger}
+                        setEditDayTrig={setEditDayTrig}
                     />
 
                 {aTourModel.dayByDay.length>0&&<> 
@@ -332,6 +338,35 @@ let tourDiff =[1,2,3,4,5]
         </>)
     }
 
+    const sendToBackEnd=(theTour, userData)=>{
+        return(<>
+            <div className={styles.nextStepBTN} onClick={async()=>{
+                let toDate = new Date()
+                let reqData = JSON.stringify({
+                    ...theTour,
+                    "dateCreated":toDate,
+                    "version": 0,
+                    "status": "",
+                    "user": {
+                        "name": userData.name,
+                        "email": userData.email
+                        }
+                })
+                const res = await fetch("/api/gms/itineraries", {
+                        method: "POST",
+                        body: reqData
+                    })
+                const itinSubmition = await res.json()
+
+                if(res.status===200){
+                    console.log(itinSubmition, "Img Submitions") 
+                    window.alert("Create pop up to notify that itinerayr is in backend, take user to tour explorer")
+                }
+
+            }} > Submit Itinerary! </div>
+        </>)
+    }
+
     return(<>
         <div className={styles.generalPageCont}>
             {session?<>
@@ -343,13 +378,15 @@ let tourDiff =[1,2,3,4,5]
                 </div>
                 <div className={styles.tourCreatorLayout}>
                     <div className={styles.tMSteps}>
-                        {imagePickers()}
 
                         {tourDetailsIntro()}
 
                         {dayByDayFormDispl()}
 
                         {incluExluAdder()}
+
+                        {imagePickers()}
+
                     </div>
                     <div className={styles.tourDispCont}>
                         {aTourModel.imgArr.length>0 && <>
@@ -358,6 +395,8 @@ let tourDiff =[1,2,3,4,5]
                             aTour={aTourModel} 
                             partnerLogo={partnerLogo} 
                             />
+                        {aTourModel.imgArr.length>0&& <>
+                        {sendToBackEnd(aTourModel, session.user)}</>}
                     </div>
                 </div>
             </>:<> 

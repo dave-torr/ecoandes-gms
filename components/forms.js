@@ -196,7 +196,6 @@ export function aTextArea(inputLabel, inputId, isReq, inputPlaceholder, anObject
                 required={isReq}
                 className={styles.aDayDescriptionInput}
                 id={inputId}
-                onFocus={(e)=>{e.target.value=""}}
                 placeholder={inputPlaceholder}
                 onChange={(e)=>{
                     e.preventDefault()
@@ -438,11 +437,7 @@ const flightsAdder=(setDay, theTravelDay, flightInfo, setFlights, formTrigger)=>
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
 
-
-
-
-
-export function DayByDayAdder(props ){
+export function DayByDayAdder(props){
 
     // ver. 1 
     // Needs to be used as component, not as function
@@ -515,23 +510,21 @@ export function DayByDayAdder(props ){
     //     </>)
     // }
 
-
     return(<>
-        <form style={{width:"100%"}}
-            id="theDayFormID"
-            onKeyPress={(e)=>{
-                e.key === 'Enter' && e.preventDefault()
-            }}
-            onSubmit={(e)=>{
-                e.preventDefault()
-                document.getElementById("theDayFormID").reset()
-            }}>
+        <form style={{width:"100%"}} id="theDayFormID" 
+        
+        >
+
+        {props.editDayTrigger? <>
+            <h3>Edit day {props.editDayTrigger}:</h3> 
+        </> :<>
+            <h3>Day {props.aTour.dayByDay.length + 1}:</h3> 
+        </>}
 
             {/* dayCount */}
-            <h3>Day {props.aTour.dayByDay.length + 1}: &nbsp; </h3> 
             
             {/* Day Description */}
-            {anInputDisplayer("Day Title", "dayTitle", "text", false, "Main daily activity", aTravelDay, setTravelDay )}
+            {anInputDisplayer("Day Title", "dayTitle", "text", true, "Main daily activity", aTravelDay, setTravelDay )}
             {aTextArea("Day detail", "dayDescription", true, "Describe daily activities", aTravelDay, setTravelDay)}
             {inputToList("add to day", "dayInclusions", aTravelDay, setTravelDay, aTravelDay.dayInclusions, incluPlaceholder, setPlaceholder)}
 
@@ -543,14 +536,28 @@ export function DayByDayAdder(props ){
 
             <div type="submit" className={styles.submitDayBTN} 
                 onClick={()=>{
-                    let tempList=props.aTour.dayByDay.concat(aTravelDay)
-                        props.setTourModel({
-                            ...props.aTour,
-                            "dayByDay": tempList
-                        })
-                    setTravelDay({"dayInclusions":[]})
-                }}
-            >Add Day to Itinerary</div>
+                    if(props.editDayTrigger){
+                        // wtf how does this work?
+                        let tempList = props.aTour.dayByDay.splice(props.editDayTrigger-1, 1, aTravelDay)
+                        setTravelDay({"dayInclusions":[]})
+                        props.setEditDayTrig(false)
+                    } else {
+                        let tempList=props.aTour.dayByDay.concat(aTravelDay)
+                            props.setTourModel({
+                                ...props.aTour,
+                                "dayByDay": tempList
+                            })
+                        setTravelDay({"dayInclusions":[]})
+                    }
+                    document.getElementById("theDayFormID").reset()
+                }}>
+                {props.editDayTrigger? <>
+                    Change day {props.editDayTrigger}
+                </> : <>
+                    Add Day to Itinerary
+                </>}
+            
+            </div>
         </form>
     </>)
 }
