@@ -7,17 +7,16 @@ import styles from "./../../styles/pages/tours.module.css"
 import tourPageIMGLadning from "./../../public/assets/images/bookingLanding1.png"
 
 import {LTCNaviBar, Navi2} from "./../../components/navis"
-import {ATourCard, SquaredTourCard, RectangularTourCard} from "./../../components/tours"
+import {ATourCard, SquaredTourCard, RectangularTourCard, SortingItinUI } from "./../../components/tours"
 
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import SportsGymnasticsIcon from '@mui/icons-material/SportsGymnastics';
+import PriceCheckIcon from '@mui/icons-material/PriceCheck';
 
 import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
-
-import PriceCheckIcon from '@mui/icons-material/PriceCheck';
 import { MultiSelect, Select } from '@mantine/core';
 import Head from "next/head"
 ///////////////////////////////////////////////////////////////////
@@ -73,6 +72,7 @@ export default function TourPage(){
     const [tourTypeFilter, setTourTypeFilter]= useState(0)
     const [filteredTourArr, setFilteredTourArr]= useState(TourData)
     const [destinationList, setDestList] = useState([])
+    const [fullscreenCont, setFullscreenCont]=useState(false)
 
     // work around filters:
     // currently destination filter works. if dest, filter by destination, else, filter all tours.
@@ -165,101 +165,22 @@ export default function TourPage(){
     // Sort Functions
     const [sortContr, setSortContr]=useState("duration")
     const [sortOrder, setSortOrder]=useState("ascending")
-    const [fullscreenCont, setFullscreenCont]=useState(false)
-
-    const sortingUI=()=>{
-
-        let itinCount = filteredTourArr.length
-
-        return(<>
-        <div className={styles.sortingUICont}>
-            <div className={styles.sortBTNCont}>
-                Sort By: 
-                <span>
-                {sortContr==="duration"&&<>
-                    <div className={styles.sortOptionBTN} onClick={()=>{
-                        setSortContr("duration")
-                        }} ><AccessTimeIcon/></div>
-                    <div className={styles.sortOptionBTNOffline} onClick={()=>{
-                        setSortContr("price")
-                        }} ><PriceCheckIcon/></div>
-                    <div className={styles.sortOptionBTNOffline} onClick={()=>{
-                        setSortContr("difficulty")
-                        }} ><SportsGymnasticsIcon/></div>
-                </>}
-                {sortContr==="price"&&<>
-                    <div className={styles.sortOptionBTNOffline} onClick={()=>{
-                        setSortContr("duration")
-                        }} ><AccessTimeIcon/></div>
-                    <div className={styles.sortOptionBTN} onClick={()=>{
-                        setSortContr("price")
-                        }} ><PriceCheckIcon/></div>
-                    <div className={styles.sortOptionBTNOffline} onClick={()=>{
-                        setSortContr("difficulty")
-                        }} ><SportsGymnasticsIcon/></div>
-                </>}
-                {sortContr==="difficulty"&&<>
-                    <div className={styles.sortOptionBTNOffline} onClick={()=>{
-                        setSortContr("duration")
-                        }} ><AccessTimeIcon/></div>
-                    <div className={styles.sortOptionBTNOffline} onClick={()=>{
-                        setSortContr("price")
-                        }} ><PriceCheckIcon/></div>
-                    <div className={styles.sortOptionBTN} onClick={()=>{
-                        setSortContr("difficulty")
-                        }} ><SportsGymnasticsIcon/></div>
-                </>}
-                </span>
-
-            </div>
-
-            <div className={styles.orderBTNCont}>
-                <div className={styles.sortContrDispl}>
-                    {sortContr}:</div>
-                {sortOrder==="descending"?<>
-                <span>
-                    <div className={styles.selectedOrderDisp}>
-                        <ArrowUpwardIcon/>
-                    </div>
-                    <div className={styles.unselectedOrderDisp} onClick={()=>{
-                        sortOrder==="descending"? setSortOrder("ascending"): setSortOrder("descending")
-                    }}>
-                        <ArrowDownwardIcon/>
-                    </div>
-                </span>
-                </>:<>
-                <span>
-                    <div className={styles.unselectedOrderDisp} onClick={()=>{
-                        sortOrder==="descending"? setSortOrder("ascending"): setSortOrder("descending")
-                    }}>
-                        <ArrowUpwardIcon/>
-                    </div>
-                    <div className={styles.selectedOrderDisp}>
-                        <ArrowDownwardIcon/>
-                    </div>
-                </span>
-                </>}
-            </div> 
-
-        </div>
-        <div className={styles.itinCount}> Trips: {itinCount} </div>
-        </>)
-    }
 
     useEffect(()=>{
         // add conditional if selectedDestination => sort by all tourData, else by filtered tour data.
-        sortOrder==="descending"? 
+        sortOrder==="descending"?
             setFilteredTourArr([...filteredTourArr].sort((a,b)=> a[sortContr] - b[sortContr])) 
         :
             setFilteredTourArr([...filteredTourArr].sort(((a,b)=> b[sortContr] - a[sortContr])))
     },[sortContr])
 
     useEffect(()=>{
-        sortOrder==="descending"? 
+        sortOrder==="descending"?
             setFilteredTourArr([...filteredTourArr].sort((a,b)=> a[sortContr] - b[sortContr])) 
         :
             setFilteredTourArr([...filteredTourArr].sort(((a,b)=> b[sortContr] - a[sortContr])))
     },[sortOrder])
+
     const tourPageImgDisplayer=()=>{
         return(<>
         <div className={styles.tourPageIMGSection}>
@@ -353,7 +274,15 @@ export default function TourPage(){
             {tourHighlightDisp()}
 
             {filtersUI()}
-            {sortingUI()}
+
+            <div className={styles.sortingUICont}>
+            <SortingItinUI 
+                    sortContr={sortContr} 
+                    setSortContr={setSortContr}
+                    sortOrder={sortOrder}
+                    setSortOrder={setSortOrder}
+                /></div>
+
             {tourdisplayer()}
 
             {/* Page Footer */}

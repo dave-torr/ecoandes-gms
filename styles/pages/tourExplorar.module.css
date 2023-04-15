@@ -1,0 +1,25 @@
+.generalPageCont{
+    width: 100%;
+    background-color: var(--whitesmoke-background);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.itineraryDisplCont{
+    width: 96%;
+    padding: 9px 15px;
+    border: solid 1px black;
+}
+
+.tourCardDisp{
+    display: flex;
+    overflow-x: auto;
+}
+
+.filterUICont{
+    text-transform: capitalize;
+
+}

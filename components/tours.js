@@ -20,10 +20,14 @@ import MapIcon from '@mui/icons-material/Map';
 import HikingIcon from '@mui/icons-material/Hiking';
 import TerrainIcon from '@mui/icons-material/Terrain';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-
 import ForestIcon from '@mui/icons-material/Forest';
 import StadiumIcon from '@mui/icons-material/Stadium';
 import WhereToVoteIcon from '@mui/icons-material/WhereToVote';
+
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import SportsGymnasticsIcon from '@mui/icons-material/SportsGymnastics';
+import PriceCheckIcon from '@mui/icons-material/PriceCheck';
 
 import PlaceIcon from '@mui/icons-material/Place';
 
@@ -95,6 +99,30 @@ export function ATourCard(props){
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 
+export function TextTourCard(props){
+    let theTour = props.aTour
+
+    return(<>
+        <Link href={`/tours/${theTour.id}`}>
+        <a className={styles.textTourCard} >
+            <div style={{width: "100%", display:"flex", justifyContent:"space-between", alignContent: "center"}}>
+                <div style={{textTransform:"capitalize"}}> 
+                <PlaceIcon/> {theTour.countryList[0]}
+                </div>
+            
+                <div> 
+                <HikingIcon /> {theTour.difficulty}/5 
+                </div>
+            </div>
+                <div className={styles.tourCardTripName}> {theTour.tripName} </div>
+                <div> {theTour.duration}D | {theTour.tourType} </div>
+        </a>
+        </Link>
+    </>)
+}
+
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
 export function TourDifficultyCard(props){
 
     const tourDiffSwitcher=(theDiff)=>{
@@ -235,9 +263,6 @@ export function TourTypeCard(props){
 }
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
-
-
-
 export function TourDisplayer(props){
     let aTour = props.aTour
 
@@ -663,4 +688,81 @@ export function RectangularTourCard(props){
         </Link>
     </>)
     } else return(<> cu cu </>)
+}
+
+export function SortingItinUI(props){
+    // const [sortContr, setSortContr]=useState("duration")
+    // const [props.sortOrder, setSortOrder]=useState("ascending")
+
+    return(<>
+        <div className={styles.sortingUICont}>
+            <div className={styles.sortBTNCont}>
+                Sort By: 
+                <span>
+                {props.sortContr==="duration"&&<>
+                    <div className={styles.sortOptionBTN} onClick={()=>{
+                        props.setSortContr("duration")
+                        }} ><AccessTimeIcon/></div>
+                    <div className={styles.sortOptionBTNOffline} onClick={()=>{
+                        props.setSortContr("price")
+                        }} ><PriceCheckIcon/></div>
+                    <div className={styles.sortOptionBTNOffline} onClick={()=>{
+                        props.setSortContr("difficulty")
+                        }} ><SportsGymnasticsIcon/></div>
+                </>}
+                {props.sortContr==="price"&&<>
+                    <div className={styles.sortOptionBTNOffline} onClick={()=>{
+                        props.setSortContr("duration")
+                        }} ><AccessTimeIcon/></div>
+                    <div className={styles.sortOptionBTN} onClick={()=>{
+                        props.setSortContr("price")
+                        }} ><PriceCheckIcon/></div>
+                    <div className={styles.sortOptionBTNOffline} onClick={()=>{
+                        props.setSortContr("difficulty")
+                        }} ><SportsGymnasticsIcon/></div>
+                </>}
+                {props.sortContr==="difficulty"&&<>
+                    <div className={styles.sortOptionBTNOffline} onClick={()=>{
+                        props.setSortContr("duration")
+                        }} ><AccessTimeIcon/></div>
+                    <div className={styles.sortOptionBTNOffline} onClick={()=>{
+                        props.setSortContr("price")
+                        }} ><PriceCheckIcon/></div>
+                    <div className={styles.sortOptionBTN} onClick={()=>{
+                        props.setSortContr("difficulty")
+                        }} ><SportsGymnasticsIcon/></div>
+                </>}
+                </span>
+
+            </div>
+
+            <div className={styles.orderBTNCont}>
+                <div className={styles.sortContrDispl}>
+                    {props.sortContr}:</div>
+                {props.sortOrder==="descending"?<>
+                <span>
+                    <div className={styles.selectedOrderDisp}>
+                        <ArrowUpwardIcon/>
+                    </div>
+                    <div className={styles.unselectedOrderDisp} onClick={()=>{
+                        props.sortOrder==="descending"? props.setSortOrder("ascending"): props.setSortOrder("descending")
+                    }}>
+                        <ArrowDownwardIcon/>
+                    </div>
+                </span>
+                </>:<>
+                <span>
+                    <div className={styles.unselectedOrderDisp} onClick={()=>{
+                        props.sortOrder==="descending"? props.setSortOrder("ascending"): props.setSortOrder("descending")
+                    }}>
+                        <ArrowUpwardIcon/>
+                    </div>
+                    <div className={styles.selectedOrderDisp}>
+                        <ArrowDownwardIcon/>
+                    </div>
+                </span>
+                </>}
+            </div> 
+        </div>
+    </>)    
 }

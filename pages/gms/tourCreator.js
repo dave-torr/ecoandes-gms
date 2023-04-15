@@ -14,7 +14,7 @@ import {anImageDisp} from "../gms/pix"
 
 
 // icons and imgs
-import ExploreIcon from '@mui/icons-material/Explore';
+import DesignServicesIcon from '@mui/icons-material/DesignServices';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import CircularProgress from '@mui/material/CircularProgress';
 import EcoAndesLogoBLK from "../../public/assets/logos/ecoAndesBLK.png"
@@ -285,8 +285,6 @@ let tourDiff =[1,2,3,4,5]
                         ...aTourModel,
                         "imgArr": tempImgArr
                     })
-                    // addIMGId to imgIDArr
-                    console.log("cucu")
                 }} >  +  </div>
                 <div className={styles.imgRefData}>
                     <div>{elem.imgCountry}</div>
@@ -357,12 +355,10 @@ let tourDiff =[1,2,3,4,5]
                         body: reqData
                     })
                 const itinSubmition = await res.json()
-
                 if(res.status===200){
                     console.log(itinSubmition, "Img Submitions") 
                     window.alert("Create pop up to notify that itinerayr is in backend, take user to tour explorer")
                 }
-
             }} > Submit Itinerary! </div>
         </>)
     }
@@ -372,8 +368,8 @@ let tourDiff =[1,2,3,4,5]
             {session?<>
                 <GMSNavii user={session.user}/>
                 <div className={styles.tourCreatorTitle}>
-                    <ExploreIcon fontSize="large" />
-                    <h2>EcoAndes Travel</h2>
+                    <DesignServicesIcon fontSize="large" />
+                    <h2>Latin Travel Collection</h2>
                     <h1>Tour Creator</h1>
                 </div>
                 <div className={styles.tourCreatorLayout}>

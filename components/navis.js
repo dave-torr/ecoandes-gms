@@ -215,20 +215,23 @@ export function GMSNavii(props){
                     <a>Pix</a>
                     </Link></>}
                     </>}
+                    
+                    
+                    {props.user.name==="David Torres"&&<>
+                    {router.pathname!="/gms/operations"&&<><Link href="/gms/operations">  
+                    <a>Operations</a>
+                    </Link> <br/> </>}
+                    </>}
 
                 {/* Non admin Toutes */}
+                    
                     {router.pathname!="/gms/tourCreator"&&<><Link href="/gms/tourCreator">  
                     <a>Tour Creator</a>
                     </Link></>}
                     {router.pathname!="/gms/tourExplorer"&&<><Link href="/gms/tourExplorer">  
                     <a>Tour Explorer</a>
                     </Link></>}
-                    {router.pathname!="/gms/operations"&&<><Link href="/gms/operations">  
-                    <a>Tour Creator</a>
-                    </Link></>}
-                    {router.pathname!="/gms"&&<><Link href="/gms">  
-                    <a>GMS Home</a>
-                    </Link></>}
+                    
                 </div>
                 <SignOutBtn />
             </div>

@@ -18,10 +18,8 @@ import { useSession, signOut } from "next-auth/react"
 //  - Wishlist
 //  - likeTourBTN  ( + 1 to likeCount in aTour )
 
-
 export default function GMS(){
   const [logInTrig, setLogInTrig]=useState(false)
-
   const { data: session } = useSession()
 
   const gmsOptionsBTN=()=>{
@@ -37,8 +35,6 @@ export default function GMS(){
               Tour Explorer</Link></div> 
             <div className={styles.gmsOptBTN}> <Link href="/gms/operations">
               Document Generator</Link></div> 
-            <div className={styles.gmsOptBTN}> <Link href="/rafle">
-              T&AS Raffle</Link></div> 
           </>:<> 
             {logInTrig? <> 
               <SignInForm />
@@ -49,8 +45,6 @@ export default function GMS(){
       </>
     )
   }
-
-
 
   return (
     <div >
