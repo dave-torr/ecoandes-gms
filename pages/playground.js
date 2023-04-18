@@ -245,6 +245,8 @@ useEffect(()=>{
 },[imgDestFilter])
 
 
+
+// Fetch Images for Itins
 const imageFetcher=()=>{
     // align BTNS with rest of format
     // check display on itin picker
@@ -308,6 +310,168 @@ const imageFetcher=()=>{
 }
 
 
+////////////////////////////////////////////////////
+////////////////////////////////////////////////////
+// add team to DB
+
+    let teamMembArr=[
+{
+"name":"Cristina Páez", 
+"email":"operaciones2@ecoandestravel.com",
+"userType":"sales",
+"password":"@oper2016",
+"company":"EcoAndes Travel",	
+"department":"Operaciones", 
+"role": "Planificación y Operaciones",	
+"profilePic": "https://drive.google.com/file/d/1xBTjgJVXIxq_dNaj15uzWcmQHWTI6UDN/view?usp=share_link"
+},
+
+{
+"name":"Carlos del Salto", 
+"email":"operaciones3@ecoandestravel.com",
+"userType":"operations",
+"password":"@oper2016",
+"company":"EcoAndes Travel",	
+"department":"Operaciones",
+"role": "Planificación y Operaciones",	
+"profilePic": "https://drive.google.com/file/d/16mEMw407T5qQHszO_AI61hCFpcfPhDSx/view?usp=share_link"
+},
+
+{
+"name":"Carolina Cruz", 
+"email":"operaciones1@ecoandestravel.com",
+"userType":"operations",
+"password":"@oper2016",
+"company":"EcoAndes Travel",	
+"department":"Operaciones",	
+"role": "Asistente de Operaciones",
+"profilePic": "https://drive.google.com/file/d/13CxvrEY73gORXK3jNQYOKxyUlvoDsrAX/view?usp=share_link"
+},
+
+{
+"name":"Cristina Caisapanta",	
+"email":"info@ecoandestravel.com",
+"userType":"sales",
+"password":"@info2016",
+"company":"EcoAndes Travel",	
+"department":"Ventas",
+"role": "Representante de ventas",	
+"profilePic": "https://drive.google.com/file/d/12WQjBODVvGAibX3Yu_fvydX4GziF_Ms6/view?usp=share_link"
+},
+
+{
+"name":"Jonathan Hernández", 
+"email":"sales@yacuma.travel",
+"userType":"sales",
+"password":"@sale2016",
+"company":"Yacuma EcoLodge",	
+"department":"Ventas",
+"role": "Representante de ventas",	
+"profilePic": "https://drive.google.com/file/d/1ECLHdA4AIl_e7-xnGK3pQ9uyPEK7mXQF/view?usp=share_link"
+},
+
+{
+"name":"Gabriela Mogrovejo", 
+"email":"sales@galapagoselements.com",
+"userType":"sales",
+"password":"@sale2016",
+"company":"Maexgal",
+"department":"Ventas",
+"role": "Representante de ventas",
+"profilePic": "https://drive.google.com/file/d/1AycCaz4VkbxaTlutF2wDLCM--pXI57mr/view?usp=share_link"
+},
+
+{
+"name":"Jaqueline Rivadeneira", 
+"email":"ventas@unigalapagos.com",
+"userType":"sales",
+"password":"@vent2016",
+"company":"Unigalapagos",	
+"department":"Ventas",	
+"role": "Representante de ventas",
+"profilePic": "https://drive.google.com/file/d/1LClD67WvBd-39PplXzyLMC7422Lmfe3B/view?usp=share_link"
+},
+
+{
+"name":"Juan Orozco",	
+"email":"planificacion@ecoandestravel.com",
+"userType":"admin",
+"password":"@plan2016",
+"company":"EcoAndes Travel",
+"department":"Ventas",
+"role": "Jefe de Planificación y Operaciones",	
+"profilePic": "https://drive.google.com/file/d/1X8Hru9tcn_Rb8j-zvwL801hzqDhjJ_PB/view?usp=share_link"
+},
+
+{
+"name":"Jose Andrade", 
+"email":"sales@ikalagalapagoshotel.com",
+"userType":"sales",
+"password":"@sale2016",
+"company":"Ikala Galapagos Hotel",
+"department":"Ventas",
+"role": "Representante de ventas",
+"profilePic": "https://drive.google.com/file/d/1wdn54vSPPxRsxRL4bcNMn1jaetasCy1s/view?usp=share_link"
+},
+
+{
+"name":"Santiago Flores", 
+"email":"sistemas@latintravelcollection.com",
+"userType":"admin",
+"password":"@sist2016",
+"company":"Unigalapagos",	
+"department":"Sistemas",	
+"role": "Administrador de sistemas",
+"profilePic": "https://drive.google.com/file/d/1HDrBzUA1EE7Go-Tvwi_eXWapUa6bkWlQ/view?usp=share_link"
+},
+
+{
+"name":"Luis Olivo", 
+"email":"designer@latintravelcollection.com",
+"userType":"sales",
+"password":"@desi2016",
+"company":"Maexgal",	
+"department":"Sistemas",
+"role": "Diseñador Gráfico",
+"profilePic": "https://drive.google.com/file/d/1LjMPLZPGb417caF-bR22R5HePVZwX1P_/view?usp=share_link"
+},
+
+{
+"name":"Airam Alfonso", 
+"email":"webmaster@latintravelcollection.com",
+"userType":"webmaster",
+"password":"@webm2016",
+"company":"EcoAndes Travel",
+"department":"Sistemas",
+"role": "Webmaster",
+"profilePic": "https://drive.google.com/file/d/1gfTbtLN4dPYGi9uuwiJBq2RHIfOTYDYW/view?usp=share_link"
+},
+
+{
+"name":"Mickaela Gallegos", 
+"email":"content@latintravelcollection.com",
+"userType":"sales",
+"password":"@cont2016",
+"company":"EcoAndes Travel",
+"department":"Sistemas",
+"role": "Redactora",
+"profilePic": "https://drive.google.com/file/d/1mZMqiTC6PretbShLIb7NkVwyX3PVFb3R/view?usp=share_link"
+}
+
+    ]
+
+    const encryptUsers=(userArr)=>{
+        let eachMember=teamMembArr.map((elem)=><>
+            <div style={{border: "solid 1px black", width: "300px" }} > 
+                {elem.name} || {elem.userType} 
+            </div>
+        </>)
+        return(<>
+            <div style={{display: "flex", flexDirection:"column"  }} >
+                {eachMember}
+            </div>
+        </>)
+    }
 
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
@@ -345,32 +509,36 @@ const imageFetcher=()=>{
         </>)
     }
 
+    console.log(teamMembArr.length)
+
     return(<>
 
     {/* Will we need session on per page level, or just on Navi and it can controll it all???? */}
         {session&&<> 
             <GMSNavii  user={session.user} />
+
+            <h1>
+            Cucu
+            </h1>
+            <br/>
+
+            {/* <ul> gms and playground Navi </ul> */}
+            {/* <ul> Make a universal stylized input maker </ul> */}
+            {/* <ul> Drop downs </ul> */}
+            <ul> Img picker </ul>
+            <ul> Gen Switchers </ul>
+
+            {encryptUsers()}
+
+            {/* {imageFetcher()} */}
+
+
+            <br/>
+            Finish tourCreator - Displayer
+            <br/>
+
+            {/* {formBuilder()} */}
+
         </>}
-
-        <h1>
-        Cucu
-        </h1>
-        <br/>
-
-        {/* <ul> gms and playground Navi </ul> */}
-        {/* <ul> Make a universal stylized input maker </ul> */}
-        {/* <ul> Drop downs </ul> */}
-        <ul> Img picker </ul>
-        <ul> Gen Switchers </ul>
-
-        {imageFetcher()}
-
-
-        <br/>
-        Finish tourCreator - Displayer
-        <br/>
-
-        {formBuilder()}
-
     </>)
 }

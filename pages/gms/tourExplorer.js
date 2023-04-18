@@ -51,7 +51,6 @@ const { data: session } = useSession()
         }
     },[selectedFilter])
 
-
     // sorting
     const [sortContr, setSortContr]=useState("duration")
     const [sortOrder, setSortOrder]=useState("ascending")
@@ -63,7 +62,6 @@ const { data: session } = useSession()
         :
             setFilteredItins([...filteredItineraries].sort(((a,b)=> b[sortContr] - a[sortContr])))
     },[sortContr])
-
     useEffect(()=>{
         sortOrder==="descending"?
             setFilteredItins([...filteredItineraries].sort((a,b)=> a[sortContr] - b[sortContr])) 
@@ -87,7 +85,7 @@ const { data: session } = useSession()
 
         return<>
             <div className={styles.itineraryDisplCont}> 
-                <h3> LTC Published Itineraries</h3>
+                <h2> LTC Published Itineraries</h2>
                 <div className={styles.filterUICont}> 
                     <label htmlFor="filterDropdownUI">{filterLabel}: &nbsp;</label>
                     <select id="filterDropdownUI" onChange={(e)=>{

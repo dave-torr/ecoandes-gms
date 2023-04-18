@@ -138,3 +138,11 @@
 .imgRefData div:nth-of-type(3){
     font-weight: 600;
 }
+
+.createUserBTN{
+    margin: 9px;
+    background-color: var(--ltc-teal);
+    width: fit-content;
+    padding: 9px 12px;
+    color: white;
+}

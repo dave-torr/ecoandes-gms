@@ -27,14 +27,32 @@ export default function GMS(){
       <>
         {/* PROTECTED ROUTES */}
           {session? <>
-            <div className={styles.gmsOptBTN}> <Link href="/gms/tourCreator">
-              Tour Creator</Link></div> 
-            <div className={styles.gmsOptBTN}> <Link href="/gms/pix">
-              Pix - Image Handler</Link></div> 
-            <div className={styles.gmsOptBTN}> <Link href="/gms/tourExplorer">
-              Tour Explorer</Link></div> 
-            <div className={styles.gmsOptBTN}> <Link href="/gms/operations">
-              Document Generator</Link></div> 
+
+            {/* Dave's Routes */}
+          {session.user.name==="David Torres"&&<>
+          <Link href="/playground">  
+          <a>Playground</a>
+          </Link></>}
+
+          {session.user.name==="David Torres"&&<>
+          <Link href="/gms/pix">  
+          <a>Pix</a>
+          </Link></>}
+          
+          {session.user.name==="David Torres"&&<>
+          <Link href="/gms/operations">  
+          <a>Operations</a>
+          </Link></>}
+
+          {/* Non admin Toutes */}
+          <Link href="/gms/tourCreator">  
+          <a>Tour Creator</a>
+          </Link>
+          
+          <Link href="/gms/tourExplorer">  
+          <a>Tour Explorer</a>
+          </Link>
+
           </>:<> 
             {logInTrig? <> 
               <SignInForm />
@@ -47,13 +65,12 @@ export default function GMS(){
   }
 
   return (
-    <div >
-
+    <>
       <main className={styles.main}>
-        <h2>EcoAndes Travel</h2>
+        <h2>Latin Travel Collection</h2>
         <h1>Guest Management System</h1>
 
-        {session&& <h2> Hi there {session?.user.name}! </h2>}
+        {session&& <h3> Hi there {session?.user.name}! </h3>}
 
         <div className={styles.gmsBTNCont}>
          {gmsOptionsBTN()}
@@ -64,7 +81,6 @@ export default function GMS(){
       <footer className={styles.footer}>
         <i>by:</i>&nbsp;L | T | C
       </footer>
-
-    </div>
+    </>
   )
 }

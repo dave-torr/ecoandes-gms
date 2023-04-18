@@ -34,11 +34,10 @@ async function handler(req, res){
         password: hashedPassword, 
         company: reqData.company,
         department: reqData.department,
-        companyTitle: reqData.companyTitle,
-        clientType: reqData.clientType,
+        companyTitle: reqData.role,
         userType: reqData.userType,
-        resArray: [],
-        signUpStream: reqData.signUpStream,
+        profilePic: reqData.profilePic,
+        signUpStream: "website",
         active: true
       }
 

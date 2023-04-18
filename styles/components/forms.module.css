@@ -20,13 +20,11 @@
     margin: 9px;
     width: 90%;
     padding: 12px;
-    background-color: var(--pale-yellow);
     transition: 0.7s;
-    font-weight: 600;
     font-size: 1.1em;
-    letter-spacing: 1px;
-    color: var(--brick-red);
+    background-color: var(--ltc-teal);
 }
+
 .submitBTN:hover{
     box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.17);
 }
@@ -270,6 +268,11 @@
 /* AUTH */
 .signInForm{
     text-align: center;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 }
 .signUpForm{
     background-color: #F6F6F6;

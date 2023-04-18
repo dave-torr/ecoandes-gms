@@ -13,7 +13,7 @@ import PhoneForwardedIcon from '@mui/icons-material/PhoneForwarded';
 import Drawer from '@mui/material/Drawer';
 
 import CondorLogo from "../public/assets/logos/condor1.png"
-import LTCTypeface from "../public/assets/logos/LTCTypeface.png"
+
 import EcoAndesFontFace from "./../public/assets/logos/fontFace.png"
 import UsFlagIcon from '../public/assets/logos/usFlag.svg'
 import SpainFlagIcon from '../public/assets/logos/spainFlag.svg'
@@ -109,58 +109,6 @@ export function LTCNaviBar(props){
     </div>
     </>)
 }
-
-//////////////////////////////////////////////
-//////////////////////////////////////////////
-// FFD (deletion)
-// FFD
-export function Navi2(props){
-    const [drawerToggle, setDrawerToggle] = useState(false)
-    return(<>
-    <div className={styles.navi2GenCont}>
-        <div className={styles.naviLogo3}>
-        <Image
-            src={LTCTypeface}
-            alt="EcoAndes Condor Logo"
-            layout="responsive"
-            blurDataURL={LTCTypeface}
-            placeholder="blur"
-        /></div>
-
-        <Drawer anchor={"right"} open={drawerToggle} onClose={()=>setDrawerToggle(false)} >
-            <div className={styles.rightDrawerNaviGenCont}> 
-            
-                <div style={{width: "100%", textAlign: "end", cursor:"pointer"}} onClick={()=>setDrawerToggle(false)}> 
-                    <CloseIcon /> </div>
-                <div className={styles.menuItemsCont}> 
-
-{/* ////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////// */}
-
-{/* define WTF with these links once proposal is accepted */}
-
-
-                    <div className={styles.eachMenuItem}>home</div>
-                    <div className={styles.eachMenuItem}>about us</div>
-                    <div className={styles.eachMenuItem}>
-                        <Link href="/tours">
-                            itineraries
-                        </Link>
-                    </div>
-                    <div className={styles.eachMenuItem}>contact</div>
-
-                </div>
-                <div> 
-                    {contactNum1} &nbsp; &nbsp; &nbsp; &nbsp;
-                    {contactNum2} &nbsp; &nbsp; &nbsp; &nbsp;
-                    {contactEmail} 
-                </div>
-            </div>
-        </Drawer>
-    </div>
-    </>)
-}
-
 
 export function GMSNavii(props){
 

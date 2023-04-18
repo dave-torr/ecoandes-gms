@@ -5,6 +5,10 @@
   align-items: center;
 }
 
+.main h2{
+  margin-top: 20vh;
+}
+
 .footer {
   display: flex;
   flex: 1;
@@ -14,7 +18,7 @@
   align-items: center;
 }
 
-.gmsOptBTN{
+.gmsBTNCont a{ 
   border: solid 1px black;
   padding: 12px;
   width: 300px;
@@ -24,7 +28,7 @@
   margin-top: 21px;
 }
 
-.gmsOptBTN:hover{
+.gmsBTNCont a:hover{
   background-color: white;
   box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.129);
   cursor: pointer;

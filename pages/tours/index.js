@@ -5,8 +5,9 @@ import TourData from "../../data/LTCItinerary"
 import styles from "./../../styles/pages/tours.module.css"
 
 import tourPageIMGLadning from "./../../public/assets/images/bookingLanding1.png"
+import LTCTypeface from "./../../public/assets/logos/LTCTypeface.png"
 
-import {LTCNaviBar, Navi2} from "./../../components/navis"
+import {LTCNaviBar} from "./../../components/navis"
 import {ATourCard, SquaredTourCard, RectangularTourCard, SortingItinUI } from "./../../components/tours"
 
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
@@ -14,10 +15,11 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import SportsGymnasticsIcon from '@mui/icons-material/SportsGymnastics';
 import PriceCheckIcon from '@mui/icons-material/PriceCheck';
-
 import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
 import { MultiSelect, Select } from '@mantine/core';
+
+
 import Head from "next/head"
 ///////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////
@@ -268,7 +270,19 @@ export default function TourPage(){
         <div className={styles.generalTourPage}>  
 
             <LTCNaviBar />
-            <Navi2 />
+
+            <div className={styles.logoCont}>
+            <Image
+                src={LTCTypeface}
+                alt="EcoAndes Condor Logo"
+                blurDataURL={LTCTypeface}
+                placeholder="blur"
+                width={200}
+                height={100}
+            /></div>
+
+
+
             {tourPageImgDisplayer()}
 
             {tourHighlightDisp()}
