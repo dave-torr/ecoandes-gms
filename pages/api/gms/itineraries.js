@@ -16,7 +16,7 @@ async function handler(req, res){
             .insertOne(reqData)
 
         if(aCreatedItin){
-            res.status(201).json(aCreatedItin)
+            res.status(200).json(aCreatedItin)
             client.close();
         }
         

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef,  } from "react";
 import Image from "next/image"
+import { useRouter } from 'next/router'
 
 // components
 import { useSession, signIn, signOut } from "next-auth/react"
@@ -15,8 +16,8 @@ import {anImageDisp} from "../gms/pix"
 
 
 // icons and imgs
-import DesignServicesIcon from '@mui/icons-material/DesignServices';
 import CircularProgress from '@mui/material/CircularProgress';
+import DesignServicesIcon from '@mui/icons-material/DesignServices';
 import LTCLogoBLK from "../../public/assets/logos/ecoAndesBLK.png"
 import GalapagosElementsLogo from "../../public/assets/logos/galapagosElementsLogo.png"
 import YacumaLogo from "../../public/assets/logos/yacuma.png"
@@ -32,6 +33,8 @@ import styles from "../../styles/pages/tourCreator.module.css"
 ///////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////
 export default function tourCreatorPage(props){
+
+const router = useRouter()
 
 // Import from Gen Tour Data
 let ecoAndesDestinations= LTCGenDAta.countryList
@@ -81,6 +84,7 @@ let tourDiff =[1,2,3,4,5]
     const [loadingState, setLoadingState]=useState(false)
     const [imgDestFilter, setImgFilter]=useState(0)
 
+    const [submitionTrig, setSubmitTrig]=useState(false)
 
     // partner logo
     let partnerLogo;
@@ -373,13 +377,16 @@ let tourDiff =[1,2,3,4,5]
 
     const sendToBackEnd=(theTour, userData)=>{
         return(<>
-            <div className={styles.nextStepBTN} onClick={async()=>{
+            <div className={styles.nextStepBTN} 
+            onClick={async()=>{
+                if(!submitionTrig){
+                setSubmitTrig(true)
                 let toDate = new Date()
                 let reqData = JSON.stringify({
                     ...theTour,
                     "dateCreated":toDate,
                     "version": 0,
-                    "status": "",
+                    "status": 1,
                     "user": {
                         "name": userData.name,
                         "email": userData.email
@@ -390,11 +397,21 @@ let tourDiff =[1,2,3,4,5]
                         body: reqData
                     })
                 const itinSubmition = await res.json()
+                console.log(itinSubmition)
                 if(res.status===200){
                     console.log(itinSubmition, "Img Submitions") 
-                    window.alert("Create pop up to notify that itinerayr is in backend, take user to tour explorer")
+                    window.alert("Itinerary Created! Taking you to Tour Explorer")
+                    router.push("/gms/tourExplorer")
+                    }
                 }
-            }} > Submit Itinerary! </div>
+            }} > 
+            
+            {submitionTrig? <>
+                <CircularProgress />
+            </>:<>
+                Submit Itinerary! 
+            </>}
+            </div>
         </>)
     }
 
