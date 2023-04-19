@@ -6,8 +6,6 @@ async function handler(req, res){
         const client = await connectToDatabase();
         const reqData= JSON.parse(req.body)
 
-
-
         const bookingCreation = client
             .db('EcoAndesGMS')
             .collection("LTCItineraries");
@@ -25,7 +23,26 @@ async function handler(req, res){
 
 
 
-    else if (req.method==="put"){ }
+    else if (req.method==="PUT"){ 
+
+        const client = await connectToDatabase();
+        const reqData= JSON.parse(req.body)
+
+        const FetchedUserItins = client
+            .db('EcoAndesGMS')
+            .collection("LTCItineraries")
+            .find( { "user.name": reqData } )
+            .toArray();
+
+        const fetchedIts = await FetchedUserItins
+
+
+        if(fetchedIts){
+            res.status(200).json(fetchedIts)
+            client.close();
+        }
+
+    }
     else if (req.method==="delete"){ }
 }
 

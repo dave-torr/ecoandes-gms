@@ -12,6 +12,7 @@
     width: 96%;
     padding: 9px 15px;
     border: solid 1px black;
+    margin: 12px 0;
 }
 
 .tourCardDisp{
@@ -22,4 +23,15 @@
 .filterUICont{
     text-transform: capitalize;
 
+}
+
+.aGenBTN{
+    background-color: var(--ltc-teal);
+    padding: 12px;
+    width: 210px;
+    color: white;
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
 }

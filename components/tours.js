@@ -703,9 +703,10 @@ export function SortingItinUI(props){
                     <div className={styles.sortOptionBTN} onClick={()=>{
                         props.setSortContr("duration")
                         }} ><AccessTimeIcon/></div>
+                    {props.priceSortTrigger&& <>
                     <div className={styles.sortOptionBTNOffline} onClick={()=>{
                         props.setSortContr("price")
-                        }} ><PriceCheckIcon/></div>
+                        }} ><PriceCheckIcon/></div></>}
                     <div className={styles.sortOptionBTNOffline} onClick={()=>{
                         props.setSortContr("difficulty")
                         }} ><SportsGymnasticsIcon/></div>
@@ -714,9 +715,10 @@ export function SortingItinUI(props){
                     <div className={styles.sortOptionBTNOffline} onClick={()=>{
                         props.setSortContr("duration")
                         }} ><AccessTimeIcon/></div>
+                    {props.priceSortTrigger&& <> 
                     <div className={styles.sortOptionBTN} onClick={()=>{
                         props.setSortContr("price")
-                        }} ><PriceCheckIcon/></div>
+                        }} ><PriceCheckIcon/></div></>}
                     <div className={styles.sortOptionBTNOffline} onClick={()=>{
                         props.setSortContr("difficulty")
                         }} ><SportsGymnasticsIcon/></div>
@@ -725,9 +727,10 @@ export function SortingItinUI(props){
                     <div className={styles.sortOptionBTNOffline} onClick={()=>{
                         props.setSortContr("duration")
                         }} ><AccessTimeIcon/></div>
+                    {props.priceSortTrigger&& <> 
                     <div className={styles.sortOptionBTNOffline} onClick={()=>{
                         props.setSortContr("price")
-                        }} ><PriceCheckIcon/></div>
+                        }} ><PriceCheckIcon/></div></>}
                     <div className={styles.sortOptionBTN} onClick={()=>{
                         props.setSortContr("difficulty")
                         }} ><SportsGymnasticsIcon/></div>
