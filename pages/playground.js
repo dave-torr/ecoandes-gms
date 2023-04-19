@@ -2,10 +2,6 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useSession } from "next-auth/react"
 
-import { SignOutBtn } from "./../components/authForms"
-
-
-
 
 import { aTextArea, DayByDayAdder } from "./../components/forms"
 
@@ -31,7 +27,7 @@ export default function PlaygroundPage(props){
     })
 
     const [aTourModel, setTourModel]=useState({
-        "ecoAndesLogo": true,
+        "LTCLogo": true,
         "highlights":[],
         "dayByDay":[],
         "countryList":[],
@@ -520,6 +516,8 @@ const imageFetcher=()=>{
             <h1>
             Cucu
             </h1>
+
+            <h1> Wazabi</h1>
             <br/>
 
             {/* <ul> gms and playground Navi </ul> */}

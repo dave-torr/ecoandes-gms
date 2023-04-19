@@ -3,14 +3,12 @@ import { useState, useEffect } from "react"
 
 import Image from "next/image"
 
-import FlightIcon from '@mui/icons-material/Flight';
-import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-
 import CancelIcon from '@mui/icons-material/Cancel';
 import Switch from '@mui/material/Switch';
 import AddBoxIcon from '@mui/icons-material/AddBox';
-import { Textarea } from '@mantine/core';
+
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 //////////////////////////////////////////////////////////
 import styles from "../styles/components/forms.module.css"
@@ -36,11 +34,6 @@ export function aTextInput(aPlaceholder, inputId, anObject, setAnObject, inputTy
         </div>
     </>)
 }
-
-
-
-
-
 
 // //////////////////////////////////////////////
 // //////////////////////////////////////////////
@@ -167,22 +160,31 @@ export function aDropdownPicker(theOptsArr, inputLabel, inputId, anObject, setAn
     </>) 
 }
 
-export function LogoSwitcher(props){
+
+export function aSwitcher(switcherController, anObject, setAnObject, objectElemKey, switchTrigger ){
     const handleChange=()=>{
-        if(props.aTour.ecoAndesLogo){
-            props.tourEditor({...props.aTour, "ecoAndesLogo": false}) 
+        if(switcherController){
+            setAnObject({
+                ...anObject, 
+                [objectElemKey]: false}) 
         } else {
-            props.tourEditor({...props.aTour, "ecoAndesLogo": true}) 
+            setAnObject({
+                ...anObject, 
+                [objectElemKey]: switchTrigger }) 
         }
     }
     return(<>
         <div style={{display: "flex", alignItems: "center"}}>
-        <Switch 
-            checked={props.aTour.ecoAndesLogo}
-            onChange={handleChange}
-        /> EcoAndes Travel Logo</div>
+            <FormControlLabel 
+                control={
+                    <Switch checked={switcherController}
+                    onChange={handleChange} />} label="Visible Logo?" 
+                />            
+        </div>
     </>)
+
 }
+
 
 export function aTextArea(inputLabel, inputId, isReq, inputPlaceholder, anObject, setAnObject ){
     return(<>
@@ -267,7 +269,22 @@ export function inputToList( inputLabel, inputId, anObject, setAnObject, theList
     </>)
 }
 
-
+export function radioSelectors(radioKeyValueArr, radioNames, anObject, setAnObject, radioTrigger){
+    let theRadios = radioKeyValueArr.map((elem, i)=><>
+        <div style={{display:"flex", width:"100px"}} key={i}> 
+            <input type="radio" id={elem.radioKey} name={radioNames} onClick={()=>setAnObject({
+                ...anObject,
+                [radioTrigger]: elem.radioVal
+            })}/>
+            <label htmlFor={elem.radioKey} style={{textTransform:"capitalize"}} >{elem.radioKey}</label>
+        </div>
+    </>)
+    return(<>
+        <div className={styles.radioselectors} className={styles.aRow} > 
+            {theRadios}
+        </div>
+    </>)
+}
 
 
 

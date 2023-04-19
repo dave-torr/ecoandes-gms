@@ -4,7 +4,8 @@ import Image from "next/image"
 // components
 import { useSession, signIn, signOut } from "next-auth/react"
 import {
-    DayByDayAdder, LogoSwitcher, anInputDisplayer, multiOptPicker, aDropdownPicker, inputToList
+    DayByDayAdder, 
+    anInputDisplayer, multiOptPicker, aDropdownPicker, inputToList, aSwitcher, radioSelectors
 } from "../../components/forms"
 import { SignInForm } from "../../components/authForms";
 import {TourDisplayer } from "../../components/tours"
@@ -15,9 +16,11 @@ import {anImageDisp} from "../gms/pix"
 
 // icons and imgs
 import DesignServicesIcon from '@mui/icons-material/DesignServices';
-import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import CircularProgress from '@mui/material/CircularProgress';
-import EcoAndesLogoBLK from "../../public/assets/logos/ecoAndesBLK.png"
+import LTCLogoBLK from "../../public/assets/logos/ecoAndesBLK.png"
+import GalapagosElementsLogo from "../../public/assets/logos/galapagosElementsLogo.png"
+import YacumaLogo from "../../public/assets/logos/yacuma.png"
+import UnigpsLogo from "../../public/assets/logos/unigalapagos.png"
 
 // Data
 import LTCGenDAta from "../../data/dataAndTemplates.json"
@@ -59,7 +62,7 @@ let tourDiff =[1,2,3,4,5]
 
     // tour model
     const [aTourModel, setTourModel]=useState({
-        "ecoAndesLogo": true,
+        "LTCLogo": "ecoAndes",
         "highlights":[],
         "dayByDay":[],
         "countryList":[],
@@ -81,9 +84,18 @@ let tourDiff =[1,2,3,4,5]
 
     // partner logo
     let partnerLogo;
-    if(aTourModel.ecoAndesLogo){
-        partnerLogo=<div className={styles.partnerLogoCont}><Image height={45} width={180} src={EcoAndesLogoBLK} alt="EcoAndes Travel Logo" /></div>
-    } else if(!aTourModel.ecoAndesLogo){
+    if(aTourModel.LTCLogo==="ecoAndes"){
+        partnerLogo=<div className={styles.partnerLogoCont}><Image height={45} width={180} src={LTCLogoBLK} alt="EcoAndes Travel Logo" /></div>
+    } else if(aTourModel.LTCLogo==="galapagosElements"){
+        partnerLogo=<div style={{display: "flex", justifyContent:"center", paddingTop: "27px"}} >
+            <Image height={80} width={210} src={GalapagosElementsLogo} alt="Galapagos Elements Logo" /></div>
+    } else if(aTourModel.LTCLogo=="yacuma"){
+        partnerLogo=<div className={styles.partnerLogoCont}>
+            <Image height={55} width={210} src={YacumaLogo} alt="Yacuma Logo" /></div>
+    } else if(aTourModel.LTCLogo=="unigalapagos"){
+        partnerLogo=<div className={styles.partnerLogoCont}>
+            <Image height={75} width={110} src={UnigpsLogo} alt="Unigalapagos Logo" /></div>
+    } else if(!aTourModel.LTCLogo){
         partnerLogo=false
     }
 
@@ -108,6 +120,24 @@ let tourDiff =[1,2,3,4,5]
         }
     }
 
+    const logoSwitcherArr=[
+        {
+            "radioKey": "EcoAndes Travel",
+            "radioVal": "ecoAndes"
+        },
+        {
+            "radioKey": "Galapagos Elements",
+            "radioVal": "galapagosElements"
+        },
+        {
+            "radioKey": "Yacuma EcoLodge",
+            "radioVal": "yacuma"
+        },
+        {
+            "radioKey": "Unigalapagos",
+            "radioVal": "unigalapagos"
+        },
+    ]
 
     ////////////////////////////////////////////
     ////////////////////////////////////////////
@@ -149,7 +179,12 @@ let tourDiff =[1,2,3,4,5]
 
                 {/* Revise Logo Switcher to check how it's changing the model */}
 
-                    <LogoSwitcher aTour={aTourModel} tourEditor={setTourModel} />
+                    {/* <LogoSwitcher aTour={aTourModel} tourEditor={setTourModel} /> */}
+
+                    {aSwitcher(aTourModel.LTCLogo, aTourModel, setTourModel, "LTCLogo", "ecoAndes")}
+                    {aTourModel.LTCLogo&&<>
+                        {radioSelectors(logoSwitcherArr, "logoRadios", aTourModel, setTourModel, "LTCLogo")}
+                    </>}
 
                     {anInputDisplayer("Tour Name", "tripName", "text", true, "Trip name", aTourModel, setTourModel )}
                     {anInputDisplayer("Duration", "duration", "number", true, "Trip duration", aTourModel, setTourModel)}

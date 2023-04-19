@@ -3,6 +3,8 @@ import { useState } from "react"
 import { useSession, signIn, signOut } from "next-auth/react"
 
 import Dialog from '@mui/material/Dialog';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 import {aTextInput} from "./forms"
 
@@ -14,6 +16,7 @@ export function SignInForm(){
         email: String,
         password: String
     })
+    const [logInTrigger, setLogTrigger]=useState(false)
     const submitLogIn = async ()=>{
         const status = await signIn('credentials',{
             redirect: false,
@@ -21,6 +24,7 @@ export function SignInForm(){
             password: userLogIn.password
         })
         if(status.error){
+            setLogTrigger(false)
             window.alert(`Error logging in: ${status.error}`)
         }
     }
@@ -28,13 +32,17 @@ export function SignInForm(){
     return(<>
         <form className={styles.signInForm} onSubmit={(e)=>{
             e.preventDefault()
+            setLogTrigger(true)
             submitLogIn()
         }}>
             Log In:
             {aTextInput("Email*", "email", userLogIn, setLogInObj, "email", true)}
             {aTextInput("Password*", "password", userLogIn, setLogInObj, "password", true)}
-
-            <input type="submit" value="Submit!" className={styles.submitBTN} />
+            {logInTrigger? <>
+                <CircularProgress />
+            </>:<>
+                <input type="submit" value="Submit!" className={styles.submitBTN} />
+            </>}
         </form>
     </>)
 }

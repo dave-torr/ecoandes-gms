@@ -29,36 +29,32 @@ export default function GMS(){
           {session? <>
 
             {/* Dave's Routes */}
-          {session.user.name==="David Torres"&&<>
-          <Link href="/playground">  
-          <a>Playground</a>
-          </Link></>}
+            {session.user.name==="David Torres"&&<>
+            <Link href="/playground">  
+            <a>Playground</a>
+            </Link></>}
 
-          {session.user.name==="David Torres"&&<>
-          <Link href="/gms/pix">  
-          <a>Pix</a>
-          </Link></>}
-          
-          {session.user.name==="David Torres"&&<>
-          <Link href="/gms/operations">  
-          <a>Operations</a>
-          </Link></>}
+            {session.user.name==="David Torres"&&<>
+            <Link href="/gms/pix">  
+            <a>Pix</a>
+            </Link></>}
+            
+            {session.user.name==="David Torres"&&<>
+            <Link href="/gms/operations">  
+            <a>Operations</a>
+            </Link></>}
 
-          {/* Non admin Toutes */}
-          <Link href="/gms/tourCreator">  
-          <a>Tour Creator</a>
-          </Link>
-          
-          <Link href="/gms/tourExplorer">  
-          <a>Tour Explorer</a>
-          </Link>
+            {/* Non admin Toutes */}
+            <Link href="/gms/tourCreator">  
+            <a>Tour Creator</a>
+            </Link>
+            
+            <Link href="/gms/tourExplorer">  
+            <a>Tour Explorer</a>
+            </Link>
 
-          </>:<> 
-            {logInTrig? <> 
-              <SignInForm />
-            </>:<> 
-              <div className={styles.gmsOptBTN} onClick={()=>{setLogInTrig(true)}}>Log In!</div> 
-            </>}
+          </>:<>
+            <SignInForm />
           </>}
       </>
     )
