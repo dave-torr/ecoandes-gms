@@ -116,14 +116,6 @@
     flex-direction: column;
 }
 
-.partnerLogoCont{
-    display: flex;
-    width: 98%;
-    justify-content: flex-end;
-    padding: 33px 44px;
-    padding-bottom: 0;
-}
-
 .nextStepBTN{
     width: 100%;
     margin: 15px 0;

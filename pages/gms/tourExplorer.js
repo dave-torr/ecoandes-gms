@@ -4,13 +4,14 @@ import { useSession } from "next-auth/react"
 
 import { GMSNavii } from "../../components/navis";
 
-import {TextTourCard, SortingItinUI} from "../../components/tours"
+import {TextTourCard, SortingItinUI, TourDisplayer} from "../../components/tours"
 
 import LTCItineraries from "../../data/LTCItinerary.json"
 import LTCGenData from "../../data/dataAndTemplates.json"
 
 import ExploreIcon from '@mui/icons-material/Explore';
 import CircularProgress from '@mui/material/CircularProgress';
+import Dialog from '@mui/material/Dialog';
 
 
 import styles from "../../styles/pages/tourExplorar.module.css"
@@ -56,7 +57,6 @@ const { data: session } = useSession()
     // sorting
     const [sortContr, setSortContr]=useState("duration")
     const [sortOrder, setSortOrder]=useState("ascending")
-
     useEffect(()=>{
         // add conditional if selectedDestination => sort by all tourData, else by filtered tour data.
         sortOrder==="descending"?
@@ -71,15 +71,17 @@ const { data: session } = useSession()
             setFilteredItins([...filteredItineraries].sort(((a,b)=> b[sortContr] - a[sortContr])))
     },[sortOrder])
 
-    const LTCTourExplorar=(theItins, filterArr, filterLabel, localOrFetched, priceSortTrigger)=>{
+
+    const [pickedItin, setPickedItin] =useState()
+    const [dialogTrigger, setDialogTrigger]=useState(false)
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+
+    const LTCTourExplorar=(theItins, filterArr, filterLabel, localOrFetched, priceSortTrigger, cardType, setItin, setDialogTrigger)=>{
 
         let eachTourCard = theItins.map((elem, i)=><React.Fragment key={i}>
-            <div><TextTourCard aTour={elem} /></div>
+            <div><TextTourCard aTour={elem} type={cardType} setItin={setItin} setDialogTrigger={setDialogTrigger} /></div>
         </React.Fragment> )
-
-        // Filter Category
-        // Filter Selection
-        // Sorting Opts
 
         let eachSelectOpt=filterArr.map((elem, i)=><React.Fragment key={i}>
             <option value={elem} > {elem} </option>
@@ -123,11 +125,12 @@ const { data: session } = useSession()
 
     const [itineraryFetcherTrig, setFetchTrig]= useState(false)
     const [fetchedItinArr, setFetchedItArr]=useState()
+
     const fetchUserItineraries=()=>{
 
         return(<>
             {fetchedItinArr?<>
-                {LTCTourExplorar(fetchedItinArr, userUIFilters, theFilterLabel, true, false )}
+                {LTCTourExplorar(fetchedItinArr, userUIFilters, theFilterLabel, true, false, 2, setPickedItin, setDialogTrigger )}
             </>: <>
                 <div style={{width:"96%", padding:"15px" }}>
                     <div className={styles.aGenBTN} 
@@ -156,8 +159,24 @@ const { data: session } = useSession()
         </>)
     }
 
+    const selectedItinDips=()=>{
 
-console.log(fetchedItinArr)
+        return(<>
+            <Dialog open={dialogTrigger} fullScreen >
+                {pickedItin&&<>
+                <div style={{width:"100%", minHeight:"100vh" }}>
+                    <div className={styles.tourDialogBTN} onClick={()=>{
+                        setDialogTrigger(false)
+                    }}> X </div>
+                    <TourDisplayer 
+                        aTour={pickedItin}
+                        key={pickedItin.tripName}
+                    />
+                </div>
+                </>}
+            </Dialog>
+        </>)
+    }
 
     return(<>
     
@@ -169,9 +188,12 @@ console.log(fetchedItinArr)
                 <h2>Latin Travel Collection</h2>
                 <h1>Tour Explorer</h1>
             
-                {LTCTourExplorar(filteredItineraries, userUIFilters, theFilterLabel, false, true )}
+                {LTCTourExplorar(filteredItineraries, userUIFilters, theFilterLabel, false, true, 1 )}
 
                 {fetchUserItineraries()}
+                
+                {selectedItinDips()}
+
                 <br/>
                 <br/>
                 <br/>

@@ -40,6 +40,10 @@ import Filter4Icon from '@mui/icons-material/Filter4';
 import Filter5Icon from '@mui/icons-material/Filter5';
 
 import LTCTypeface from "./../public/assets/logos/LTCTypeface.png"
+import LTCLogoBLK from "./../public/assets/logos/ecoAndesBLK.png"
+import GalapagosElementsLogo from "./../public/assets/logos/galapagosElementsLogo.png"
+import YacumaLogo from "./../public/assets/logos/yacuma.png"
+import UnigpsLogo from "./../public/assets/logos/unigalapagos.png"
 
 import Dialog from '@mui/material/Dialog';
 
@@ -102,15 +106,16 @@ export function ATourCard(props){
 export function TextTourCard(props){
     let theTour = props.aTour
 
-    return(<>
+    if(props.type===1) {
+        return(<>
         <Link href={`/tours/${theTour.id}`}>
         <a className={styles.textTourCard} >
             <div style={{width: "100%", display:"flex", justifyContent:"space-between", alignContent: "center"}}>
-                <div style={{textTransform:"capitalize"}}> 
+                <div style={{textTransform:"capitalize", display:"flex", justifyContent:"center" }}> 
                 <PlaceIcon/> {theTour.countryList[0]}
                 </div>
             
-                <div> 
+                <div style={{textTransform:"capitalize", display:"flex", justifyContent:"center" }}> 
                 <HikingIcon /> {theTour.difficulty}/5 
                 </div>
             </div>
@@ -119,6 +124,26 @@ export function TextTourCard(props){
         </a>
         </Link>
     </>)
+    } else if(props.type===2) {
+        return(<>
+        <div className={styles.textTourCard} onClick={()=>{
+            props.setItin(theTour)
+            props.setDialogTrigger(true)
+        }}>
+            <div style={{width: "100%", display:"flex", justifyContent:"space-between", alignContent: "center"}}>
+                <div style={{textTransform:"capitalize", display:"flex", justifyContent:"center" }}> 
+                <PlaceIcon/> {theTour.countryList[0]}
+                </div>
+            
+                <div style={{textTransform:"capitalize", display:"flex", justifyContent:"center" }}> 
+                <HikingIcon /> {theTour.difficulty}/5 
+                </div>
+            </div>
+                <div className={styles.tourCardTripName}> {theTour.tripName} </div>
+                <div> {theTour.duration}D | {theTour.tourType} </div>
+        </div>
+    </>)
+    }
 }
 
 //////////////////////////////////////////////////////////////
@@ -264,6 +289,10 @@ export function TourTypeCard(props){
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 export function TourDisplayer(props){
+
+
+    // Add logo displayer here
+
     let aTour = props.aTour
 
     const [imgDialogContr, srtImgDialogcontr]= useState(false)
@@ -456,11 +485,29 @@ export function TourDisplayer(props){
         </>)
     }
     const tourTitle=()=>{
+        let partnerLogo;
+        if(aTour.LTCLogo==="ecoAndes"){
+            partnerLogo=<div className={styles.partnerLogoCont}>
+                <Image height={45} width={180} src={LTCLogoBLK} alt="EcoAndes Travel Logo" /></div>
+        } else if(aTour.LTCLogo==="galapagosElements"){
+            partnerLogo=<div style={{display: "flex", justifyContent:"center", paddingTop: "27px"}} >
+                <Image height={80} width={210} src={GalapagosElementsLogo} alt="Galapagos Elements Logo" /></div>
+        } else if(aTour.LTCLogo=="yacuma"){
+            partnerLogo=<div className={styles.partnerLogoCont}>
+                <Image height={55} width={210} src={YacumaLogo} alt="Yacuma Logo" /></div>
+        } else if(aTour.LTCLogo=="unigalapagos"){
+            partnerLogo=<div className={styles.partnerLogoCont}>
+                <Image height={75} width={110} src={UnigpsLogo} alt="Unigalapagos Logo" /></div>
+        } else if(!aTour.LTCLogo){
+            partnerLogo=false
+        }        
+
         let countryList = aTour.countryList.map((elem, i)=><React.Fragment key={i}> { i >0 &&<> / </>}{elem} </React.Fragment>)
+
         return(<>
-            {props.partnerLogo&&<>
+            {aTour.LTCLogo&&<>
                 <div className={styles.partnerLogo}>
-                {props.partnerLogo} </div> 
+                {partnerLogo} </div> 
             </>}
             <div className={styles.tourTitleCard}>
                 <h1 className={styles.tourTitleBar}>
@@ -483,7 +530,7 @@ export function TourDisplayer(props){
                     {aTour.tourOverview} </p>
 
 {/* Include We Travel Widget BTN || CONTACT US BTN for Private Departures */}
-                {!props.partnerLogo&&<>
+                {!aTour.LTCLogo&&<>
                 
                 {aTour.tourType==="climbing"&&<>
                     <a href={`mailto:info@ecoandestravel.com?cc=planificacion@ecoandestravel.com, david@latintravelcollection.com&subject=${aTour.tripName} Request&body=Hi! I'm interested in ${aTour.tripName} for the following dates/season:`}>
@@ -605,6 +652,8 @@ export function TourDisplayer(props){
         </footer>
         </>)
     }
+
+    console.log(aTour)
 
     return(<>
         <article className={styles.generalTourPage}>

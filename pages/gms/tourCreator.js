@@ -18,10 +18,7 @@ import {anImageDisp} from "../gms/pix"
 // icons and imgs
 import CircularProgress from '@mui/material/CircularProgress';
 import DesignServicesIcon from '@mui/icons-material/DesignServices';
-import LTCLogoBLK from "../../public/assets/logos/ecoAndesBLK.png"
-import GalapagosElementsLogo from "../../public/assets/logos/galapagosElementsLogo.png"
-import YacumaLogo from "../../public/assets/logos/yacuma.png"
-import UnigpsLogo from "../../public/assets/logos/unigalapagos.png"
+
 
 // Data
 import LTCGenDAta from "../../data/dataAndTemplates.json"
@@ -59,6 +56,39 @@ let tourDiff =[1,2,3,4,5]
     // edit day info, prev data
 
 
+
+
+
+// FLIGHT TO MIA MAY
+// 
+
+
+
+
+
+
+
+    // Display created Itinerary
+    //  .findOneAndUpdate:
+        // if(reqData.editController==="additionalDetails"){
+        // updatedReservations = await db
+        // .collection("yachtReservations")
+        // .findOneAndUpdate(
+        //     { "_id": ObjectID(reqData._id) },
+        //     {$set: {
+        //         flightInfo: reqData.flightInfo,
+        //         bookingRequirements: reqData.bookingRequirements,
+        //         clientReference: reqData.clientReference,
+        //     }},
+        //     {
+        //         returnNewDocument: true
+        //     }
+        // );
+
+    // copy itineraries 
+    // 
+
+
     //////////////////////////////////////////////
     // sesh
     const { data: session } = useSession()
@@ -87,21 +117,21 @@ let tourDiff =[1,2,3,4,5]
     const [submitionTrig, setSubmitTrig]=useState(false)
 
     // partner logo
-    let partnerLogo;
-    if(aTourModel.LTCLogo==="ecoAndes"){
-        partnerLogo=<div className={styles.partnerLogoCont}><Image height={45} width={180} src={LTCLogoBLK} alt="EcoAndes Travel Logo" /></div>
-    } else if(aTourModel.LTCLogo==="galapagosElements"){
-        partnerLogo=<div style={{display: "flex", justifyContent:"center", paddingTop: "27px"}} >
-            <Image height={80} width={210} src={GalapagosElementsLogo} alt="Galapagos Elements Logo" /></div>
-    } else if(aTourModel.LTCLogo=="yacuma"){
-        partnerLogo=<div className={styles.partnerLogoCont}>
-            <Image height={55} width={210} src={YacumaLogo} alt="Yacuma Logo" /></div>
-    } else if(aTourModel.LTCLogo=="unigalapagos"){
-        partnerLogo=<div className={styles.partnerLogoCont}>
-            <Image height={75} width={110} src={UnigpsLogo} alt="Unigalapagos Logo" /></div>
-    } else if(!aTourModel.LTCLogo){
-        partnerLogo=false
-    }
+    // let partnerLogo;
+    // if(aTourModel.LTCLogo==="ecoAndes"){
+    //     partnerLogo=<div className={styles.partnerLogoCont}><Image height={45} width={180} src={LTCLogoBLK} alt="EcoAndes Travel Logo" /></div>
+    // } else if(aTourModel.LTCLogo==="galapagosElements"){
+    //     partnerLogo=<div style={{display: "flex", justifyContent:"center", paddingTop: "27px"}} >
+    //         <Image height={80} width={210} src={GalapagosElementsLogo} alt="Galapagos Elements Logo" /></div>
+    // } else if(aTourModel.LTCLogo=="yacuma"){
+    //     partnerLogo=<div className={styles.partnerLogoCont}>
+    //         <Image height={55} width={210} src={YacumaLogo} alt="Yacuma Logo" /></div>
+    // } else if(aTourModel.LTCLogo=="unigalapagos"){
+    //     partnerLogo=<div className={styles.partnerLogoCont}>
+    //         <Image height={75} width={110} src={UnigpsLogo} alt="Unigalapagos Logo" /></div>
+    // } else if(!aTourModel.LTCLogo){
+    //     partnerLogo=false
+    // }
 
     // utils
     const stepBTNs=(nextOrPrev)=>{
