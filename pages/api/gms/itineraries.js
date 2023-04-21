@@ -43,6 +43,21 @@ async function handler(req, res){
         }
 
     }
+    else if (req.method==="GET"){ 
+        const client = await connectToDatabase();
+
+        const FetchedUserItins = client
+            .db('EcoAndesGMS')
+            .collection("LTCItineraries")
+            .find()
+            .toArray();
+
+        const fetchedIts = await FetchedUserItins
+        if(fetchedIts){
+            res.status(200).json(fetchedIts)
+            client.close();
+        }
+    }
     else if (req.method==="delete"){ }
 }
 

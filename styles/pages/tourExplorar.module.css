@@ -38,7 +38,6 @@
 
 .tourDialogBTN{
     position: fixed;
-    left: 9px;
     width: 39px;
     height: 39px;
     display: flex;
@@ -48,8 +47,36 @@
     box-shadow: var(--frst-box-shadow);
     background-color: white;
     font-size: 1.2em;
-    font-weight: 600;
     margin: 9px;
     cursor: pointer;
     color: red;
+}
+.tourEditBTN{
+    position: fixed;
+    width: 39px;
+    height: 39px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+    box-shadow: var(--frst-box-shadow);
+    background-color: white;
+    font-size: 1.2em;
+    margin: 9px;
+    cursor: pointer;
+    color: red;
+}
+
+.nonToursPlaceholder{
+    padding: 18px 24px;
+}
+
+.nonToursPlaceholder a{
+    border: solid 1px black;
+    width: 210px;
+    background-color: white;
+    box-shadow: var(--frst-box-shadow);
+    padding: 12px 9px;
+    text-align:center;
+    margin-top: 15px;
 }

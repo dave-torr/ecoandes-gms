@@ -49,6 +49,7 @@ export default NextAuth({
             if (user) {
             token.userType = user.userType
             token.profilePic = user.profilePic
+            token.hierarchy = user.hierarchy
             }
             return token
         },
@@ -58,7 +59,8 @@ export default NextAuth({
                 session.user = {
                     ...session.user,
                     "userType": token.userType,
-                    "profilePic": token.profilePic
+                    "profilePic": token.profilePic,
+                    "hierarchy": token.hierarchy
                 }
             return session  
             }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import Link from "next/link"
 import { useSession } from "next-auth/react"
 
 import { GMSNavii } from "../../components/navis";
@@ -12,6 +12,8 @@ import LTCGenData from "../../data/dataAndTemplates.json"
 import ExploreIcon from '@mui/icons-material/Explore';
 import CircularProgress from '@mui/material/CircularProgress';
 import Dialog from '@mui/material/Dialog';
+import EditNoteIcon from '@mui/icons-material/EditNote';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 
 import styles from "../../styles/pages/tourExplorar.module.css"
@@ -89,12 +91,7 @@ const { data: session } = useSession()
 
         return<>
             <div className={styles.itineraryDisplCont}>
-                {localOrFetched? <>                
-                    <h2> Your Itineraries</h2>
-                </>:<>                
-                    <h2> LTC Published Itineraries</h2>
-                </> }
-
+                <h2> {localOrFetched} Itineraries</h2>                
                 {priceSortTrigger&&<>
                     <div className={styles.filterUICont}> 
                         <label htmlFor="filterDropdownUI">{filterLabel}: &nbsp;</label>
@@ -110,27 +107,37 @@ const { data: session } = useSession()
                         Tours: {theItins.length}
                     </div>
                 </>}
+                {theItins.length>0? <>
+                    <SortingItinUI 
+                        sortContr={sortContr} 
+                        setSortContr={setSortContr}
+                        sortOrder={sortOrder}
+                        setSortOrder={setSortOrder}
+                        priceSortTrigger={priceSortTrigger}
+                    />
+                    <div className={styles.tourCardDisp } > {eachTourCard} </div>
+                </>:<>
+                    <div className={styles.nonToursPlaceholder}> 
+                        You haven't created any itineraries yet! <br/>
+                        Start Here! <br/><br/>
+                        <Link href="/gms/tourCreator" >Tour Creator</Link>
 
-                <SortingItinUI 
-                    sortContr={sortContr} 
-                    setSortContr={setSortContr}
-                    sortOrder={sortOrder}
-                    setSortOrder={setSortOrder}
-                    priceSortTrigger={priceSortTrigger}
-                />
-                <div className={styles.tourCardDisp } > {eachTourCard} </div>
+                    </div>
+                </>}
             </div>
         </>
     }
 
     const [itineraryFetcherTrig, setFetchTrig]= useState(false)
     const [fetchedItinArr, setFetchedItArr]=useState()
+    const [itineraryFetcherTrig2, setFetchTrig2]= useState(false)
+    const [fetchedItinArr2, setFetchedItArr2]=useState()
 
     const fetchUserItineraries=()=>{
 
         return(<>
             {fetchedItinArr?<>
-                {LTCTourExplorar(fetchedItinArr, userUIFilters, theFilterLabel, true, false, 2, setPickedItin, setDialogTrigger )}
+                {LTCTourExplorar(fetchedItinArr, userUIFilters, theFilterLabel, "your", false, 2, setPickedItin, setDialogTrigger )}
             </>: <>
                 <div style={{width:"96%", padding:"15px" }}>
                     <div className={styles.aGenBTN} 
@@ -158,7 +165,6 @@ const { data: session } = useSession()
             </> }
         </>)
     }
-
     const selectedItinDips=()=>{
 
         return(<>
@@ -168,6 +174,13 @@ const { data: session } = useSession()
                     <div className={styles.tourDialogBTN} onClick={()=>{
                         setDialogTrigger(false)
                     }}> X </div>
+                    
+                    <div  className={styles.tourDialogBTN} style={{left:"57px"}} > <ContentCopyIcon/> </div>
+
+                    {(session?.user.hierarchy===2 || session?.user.name===pickedItin.user.name) &&<>
+                        <div className={styles.tourEditBTN} style={{left:"114px"}} >  <EditNoteIcon /> </div></>}
+
+                    {session?.user.name===pickedItin.user.name && <></>}
                     <TourDisplayer 
                         aTour={pickedItin}
                         key={pickedItin.tripName}
@@ -177,9 +190,37 @@ const { data: session } = useSession()
             </Dialog>
         </>)
     }
+    const allItinsDisp=()=>{
+        return(<>
+            {fetchedItinArr2?<>
+                {LTCTourExplorar(fetchedItinArr2, userUIFilters, theFilterLabel, "All LTC", false, 2, setPickedItin, setDialogTrigger )}
+            </>: <>
+                <div style={{width:"96%", padding:"15px" }}>
+                    <div className={styles.aGenBTN} 
+                    onClick={async()=>{
+                        if(!itineraryFetcherTrig2){
+                        setFetchTrig2(true)
+                        const res = await fetch("/api/gms/itineraries", {
+                            method: "GET"
+                        })
+                        const itineraryFetcher = await res.json()
+                            if(itineraryFetcher){
+                                setFetchedItArr2(itineraryFetcher)
+                            }
+                        }
+                    }}>
+                        {itineraryFetcherTrig2? <>
+                            <CircularProgress />
+                        </>:<>
+                            Get all LTC itineraries
+                        </> }
+                    </div>
+                </div>
+            </> }
+        </>)
+    }
 
     return(<>
-    
         {session?<> 
             <div className={styles.generalPageCont}>
                 <GMSNavii  user={session.user} />
@@ -188,9 +229,10 @@ const { data: session } = useSession()
                 <h2>Latin Travel Collection</h2>
                 <h1>Tour Explorer</h1>
             
-                {LTCTourExplorar(filteredItineraries, userUIFilters, theFilterLabel, false, true, 1 )}
+                {LTCTourExplorar(filteredItineraries, userUIFilters, theFilterLabel, "LTC Published", true, 1 )}
 
                 {fetchUserItineraries()}
+                {allItinsDisp()}
                 
                 {selectedItinDips()}
 

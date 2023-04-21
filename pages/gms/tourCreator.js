@@ -117,21 +117,7 @@ let tourDiff =[1,2,3,4,5]
     const [submitionTrig, setSubmitTrig]=useState(false)
 
     // partner logo
-    // let partnerLogo;
-    // if(aTourModel.LTCLogo==="ecoAndes"){
-    //     partnerLogo=<div className={styles.partnerLogoCont}><Image height={45} width={180} src={LTCLogoBLK} alt="EcoAndes Travel Logo" /></div>
-    // } else if(aTourModel.LTCLogo==="galapagosElements"){
-    //     partnerLogo=<div style={{display: "flex", justifyContent:"center", paddingTop: "27px"}} >
-    //         <Image height={80} width={210} src={GalapagosElementsLogo} alt="Galapagos Elements Logo" /></div>
-    // } else if(aTourModel.LTCLogo=="yacuma"){
-    //     partnerLogo=<div className={styles.partnerLogoCont}>
-    //         <Image height={55} width={210} src={YacumaLogo} alt="Yacuma Logo" /></div>
-    // } else if(aTourModel.LTCLogo=="unigalapagos"){
-    //     partnerLogo=<div className={styles.partnerLogoCont}>
-    //         <Image height={75} width={110} src={UnigpsLogo} alt="Unigalapagos Logo" /></div>
-    // } else if(!aTourModel.LTCLogo){
-    //     partnerLogo=false
-    // }
+
 
     // utils
     const stepBTNs=(nextOrPrev)=>{
@@ -471,7 +457,6 @@ let tourDiff =[1,2,3,4,5]
                             {imgPickerUIUitls(aTourModel.imgArr)}</>}
                         <TourDisplayer  
                             aTour={aTourModel} 
-                            partnerLogo={partnerLogo} 
                             />
                         {aTourModel.imgArr.length>0&& <>
                         {sendToBackEnd(aTourModel, session.user)}</>}
