@@ -6,6 +6,8 @@ import { GMSNavii } from "../../components/navis";
 
 import {TextTourCard, SortingItinUI, TourDisplayer} from "../../components/tours"
 
+import ItinDuplicator from "../../pages/gms/tourCreator"
+
 import LTCItineraries from "../../data/LTCItinerary.json"
 import LTCGenData from "../../data/dataAndTemplates.json"
 
@@ -133,6 +135,8 @@ const { data: session } = useSession()
     const [itineraryFetcherTrig2, setFetchTrig2]= useState(false)
     const [fetchedItinArr2, setFetchedItArr2]=useState()
 
+    const [copyItinTrig, setCopyTrig]=useState(false)
+
     const fetchUserItineraries=()=>{
 
         return(<>
@@ -235,6 +239,13 @@ const { data: session } = useSession()
                 {allItinsDisp()}
                 
                 {selectedItinDips()}
+
+                <ItinDuplicator
+                    dialogTrig={copyItinTrig}
+                    setDialogTrig={setCopyTrig}
+                    aTour={pickedItin}
+                    userData={session.user}
+                />
 
                 <br/>
                 <br/>

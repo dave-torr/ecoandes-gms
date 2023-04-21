@@ -109,23 +109,26 @@ export function TextTourCard(props){
     if(props.type===1) {
         return(<>
         <Link href={`/tours/${theTour.id}`}>
-        <a className={styles.textTourCard} >
-            <div style={{width: "100%", display:"flex", justifyContent:"space-between", alignContent: "center"}}>
-                <div style={{textTransform:"capitalize", display:"flex", justifyContent:"center" }}> 
-                <PlaceIcon/> {theTour.countryList[0]}
+            <a className={styles.textTourCard} >
+                <div style={{width: "100%", display:"flex", justifyContent:"space-between", alignContent: "center"}}>
+                    <div style={{textTransform:"capitalize", display:"flex", justifyContent:"center" }}> 
+                    <PlaceIcon/> {theTour.countryList[0]}
+                    </div>
+                
+                    <div style={{textTransform:"capitalize", display:"flex", justifyContent:"center" }}> 
+                    <HikingIcon /> {theTour.difficulty}/5 
+                    </div>
                 </div>
-            
-                <div style={{textTransform:"capitalize", display:"flex", justifyContent:"center" }}> 
-                <HikingIcon /> {theTour.difficulty}/5 
-                </div>
-            </div>
-                <div className={styles.tourCardTripName}> {theTour.tripName} </div>
-                <div> {theTour.duration}D | {theTour.tourType} </div>
-        </a>
+                    <div className={styles.tourCardTripName}> {theTour.tripName} </div>
+                    <div> {theTour.duration}D | {theTour.tourType} </div>
+            </a>
         </Link>
     </>)
     } else if(props.type===2) {
         return(<>
+        {theTour.user?.name&&<> 
+        <div className={styles.userNameTag}> {theTour.user?.name.substring(0, theTour.user?.name.indexOf(' '))}</div>
+        </>}
         <div className={styles.textTourCard} onClick={()=>{
             props.setItin(theTour)
             props.setDialogTrigger(true)
@@ -653,7 +656,6 @@ export function TourDisplayer(props){
         </>)
     }
 
-    console.log(aTour)
 
     return(<>
         <article className={styles.generalTourPage}>
@@ -818,3 +820,4 @@ export function SortingItinUI(props){
         </div>
     </>)    
 }
+

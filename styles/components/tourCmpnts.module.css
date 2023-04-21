@@ -83,12 +83,10 @@
 /* Text only tour card */
 
 .textTourCard{
-    margin: 12px;   
     display: flex;
     flex-direction: column;
     cursor: pointer;
-    margin: 9px 12px;
-    margin-bottom: 15px;
+    margin: 0 11px 21px 11px;
     background-color: white;
     width: 220px;
     padding: 9px 12px;
@@ -97,6 +95,10 @@
     box-shadow: var(--frst-box-shadow);
 }
 
+.userNameTag{
+    width: calc(100% - 11px);
+    text-align: end;
+}
 /* Sorting Tours UI */
 .sortingUICont{
     display: flex;
