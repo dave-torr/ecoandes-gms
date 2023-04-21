@@ -820,4 +820,52 @@ export function SortingItinUI(props){
         </div>
     </>)    
 }
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+export function ItinDuplicator(props){
+    console.log(props.aTour)
+    return(<>
+        <Dialog open={props.dialogTrig} onClose={()=>{
+            props.setDialogTrig(false)
+        }}>
+            <div className={styles.itinDuplCont}>
+                <h2> Copy {props.aTour?.tripName}? </h2>
 
+                <h4> <string>Renamed to:</string> COPY {props.aTour?.tripName} </h4>
+
+                <div className={styles.tourCopyBTNS} >
+                    <span onClick={()=>props.setDialogTrig(false)}> 
+                        Cancel</span> 
+                    <span onClick={async()=>{
+                        let toDate = new Date()
+                        let tripName= `COPY ${props.aTour.tripName}`
+                        let reqData = JSON.stringify({
+                            ...props.aTour,
+                            "dateCreated":toDate,
+                            "tripName": tripName,
+                            "version": 0,
+                            "status": 1,
+                            "user": {
+                                "name": props.userData.name,
+                                "email": props.userData.email
+                                }
+                        })
+                        const res = await fetch("/api/gms/itineraries", {
+                                method: "POST",
+                                body: reqData
+                            })
+                        const itinSubmition = await res.json()
+                        console.log(itinSubmition)
+                        if(res.status===200){
+                            console.log(itinSubmition, "Img Submitions") 
+                            window.alert("Itinerary Copied")
+                            props.setDialogTrig(false)
+
+                        }
+                    }} > Copy!</span> 
+                </div>
+
+            </div>
+        </Dialog>
+    </>)
+}

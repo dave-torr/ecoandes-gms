@@ -4,9 +4,8 @@ import { useSession } from "next-auth/react"
 
 import { GMSNavii } from "../../components/navis";
 
-import {TextTourCard, SortingItinUI, TourDisplayer} from "../../components/tours"
+import {TextTourCard, SortingItinUI, TourDisplayer, ItinDuplicator} from "../../components/tours"
 
-import ItinDuplicator from "../../pages/gms/tourCreator"
 
 import LTCItineraries from "../../data/LTCItinerary.json"
 import LTCGenData from "../../data/dataAndTemplates.json"
@@ -179,9 +178,12 @@ const { data: session } = useSession()
                         setDialogTrigger(false)
                     }}> X </div>
                     
-                    <div  className={styles.tourDialogBTN} style={{left:"57px"}} > <ContentCopyIcon/> </div>
+                    <div  className={styles.tourDialogBTN} style={{left:"57px"}} onClick={()=>{
+                        setCopyTrig(true)
+                        setDialogTrigger(false)
+                    }} > <ContentCopyIcon/> </div>
 
-                    {(session?.user.hierarchy===2 || session?.user.name===pickedItin.user.name) &&<>
+                    {(session?.user.hierarchy===2 || session?.user.name===pickedItin?.user.name) &&<>
                         <div className={styles.tourEditBTN} style={{left:"114px"}} >  <EditNoteIcon /> </div></>}
 
                     {session?.user.name===pickedItin.user.name && <></>}

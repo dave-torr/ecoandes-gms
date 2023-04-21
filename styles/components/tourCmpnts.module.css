@@ -1112,6 +1112,30 @@
     justify-content: center;
 }
 
+
+.itinDuplCont{
+    padding: 21px 44px;
+}
+
+.tourCopyBTNS{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tourCopyBTNS span{
+    width: 48%;
+    text-align: center;
+    border: solid 1px black;
+    padding: 9px 0;
+    cursor: pointer;
+}
+
+.tourCopyBTNS span:nth-of-type(2){
+    background-color: rgb(65, 65, 79);
+    color: white;
+}
+
 @media (max-width: 1080px) {
 
     .aRectangCont{
