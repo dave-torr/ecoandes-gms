@@ -8,7 +8,7 @@
 
 }
 
-.itineraryDisplCont{
+.itinCardDisp{
     width: 96%;
     padding: 9px 15px;
     border: solid 1px black;
@@ -34,6 +34,10 @@
     text-align: center;
     text-transform: uppercase;
     cursor: pointer;
+}
+
+.iconDialogCont{
+    width: 100vw;
 }
 
 .tourDialogBTN{
@@ -79,4 +83,21 @@
     padding: 12px 9px;
     text-align:center;
     margin-top: 15px;
+}
+
+.eachTourDispl{
+    width: 1080px;
+    background-color: white;
+}
+
+@media print {
+    .iconDialogCont{
+        display: none;
+    }
+}
+
+@media (max-width: 1100px)  {
+    .eachTourDispl{
+        width: 100%
+    }
 }

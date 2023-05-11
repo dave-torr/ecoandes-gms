@@ -32,8 +32,6 @@ const contactEmail = <><a target='_blank' href="mailto:info@ecoandestravel.com">
 // home menu
 // FFR Flagged for rename
 export function GeneralDataBar(props){
-
-
     const flagSwitcher =(langCont)=>{
         if (langCont==="engl"){
             return(<>

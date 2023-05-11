@@ -4,7 +4,6 @@ import Image from "next/image"
 
 import styles from "./../styles/components/tourCmpnts.module.css"
 
-
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -28,9 +27,7 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import SportsGymnasticsIcon from '@mui/icons-material/SportsGymnastics';
 import PriceCheckIcon from '@mui/icons-material/PriceCheck';
-
 import PlaceIcon from '@mui/icons-material/Place';
-
 import PanToolAltIcon from '@mui/icons-material/PanToolAlt';
 
 import Filter1Icon from '@mui/icons-material/Filter1';
@@ -38,6 +35,9 @@ import Filter2Icon from '@mui/icons-material/Filter2';
 import Filter3Icon from '@mui/icons-material/Filter3';
 import Filter4Icon from '@mui/icons-material/Filter4';
 import Filter5Icon from '@mui/icons-material/Filter5';
+
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 import LTCTypeface from "./../public/assets/logos/LTCTypeface.png"
 import LTCLogoBLK from "./../public/assets/logos/ecoAndesBLK.png"
@@ -293,13 +293,11 @@ export function TourTypeCard(props){
 ////////////////////////////////////////////////
 export function TourDisplayer(props){
 
-
-    // Add logo displayer here
-
     let aTour = props.aTour
 
-    const [imgDialogContr, srtImgDialogcontr]= useState(false)
+    const [imgDialogContr, srtImgDialogcontr]=useState(false)
     const [selectedImg, setSelectedImg]=useState(false)
+
 
     const accordionDisplayer=(accordTitle, accordContent, openContr, numerator)=>{
         return(<>
@@ -326,7 +324,7 @@ export function TourDisplayer(props){
         {aTour.notIncluded.length>0&&<>
             {incExcDisplayer(aTour.notIncluded, "Not included in Tour")} </>}
             </div>
-    const dayByDaydisp=(tourDayByDay)=>{
+    const dayByDaydisp=(tourDayByDay, openContr)=>{
         const dayInclDisp=(dayIncl)=>{
             if(dayIncl){
                 let theInclusions = dayIncl.map((elem, i)=><React.Fragment key={i}><li>{elem}</li></React.Fragment>)
@@ -374,14 +372,14 @@ export function TourDisplayer(props){
             }
         }
 
-    let theDays = tourDayByDay.map((elem,i)=> 
+        let theDays = tourDayByDay.map((elem,i)=> 
         <React.Fragment key={i}>
-            <Accordion className={styles.accordionCont}>
+            <Accordion className={styles.accordionCont} defaultExpanded={openContr}>
                 <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" > 
                     <h3>{i+1&&<>{i+1}: </>}  {elem.dayTitle} </h3></AccordionSummary>
                 <AccordionDetails> 
                     <div style={{textAlign:"justify"}}>
-                        {elem.dayDescription}</div>
+                    {elem.dayDescription}</div>
                     {dayInclDisp(elem.dayInclusions)}
                     {hotelDetailDisp(elem.overnightProperty)}
                     {dayNotices(elem)} 
@@ -573,6 +571,7 @@ export function TourDisplayer(props){
                 </>}
 
 
+
             </div>
             {aTour.adventureType&& <> 
             <div className={styles.trekDiffNotice}>
@@ -620,7 +619,7 @@ export function TourDisplayer(props){
                 {theTour.prices.priceNotice&&<h4> *{theTour.prices.priceNotice} </h4>}
             </div>
             return(<>
-                {accordionDisplayer("Hotel List", hotelListAndNotice, false)}
+                {accordionDisplayer("Hotel List", hotelListAndNotice, true)}
             </>)
         }
     }
@@ -641,23 +640,22 @@ export function TourDisplayer(props){
     const tourFooter=()=>{
 
         return(<>
-        <footer>
+        <footer  style={{width: "100%"}} >
+            <div className={styles.footerBar} >
             <Link href="/tours"><a>
-                <div className={styles.footerBar} >
-                    <Image src={LTCTypeface} alt="LTC Travel Logo" width={55} height={30} /> &nbsp; &nbsp; &nbsp;
-                    {aTour.tripName}
-                </div>
-                </a>
-            </Link>
-            
-            <address></address>
-
+                    <Image src={LTCTypeface} alt="LTC Travel Logo" width={55} height={30} />
+                    <span>{aTour.tripName}</span> 
+            </a></Link>
+            </div>
         </footer>
         </>)
     }
 
-
     return(<>
+
+    {/* update dropdown triggers so that on print, all DD are open. */}
+
+
         <article className={styles.generalTourPage}>
             <div className={styles.tourContainer}>
                 {tourTitle()}
@@ -670,11 +668,15 @@ export function TourDisplayer(props){
             <div className={styles.tourDataCont}>
                 <div className={styles.tourData}>
                     {aTour.dayByDay.length>0&&<>
+
+                    <div className={styles.pageBreak}></div>
+
                     <div className={styles.sectionTitles}> &nbsp;Overview</div>
-                        {dayByDaydisp(aTour.dayByDay)}</>}
+                        {dayByDaydisp(aTour.dayByDay, true)}</>}
                     {aTour.included.length>0&&<>
+                    <div className={styles.pageBreak}></div>
                     <div className={styles.sectionTitles}>&nbsp;additional information</div>
-                        {accordionDisplayer("Tour Inclusions / Exclusions", incExcCont, false)}
+                        {accordionDisplayer("Tour Inclusions / Exclusions", incExcCont, true)}
                         {hotelList(aTour)}</>}
                 </div>
                 {aTour.tourType&&<>
@@ -684,8 +686,8 @@ export function TourDisplayer(props){
                     </div>
                 </>}
             </div>
-        </article>
         {tourFooter()}
+        </article>
     </>)
 }
 ////////////////////////////////////////////////
@@ -823,7 +825,9 @@ export function SortingItinUI(props){
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 export function ItinDuplicator(props){
-    console.log(props.aTour)
+
+    const [loadingTrig, setLoadingTrig]=useState(false)
+
     return(<>
         <Dialog open={props.dialogTrig} onClose={()=>{
             props.setDialogTrig(false)
@@ -837,6 +841,7 @@ export function ItinDuplicator(props){
                     <span onClick={()=>props.setDialogTrig(false)}> 
                         Cancel</span> 
                     <span onClick={async()=>{
+                    if(!loadingTrig){
                         let toDate = new Date()
                         let tripName= `COPY ${props.aTour.tripName}`
                         let reqData = JSON.stringify({
@@ -857,14 +862,21 @@ export function ItinDuplicator(props){
                         const itinSubmition = await res.json()
                         console.log(itinSubmition)
                         if(res.status===200){
-                            console.log(itinSubmition, "Img Submitions") 
                             window.alert("Itinerary Copied")
                             props.setDialogTrig(false)
+                            setLoadingTrig(true)
+                        }}
+                    }} > 
+                        {loadingTrig? <>
+                            <CircularProgress />
+                        </>:<>
+                            Copy!
+                        </>}
+                    
+                    </span>
 
-                        }
-                    }} > Copy!</span> 
+
                 </div>
-
             </div>
         </Dialog>
     </>)

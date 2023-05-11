@@ -523,7 +523,7 @@
 }
 
 .tourInfoDescriptor{
-    padding: 0 33px;
+    padding: 0 25px;
     text-align: justify;
     padding-bottom: 15px;
 }
@@ -1083,7 +1083,6 @@
     padding: 12px;
 }
 
-
 .paymentBtn{
     background-color: whitesmoke;
     box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.3);
@@ -1103,15 +1102,19 @@
 }
 
 .footerBar{
-    width: 100%;
     background-color: whitesmoke;
     padding: 12px 21px;
     font-weight: 600;
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 
+.footerBar span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 12px;
+}
 
 .itinDuplCont{
     padding: 21px 44px;
@@ -1135,6 +1138,9 @@
     background-color: rgb(65, 65, 79);
     color: white;
 }
+
+
+
 
 @media (max-width: 1080px) {
 
@@ -1329,5 +1335,40 @@
         height: auto;
         position: relative;
         transform: unset;
+    }
+}
+
+
+@media print{
+    .sliderV2{
+        display: none;
+    }
+
+    .carouselSection{
+        display: none;
+    }
+
+    .pageBreak{
+        break-after: page;
+    }
+
+    .breadcrumbNaviCont{
+        display: none;
+    }
+    .aTourCTACont{
+        display: none;
+    }
+    .supportInfoCont {
+        flex-direction: row;
+    }     
+    .supportInfoCont span{
+        width: 50%;
+    } 
+    .inclusionsExclusionsSec{
+        flex-direction: row;
+    }
+    .incExcCont{
+        width: 50%;
+        margin-bottom: 6px;
     }
 }

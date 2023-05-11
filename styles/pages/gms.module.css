@@ -18,6 +18,10 @@
   align-items: center;
 }
 
+.gmsBTNCont{
+  margin-bottom: 33px;
+}
+
 .gmsBTNCont a{ 
   border: solid 1px black;
   padding: 12px;

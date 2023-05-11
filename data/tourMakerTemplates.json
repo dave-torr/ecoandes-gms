@@ -1,0 +1,15 @@
+{
+    "quitoTemplates": {
+        "transferIn":{},
+        "transferInTrans":{},
+        "transferOut":{},
+        "transferTrans":{},
+        "cityLine":{},
+        "cityCenter":{},
+        "cotopaxiFullDay":{},
+        "otavaloFullDay":{},
+        "papallactaFullDay":{},
+        "quilotoaFullDay":{},
+        "mindoFullDay":{}
+    }
+}

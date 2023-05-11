@@ -145,13 +145,18 @@
     flex-direction: column;
     margin-right: 9px;
     transition: all ease 0.7s;
+    align-items: center;
 }
 
 .GMSNaviBurger span{
-    width: 26px;
+    width: 21px;
     height: 1px;
     background-color: #191919;
     margin: 2px;
+}
+
+.GMSNaviBurger span:nth-of-type(2){
+    width: 24px;
 }
 
 .gmsUserProfilePic{
@@ -211,4 +216,11 @@
         margin-right: 9px;
     }
 
+}
+
+/* Print */
+@media print{
+    .LTCNaviGenCont{
+        display: none;
+    }
 }

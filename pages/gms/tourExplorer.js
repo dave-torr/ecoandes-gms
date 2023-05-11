@@ -15,7 +15,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Dialog from '@mui/material/Dialog';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-
+import PrintIcon from '@mui/icons-material/Print';
 
 import styles from "../../styles/pages/tourExplorar.module.css"
 
@@ -76,9 +76,13 @@ const { data: session } = useSession()
 
 
     const [pickedItin, setPickedItin] =useState()
-    const [dialogTrigger, setDialogTrigger]=useState(false)
+    const [itinDispTrigger, setDialogTrigger]=useState(false)
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
+
+    useEffect(()=>{
+        window.scrollTo({top: 0})
+    },[itinDispTrigger])
 
     const LTCTourExplorar=(theItins, filterArr, filterLabel, localOrFetched, priceSortTrigger, cardType, setItin, setDialogTrigger)=>{
 
@@ -91,8 +95,9 @@ const { data: session } = useSession()
         </React.Fragment>)
 
         return<>
-            <div className={styles.itineraryDisplCont}>
-                <h2> {localOrFetched} Itineraries</h2>                
+            <div className={styles.itinCardDisp}>
+                <h2> {localOrFetched} Itineraries</h2>
+                Tours: {theItins.length}          
                 {priceSortTrigger&&<>
                     <div className={styles.filterUICont}> 
                         <label htmlFor="filterDropdownUI">{filterLabel}: &nbsp;</label>
@@ -101,11 +106,8 @@ const { data: session } = useSession()
                         }} >
                             {theFilterLabel==="destinations"&& <>
                             <option value="all countries">All Countries </option></>}
-                        
                             {eachSelectOpt}
                         </select>
-                        &nbsp;&nbsp;&nbsp; 
-                        Tours: {theItins.length}
                     </div>
                 </>}
                 {theItins.length>0? <>
@@ -137,7 +139,6 @@ const { data: session } = useSession()
     const [copyItinTrig, setCopyTrig]=useState(false)
 
     const fetchUserItineraries=()=>{
-
         return(<>
             {fetchedItinArr?<>
                 {LTCTourExplorar(fetchedItinArr, userUIFilters, theFilterLabel, "your", false, 2, setPickedItin, setDialogTrigger )}
@@ -169,31 +170,40 @@ const { data: session } = useSession()
         </>)
     }
     const selectedItinDips=()=>{
-
         return(<>
-            <Dialog open={dialogTrigger} fullScreen >
-                {pickedItin&&<>
-                <div style={{width:"100%", minHeight:"100vh" }}>
-                    <div className={styles.tourDialogBTN} onClick={()=>{
-                        setDialogTrigger(false)
-                    }}> X </div>
-                    
-                    <div  className={styles.tourDialogBTN} style={{left:"57px"}} onClick={()=>{
-                        setCopyTrig(true)
-                        setDialogTrigger(false)
-                    }} > <ContentCopyIcon/> </div>
 
-                    {(session?.user.hierarchy===2 || session?.user.name===pickedItin?.user.name) &&<>
-                        <div className={styles.tourEditBTN} style={{left:"114px"}} >  <EditNoteIcon /> </div></>}
+            {/* Have to update this page so that it displays in a page, not on the Dialog, since page breaks do not work. */}
 
-                    {session?.user.name===pickedItin.user.name && <></>}
-                    <TourDisplayer 
-                        aTour={pickedItin}
-                        key={pickedItin.tripName}
-                    />
-                </div>
-                </>}
-            </Dialog>
+            {pickedItin&&<>
+            <div className={styles.iconDialogCont}>
+                <div className={styles.tourDialogBTN} style={{left:"3px"}} onClick={()=>{
+                    setDialogTrigger(false)
+                }}> X </div>
+                
+                <div  className={styles.tourDialogBTN} style={{left:"57px"}} onClick={()=>{
+                    // open all dialog boxes
+                    window.print()
+                }} > <PrintIcon/> </div>
+
+                <div  className={styles.tourDialogBTN} style={{left:"114px"}} onClick={()=>{
+                    setCopyTrig(true)
+                    setDialogTrigger(false)
+                }} > <ContentCopyIcon/> </div>
+
+                {(session?.user.hierarchy===2 || session?.user.name===pickedItin?.user.name) &&<>
+                    <div className={styles.tourEditBTN} style={{left:"171px"}} >  <EditNoteIcon /> </div></>}
+            </div>
+
+                {session?.user.name===pickedItin.user.name && <></>}
+                <span className={styles.eachTourDispl}>
+                    <div className={styles.eachTourDispl}>
+                        <TourDisplayer 
+                            aTour={pickedItin}
+                            key={pickedItin.tripName}
+                        />
+                    </div>
+                </span>
+            </>}
         </>)
     }
     const allItinsDisp=()=>{
@@ -226,9 +236,24 @@ const { data: session } = useSession()
         </>)
     }
 
+    
+
     return(<>
         {session?<> 
+
             <div className={styles.generalPageCont}>
+            {itinDispTrigger? <> 
+                {selectedItinDips()}
+
+                <ItinDuplicator
+                    dialogTrig={copyItinTrig}
+                    setDialogTrig={setCopyTrig}
+                    aTour={pickedItin}
+                    userData={session.user}
+                />
+            
+            </>:<> 
+
                 <GMSNavii  user={session.user} />
                 <br></br>
                 <ExploreIcon fontSize="large" />
@@ -239,19 +264,7 @@ const { data: session } = useSession()
 
                 {fetchUserItineraries()}
                 {allItinsDisp()}
-                
-                {selectedItinDips()}
-
-                <ItinDuplicator
-                    dialogTrig={copyItinTrig}
-                    setDialogTrig={setCopyTrig}
-                    aTour={pickedItin}
-                    userData={session.user}
-                />
-
-                <br/>
-                <br/>
-                <br/>
+            </>}
             </div>
         </>:<> 
 
