@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { useRouter } from 'next/router'
+
 
 import styles from "./../styles/components/tourCmpnts.module.css"
 
@@ -826,57 +828,102 @@ export function SortingItinUI(props){
 ////////////////////////////////////////////////
 export function ItinDuplicator(props){
 
+    const router = useRouter()
     const [loadingTrig, setLoadingTrig]=useState(false)
+    const [loadingStateStyle, setLoadingStyle]=useState(styles.tourCopyBTNS)
 
     return(<>
         <Dialog open={props.dialogTrig} onClose={()=>{
             props.setDialogTrig(false)
-        }}>
-            <div className={styles.itinDuplCont}>
+            }}>
+            <div className={styles.userUIDialogCont}>
                 <h2> Copy {props.aTour?.tripName}? </h2>
+                <h4> <strong>Renamed to:</strong> COPY {props.aTour?.tripName} </h4>
 
-                <h4> <string>Renamed to:</string> COPY {props.aTour?.tripName} </h4>
-
-                <div className={styles.tourCopyBTNS} >
-                    <span onClick={()=>props.setDialogTrig(false)}> 
+                <div className={loadingStateStyle} >
+                    <span onClick={()=>{if(!loadingTrig){props.setDialogTrig(false)}}}> 
                         Cancel</span> 
                     <span onClick={async()=>{
-                    if(!loadingTrig){
-                        let toDate = new Date()
-                        let tripName= `COPY ${props.aTour.tripName}`
-                        let reqData = JSON.stringify({
-                            ...props.aTour,
-                            "dateCreated":toDate,
-                            "tripName": tripName,
-                            "version": 0,
-                            "status": 1,
-                            "user": {
-                                "name": props.userData.name,
-                                "email": props.userData.email
-                                }
-                        })
-                        const res = await fetch("/api/gms/itineraries", {
-                                method: "POST",
-                                body: reqData
-                            })
-                        const itinSubmition = await res.json()
-                        console.log(itinSubmition)
-                        if(res.status===200){
-                            window.alert("Itinerary Copied")
-                            props.setDialogTrig(false)
-                            setLoadingTrig(true)
-                        }}
-                    }} > 
-                        {loadingTrig? <>
-                            <CircularProgress />
-                        </>:<>
-                            Copy!
-                        </>}
+                        setLoadingTrig(true)
+                        setLoadingStyle(styles.tourCopyBTNSOFFLINE)
+                        if(!loadingTrig){
+                            let toDate = new Date()
+                            let tripName= `COPY ${props.aTour.tripName}`
                     
+                            delete props.aTour._id
+                            let reqData = JSON.stringify({
+                                ...props.aTour,
+                                "dateCreated":toDate,
+                                "tripName": tripName,
+                                "version": 0,
+                                "status": 1,
+                                "user": {
+                                    "name": props.userData.name,
+                                    "email": props.userData.email
+                                    }
+                            })
+                            const res = await fetch("/api/gms/itineraries", {
+                                    method: "POST",
+                                    body: reqData
+                                })
+                            const itinSubmition = await res.json()
+                            console.log(itinSubmition)
+                            if(res.status===200){
+                                window.alert("Itinerary Created! Taking you to Tour Explorer")
+                                router.push("/gms/tourExplorer")
+                            }
+                            }
+                        }}>
+                       Copy!
                     </span>
-
-
                 </div>
+
+                {loadingTrig&& <>
+                <div className={styles.loadingSpinner}>
+                    <CircularProgress /></div></>}
+            </div>
+        </Dialog>
+    </>)
+}
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+export function ItinDeletor(props){
+
+    const [loadingTrig, setLoadingTrig]=useState(false)
+    const [loadingStateStyle, setLoadingStyle]=useState(styles.tourCopyBTNS)
+
+    return(<>
+        <Dialog open={props.dialogTrig} onClose={()=>props.setDialogTrig(false)}>
+            <div className={styles.userUIDialogCont}>
+                <h2> Delete {props.aTour?.tripName}? </h2>
+                <div className={loadingStateStyle}>
+                <div className={loadingStateStyle} >
+                    <span onClick={()=>{if(!loadingTrig){props.setDialogTrig(false)}}}> 
+                        Cancel</span> 
+                    <span onClick={async()=>{
+                        setLoadingTrig(true)
+                        setLoadingStyle(styles.tourCopyBTNSOFFLINE)
+                        if(!loadingTrig){                    
+                            let reqData = JSON.stringify( props.aTour._id )
+                            const res = await fetch("/api/gms/itineraries", {
+                                    method: "DELETE",
+                                    body: reqData
+                                })
+                            const itinDeletion = await res.json()
+                            console.log(itinDeletion, "Deletion")
+                            if(res.status===200){
+                                window.alert("Itinerary Deleted! Taking you to Tour Explorer")
+                                location.reload()
+                            }
+                            }
+                        }}>
+                       Delete!
+                    </span>
+                </div>
+                </div>
+                {loadingTrig&& <>
+                <div className={styles.loadingSpinner}>
+                    <CircularProgress /></div></>}
             </div>
         </Dialog>
     </>)

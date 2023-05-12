@@ -25,7 +25,6 @@ import LTCGenDAta from "../../data/dataAndTemplates.json"
 
 // styles
 import styles from "../../styles/pages/tourCreator.module.css"
-import { Dialog } from "@mui/material";
 
 
 ///////////////////////////////////////////////////////////////
@@ -470,48 +469,53 @@ let tourDiff =[1,2,3,4,5]
     </>)
 }
 
+// FFD
+// export function ItinDuplicator(props){
+//     return(<>
+//         <Dialog open={props.dialogTrig} onClose={()=>{
+//             props.setDialogTrig(false)
+//         }}>
+//             <h2> Copy {props.aTour.tourName}? </h2>
 
-export function ItinDuplicator(props){
-    return(<>
-        <Dialog open={props.dialogTrig} onClose={()=>{
-            props.setDialogTrig(false)
-        }}>
-            <h2> Copy {props.aTour.tourName}? </h2>
+//             <h4> <strong>Renamed to:</strong> COPY {props.aTour.tourName} </h4>
 
-            <h4> <string>Renamed to:</string> COPY {props.aTour.tourName} </h4>
+//             <div style={{ width:"100%", display: "flex", justifyContent:"space-around" }}>
+//                 <span onClick={()=>props.setDialogTrig(false)}> 
+//                     Cancel</span> 
+//                 <span onClick={async()=>{
+//                     let toDate = new Date()
+//                     let ancestors=`${props.aTour.tourName}, by ${props.aTour.user.name}`
+//                     
 
-            <div style={{ width:"100%", display: "flex", justifyContent:"space-around" }}>
-                <span onClick={()=>props.setDialogTrig(false)}> 
-                    Cancel</span> 
-                <span onClick={async()=>{
-                    let toDate = new Date()
-                    let ancestors=`${props.aTour.tourName}, by ${props.aTour.user.name}`
-                    let reqData = JSON.stringify({
-                        ...props.theTour,
-                        "dateCreated":toDate,
-                        "version": 0,
-                        "status": 1,
-                        "user": {
-                            "name": props.userData.name,
-                            "email": props.userData.email
-                            },
-                        "ancestors": 
-                        [ ...props.aTour.ancestors, ancestors ]
-                    })
-                    const res = await fetch("/api/gms/itineraries", {
-                            method: "POST",
-                            body: reqData
-                        })
-                    const itinSubmition = await res.json()
-                    console.log(itinSubmition)
-                    if(res.status===200){
-                        console.log(itinSubmition, "Img Submitions") 
-                        window.alert("Itinerary Created! Taking you to Tour Explorer")
-                        router.push("/gms/tourExplorer")
-                    }
-                }} > Copy!</span> 
-            </div>
+//                     let reqData = JSON.stringify({
+//                         ...props.tourWOID,
+//                         "dateCreated":toDate,
+//                         "version": 0,
+//                         "status": 1,
+//                         "user": {
+//                             "name": props.userData.name,
+//                             "email": props.userData.email
+//                             },
+//                         "ancestors": 
+//                         [ ...props.aTour.ancestors, ancestors ]
+//                     })
 
-        </Dialog>
-    </>)
-}
+//             console.log(reqData, "reqData")
+
+//                     const res = await fetch("/api/gms/itineraries", {
+//                             method: "POST",
+//                             body: reqData
+//                         })
+//                     const itinSubmition = await res.json()
+//                     console.log(itinSubmition)
+//                     if(res.status===200){
+//                         console.log(itinSubmition, "Img Submitions") 
+//                         window.alert("Itinerary Created! Taking you to Tour Explorer")
+//                         router.push("/gms/tourExplorer")
+//                     }
+//                 }} > Copy!</span> 
+//             </div>
+
+//         </Dialog>
+//     </>)
+// }

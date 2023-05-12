@@ -1116,15 +1116,32 @@
     margin-left: 12px;
 }
 
-.itinDuplCont{
+.userUIDialogCont{
     padding: 21px 44px;
+    height: 250px;
+    width: 350px;
+    display: flex;    
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all ease-in 0.3s;
 }
 
 .tourCopyBTNS{
     width: 100%;
     display: flex;
     justify-content: space-between;
+    margin-top: 9px;
+    margin-bottom: 21px;
 }
+.tourCopyBTNSOFFLINE{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 9px;
+    margin-bottom: 21px;
+}
+
 
 .tourCopyBTNS span{
     width: 48%;
@@ -1133,8 +1150,20 @@
     padding: 9px 0;
     cursor: pointer;
 }
+.tourCopyBTNSOFFLINE span{
+    opacity: 0.5;
+    width: 48%;
+    text-align: center;
+    border: solid 1px black;
+    padding: 9px 0;
+    cursor: default;
+}
 
 .tourCopyBTNS span:nth-of-type(2){
+    background-color: rgb(65, 65, 79);
+    color: white;
+}
+.tourCopyBTNSOFFLINE span:nth-of-type(2){
     background-color: rgb(65, 65, 79);
     color: white;
 }

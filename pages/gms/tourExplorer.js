@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react"
 
 import { GMSNavii } from "../../components/navis";
 
-import {TextTourCard, SortingItinUI, TourDisplayer, ItinDuplicator} from "../../components/tours"
+import {TextTourCard, SortingItinUI, TourDisplayer, ItinDuplicator, ItinDeletor} from "../../components/tours"
 
 
 import LTCItineraries from "../../data/LTCItinerary.json"
@@ -12,10 +12,11 @@ import LTCGenData from "../../data/dataAndTemplates.json"
 
 import ExploreIcon from '@mui/icons-material/Explore';
 import CircularProgress from '@mui/material/CircularProgress';
-import Dialog from '@mui/material/Dialog';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import PrintIcon from '@mui/icons-material/Print';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+
 
 import styles from "../../styles/pages/tourExplorar.module.css"
 
@@ -76,7 +77,7 @@ const { data: session } = useSession()
 
 
     const [pickedItin, setPickedItin] =useState()
-    const [itinDispTrigger, setDialogTrigger]=useState(false)
+    const [itinDispTrigger, setItinDispTrigger]=useState(false)
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
@@ -84,10 +85,10 @@ const { data: session } = useSession()
         window.scrollTo({top: 0})
     },[itinDispTrigger])
 
-    const LTCTourExplorar=(theItins, filterArr, filterLabel, localOrFetched, priceSortTrigger, cardType, setItin, setDialogTrigger)=>{
+    const LTCTourExplorar=(theItins, filterArr, filterLabel, localOrFetched, priceSortTrigger, cardType, setItin, setItinDispTrigger)=>{
 
         let eachTourCard = theItins.map((elem, i)=><React.Fragment key={i}>
-            <div><TextTourCard aTour={elem} type={cardType} setItin={setItin} setDialogTrigger={setDialogTrigger} /></div>
+            <div><TextTourCard aTour={elem} type={cardType} setItin={setItin} setDialogTrigger={setItinDispTrigger} /></div>
         </React.Fragment> )
 
         let eachSelectOpt=filterArr.map((elem, i)=><React.Fragment key={i}>
@@ -136,12 +137,14 @@ const { data: session } = useSession()
     const [itineraryFetcherTrig2, setFetchTrig2]= useState(false)
     const [fetchedItinArr2, setFetchedItArr2]=useState()
 
+    // itin user UI
     const [copyItinTrig, setCopyTrig]=useState(false)
+    const [deleteItinTrig, setDelItinTrig]=useState(false)
 
     const fetchUserItineraries=()=>{
         return(<>
             {fetchedItinArr?<>
-                {LTCTourExplorar(fetchedItinArr, userUIFilters, theFilterLabel, "your", false, 2, setPickedItin, setDialogTrigger )}
+                {LTCTourExplorar(fetchedItinArr, userUIFilters, theFilterLabel, "your", false, 2, setPickedItin, setItinDispTrigger )}
             </>: <>
                 <div style={{width:"96%", padding:"15px" }}>
                     <div className={styles.aGenBTN} 
@@ -171,27 +174,26 @@ const { data: session } = useSession()
     }
     const selectedItinDips=()=>{
         return(<>
-
-            {/* Have to update this page so that it displays in a page, not on the Dialog, since page breaks do not work. */}
-
             {pickedItin&&<>
-            <div className={styles.iconDialogCont}>
-                <div className={styles.tourDialogBTN} style={{left:"3px"}} onClick={()=>{
-                    setDialogTrigger(false)
-                }}> X </div>
-                
-                <div  className={styles.tourDialogBTN} style={{left:"57px"}} onClick={()=>{
-                    // open all dialog boxes
-                    window.print()
-                }} > <PrintIcon/> </div>
 
-                <div  className={styles.tourDialogBTN} style={{left:"114px"}} onClick={()=>{
-                    setCopyTrig(true)
-                    setDialogTrigger(false)
-                }} > <ContentCopyIcon/> </div>
+            {/* each itin UI BTNS */}
+
+            <div className={styles.iconDialogCont}>
+                <div className={styles.tourDialogBTN} style={{left:"3px"}} onClick={()=>setItinDispTrigger(false)}> 
+                    X </div>
+                
+                <div  className={styles.tourDialogBTN} style={{left:"57px"}} onClick={()=>window.print()} > 
+                    <PrintIcon/> </div>
+
+                <div  className={styles.tourDialogBTN} style={{left:"114px"}} onClick={()=>setCopyTrig(true)} > 
+                    <ContentCopyIcon/> </div>
 
                 {(session?.user.hierarchy===2 || session?.user.name===pickedItin?.user.name) &&<>
-                    <div className={styles.tourEditBTN} style={{left:"171px"}} >  <EditNoteIcon /> </div></>}
+                    <div className={styles.tourEditBTN} style={{left:"171px"}} >  <EditNoteIcon /> </div>
+
+                    <div  className={styles.tourDialogBTN} style={{left:"228px"}} onClick={()=>setDelItinTrig(true)} > 
+                    <DeleteOutlineIcon/> </div>
+                </>}
             </div>
 
                 {session?.user.name===pickedItin.user.name && <></>}
@@ -209,7 +211,7 @@ const { data: session } = useSession()
     const allItinsDisp=()=>{
         return(<>
             {fetchedItinArr2?<>
-                {LTCTourExplorar(fetchedItinArr2, userUIFilters, theFilterLabel, "All LTC", false, 2, setPickedItin, setDialogTrigger )}
+                {LTCTourExplorar(fetchedItinArr2, userUIFilters, theFilterLabel, "All LTC", false, 2, setPickedItin, setItinDispTrigger )}
             </>: <>
                 <div style={{width:"96%", padding:"15px" }}>
                     <div className={styles.aGenBTN} 
@@ -243,6 +245,8 @@ const { data: session } = useSession()
 
             <div className={styles.generalPageCont}>
             {itinDispTrigger? <> 
+
+            {/* Selected Itin */}
                 {selectedItinDips()}
 
                 <ItinDuplicator
@@ -251,9 +255,17 @@ const { data: session } = useSession()
                     aTour={pickedItin}
                     userData={session.user}
                 />
+
+                <ItinDeletor
+                    dialogTrig={deleteItinTrig}
+                    setDialogTrig={setDelItinTrig}
+                    aTour={pickedItin}
+                    userData={session.user}
+                />
             
             </>:<> 
 
+            {/* General Tour Explorer Page */}
                 <GMSNavii  user={session.user} />
                 <br></br>
                 <ExploreIcon fontSize="large" />
