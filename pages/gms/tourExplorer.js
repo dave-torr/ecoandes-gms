@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react"
 
 import { GMSNavii } from "../../components/navis";
 
-import {TextTourCard, SortingItinUI, TourDisplayer, ItinDuplicator, ItinDeletor} from "../../components/tours"
+import {TextTourCard, SortingItinUI, TourDisplayer, ItinDuplicator, ItinDeletor, ItinEditor, ItinDataDisp} from "../../components/tours"
 
 
 import LTCItineraries from "../../data/LTCItinerary.json"
@@ -16,6 +16,7 @@ import EditNoteIcon from '@mui/icons-material/EditNote';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import PrintIcon from '@mui/icons-material/Print';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import InfoIcon from '@mui/icons-material/Info';
 
 
 import styles from "../../styles/pages/tourExplorar.module.css"
@@ -140,6 +141,8 @@ const { data: session } = useSession()
     // itin user UI
     const [copyItinTrig, setCopyTrig]=useState(false)
     const [deleteItinTrig, setDelItinTrig]=useState(false)
+    const [editItinTrig, setEditItinTrig]=useState(false)
+    const [itinDataTrig, setDataTrig]=useState(false)
 
     const fetchUserItineraries=()=>{
         return(<>
@@ -173,6 +176,7 @@ const { data: session } = useSession()
         </>)
     }
     const selectedItinDips=()=>{
+        console.log(pickedItin)
         return(<>
             {pickedItin&&<>
 
@@ -187,12 +191,18 @@ const { data: session } = useSession()
 
                 <div  className={styles.tourDialogBTN} style={{left:"114px"}} onClick={()=>setCopyTrig(true)} > 
                     <ContentCopyIcon/> </div>
+                { ( pickedItin.tripRef || pickedItin.tripLang || pickedItin.compContact || pickedItin.tourCode || pickedItin.company )
+                &&<>  
+                    <div  className={styles.tourDialogBTN} style={{left:"171px"}} onClick={()=>setDataTrig(true)} > 
+                        <InfoIcon/> </div>
+                </>}
 
                 {(session?.user.hierarchy===2 || session?.user.name===pickedItin?.user.name) &&<>
-                    <div className={styles.tourEditBTN} style={{left:"171px"}} >  <EditNoteIcon /> </div>
+                    <div className={styles.tourEditBTN} style={{left:"228px"}} onClick={()=>setEditItinTrig(true)} >  
+                        <EditNoteIcon /> </div>
 
-                    <div  className={styles.tourDialogBTN} style={{left:"228px"}} onClick={()=>setDelItinTrig(true)} > 
-                    <DeleteOutlineIcon/> </div>
+                    <div  className={styles.tourDialogBTN} style={{left:"285px"}} onClick={()=>setDelItinTrig(true)} > 
+                        <DeleteOutlineIcon/> </div>
                 </>}
             </div>
 
@@ -262,7 +272,19 @@ const { data: session } = useSession()
                     aTour={pickedItin}
                     userData={session.user}
                 />
+
+                <ItinEditor
+                    dialogTrig={editItinTrig}
+                    setDialogTrig={setEditItinTrig}
+                    aTour={pickedItin}
+                    userData={session.user}
+                />
             
+                <ItinDataDisp
+                    dialogTrig={itinDataTrig}
+                    setDialogTrig={setDataTrig}
+                    aTour={pickedItin}
+                />
             </>:<> 
 
             {/* General Tour Explorer Page */}
@@ -280,7 +302,26 @@ const { data: session } = useSession()
             </div>
         </>:<> 
 
-            Link home & LTC Tour Explorer
+
+            <div  > {"/"}GMS{"/"}TOUREXPLORER </div>
+
+            <span style={{width: "99vw", minHeight: "100vw", display: "flex", justifyContent: "center", alignItems: "center" }} >
+
+                <div className={styles.GMSGeneralBTN}> 
+                    <Link href="/gms" >
+                        <a > GMS Home Page </a>
+                    </Link>
+                    <Link href="/gms" >
+                        <a > LTC Published Itineraries </a>
+                    </Link>
+                </div>
+
+
+            </span>
+
+
+
+
 
         </>}
     </>)

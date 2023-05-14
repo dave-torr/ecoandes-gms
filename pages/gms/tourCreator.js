@@ -53,41 +53,7 @@ let tourDiff =[1,2,3,4,5]
 
 
     // tasks:
-    // edit day info, prev data
-
-
-
-
-
-// FLIGHT TO MIA MAY
-// 
-
-
-
-
-
-
-
-    // Display created Itinerary
-    //  .findOneAndUpdate:
-        // if(reqData.editController==="additionalDetails"){
-        // updatedReservations = await db
-        // .collection("yachtReservations")
-        // .findOneAndUpdate(
-        //     { "_id": ObjectID(reqData._id) },
-        //     {$set: {
-        //         flightInfo: reqData.flightInfo,
-        //         bookingRequirements: reqData.bookingRequirements,
-        //         clientReference: reqData.clientReference,
-        //     }},
-        //     {
-        //         returnNewDocument: true
-        //     }
-        // );
-
-    // copy itineraries 
-    // 
-
+    // edit day info, prev data as placeholder
 
     //////////////////////////////////////////////
     // sesh
@@ -176,16 +142,17 @@ let tourDiff =[1,2,3,4,5]
 
         // If Agency:
         //  - Tour Code
+        //  - Company
         //  - Company Contact
         
 
         // Optionals:
         //  -- Tour Dates
-        //  -- Tour Ref?
 
         // Hidden Details:
         //  - Submitted by (user)
         //  - Date of Submition
+
         return(<>
             {tourCreatorStep===0&&<>
                 <form className={styles.tourCreatorFormCont} onSubmit={(e)=>{
@@ -214,9 +181,11 @@ let tourDiff =[1,2,3,4,5]
                     {anInputDisplayer("Overview", "tourOverview", "text", false, "Tour Overview", aTourModel, setTourModel)}
                     {aDropdownPicker(tourType, "tour type", "tourType", aTourModel, setTourModel)}
                     {aDropdownPicker(tourDiff, "Difficulty", "difficulty", aTourModel, setTourModel)}
-                    {anInputDisplayer("Reference ^", "tripRef", "text", false, "Tour Reference", aTourModel, setTourModel )}
+
+                    {anInputDisplayer("Reference ^", "tripRef", "text", false, "Trir Reference", aTourModel, setTourModel )}
                     {anInputDisplayer("Language ^", "tripLang", "text", false, "Tour Language", aTourModel, setTourModel )}
-                    {anInputDisplayer("Tour Code ^", "tourCode", "text", false, "Tour Code", aTourModel, setTourModel )}
+                    {anInputDisplayer("Tour Code ^", "tourCode", "text", false, "Trip Code", aTourModel, setTourModel )}
+                    {anInputDisplayer("Company ^", "aComp", "text", false, "Company", aTourModel, setTourModel )}
                     {anInputDisplayer("Contact ^", "compContact", "text", false, "Company Contact", aTourModel, setTourModel )}
                     <input type="submit" value="Next" className={styles.nextStepBTN}/>
                 </form>

@@ -90,6 +90,21 @@
     background-color: white;
 }
 
+.GMSGeneralBTN a:hover{
+
+}
+
+.GMSGeneralBTN a{
+    width: 240px;
+    height: 66px;
+    box-shadow: var(--frst-box-shadow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    margin-top: 33px;
+}
+
 @media print {
     .iconDialogCont{
         display: none;

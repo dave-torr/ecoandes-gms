@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { useRouter } from 'next/router'
 
 
 import styles from "./../styles/components/tourCmpnts.module.css"
@@ -828,14 +827,11 @@ export function SortingItinUI(props){
 ////////////////////////////////////////////////
 export function ItinDuplicator(props){
 
-    const router = useRouter()
     const [loadingTrig, setLoadingTrig]=useState(false)
     const [loadingStateStyle, setLoadingStyle]=useState(styles.tourCopyBTNS)
 
     return(<>
-        <Dialog open={props.dialogTrig} onClose={()=>{
-            props.setDialogTrig(false)
-            }}>
+        <Dialog open={props.dialogTrig}>
             <div className={styles.userUIDialogCont}>
                 <h2> Copy {props.aTour?.tripName}? </h2>
                 <h4> <strong>Renamed to:</strong> COPY {props.aTour?.tripName} </h4>
@@ -870,7 +866,7 @@ export function ItinDuplicator(props){
                             console.log(itinSubmition)
                             if(res.status===200){
                                 window.alert("Itinerary Created! Taking you to Tour Explorer")
-                                router.push("/gms/tourExplorer")
+                                location.reload()
                             }
                             }
                         }}>
@@ -893,18 +889,21 @@ export function ItinDeletor(props){
     const [loadingStateStyle, setLoadingStyle]=useState(styles.tourCopyBTNS)
 
     return(<>
-        <Dialog open={props.dialogTrig} onClose={()=>props.setDialogTrig(false)}>
+        <Dialog open={props.dialogTrig}>
             <div className={styles.userUIDialogCont}>
-                <h2> Delete {props.aTour?.tripName}? </h2>
+                <h2> Delete '{props.aTour?.tripName}'? </h2> <br/>
                 <div className={loadingStateStyle}>
-                <div className={loadingStateStyle} >
                     <span onClick={()=>{if(!loadingTrig){props.setDialogTrig(false)}}}> 
                         Cancel</span> 
                     <span onClick={async()=>{
                         setLoadingTrig(true)
                         setLoadingStyle(styles.tourCopyBTNSOFFLINE)
                         if(!loadingTrig){                    
-                            let reqData = JSON.stringify( props.aTour._id )
+                            let backendPackage= { 
+                                "aTour": props.aTour,  
+                                "dbCommand": "DELETE"
+                                }
+                            let reqData = JSON.stringify( backendPackage )
                             const res = await fetch("/api/gms/itineraries", {
                                     method: "DELETE",
                                     body: reqData
@@ -920,8 +919,103 @@ export function ItinDeletor(props){
                        Delete!
                     </span>
                 </div>
-                </div>
                 {loadingTrig&& <>
+                <div className={styles.loadingSpinner}>
+                    <CircularProgress /></div></>}
+            </div>
+        </Dialog>
+    </>)
+}
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+
+export function ItinDataDisp(props){
+    return(<>
+        <Dialog open={props.dialogTrig} onClose={()=>props.setDialogTrig(false) }>
+            <div className={styles.userUIDialogCont}>
+                <h2> <strong>Supplemental Data for:</strong>  <br/> '{props.aTour?.tripName}': </h2> <br/>
+            
+                {props.aTour?.tripRef&& <> 
+                    <div className={styles.suppDataCont} > 
+                        <h5> Trip Reference: </h5> {props.aTour?.tripRef}
+                    </div>
+                </>}
+                {props.aTour?.tripLang&& <> 
+                    <div className={styles.suppDataCont} > 
+                        <h5> Trip Language: </h5> {props.aTour?.tripLang}
+                    </div>
+                </>}
+                {props.aTour?.tourCode&& <> 
+                    <div className={styles.suppDataCont} > 
+                        <h5> Trip Code: </h5> {props.aTour?.tourCode}
+                    </div>
+                </>}
+                {props.aTour?.compContact&& <> 
+                    <div className={styles.suppDataCont} > 
+                        <h5> Company Contact: </h5> {props.aTour?.compContact}
+                    </div>
+                </>}
+
+            </div>
+        </Dialog>
+    </>)
+}
+
+export function ItinEditor(props){
+
+    const [loadingTrig, setLoadingTrig]=useState(false)
+    const [loadingStateStyle, setLoadingStyle]=useState(styles.tourCopyBTNS)
+
+    const [editItinStep, setEditStep]= useState(0)
+    const [editObjTemplate, setEditTemplate]=useState({})
+
+    const editItinUserBtns=( editObj )=>{
+        if(editItinStep>0){
+        return(<>
+            <div className={loadingStateStyle}>
+                <span onClick={()=>{if(!loadingTrig){props.setDialogTrig(false)}}}> 
+                    Cancel</span> 
+                <span onClick={async()=>{
+                    setLoadingTrig(true)
+                    setLoadingStyle(styles.tourCopyBTNSOFFLINE)
+                    if(!loadingTrig){                    
+                        let backendPackage= { 
+                            "aTour": props.aTour,  
+                            "dbCommand": "edit"
+                            // add edit object
+                            }
+                        let reqData = JSON.stringify( backendPackage )
+                        const res = await fetch("/api/gms/itineraries", {
+                                method: "DELETE",
+                                body: reqData
+                            })
+                        const itinDeletion = await res.json()
+                        console.log(itinDeletion, "Deletion")
+                        if(res.status===200){
+                            window.alert("Itinerary Deleted! Taking you to Tour Explorer")
+                            location.reload()
+                        }
+                        }
+                    }}>
+                    Delete!
+                </span>
+            </div>
+        </>)
+        } 
+    }
+
+    const editTourSelect=(theStep)=>{
+
+    }
+
+    return(<>
+        <Dialog open={props.dialogTrig} onClose={()=>props.setDialogTrig(false) }>
+            <div className={styles.userUIDialogCont}>
+                <h2> Edit '{props.aTour?.tripName}': </h2> <br/>
+                {loadingTrig&& <>
+
+                {editItinUserBtns()}
+
                 <div className={styles.loadingSpinner}>
                     <CircularProgress /></div></>}
             </div>

@@ -3,8 +3,8 @@ import {connectToDatabase} from "./../../../middleware/dbMiddleware"
 import { ObjectId } from 'mongodb';
 
 async function handler(req, res){
+    // create Itinerary
     if(req.method==="POST"){
-        console.log("here at POST")
         const client = await connectToDatabase();
         const reqData= JSON.parse(req.body)
 
@@ -22,6 +22,7 @@ async function handler(req, res){
         
         // error handling
     }
+    // fetch user Itins
     else if (req.method==="PUT"){ 
 
         const client = await connectToDatabase();
@@ -47,6 +48,7 @@ async function handler(req, res){
         }
 
     }
+    // fetch all itins (then filter per user)
     else if (req.method==="GET"){ 
         const client = await connectToDatabase();
         
@@ -62,33 +64,34 @@ async function handler(req, res){
             client.close();
         }
     }
+
+    // edit itins
     else if (req.method==="DELETE"){ 
         const client = await connectToDatabase();
-        const reqData= JSON.parse(req.body)
-        
+        const reqBody= JSON.parse(req.body)
+        // Delete itinerary
+        if(reqBody.dbCommand==="DELETE"){
+            const DeleteItinerary = client
+                .db('EcoAndesGMS')
+                .collection("LTCItineraries")
+                .findOneAndUpdate(
+                    {"_id": ObjectId(reqBody.aTour._id)},
+                    {
+                        $set: { "status": 0 }
+                    },
+                    {
+                        returnNewDocument: true,
+                    }
+                )
 
-        const DeleteItinerary = client
-            .db('EcoAndesGMS')
-            .collection("LTCItineraries")
-            .findOneAndUpdate(
-                {"_id": ObjectId(reqData)},
-                {
-                    $set: { "status": 0 }
-                },
-                {
-                    returnNewDocument: true,
-                }
-            )
+            const updatedItin = await DeleteItinerary
+            if(updatedItin?.lastErrorObject.updatedExisting){
+                res.status(200).json(updatedItin)
+                client.close();
+            } else res.status(501)
+        } else if(reqBody.dbCommand==="EDIT"){
 
-        const updatedItin = await DeleteItinerary
-
-    console.log(DeleteItinerary,"DeleteItinerary")
-
-        if(updatedItin?.lastErrorObject.updatedExisting){
-            res.status(200).json(updatedItin)
-            client.close();
-        } else res.status(400)
-
+        }
     }
 }
 
