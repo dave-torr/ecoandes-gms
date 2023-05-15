@@ -228,8 +228,7 @@ export function inputToList( inputLabel, inputId, anObject, setAnObject, theList
             [inputId]: tempList
         })
     }
-
-    let theDisplayedList= theListe.map((elem, i)=> <React.Fragment key={i}>
+    let theDisplayedList= theListe?.map((elem, i)=> <React.Fragment key={i}>
         <div className={styles.inputToListRow}>
             <span>{elem}</span>
             <CancelIcon onClick={()=>rmvFromListFunct(theListe, i)} />
@@ -454,7 +453,7 @@ const flightsAdder=(setDay, theTravelDay, flightInfo, setFlights, formTrigger)=>
 
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
-
+// used in Tour Creator
 export function DayByDayAdder(props){
 
     // ver. 1 
@@ -529,17 +528,13 @@ export function DayByDayAdder(props){
     // }
 
     return(<>
-        <form style={{width:"100%"}} id="theDayFormID" 
-        
-        >
+        <form style={{width:"100%"}} id="theDayFormID">
 
         {props.editDayTrigger? <>
             <h3>Edit day {props.editDayTrigger}:</h3> 
-        </> :<>
+        </> : <>
             <h3>Day {props.aTour.dayByDay.length + 1}:</h3> 
         </>}
-
-            {/* dayCount */}
             
             {/* Day Description */}
             {anInputDisplayer("Day Title", "dayTitle", "text", true, "Main daily activity", aTravelDay, setTravelDay )}
@@ -577,6 +572,69 @@ export function DayByDayAdder(props){
             
             </div>
         </form>
+    </>)
+}
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+// used in Tour Editor
+export function EditDayByDay(props){
+    let editingTour = {...props.aTour}
+    const [aTravelDay, setTravelDay] = useState({
+        "dayInclusions":[]
+    })
+    const [incluPlaceholder, setPlaceholder]=useState("")
+    const [dayIndex, setDayIndex]=useState(false)
+    useEffect(()=>{
+        setTravelDay({
+            ...editingTour.dayByDay[dayIndex]
+        })
+    },[dayIndex])
+    
+    let selectDayBTNS = editingTour.dayByDay.map((elem, i)=>
+        <React.Fragment key={i}>
+            <span onClick={()=>setDayIndex(i)}> D{i+1} </span>
+        </React.Fragment>)
+
+    return(<>
+        {dayIndex===false&& <>
+            <div className={styles.editDayCont}> 
+                <strong>Edit Day(s):</strong> {selectDayBTNS}
+            </div></>}
+
+        {(dayIndex || dayIndex===0)&&<>
+            <div style={{display:"flex", justifyContent:"space-between", width:"100%" }}> 
+                <strong>Edit Day {dayIndex+1}:</strong>
+                <div style={{border: "solid 2px black", borderRadius: "50%", padding:"1px 6px" }} onClick={()=>setDayIndex(false)}> X </div>
+            </div> 
+        
+        {/* content inputs with placeholders */}
+
+            {anInputDisplayer("Day Title", "dayTitle", "text", true, editingTour.dayByDay[dayIndex].dayTitle, aTravelDay, setTravelDay )}
+
+            {aTextArea("Day detail", "dayDescription", true, editingTour.dayByDay[dayIndex].dayDescription, aTravelDay, setTravelDay)}
+
+            {inputToList("add to day", "dayInclusions", aTravelDay, setTravelDay, aTravelDay.dayInclusions, incluPlaceholder, setPlaceholder)}
+
+            {anInputDisplayer("Overnight Property", "overnightProperty", "text", true, editingTour.dayByDay[dayIndex].overnightProperty, aTravelDay, setTravelDay )}
+
+            {/* submit btns, adding updated Bay by day, triggering DB update */}
+
+            <div style={{fontWeight:"700", padding:"9px 15px"   }} 
+            
+            onClick={()=>{
+                let tempDayArr =[...editingTour.dayByDay]
+                tempDayArr.splice(dayIndex, 1, aTravelDay)
+                console.log(tempDayArr)
+                props.setEditTemplate({
+                    ...props.editTemplate,
+                    "editKey": "dayByDay",
+                    "editValue": tempDayArr
+                })
+                setDayIndex(false)
+                setTravelDay({})
+                
+            }} > Day Ok?</div>
+        </>}
     </>)
 }
 

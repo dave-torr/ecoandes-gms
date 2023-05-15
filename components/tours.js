@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 
-import {aSwitcher, radioSelectors, anInputDisplayer, multiOptPicker, aDropdownPicker } from "./../components/forms"
+import {aSwitcher, radioSelectors, anInputDisplayer, multiOptPicker, aDropdownPicker, EditDayByDay } from "./../components/forms"
 
 import styles from "./../styles/components/tourCmpnts.module.css"
 
@@ -48,8 +48,8 @@ import YacumaLogo from "./../public/assets/logos/yacuma.png"
 import UnigpsLogo from "./../public/assets/logos/unigalapagos.png"
 
 import Dialog from '@mui/material/Dialog';
-import { width } from "@mui/system"
 
+import LTCGenData from "./../data/dataAndTemplates.json"
 // ///////////////////
     // v. ++: 
     // Save Local Likes!!!
@@ -63,6 +63,8 @@ import { width } from "@mui/system"
         // localStorage.setItem("theTrips", strngifiedObj)
     // },[])
 // ///////////////////
+
+let ecoAndesDestinations= LTCGenData.countryList
 
 
 export function ATourCard(props){
@@ -151,7 +153,6 @@ export function TextTourCard(props){
     </>)
     }
 }
-
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 export function TourDifficultyCard(props){
@@ -973,15 +974,14 @@ export function ItinEditor(props){
 
     const [loadingTrig, setLoadingTrig]=useState(false)
     const [loadingStateStyle, setLoadingStyle]=useState(styles.tourCopyBTNS)
-
+    const [destinationList, setDestList] = useState([...ecoAndesDestinations])
     const [editItinStep, setEditStep]= useState(0)
-
     const [editObjTemplate, setEditTemplate]=useState({
         "editKey": 0,
         "editValue": undefined
     })
 
-    const editItinUserBtns=( editObj )=>{
+    const editItinUserBtns=()=>{
         if(editObjTemplate.editKey){
         return(<>
             <div className={loadingStateStyle}>
@@ -1024,7 +1024,6 @@ export function ItinEditor(props){
         "genAndSuppStruct": 
             ["LTCLogo", "tripName", "duration", "countryList", "startingPlace", "tourOverview", "tourType", "difficulty", "tripRef", "tripLang", "tourCode", "aComp", "compContact" ]
     }
-
     const editElemInputSwitcher=(editCodeName)=>{
         switch (editCodeName){
             case "genAndSuppTourData":
@@ -1062,7 +1061,6 @@ export function ItinEditor(props){
         }
     }
     const editTourInputCont=()=>{
-
         const editTourBTN=( theController, controllerIndex)=>{
             return(<>
                 <div className={styles.selectOptBTN } onClick={()=>{
@@ -1080,20 +1078,7 @@ export function ItinEditor(props){
                 </div>
             </>)
         }
-
         let theOpsDisplayed
-
-        if(editItinStep===0){
-            theOpsDisplayed= editInputMatrix.firstCatObj.map((elem, i)=><React.Fragment key={i}>
-                {editTourBTN(elem, i)}
-            </React.Fragment> )
-        } else if(editItinStep===1){
-            theOpsDisplayed= editInputMatrix.genAndSuppStruct.map((elem, i)=><React.Fragment key={i}>
-                {editTourBTN(elem, i)}
-            </React.Fragment> )
-        }
-
-
         const logoSwitcherArr=[
             {
                 "radioKey": "EcoAndes Travel",
@@ -1112,12 +1097,10 @@ export function ItinEditor(props){
                 "radioVal": "unigalapagos"
             },
         ]
-
         const inputDisplaySwitcher=(inputKey)=>{
             switch (inputKey){
             case "LTCLogo":
                 return(<> 
-
                 {/* OP */}
                 {aSwitcher(editObjTemplate.editValue, editObjTemplate, setEditTemplate, "editValue", "ecoAndes" )}
                 {editObjTemplate.editValue&& <> 
@@ -1139,6 +1122,7 @@ export function ItinEditor(props){
             case "countryList":
                 return(<> 
                 {/* Destinations  */}
+                {multiOptPicker(destinationList, "Destinations", "editValue", editObjTemplate.editValue, editObjTemplate, setEditTemplate, setDestList )}
                 </>)
             case "startingPlace":
                 return(<> 
@@ -1148,11 +1132,13 @@ export function ItinEditor(props){
             case "tourOverview":
                 return(<> 
                 {/* Overview  */}
+                {anInputDisplayer("Overview", "editValue", "text", false, "Trip Overview", editObjTemplate, setEditTemplate, 0)}
                 </>)
             case "tourType":
                 return(<> 
                 {/* Tour Type */}
-
+                <div style={{textTransform: "capitalize"}} ><strong>Current Type:</strong> {props.aTour.tourType} </div>
+                {aDropdownPicker(["historic", "nature", "360° itineraries", "climbing", "trekking"], "Tour Type", "editValue", editObjTemplate, setEditTemplate)}
                 </>)
             case "difficulty":
                 return(<> 
@@ -1187,8 +1173,29 @@ export function ItinEditor(props){
                 {anInputDisplayer("Company Contact", "editValue", "text", false, "Company Contact", editObjTemplate, setEditTemplate, 0)}
                 </>)  
             }
-
         }
+
+
+
+        // switcher for GenAndSupp Data, Day by day or Images
+        if(editItinStep===0){
+            theOpsDisplayed= editInputMatrix.firstCatObj.map((elem, i)=><React.Fragment key={i}>
+                {editTourBTN(elem, i)}
+            </React.Fragment> )
+        } else if(editItinStep===1){
+            theOpsDisplayed= editInputMatrix.genAndSuppStruct.map((elem, i)=><React.Fragment key={i}>
+                {editTourBTN(elem, i)}
+            </React.Fragment> )
+        } else if(editItinStep===2){
+            theOpsDisplayed=<> 
+                <EditDayByDay 
+                    aTour={props.aTour}
+                    editTemplate={editObjTemplate}
+                    setEditTemplate={setEditTemplate}
+                />
+            </>
+        }
+
 
         return(<>
             <div className={styles.editItinOptDisp }>
@@ -1201,24 +1208,24 @@ export function ItinEditor(props){
         </>)
     }
 
-
-console.log(editObjTemplate)
-
-
     return(<>
         <Dialog open={props.dialogTrig} onClose={()=>{
             setEditStep(0)
             props.setDialogTrig(false) 
-            
             }}>
             <div className={styles.userUIDialogCont}>
                 <h2> Edit: <br/> {props.aTour?.tripName} </h2>
 
                 {editTourInputCont()}
 
-                {editItinUserBtns()}
-
                 {loadingTrig&& <> Loading ...</>}
+
+                {editObjTemplate.editKey==="dayByDay"&&<>
+                    Submit edits to Day By Day
+                </>}
+                {editItinUserBtns()}
+                <br/>
+                <br/>
             </div>
         </Dialog>
     </>)

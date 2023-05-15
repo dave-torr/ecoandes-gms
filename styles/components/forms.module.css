@@ -235,6 +235,19 @@
 }
 
 
+/* Edit Day By Day */
+.editDayCont span{
+    padding: 6px 9px;
+    border: solid 2px black;
+    border-radius: 6px;
+    margin: 0 6px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+
+
+
 
 
 
