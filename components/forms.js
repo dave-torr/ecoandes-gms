@@ -178,7 +178,7 @@ export function aSwitcher(switcherController, anObject, setAnObject, objectElemK
             <FormControlLabel 
                 control={
                     <Switch checked={switcherController}
-                    onChange={handleChange} />} label="Visible Logo?" 
+                    onChange={handleChange} />} label="Logo?" 
                 />            
         </div>
     </>)
@@ -271,7 +271,7 @@ export function inputToList( inputLabel, inputId, anObject, setAnObject, theList
 
 export function radioSelectors(radioKeyValueArr, radioNames, anObject, setAnObject, radioTrigger){
     let theRadios = radioKeyValueArr.map((elem, i)=><>
-        <div style={{display:"flex", width:"100px"}} key={i}> 
+        <div style={{display:"flex", width:"300px"}} key={i}> 
             <input type="radio" id={elem.radioKey} name={radioNames} onClick={()=>setAnObject({
                 ...anObject,
                 [radioTrigger]: elem.radioVal
@@ -280,7 +280,8 @@ export function radioSelectors(radioKeyValueArr, radioNames, anObject, setAnObje
         </div>
     </>)
     return(<>
-        <div className={styles.radioselectors} className={styles.aRow} > 
+        <div className={styles.radioselectors}> 
+        {/* className={styles.aRow} */}
             {theRadios}
         </div>
     </>)

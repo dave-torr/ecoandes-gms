@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 
+import {aSwitcher, radioSelectors } from "../../ecoandes-gms/components/forms"
 
 import styles from "./../styles/components/tourCmpnts.module.css"
 
@@ -47,6 +48,7 @@ import YacumaLogo from "./../public/assets/logos/yacuma.png"
 import UnigpsLogo from "./../public/assets/logos/unigalapagos.png"
 
 import Dialog from '@mui/material/Dialog';
+import { width } from "@mui/system"
 
 // ///////////////////
     // v. ++: 
@@ -961,16 +963,30 @@ export function ItinDataDisp(props){
     </>)
 }
 
+
+
+
+
+
+
+
+
 export function ItinEditor(props){
+
+    let theTour=props.aTour
 
     const [loadingTrig, setLoadingTrig]=useState(false)
     const [loadingStateStyle, setLoadingStyle]=useState(styles.tourCopyBTNS)
 
     const [editItinStep, setEditStep]= useState(0)
-    const [editObjTemplate, setEditTemplate]=useState({})
+
+    const [editObjTemplate, setEditTemplate]=useState({
+        "editKey": 0,
+        "editValue": undefined
+    })
 
     const editItinUserBtns=( editObj )=>{
-        if(editItinStep>0){
+        if(editObjTemplate.editKey){
         return(<>
             <div className={loadingStateStyle}>
                 <span onClick={()=>{if(!loadingTrig){props.setDialogTrig(false)}}}> 
@@ -979,45 +995,250 @@ export function ItinEditor(props){
                     setLoadingTrig(true)
                     setLoadingStyle(styles.tourCopyBTNSOFFLINE)
                     if(!loadingTrig){                    
+
                         let backendPackage= { 
                             "aTour": props.aTour,  
-                            "dbCommand": "edit"
-                            // add edit object
+                            "dbCommand": "EDIT",
+                            "editKey": editObjTemplate.editKey,
+                            "editValue": editObjTemplate.editValue
                             }
                         let reqData = JSON.stringify( backendPackage )
                         const res = await fetch("/api/gms/itineraries", {
                                 method: "DELETE",
                                 body: reqData
                             })
-                        const itinDeletion = await res.json()
-                        console.log(itinDeletion, "Deletion")
+                        const itinUpdate = await res.json()
+                        console.log(itinUpdate, "Edit")
                         if(res.status===200){
-                            window.alert("Itinerary Deleted! Taking you to Tour Explorer")
+                            window.alert("Itinerary Edited! Taking you to Tour Explorer")
                             location.reload()
                         }
                         }
                     }}>
-                    Delete!
+                    Edit
                 </span>
             </div>
         </>)
         } 
     }
 
-    const editTourSelect=(theStep)=>{
-
+    const editInputMatrix = {
+        // translates to editItinStep index base 1 ++
+        "firstCatObj": 
+            [ "genAndSuppTourData", "dayByDay", "images" ],
+        "genAndSuppStruct": 
+            ["LTCLogo", "tripName", "duration", "countryList", "startingPlace", "tourOverview", "tourType", "difficulty", "tripRef", "tripLang", "tourCode", "aComp", "compContact" ]
     }
 
+    const editElemInputSwitcher=(editCodeName)=>{
+        switch (editCodeName){
+            case "genAndSuppTourData":
+                return(<> General / Supporting Data</>)
+            case "dayByDay":
+                return(<> Day by Day </>)
+            case "images":
+                return(<> Images </>)
+            case "LTCLogo":
+                return(<> Logo </>)
+            case "tripName":
+                return(<> Tour Name </>)
+            case "duration":
+                return(<> Duration </>)     
+            case "countryList":
+                return(<> Destinations </>)
+            case "startingPlace":
+                return(<> Starting Place</>)
+            case "tourOverview":
+                return(<> Overview </>)
+            case "tourType":
+                return(<> Tour Type</>)
+            case "difficulty":
+                return(<> Tour Difficulty</>)
+            case "tripRef":
+                return(<> Trip Reference</>)
+            case "tripLang":
+                return(<> Trip Language</>)
+            case "tourCode":
+                return(<> Tour Code</>)
+            case "aComp":
+                return(<> Company </>)
+            case "compContact":
+                return(<> Company Contact</>)  
+        }
+    }
+    const editTourInputCont=()=>{
+
+        const editTourBTN=( theController, controllerIndex)=>{
+            return(<>
+                <div className={styles.selectOptBTN } onClick={()=>{
+                    if(editItinStep===0){
+                        setEditStep(controllerIndex+1)
+                    } else {
+                        setEditTemplate({
+                            ...editObjTemplate,
+                            "editKey": theController,
+                            "editValue": theTour[theController]
+                        })
+                    }
+                    }}> 
+                    Edit {editElemInputSwitcher(theController)}
+                </div>
+            </>)
+        }
+
+        let theOpsDisplayed
+
+        if(editItinStep===0){
+            theOpsDisplayed= editInputMatrix.firstCatObj.map((elem, i)=><React.Fragment key={i}>
+                {editTourBTN(elem, i)}
+            </React.Fragment> )
+        } else if(editItinStep===1){
+            theOpsDisplayed= editInputMatrix.genAndSuppStruct.map((elem, i)=><React.Fragment key={i}>
+                {editTourBTN(elem, i)}
+            </React.Fragment> )
+        }
+
+
+        const logoSwitcherArr=[
+            {
+                "radioKey": "EcoAndes Travel",
+                "radioVal": "ecoAndes"
+            },
+            {
+                "radioKey": "Galapagos Elements",
+                "radioVal": "galapagosElements"
+            },
+            {
+                "radioKey": "Yacuma EcoLodge",
+                "radioVal": "yacuma"
+            },
+            {
+                "radioKey": "Unigalapagos",
+                "radioVal": "unigalapagos"
+            },
+        ]
+
+        const inputDisplaySwitcher=(inputKey)=>{
+            switch (inputKey){
+            case "LTCLogo":
+                return(<> 
+
+
+
+                {/* logoSwitcher  */}
+
+
+
+
+
+
+                {aSwitcher(editObjTemplate.editValue, editObjTemplate, setEditTemplate, "editValue", "ecoAndes" )}
+
+
+                {editObjTemplate.editValue&& <> 
+                    <div style={{display:"flex", width: "100%",flexDirection:"row"  }}> 
+                        {radioSelectors(logoSwitcherArr, "logoSelect", editObjTemplate, setEditTemplate, "editValue")}
+                    </div>
+                    </>}
+
+
+
+                {/* logo dropdown select */}
+
+                </>)
+            case "tripName":
+                return(<>
+
+                {/* Tour Name  */}
+
+                </>)
+            case "duration":
+                return(<> 
+                
+                {/* Duration  */}
+
+                </>) 
+
+            case "countryList":
+                return(<> 
+                {/* Destinations  */}
+                </>)
+            case "startingPlace":
+                return(<> 
+                {/* Starting Place */}
+                </>)
+            case "tourOverview":
+                return(<> 
+                {/* Overview  */}
+                </>)
+            case "tourType":
+                return(<> 
+                {/* Tour Type */}
+                </>)
+            case "difficulty":
+                return(<> 
+
+                {/* Tour Difficulty */}
+
+                </>)
+            case "tripRef":
+                return(<> 
+
+                {/* Trip Reference */}
+                </>)
+            case "tripLang":
+                return(<> 
+
+                {/* Trip Language */}
+                </>)
+            case "tourCode":
+                return(<> 
+
+                {/* Tour Code */}
+                </>)
+            case "aComp":
+                return(<> 
+
+                {/* Company  */}
+                </>)
+            case "compContact":
+                return(<> 
+
+                {/* Company Contact */}
+                </>)  
+            }
+
+        }
+
+        return(<>
+            <div className={styles.editItinOptDisp }>
+                {editObjTemplate?.editKey? <>
+                    {inputDisplaySwitcher(editObjTemplate.editKey)}
+                </> : <>
+                    {theOpsDisplayed}
+                </> }
+            </div>
+        </>)
+    }
+
+
     return(<>
-        <Dialog open={props.dialogTrig} onClose={()=>props.setDialogTrig(false) }>
+        <Dialog open={props.dialogTrig} onClose={()=>{
+            setEditStep(0)
+            props.setDialogTrig(false) 
+            
+            }}>
             <div className={styles.userUIDialogCont}>
-                <h2> Edit '{props.aTour?.tripName}': </h2> <br/>
-                {loadingTrig&& <>
+                <h2> Edit: <br/> {props.aTour?.tripName} </h2>
+
+                {editTourInputCont()}
 
                 {editItinUserBtns()}
 
+                {loadingTrig&& <>
                 <div className={styles.loadingSpinner}>
-                    <CircularProgress /></div></>}
+                    <CircularProgress /></div>
+                </>}
             </div>
         </Dialog>
     </>)

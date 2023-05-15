@@ -69,6 +69,7 @@ async function handler(req, res){
     else if (req.method==="DELETE"){ 
         const client = await connectToDatabase();
         const reqBody= JSON.parse(req.body)
+
         // Delete itinerary
         if(reqBody.dbCommand==="DELETE"){
             const DeleteItinerary = client
@@ -89,8 +90,36 @@ async function handler(req, res){
                 res.status(200).json(updatedItin)
                 client.close();
             } else res.status(501)
-        } else if(reqBody.dbCommand==="EDIT"){
+        }
+        
+        // EDIT ITINERARY
+        else if(reqBody.dbCommand==="EDIT"){
 
+            console.log("HERE @ EDIT")
+            console.log( reqBody )
+
+            let editKey = reqBody.editKey
+            let editValue = reqBody.editValue
+            let tempObj = {}
+            tempObj[editKey] = editValue
+            const DeleteItinerary = client
+                .db('EcoAndesGMS')
+                .collection("LTCItineraries")
+                .findOneAndUpdate(
+                    {"_id": ObjectId(reqBody.aTour._id)},
+                    {
+                        $set: { tempObj }
+                    },
+                    {
+                        returnNewDocument: true,
+                    }
+                )
+
+            const updatedItin = await DeleteItinerary
+            if(updatedItin?.lastErrorObject.updatedExisting){
+                res.status(200).json(updatedItin)
+                client.close();
+            } else res.status(501)
         }
     }
 }
