@@ -618,6 +618,3 @@ export function IncExclAdder(props){
         {dailyInclusionsAddr()}
     </>)
 }
-
-
-

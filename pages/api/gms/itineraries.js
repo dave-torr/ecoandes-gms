@@ -108,7 +108,7 @@ async function handler(req, res){
                 .findOneAndUpdate(
                     {"_id": ObjectId(reqBody.aTour._id)},
                     {
-                        $set: { tempObj }
+                        $set: tempObj 
                     },
                     {
                         returnNewDocument: true,

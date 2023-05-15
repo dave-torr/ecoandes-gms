@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 
-import {aSwitcher, radioSelectors } from "../../ecoandes-gms/components/forms"
+import {aSwitcher, radioSelectors, anInputDisplayer, multiOptPicker, aDropdownPicker } from "./../components/forms"
 
 import styles from "./../styles/components/tourCmpnts.module.css"
 
@@ -967,10 +967,6 @@ export function ItinDataDisp(props){
 
 
 
-
-
-
-
 export function ItinEditor(props){
 
     let theTour=props.aTour
@@ -995,7 +991,6 @@ export function ItinEditor(props){
                     setLoadingTrig(true)
                     setLoadingStyle(styles.tourCopyBTNSOFFLINE)
                     if(!loadingTrig){                    
-
                         let backendPackage= { 
                             "aTour": props.aTour,  
                             "dbCommand": "EDIT",
@@ -1123,42 +1118,24 @@ export function ItinEditor(props){
             case "LTCLogo":
                 return(<> 
 
-
-
-                {/* logoSwitcher  */}
-
-
-
-
-
-
+                {/* OP */}
                 {aSwitcher(editObjTemplate.editValue, editObjTemplate, setEditTemplate, "editValue", "ecoAndes" )}
-
-
                 {editObjTemplate.editValue&& <> 
                     <div style={{display:"flex", width: "100%",flexDirection:"row"  }}> 
                         {radioSelectors(logoSwitcherArr, "logoSelect", editObjTemplate, setEditTemplate, "editValue")}
                     </div>
                     </>}
-
-
-
-                {/* logo dropdown select */}
-
                 </>)
             case "tripName":
                 return(<>
-
-                {/* Tour Name  */}
-
+                {/* Tour Name OP */}
+                {anInputDisplayer("Tour Name", "editValue", "text", false, props.aTour.tripName, editObjTemplate, setEditTemplate, 0)}
                 </>)
             case "duration":
                 return(<> 
-                
                 {/* Duration  */}
-
+                {anInputDisplayer("Duration", "editValue", "number", false, "Trip duration", editObjTemplate, setEditTemplate, 0)}
                 </>) 
-
             case "countryList":
                 return(<> 
                 {/* Destinations  */}
@@ -1166,6 +1143,7 @@ export function ItinEditor(props){
             case "startingPlace":
                 return(<> 
                 {/* Starting Place */}
+                {anInputDisplayer("Starting Place", "editValue", "text", false, "Starting Place", editObjTemplate, setEditTemplate, 0)}
                 </>)
             case "tourOverview":
                 return(<> 
@@ -1174,37 +1152,39 @@ export function ItinEditor(props){
             case "tourType":
                 return(<> 
                 {/* Tour Type */}
+
                 </>)
             case "difficulty":
                 return(<> 
 
                 {/* Tour Difficulty */}
+                {aDropdownPicker( [1,2,3,4,5], "Tour Difficulty", "editValue", editObjTemplate, setEditTemplate )}
 
                 </>)
             case "tripRef":
                 return(<> 
-
                 {/* Trip Reference */}
+                {anInputDisplayer("Trip Reference", "editValue", "text", false, "Trip Reference", editObjTemplate, setEditTemplate, 0)}
                 </>)
             case "tripLang":
                 return(<> 
-
                 {/* Trip Language */}
+                {anInputDisplayer("Trip Language", "editValue", "text", false, "Trip Language", editObjTemplate, setEditTemplate, 0)}
                 </>)
             case "tourCode":
                 return(<> 
-
                 {/* Tour Code */}
+                {anInputDisplayer("Tour Code", "editValue", "text", false, "Tour Code", editObjTemplate, setEditTemplate, 0)}
                 </>)
             case "aComp":
                 return(<> 
-
                 {/* Company  */}
+                {anInputDisplayer("Company", "editValue", "text", false, "Company", editObjTemplate, setEditTemplate, 0)}
                 </>)
             case "compContact":
                 return(<> 
-
                 {/* Company Contact */}
+                {anInputDisplayer("Company Contact", "editValue", "text", false, "Company Contact", editObjTemplate, setEditTemplate, 0)}
                 </>)  
             }
 
@@ -1222,6 +1202,9 @@ export function ItinEditor(props){
     }
 
 
+console.log(editObjTemplate)
+
+
     return(<>
         <Dialog open={props.dialogTrig} onClose={()=>{
             setEditStep(0)
@@ -1235,10 +1218,7 @@ export function ItinEditor(props){
 
                 {editItinUserBtns()}
 
-                {loadingTrig&& <>
-                <div className={styles.loadingSpinner}>
-                    <CircularProgress /></div>
-                </>}
+                {loadingTrig&& <> Loading ...</>}
             </div>
         </Dialog>
     </>)
