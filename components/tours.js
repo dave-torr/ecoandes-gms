@@ -1020,8 +1020,9 @@ export function ItinEditor(props){
 
     const editInputMatrix = {
         // translates to editItinStep index base 1 ++
+        // at the moment IMG edit functionality is not OP.
         "firstCatObj": 
-            [ "genAndSuppTourData", "dayByDay", "images"],
+            [ "genAndSuppTourData", "dayByDay"],
         "genAndSuppStruct": 
             ["LTCLogo", "tripName", "duration", "countryList", "startingPlace", "tourOverview", "tourType", "difficulty", "tripRef", "tripLang", "tourCode", "aComp", "compContact", "included", "notIncluded" ]
     }
@@ -1221,7 +1222,6 @@ export function ItinEditor(props){
         </>)
     }
 
-console.log(editObjTemplate, "template")
 
     return(<>
         <Dialog open={props.dialogTrig} onClose={()=>{
