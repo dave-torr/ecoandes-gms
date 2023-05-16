@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 
-import {aSwitcher, radioSelectors, anInputDisplayer, multiOptPicker, aDropdownPicker, EditDayByDay } from "./../components/forms"
+import {aSwitcher, radioSelectors, anInputDisplayer, multiOptPicker, aDropdownPicker, EditDayByDay, inputToList } from "./../components/forms"
 
 import styles from "./../styles/components/tourCmpnts.module.css"
 
@@ -976,6 +976,7 @@ export function ItinEditor(props){
     const [loadingStateStyle, setLoadingStyle]=useState(styles.tourCopyBTNS)
     const [destinationList, setDestList] = useState([...ecoAndesDestinations])
     const [editItinStep, setEditStep]= useState(0)
+    const [inputPlaceholder, setInputPlaceholder] = useState("")
     const [editObjTemplate, setEditTemplate]=useState({
         "editKey": 0,
         "editValue": undefined
@@ -1020,9 +1021,9 @@ export function ItinEditor(props){
     const editInputMatrix = {
         // translates to editItinStep index base 1 ++
         "firstCatObj": 
-            [ "genAndSuppTourData", "dayByDay", "images" ],
+            [ "genAndSuppTourData", "dayByDay", "images"],
         "genAndSuppStruct": 
-            ["LTCLogo", "tripName", "duration", "countryList", "startingPlace", "tourOverview", "tourType", "difficulty", "tripRef", "tripLang", "tourCode", "aComp", "compContact" ]
+            ["LTCLogo", "tripName", "duration", "countryList", "startingPlace", "tourOverview", "tourType", "difficulty", "tripRef", "tripLang", "tourCode", "aComp", "compContact", "included", "notIncluded" ]
     }
     const editElemInputSwitcher=(editCodeName)=>{
         switch (editCodeName){
@@ -1058,6 +1059,10 @@ export function ItinEditor(props){
                 return(<> Company </>)
             case "compContact":
                 return(<> Company Contact</>)  
+            case "included":
+                return(<> Inclusions</>)  
+            case "notIncluded":
+                return(<> Exclusions</>)
         }
     }
     const editTourInputCont=()=>{
@@ -1172,10 +1177,18 @@ export function ItinEditor(props){
                 {/* Company Contact */}
                 {anInputDisplayer("Company Contact", "editValue", "text", false, "Company Contact", editObjTemplate, setEditTemplate, 0)}
                 </>)  
+            case "included":
+                return(<> 
+                {/* Included in Tour */}
+                {inputToList("Inclusions", "editValue", editObjTemplate, setEditTemplate, editObjTemplate.editValue, inputPlaceholder, setInputPlaceholder )}
+                </>)  
+            case "notIncluded":
+                return(<> 
+                {/* Not Included */}
+                {inputToList("Not Included", "editValue", editObjTemplate, setEditTemplate, editObjTemplate.editValue, inputPlaceholder, setInputPlaceholder )}
+                </>)  
             }
         }
-
-
 
         // switcher for GenAndSupp Data, Day by day or Images
         if(editItinStep===0){
@@ -1207,6 +1220,8 @@ export function ItinEditor(props){
             </div>
         </>)
     }
+
+console.log(editObjTemplate, "template")
 
     return(<>
         <Dialog open={props.dialogTrig} onClose={()=>{

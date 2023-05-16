@@ -236,16 +236,34 @@
 
 
 /* Edit Day By Day */
-.editDayCont span{
+.editDaysCont span{
     padding: 6px 9px;
     border: solid 2px black;
     border-radius: 6px;
     margin: 0 6px;
-    font-weight: 700;
     cursor: pointer;
 }
 
+.editDaysCont{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
 
+.editDayOpts{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    margin: 6px 0;
+    flex-wrap: wrap;
+}
+
+.editDayBTN{
+    border: solid 1px black;
+    padding: 12px 21px;
+    margin-top: 15px;
+    box-shadow: var(--frst-box-shadow);
+}
 
 
 
@@ -321,3 +339,8 @@
     transition: all ease 0.5s;
     box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.17);
 }
+
+
+
+
+

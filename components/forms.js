@@ -211,7 +211,7 @@ export function aTextArea(inputLabel, inputId, isReq, inputPlaceholder, anObject
     </>)
 }
 
-export function inputToList( inputLabel, inputId, anObject, setAnObject, theListe, incluPlaceholder,  setPlaceholder){
+export function inputToList( inputLabel, inputId, anObject, setAnObject, theListe, incluPlaceholder, setPlaceholder){
     const addToListFunct=()=>{
         let tempList=theListe.concat(incluPlaceholder)
         setAnObject({
@@ -584,8 +584,10 @@ export function EditDayByDay(props){
     })
     const [incluPlaceholder, setPlaceholder]=useState("")
     const [dayIndex, setDayIndex]=useState(false)
+    const [addDayTrig, setAddDayTrig] = useState(false)
     useEffect(()=>{
         setTravelDay({
+            ...aTravelDay,
             ...editingTour.dayByDay[dayIndex]
         })
     },[dayIndex])
@@ -595,19 +597,40 @@ export function EditDayByDay(props){
             <span onClick={()=>setDayIndex(i)}> D{i+1} </span>
         </React.Fragment>)
 
-    return(<>
-        {dayIndex===false&& <>
-            <div className={styles.editDayCont}> 
-                <strong>Edit Day(s):</strong> {selectDayBTNS}
-            </div></>}
+    let deleteDayBTNS = editingTour.dayByDay.map((elem, i)=><React.Fragment key={i}>
+            <span onClick={()=>{
+                let tempDayArr =[...editingTour.dayByDay]
+                tempDayArr.splice(i, 1)
+                props.setEditTemplate({
+                    ...props.editTemplate,
+                    "editKey": "dayByDay",
+                    "editValue": tempDayArr
+                })
 
+            }}> D{i+1}</span>
+    </React.Fragment> )
+
+
+
+    console.log(props.editTemplate)
+
+    return(<>
+        {(dayIndex===false && addDayTrig===false) && <>
+            <div className={styles.editDaysCont}> 
+                <div className={styles.editDayOpts} ><div style={{width: "100px", textAlign:"start" }}>Edit Day(s):</div>{selectDayBTNS}</div>
+                <div className={styles.editDayOpts} ><div style={{width: "100px", textAlign:"start" }}> Delete Day(s):</div>{deleteDayBTNS}</div>
+                <div className={styles.editDayOpts} ><div style={{width: "100px", textAlign:"start" }}> Add Day:</div> <span onClick={()=>setAddDayTrig(true)}> &nbsp;+&nbsp; </span></div>
+            </div>
+            </>}
+
+        
+        {/* Edit Days */}
         {(dayIndex || dayIndex===0)&&<>
             <div style={{display:"flex", justifyContent:"space-between", width:"100%" }}> 
                 <strong>Edit Day {dayIndex+1}:</strong>
                 <div style={{border: "solid 2px black", borderRadius: "50%", padding:"1px 6px" }} onClick={()=>setDayIndex(false)}> X </div>
             </div> 
         
-        {/* content inputs with placeholders */}
 
             {anInputDisplayer("Day Title", "dayTitle", "text", true, editingTour.dayByDay[dayIndex].dayTitle, aTravelDay, setTravelDay )}
 
@@ -617,23 +640,47 @@ export function EditDayByDay(props){
 
             {anInputDisplayer("Overnight Property", "overnightProperty", "text", true, editingTour.dayByDay[dayIndex].overnightProperty, aTravelDay, setTravelDay )}
 
-            {/* submit btns, adding updated Bay by day, triggering DB update */}
-
-            <div style={{fontWeight:"700", padding:"9px 15px"   }} 
-            
+            <div className={styles.editDayBTN} 
             onClick={()=>{
                 let tempDayArr =[...editingTour.dayByDay]
                 tempDayArr.splice(dayIndex, 1, aTravelDay)
-                console.log(tempDayArr)
                 props.setEditTemplate({
                     ...props.editTemplate,
                     "editKey": "dayByDay",
                     "editValue": tempDayArr
                 })
                 setDayIndex(false)
-                setTravelDay({})
-                
-            }} > Day Ok?</div>
+                setTravelDay({"dayInclusions":[]})
+
+            }} > Day Ok? </div>
+        </>}
+
+        {/* Add Day */}
+        {addDayTrig&& <> 
+            <div style={{display:"flex", justifyContent:"space-between", width:"100%" }}> 
+                <strong>Add Day:</strong>
+                <div style={{border: "solid 2px black", borderRadius: "50%", padding:"1px 6px" }} onClick={()=>setAddDayTrig(false)}> X </div>
+            </div>  
+
+            {anInputDisplayer("Day Title", "dayTitle", "text", true, "Day Title", aTravelDay, setTravelDay )}
+
+            {aTextArea("Day detail", "dayDescription", true, "Day Description", aTravelDay, setTravelDay)}
+
+            {inputToList("add to day", "dayInclusions", aTravelDay, setTravelDay, aTravelDay.dayInclusions, incluPlaceholder, setPlaceholder)}
+
+            {anInputDisplayer("Overnight Property", "overnightProperty", "text", true, 'Overnight Property', aTravelDay, setTravelDay )}
+
+            <div className={styles.editDayBTN} onClick={()=>{
+                let tempDayArr = editingTour.dayByDay.concat(aTravelDay)
+                console.log(tempDayArr)
+                props.setEditTemplate({
+                    ...props.editTemplate,
+                    "editKey": "dayByDay",
+                    "editValue": tempDayArr
+                })
+            }}>
+                Day Ok?
+            </div>  
         </>}
     </>)
 }
