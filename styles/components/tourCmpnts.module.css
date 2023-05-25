@@ -1119,7 +1119,6 @@
 .userUIDialogCont{
     padding: 21px 44px;
     height: 300px;
-    width: 470px;
     display: flex;    
     flex-direction: column;
     transition: all ease-in 0.3s;

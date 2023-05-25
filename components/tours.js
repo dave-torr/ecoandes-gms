@@ -3,6 +3,7 @@ import Link from "next/link"
 import Image from "next/image"
 
 import {aSwitcher, radioSelectors, anInputDisplayer, multiOptPicker, aDropdownPicker, EditDayByDay, inputToList } from "./../components/forms"
+import {ImageEditor} from "./../pages/gms/pix"
 
 import styles from "./../styles/components/tourCmpnts.module.css"
 
@@ -981,6 +982,7 @@ export function ItinEditor(props){
         "editKey": 0,
         "editValue": undefined
     })
+    const [fetchedImgArr, setFetchedImgs]=useState()
 
     const editItinUserBtns=()=>{
         if(editObjTemplate.editKey){
@@ -1022,7 +1024,7 @@ export function ItinEditor(props){
         // translates to editItinStep index base 1 ++
         // at the moment IMG edit functionality is not OP.
         "firstCatObj": 
-            [ "genAndSuppTourData", "dayByDay"],
+            [ "genAndSuppTourData", "dayByDay", "images"],
         "genAndSuppStruct": 
             ["LTCLogo", "tripName", "duration", "countryList", "startingPlace", "tourOverview", "tourType", "difficulty", "tripRef", "tripLang", "tourCode", "aComp", "compContact", "included", "notIncluded" ]
     }
@@ -1208,6 +1210,14 @@ export function ItinEditor(props){
                     setEditTemplate={setEditTemplate}
                 />
             </>
+        } else if(editItinStep===3){
+            theOpsDisplayed = <>
+                <ImageEditor
+                    aTour={props.aTour}
+                    editTemplate={editObjTemplate}
+                    setEditTemplate={setEditTemplate}
+                />
+            </>
         }
 
 
@@ -1224,7 +1234,8 @@ export function ItinEditor(props){
 
 
     return(<>
-        <Dialog open={props.dialogTrig} onClose={()=>{
+        <Dialog open={props.dialogTrig} maxWidth={"xl"} fullWidth 
+        onClose={()=>{
             setEditStep(0)
             props.setDialogTrig(false) 
             }}>
@@ -1238,6 +1249,10 @@ export function ItinEditor(props){
                 {editObjTemplate.editKey==="dayByDay"&&<>
                     Submit edits to Day By Day
                 </>}
+                {editObjTemplate.editKey==="imgArr"&&<>
+                    Submit image edits to Itinerary Images
+                </>}
+
                 {editItinUserBtns()}
                 <br/>
                 <br/>

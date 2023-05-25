@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useSession } from "next-auth/react"
 
@@ -9,6 +9,7 @@ import CurrentImageData from "./../../data/itinImages.json"
 import LTCData from "../../data/dataAndTemplates.json"
 
 import styles from "./../../styles/pages/pix.module.css"
+import { Select } from '@mantine/core';
 
 // Pix page
 // manage, organize and cataloge pictures. Images hosted on OneDrive, with 21.1 x 10 ratio
@@ -26,6 +27,121 @@ export const anImageDisp=(imgSrc, width, imgRatio, imgAlt)=>{
             /></div>
         </>)
     }
+
+
+export const ImageEditor=(props)=>{
+
+    const [itinImgEditArr, setTempImgArr]=useState([...props.aTour.imgArr ])
+    const [fetchedImg, setFetchedImgs]=useState()
+    const [imgDestFilter, setImgFilter]=useState('all countries')
+    const [filteredImgs, setFilteredImgs]=useState()
+
+    useEffect(async()=>{
+        const res = await fetch("/api/genToolkit/pixApi",{
+            method: "GET"
+        })
+        let imageFetcher = await res.json()
+        if(imageFetcher){
+            setFetchedImgs(imageFetcher)
+            setFilteredImgs(imageFetcher)
+        }
+    },[])
+
+    let imgCountryArr= ['all countries', "ecuador", 'peru', "chile", "argentina",]
+    useEffect(()=>{
+        if(imgDestFilter==='all countries'){
+            setFilteredImgs(fetchedImg)
+        } else {
+            let tempArr = fetchedImg.filter(elem=>elem.imgCountry===imgDestFilter)
+            setFilteredImgs(tempArr)
+        }
+    },[imgDestFilter])
+
+    const anImageWithData=(props)=>{
+        return(<>
+            <div className={styles.eachImgDisp}>
+                {anImageDisp(props.src, 120, "LTCWide", props.imgAlt)}
+                <div className={styles.imgSelectorBTN} onClick={()=>{
+                    let tempImgArr = itinImgEditArr.concat(props.src)
+                    setTempImgArr(tempImgArr)       
+                }} >  +  </div>
+                <div className={styles.imgRefData}>
+                    <div>{props.imgCountry}</div>
+                    <div>{props.imgRegion}</div>
+                    <div>{props.imgName}</div>
+                    <div>{props.locationDetails}</div>
+                </div>
+            </div>
+        </>)
+    }
+
+    let tourImgDispl = itinImgEditArr.map((elem,i)=><React.Fragment key={i}> <div style={{position: "relative", margin:"9px" }}>
+        {anImageDisp(elem, 120, "LTCWide", "LTC Tour IMG")} 
+        <div className={styles.eachImgDel} onClick={()=>{
+            let tempArr=[...itinImgEditArr];
+            tempArr.splice(i, 1)
+            setTempImgArr(tempArr)     
+        }} >X</div>
+    </div> 
+    </React.Fragment>)
+
+    let theFetchedImgs
+    if(filteredImgs){
+        theFetchedImgs=<>
+        {filteredImgs.map((elem,i)=><React.Fragment key={i}> 
+            &nbsp; {anImageWithData(elem)} &nbsp;
+        </React.Fragment>)}
+        </>
+    } else {
+        theFetchedImgs=<> ... Loading Images</>
+    }
+
+    const theFilter=()=>{
+        let eachSelectOpts=imgCountryArr.map((elem,i)=><React.Fragment key={i}>
+            <option value={elem}>{elem}</option>
+        </React.Fragment>)
+        return(<>
+            <div style={{padding: "6px 12px"}}>
+            <select onChange={(e)=>setImgFilter(e.target.value)}>
+                {eachSelectOpts}
+            </select>
+            </div>        
+        </>)
+    }
+
+    const submitImgArrChanges=()=>{
+        console.log(props.editTemplate)
+        if (props.editTemplate.editKey===0){
+        return(<>
+            <div className={styles.editImgsTrig} onClick={()=>{
+                props.setEditTemplate({
+                    ...props.editTemplate,
+                    "editKey": "imgArr",
+                    "editValue": itinImgEditArr
+                })
+            }}> Sumbit Images </div>
+        </>)
+        } 
+    }
+
+    return(<>
+    {/* add edit itin BTN */}
+
+        <div style={{width:"100%"}}>
+            Current Images:
+            <div className={styles.itinImgDisp}> {tourImgDispl} </div>
+
+            {submitImgArrChanges()}
+
+            Add Images to Itinerary:
+            {theFilter()}
+            <div className={styles.itinImgDisp}> {theFetchedImgs} </div>
+
+        </div>
+    </>)
+}
+
+
 
 
 export default function PixPage(){

@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef,  } from "react";
-import Image from "next/image"
+import React, { useState, useEffect  } from "react";
 import { useRouter } from 'next/router'
 
 // components
@@ -53,7 +52,9 @@ let tourDiff =[1,2,3,4,5]
 
 
     // tasks:
-    // edit day info, prev data as placeholder
+    // automate day filling with templates
+    // quote automaticallly from DB prices
+
 
     //////////////////////////////////////////////
     // sesh
@@ -81,9 +82,6 @@ let tourDiff =[1,2,3,4,5]
     const [imgDestFilter, setImgFilter]=useState(0)
 
     const [submitionTrig, setSubmitTrig]=useState(false)
-
-    // partner logo
-
 
     // utils
     const stepBTNs=(nextOrPrev)=>{
@@ -253,7 +251,7 @@ let tourDiff =[1,2,3,4,5]
     }
 
     // Img picker utils
-    let imcCountry= ['all countries', "ecuador", 'peru', "chile", "argentina",]
+    let imgCountry= ['all countries', "ecuador", 'peru', "chile", "argentina",]
     useEffect(()=>{
         if(imgDestFilter){
             if(imgDestFilter==='all countries'){
@@ -267,6 +265,7 @@ let tourDiff =[1,2,3,4,5]
             setFilteredImgs(fetchedImgArrs)
         }
     },[imgDestFilter])
+
     const imagePickers=()=>{
         
         // add to itin with or without complimentary data?
@@ -276,7 +275,8 @@ let tourDiff =[1,2,3,4,5]
         // Filter imgaes
 
         if(tourCreatorStep===3){
-        if(!fetchedImgArrs) {return(<>
+        if(!fetchedImgArrs){
+            return(<>
             <div className={styles.tourCreatorFormCont} onClick={async()=>{
                 setLoadingState(true)
                 const res = await fetch("/api/genToolkit/pixApi",{
@@ -288,7 +288,7 @@ let tourDiff =[1,2,3,4,5]
                     setFilteredImgs(fetchedImages)
                     setLoadingState(false)
                 }
-            }} >
+            }}>
                 {loadingState? <>
                     <CircularProgress />
                 </>:<>
@@ -325,7 +325,7 @@ let tourDiff =[1,2,3,4,5]
             <div style={{padding: "6px 12px"}}>
                 <Select
                     placeholder='Image Country'
-                    data={[...imcCountry]}
+                    data={[...imgCountry]}
                     onChange={setImgFilter}
                     id="imgSelectUI"
                 /></div>

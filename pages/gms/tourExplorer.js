@@ -176,7 +176,6 @@ const { data: session } = useSession()
         </>)
     }
     const selectedItinDips=()=>{
-        console.log(pickedItin)
         return(<>
             {pickedItin&&<>
 
@@ -248,6 +247,12 @@ const { data: session } = useSession()
         </>)
     }
 
+
+// Notes:
+
+// SPANISH ITIN DISPLAYER
+// Foto Editing, add, rmv, 
+
     
 
     return(<>
@@ -294,18 +299,20 @@ const { data: session } = useSession()
                 <h2>Latin Travel Collection</h2>
                 <h1>Tour Explorer</h1>
             
-                {LTCTourExplorar(filteredItineraries, userUIFilters, theFilterLabel, "LTC Published", true, 1 )}
 
                 {fetchUserItineraries()}
                 {allItinsDisp()}
+
+                {LTCTourExplorar(filteredItineraries, userUIFilters, theFilterLabel, "LTC Published", true, 1 )}
+
             </>}
             </div>
         </>:<> 
 
 
-            <div  > {"/"}GMS{"/"}TOUREXPLORER </div>
+            <div> {"/"}GMS{"/"}TOUREXPLORER </div>
 
-            <span style={{width: "99vw", minHeight: "100vw", display: "flex", justifyContent: "center", alignItems: "center" }} >
+            <span style={{width: "99vw", marginTop: "30vw", display: "flex", justifyContent: "center", alignItems: "center" }} >
 
                 <div className={styles.GMSGeneralBTN}> 
                     <Link href="/gms" >
@@ -315,14 +322,7 @@ const { data: session } = useSession()
                         <a > LTC Published Itineraries </a>
                     </Link>
                 </div>
-
-
             </span>
-
-
-
-
-
         </>}
     </>)
 }
