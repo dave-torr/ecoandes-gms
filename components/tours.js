@@ -67,6 +67,10 @@ import LTCGenData from "./../data/dataAndTemplates.json"
 
 let ecoAndesDestinations= LTCGenData.countryList
 
+// DISPLAY FUNCTIONS
+
+// with like functionality?????
+//  external component
 
 export function ATourCard(props){
 
@@ -303,7 +307,6 @@ export function TourDisplayer(props){
     const [imgDialogContr, srtImgDialogcontr]=useState(false)
     const [selectedImg, setSelectedImg]=useState(false)
 
-
     const accordionDisplayer=(accordTitle, accordContent, openContr, numerator)=>{
         return(<>
         <Accordion defaultExpanded={openContr} className={styles.accordionCont}>
@@ -359,7 +362,7 @@ export function TourDisplayer(props){
             if(theTrekData){
                 return(<>
                     <div className={styles.dayInclusionCont}>
-                    <h4>Daily Trekking Data::</h4>
+                    <h4>Daily Trekking Data:</h4>
                         {theTrekData.totalTrekTime&&<>
                             <div className={styles.trekDataCont}> 
                                 <div>total Trek time:</div> 
@@ -377,6 +380,107 @@ export function TourDisplayer(props){
             }
         }
 
+        const flightDataDisp=(flightData)=>{
+            // let flightData=[
+            //     {
+            //         "depDate":"5/27/2023",
+            //         "depLocation": "Quito",
+            //         "depLocationCode":"UIO",
+            //         "arriLocation": "Baltra",
+            //         "ariiLocationCode":"GPS",
+            //         "airline":"Latam",
+            //         "flightNumb": "XL1416",
+            //         "confNumber": "XIURNL",
+            //         "depTime": "15:00",
+            //     },
+            //     {
+            //         "depDate":"5/27/2023",
+            //         "depLocation": "Quito",
+            //         "arriLocation": "Baltra",
+            //         "airline":"Latam",
+            //         "flightNumb": "XL1416",
+            //         "depTime": "15:00",
+            //     },
+            // ]
+
+            if(flightData){
+
+            const eachFlightDetail=(theDetailLabel, theDetail, compWidth)=>{              
+                 return(<>
+                    <div style={{ width: compWidth, display:"flex", flexDirection: "column",  }}>
+                        {theDetail&&<>
+                            <h5 style={{margin:"0"}}> {theDetailLabel} </h5>
+                            <h4 style={{marginTop:"0"}}>{theDetail}</h4>
+                        </>}
+                    </div>
+                </>)
+            }
+
+            let multiFlightDataDisp=flightData.map((elem,i)=><React.Fragment key={i}>
+                    <h3> 
+                        {flightData[i].depLocationCode&& <> {`${flightData[i].depLocationCode} - `}</>}
+                        {flightData[i].ariiLocationCode&&<> {`${flightData[i].ariiLocationCode}`}</> }
+                        {flightData[i].depDate&&<> {`| ${flightData[i].depDate}`}</> }
+                    </h3>
+                    <div style={{display:"flex", borderBottom:"dotted 1px black", paddingLeft:"21px" }}>
+                        {eachFlightDetail("From:", flightData[i].depLocation, "18%")}
+                        {eachFlightDetail("To:", flightData[i].arriLocation, "18%")}
+                        {eachFlightDetail("Airline:", flightData[i].airline, "15%")}
+                        {eachFlightDetail("Flight#:", flightData[i].flightNumb, "12%")}
+                        {eachFlightDetail("Time:", flightData[i].depTime, "15%")}
+                        {eachFlightDetail("Conf. #:", flightData[i].confNumber, "12%")}
+                    </div>
+            </React.Fragment> )
+
+            return(<>
+                {flightData&&<> 
+                    <div className={styles.dayInclusionCont}>
+                        <h4>flight info</h4>
+                        {multiFlightDataDisp}
+                    </div>
+                </>}
+            </>)
+            }
+        }
+
+        const guideDataDisp=(guideData)=>{
+
+            // let guideData={
+            //     "guideName": "Mario",
+            //     "guideCategory":"Naturalist Category I"
+            // }
+
+            if(guideData){
+                let eachGuideData=guideData.map((elem, i)=><React.Fragment key={i}> 
+                    {elem.guideName&&<strong>{elem.guideName}</strong>}
+                    {elem.guideCategory&&<> &nbsp; &nbsp; | &nbsp; &nbsp; {elem.guideCategory}</>}
+                </React.Fragment> )
+                return(<>
+                    <div className={styles.dayInclusionCont}>
+                        <h4>Guide info</h4>
+                        <div style={{padding:"0 40px"}}> 
+                            {eachGuideData}
+                        </div>
+                    </div>
+                </>)
+            }
+        }
+
+        // const pickUpDisplayer=()=>{
+        //     let pickUpData=[
+        //         {}
+        //     ]
+
+        //     if(pickUpData){
+
+
+
+        //         return(<>
+                
+        //         </>)
+        //     }
+        // }
+
         let theDays = tourDayByDay.map((elem,i)=> 
         <React.Fragment key={i}>
             <Accordion className={styles.accordionCont} defaultExpanded={openContr}>
@@ -386,7 +490,9 @@ export function TourDisplayer(props){
                     <div style={{textAlign:"justify"}}>
                     {elem.dayDescription}</div>
                     {dayInclDisp(elem.dayInclusions)}
+                    {guideDataDisp(elem.guideData)}
                     {hotelDetailDisp(elem.overnightProperty)}
+                    {flightDataDisp(elem.flightData)}
                     {dayNotices(elem)} 
                     {trekDataDisp(elem.trekData)}
                 </AccordionDetails>
@@ -748,6 +854,8 @@ export function RectangularTourCard(props){
     } else return(<> cu cu </>)
 }
 
+
+// tour displayer LTC
 export function SortingItinUI(props){
     // const [sortContr, setSortContr]=useState("duration")
     // const [props.sortOrder, setSortOrder]=useState("ascending")
@@ -827,8 +935,10 @@ export function SortingItinUI(props){
         </div>
     </>)    
 }
+
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
+// Tour editing Functionality: Duplication
 export function ItinDuplicator(props){
 
     const [loadingTrig, setLoadingTrig]=useState(false)
@@ -867,7 +977,6 @@ export function ItinDuplicator(props){
                                     body: reqData
                                 })
                             const itinSubmition = await res.json()
-                            console.log(itinSubmition)
                             if(res.status===200){
                                 window.alert("Itinerary Created! Taking you to Tour Explorer")
                                 location.reload()
@@ -887,6 +996,7 @@ export function ItinDuplicator(props){
 }
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
+// Tour editing Functionality: Deletion
 export function ItinDeletor(props){
 
     const [loadingTrig, setLoadingTrig]=useState(false)
@@ -913,7 +1023,6 @@ export function ItinDeletor(props){
                                     body: reqData
                                 })
                             const itinDeletion = await res.json()
-                            console.log(itinDeletion, "Deletion")
                             if(res.status===200){
                                 window.alert("Itinerary Deleted! Taking you to Tour Explorer")
                                 location.reload()
@@ -932,7 +1041,7 @@ export function ItinDeletor(props){
 }
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
-
+// Tour general data Displayer
 export function ItinDataDisp(props){
     return(<>
         <Dialog open={props.dialogTrig} onClose={()=>props.setDialogTrig(false) }>
@@ -964,11 +1073,9 @@ export function ItinDataDisp(props){
         </Dialog>
     </>)
 }
-
-
-
-
-
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+// Tour editing Functionality: editing
 export function ItinEditor(props){
 
     let theTour=props.aTour
@@ -982,7 +1089,6 @@ export function ItinEditor(props){
         "editKey": 0,
         "editValue": undefined
     })
-    const [fetchedImgArr, setFetchedImgs]=useState()
 
     const editItinUserBtns=()=>{
         if(editObjTemplate.editKey){
@@ -1006,7 +1112,6 @@ export function ItinEditor(props){
                                 body: reqData
                             })
                         const itinUpdate = await res.json()
-                        console.log(itinUpdate, "Edit")
                         if(res.status===200){
                             window.alert("Itinerary Edited! Taking you to Tour Explorer")
                             location.reload()

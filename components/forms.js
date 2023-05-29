@@ -610,10 +610,6 @@ export function EditDayByDay(props){
             }}> D{i+1}</span>
     </React.Fragment> )
 
-
-
-    console.log(props.editTemplate)
-
     return(<>
         {(dayIndex===false && addDayTrig===false) && <>
             <div className={styles.editDaysCont}> 
@@ -672,7 +668,6 @@ export function EditDayByDay(props){
 
             <div className={styles.editDayBTN} onClick={()=>{
                 let tempDayArr = editingTour.dayByDay.concat(aTravelDay)
-                console.log(tempDayArr)
                 props.setEditTemplate({
                     ...props.editTemplate,
                     "editKey": "dayByDay",

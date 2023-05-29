@@ -574,11 +574,9 @@
 
 .dayInclusionCont > h4{
     border-top: solid 1px var(--pop-orange);
-    padding-top: 12px;
 }
 .dayInclusionCont > ul{
     margin: unset;
-    margin-top: 9px;
 }
 .dayInclusionCont li{
     text-transform: capitalize;

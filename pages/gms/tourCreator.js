@@ -382,9 +382,7 @@ let tourDiff =[1,2,3,4,5]
                         body: reqData
                     })
                 const itinSubmition = await res.json()
-                console.log(itinSubmition)
                 if(res.status===200){
-                    console.log(itinSubmition, "Img Submitions") 
                     window.alert("Itinerary Created! Taking you to Tour Explorer")
                     router.push("/gms/tourExplorer")
                     }
