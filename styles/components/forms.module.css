@@ -30,7 +30,14 @@
 }
 
 
-
+.secondaryBTN{
+    margin: 15px;
+    padding: 9px 12px;
+    border: solid 2px black;
+    border-radius: 5px;
+    width: fit-content;
+    cursor: pointer;
+}
 
 
 

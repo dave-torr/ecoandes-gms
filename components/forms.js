@@ -160,7 +160,6 @@ export function aDropdownPicker(theOptsArr, inputLabel, inputId, anObject, setAn
     </>) 
 }
 
-
 export function aSwitcher(switcherController, anObject, setAnObject, objectElemKey, switchTrigger ){
     const handleChange=()=>{
         if(switcherController){
@@ -184,7 +183,6 @@ export function aSwitcher(switcherController, anObject, setAnObject, objectElemK
     </>)
 
 }
-
 
 export function aTextArea(inputLabel, inputId, isReq, inputPlaceholder, anObject, setAnObject ){
     return(<>
@@ -269,15 +267,15 @@ export function inputToList( inputLabel, inputId, anObject, setAnObject, theList
 }
 
 export function radioSelectors(radioKeyValueArr, radioNames, anObject, setAnObject, radioTrigger){
-    let theRadios = radioKeyValueArr.map((elem, i)=><>
-        <div style={{display:"flex", width:"300px"}} key={i}> 
+    let theRadios = radioKeyValueArr.map((elem, i)=><React.Fragment key={i}>
+        <div style={{display:"flex", width:"300px"}}> 
             <input type="radio" id={elem.radioKey} name={radioNames} onClick={()=>setAnObject({
                 ...anObject,
                 [radioTrigger]: elem.radioVal
             })}/>
             <label htmlFor={elem.radioKey} style={{textTransform:"capitalize"}} >{elem.radioKey}</label>
         </div>
-    </>)
+    </React.Fragment>)
     return(<>
         <div className={styles.radioselectors}> 
         {/* className={styles.aRow} */}
@@ -339,10 +337,8 @@ export function ItineraryImagePicker(props){
         </>
     )
 }
-
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
-
 export function HighlightAdder(props){
 
     // add highlights or add a tour comment
@@ -376,10 +372,8 @@ export function HighlightAdder(props){
         </div>
     )
 }
-
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
-
 export function TourDateAdder(props){
     return(
         <>
@@ -422,35 +416,111 @@ export function TourDateAdder(props){
         </>
     )
 }
-
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
-// might use in next ver of gms
-const flightsAdder=(setDay, theTravelDay, flightInfo, setFlights, formTrigger)=>{
+const flightsAdder=(setDay, theTravelDay, flightInfoObj, setFlightObj, setFlightTrigger )=>{
     return(<>
     <div className={styles.dayAdditionalsCont}>
-            <div onClick={()=>{formTrigger(false)}} style={{width: "100%", textAlign: "end", cursor:"pointer" }}>x | close &nbsp;</div>
             <h4>Add flight info here:</h4>
-            {aTextInput("Flight Route", "flightRoute", flightInfo, setFlights, "text",)}
-            {aTextInput("Flight Code", "flightCode", flightInfo, setFlights, "text",)}
-            {aTextInput("Departure Date", "depDate", flightInfo, setFlights, "date",)}
-            {aTextInput("Departure Time", "depTime", flightInfo, setFlights, "time",)}
-            {aTextInput("Arrival Time", "arriTime", flightInfo, setFlights, "time",)}
-            {aTextInput("Confirmation Number", "confirmationNumber", flightInfo, setFlights, "text",)}
+            <div style={{ display:"flex" }}>
+                {anInputDisplayer("Dep. Date", "depDate", "date", false, "", flightInfoObj, setFlightObj,)}
+                &nbsp;&nbsp;
+                {anInputDisplayer("Dep Time", "depTime", "time", false, "", flightInfoObj, setFlightObj,)}
+            </div>
+            <div style={{ display:"flex" }}>
+                {anInputDisplayer("From", "depLocation", "text", false, "", flightInfoObj, setFlightObj,)} 
+                &nbsp;&nbsp;
+                {anInputDisplayer("To", "arriLocation", "text", false, "", flightInfoObj, setFlightObj,)}
+            </div>
+            <div style={{ display:"flex" }}>
+                {anInputDisplayer("Airline", "airline", "text", false, "", flightInfoObj, setFlightObj,)}
+                &nbsp;&nbsp;
+                {anInputDisplayer("Flight #", "flightNumb", "text", false, "", flightInfoObj, setFlightObj,)}
+
+            </div>
+                {anInputDisplayer("Conf. #", "confNumber", "text", false, "", flightInfoObj, setFlightObj,)}
             <br></br>
         <div className={styles.submitFlightsBTN} 
             onClick={(e)=>{
-                e.preventDefault();
+                let flightTempArr=theTravelDay.flightData.concat(flightInfoObj)
                 setDay({
                     ...theTravelDay,
-                    "Flights":{...flightInfo}
+                    "flightData": flightTempArr
                 })
-                formTrigger(false)
-                }}> Submit! </div>
+                setFlightObj({})
+                setFlightTrigger(false)
+                }}> Add flight to day! </div>
         </div>
     </>)
 }
+const guideAdder=(guideInfoObj, setGuideObj, theTravelDay, setDay, setGuideTrigger)=>{
+    return(<>
+    <div className={styles.dayAdditionalsCont}>
+        <h4>Add Guide Info Here </h4>
+            {anInputDisplayer("Guide Name", "guideName", "text", false, "Name", guideInfoObj, setGuideObj)}
+            {anInputDisplayer("Guide Category", "guideCategory", "text", false, "Category", guideInfoObj, setGuideObj)}
+            <br></br>
+        <div className={styles.submitFlightsBTN} 
+            onClick={(e)=>{
+                let guideTempArr=theTravelDay.guideData.concat(guideInfoObj)
+                setDay({
+                    ...theTravelDay,
+                    "guideData": guideTempArr
+                })
+                setGuideObj({})
+                setGuideTrigger(false)
+                }}> Add Guide to day! 
+        </div>
+    </div>
+    </>)
+}
 
+const flightDataDisplayer=(theTravelDay, setTravelDay)=>{
+    if(theTravelDay.flightData.length>0){
+    let eachFlight = theTravelDay.flightData.map((elem, i)=><React.Fragment key={i}>
+        <ul> 
+        <strong>{elem.depTime&& <>{elem.depTime}</>}</strong> 
+        | {elem.depLocation&& <>{elem.depLocation}</>} 
+        - {elem.arriLocation&& <>{elem.arriLocation}</>} 
+        <span style={{cursor: "pointer"}}
+            onClick={()=>{
+            let aTempFlightArr=theTravelDay.flightData.splice(i, 0)
+                setTravelDay({
+                    ...theTravelDay,
+                    "flightData": aTempFlightArr
+                })
+            }}><CancelIcon/></span>
+        </ul>  
+    </React.Fragment>)
+    return(<>
+        <h4> Flights:</h4>
+        {eachFlight}
+    </>)
+    } 
+}
+
+const guideDataDisp=(theTravelDay, setTravelDay)=>{
+    if(theTravelDay.guideData.length>0){
+    let eachGuide = theTravelDay.guideData.map((elem,i)=><React.Fragment key={i}>
+        <ui>
+        <strong>{elem.guideName}</strong>
+        {elem.guideCategory&&<> | {elem.guideCategory}</>}
+        <span style={{cursor: "pointer"}} 
+            onClick={()=>{
+            let tempGuideArr=theTravelDay.guideData.splice(i, 0)
+                setTravelDay({
+                    ...theTravelDay,
+                    "guideData": tempGuideArr
+                })
+            }}><CancelIcon/></span>
+        </ui>
+    </React.Fragment>)
+    return(<>
+        <h4> Guides:</h4>
+        {eachGuide}
+    </>)
+    } 
+}
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
 // used in Tour Creator
@@ -470,62 +540,18 @@ export function DayByDayAdder(props){
 
 
     const [aTravelDay, setTravelDay] = useState({
-        "dayInclusions":[]
+        "dayInclusions":[
+            "private Transfers",
+            "guide Services",
+        ],
+        "flightData":[],
+        "guideData":[],
     })
     const [incluPlaceholder, setPlaceholder]=useState("")
-
-// ver 2
-    
-    // const [flightsTrigger,setFlightsTrig]=useState(false)
-    // const [flightInfo, setFlightInfo]=useState({})
-
-
-    // const additionalsAdder=()=>{
-    //     return(<>
-    //     {flightsTrigger?<>
-    //         {flightsAdder(setTravelDay, aTravelDay, flightInfo, setFlightInfo, setFlightsTrig)}
-    //     </>:<>
-    //         <div className={styles.dayAdditionalsCont}>
-    //             <h2>Add to this day:</h2>
-    //             <div className={styles.additionalOptionsCont}>
-    //                 <div className={styles.eachAddiOpt} onClick={()=>setFlightsTrig(true)}>
-    //                     <strong>FLIGHTS</strong>
-    //                     <FlightIcon />
-    //                 </div>
-    //                 <div className={styles.eachAddiOpt}>
-    //                     <strong>GUIDES</strong>
-    //                     <EmojiPeopleIcon />
-    //                 </div>
-    //             </div>
-    //         </div>
-    //     </>}
-    //     </>)
-    // }
-
-    // const flightsAdder=()=>{
-    //     return(<>
-    //     <form className={styles.dayAdditionalsCont}>
-    //             <div onClick={()=>{setFlightsTrig(false)}} style={{width: "100%", textAlign: "end", cursor:"pointer" }}>x | close &nbsp;</div>
-    //             <h4>Add flight info here:</h4>
-    //             {aTextInput("Flight Route", "flightRoute", flightInfo, setFlightInfo, "text",)}
-    //             {aTextInput("Flight Code", "flightCode", flightInfo, setFlightInfo, "text",)}
-    //             {aTextInput("Departure Date", "depDate", flightInfo, setFlightInfo, "date",)}
-    //             {aTextInput("Departure Time", "depTime", flightInfo, setFlightInfo, "time",)}
-    //             {aTextInput("Arrival Time", "arriTime", flightInfo, setFlightInfo, "time",)}
-    //             {aTextInput("Confirmation Number", "confirmationNumber", flightInfo, setFlightInfo, "text",)}
-    //             <br></br>
-    //         <div className={styles.submitFlightsBTN} 
-    //             onClick={(e)=>{
-    //                 e.preventDefault();
-    //                 setTravelDay({
-    //                     ...aTravelDay,
-    //                     "Flights":{...flightInfo}
-    //                 })
-    //                 setFlightsTrig(false)
-    //                 }}> Submit! </div>
-    //         </form>
-    //     </>)
-    // }
+    const [flightTrigger, setFlightTrigger]=useState(false)
+    const [flightInfoObj, setFlightObj]=useState({})
+    const [guideInfoObj, setGuideObj]=useState({})
+    const [guideTrigger, setGuideTrig]=useState(false)
 
     return(<>
         <form style={{width:"100%"}} id="theDayFormID">
@@ -547,12 +573,36 @@ export function DayByDayAdder(props){
             {/* non MVP */}
             {/* {additionalsAdder()} */}
 
+
+            {flightDataDisplayer(aTravelDay, setTravelDay)}
+            {flightTrigger? <>
+                {flightsAdder(setTravelDay, aTravelDay, flightInfoObj, setFlightObj, setFlightTrigger )}: 
+            </>:<>
+                <div className={styles.secondaryBTN} onClick={()=>setFlightTrigger(true)}>Add Flights</div>
+            </>}
+
+            {guideDataDisp(aTravelDay, setTravelDay)}
+            {guideTrigger? <>
+                {guideAdder(guideInfoObj, setGuideObj, aTravelDay, setTravelDay, setGuideTrig)}
+            </>:<>
+                <div className={styles.secondaryBTN} onClick={()=>setGuideTrig(true)}>Add Guides</div>
+            </>}
+
+            {/* list flights on this day */}
+
             <div type="submit" className={styles.submitDayBTN} 
                 onClick={()=>{
                     if(props.editDayTrigger){
                         // wtf how does this work?
                         let tempList = props.aTour.dayByDay.splice(props.editDayTrigger-1, 1, aTravelDay)
-                        setTravelDay({"dayInclusions":[]})
+                        setTravelDay({
+                            "dayInclusions":[
+                                "private Transfers",
+                                "guide Services",
+                            ],
+                            "flightData":[],
+                            "guideData":[],
+                        })
                         props.setEditDayTrig(false)
                     } else {
                         let tempList=props.aTour.dayByDay.concat(aTravelDay)
@@ -560,7 +610,15 @@ export function DayByDayAdder(props){
                                 ...props.aTour,
                                 "dayByDay": tempList
                             })
-                        setTravelDay({"dayInclusions":[]})
+                        // set default day
+                        setTravelDay({
+                            "dayInclusions":[
+                                "private Transfers",
+                                "guide Services",
+                            ],
+                            "flightData":[],
+                            "guideData":[],
+                        })
                     }
                     document.getElementById("theDayFormID").reset()
                 }}>
@@ -569,7 +627,6 @@ export function DayByDayAdder(props){
                 </> : <>
                     Add Day to Itinerary
                 </>}
-            
             </div>
         </form>
     </>)
@@ -580,11 +637,20 @@ export function DayByDayAdder(props){
 export function EditDayByDay(props){
     let editingTour = {...props.aTour}
     const [aTravelDay, setTravelDay] = useState({
-        "dayInclusions":[]
+        "dayInclusions":[
+            "private Transfers",
+            "guide Services",
+        ],
+        "flightData":[],
+        "guideData":[],
     })
     const [incluPlaceholder, setPlaceholder]=useState("")
     const [dayIndex, setDayIndex]=useState(false)
     const [addDayTrig, setAddDayTrig] = useState(false)
+    const [flightTrigger, setFlightTrigger]=useState(false)
+    const [flightInfoObj, setFlightObj]=useState({})
+    const [guideInfoObj, setGuideObj]=useState({})
+    const [guideTrigger, setGuideTrig]=useState(false)
     useEffect(()=>{
         setTravelDay({
             ...aTravelDay,
@@ -635,6 +701,28 @@ export function EditDayByDay(props){
             {inputToList("add to day", "dayInclusions", aTravelDay, setTravelDay, aTravelDay.dayInclusions, incluPlaceholder, setPlaceholder)}
 
             {anInputDisplayer("Overnight Property", "overnightProperty", "text", true, editingTour.dayByDay[dayIndex].overnightProperty, aTravelDay, setTravelDay )}
+
+
+            {/* flights and guides */}
+
+            <div style={{width:"100%" }}>
+                {flightDataDisplayer(aTravelDay,setTravelDay)}
+            {flightTrigger? <>
+                {flightsAdder(setTravelDay, aTravelDay, flightInfoObj, setFlightObj, setFlightTrigger )}: 
+            </>:<>
+                <div className={styles.secondaryBTN} onClick={()=>setFlightTrigger(true)}>Add Flights</div>
+            </>}
+            </div>
+
+            <div style={{width:"100%"}}>
+                {guideDataDisp(aTravelDay,setTravelDay)}
+            {guideTrigger? <>
+                {guideAdder(guideInfoObj, setGuideObj, aTravelDay, setTravelDay, setGuideTrig)}
+            </>:<>
+                <div className={styles.secondaryBTN} onClick={()=>setGuideTrig(true)}>Add Guides</div>
+            </>}
+            </div>
+
 
             <div className={styles.editDayBTN} 
             onClick={()=>{

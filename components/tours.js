@@ -418,17 +418,17 @@ export function TourDisplayer(props){
 
             let multiFlightDataDisp=flightData.map((elem,i)=><React.Fragment key={i}>
                     <h3> 
-                        {flightData[i].depLocationCode&& <> {`${flightData[i].depLocationCode} - `}</>}
-                        {flightData[i].ariiLocationCode&&<> {`${flightData[i].ariiLocationCode}`}</> }
-                        {flightData[i].depDate&&<> {`| ${flightData[i].depDate}`}</> }
+                        {elem.depLocationCode&& <> {`${elem.depLocationCode} - `}</>}
+                        {elem.ariiLocationCode&&<> {`${elem.ariiLocationCode}`}</> }
+                        {elem.depDate&&<> {`| ${elem.depDate}`}</> }
                     </h3>
                     <div style={{display:"flex", borderBottom:"dotted 1px black", paddingLeft:"21px" }}>
-                        {eachFlightDetail("From:", flightData[i].depLocation, "18%")}
-                        {eachFlightDetail("To:", flightData[i].arriLocation, "18%")}
-                        {eachFlightDetail("Airline:", flightData[i].airline, "15%")}
-                        {eachFlightDetail("Flight#:", flightData[i].flightNumb, "12%")}
-                        {eachFlightDetail("Time:", flightData[i].depTime, "15%")}
-                        {eachFlightDetail("Conf. #:", flightData[i].confNumber, "12%")}
+                        {eachFlightDetail("From:", elem.depLocation, "18%")}
+                        {eachFlightDetail("To:", elem.arriLocation, "18%")}
+                        {eachFlightDetail("Airline:", elem.airline, "15%")}
+                        {eachFlightDetail("Flight#:", elem.flightNumb, "12%")}
+                        {eachFlightDetail("Time:", elem.depTime, "15%")}
+                        {eachFlightDetail("Conf. #:", elem.confNumber, "12%")}
                     </div>
             </React.Fragment> )
 
@@ -502,7 +502,6 @@ export function TourDisplayer(props){
         return(<>
             {accordionDisplayer("Day by Day", theDays, true)}
             <br/>
-
         </>)
     }
     function Imagedisp(props){
@@ -784,6 +783,7 @@ export function TourDisplayer(props){
 
                     <div className={styles.sectionTitles}> &nbsp;Overview</div>
                         {dayByDaydisp(aTour.dayByDay, true)}</>}
+
                     {aTour.included.length>0&&<>
                     <div className={styles.pageBreak}></div>
                     <div className={styles.sectionTitles}>&nbsp;additional information</div>
