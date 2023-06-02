@@ -28,6 +28,7 @@
     "bcryptjs": "^2.4.3",
     "dayjs": "^1.11.3",
     "mongodb": "^4.1.4",
+    "nanoid": "^4.0.2",
     "next": "^12.1.0",
     "next-auth": "^4.10.3",
     "next-connect": "^0.13.0",

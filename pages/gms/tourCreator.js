@@ -1,5 +1,7 @@
 import React, { useState, useEffect  } from "react";
 import { useRouter } from 'next/router'
+import { nanoid } from 'nanoid'
+
 
 // components
 import { useSession, signIn, signOut } from "next-auth/react"
@@ -46,7 +48,7 @@ let tourDiff =[1,2,3,4,5]
 // password and auth protected route, 
 // tour details: 
     // tour name, duration, destination, tourType, startingLoc, difficulty
-    // DayByDay: with day title, includions, description, hotel
+    // DayByDay: with day title, includions, description, hotel, flights, guides
     // inclusions, exclusions     
     // Image selection per itinerary
 
@@ -69,6 +71,7 @@ let tourDiff =[1,2,3,4,5]
         "imgArr":[],
         "included":[],
         "notIncluded":[],
+        "shortenedURL":nanoid(7)
     })
     const [textPlaceholder, setTxtPlaceholder]=useState("")
     const [textPlaceholder2, setTxtPlaceholder2]=useState("")

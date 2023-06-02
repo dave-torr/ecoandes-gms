@@ -426,14 +426,14 @@ export function TourDisplayer(props){
                         {eachFlightDetail("From:", elem.depLocation, "18%")}
                         {eachFlightDetail("To:", elem.arriLocation, "18%")}
                         {eachFlightDetail("Airline:", elem.airline, "15%")}
-                        {eachFlightDetail("Flight#:", elem.flightNumb, "12%")}
+                        {eachFlightDetail("Flight#:", elem.flightNumb, "15%")}
                         {eachFlightDetail("Time:", elem.depTime, "15%")}
-                        {eachFlightDetail("Conf. #:", elem.confNumber, "12%")}
+                        {eachFlightDetail("Conf. #:", elem.confNumber, "15%")}
                     </div>
             </React.Fragment> )
 
             return(<>
-                {flightData&&<> 
+                {flightData.length>0&&<> 
                     <div className={styles.dayInclusionCont}>
                         <h4>flight info</h4>
                         {multiFlightDataDisp}
@@ -450,7 +450,7 @@ export function TourDisplayer(props){
             //     "guideCategory":"Naturalist Category I"
             // }
 
-            if(guideData){
+            if(guideData.length>0){
                 let eachGuideData=guideData.map((elem, i)=><React.Fragment key={i}> 
                     {elem.guideName&&<strong>{elem.guideName}</strong>}
                     {elem.guideCategory&&<> &nbsp; &nbsp; | &nbsp; &nbsp; {elem.guideCategory}</>}

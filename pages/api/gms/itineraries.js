@@ -46,9 +46,9 @@ async function handler(req, res){
             res.status(200).json(fetchedIts)
             client.close();
         }
-
     }
-    // fetch all itins (then filter per user)
+    
+    // fetch all active itins
     else if (req.method==="GET"){ 
         const client = await connectToDatabase();
         
@@ -64,7 +64,6 @@ async function handler(req, res){
             client.close();
         }
     }
-
     // edit itins
     else if (req.method==="DELETE"){ 
         const client = await connectToDatabase();
