@@ -490,9 +490,9 @@ export function TourDisplayer(props){
                     <div style={{textAlign:"justify"}}>
                     {elem.dayDescription}</div>
                     {dayInclDisp(elem.dayInclusions)}
-                    {guideDataDisp(elem.guideData)}
                     {hotelDetailDisp(elem.overnightProperty)}
-                    {flightDataDisp(elem.flightData)}
+                    {elem.guideData&&<>{guideDataDisp(elem.guideData)}</>}
+                    {elem.flightData&&<>{flightDataDisp(elem.flightData)}</>}
                     {dayNotices(elem)} 
                     {trekDataDisp(elem.trekData)}
                 </AccordionDetails>
