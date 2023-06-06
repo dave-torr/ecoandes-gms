@@ -11,7 +11,5 @@ export default async (req,res)=>{
         .collection("hotelDB")
         .find({})
         .toArray();
-
-    console.log(hotelRecords)
     res.json(hotelRecords)
 }

@@ -92,7 +92,6 @@ export function UserSignupModal(props){
             body: stringifiedUserMod
         })
         const userSignup = await res.json()
-        console.log(userSignup)
         if(res.status===201){
             window.alert("User Created!")
             props.setModalController(false)

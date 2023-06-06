@@ -9,7 +9,6 @@ import CurrentImageData from "./../../data/itinImages.json"
 import LTCData from "../../data/dataAndTemplates.json"
 
 import styles from "./../../styles/pages/pix.module.css"
-import { Select } from '@mantine/core';
 
 // Pix page
 // manage, organize and cataloge pictures. Images hosted on OneDrive, with 21.1 x 10 ratio
