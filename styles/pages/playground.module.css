@@ -23,7 +23,6 @@
     padding: 6px 9px;
     background-color: rgba(128, 254, 143, 0.273);
     margin-top: 6px;
-    font-size: 1.3em;
     width: 100%;
 }
 
@@ -36,6 +35,8 @@
     letter-spacing: 1px;
     text-transform: uppercase;
 }
+
+
 
 .multiOptsCont{
     display: flex;
@@ -60,15 +61,15 @@
 }
 
 .addToListBTN{
-    width: 55px;
+    /* width: 55px; */
     border-left: solid 3px black;
     border-bottom: solid 3px black;
     height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: 600;
-    font-size: 2em;
+    /* font-weight: 600; */
+    /* font-size: 2em; */
     margin: 0 9px;
     cursor: pointer;
 }
@@ -145,4 +146,56 @@
     width: fit-content;
     padding: 9px 12px;
     color: white;
+}
+
+
+
+.expenseForm{
+
+    font-size: 0.9em;
+}
+
+.aDataRow{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.aPriceColumn{
+    display: flex;
+    flex-direction: column;
+    border-left: dotted 1px black;
+    padding: 7px 2px;
+}
+
+.priceDataRow{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 9px 0;
+    border-top: solid 1px black;
+    border-bottom: solid 1px black;
+    cursor: pointer;
+}
+
+.secondaryBTN{
+    margin: 9px 0;
+    padding: 9px 21px;
+    border: none;
+    width: 100%;
+    text-align: end;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    color: white;
+    background-color: rgb(59, 153, 166);
+    letter-spacing: 2px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.anExpenseDisp{
+    border: solid 1px black;
+    width: 96%;
+    margin: 15px;
+    
 }

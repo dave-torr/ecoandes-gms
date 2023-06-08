@@ -1,0 +1,240 @@
+{
+    "guideServices":[
+        {
+            "currency":"usd",
+            "expenseKey": "guideExpense", 
+            "pricekey": "fullDayServiceGALAPAGOS",
+            "price": 180,
+            "priceDetail": "Full Day Service, GNP",
+            "paxLimit": 16
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "guideExpense", 
+            "pricekey": "fullDayServiceGALAPAGOSALT",
+            "price": 250,
+            "priceDetail": "Full Day Service, GNP | ALT LANG",
+            "paxLimit": 16
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "guideExpense", 
+            "pricekey": "transferServiceLANG",
+            "price": 60,
+            "priceDetail": "Transfer Service ALT LANG.",
+            "paxLimit": 16
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "guideExpense", 
+            "pricekey": "transferService",
+            "priceArr": [35, 35, 35, 35, 40, 40, 40, 40, 40, 45, 45, 45, 45, 45, 45, 45],
+            "priceDetail": "Transfer IN/OUT Service",
+            "paxLimit": 16
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "guideExpense", 
+            "pricekey": "halfDayService",
+            "priceArr": [40, 40, 40, 40, 45, 45, 45, 45, 45, 50, 50, 50, 50, 50, 50, 50],
+            "priceDetail": "HALF DAY: City Tour / Teleferico / Mitad del Mundo ",
+            "paxLimit": 16
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "guideExpense", 
+            "pricekey": "halfDayServiceLANG",
+            "price": 60,
+            "priceDetail": "HALF DAY: City Tour / Teleferico / Mitad del Mundo ALT LANG",
+            "paxLimit": 16
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "guideExpense", 
+            "pricekey": "cityLineService",
+            "priceArr": [50, 50, 50, 50, 55, 55, 55, 55, 55, 60, 60, 60, 60, 60, 60, 60],
+            "priceDetail": "City Line / City Line Lunch",
+            "paxLimit": 16
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "guideExpense", 
+            "pricekey": "cityLineServiceLANG",
+            "price": 80,
+            "priceDetail": "City Line / City Line Lunch ALT LANG",
+            "paxLimit": 16
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "guideExpense", 
+            "pricekey": "fullDayService",
+            "priceArr": [60, 60, 60, 60, 65, 65, 65, 65, 65, 70, 70, 70, 70, 70, 70, 70],
+            "priceDetail": "Full Day: Quito / Overnight",
+            "paxLimit": 16
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "guideExpense", 
+            "pricekey": "fullDayServiceLANG",
+            "price": 120,
+            "priceDetail": "Full Day: Quito / Overnight ALT LANG",
+            "paxLimit": 16
+        },
+
+
+        {
+            "currency":"usd",
+            "expenseKey": "guideExpense", 
+            "pricekey": "mealBudget",
+            "priceDetail": "Lunch and Dinner Budget",
+            "price": 12
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "guideExpense", 
+            "pricekey": "mealBudget",
+            "priceDetail": "Dinner Budget",
+            "price": 6
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "guideExpense", 
+            "pricekey": "mealBudget",
+            "priceDetail": "Lunch Budget",
+            "price": 6
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "guideExpense", 
+            "pricekey": "mealBudget",
+            "priceDetail": "Galapagos Dinner Budget",
+            "price": 8
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "guideExpense", 
+            "pricekey": "mealBudget",
+            "priceDetail": "Galapagos Lunch Budget",
+            "price": 8
+        },
+
+
+        {
+            "currency":"usd",
+            "expenseKey": "guideExpense", 
+            "pricekey": "accommodationBudget",
+            "priceDetail": "Continental accommodation budget",
+            "price": 20
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "guideExpense", 
+            "pricekey": "accommodationBudget",
+            "priceDetail": "Cuenca, Guayaquil, Pto. Lopez accommodation budget",
+            "price": 25
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "guideExpense", 
+            "pricekey": "accommodationBudget",
+            "priceDetail": "Galapagos accommodation budget",
+            "price": 30
+        }
+
+
+    ],
+    "driverGuideServices":[
+        {
+            "currency":"usd",
+            "expenseKey": "guideExpense", 
+            "pricekey": "driGuideTransfer",
+            "price": 60,
+            "priceDetail": "DRIVER GUIDE: Transfer Service",
+            "paxLimit": 3
+        }, 
+        {
+            "currency":"usd",
+            "expenseKey": "guideExpense", 
+            "pricekey": "driGuideHalfDay",
+            "price": 70,
+            "priceDetail": "DRIVER GUIDE: Half Day: City Tour, Mitad del Mundo / Teleferico",
+            "paxLimit": 3
+        }, 
+        {
+            "currency":"usd",
+            "expenseKey": "guideExpense", 
+            "pricekey": "driGuideCityLine",
+            "price": 100,
+            "priceDetail": "DRIVER GUIDE: City Linea",
+            "paxLimit": 3
+        }, 
+        {
+            "currency":"usd",
+            "expenseKey": "guideExpense", 
+            "pricekey": "driGuideFullDay",
+            "price": 130,
+            "priceDetail": "DRIVER GUIDE: Full Day / Overnight",
+            "paxLimit": 3
+        }
+    ],
+    "adventureGuides":[
+        {
+            "currency":"usd",
+            "expenseKey": "guideExpense", 
+            "pricekey": "fullDayServiceMOUNTAIN",
+            "price": 134.40,
+            "priceDetail": "Trekking/Climbing: Ruco | Pasochoa | Guagua | Rumiñahui ",
+            "paxLimit": 2
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "guideExpense", 
+            "pricekey": "fullDayServiceMOUNTAIN",
+            "price": 150.58,
+            "priceDetail": "Climbing: Cotopaxi, Cayambe, Carihuarazo, Iliniza Norte",
+            "paxLimit": 2
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "guideExpense", 
+            "pricekey": "fullDayServiceMOUNTAIN",
+            "price": 168,
+            "priceDetail": "Climbing: Chimborazo, Antizana, Iliniza Sur",
+            "paxLimit": 2
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "guideExpense", 
+            "pricekey": "fullDayServiceMOUNTAIN",
+            "price": 201.60,
+            "priceDetail": "Climbing: Chimborazo (Pico Nicolas), Antizana Pico Sur, Altar",
+            "paxLimit": 2
+        }
+    ],
+    "nativeGuides":[
+        {
+            "currency":"usd",
+            "expenseKey": "guideExpense", 
+            "pricekey": "nativeGuide",
+            "price": 55,
+            "priceDetail": "Native Guide: Cajas",
+            "paxLimit": 16
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "guideExpense", 
+            "pricekey": "nativeGuide",
+            "price": 50,
+            "priceDetail": "Native Guide: Cotopaxi | Chimborazo",
+            "paxLimit": 16
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "guideExpense", 
+            "pricekey": "nativeGuide",
+            "price": 45,
+            "priceDetail": "Native Guide: Cuicocha",
+            "paxLimit": 16
+        }
+    ]
+}

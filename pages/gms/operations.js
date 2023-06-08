@@ -85,7 +85,7 @@ import styles from "../../styles/pages/operations.module.css"
       "Ikala Galapagos"
     ],
     "guides":{
-
+      
     },
     "transport":{
 
@@ -124,6 +124,67 @@ export default function OperationsDashboard(){
   // Generate opDocs, roomingLists, automatic emails for providers.  
 
 
+
+
+  // OPERATIONS DOCUMENTS:
+  // - ORDEN DE TRABAJO:
+  //  - - General Doc Data:
+  //  - - - Date
+  //  - - - from
+  //  - - - group code
+  //  - - - pax numb
+  //  - - - for (guide/transport)
+
+  //  - - Operational notices
+
+  //  - Requested Dates   DyRen
+
+  //  - Rooming List  DyRen
+  //  - - each pax comments, DOB, Nationality, Room type
+
+  //  - Day By Day    DyRen
+  //  - - - filtered by guide / transport for only needed days
+  //  - - - day title, description, dailyExpenseArr, with alt display for each type of cost:
+  //  - - - let expenseKeyArr = ["guideExpense", "transportExpense", "hotelExpense", "fAndBExpense", "attractionExpense", "otherExpenses" ]
+  //  - - - 
+  
+  let expenseObj = { 
+    // defaults
+    // "expenseKey": The keys , 
+
+
+    // // "hotelExpense"
+    // "expenseKey": "hotelExpense", 
+    "propertyName":"Ikala Galapagos Hotel", 
+    // "price":200, 
+    "priceKey": "doubleRoom",
+    "location":"Tomas de Berlanga & Moises Brito, Puerto Ayora, Galapagos",
+    "phoneNumber":"05 252 6133",
+    // "specialRooming":[],
+    // "accommodationNotes": ""
+
+
+    // // guideExpenses:
+    "expenseKey": "guideExpense", 
+    "currency":"usd",
+    "pricekey": "fullDayService",
+    "guideName": "David Torres",
+    "guidePhoneNumber": "0986222700",
+    "guideCategory": "Galapagos Naturalist",
+    "priceDetail": "Pick Up From airport + Highland Ranches",
+    "price": 180,
+
+    }
+
+  
+
+
+  //  - - - - pass through filtering, adding and disp functions, with switch statement.
+  // - - - when analizing data, add guide contacts to a "tourGuideArr", and produce work order for each guide
+  // same with transport providers
+
+
+
   let toDate= new Date()
 
 
@@ -135,6 +196,34 @@ export default function OperationsDashboard(){
 
   // general stateUtils
   const [loadingTrigger, setLoadingTrig]=useState(true)
+
+
+
+
+  const [anExpense, setAnExpense]=useState({
+    // defaults:
+    "currency":"usd",
+    "additionalDescription": "",
+    "expenseKey": null, 
+    "contactName": null,
+    "contactNumb": null,
+
+    // alternatives
+    // key = "price" || "priceArr"
+
+    
+
+
+  })
+
+
+
+
+
+
+
+
+
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////

@@ -134,24 +134,37 @@ export function multiOptPicker(theOptsArr, inputLabel, inputId, resultingList, a
     </>)
 }
 // simple optPicker
-export function aDropdownPicker(theOptsArr, inputLabel, inputId, anObject, setAnObject ){
-    let theOptions=theOptsArr.map((elem,i)=><React.Fragment key={i}> 
-        <option value={elem}> {elem} </option></React.Fragment>)
+export function aDropdownPicker(theOptsArr, inputLabel, inputId, anObject, setAnObject, optLabelArr, inputLabelSwitch ){
+
+    let theOptions
+
+    if (optLabelArr){
+        theOptions=theOptsArr.map((elem,i)=><React.Fragment key={i}> 
+        <option value={elem}>{optLabelArr[i]} </option></React.Fragment>)
+    } else {
+        theOptions=theOptsArr.map((elem,i)=><React.Fragment key={i}> 
+        <option value={elem}>{elem}</option></React.Fragment>)
+    }
+
     return(<>
         <div className={styles.theInputContainer}>
             <div className={styles.anInputRow}>
                 <label htmlFor={inputId} className={styles.inputLabel}>   
                     {inputLabel}</label>
-                <i> &nbsp; - &nbsp; single option picker </i>
+                {inputLabelSwitch&&<><i> &nbsp; - &nbsp; single option picker </i></>} 
             </div>
             <select className={styles.inputUserUI}
-            placeholder="cucu"
             onChange={(e)=>{
                 e.preventDefault()
+                    if(inputId){
+
                     setAnObject({
                         ...anObject,
                         [inputId]: e.target.value
                     })
+                    } else {
+                        setAnObject(e.target.value)
+                    }
                 }}> 
                 <option disabled selected > Select a {inputLabel}</option>
                 {theOptions}
