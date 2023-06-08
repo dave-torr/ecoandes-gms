@@ -150,8 +150,8 @@
 
 
 
-.expenseForm{
 
+.expenseForm{
     font-size: 0.9em;
 }
 
@@ -159,6 +159,7 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
+    align-items: center;
 }
 
 .aPriceColumn{
@@ -195,7 +196,19 @@
 
 .anExpenseDisp{
     border: solid 1px black;
+    border-top: none;
     width: 96%;
-    margin: 15px;
-    
+    margin: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    padding: 6px;
+    font-size: 0.9em;
+}
+
+.addContactBTN{
+    border-radius: 10px;
+    padding: 9px 12px;
+    width: fit-content;
+    margin-left: 12px;
+    border: solid 2px black;
 }

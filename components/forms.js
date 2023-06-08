@@ -57,9 +57,15 @@ export function anInputDisplayer(inputLabel, inputId, inputType, isReq, inputPla
                 onFocus={(e)=>{e.target.value=""}}
                 onChange={(e)=>{
                     e.preventDefault()
+                    let theValue
+                    if(inputType==="number"){
+                        theValue = parseInt(e.target.value)
+                    } else {
+                        theValue = e.target.value
+                    }
                     setAnObject({
                         ...anObject,
-                        [inputId]:e.target.value
+                        [inputId]:theValue
                     })
                 }}
                 min={numbMin}
