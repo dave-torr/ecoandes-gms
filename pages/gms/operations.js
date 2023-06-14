@@ -94,7 +94,7 @@ import styles from "../../styles/pages/operations.module.css"
 
     ],
 
-    "startingDate": "6/1/2023",
+    "startingDate": "6/6/2023",
     "maxPaxNumb": 16,
     "duration": 6,
     "departureNotes":[
@@ -124,8 +124,6 @@ export default function OperationsDashboard(){
   // Generate opDocs, roomingLists, automatic emails for providers.  
 
 
-
-
   // OPERATIONS DOCUMENTS:
   // - ORDEN DE TRABAJO:
   //  - - General Doc Data:
@@ -148,7 +146,7 @@ export default function OperationsDashboard(){
   //  - - - let expenseKeyArr = ["guideExpense", "transportExpense", "hotelExpense", "fAndBExpense", "attractionExpense", "otherExpenses" ]
   //  - - - 
   
-  let expenseObj = { 
+  let sampleHotelExpenseObj = { 
     // defaults
     // "expenseKey": The keys , 
 
@@ -180,8 +178,8 @@ export default function OperationsDashboard(){
 
 
   //  - - - - pass through filtering, adding and disp functions, with switch statement.
-  // - - - when analizing data, add guide contacts to a "tourGuideArr", and produce work order for each guide
-  // same with transport providers
+  // - - - when analizing data, add provider to a "providerArr", and produce work order for each provider (expense Arr)
+  
 
 
 
@@ -211,9 +209,6 @@ export default function OperationsDashboard(){
     // alternatives
     // key = "price" || "priceArr"
 
-    
-
-
   })
 
 
@@ -236,16 +231,17 @@ export default function OperationsDashboard(){
     if(fetchedData){
       setFetchedDeps(fetchedData);
 
-      // filter for deps active today.
+      // filter for deps active today. upper limit defined by midnight end of day
       sampleDeparture.forEach(element => {
         let loweLimitDate=new Date(element.startingDate)
-        let upperLimitDate = addDays(element.startingDate, element.duration)
+        let upperLimitDate = addDays(element.startingDate, element.duration +1)
         if(toDate > loweLimitDate && upperLimitDate > toDate ){
-          setLoadingTrig(false)
+          //  filters out currently active voyages. 
           let tempArr = activeDeps.concat(element)
           setActiveDeps(tempArr)
         }
       })
+      setLoadingTrig(false)
     }
 
     const res2 = await fetch("/api/gms/itineraries",{
@@ -263,20 +259,51 @@ export default function OperationsDashboard(){
     return result;
   }
 
-
   const statsDisplatyer=(activeDepartures)=>{
     // sum up all current clients in Rooming List
     // = number of active clients.
-
     // sum active tours
 
-    console.log(activeDepartures, "active Deps at stats displayer")
+// summ all guests in rooming list
+    let clientGeneralSum = 0
+    activeDepartures.forEach((elem,i)=>{
+        elem.roomingList.forEach((elem)=>{
+          clientGeneralSum=clientGeneralSum+1
+          if(elem.guest2){
+            clientGeneralSum=clientGeneralSum+1
+          }
+        })
+    })
 
-    return(<>
-      <div className={styles.statsBar}> 
-        <h3>General Stats</h3>
-      </div>
-    </>)
+    const eachDataRow=(theDataKey, dataValue)=>{
+      return(<>
+        <div style={{ display: "flex", justifyContent:"space-between", padding:"0 6px" }}>
+          <h5> {theDataKey} </h5>
+          <h5> {dataValue} </h5>
+        </div>
+      </>)
+    }
+
+    return(<><div className={styles.statsBar}> 
+      {activeDepartures.length>0? <> 
+          <h3>General Statistics:</h3>
+          {eachDataRow("ACTIVE DEPARTURES:", activeDepartures.length )}
+          {eachDataRow("PAX TOTAL:", clientGeneralSum )}
+
+
+        {/* Weekly responsible contact */}
+        {/* List of active deps with links to each??? */}
+        {/* what other quick elems can we display? Nationality? */}
+
+      </>:<> 
+        <div className={styles.placeholderData}> 
+          <h3>There are currently</h3>
+          <h2><strong> NO DEPARTURES</strong></h2>
+          <h3>in operation</h3>
+          CREATE DEP BTN
+        </div>
+      </>}
+    </div></>)
   }
 
   const loadingScreen=(fetchingTitle)=>{
@@ -290,37 +317,50 @@ export default function OperationsDashboard(){
   }
     
 
+  const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+  let toDateFormatter= toDate.toLocaleDateString('en-GB', dateOptions)
+
+
   //////////////////////////////////////////////
   //////////////////////////////////////////////
+
+
   return(<>
-    {session? <> 
-      <GMSNavii user={session.user} />
-      <div className={styles.titleBar}>
-          <HubIcon fontSize="large" />
-          <h2>Latin Travel Collection</h2>
-          <h1>Operations</h1>
-      </div>
+    <div className={styles.aGMSPage}>
+      {session? <> 
+        <GMSNavii user={session.user} />
+        <div className={styles.titleBar}>
+            <HubIcon fontSize="large" />
+            <h2>Latin Travel Collection</h2>
+            <h1>Operations</h1>
+        </div>
+        <strong> &nbsp; {toDateFormatter}</strong>
 
 
-    <ul>
-      {/* <li> fetch aTourDeparture from DB </li> */}
-      <li> Create Stats page with current trips </li>
-      <li> if no departures exist, fetch itins from database and create dep.</li>
-      <li> Develop EcoAndes templates </li>
-    </ul>
+      <ul>
+        {/* <li> fetch aTourDeparture from DB </li> */}
+        <li> Create Stats page with current trips </li>
+        <li> if no departures exist, fetch itins from database and create dep.</li>
+        <li> Develop EcoAndes templates </li>
+      </ul>
 
 
-    {loadingTrigger? <>
-      {loadingScreen("Fetching Departure Data")}
-    </>:<> 
-      <div>
-        {/* Daily(monthly||weekly ) Planner */}
-        {statsDisplatyer(activeDeps)}
-      </div>
-    </>}
 
-    </>:<>
-      GMS Sgn in OPTS
-    </> }
+
+
+      {loadingTrigger? <>
+        {loadingScreen("Fetching Departure Data")}
+      </>:<> 
+        <div>
+          {/* Daily(monthly||weekly ) Planner */}
+          {statsDisplatyer(activeDeps)}
+        </div>
+      </>}
+
+      </>:<>
+        GMS Sgn in OPTS
+      </> }
+
+  </div>
   </>)
 }

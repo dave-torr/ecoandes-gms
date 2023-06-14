@@ -1,3 +1,8 @@
+.aGMSPage{
+    background-color: var(--whitesmoke-background);
+    min-height: 100vh;
+}
+
 .loadingStateScreen{
     display: flex;
     flex-direction: column;
@@ -23,15 +28,28 @@
 
 .statsBar{
     width: 300px;
-    background-color: whitesmoke;
     min-height: 30vh;
     box-shadow: var(--frst-box-shadow);
     margin: 12px 21px;
     padding: 12px 21px;
+    background-color: white;
+}
+
+.placeholderData{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 @media (max-width: 600px) {
     .statsBar{
-        width: 100%;
+        width: 93%;
     }
 }
+@media (max-width: 600px) {
+    .placeholderBar{
+        width: 93%;
+    }
+}
+

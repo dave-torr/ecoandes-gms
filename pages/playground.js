@@ -24,11 +24,111 @@ let catalogIndex={
     "driverGuideServices":"Driver Guides",
     "nativeGuides":"Native Guides",
     "guideServices":"Guide Services",
-
+    "galapagosVarCosts":"Galapagos Variable Costs",
+    "galapagosCharterCosts":"Galapagos Charters",
+    "galapagosDayTours":"Galapagos Day Tours",
+    "galapagosDiving":"Galapagos Diving Tours",
+    "maexgal":"Galapagos Luxury Island Hopping",
+    "continentalVarCosts":"Continetal Variable Costs",
 }
 
 
+ const sampleDeparture=[
+    {
+    "itineraryID": "quacks",
+    "tourCode":"TTT TIB 05 23",
+    "roomingList": [
+      {
+        "guest":{
+          "guestName": "Yeti Dicho",
+          "guestDOB": "10/28/1992",
+          "guestID": String,
+          "guestNotes": [
+            "Alergic to Peanuts",
+            "Vegetarian"
+          ],
+          "passport": "A256824",
+          "nationality": "Tibet",
+        },
+        "guest2":{
+          "guestName": "Mrs. Snow",
+          "guestDOB": "27/10/93",
+          "guestID": String,
+          "guestNotes": [
+          ],
+          "passport": "A256824",
+          "nationality": "Tibet",
+        },
+        "accomodationType": "twin",
+        "singleSupp": false,
+      },
+      {
+        "guest":{
+          "guestName": "Hegi Segara",
+          "guestDOB": "6/5/1942",
+          "guestID": String,
+          "guestNotes": [
+            "Alergic to Shrimp",
+          ],
+          "passport": "A256824",
+          "nationality": "Tibet",
+        },
+        "guest2":{
+          "guestName": "Majorne Kepecz",
+          "guestDOB": "6/7/95",
+          "guestID": String,
+          "guestNotes": [
+            "Gluten free"
+          ],
+          "passport": "A256824",
+          "nationality": "Tibet",
+        },
+        "accomodationType": "twin",
+        "singleSupp": false,
+      },
+      {
+        "guest":{
+          "guestName": "Mr.Bear Donoso",
+          "guestDOB": "8/15/1972",
+          "guestID": String,
+          "guestNotes": [
+            "Alergic to Peanuts",
+            "Vegetarian"
+          ],
+          "passport": "A256824",
+          "nationality": "Tibet",
+        },
+        "singleSupp": true,
+      }
+    ],
+    "hotelList":[
+      "Ikala Quito",
+      "Ikala Galapagos",
+      "Ikala Galapagos",
+      "Iguana Crossing",
+      "Ikala Galapagos"
+    ],
+    "guides":{
+      
+    },
+    "transport":{
 
+    },
+    "flights":[
+
+    ],
+
+    "startingDate": "6/6/2023",
+    "maxPaxNumb": 16,
+    "duration": 6,
+    "departureNotes":[
+      "group of birders, need early breakfasts",
+    ],
+    "clientObj":{
+      "clientName": "Tibetan Tours Trips",
+    }
+  }
+  ]
 
 // Bitacora logo:
 // import TrackChangesIcon from '@mui/icons-material/TrackChanges';
@@ -38,23 +138,28 @@ export default function PlaygroundPage(props){
     // ///////////////////////////////
     // ///////////////////////////////
 
+
+
+
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
 // operations calc
 
+    const [tempDayByDay, setDayByDay]=useState({
 
+    })
 
-    // Price Calculations
+    // calculations
     const [thePriceChart, setPriceChart]=useState(LTCPriceTables)
-
-
     const [expenseTrig, setExpTrig]=useState(false)
     const [priceChartKey, setPriceChartKey]=useState("")
     const [expenseArr, setExpenseArr]=useState([])
     const [anExpense, setAnExpense]=useState()
+    // providers
     const [providerArr, setProviderArr]=useState([])
-    
     const [contactTrig, setContactTrig]=useState(false)
+
+
     const expenseDisplayer=(theExpenseArr)=>{
         let eachExpense = theExpenseArr.map((elem, i)=> <React.Fragment key={i}>
             <div className={styles.anExpenseDisp}>
@@ -90,25 +195,17 @@ export default function PlaygroundPage(props){
         let theSecondLevel
 
         if(priceChartKey){
-
             theSecondLevel = priceChart[priceChartKey]
-
             theSecondLevel.forEach((elem, i) => {
                 priceChartKeyArrTwo.push(elem.priceKey)
             });
-
             theSecondLevel.forEach((elem, i) => {
-
                 optNameArr2.push(elem.priceDetail)
             });
-
             dropdownOpts= theSecondLevel.map((elem,i)=><React.Fragment key={i}> 
-                <option value={JSON.stringify(elem)}> 
-                {/* {console.log(elem, "here")}  */}
-                
+                <option value={JSON.stringify(elem)}>                 
                 {elem.priceDetail} </option>
             </React.Fragment>)
-
         }
 
         return(<>
@@ -288,7 +385,14 @@ export default function PlaygroundPage(props){
         }
     }
 
+    const anOperationsFileDisp=(theDep)=>{
 
+        
+
+        return(<>
+
+        </>)
+    }
 
     return(<>
 
@@ -305,14 +409,39 @@ export default function PlaygroundPage(props){
                 {/* <li> Receive and catalogue priceData from /LTCPriceTables2023 </li> */}
                 {/* <li> create dayByDay[i].expenseArr </li> */}
                 {/* <li> add anExpense to expenseArr   </li> */}
-                
-                
-                {/* <li> calculate prices from 1 to 32 pax </li> */}
-                <li> Add previously added contact functionality </li>
-                <li> Filter by provider name and display all services</li>
+                <li> add expenseArr to dayByDay </li>
+
+                <li> create a global expense arr from each day in aDeparture</li>
+                <dl> 
+                    <dt> Global Expense Arr</dt>
+                    <dd> Filter by provider name, create different docs from templates, and display each provider's services </dd>
+                    <dd> Req Economico per provider </dd>
+                </dl>
+
+                <li> Add additional expense functionality  </li>
+                <dl> 
+                    <dt> Hotel Expenses </dt>
+                    <dd> if eachDay.overnightProperty? add to contactList </dd>
+                    <dd> Can select room type, & set price per type </dd>
+                    <dd> Can select number of rooms per type </dd>
+                    <dd> Hotel name and address required </dd>
+                    <dd> feed hotel contact from prev hotels </dd>
+                </dl>
+                <dl> 
+                    <dt> variable expenses </dt>
+                    <dd> Fix price, numb of reqTickets, assigned contact </dd>
+                    <dd> provider name and address required </dd>
+                    <dd> feed provider contact from prev contacts </dd>
+                    <dd> Can be "entrance fees", "meal budget", "ferries", "other" </dd>
+                </dl>
+
+
+                bring in sampleDep, calculate number of pax in rooming list, use to calc variable prices. 
 
             
             </ul>
+
+            {/* Day by day elems */}
 
             {contactArrDisp(providerArr)}
 
