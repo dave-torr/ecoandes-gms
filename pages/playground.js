@@ -29,12 +29,11 @@ let catalogIndex={
     "galapagosDayTours":"Galapagos Day Tours",
     "galapagosDiving":"Galapagos Diving Tours",
     "maexgal":"Galapagos Luxury Island Hopping",
-    "continentalVarCosts":"Continetal Variable Costs",
+    "continentalVarCosts":"Continental Variable Costs",
 }
 
 
- const sampleDeparture=[
-    {
+ const sampleDeparture={
     "itineraryID": "quacks",
     "tourCode":"TTT TIB 05 23",
     "roomingList": [
@@ -59,7 +58,31 @@ let catalogIndex={
           "passport": "A256824",
           "nationality": "Tibet",
         },
-        "accomodationType": "twin",
+        "accomodationType": "matrimonial",
+        "singleSupp": false,
+      },
+      {
+        "guest":{
+          "guestName": "Yeti Michu",
+          "guestDOB": "10/28/1992",
+          "guestID": String,
+          "guestNotes": [
+            "Alergic to Peanuts",
+            "Vegetarian"
+          ],
+          "passport": "A256824",
+          "nationality": "Tibet",
+        },
+        "guest2":{
+          "guestName": "Mrs. Icicle",
+          "guestDOB": "27/10/93",
+          "guestID": String,
+          "guestNotes": [
+          ],
+          "passport": "A256824",
+          "nationality": "Tibet",
+        },
+        "accomodationType": "matrimonial",
         "singleSupp": false,
       },
       {
@@ -88,6 +111,40 @@ let catalogIndex={
       },
       {
         "guest":{
+          "guestName": "Hegi Segara",
+          "guestDOB": "6/5/1942",
+          "guestID": String,
+          "guestNotes": [
+            "Alergic to Shrimp",
+          ],
+          "passport": "A256824",
+          "nationality": "Tibet",
+        },
+        "guest2":{
+          "guestName": "Majorne Kepecz",
+          "guestDOB": "6/7/95",
+          "guestID": String,
+          "guestNotes": [
+            "Gluten free"
+          ],
+          "passport": "A256824",
+          "nationality": "Tibet",
+        },
+        "guest3":{
+          "guestName": "Third Guest",
+          "guestDOB": "6/7/98",
+          "guestID": String,
+          "guestNotes": [
+            "Gluten free"
+          ],
+          "passport": "A2664",
+          "nationality": "Malaysia",
+        },
+        "accomodationType": "triple",
+        "singleSupp": false,
+      },
+      {
+        "guest":{
           "guestName": "Mr.Bear Donoso",
           "guestDOB": "8/15/1972",
           "guestID": String,
@@ -96,7 +153,7 @@ let catalogIndex={
             "Vegetarian"
           ],
           "passport": "A256824",
-          "nationality": "Tibet",
+          "nationality": "Nepal",
         },
         "singleSupp": true,
       }
@@ -128,7 +185,7 @@ let catalogIndex={
       "clientName": "Tibetan Tours Trips",
     }
   }
-  ]
+  
 
 // Bitacora logo:
 // import TrackChangesIcon from '@mui/icons-material/TrackChanges';
@@ -145,9 +202,7 @@ export default function PlaygroundPage(props){
 /////////////////////////////////////////////////////
 // operations calc
 
-    const [tempDayByDay, setDayByDay]=useState({
-
-    })
+    const [tempDayByDay, setDayByDay]=useState()
 
     // calculations
     const [thePriceChart, setPriceChart]=useState(LTCPriceTables)
@@ -160,25 +215,86 @@ export default function PlaygroundPage(props){
     const [contactTrig, setContactTrig]=useState(false)
 
 
-    const expenseDisplayer=(theExpenseArr)=>{
-        let eachExpense = theExpenseArr.map((elem, i)=> <React.Fragment key={i}>
-            <div className={styles.anExpenseDisp}>
-                <div> {elem.priceDetail} </div>
-                <div style={{display:"flex"}}>      
-                {providerArr.length>1&&<><strong>{elem.contactName} </strong></>}<div style={{width:"44px", textAlign:"end"}}> $ {elem.price}</div></div>
-                
-            </div>
-        </React.Fragment>)
+    const paxStats=(theItin, setPxTotal, setRooming)=>{
 
-        if(theExpenseArr.length>0){
-        return(<>
-            Expenses:
-            <div className={styles.expenseGridDisp}>
-                {eachExpense}
-            </div>
-        </>)
+        // useEffect???
+
+        let paxTotal = 0
+        let roomObj= {
+            "singleRooms": 0,
+            "twinRooms":0,
+            "matrimonialRooms":0,
+            "tripleRooms":0,
+            "quadRooms":0,
         }
+        let nationalityArr=[]
+
+
+
+        // each guest loop
+        theItin.roomingList.forEach((elem)=>{
+            if(elem.guest){
+                paxTotal= paxTotal + 1;
+                const findContact = nationalityArr.find(element => element === elem.guest.nationality)
+                if(!findContact){nationalityArr.push(elem.guest.nationality)}
+            }
+            if(elem.guest2){
+                paxTotal= paxTotal + 1
+                const findContact = nationalityArr.find(element => element === elem.guest2.nationality)
+                if(!findContact){nationalityArr.push(elem.guest2.nationality)}
+            }
+            if(elem.guest3){
+                paxTotal= paxTotal + 1
+                const findContact = nationalityArr.find(element => element === elem.guest3.nationality)
+                if(!findContact){nationalityArr.push(elem.guest3.nationality)}
+            }
+            if(elem.guest4){
+                paxTotal= paxTotal + 1
+                const findContact = nationalityArr.find(element => element === elem.guest4.nationality)
+                if(!findContact){nationalityArr.push(elem.guest4.nationality)}
+            }
+            if(elem.singleSupp){
+                roomObj={
+                    ...roomObj,
+                    "singleRooms":roomObj.singleRooms + 1
+                }
+            }
+            if(elem.accomodationType==="twin"){
+                roomObj={
+                    ...roomObj,
+                    "twinRooms":roomObj.twinRooms + 1
+                }
+            }
+            if(elem.accomodationType==="matrimonial"){
+                roomObj={
+                    ...roomObj,
+                    "matrimonialRooms":roomObj.matrimonialRooms + 1
+                }
+            }
+            if(elem.accomodationType==="triple"){
+                roomObj={
+                    ...roomObj,
+                    "tripleRooms":roomObj.tripleRooms + 1
+                }
+            }
+            if(elem.accomodationType==="quad"){
+                roomObj={
+                    ...roomObj,
+                    "quadRooms":roomObj.quadRooms + 1
+                }
+            }
+
+        })
+
+        console.log("pax total:", paxTotal)
+        console.log("rooming:",  roomObj)
+        console.log("nationality:",  nationalityArr)
+
+        // setPxTotal(paxTotal)
+        // setRooming(roomObj)
     }
+
+
     const optCataloger=(priceChart)=>{
 
         let priceChartKeyArr = Object.keys(priceChart)
@@ -216,11 +332,19 @@ export default function PlaygroundPage(props){
 
                 <select  className={styles.inputUserUI} onChange={(e)=> {
                     let tempObj=JSON.parse(e.target.value)
-                    setAnExpense({
-                        ...tempObj,
-                        "contactName": null,
-                        "contactNumb": null,
+
+                    if(tempObj.contactName){
+                        setAnExpense({
+                            ...tempObj,
+                            "contactNumb": null,
                         })
+                    } else {
+                        setAnExpense({
+                            ...tempObj,
+                            "contactName": "Provider",
+                            "contactNumb": 100000,
+                        })
+                    }
                     }}>
                     <option disabled selected  > Select Expense Type </option>
                     {dropdownOpts}
@@ -271,8 +395,8 @@ export default function PlaygroundPage(props){
                 }}> + {elem.contactName} </div>
             </React.Fragment>)
         }
-            
-            return(<>
+        
+        return(<>
             <form className={styles.expenseForm} 
             onSubmit={(e)=>{
                 // add expense to day arr
@@ -303,17 +427,20 @@ export default function PlaygroundPage(props){
 
                 <div className={styles.aDataRow}>
 
-                {contactTrig? <>
-                    <div style={{width: "35%" }}>
+                    {/* <div style={{width: "35%"}}>
+                        <h3> CONTACT NAME</h3>
                         {theExpense.contactName} </div>
                     <div style={{width: "35%" }}>
-                        {theExpense.contactNumb} </div>
-                    </>:<>
+                        <h3> CONTACT NUMBER</h3>
+                        #0{theExpense.contactNumb} </div> */}
+
+                {/* {contactTrig? <></>:<></>} */}
+
+
                     <div style={{width: "35%" }}> 
-                        {anInputDisplayer("Contact Name", "contactName", "text", true, "Provider's Name", theExpense, setTheExpense)}</div>
+                        {anInputDisplayer("Contact Name*", "contactName", "text", false, theExpense.contactName, theExpense, setTheExpense)}</div>
                     <div style={{width: "35%" }}> 
-                        {anInputDisplayer("Contact #", "contactNumb", "number", false, "Provider's phone", theExpense, setTheExpense)}</div>
-                    </>}
+                        {anInputDisplayer("Contact #", "contactNumb", "number", false, theExpense.contactNumb, theExpense, setTheExpense)}</div>
                 
                    <div style={{width: "21%" }}>
                         {aDropdownPicker(currencyArr, "$", "currency", theExpense, setTheExpense, false, false)}</div> 
@@ -333,23 +460,61 @@ export default function PlaygroundPage(props){
                 </>}
 
 
-                <div style={{display: "flex", width: "100%", justifyContent: "space-between"}}>
+                <div style={{display: "flex", width:"100%", justifyContent:"space-between"}}>
                     <div style={{width: "70%" }}> 
                         {anInputDisplayer("Additional Description", "additionalDescription", "text", false, "Extra service details", theExpense, setTheExpense)}</div>
+                    
+                    {theExpense.expenseKey==="variableExpense"? <> 
+                    <div style={{width: "25%" }}> 
+                        {anInputDisplayer("# Required*", "varExpTickets", "number", true, "Tickets", theExpense, setTheExpense)}</div>
+                    </>:<>
                     <div style={{width: "25%" }}> 
                         {anInputDisplayer("max pax", "paxLimit", "number", false, theExpense.paxLimit, theExpense, setTheExpense)}</div>
+                    </>}
+
                 </div>
-                <input className={styles.secondaryBTN} type="submit" value="Add Expense to Day =>" />
+                <input className={styles.secondaryBTN} type="submit" value="Add Expense to Day +" />
             </form>
         </>)
         } 
     }
+    const expenseDisplayer=(theExpenseArr)=>{
+        let eachExpense = theExpenseArr.map((elem, i)=> <React.Fragment key={i}>
+            <div className={styles.anExpenseDisp}>
+                <div style={{width:"55%"}}> {elem.priceDetail} </div>
+                <div style={{display:"flex"}}>
+                {providerArr.length>1&&<><strong>
+                    {elem.contactName!="Provider"&&<>{elem.contactName}</>} |</strong></>}
+                <div style={{width:"27px", textAlign:"end"}}> {elem.varExpTickets&& <>{elem.varExpTickets} x </>} </div>
+                <div style={{width:"66px", textAlign:"end"}}> $ {elem.price}</div></div>
+                
+            </div>
+        </React.Fragment>)
+
+        if(theExpenseArr.length>0){
+        return(<>
+            Expenses:
+            <div className={styles.expenseGridDisp}>
+                {eachExpense}
+            </div>
+        </>)
+        }
+    }
+    // per day
     const totalsAdder=(theExpenseArr)=>{
         let adderNumb = 0
 
         if(theExpenseArr.length>0){
             theExpenseArr.forEach((elem)=>{
-                adderNumb= adderNumb + elem.price
+
+                // if varExpense, multiply elem.price*varExpTickets
+                if(elem.expenseKey==="variableExpense"){
+                    adderNumb = adderNumb + (elem.price * elem.varExpTickets)
+                } else {
+
+                    adderNumb= adderNumb + elem.price
+
+                }
             })
 
             return(<>
@@ -363,7 +528,6 @@ export default function PlaygroundPage(props){
     }
     const contactArrDisp=(theArr)=>{
         if(theArr.length>0){
-
             const guideTypeSwitcher=(theKey)=>{
                 switch (theKey) {
                     case "guideExpense":
@@ -371,11 +535,10 @@ export default function PlaygroundPage(props){
                         
                 }
             }
-
             let eachContact=theArr.map((elem, i)=><React.Fragment key={i}>
                 <div className={styles.anExpenseDisp}>
                     <div><strong>{elem.contactName}</strong> {guideTypeSwitcher(elem.expenseKey)}</div>
-                    {elem.contactNumb&&<><div> # {elem.contactNumb}</div></>}
+                    {elem.contactNumb!=100000 &&<><div> # 0{elem.contactNumb}</div></>}
                 </div>
             </React.Fragment> )
             return(<>
@@ -385,14 +548,25 @@ export default function PlaygroundPage(props){
         }
     }
 
-    const anOperationsFileDisp=(theDep)=>{
 
-        
 
-        return(<>
+    // const anOperationsFileDisp=(theDep)=>{
 
-        </>)
-    }
+
+
+    //     return(<>
+
+    //     </>)
+    // }
+
+
+
+
+
+
+
+    /////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////
 
     return(<>
 
@@ -411,7 +585,6 @@ export default function PlaygroundPage(props){
                 {/* <li> add anExpense to expenseArr   </li> */}
                 <li> add expenseArr to dayByDay </li>
 
-                <li> create a global expense arr from each day in aDeparture</li>
                 <dl> 
                     <dt> Global Expense Arr</dt>
                     <dd> Filter by provider name, create different docs from templates, and display each provider's services </dd>
@@ -427,14 +600,6 @@ export default function PlaygroundPage(props){
                     <dd> Hotel name and address required </dd>
                     <dd> feed hotel contact from prev hotels </dd>
                 </dl>
-                <dl> 
-                    <dt> variable expenses </dt>
-                    <dd> Fix price, numb of reqTickets, assigned contact </dd>
-                    <dd> provider name and address required </dd>
-                    <dd> feed provider contact from prev contacts </dd>
-                    <dd> Can be "entrance fees", "meal budget", "ferries", "other" </dd>
-                </dl>
-
 
                 bring in sampleDep, calculate number of pax in rooming list, use to calc variable prices. 
 
@@ -448,6 +613,8 @@ export default function PlaygroundPage(props){
             {expenseDisplayer(expenseArr)}
 
             {totalsAdder(expenseArr)}
+
+            {paxStats(sampleDeparture)}
 
             {expenseTrig?<> 
                 {optCataloger(thePriceChart)}

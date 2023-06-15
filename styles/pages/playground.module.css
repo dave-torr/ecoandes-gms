@@ -201,6 +201,7 @@
     margin: 0 15px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 6px;
     font-size: 0.9em;
 }
@@ -211,4 +212,5 @@
     width: fit-content;
     margin-left: 12px;
     border: solid 2px black;
+    cursor: pointer;
 }

@@ -80,8 +80,6 @@
             "priceDetail": "Full Day: Quito / Overnight ALT LANG",
             "paxLimit": 16
         },
-
-
         {
             "currency":"usd",
             "expenseKey": "guideExpense", 
@@ -117,8 +115,6 @@
             "priceDetail": "Galapagos Lunch Budget",
             "price": 8
         },
-
-
         {
             "currency":"usd",
             "expenseKey": "guideExpense", 
@@ -140,8 +136,6 @@
             "priceDetail": "Galapagos accommodation budget",
             "price": 30
         }
-
-
     ],
     "driverGuideServices":[
         {
@@ -211,106 +205,6 @@
             "paxLimit": 2
         }
     ],
-    "continentalVarCosts":[
-        {
-            "currency":"usd",
-            "expenseKey": "variableExpense", 
-            "pricekey": "UIOBasilicaEntFee",
-            "price": 4,
-            "priceDetail": "Basilica Entrance Fee"
-        },
-        {
-            "currency":"usd",
-            "expenseKey": "variableExpense", 
-            "pricekey": "UIOCompaniaEntFee",
-            "price": 5,
-            "priceDetail": "Compañia Entrance Fee"
-        },
-        {
-            "currency":"usd",
-            "expenseKey": "variableExpense", 
-            "pricekey": "UIOGuayasaminEntFee",
-            "price": 10,
-            "priceDetail": "Guayasamin Entrance Fee"
-        },
-        {
-            "currency":"usd",
-            "expenseKey": "variableExpense", 
-            "pricekey": "UIOAlabadoEntFee",
-            "price": 6,
-            "priceDetail": "El Alabado Entrance Fee"
-        },
-        {
-            "currency":"usd",
-            "expenseKey": "variableExpense", 
-            "pricekey": "UIOCatedralEntFee",
-            "price": 6,
-            "priceDetail": "Catedral Entrance Fee"
-        },
-        {
-            "currency":"usd",
-            "expenseKey": "variableExpense", 
-            "pricekey": "UIOPanecilloEntFee",
-            "price": 1.12,
-            "priceDetail": "PanEcillo Entrance Fee"
-        },
-        {
-            "currency":"usd",
-            "expenseKey": "variableExpense", 
-            "pricekey": "UIOSanFranEntFee",
-            "price": 4,
-            "priceDetail": "San Francisto Entrance Fee"
-        },
-        {
-            "currency":"usd",
-            "expenseKey": "variableExpense", 
-            "pricekey": "UIOIntinanEntFee",
-            "price": 5,
-            "priceDetail": "Intinan Entrance Fee"
-        },
-        {
-            "currency":"usd",
-            "expenseKey": "variableExpense", 
-            "pricekey": "UIOMitadDelMundoEntFee",
-            "price": 5,
-            "priceDetail": "Mitad del Mundo Entrance Fee"
-        },
-        {
-            "currency":"usd",
-            "expenseKey": "variableExpense", 
-            "pricekey": "UIOJardinBotanicoEntFee",
-            "price": 3.5,
-            "priceDetail": "Botanical Garden Entrance Fee"
-        },
-        {
-            "currency":"usd",
-            "expenseKey": "variableExpense", 
-            "pricekey": "UIOTelefericoEntFeeFOREIGNER",
-            "price": 9,
-            "priceDetail": "Teleferico Entrance Fee FOREIGNERS"
-        },
-        {
-            "currency":"usd",
-            "expenseKey": "variableExpense", 
-            "pricekey": "UIOTelefericoEntFeeNATIONAL",
-            "price": 5,
-            "priceDetail": "Teleferico Entrance Fee NATIONALS"
-        },
-        {
-            "currency":"usd",
-            "expenseKey": "variableExpense", 
-            "pricekey": "UIOQuitsatoEntFee",
-            "price": 5,
-            "priceDetail": "Quitsato Entrance Fee"
-        },
-        {
-            "currency":"usd",
-            "expenseKey": "variableExpense", 
-            "pricekey": "UIOCochasquiEntFee",
-            "price": 3,
-            "priceDetail": "Cochasqui Entrance Fee"
-        }
-    ],
     "nativeGuides":[
         {
             "currency":"usd",
@@ -337,69 +231,193 @@
             "paxLimit": 16
         }
     ],
+    "continentalVarCosts":[
+        {
+            "currency":"usd",
+            "expenseKey": "variableExpense", 
+            "pricekey": "UIOBasilicaEntFee",
+            "price": 4,
+            "priceDetail": "Basilica Entrance Fee",
+            "contactName":"Iglesia Basilica, Quito"
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "variableExpense", 
+            "pricekey": "UIOCompaniaEntFee",
+            "price": 5,
+            "priceDetail": "Compañia Entrance Fee",
+            "contactName":"La Compañia de Jesus, Quito"
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "variableExpense", 
+            "pricekey": "UIOGuayasaminEntFee",
+            "price": 10,
+            "priceDetail": "Guayasamin Entrance Fee",
+            "contactName":"Museo Guayasamin, Quito"
+            
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "variableExpense", 
+            "pricekey": "UIOAlabadoEntFee",
+            "price": 6,
+            "priceDetail": "El Alabado Entrance Fee",
+            "contactName":"Museo Casa del Alabado, Quito"
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "variableExpense", 
+            "pricekey": "UIOCatedralEntFee",
+            "price": 6,
+            "priceDetail": "Catedral Entrance Fee",
+            "contactName":"Catedral, Quito"
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "variableExpense", 
+            "pricekey": "UIOPanecilloEntFee",
+            "price": 1.12,
+            "priceDetail": "Panecillo Entrance Fee",
+            "contactName":"Panecillo, Quito"
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "variableExpense", 
+            "pricekey": "UIOSanFranEntFee",
+            "price": 4,
+            "priceDetail": "San Francisto Entrance Fee",
+            "contactName":"Iglesia San Francisco, Quito"
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "variableExpense", 
+            "pricekey": "UIOIntinanEntFee",
+            "price": 5,
+            "priceDetail": "Intinan Entrance Fee",
+            "contactName":"Museo Intinan, Quito"
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "variableExpense", 
+            "pricekey": "UIOMitadDelMundoEntFee",
+            "price": 5,
+            "priceDetail": "Mitad del Mundo Entrance Fee",
+            "contactName":"Mitad Del Mundo, Quito"
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "variableExpense", 
+            "pricekey": "UIOJardinBotanicoEntFee",
+            "price": 3.5,
+            "priceDetail": "Botanical Garden Entrance Fee",
+            "contactName":"Jardin Botanico, Quito"
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "variableExpense", 
+            "pricekey": "UIOTelefericoEntFeeFOREIGNER",
+            "price": 9,
+            "priceDetail": "Teleferico Entrance Fee FOREIGNERS",
+            "contactName":"Teleferiqo, Quito"
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "variableExpense", 
+            "pricekey": "UIOTelefericoEntFeeNATIONAL",
+            "price": 5,
+            "priceDetail": "Teleferico Entrance Fee NATIONALS",
+            "contactName":"Teleferiqo, Quito"
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "variableExpense", 
+            "pricekey": "UIOQuitsatoEntFee",
+            "price": 5,
+            "priceDetail": "Quitsato Entrance Fee",
+            "contactName":"Quitsato, Quito"
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "variableExpense", 
+            "pricekey": "UIOCochasquiEntFee",
+            "price": 3,
+            "priceDetail": "Cochasqui Entrance Fee",
+            "contactName":"Museo de Sitio,  Cochasqui"
+        }
+    ],
     "galapagosVarCosts":[
         {
             "currency":"usd",
             "expenseKey": "variableExpense", 
             "pricekey": "TCT",
             "price": 20,
-            "priceDetail": "TCT: Transit Control Card, per person"
+            "priceDetail": "TCT: Transit Control Card, per person",
+            "contactName":"Consejo de Gobierno, Galapagos"
         },
         {
             "currency":"usd",
             "expenseKey": "variableExpense", 
             "pricekey": "GNPForeignAdultEntFee",
             "price": 100,
-            "priceDetail": "Galapagos NP Entrance Fee: Adult Foreigner"
+            "priceDetail": "Galapagos NP Entrance Fee: Adult Foreigner",
+            "contactName":"GNP, Galapagos"
         },
         {
             "currency":"usd",
             "expenseKey": "variableExpense", 
             "pricekey": "GNPForeignChildEntFee",
             "price": 50,
-            "priceDetail": "Galapagos NP Entrance Fee: Child Foreigner"
+            "priceDetail": "Galapagos NP Entrance Fee: Child Foreigner",
+            "contactName":"GNP, Galapagos"
         },
         {
             "currency":"usd",
             "expenseKey": "variableExpense", 
             "pricekey": "GNPAndeanCommEntFee",
             "price": 50,
-            "priceDetail": "Galapagos NP Entrance Fee: Andean Community"
+            "priceDetail": "Galapagos NP Entrance Fee: Andean Community",
+            "contactName":"GNP, Galapagos"
         },
         {
             "currency":"usd",
             "expenseKey": "variableExpense", 
             "pricekey": "GNPEcuadorianEntranceFee",
             "price": 6,
-            "priceDetail": "Galapagos NP Entrance Fee: Ecuadorian"
+            "priceDetail": "Galapagos NP Entrance Fee: Ecuadorian",
+            "contactName":"GNP, Galapagos"
         },
         {
             "currency":"usd",
             "expenseKey": "variableExpense", 
             "pricekey": "ferryItabaca",
             "price": 50,
-            "priceDetail": "Ferry Itabaca Channel"
+            "priceDetail": "Ferry Itabaca Channel",
+            "contactName":"Ferries, Galapagos"
         },
         {
             "currency":"usd",
             "expenseKey": "variableExpense", 
             "pricekey": "dockWaterTaxi",
             "price": 1,
-            "priceDetail": "Water Taxi, per way. SCX, ISA, SBL"
+            "priceDetail": "Water Taxi, per way. SCX, ISA, SBL",
+            "contactName":"Cooperativa Taxis Acuaticos, Galapagos"
         },
         {
             "currency":"usd",
             "expenseKey": "variableExpense", 
             "pricekey": "dockWaterTaxiFLO",
             "price": 2,
-            "priceDetail": "Water Taxi, per way. FLO"
+            "priceDetail": "Water Taxi, per way. FLO",
+            "contactName":"Cooperativa Taxis Acuaticos, Galapagos"
         },
         {
             "currency":"usd",
             "expenseKey": "variableExpense", 
             "pricekey": "lobitoBus",
             "price": 5,
-            "priceDetail": "Lobito Baltra Bus, per way"
+            "priceDetail": "Lobito Baltra Bus, per way",
+            "contactName":"Lobito, Baltra, Galapagos"
         },
         {
             "currency":"usd",
@@ -413,21 +431,24 @@
             "expenseKey": "variableExpense", 
             "pricekey": "SCXDockTax",
             "price": 1,
-            "priceDetail": "Puerto Ayora Dock Tax. per usage"
+            "priceDetail": "Puerto Ayora Dock Tax. per usage",
+            "contactName":"Municipio Puerto Ayora, Galapagos"
         },
         {
             "currency":"usd",
             "expenseKey": "variableExpense", 
             "pricekey": "isabelaIslandEntFeeFOREIGNERS",
             "price": 10,
-            "priceDetail": "Isabela Entrance Fee: Foreigners"
+            "priceDetail": "Isabela Entrance Fee: Foreigners",
+            "contactName":"Municipio Puerto Villamil, Galapagos"
         },
         {
             "currency":"usd",
             "expenseKey": "variableExpense", 
             "pricekey": "isabelaIslandEntFeeNATIONALS",
             "price": 5,
-            "priceDetail": "Isabela Entrance Fee: Nationals"
+            "priceDetail": "Isabela Entrance Fee: Nationals",
+            "contactName":"Municipio Puerto Villamil, Galapagos"
         },
         {
             "currency":"usd",
@@ -448,21 +469,24 @@
             "expenseKey": "variableExpense", 
             "pricekey": "SCXHighlandRanchBuffet",
             "price": 36.6,
-            "priceDetail": "Buffet at Primicias"
+            "priceDetail": "Buffet at Primicias",
+            "contactName":"Rancho Primisias, Santa Cruz, Galapagos"
         },
         {
             "currency":"usd",
             "expenseKey": "variableExpense", 
             "pricekey": "SCXHighlandRanchLunch",
             "price": 23,
-            "priceDetail": "Lunch @ Chato"
+            "priceDetail": "Lunch @ Chato",
+            "contactName":"Rancho Chato, Santa Cruz, Galapagos"
         },
         {
             "currency":"usd",
             "expenseKey": "variableExpense", 
             "pricekey": "CDRS Entrance fee (no guide)",
             "price": 10,
-            "priceDetail": "Entrance Fee, Charles Darwin Research Station. No guide"
+            "priceDetail": "Entrance Fee, Charles Darwin Research Station. No guide",
+            "contactName":"PNG, Pto. Ayora, Galapagos"
         },
         {
             "currency":"usd",
@@ -470,7 +494,7 @@
             "pricekey": "AdrianaDayTour",
             "price": 5,
             "priceDetail": "Adriana: Wetsuit Rental",
-            "contactName":"Adriana"
+            "contactName":"Adriana Yacht"
         }
     ],
     "galapagosCharterCosts":[
@@ -479,7 +503,8 @@
             "expenseKey": "groupExpense", 
             "pricekey": "baggageWaterTaxiFLO",
             "price": 10,
-            "priceDetail": "Baggage Water Taxi FLOREANA"
+            "priceDetail": "Baggage Water Taxi FLOREANA",
+            "contactName":"Floreana Community, Galapagos"
         },
         {
             "currency":"usd",
@@ -487,7 +512,7 @@
             "pricekey": "scubaIguanaDivingCHARTER",
             "price": 1965.6,
             "priceDetail": "Scuba Iguana: DIVE CHARTER, 5px 1 guide",
-            "contactName":"Scuba Iguana",
+            "contactName":"Scuba Iguana, Pto. Ayora",
             "paxLimit": 5
         },
         {
@@ -496,7 +521,7 @@
             "pricekey": "scubaIguanaDivingCHARTER2",
             "price": 2402.4,
             "priceDetail": "Scuba Iguana: DIVE CHARTER, 6-10 px 2 guide",
-            "contactName":"Scuba Iguana",
+            "contactName":"Scuba Iguana, Pto. Ayora",
             "paxMin": 5,
             "paxLimit": 10
         },
@@ -506,7 +531,7 @@
             "pricekey": "tortugaTourDayTourISA",
             "price": 716.8,
             "priceDetail": "Tortuga Tour: Tintoreras Day Tour CHARTER",
-            "contactName":"Isgatur",
+            "contactName":"Isgatur Isabela, Galapagos",
             "paxLimit": 16
         },
         {
@@ -515,7 +540,7 @@
             "pricekey": "tortugaTourDayTourISA2",
             "price": 504,
             "priceDetail": "Tortuga Tour: Tintoreras Day Tour CHARTER no transport, no guide",
-            "contactName":"Isgatur",
+            "contactName":"Isgatur Isabela, Galapagos",
             "paxLimit": 16
         }
     ],
@@ -525,8 +550,8 @@
             "expenseKey": "GPSDayTour", 
             "pricekey": "SFDayTourBARTOLOME",
             "price": 204.47,
-            "priceDetail": "Santa Fe: Bartolome Day Tour",
-            "contactName":"Santa Fe",
+            "priceDetail": "SCX Santa Fe: Bartolome Day Tour",
+            "contactName":"Yacht Santa Fe",
             "paxLimit": 20
         },
         {
@@ -534,8 +559,8 @@
             "expenseKey": "GPSDayTour", 
             "pricekey": "SFDayTourSEYMOUR",
             "price": 194.65,
-            "priceDetail": "Santa Fe: Seymour North Day Tour",
-            "contactName":"Santa Fe",
+            "priceDetail": "SCX Santa Fe: Seymour North Day Tour",
+            "contactName":"Yacht Santa Fe",
             "paxLimit": 20
         },
         {
@@ -543,8 +568,8 @@
             "expenseKey": "GPSDayTour", 
             "pricekey": "SFDayTourPLAZAS",
             "price": 178.58,
-            "priceDetail": "Santa Fe: Plazas South Day Tour",
-            "contactName":"Santa Fe",
+            "priceDetail": "SCX Santa Fe: Plazas South Day Tour",
+            "contactName":"Yacht Santa Fe",
             "paxLimit": 20
         },
         {
@@ -552,8 +577,8 @@
             "expenseKey": "GPSDayTour", 
             "pricekey": "SFDayTourSANTAFE",
             "price": 178.58,
-            "priceDetail": "Santa Fe: Santa Fe Day Tour",
-            "contactName":"Santa Fe",
+            "priceDetail": "SCX Santa Fe: Santa Fe Day Tour",
+            "contactName":"Yacht Santa Fe",
             "paxLimit": 20
         },
         {
@@ -561,8 +586,8 @@
             "expenseKey": "GPSDayTour", 
             "pricekey": "AMDayTourPlazasCarrion",
             "price": 168,
-            "priceDetail": "Altamar: Plazas & Carrion Day Tour",
-            "contactName":"Altamar",
+            "priceDetail": "SCX Altamar: Plazas & Carrion Day Tour",
+            "contactName":"Yacht Altamar",
             "paxLimit": 20
         },
         {
@@ -570,8 +595,8 @@
             "expenseKey": "GPSDayTour", 
             "pricekey": "AMDayTourBartolomeSullivan",
             "price": 200,
-            "priceDetail": "Altamar: Bartolome and Sullivan Day Tour",
-            "contactName":"Altamar",
+            "priceDetail": "SCX Altamar: Bartolome and Sullivan Day Tour",
+            "contactName":"Yacht Altamar",
             "paxLimit": 20
         },
         {
@@ -579,8 +604,8 @@
             "expenseKey": "GPSDayTour", 
             "pricekey": "AMDayTourSeymourAndBachas",
             "price": 180,
-            "priceDetail": "Altamar: Seymour N & Bachas Day Tour",
-            "contactName":"Altamar",
+            "priceDetail": "SCX Altamar: Seymour N & Bachas Day Tour",
+            "contactName":"Yacht Altamar",
             "paxLimit": 20
         },
         {
@@ -588,8 +613,8 @@
             "expenseKey": "GPSDayTour", 
             "pricekey": "AMDayTourSantaFe",
             "price": 160,
-            "priceDetail": "Altamar: Santa Fe Day Tour",
-            "contactName":"Altamar",
+            "priceDetail": "SCX Altamar: Santa Fe Day Tour",
+            "contactName":"Yacht Altamar",
             "paxLimit": 20
         },
         {
@@ -597,8 +622,8 @@
             "expenseKey": "GPSDayTour", 
             "pricekey": "AdrianaDayTourBartolome",
             "price": 218.4,
-            "priceDetail": "Adriana: Bartolome Day Tour",
-            "contactName":"Adriana",
+            "priceDetail": "SCX Adriana: Bartolome Day Tour",
+            "contactName":"Yacht Adriana",
             "paxLimit": 16
         },
         {
@@ -606,8 +631,8 @@
             "expenseKey": "GPSDayTour", 
             "pricekey": "AdrianaDayTourSeymourMosquera",
             "price": 207.2,
-            "priceDetail": "Adriana: Seymour & Mosquera Day Tour",
-            "contactName":"Adriana",
+            "priceDetail": "SCX Adriana: Seymour & Mosquera Day Tour",
+            "contactName":"Yacht Adriana",
             "paxLimit": 16
         },
         {
@@ -615,8 +640,8 @@
             "expenseKey": "GPSDayTour", 
             "pricekey": "AdrianaDayTourCarrionPlazas",
             "price": 207.2,
-            "priceDetail": "Adriana: Punta Carrion & Plazas Day Tour",
-            "contactName":"Adriana",
+            "priceDetail": "SCX Adriana: Punta Carrion & Plazas Day Tour",
+            "contactName":"Yacht Adriana",
             "paxLimit": 16
         },
         {
@@ -624,8 +649,8 @@
             "expenseKey": "GPSDayTour", 
             "pricekey": "AdrianaDayTourSombreroChinoSullivan",
             "price": 218.4,
-            "priceDetail": "Adriana: Sombrero Chino & Sullivan Day Tour",
-            "contactName":"Adriana",
+            "priceDetail": "SCX Adriana: Sombrero Chino & Sullivan Day Tour",
+            "contactName":"Yacht Adriana",
             "paxLimit": 16
         },
         {
@@ -633,7 +658,7 @@
             "expenseKey": "GPSDayTour", 
             "pricekey": "chamacosBayTour",
             "price": 40,
-            "priceDetail": "Chamacos Tours: Bay Tour Puerto Ayora",
+            "priceDetail": "SCX Chamacos Tours: Bay Tour Puerto Ayora",
             "contactName":"Chamacos Tours",
             "paxLimit": 16
         },
@@ -642,8 +667,8 @@
             "expenseKey": "GPSDayTour", 
             "pricekey": "nautilusDayTourBarotolo",
             "price": 215,
-            "priceDetail": "Nautilus: Bartolome, Sulluvan",
-            "contactName":"Nautilus ",
+            "priceDetail": "SCX Nautilus: Bartolome, Sulluvan",
+            "contactName":"Catamaran Nautilus",
             "paxLimit": 16
         },
         {
@@ -651,8 +676,8 @@
             "expenseKey": "GPSDayTour", 
             "pricekey": "nautilusDayTourSeymour",
             "price": 180,
-            "priceDetail": "Nautilus: Seymour N & Bachas",
-            "contactName":"Nautilus",
+            "priceDetail": "SCX Nautilus: Seymour N & Bachas",
+            "contactName":"Catamaran Nautilus",
             "paxLimit": 16
         },
         {
@@ -660,8 +685,8 @@
             "expenseKey": "GPSDayTour", 
             "pricekey": "nautilusDayTourPlazasSurCarrion",
             "price": 180,
-            "priceDetail": "Nautilus: Plazas Sur & Carrion",
-            "contactName":"Nautilus",
+            "priceDetail": "SCX Nautilus: Plazas Sur & Carrion",
+            "contactName":"Catamaran Nautilus",
             "paxLimit": 16
         },
         {
@@ -669,8 +694,8 @@
             "expenseKey": "GPSDayTour", 
             "pricekey": "nautilusDayTourSantaFe",
             "price": 180,
-            "priceDetail": "Nautilus: Santa Fe",
-            "contactName":"Nautilus",
+            "priceDetail": "SCX Nautilus: Santa Fe",
+            "contactName":"Catamaran Nautilus",
             "paxLimit": 16
         },
         {
@@ -678,8 +703,8 @@
             "expenseKey": "GPSDayTour", 
             "pricekey": "isgaturDayTourISATintoreras",
             "price": 56,
-            "priceDetail": "Isgatur Tintoreras Day Tour ISA",
-            "contactName":"Isgatur",
+            "priceDetail": "ISA Isgatur Tintoreras Day Tour",
+            "contactName":"Isgatur Isabela, Galapagos",
             "paxLimit": 16
         },
         {
@@ -687,17 +712,17 @@
             "expenseKey": "GPSDayTour", 
             "pricekey": "isgaturDayTourISATuneles",
             "price": 56,
-            "priceDetail": "Isgatur Tuneles Day Tour ISA",
-            "contactName":"Isgatur",
+            "priceDetail": "ISA Isgatur Tuneles Day Tour",
+            "contactName":"Isgatur Isabela, Galapagos",
             "paxLimit": 10
         },
         {
             "currency":"usd",
             "expenseKey": "GPSDayTour", 
             "pricekey": "isgaturDayTourSierraNegraaNDLunch",
-            "priceDetail": "Isgatur Sierra Negra Day Tour + lunch",
+            "priceDetail": "ISA Isgatur Sierra Negra Day Tour + lunch",
             "prceArr":[60,60,60,60,120,120,120,120,160,160,160,160],
-            "contactName":"Isgatur",
+            "contactName":"Isgatur Isabela, Galapagos",
             "paxLimit": 16
         },
         {
@@ -705,8 +730,8 @@
             "expenseKey": "GPSDayTour", 
             "pricekey": "tortugaTourDayTourISA",
             "price": 50.4,
-            "priceDetail": "Tortuga Tour: Tintoreras Day Tour",
-            "contactName":"Isgatur",
+            "priceDetail": "ISA Tortuga Tour: Tintoreras Day Tour",
+            "contactName":"Isgatur Isabela, Galapagos",
             "paxLimit": 16
         },
         {
@@ -714,8 +739,8 @@
             "expenseKey": "GPSDayTour", 
             "pricekey": "tortugaTourDayTourISA2",
             "price": 50.4,
-            "priceDetail": "Tortuga Tour: Tintoreras Day Tour",
-            "contactName":"Isgatur",
+            "priceDetail": "ISA Tortuga Tour: Tintoreras Day Tour",
+            "contactName":"Isgatur Isabela, Galapagos",
             "paxLimit": 16
         },
         {
@@ -723,8 +748,8 @@
             "expenseKey": "GPSDayTour", 
             "pricekey": "wreckBayDayTourSBL",
             "price": 212.8,
-            "priceDetail": "Wreck Bay: Isla Espanola Day Tour",
-            "contactName":"Wrek Bay",
+            "priceDetail": "SBL Wreck Bay: Isla Espanola Day Tour",
+            "contactName":"Wreck Bay Diving",
             "paxLimit": 12
         },
         {
@@ -732,8 +757,8 @@
             "expenseKey": "GPSDayTour", 
             "pricekey": "wreckBayDayTourSBL2",
             "price": 123.2,
-            "priceDetail": "Wreck Bay: Leon Dormido Day Tour",
-            "contactName":"Wrek Bay",
+            "priceDetail": "SBL Wreck Bay: Leon Dormido Day Tour",
+            "contactName":"Wreck Bay Diving",
             "paxLimit": 12
         },
         {
@@ -741,8 +766,8 @@
             "expenseKey": "GPSDayTour", 
             "pricekey": "wreckBayDayTourSBL3",
             "price": 145.6,
-            "priceDetail": "Wreck Bay: Punta Pitt Day Tour",
-            "contactName":"Wrek Bay",
+            "priceDetail": "SBL Wreck Bay: Punta Pitt Day Tour",
+            "contactName":"Wreck Bay Diving",
             "paxLimit": 12
         },
         {
@@ -750,7 +775,7 @@
             "expenseKey": "GPSDivingTour", 
             "pricekey": "chalokickerRockDT",
             "price": 168.00,
-            "priceDetail": "Chalo Tours Day Tour: Kicker Rock, from SBL",
+            "priceDetail": "SBL Chalo Tours Day Tour: Kicker Rock",
             "contactName":"Chalo Tours"
         }
     ],
@@ -760,8 +785,8 @@
             "expenseKey": "GPSDivingTour", 
             "pricekey": "scubaIguanaDivingFunDive",
             "price": 218.4,
-            "priceDetail": "Scuba Iguana: Fun Dives",
-            "contactName":"Scuba Iguana",
+            "priceDetail": "SCX Scuba Iguana: Fun Dives",
+            "contactName":"Scuba Iguana, Pto. Ayora",
             "paxLimit": 10
         },
         {
@@ -769,8 +794,8 @@
             "expenseKey": "GPSDivingTour", 
             "pricekey": "scubaIguanaDivingDiscoveryDive",
             "price": 324.8,
-            "priceDetail": "Scuba Iguana: Discovery Dive",
-            "contactName":"Scuba Iguana",
+            "priceDetail": "SCX Scuba Iguana: Discovery Dive",
+            "contactName":"Scuba Iguana, Pto. Ayora",
             "paxLimit": 10
         },
         {
@@ -778,8 +803,8 @@
             "expenseKey": "GPSDivingTour", 
             "pricekey": "scubaIguanaDivingOpenWaterCert",
             "price": 873.6,
-            "priceDetail": "Scuba Iguana: Open Water PADI Cert",
-            "contactName":"Scuba Iguana",
+            "priceDetail": "SCX Scuba Iguana: Open Water PADI Cert",
+            "contactName":"Scuba Iguana, Pto. Ayora",
             "paxLimit": 10
         },
         {
@@ -787,8 +812,8 @@
             "expenseKey": "GPSDivingTour", 
             "pricekey": "scubaIguanaDivingAdvancedCert",
             "price": 929.6,
-            "priceDetail": "Scuba Iguana: Advanced PADI Cert",
-            "contactName":"Scuba Iguana",
+            "priceDetail": "SCX Scuba Iguana: Advanced PADI Cert",
+            "contactName":"Scuba Iguana, Pto. Ayora",
             "paxLimit": 10
         },
         {
@@ -796,7 +821,7 @@
             "expenseKey": "GPSDivingTour", 
             "pricekey": "ChaloKickerRockDiving",
             "price": 246.4,
-            "priceDetail": "Chalo Tours Diving Day Tour: Kicker Rock, from SBL",
+            "priceDetail": "SBL Chalo Tours Diving Day Tour: Kicker Rock",
             "contactName":"Chalo Tours"
         },
         {
@@ -804,8 +829,8 @@
             "expenseKey": "GPSDivingTour", 
             "pricekey": "wreckBEspanolaDivingDT",
             "price": 246.40,
-            "priceDetail": "Wreck Bay Diving DT: Espanola, from SBL",
-            "contactName":"Wreck Bay",
+            "priceDetail": "SBL Wreck Bay Diving DT: Espanola",
+            "contactName":"Wreck Bay Diving, Pto. Baquerizo",
             "paxLimit": 12
         },
         {
@@ -813,8 +838,8 @@
             "expenseKey": "GPSDivingTour", 
             "pricekey": "wreckBLeonDormidoDivingDT",
             "price": 168,
-            "priceDetail": "Wreck Bay Diving DT: Leon Dormido, from SBL",
-            "contactName":"Wreck Bay",
+            "priceDetail": "SBL Wreck Bay Diving DT: Leon Dormido",
+            "contactName":"Wreck Bay Diving, Pto. Baquerizo",
             "paxLimit": 12
         },
         {
@@ -822,8 +847,8 @@
             "expenseKey": "GPSDivingTour", 
             "pricekey": "wreckBPuntaPittDiving",
             "price": 190.4,
-            "priceDetail": "Wreck Bay Diving DT: Punta Pitt, from SBL",
-            "contactName":"Wreck Bay",
+            "priceDetail": "SBL Wreck Bay Diving DT: Punta Pitt",
+            "contactName":"Wreck Bay Diving, Pto. Baquerizo",
             "paxLimit": 12
         },
         {
@@ -831,8 +856,8 @@
             "expenseKey": "GPSDivingTour", 
             "pricekey": "wreckBTijeretasCaraguaDiving",
             "price": 156.8,
-            "priceDetail": "Wreck Bay Diving DT: Tijeretas, Caragua Wreck, from SBL",
-            "contactName":"Wreck Bay",
+            "priceDetail": "SBL Wreck Bay Diving DT: Tijeretas, Caragua Wreck",
+            "contactName":"Wreck Bay Diving, Pto. Baquerizo",
             "paxLimit": 12
         },
         {
@@ -840,8 +865,8 @@
             "expenseKey": "GPSDivingTour", 
             "pricekey": "wreckBayWhaleRockDiving",
             "price": 168,
-            "priceDetail": "Wreck Bay Diving DT: Wreck Bay, Roca Ballena, Caragua Wreck, from SBL",
-            "contactName":"Wreck Bay",
+            "priceDetail": "SBL Wreck Bay Diving DT: Wreck Bay, Roca Ballena, Caragua Wreck",
+            "contactName":"Wreck Bay Diving, Pto. Baquerizo",
             "paxLimit": 12
         },
         {
@@ -849,8 +874,8 @@
             "expenseKey": "GPSDivingTour", 
             "pricekey": "wreckBayNightDivingSBL",
             "price": 112,
-            "priceDetail": "Wreck Bay Diving DT: Night Dive, from SBL",
-            "contactName":"Wreck Bay",
+            "priceDetail": "SBL Wreck Bay Diving DT: Night Dive",
+            "contactName":"Wreck Bay Diving, Pto. Baquerizo",
             "paxLimit": 12
         }
     ],
