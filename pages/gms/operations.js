@@ -284,7 +284,8 @@ export default function OperationsDashboard(){
       </>)
     }
 
-    return(<><div className={styles.statsBar}> 
+    return(<>
+    <div className={styles.statsBar}> 
       {activeDepartures.length>0? <> 
           <h3>General Statistics:</h3>
           {eachDataRow("ACTIVE DEPARTURES:", activeDepartures.length )}
