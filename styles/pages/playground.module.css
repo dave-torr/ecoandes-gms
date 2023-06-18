@@ -61,15 +61,12 @@
 }
 
 .addToListBTN{
-    /* width: 55px; */
     border-left: solid 3px black;
     border-bottom: solid 3px black;
     height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* font-weight: 600; */
-    /* font-size: 2em; */
     margin: 0 9px;
     cursor: pointer;
 }
@@ -216,11 +213,22 @@
 }
 
 /* rooming List */
+.roomingListCont{
+    justify-content: center;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.roomingListCont h2{
+    width: 100%;
+    padding: 15px;
+}
 
 .roomingListGrid{
-    width: 748px;
+    width: 728px;
     margin: 9px;
     box-shadow: var(--frst-box-shadow);
+    font-size: 0.9em;
 }
 
 .eachRoomDisplayer{
@@ -230,6 +238,10 @@
     border-top: none;
     height: fit-content;
     text-align: center;
+}
+
+.eachRoomDisplayer  span{
+    padding: 3px;
 }
 
 .aRoomingDetail{
@@ -245,19 +257,6 @@
     padding: 6px 0;
 }
 
-
-
-
-.suppGuestData{
-    color: red;
-    font-weight: 700;
-    font-size: 0.8em;
-    text-transform: uppercase;
-    display: flex;
-    padding: 3px 6px;
-}
-
-
 .roomingGuestRow:last-of-type{
     border-bottom: unset;
 }
@@ -268,4 +267,57 @@
     display: flex;
     border: solid 1px black;
     border-bottom: solid 3px black;
+    padding: 9px 0;
+}
+
+.roomingListTotalCont{
+    border: solid 1px black;
+    padding: 12px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 0.9em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.detailDispl{
+    display: flex;
+    flex-wrap: wrap;
+    width: 740px;
+}
+
+.eachDetailCont{
+    width: calc(50% - 9px);
+    padding: 12px 21px;
+}
+
+.eachDetailTitle{
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.8em;
+}
+
+.eachDateCont{
+    width: calc(50% - 9px);
+    padding: 18px 21px;
+    border: solid 1px black;
+}
+
+.theDatesCont{
+    width: 740px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+@media (max-width: 740px) {
+
+    .detailDispl{
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
 }

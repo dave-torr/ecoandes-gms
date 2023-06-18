@@ -1033,5 +1033,41 @@
             "contactName":"Galapagos Elements - Maexgal",
             "paxLimit": 20
         }
+    ],
+    "ikalaHotels":[
+        {
+            "currency":"usd",
+            "expenseKey": "accommodation", 
+            "pricekey": "ikalaGPS",
+            "hotelName":"Ikala Galapagos Hotel",
+            "roomPriceArr": [
+                {
+                    "roomkey":"singleStandard",
+                    "roomDescription":"Single Standard Room",
+                    "price":180,
+                    "additionalBed":55
+                },
+                {
+                    "roomkey":"twinMatStandard",
+                    "roomDescription":"Twin or Matrimonial Standard Room",
+                    "price":220,
+                    "additionalBed":55
+                },
+                {
+                    "roomkey":"singleSuite",
+                    "roomDescription":"Single Suite Room",
+                    "price":230,
+                    "additionalBed":55
+                },
+                {
+                    "roomkey":"twinMatSuite",
+                    "roomDescription":"Twin or Matrimonial Suite Room",
+                    "price":250,
+                    "additionalBed":55
+                }
+            ],
+            "priceDetail": "Accomodation Ikala Galapagos Hotel - Pto. Ayora",
+            "contactName":"Ikala Galapagos Hotel"
+        }
     ]
 }
