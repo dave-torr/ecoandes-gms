@@ -7,15 +7,14 @@ import { Select } from '@mantine/core';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import CircularProgress from '@mui/material/CircularProgress';
 
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+
 import { aDropdownPicker, anInputDisplayer} from "../components/forms"
+import {GMSNavii} from "./../components/navis"
 
 import LTCPriceTables from "../data/LTCPriceTables2023.json"
 
-
-import {GMSNavii} from "./../components/navis"
-
 import styles from "./../styles/pages/playground.module.css"
-
 
 
 let catalogIndex={
@@ -425,6 +424,7 @@ export default function PlaygroundPage(props){
     const [expenseTrig, setExpTrig]=useState(false)
     const [expenseArr, setExpenseArr]=useState([])
     const [anExpense, setAnExpense]=useState()
+    const [dayIndex, setDayIndex]=useState()
 
     // providers
     const [providerArr, setProviderArr]=useState([])
@@ -432,7 +432,7 @@ export default function PlaygroundPage(props){
 
     useEffect(()=>{
         {paxStats(theDeparture, setPaxData)}
-        let tempContArr=[]
+        let tempContArr=[...providerArr]
         if(theDeparture){
         theDeparture.dayByDayExp.forEach((elem)=>{
             elem.forEach((element)=>{
@@ -450,7 +450,6 @@ export default function PlaygroundPage(props){
         })
         }
         setProviderArr(tempContArr)
-
     },[theDeparture])
 
 
@@ -586,11 +585,9 @@ export default function PlaygroundPage(props){
             </>}
         </>)
     }
-    const expenseEditor=(theExpense, setTheExpense, contactArr, dayIndex)=>{
+    const expenseEditor=(theExpense, setTheExpense, contactArr, dayIndx, theDep, setTheDep)=>{
         if(theExpense){ 
-
         let priceArrDispAndEditor
-
         if(theExpense.priceArr){
             let priceAndPx= theExpense.priceArr.map((elem,i)=> <React.Fragment key={i}>
             <div className={styles.aPriceColumn} onClick={()=>{
@@ -611,7 +608,6 @@ export default function PlaygroundPage(props){
                 {priceAndPx}
             </div></> 
         }
-
         let contactOpts
         if(contactArr.length>0){
             contactOpts=contactArr.map((elem,i)=><React.Fragment key={i}>
@@ -634,14 +630,22 @@ export default function PlaygroundPage(props){
         return(<>
             <form className={styles.expenseForm} 
             onSubmit={(e)=>{
-                // add expense to day arr
-                // dependent on index of arr elems
                 // send to back end 
+
                 e.preventDefault()
+                let updatingExpArr
+                if(theDep.dayByDayExp[dayIndx]){
+                    updatingExpArr=[...theDep.dayByDayExp[dayIndx]];
+                } else {
+                    updatingExpArr=[]
+                }
+                updatingExpArr.push(anExpense)
+                theDep.dayByDayExp.splice(dayIndx,1,updatingExpArr)
 
-                let tempArr = expenseArr.concat(anExpense)
-                setExpenseArr(tempArr)
-
+                setTheDep({
+                    ...theDep,
+                    "dayByDayExp": theDep.dayByDayExp
+                })
 
                 setPriceChartKey()
                 setTheExpense()
@@ -686,11 +690,9 @@ export default function PlaygroundPage(props){
                     <i> Please select a value:</i>
                     {priceArrDispAndEditor}
                 </>}
-
                 <div style={{display: "flex", width:"100%", justifyContent:"space-between"}}>
                     <div style={{width: "70%" }}> 
-                        {anInputDisplayer("Additional Description", "additionalDescription", "text", false, "Extra service details", theExpense, setTheExpense)}</div>
-                    
+                        {anInputDisplayer("Additional Description", "additionalDescription", "text", false, "Extra service details", theExpense, setTheExpense)}</div> 
                     {theExpense.expenseKey==="variableExpense"? <> 
                     <div style={{width: "25%" }}> 
                         {anInputDisplayer("#Needed", "varExpTickets", "number", true, paxData.paxTotal, theExpense, setTheExpense)}</div>
@@ -700,16 +702,11 @@ export default function PlaygroundPage(props){
                     </>}
                 </div>
                 </>}
-
                 <input className={styles.secondaryBTN} type="submit" value="Add Expense to Day +" />
             </form>
         </>)
         } 
     }
-
-
-
-
     const expenseDisplayer=(theExpenseArr, dayByDay)=>{
 
         const anExpenseDisp=(eachExp)=>{
@@ -736,8 +733,17 @@ export default function PlaygroundPage(props){
 
         let eachDayTitleExp=dayByDay.map((dayElem, i)=><>
         <React.Fragment key={i}>
-            <h4> Day {i+1}: {dayElem.dayTitle&&<>{dayElem.dayTitle}</>}</h4>
+            <div className={styles.dailyTitleCont}>  
+                <h4> Day {i+1}: {dayElem.dayTitle&&<>{dayElem.dayTitle}</>}</h4>
+                <div className={styles.addExpBTN} onClick={()=>{
+                    setExpTrig(true)
+                    setDayIndex(i)
+                }}>
+                    <AddCircleOutlineIcon/>
+                </div>
+            </div>
             {expenseMapper(theExpenseArr[i])}
+
         </React.Fragment>
         </>)
 
@@ -749,7 +755,6 @@ export default function PlaygroundPage(props){
             </div>
         </>)
         }
-
     }
     const totalsAdder=(theExpenseArr)=>{
         let adderNumb = 0
@@ -1055,6 +1060,16 @@ export default function PlaygroundPage(props){
             {/* Day by day elems */}
                 {theDeparture&& <>
                     {aFileDisplayer(theItinerary, theDeparture)}
+
+                {expenseTrig&&<>
+                <br/>
+                    <div className={styles.aFileContainer}>
+                    <h3>Add expense to day {dayIndex+1} </h3>
+                    {optCataloger(thePriceChart)}
+                    {expenseEditor(anExpense, setAnExpense, providerArr, dayIndex, theDeparture, setTheDeparture)}
+                    </div>
+                </>}
+
                 </>}
             {/* IS OP */}
 
@@ -1065,19 +1080,7 @@ export default function PlaygroundPage(props){
 
             </div>
 
-            {theDeparture? <> 
-                {expenseTrig?<> 
-                    {optCataloger(thePriceChart)}
-                    {expenseEditor(anExpense, setAnExpense, providerArr)}
-                </>:<>
-                    <div className={styles.secondaryBTN} onClick={()=>setExpTrig(true)}> Add expense to day + </div>
-                </>}
-
-
-
-
-            </>:<>
-
+            {!theDeparture&& <> 
             {/* picking a dep and itin */}
                 <div className={styles.secondaryBTN} onClick={()=>{
                     setTheDeparture(sampleDeparture)
