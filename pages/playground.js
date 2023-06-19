@@ -175,15 +175,42 @@ const sampleDeparture={
         "Iguana Crossing",
         "Ikala Galapagos"
     ],
+    "dayByDayExp":[
+        [
+            {            
+                "contactName" :"Mr Boxy Boxxer",
+                "contactNumb": 9873655,
+                "currency": "usd",
+                "expenseKey": "guideExpense",
+                "paxLimit": 16,
+                "price":55,
+                "priceDetail": "Transfer Service",
+                "pricekey": "transferService"
+            } 
+        ],
+        [],
+        [
+            {            
+                "contactName" :"Galapa Guide",
+                "contactNumb": 98288567,
+                "currency": "usd",
+                "expenseKey": "guideExpense",
+                "paxLimit": 16,
+                "price":180,
+                "priceDetail": "Galapagos Guide",
+                "pricekey": "fullDayServiceGALAPAGOS"
+            } 
+        ],
+
+
+
+    ],
     "startingDate": "6/16/2023",
     "maxPaxNumb": 16,
     "duration": 6,
     "departureNotes":[
         "group of birders, need early breakfasts",
     ],
-    "clientObj":{
-        "clientName": "Tibetan Tours Trips",
-    }
     }
 
 const sampleItin={
@@ -388,6 +415,8 @@ export default function PlaygroundPage(props){
     const [theItinerary, setTheItinerary]=useState()
     const [theDeparture, setTheDeparture]=useState()
 
+    const [fileDisplayKey, setFileKey]=useState("intro")
+
     // price Chart
     const [thePriceChart, setPriceChart]=useState(LTCPriceTables)
     const [priceChartKey, setPriceChartKey]=useState("")
@@ -403,6 +432,25 @@ export default function PlaygroundPage(props){
 
     useEffect(()=>{
         {paxStats(theDeparture, setPaxData)}
+        let tempContArr=[]
+        if(theDeparture){
+        theDeparture.dayByDayExp.forEach((elem)=>{
+            elem.forEach((element)=>{
+                const findContact = providerArr.find(elemental => elemental.contactName === element.contactName)
+                if(findContact===undefined){
+                    let tempProviderObj = {
+                        "contactName": element.contactName,
+                        "contactNumb": element.contactNumb,
+                        "expenseKey": element.expenseKey,
+                        "priceDetail": element.priceDetail
+                    }
+                    tempContArr.push(tempProviderObj)
+                }
+            })
+        })
+        }
+        setProviderArr(tempContArr)
+
     },[theDeparture])
 
 
@@ -538,14 +586,12 @@ export default function PlaygroundPage(props){
             </>}
         </>)
     }
-    const expenseEditor=(theExpense, setTheExpense, contactArr)=>{
+    const expenseEditor=(theExpense, setTheExpense, contactArr, dayIndex)=>{
         if(theExpense){ 
 
-        let currencyArr=["usd", "sol", "bol", "euro" ]
         let priceArrDispAndEditor
 
         if(theExpense.priceArr){
-
             let priceAndPx= theExpense.priceArr.map((elem,i)=> <React.Fragment key={i}>
             <div className={styles.aPriceColumn} onClick={()=>{
                     setTheExpense({
@@ -557,7 +603,6 @@ export default function PlaygroundPage(props){
                 <span>${elem} </span>
             </div>
             </React.Fragment>)
-
             priceArrDispAndEditor=<><div className={styles.priceDataRow}>
                 <div className={styles.aPriceColumn}>
                     <span><strong>Pax </strong></span> 
@@ -580,9 +625,7 @@ export default function PlaygroundPage(props){
             </React.Fragment>)
         }
         
-
         const accomOptAndPicker=()=>{
-            
             return(<>
                 display room names, prices and amounts pre filled by guestData counts
             </>)
@@ -592,24 +635,18 @@ export default function PlaygroundPage(props){
             <form className={styles.expenseForm} 
             onSubmit={(e)=>{
                 // add expense to day arr
+                // dependent on index of arr elems
+                // send to back end 
                 e.preventDefault()
+
                 let tempArr = expenseArr.concat(anExpense)
                 setExpenseArr(tempArr)
+
+
                 setPriceChartKey()
-                let tempProviderObj = {
-                    "contactName": anExpense.contactName,
-                    "contactNumb": anExpense.contactNumb,
-                    "expenseKey": anExpense.expenseKey
-                }
-                const findContact = providerArr.find(elem => elem.contactName === anExpense.contactName)
-                if(!findContact){
-                    let tempContArr = providerArr.concat(tempProviderObj)
-                    setProviderArr(tempContArr)
-                }
                 setTheExpense()
                 setExpTrig(false)
             }}> 
-
                 {contactArr.length>0&& <>
                 <br></br>
                     Previous providers:
@@ -624,10 +661,9 @@ export default function PlaygroundPage(props){
                         {anInputDisplayer("Contact #", "contactNumb", "number", false, theExpense.contactNumb, theExpense, setTheExpense)}</div>
                 
                     {/* currency currently non op */}
-                   {/* <div style={{width: "21%" }}>
+                    {/* <div style={{width: "21%" }}>
                         {aDropdownPicker(currencyArr, "$", "currency", theExpense, setTheExpense, false, false)}</div>  */}
                 </div>
-
 
                 {theExpense?.expenseKey==="accommodation"?<>
                     <div style={{width: "70%" }}> 
@@ -651,8 +687,6 @@ export default function PlaygroundPage(props){
                     {priceArrDispAndEditor}
                 </>}
 
-
-
                 <div style={{display: "flex", width:"100%", justifyContent:"space-between"}}>
                     <div style={{width: "70%" }}> 
                         {anInputDisplayer("Additional Description", "additionalDescription", "text", false, "Extra service details", theExpense, setTheExpense)}</div>
@@ -672,29 +706,51 @@ export default function PlaygroundPage(props){
         </>)
         } 
     }
-    const expenseDisplayer=(theExpenseArr)=>{
-        let eachExpense = theExpenseArr.map((elem, i)=> <React.Fragment key={i}>
+
+
+
+
+    const expenseDisplayer=(theExpenseArr, dayByDay)=>{
+
+        const anExpenseDisp=(eachExp)=>{
+            return(<>
             <div className={styles.anExpenseDisp}>
-                <div style={{width:"55%"}}> {elem.priceDetail} </div>
+                <div style={{width:"55%"}}> {eachExp.priceDetail} </div>
                 <div style={{display:"flex"}}>
                 {providerArr.length>1&&<><strong>
-                    {elem.contactName!="Provider"&&<>{elem.contactName}</>} |</strong></>}
-                <div style={{width:"27px", textAlign:"end"}}> {elem.varExpTickets&& <>{elem.varExpTickets} x </>} </div>
-                <div style={{width:"66px", textAlign:"end"}}> $ {elem.price}</div></div>
-                
+                    {eachExp.contactName!="Provider"&&<>{eachExp.contactName}</>} |</strong></>}
+                <div style={{width:"27px", textAlign:"end"}}> {eachExp.varExpTickets&& <>{eachExp.varExpTickets} x </>} </div>
+                <div style={{width:"66px", textAlign:"end"}}> $ {eachExp.price}</div></div>
             </div>
-        </React.Fragment>)
+            </>)
+        }
+        const expenseMapper=(dailyExpArr)=>{
+            if(dailyExpArr){
+                return(<>
+                    {dailyExpArr.map((element, i)=><React.Fragment key={i}>
+                        {anExpenseDisp(element)}
+                    </React.Fragment>)}
+                </>)
+            }
+        }
+
+        let eachDayTitleExp=dayByDay.map((dayElem, i)=><>
+        <React.Fragment key={i}>
+            <h4> Day {i+1}: {dayElem.dayTitle&&<>{dayElem.dayTitle}</>}</h4>
+            {expenseMapper(theExpenseArr[i])}
+        </React.Fragment>
+        </>)
 
         if(theExpenseArr.length>0){
         return(<>
             <h3>Expenses:</h3>
             <div className={styles.expenseGridDisp}>
-                {eachExpense}
+                {eachDayTitleExp}
             </div>
         </>)
         }
+
     }
-    // per day
     const totalsAdder=(theExpenseArr)=>{
         let adderNumb = 0
 
@@ -722,18 +778,19 @@ export default function PlaygroundPage(props){
             const guideTypeSwitcher=(theKey)=>{
                 switch (theKey) {
                     case "guideExpense":
-                        return " - Guide Service";
+                        return " - Guide Service:";
                         
                 }
             }
             let eachContact=theArr.map((elem, i)=><React.Fragment key={i}>
                 <div className={styles.anExpenseDisp}>
-                    <div><strong>{elem.contactName}</strong> {guideTypeSwitcher(elem.expenseKey)}</div>
+                {/* have different displayers for guides, accoms, transport, other providers */}
+                    <div><strong>{elem.contactName}</strong> {guideTypeSwitcher(elem.expenseKey)} {elem.priceDetail&&<>{elem.priceDetail}</>}</div>
                     {elem.contactNumb!=100000 &&<><div> # 0{elem.contactNumb}</div></>}
                 </div>
             </React.Fragment> )
             return(<>
-                <h3>Contacts:</h3>
+                <h3>Providers:</h3>
                 {eachContact}
             </>)            
         }
@@ -877,6 +934,14 @@ export default function PlaygroundPage(props){
         return(<>
         <div className={styles.roomingListCont}>
         <h2> Rooming List</h2>
+            {paxData&&<><div className={styles.guestTotal}>{paxData.paxTotal} guests</div></>} 
+        <div className={styles.roomingListTotalCont}>
+            {paxData?.roomReq.singleRooms>0&&<><div>{paxData.roomReq.singleRooms} SINGLE Room{paxData.roomReq.singleRooms>1&&<>s</>}</div></>} 
+            {paxData?.roomReq.twinRooms>0&&<><div>{paxData.roomReq.twinRooms} twin Room{paxData.roomReq.twinRooms>1&&<>s</>}</div></>} 
+            {paxData?.roomReq.matrimonialRooms>0&&<><div>{paxData.roomReq.matrimonialRooms} matrimonial Room{paxData.roomReq.matrimonialRooms>1&&<>s</>}</div></>} 
+            {paxData?.roomReq.tripleRooms>0&&<><div>{paxData.roomReq.tripleRooms} triple Room{paxData.roomReq.tripleRooms>1&&<>s</>}</div></>} 
+            {paxData?.roomReq.quadRooms>0&&<><div>{paxData.roomReq.quadRooms} cuadruple Room{paxData.roomReq.quadRooms>1&&<>s</>}</div></>} 
+        </div>
         <div className={styles.roomingListGrid}>
             <div className={styles.roomingListKEYS}>
                 <div style={{width:"33px"}}> # </div>
@@ -888,14 +953,6 @@ export default function PlaygroundPage(props){
                 <div style={{width:"66px", borderLeft:"solid 1px black" }}> AGE </div>
             </div>
             {eachRoom}
-            <div className={styles.roomingListTotalCont}>
-                {paxData&&<><div >{paxData.paxTotal} guests&nbsp;</div></>} 
-                {paxData?.roomReq.singleRooms>0&&<><div>{paxData.roomReq.singleRooms} SINGLE Room{paxData.roomReq.singleRooms>1&&<>s</>}</div></>} 
-                {paxData?.roomReq.twinRooms>0&&<><div>{paxData.roomReq.twinRooms} twin Room{paxData.roomReq.twinRooms>1&&<>s</>}</div></>} 
-                {paxData?.roomReq.matrimonialRooms>0&&<><div>{paxData.roomReq.matrimonialRooms} matrimonial Room{paxData.roomReq.matrimonialRooms>1&&<>s</>}</div></>} 
-                {paxData?.roomReq.tripleRooms>0&&<><div>{paxData.roomReq.tripleRooms} triple Room{paxData.roomReq.tripleRooms>1&&<>s</>}</div></>} 
-                {paxData?.roomReq.quadRooms>0&&<><div>{paxData.roomReq.quadRooms} cuadruple Room{paxData.roomReq.quadRooms>1&&<>s</>}</div></>} 
-            </div>
         </div>
 
         {eachNote.length>0&&<>
@@ -914,6 +971,45 @@ export default function PlaygroundPage(props){
     }
 
 
+
+
+    const aFileDisplayer=(theItin, theDep)=>{
+        return(<>
+            <div className={styles.keySelectors}>
+
+        {/* Selection */}
+            {fileDisplayKey!="intro"&&<> 
+                <span onClick={()=>setFileKey("intro")}>home </span></>}
+            {fileDisplayKey!="rooming"&&<> 
+                <span onClick={()=>setFileKey("rooming")}>rooming list </span></>}
+            {fileDisplayKey!="providers"&&<> {providerArr.length>0&&<> 
+                <span onClick={()=>setFileKey("providers")}>providers </span>
+                </>}</>}
+            {fileDisplayKey!="expenses"&&<> 
+                <span onClick={()=>setFileKey("expenses")}>expenses</span></>}
+
+
+            </div>
+
+        {/* Display */}
+
+            <div className={styles.aFileContainer}>
+            {fileDisplayKey==="intro"&&<>
+                {itineraryHeaderDisp(theItin, theDep)}
+            </>}
+            {fileDisplayKey==="rooming"&&<>
+                {roomingListDisp(theDep)}
+            </>}
+            {fileDisplayKey==="providers"&&<>
+                {contactArrDisp(providerArr)}
+            </>}
+            {fileDisplayKey==="expenses"&&<>
+                {expenseDisplayer(theDep.dayByDayExp, theItin.dayByDay)}
+            </>}
+
+            </div>
+        </>)
+    }
 
 
     /////////////////////////////////////////////////////
@@ -953,19 +1049,21 @@ export default function PlaygroundPage(props){
 
             </ul>
 
+            <div className={styles.playgroundPage}>
             {/* display Rooming req, rooming List Stats */}
 
             {/* Day by day elems */}
-
-            {itineraryHeaderDisp(theItinerary, theDeparture)}
-
+                {theDeparture&& <>
+                    {aFileDisplayer(theItinerary, theDeparture)}
+                </>}
             {/* IS OP */}
-            {roomingListDisp(theDeparture)}
 
-            {contactArrDisp(providerArr)}
-            {expenseDisplayer(expenseArr)}
+            
+            
             {totalsAdder(expenseArr)}
 
+
+            </div>
 
             {theDeparture? <> 
                 {expenseTrig?<> 
@@ -974,7 +1072,13 @@ export default function PlaygroundPage(props){
                 </>:<>
                     <div className={styles.secondaryBTN} onClick={()=>setExpTrig(true)}> Add expense to day + </div>
                 </>}
+
+
+
+
             </>:<>
+
+            {/* picking a dep and itin */}
                 <div className={styles.secondaryBTN} onClick={()=>{
                     setTheDeparture(sampleDeparture)
                     setTheItinerary(sampleItin)
