@@ -1252,8 +1252,6 @@ export default function PlaygroundPage(props){
     /////////////////////////////////////////////////////
     /////////////////////////////////////////////////////
 
-    console.log(theDeparture.dayByDayExp)
-
     return(<>
 
     {/* Will we need session on per page level, or just on Navi and it can controll it all???? */}
@@ -1267,19 +1265,17 @@ export default function PlaygroundPage(props){
             <ul> 
                 <dl> 
                     <dd>create different docs from templates, and display each provider's services </dd>
-                    <dd> Req Economico per provider </dd>
+                    <dd> Contracts, operational documents, per provider </dd>
+                    <dd> edit each expense </dd>
+                    
                 </dl>
 
                 <li> Add additional expense functionality  </li>
                 <dl> 
                     <dt> Hotel Expenses </dt>
                     <dd> if eachDay.overnightProperty? add to contactList </dd>
-                    <dd> Can select room type, & set price per type </dd>
-                    <dd> Can select number of rooms per type </dd>
-                    <dd> Hotel name and address required </dd>
-                    <dd> feed hotel contact from prev hotels </dd>
+                    {/* <dd> Can select room type, & set price per type </dd> */}
                 </dl>
-                bring in sampleDep, calculate number of pax in rooming list, use to calc variable prices. 
             </ul>
 
             <div className={styles.playgroundPage}>
