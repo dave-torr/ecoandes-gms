@@ -281,7 +281,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 12px;
-    width: 728px;
+    width: 100%;
 }
 
 .guestTotal{
@@ -391,6 +391,64 @@
 
 }
 
+/* hotel room selection */
+.roomOptsGrid{
+    width: 100%;
+}
+
+.aRoomOpt{
+    border: solid 1px black; padding: 6px;
+    margin: 6px 0;
+    display: flex;
+}
+
+.roomOptLabel{
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 1px;
+    font-size: 0.8em;
+    margin-bottom: 6px;
+}
+
+.aRoomDescription{
+    text-transform: capitalize;
+}
+
+.aRoomPrice{
+    font-size: 1.1em;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.aColumn{
+    display: flex;
+    flex-direction: column;
+    text-align: end;
+}
+
+.aColumn:nth-of-type(1){
+    width: 240px;
+    text-align: start;
+}
+.aColumn:nth-of-type(2){
+    width: 99px;
+}
+.aColumn:nth-of-type(3){
+    text-align: center;
+    width: 120px;
+    align-items: center;
+}
+.aColumn:nth-of-type(4){
+    text-align: start;
+    width: 150px;
+}
+.aColumn:nth-of-type(5){
+    text-align: end;
+    width: 120px;
+}
+
+
+/*  // // // //  */
 @media (max-width: 740px) {
 
     .detailDispl{

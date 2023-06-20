@@ -1044,30 +1044,32 @@
                 {
                     "roomkey":"singleStandard",
                     "roomDescription":"Single Standard Room",
-                    "price":180,
-                    "additionalBed":55
+                    "roomType": "single",
+                    "price":180
                 },
                 {
                     "roomkey":"twinMatStandard",
                     "roomDescription":"Twin or Matrimonial Standard Room",
+                    "roomType": "twin",
                     "price":220,
                     "additionalBed":55
                 },
                 {
                     "roomkey":"singleSuite",
                     "roomDescription":"Single Suite Room",
-                    "price":230,
-                    "additionalBed":55
+                    "roomType": "single",
+                    "price":230
                 },
                 {
                     "roomkey":"twinMatSuite",
                     "roomDescription":"Twin or Matrimonial Suite Room",
+                    "roomType": "twin",
                     "price":250,
                     "additionalBed":55
                 }
             ],
             "priceDetail": "Accomodation Ikala Galapagos Hotel - Pto. Ayora",
-            "contactName":"Ikala Galapagos Hotel"
+            "contactName":"Jose Andrade: Ikala Hotels"
         }
     ]
 }
