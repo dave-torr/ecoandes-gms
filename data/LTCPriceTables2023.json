@@ -1044,32 +1044,76 @@
                 {
                     "roomkey":"singleStandard",
                     "roomDescription":"Single Standard Room",
-                    "roomType": "single",
-                    "price":180
+                    "price":170
                 },
                 {
                     "roomkey":"twinMatStandard",
                     "roomDescription":"Twin or Matrimonial Standard Room",
-                    "roomType": "twin",
-                    "price":220,
-                    "additionalBed":55
+                    "price":186
                 },
                 {
                     "roomkey":"singleSuite",
                     "roomDescription":"Single Suite Room",
-                    "roomType": "single",
-                    "price":230
+                    "price":195
                 },
                 {
                     "roomkey":"twinMatSuite",
                     "roomDescription":"Twin or Matrimonial Suite Room",
-                    "roomType": "twin",
-                    "price":250,
-                    "additionalBed":55
+                    "price":214,
+                    "additionalBed":70
+                },
+                {
+                    "roomkey":"matDuplexSuite",
+                    "roomDescription":"Matrimonial Duplex Suite",
+                    "price":300,
+                    "additionalBed":70
                 }
             ],
             "priceDetail": "Accomodation Ikala Galapagos Hotel - Pto. Ayora",
-            "contactName":"Jose Andrade: Ikala Hotels"
+            "contactName":"Jose Andrade: Ikala Hotels",
+            "contactNumb": 999729265
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "accommodation", 
+            "pricekey": "ikalaUIO",
+            "hotelName":"Ikala Quito Hotel",
+            "roomPriceArr": [
+                {
+                    "roomkey":"singleStandard",
+                    "roomDescription":"Single Standard Room",
+                    "price":64
+                },
+                {
+                    "roomkey":"twinMatStandard",
+                    "roomDescription":"Twin or Matrimonial Standard Room",
+                    "price":75
+                },
+                {
+                    "roomkey":"singleJrSuite",
+                    "roomDescription":"Single Jr. Suite",
+                    "price":84
+                },
+                {
+                    "roomkey":"twinMatJrSuite",
+                    "roomDescription":"Twin or Matrimonial Jr. Suite",
+                    "price":100
+                },
+                {
+                    "roomkey":"singleSuite",
+                    "roomDescription":"Single Suite",
+                    "price":105
+                },
+                {
+                    "roomkey":"twinMatSuite",
+                    "roomDescription":"Twin or Matrimonial Suite",
+                    "price":126,
+                    "additionalBed":30
+                }
+            ],
+            "priceDetail": "Accomodation Ikala Quito Hotel",
+            "contactName":"Jose Andrade: Ikala Hotels",
+            "contactNumb": 999729265
         }
     ]
 }

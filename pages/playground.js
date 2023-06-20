@@ -596,8 +596,6 @@ export default function PlaygroundPage(props){
     }
 
 
-
-
     // expense form
     const expenseEditor=(theExpense, setTheExpense, contactArr, dayIndx, theDep, setTheDep, roomingData)=>{
         if(theExpense){ 
@@ -634,8 +632,6 @@ export default function PlaygroundPage(props){
                 }}> + {elem.contactName} </div>
             </React.Fragment>)
         }
-
-
         const accomOptAndPicker=()=>{
             let eachRoomOpt=anExpense.roomPriceArr.map((elem, i)=><React.Fragment key={i}>
                 <div className={styles.aRoomOpt}>
@@ -682,8 +678,6 @@ export default function PlaygroundPage(props){
 
                                             anExpense.roomPriceArr.splice(i,1, tempRoomObj)
                                             setAnExpense({...anExpense})
-
-                                            // console.log(prevCount-1, anExpense.roomPriceArr[i], ((prevCount-1)* anExpense.roomPriceArr[i].price))
 
                                         }
                                     }}> 
@@ -755,85 +749,87 @@ export default function PlaygroundPage(props){
 
                 {/* Additional Bedding Req */}
                     <div className={styles.aColumn}>
-                        {elem.additionalBed&&<>
-                        <div className={styles.roomOptLabel}>Additional bed</div>
-                        <div className={styles.aRoomPrice}>
-                            + &nbsp; ${elem.additionalBed} 
-                            &nbsp;&nbsp;&nbsp;&nbsp;
-                            <div style={{width:"18px"}}> 
-                                {anExpense.roomPriceArr[i].reqAdditionalBed?<>
-                                    <span onClick={()=>{
-                                        let prevCount = anExpense.roomPriceArr[i].reqAdditionalBed
-                                        let roomPriceTotal
-                                        if(prevCount){
-                                            roomPriceTotal=
-                                                ((prevCount-1) * anExpense.roomPriceArr[i].additionalBed)
-                                                +
-                                                (anExpense.roomPriceArr[i].price 
-                                                *
-                                                anExpense.roomPriceArr[i].reqRooms)
-                                            let tempRoomObj={
-                                                ...anExpense.roomPriceArr[i],
-                                                "reqAdditionalBed": prevCount-1,
-                                                "roomsTotal": roomPriceTotal
-                                                }
-                                            anExpense.roomPriceArr.splice(i,1, tempRoomObj)
-                                            setAnExpense({...anExpense})
-                                        }
-                                    }}> 
-                                    {anExpense.roomPriceArr[i].reqAdditionalBed&&<>
-                                        <RemoveCircleOutlineIcon />
-                                    </>}
-                                    </span>
-                                </>: <> </>}
-                            </div>
-                            <div style={{width:"39px", textAlign: "center"}}> 
-                                <span> 
-                                    {anExpense.roomPriceArr[i].reqAdditionalBed?<>
-                                        x {anExpense.roomPriceArr[i].reqAdditionalBed}
-                                    </>:<> 
-                                        x 0
-                                    </>}
-                                </span>
-                            </div>
-                            <div style={{width:"33px"}}> 
+                    {elem.additionalBed&&<>
+                    <div className={styles.roomOptLabel}>Additional bed</div>
+                    <div className={styles.aRoomPrice}>
+                        + &nbsp; ${elem.additionalBed} 
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <div style={{width:"18px"}}> 
+                            {anExpense.roomPriceArr[i].reqAdditionalBed?<>
                                 <span onClick={()=>{
                                     let prevCount = anExpense.roomPriceArr[i].reqAdditionalBed
                                     let roomPriceTotal
                                     if(prevCount){
-
                                         roomPriceTotal=
-                                            ((prevCount+1) * anExpense.roomPriceArr[i].additionalBed)
+                                            ((prevCount-1) * anExpense.roomPriceArr[i].additionalBed)
                                             +
                                             (anExpense.roomPriceArr[i].price 
                                             *
-                                            anExpense.roomPriceArr[i].reqRooms)                                      
-
+                                            anExpense.roomPriceArr[i].reqRooms)
                                         let tempRoomObj={
                                             ...anExpense.roomPriceArr[i],
-                                            "reqAdditionalBed": prevCount+1,
-                                            "roomsTotal":roomPriceTotal
-                                            }
-                                        anExpense.roomPriceArr.splice(i,1, tempRoomObj)
-                                        setAnExpense({...anExpense})
-                                    } else {
-                                        roomPriceTotal=
-                                        ( 1 * anExpense.roomPriceArr[i].additionalBed)
-
-                                        let tempRoomObj={
-                                            ...anExpense.roomPriceArr[i],
-                                            "reqAdditionalBed":1,
-                                            "roomsTotal":roomPriceTotal
+                                            "reqAdditionalBed": prevCount-1,
+                                            "roomsTotal": roomPriceTotal
                                             }
                                         anExpense.roomPriceArr.splice(i,1, tempRoomObj)
                                         setAnExpense({...anExpense})
                                     }
-                                }}>
-                                    <AddCircleOutlineIcon/>
+                                }}> 
+                                {anExpense.roomPriceArr[i].reqAdditionalBed&&<>
+                                    <RemoveCircleOutlineIcon />
+                                </>}
                                 </span>
-                            </div>
+                            </>: <> </>}
                         </div>
-                        </>}
+                        <div style={{width:"39px", textAlign: "center"}}> 
+                            <span> 
+                                {anExpense.roomPriceArr[i].reqAdditionalBed?<>
+                                    x {anExpense.roomPriceArr[i].reqAdditionalBed}
+                                </>:<> 
+                                    x 0
+                                </>}
+                            </span>
+                        </div>
+                        <div style={{width:"33px"}}> 
+                            <span onClick={()=>{
+                                let prevCount = anExpense.roomPriceArr[i].reqAdditionalBed
+                                let roomPriceTotal
+                                if(prevCount){
+                                    roomPriceTotal=
+                                        ((prevCount+1) * anExpense.roomPriceArr[i].additionalBed)
+                                        +
+                                        (anExpense.roomPriceArr[i].price 
+                                        *
+                                        anExpense.roomPriceArr[i].reqRooms);
+
+                                    let tempRoomObj={
+                                        ...anExpense.roomPriceArr[i],
+                                        "reqAdditionalBed": prevCount+1,
+                                        "roomsTotal":roomPriceTotal
+                                        }
+                                    anExpense.roomPriceArr.splice(i,1, tempRoomObj)
+                                    setAnExpense({...anExpense})
+                                } else {
+                                    roomPriceTotal=
+                                        ( 1 * anExpense.roomPriceArr[i].additionalBed)
+                                        +
+                                        (anExpense.roomPriceArr[i].price 
+                                        *
+                                        anExpense.roomPriceArr[i].reqRooms);
+                                    let tempRoomObj={
+                                        ...anExpense.roomPriceArr[i],
+                                        "reqAdditionalBed":1,
+                                        "roomsTotal":roomPriceTotal
+                                        }
+                                    anExpense.roomPriceArr.splice(i,1, tempRoomObj)
+                                    setAnExpense({...anExpense})
+                                }
+                            }}>
+                                <AddCircleOutlineIcon/>
+                            </span>
+                        </div>
+                    </div>
+                    </>}
                     </div>
 
                 {/*  price display */}
@@ -846,16 +842,44 @@ export default function PlaygroundPage(props){
                 </div>
             </React.Fragment>)
 
+            const totalAdder=(theExpArr)=>{
+                let totalAdder=0
+
+                theExpArr.forEach((elem)=>{
+                    if(elem.reqRooms){
+
+                    if(elem.reqAdditionalBed){
+                        totalAdder=
+                        totalAdder
+                        + (elem.reqAdditionalBed * elem. additionalBed)
+                        + (elem.reqRooms * elem.price)
+                    } else {
+                        totalAdder = 
+                        totalAdder
+                        + (elem.reqRooms * elem.price)
+                    }
+                    }
+                })
+                console.log(totalAdder)
+                return totalAdder
+            }
+
             return(<>
                 <strong style={{letterSpacing:"1px"}}>NEEDED ROOMS</strong>
                 {theRoomingBreakdownDispl()}
                 <div className={styles.roomOptsGrid}> 
                     {eachRoomOpt}
                 </div>
-
+                <div className={styles.roomTotalBox}>
+                    <div className={styles.aColumn}>
+                        <div className={styles.roomTotalLabel}>Total per day</div>
+                        <div className={styles.aRoomPrice}> 
+                            $ {totalAdder(anExpense.roomPriceArr)}
+                        </div>
+                    </div>
+                </div>
             </>)
         }
-
         return(<>
             <form className={styles.expenseForm} 
             onSubmit={(e)=>{
@@ -940,35 +964,12 @@ export default function PlaygroundPage(props){
         </>)
         } 
     }
-
-    const totalsAdder=(theExpenseArr)=>{
-        let adderNumb = 0
-
-        if(theExpenseArr.length>0){
-            theExpenseArr.forEach((elem)=>{
-                // if varExpense, multiply elem.price*varExpTickets
-                if(elem.expenseKey==="variableExpense"){
-                    adderNumb = adderNumb + (elem.price * elem.varExpTickets)
-                } else {
-                    adderNumb= adderNumb + elem.price
-                }
-            })
-
-            return(<>
-                <h3>Daily Totals:</h3>
-                <div className={styles.anExpenseDisp}>
-                    <div> Total </div>
-                    <div> $ {adderNumb} </div>
-                </div>
-            </>)
-        }
-    }
-
+ 
     // Main disp
     const aFileDisplayer=(theItin, theDep)=>{
         return(<>
+        {/* keys */}
             <div className={styles.keySelectors}>
-
         {/* Selection */}
             {fileDisplayKey!="intro"&&<> 
                 <span onClick={()=>setFileKey("intro")}>home </span></>}
@@ -979,12 +980,8 @@ export default function PlaygroundPage(props){
                 </>}</>}
             {fileDisplayKey!="expenses"&&<> 
                 <span onClick={()=>setFileKey("expenses")}>expenses</span></>}
-
-
             </div>
-
         {/* Display */}
-
             <div className={styles.aFileContainer}>
             {fileDisplayKey==="intro"&&<>
                 {itineraryHeaderDisp(theItin, theDep)}
@@ -1002,6 +999,7 @@ export default function PlaygroundPage(props){
             </div>
         </>)
     }
+
     const itineraryHeaderDisp=(theItin, theDep)=>{
         let LTCLogoSwitcher
         if(theItin){
@@ -1074,7 +1072,6 @@ export default function PlaygroundPage(props){
         </>)
         }
     }
-
     const theRoomingBreakdownDispl=()=>{
         return(<>
             <div className={styles.roomingListTotalCont}>
@@ -1180,14 +1177,66 @@ export default function PlaygroundPage(props){
     const expenseDisplayer=(theExpenseArr, dayByDay)=>{
 
         const anExpenseDisp=(eachExp)=>{
+            let roomPriceAdder=0
+            let eachDayRooming=[]
+            if(eachExp.expenseKey==="accommodation"){
+                eachExp.roomPriceArr.forEach((elem)=>{
+                    if(elem.reqRooms){
+                        if(elem.reqAdditionalBed){
+                            roomPriceAdder= 
+                            roomPriceAdder
+                            +
+                            (elem.reqAdditionalBed * elem.additionalBed)
+                            +
+                            (elem.reqRooms * elem.price)
+
+                            eachDayRooming.push({
+                                "roomDescription":elem.roomDescription,
+                                "reqRooms":elem.reqRooms,
+                                "price":elem.price,
+                                "reqAdditionalBed":elem.reqAdditionalBed,
+                                "additionalBed":elem.additionalBed,
+                            })
+                        } else {
+                            roomPriceAdder= 
+                            roomPriceAdder
+                            +
+                            (elem.reqRooms * elem.price)
+
+                            eachDayRooming.push({
+                                "roomDescription":elem.roomDescription,
+                                "reqRooms":elem.reqRooms,
+                                "price":elem.price,
+                            })
+                        }
+                    }
+                })
+            }
+
+            let roomingSummary=eachDayRooming.map((elem,i)=> <React.Fragment key={i}>
+                {elem.roomDescription} x {elem.reqRooms} 
+                {elem.reqAdditionalBed&&<> + {elem.reqAdditionalBed} additional bed{elem.reqAdditionalBed>1&&<>s</>}</>} <br/>
+            </React.Fragment>)
+
+
             return(<>
+            {eachExp.expenseKey==="accommodation"&&<> 
+            <div className={styles.accomListDisp}>
+                {roomingSummary}
+            </div>
+            </>}
             <div className={styles.anExpenseDisp}>
                 <div style={{width:"55%"}}> {eachExp.priceDetail} </div>
-                <div style={{display:"flex"}}>
-                {providerArr.length>1&&<><strong>
-                    {eachExp.contactName!="Provider"&&<>{eachExp.contactName}</>} |</strong></>}
-                <div style={{width:"27px", textAlign:"end"}}> {eachExp.varExpTickets&& <>{eachExp.varExpTickets} x </>} </div>
-                <div style={{width:"66px", textAlign:"end"}}> $ {eachExp.price}</div></div>
+                <div style={{display:"flex", textAlign:"end"}}>
+                    {providerArr.length>1&&<><strong>
+                        {eachExp.contactName!="Provider"&&<>{eachExp.contactName}</>} |</strong></>}
+                    <div style={{width:"27px", textAlign:"end"}}> {eachExp.varExpTickets&& <>{eachExp.varExpTickets} x </>} </div>
+                    {eachExp.expenseKey==="accommodation"? <>
+                        <div style={{width:"66px", textAlign:"end"}}> $ {roomPriceAdder}</div>
+                    </> :<>
+                        <div style={{width:"66px", textAlign:"end"}}> $ {eachExp.price}</div>
+                    </>}
+                </div>
             </div>
             </>)
         }
@@ -1204,7 +1253,7 @@ export default function PlaygroundPage(props){
         let eachDayTitleExp=dayByDay.map((dayElem, i)=><>
         <React.Fragment key={i}>
             <div className={styles.dailyTitleCont}>  
-                <h4> Day {i+1}: {dayElem.dayTitle&&<>{dayElem.dayTitle}</>}</h4>
+                <h5> Day {i+1}: {dayElem.dayTitle&&<>{dayElem.dayTitle}</>}</h5>
                 <div className={styles.addExpBTN} onClick={()=>{
                     setExpTrig(true)
                     setDayIndex(i)
@@ -1219,7 +1268,7 @@ export default function PlaygroundPage(props){
 
         if(theExpenseArr.length>0){
         return(<>
-            <h3>Expenses:</h3>
+            <h2>Expenses:</h2>
             <div className={styles.expenseGridDisp}>
                 {eachDayTitleExp}
             </div>
@@ -1243,7 +1292,7 @@ export default function PlaygroundPage(props){
                 </div>
             </React.Fragment> )
             return(<>
-                <h3>Providers:</h3>
+                <h2>Providers:</h2>
                 {eachContact}
             </>)            
         }
@@ -1285,23 +1334,18 @@ export default function PlaygroundPage(props){
                 {theDeparture&& <>
                     {aFileDisplayer(theItinerary, theDeparture)}
 
-                {expenseTrig&&<>
-                <br/>
-                    <div className={styles.aFileContainer}>
-                    <h3>Add expense to day {dayIndex+1} </h3>
-                    {optCataloger(thePriceChart)}
-                    {expenseEditor(anExpense, setAnExpense, providerArr, dayIndex, theDeparture, setTheDeparture, paxData)}
-                    </div>
-                </>}
+                    {expenseTrig&&<>
+                    <br/>
+                        <div className={styles.aFileContainer}>
+                        <h3>Add expense to day {dayIndex+1} </h3>
+                        {optCataloger(thePriceChart)}
+                        {expenseEditor(anExpense, setAnExpense, providerArr, dayIndex, theDeparture, setTheDeparture, paxData)}
+                        </div>
+                    </>}
 
                 </>}
-            {/* IS OP */}
 
             
-            
-            {totalsAdder(expenseArr)}
-
-
             </div>
 
             {!theDeparture&& <> 
