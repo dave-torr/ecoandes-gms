@@ -3,6 +3,12 @@
         {
             "currency":"usd",
             "expenseKey": "guideExpense", 
+            "pricekey": "genericGuideExpense",
+            "priceDetail": "General Guide Services"
+        },        
+        {
+            "currency":"usd",
+            "expenseKey": "guideExpense", 
             "pricekey": "fullDayServiceGALAPAGOS",
             "price": 180,
             "priceDetail": "Full Day Service, GNP",
@@ -1115,5 +1121,14 @@
             "contactName":"Jose Andrade: Ikala Hotels",
             "contactNumb": 999729265
         }
+    ],
+    "LTCPartnerAccoms":[
+        {
+            "currency":"usd",
+            "expenseKey": "accommodation", 
+            "pricekey": "accommodationGeneric",
+            "roomPriceArr": [],
+            "priceDetail": "General Accomodation"
+        }        
     ]
 }

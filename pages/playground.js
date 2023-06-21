@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useSession } from "next-auth/react"
 
 
-import { Select } from '@mantine/core';
+import { Select, extractSystemStyles } from '@mantine/core';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import CircularProgress from '@mui/material/CircularProgress';
 
@@ -30,7 +30,8 @@ let catalogIndex={
     "galapagosDiving":"Galapagos Diving Tours",
     "maexgal":"Galapagos Luxury Island Hopping",
     "continentalVarCosts":"Continental Variable Costs",
-    "ikalaHotels":"Accomodation Ikala Hotel Properties"
+    "ikalaHotels":"Accomodation Ikala Hotel Properties",
+    "LTCPartnerAccoms":"LTC Partner Accomodations",
 }
 
 const sampleDeparture={
@@ -168,13 +169,6 @@ const sampleDeparture={
         },
         "singleSupp": true,
         }
-    ],
-    "hotelList":[
-        "Ikala Quito",
-        "Ikala Galapagos",
-        "Ikala Galapagos",
-        "Iguana Crossing",
-        "Ikala Galapagos"
     ],
     "dayByDayExp":[
         [
@@ -395,7 +389,6 @@ const sampleItin={
         "email": "sales@galapagoselements.com"
     }
 }
-  
 
 
 // Bitacora logo:
@@ -424,7 +417,7 @@ export default function PlaygroundPage(props){
 
     // the expense obj
     const [expenseTrig, setExpTrig]=useState(false)
-    const [expenseArr, setExpenseArr]=useState([])
+    const [temporaryRoomObj, setTempRoomObj]=useState({})
     const [anExpense, setAnExpense]=useState()
     const [dayIndex, setDayIndex]=useState()
 
@@ -432,15 +425,19 @@ export default function PlaygroundPage(props){
     const [providerArr, setProviderArr]=useState([])
     const [paxData, setPaxData]=useState()
 
+    // utils
+    const [addHotelTrig, setHotelAddTrig]=useState(false)
+
     useEffect(()=>{
         {paxStats(theDeparture, setPaxData)}
-        let tempContArr=[...providerArr]
+
+        let tempContArr=[]
         if(theDeparture){
 
         // does this need to run every time theDep changes?
         theDeparture.dayByDayExp.forEach((elem)=>{
             elem.forEach((element)=>{
-                const findContact = providerArr.find(elemental => elemental.contactName === element.contactName)
+                const findContact = tempContArr.find(elemental => elemental.contactName === element.contactName)
                 if(findContact===undefined){
                     let tempProviderObj = {
                         "contactName": element.contactName,
@@ -572,7 +569,7 @@ export default function PlaygroundPage(props){
                     if(tempObj.contactName){
                         setAnExpense({
                             ...tempObj,
-                            "contactNumb": 100000,
+                            "contactNumb": tempObj.contactNumb,
                         })
                     } else {
                         setAnExpense({
@@ -594,8 +591,6 @@ export default function PlaygroundPage(props){
         result.setDate(result.getDate() + days)
         return result;
     }
-
-
     // expense form
     const expenseEditor=(theExpense, setTheExpense, contactArr, dayIndx, theDep, setTheDep, roomingData)=>{
         if(theExpense){ 
@@ -623,6 +618,7 @@ export default function PlaygroundPage(props){
         let contactOpts
         if(contactArr.length>0){
             contactOpts=contactArr.map((elem,i)=><React.Fragment key={i}>
+            {elem.expenseKey!="accommodation"&& <>
                 <div className={styles.addContactBTN} onClick={()=>{
                     setTheExpense({
                         ...theExpense,
@@ -630,6 +626,7 @@ export default function PlaygroundPage(props){
                         "contactNumb": elem.contactNumb,
                     })
                 }}> + {elem.contactName} </div>
+            </>}
             </React.Fragment>)
         }
         const accomOptAndPicker=()=>{
@@ -645,7 +642,6 @@ export default function PlaygroundPage(props){
                             ${elem.price}
                             </div>
                     </div>
-
                 {/* room requ & Price Calc */}
                     <div className={styles.aColumn}>
                         <div className={styles.roomOptLabel}>room req</div>
@@ -746,7 +742,6 @@ export default function PlaygroundPage(props){
                         </div>
 
                     </div>                    
-
                 {/* Additional Bedding Req */}
                     <div className={styles.aColumn}>
                     {elem.additionalBed&&<>
@@ -831,7 +826,6 @@ export default function PlaygroundPage(props){
                     </div>
                     </>}
                     </div>
-
                 {/*  price display */}
                     <div className={styles.aColumn}> 
                         {elem.roomsTotal?<>
@@ -842,6 +836,61 @@ export default function PlaygroundPage(props){
                 </div>
             </React.Fragment>)
 
+
+            const genericRoomPriceSetter=(tempRoomObj, setTempRoom, setExpense, theExpense)=>{
+                return(<>
+                <div className={styles.roomPriceSetCont}>
+                    <span> 
+                        <div className={styles.roomOptLabel}> 
+                            Room Type*</div>
+                        <div className={styles.roomOptInput}>
+                            <input placeholder='ex: Single Suite' type="text" onChange={(e)=>{
+                                setTempRoom({
+                                    ...tempRoomObj,
+                                    "roomDescription":e.target.value
+                                })
+                            }} />
+                        </div>
+                    </span>
+                    <span> 
+                        <div className={styles.roomOptLabel}> 
+                            Room price*</div>
+                        <div className={styles.roomOptInput}>
+                            $<input placeholder='ex: $100' type="number" onChange={(e)=>{
+                                setTempRoom({
+                                    ...tempRoomObj,
+                                    "price":e.target.value
+                                })
+                            }} />
+                        </div>
+                    </span>
+                    <span> 
+                        <div className={styles.roomOptLabel}> 
+                            Additional Bed</div>
+                        <div className={styles.roomOptInput}>
+                            $<input placeholder='ex: $55 - optional' type="number" onChange={(e)=>{
+                                setTempRoom({
+                                    ...tempRoomObj,
+                                    "additionalBed":e.target.value
+                                })
+                            }} />
+                        </div>
+                    </span>
+                    <div className={styles.addRoomTypeBTN} onClick={()=>{
+                        let tempRoomArr = theExpense.roomPriceArr.concat(tempRoomObj)
+                        setExpense({
+                            ...theExpense,
+                            "roomPriceArr":tempRoomArr
+                        })
+                        setTempRoom({})
+                        setHotelAddTrig(false)
+                    }}>
+                        Add Room +
+                    </div>
+                </div>
+                </>)
+
+            }
             const totalAdder=(theExpArr)=>{
                 let totalAdder=0
 
@@ -860,7 +909,6 @@ export default function PlaygroundPage(props){
                     }
                     }
                 })
-                console.log(totalAdder)
                 return totalAdder
             }
 
@@ -869,6 +917,20 @@ export default function PlaygroundPage(props){
                 {theRoomingBreakdownDispl()}
                 <div className={styles.roomOptsGrid}> 
                     {eachRoomOpt}
+
+                    {(anExpense.roomPriceArr.length===0 || addHotelTrig)
+                    ?<>
+                        {genericRoomPriceSetter(temporaryRoomObj, setTempRoomObj, setAnExpense, anExpense)}
+
+                    </>:<>
+                        <div className={styles.addRoomsBTN} onClick={()=>{
+                            setHotelAddTrig(true)
+                        }}> + Add room </div>
+                    </>}
+
+
+
+
                 </div>
                 <div className={styles.roomTotalBox}>
                     <div className={styles.aColumn}>
@@ -880,6 +942,7 @@ export default function PlaygroundPage(props){
                 </div>
             </>)
         }
+
         return(<>
             <form className={styles.expenseForm} 
             onSubmit={(e)=>{
@@ -907,11 +970,17 @@ export default function PlaygroundPage(props){
                 {contactArr.length>0&& <>
                     <br></br>
                     {theExpense?.expenseKey==="accommodation"?<> 
-
                     </>:<> 
                         Previous providers:
                         <div style={{display:"flex", alignItems:"center", margin:'9px'}}> {contactOpts} </div>
                     </>}
+                </>}
+
+                {theExpense?.expenseKey==="accommodation"&& <>
+                <div className={styles.aDataRow}>
+                    <div style={{width: "47%" }}> 
+                        {anInputDisplayer("Hotel Name", "hotelName", "text", false, theExpense.hotelName, theExpense, setTheExpense)}</div>
+                </div>
                 </>}
 
                 <div className={styles.aDataRow}>
@@ -919,7 +988,7 @@ export default function PlaygroundPage(props){
                     <div style={{width: "47%" }}> 
                         {anInputDisplayer("Contact Name*", "contactName", "text", false, theExpense.contactName, theExpense, setTheExpense)}</div>
                     <div style={{width: "47%" }}> 
-                        {anInputDisplayer("Contact #", "contactNumb", "number", false, theExpense.contactNumb, theExpense, setTheExpense)}</div>
+                        {anInputDisplayer("Phone #", "contactNumb", "number", false, theExpense.contactNumb, theExpense, setTheExpense)}</div>
                 
                     {/* currency  non op */}
                     {/* <div style={{width: "21%" }}>
@@ -964,7 +1033,6 @@ export default function PlaygroundPage(props){
         </>)
         } 
     }
- 
     // Main disp
     const aFileDisplayer=(theItin, theDep)=>{
         return(<>
@@ -974,7 +1042,7 @@ export default function PlaygroundPage(props){
             {fileDisplayKey!="intro"&&<> 
                 <span onClick={()=>setFileKey("intro")}>home </span></>}
             {fileDisplayKey!="rooming"&&<> 
-                <span onClick={()=>setFileKey("rooming")}>rooming list </span></>}
+                <span onClick={()=>setFileKey("rooming")}>pax & rooming </span></>}
             {fileDisplayKey!="providers"&&<> {providerArr.length>0&&<> 
                 <span onClick={()=>setFileKey("providers")}>providers </span>
                 </>}</>}
@@ -1174,9 +1242,9 @@ export default function PlaygroundPage(props){
         </>)
     }
     }    
-    const expenseDisplayer=(theExpenseArr, dayByDay)=>{
+    const expenseDisplayer=(theExpenseArr, dayByDay )=>{
 
-        const anExpenseDisp=(eachExp)=>{
+        const anExpenseDisp=(eachExp, expIndex, dailyExpArray)=>{
             let roomPriceAdder=0
             let eachDayRooming=[]
             if(eachExp.expenseKey==="accommodation"){
@@ -1212,12 +1280,10 @@ export default function PlaygroundPage(props){
                     }
                 })
             }
-
             let roomingSummary=eachDayRooming.map((elem,i)=> <React.Fragment key={i}>
                 {elem.roomDescription} x {elem.reqRooms} 
                 {elem.reqAdditionalBed&&<> + {elem.reqAdditionalBed} additional bed{elem.reqAdditionalBed>1&&<>s</>}</>} <br/>
             </React.Fragment>)
-
 
             return(<>
             {eachExp.expenseKey==="accommodation"&&<> 
@@ -1226,7 +1292,17 @@ export default function PlaygroundPage(props){
             </div>
             </>}
             <div className={styles.anExpenseDisp}>
-                <div style={{width:"55%"}}> {eachExp.priceDetail} </div>
+                <div style={{width:"55%", display:"flex", alignItems:"center"}}>
+                    <span className={styles.rmvExpBTN} onClick={()=>{
+                        let tempArr = dailyExpArray.splice(expIndex, 1)
+                        setTheDeparture({
+                            ...theDeparture
+                        })
+                    }}> <RemoveCircleOutlineIcon/> </span>
+                    {eachExp.priceDetail} 
+                    {eachExp.hotelName&&<>- {elem.hotelName}
+                    </>}
+                </div>
                 <div style={{display:"flex", textAlign:"end"}}>
                     {providerArr.length>1&&<><strong>
                         {eachExp.contactName!="Provider"&&<>{eachExp.contactName}</>} |</strong></>}
@@ -1244,7 +1320,7 @@ export default function PlaygroundPage(props){
             if(dailyExpArr){
                 return(<>
                     {dailyExpArr.map((element, i)=><React.Fragment key={i}>
-                        {anExpenseDisp(element)}
+                        {anExpenseDisp(element, i, dailyExpArr)}
                     </React.Fragment>)}
                 </>)
             }
@@ -1262,7 +1338,6 @@ export default function PlaygroundPage(props){
                 </div>
             </div>
             {expenseMapper(theExpenseArr[i])}
-
         </React.Fragment>
         </>)
 
@@ -1317,13 +1392,6 @@ export default function PlaygroundPage(props){
                     <dd> Contracts, operational documents, per provider </dd>
                     <dd> edit each expense </dd>
                     
-                </dl>
-
-                <li> Add additional expense functionality  </li>
-                <dl> 
-                    <dt> Hotel Expenses </dt>
-                    <dd> if eachDay.overnightProperty? add to contactList </dd>
-                    {/* <dd> Can select room type, & set price per type </dd> */}
                 </dl>
             </ul>
 
