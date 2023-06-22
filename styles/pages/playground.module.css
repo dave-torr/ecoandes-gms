@@ -255,6 +255,12 @@
     min-height: 40vh;
 }
 
+.operationsPageHeader{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
 
 .keySelectors{
     width: 760px;

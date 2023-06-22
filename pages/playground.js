@@ -3,13 +3,11 @@ import { useState } from 'react'
 import { useSession } from "next-auth/react"
 
 
-import { Select, extractSystemStyles } from '@mantine/core';
-import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-import CircularProgress from '@mui/material/CircularProgress';
-
 import Switch from '@mui/material/Switch';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import EditIcon from '@mui/icons-material/Edit';
+import EditOffIcon from '@mui/icons-material/EditOff';
 
 import { aDropdownPicker, anInputDisplayer} from "../components/forms"
 import {GMSNavii} from "./../components/navis"
@@ -30,7 +28,7 @@ let catalogIndex={
     "galapagosDiving":"Galapagos Diving Tours",
     "maexgal":"Galapagos Luxury Island Hopping",
     "continentalVarCosts":"Continental Variable Costs",
-    "ikalaHotels":"Accomodation Ikala Hotel Properties",
+    "ikalaHotels":"Ikala Hotels & Yacuma",
     "LTCPartnerAccoms":"LTC Partner Accomodations",
 }
 
@@ -395,13 +393,7 @@ const sampleItin={
 // import TrackChangesIcon from '@mui/icons-material/TrackChanges';
 
 export default function PlaygroundPage(props){
-    const { data: session } = useSession()
-    // ///////////////////////////////
-    // ///////////////////////////////
-
-
-
-
+const { data: session } = useSession()
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
 // operations calc
@@ -427,6 +419,7 @@ export default function PlaygroundPage(props){
 
     // utils
     const [addHotelTrig, setHotelAddTrig]=useState(false)
+    const [editSwitch, setEditSwitch]=useState(false)
 
     useEffect(()=>{
         {paxStats(theDeparture, setPaxData)}
@@ -591,6 +584,10 @@ export default function PlaygroundPage(props){
         result.setDate(result.getDate() + days)
         return result;
     }
+
+    const editOperationsBTN=()=>{
+
+    }
     // expense form
     const expenseEditor=(theExpense, setTheExpense, contactArr, dayIndx, theDep, setTheDep, roomingData)=>{
         if(theExpense){ 
@@ -747,7 +744,7 @@ export default function PlaygroundPage(props){
                     {elem.additionalBed&&<>
                     <div className={styles.roomOptLabel}>Additional bed</div>
                     <div className={styles.aRoomPrice}>
-                        + &nbsp; ${elem.additionalBed} 
+                        +${elem.additionalBed} 
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         <div style={{width:"18px"}}> 
                             {anExpense.roomPriceArr[i].reqAdditionalBed?<>
@@ -1212,7 +1209,14 @@ export default function PlaygroundPage(props){
 
         return(<>
         <div className={styles.roomingListCont}>
-        <h2> Rooming List</h2>
+        <div className={styles.operationsPageHeader}> 
+            <h2> Rooming List</h2>
+            <div style={{cursor:"pointer", paddingRight: "140px"}} onClick={()=>{
+                if(editSwitch){setEditSwitch(false)} else {setEditSwitch(true)}
+            }}>
+                {editSwitch? <><EditOffIcon/></>: <><EditIcon/></>}
+            </div>
+        </div>
             {paxData&&<><div className={styles.guestTotal}>{paxData.paxTotal} guests</div></>} 
         {theRoomingBreakdownDispl()}
         <div className={styles.roomingListGrid}>
@@ -1293,12 +1297,13 @@ export default function PlaygroundPage(props){
             </>}
             <div className={styles.anExpenseDisp}>
                 <div style={{width:"55%", display:"flex", alignItems:"center"}}>
-                    <span className={styles.rmvExpBTN} onClick={()=>{
-                        let tempArr = dailyExpArray.splice(expIndex, 1)
-                        setTheDeparture({
-                            ...theDeparture
-                        })
-                    }}> <RemoveCircleOutlineIcon/> </span>
+                    {editSwitch&& <>
+                        <span className={styles.rmvExpBTN} onClick={()=>{
+                            let tempArr = dailyExpArray.splice(expIndex, 1)
+                            setTheDeparture({
+                                ...theDeparture
+                            })
+                        }}> <RemoveCircleOutlineIcon/> </span></>}
                     {eachExp.priceDetail} 
                     {eachExp.hotelName&&<>- {elem.hotelName}
                     </>}
@@ -1330,12 +1335,13 @@ export default function PlaygroundPage(props){
         <React.Fragment key={i}>
             <div className={styles.dailyTitleCont}>  
                 <h5> Day {i+1}: {dayElem.dayTitle&&<>{dayElem.dayTitle}</>}</h5>
-                <div className={styles.addExpBTN} onClick={()=>{
-                    setExpTrig(true)
-                    setDayIndex(i)
-                }}>
-                    <AddCircleOutlineIcon/>
-                </div>
+                {editSwitch&& <>
+                    <div className={styles.addExpBTN} onClick={()=>{
+                        setExpTrig(true)
+                        setDayIndex(i)
+                    }}>
+                        <AddCircleOutlineIcon/>
+                    </div></>}
             </div>
             {expenseMapper(theExpenseArr[i])}
         </React.Fragment>
@@ -1343,7 +1349,14 @@ export default function PlaygroundPage(props){
 
         if(theExpenseArr.length>0){
         return(<>
-            <h2>Expenses:</h2>
+            <div className={styles.operationsPageHeader}> 
+                <h2>Expenses:</h2>
+                <div style={{cursor:"pointer"}} onClick={()=>{
+                    if(editSwitch){setEditSwitch(false); setExpTrig(false)} else {setEditSwitch(true)}
+                }}>
+                    {editSwitch? <><EditOffIcon/></>:<><EditIcon/></>}
+                </div>
+            </div>
             <div className={styles.expenseGridDisp}>
                 {eachDayTitleExp}
             </div>

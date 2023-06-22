@@ -1129,6 +1129,411 @@
             "pricekey": "accommodationGeneric",
             "roomPriceArr": [],
             "priceDetail": "General Accomodation"
-        }        
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "accommodation", 
+            "pricekey": "accommodationSwissotel",
+            "hotelName":"Swissotel Quito",
+            "roomPriceArr": [
+                {
+                    "roomkey":"singleStandard",
+                    "roomDescription":"Swiss Business Single Room",
+                    "price":118.65
+                },
+                {
+                    "roomkey":"doubleStandard",
+                    "roomDescription":"Swiss Business Double Room Mat/Twin",
+                    "price":118.65
+                },
+                {
+                    "roomkey":"singleSuperior",
+                    "roomDescription":"Grand Room Single Room",
+                    "price":167.45
+                },
+                {
+                    "roomkey":"doubleSuperior",
+                    "roomDescription":"Grand Room Double Room Mat/Twin",
+                    "price":167.45
+                },
+                {
+                    "roomkey":"singleExecutive",
+                    "roomDescription":"Executive Single Room",
+                    "price":204.05
+                },
+                {
+                    "roomkey":"doubleExecutive",
+                    "roomDescription":"Executive Double Room Mat/Twin",
+                    "price":234.55
+                },
+                {
+                    "roomkey":"singleBussinesSuite",
+                    "roomDescription":"Bussines Suite Single",
+                    "price":240.65
+                },
+                {
+                    "roomkey":"doubleBussinesSuite",
+                    "roomDescription":"Bussines Suite Double Mat/Twin",
+                    "price":246.75
+                },
+                {
+                    "roomkey":"singleExecutiveSuite",
+                    "roomDescription":"Executive Suite Single",
+                    "price":277.25
+                },
+                {
+                    "roomkey":"doubleExecutiveSuite",
+                    "roomDescription":"Executive Suite Double Mat/Twin",
+                    "price":307.75
+                }
+            ],
+            "priceDetail": "UIO Swissotel Accomodation"
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "accommodation", 
+            "pricekey": "accommodationViejaCuba",
+            "hotelName":"Vieja Cuba",
+            "roomPriceArr": [
+                {
+                    "roomkey":"singleStandard",
+                    "roomDescription":"Single Standard Room",
+                    "price":57.12
+                },
+                {
+                    "roomkey":"doubleStandard",
+                    "roomDescription":"Twin or Matrimonial Standard Room",
+                    "price":71.68
+                },
+                {
+                    "roomkey":"tripleStandard",
+                    "roomDescription":"Triple Standard Room",
+                    "price":85.12
+                },
+                {
+                    "roomkey":"quadStandard",
+                    "roomDescription":"Quadruple Standard Room",
+                    "price":96.84
+                },
+                {
+                    "roomkey":"singleSuite",
+                    "roomDescription":"Single Suite Room",
+                    "price":91.84
+                },
+                {
+                    "roomkey":"doubleSuite",
+                    "roomDescription":"Twin or Matrimonial Suite Room",
+                    "price":91.84
+                }
+            ],
+            "priceDetail": "UIO Vieja Cuba Accomodation"
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "accommodation", 
+            "pricekey": "accommodationWindhamUIOAirport",
+            "hotelName":"Wyndham Airport Quito",
+            "roomPriceArr": [
+                {
+                    "roomkey":"singleStandard",
+                    "roomDescription":"Single Standard (Deluxe) Room",
+                    "price":112.56
+                },
+                {
+                    "roomkey":"doubleStandard",
+                    "roomDescription":"Twin/Mat (Deluxe) Standard Room",
+                    "price":112.56
+                },
+                {
+                    "roomkey":"singleSuperior",
+                    "roomDescription":"Single Club Level Room",
+                    "price":136.95
+                },
+                {
+                    "roomkey":"doubleSuperior",
+                    "roomDescription":"Twin/Mat Club Level Room",
+                    "price":136.95
+                },
+                {
+                    "roomkey":"singleJrSuite",
+                    "roomDescription":"Single Jr. Suite Room",
+                    "price":161.36
+                },
+                {
+                    "roomkey":"doubleJrSuite",
+                    "roomDescription":"Twin or Matrimonial Jr. Suite Room",
+                    "price":161.36
+                },
+                {
+                    "roomkey":"singleSuite",
+                    "roomDescription":"Single Suite Room",
+                    "price":185.76
+                },
+                {
+                    "roomkey":"doubleJrSuite",
+                    "roomDescription":"Twin or Matrimonial Suite Room",
+                    "price":185.76
+                }
+            ],
+            "priceDetail": "UIO Wyndham Airport Accomodation"
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "accommodation", 
+            "pricekey": "accommodationRinconPuembo",
+            "hotelName":"Rincon de Puembo Quito",
+            "roomPriceArr": [
+                {
+                    "roomkey":"singleStandard",
+                    "roomDescription":"Single Standard (Premium) Room",
+                    "price":112.55
+                },
+                {
+                    "roomkey":"doubleMatStandard",
+                    "roomDescription":"Mat (Premium) Standard Room",
+                    "price":112.55
+                },
+                {
+                    "roomkey":"doubleTwinStandard",
+                    "roomDescription":"Twin (Premium) Standard Room",
+                    "price":124.75
+                },
+                {
+                    "roomkey":"singleSuperior",
+                    "roomDescription":"Single Superior (Deluxe) Room",
+                    "price":124.75
+                },
+                {
+                    "roomkey":"doubleSuperior",
+                    "roomDescription":"Double Superior Twin/Mat (Deluxe) Room",
+                    "price":135.95
+                },
+                {
+                    "roomkey":"tripleSuperior",
+                    "roomDescription":"Triple Superior (Deluxe) Room",
+                    "price":161.35
+                },
+                {
+                    "roomkey":"quadSuperior",
+                    "roomDescription":"Quadruple Superior (Deluxe) Room",
+                    "price":185.75
+                },
+                {
+                    "roomkey":"quadCasita",
+                    "roomDescription":"Quadruple Casita",
+                    "price":204.05
+                },
+                {
+                    "roomkey":"quintupleCasita",
+                    "roomDescription":"Quintuple Casita",
+                    "price":228.05
+                },
+                {
+                    "roomkey":"sextCasita",
+                    "roomDescription":"Sextuple Casita",
+                    "price":252.85
+                }
+            ],
+            "priceDetail": "UIO Rincon de Puembo Accomodation"
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "accommodation", 
+            "pricekey": "accommodationHolidayInnUIOAirport",
+            "hotelName":"Holiday Inn UIO Airport",
+            "roomPriceArr": [
+                {
+                    "roomkey":"singleStandard",
+                    "roomDescription":"Single Standard (King Leisure) Room",
+                    "price":105.2
+                },
+                {
+                    "roomkey":"doubleStandard",
+                    "roomDescription":"Twin/Mat (King Leisure) Standard Room",
+                    "price":117.4
+                },
+                {
+                    "roomkey":"singleSuperior",
+                    "roomDescription":"Single Superior (Queen Leisure) Room",
+                    "price":117.4
+                },
+                {
+                    "roomkey":"doubleSuperior",
+                    "roomDescription":"Twin/Mat (Queen Leisure) Superior Room",
+                    "price":129.6
+                },
+                {
+                    "roomkey":"singleSuperiorPlus",
+                    "roomDescription":"Single Superior Plus (King View) Room",
+                    "price":123.5
+                },
+                {
+                    "roomkey":"doubleSuperiorPlus",
+                    "roomDescription":"Twin/Mat (King View) Superior Plus Room",
+                    "price":135.7
+                },
+                {
+                    "roomkey":"singleSuperiorPlus2",
+                    "roomDescription":"Single Superior Plus (Queen View) Room",
+                    "price":129.6
+                },
+                {
+                    "roomkey":"doubleSuperiorPlus2",
+                    "roomDescription":"Twin/Mat (Queen View) Superior Plus Room",
+                    "price":141.8
+                },
+                {
+                    "roomkey":"singleSuperiorPlus3",
+                    "roomDescription":"Single Superior Plus (Queen View) Room",
+                    "price":129.6
+                },
+                {
+                    "roomkey":"doubleSuperiorPlus3",
+                    "roomDescription":"Twin/Mat (Queen View) Superior Plus Room",
+                    "price":141.8
+                },
+                {
+                    "roomkey":"singleSuite",
+                    "roomDescription":"Single (King) Suite",
+                    "price":154
+                },
+                {
+                    "roomkey":"doubleSuite",
+                    "roomDescription":"Twin/Mat (King) Suite",
+                    "price":154
+                },
+                {
+                    "roomkey":"singleSuitePlus",
+                    "roomDescription":"Single (Sky Club King) Suite Plus",
+                    "price":172.3
+                },
+                {
+                    "roomkey":"doubleSuitePlus",
+                    "roomDescription":"Twin/Mat (Sky Club King) Suite Plus",
+                    "price":172.3
+                },
+                {
+                    "roomkey":"singleSuitePlus2",
+                    "roomDescription":"Single (Sky Club Queen) Suite Plus",
+                    "price":178.4
+                },
+                {
+                    "roomkey":"doubleSuitePlus2",
+                    "roomDescription":"Twin/Mat (Sky Club Queen) Suite Plus",
+                    "price":178.4
+                },
+                {
+                    "roomkey":"singleSuitePlus3",
+                    "roomDescription":"Single (Sky Club Executive) Suite Plus",
+                    "price":196.7
+                },
+                {
+                    "roomkey":"doubleSuitePlus3",
+                    "roomDescription":"Twin/Mat (Sky Club Executive) Suite Plus",
+                    "price":196.7
+                }
+            ],
+            "priceDetail": "UIO Holliday Inn Airport Accomodation"
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "accommodation", 
+            "pricekey": "accommodationUnipark",
+            "hotelName":"Unipark Guayaquil",
+            "roomPriceArr": [
+                {
+                    "roomkey":"singleStandard",
+                    "roomDescription":"Single Standard (Deluxe) Room",
+                    "price":69.6
+                },
+                {
+                    "roomkey":"doubleStandard",
+                    "roomDescription":"Twin/Mat (Deluxe) Standard Room",
+                    "price":75.7,
+                    "additionalBed":39.1
+                },
+                {
+                    "roomkey":"tripleStandard",
+                    "roomDescription":"Triple (Deluxe) Standard Room",
+                    "price":112.3,
+                    "additionalBed":39.1
+                },
+                {
+                    "roomkey":"singleSuperior",
+                    "roomDescription":"Single Superior (Signature) Room",
+                    "price":112.3
+                },
+                {
+                    "roomkey":"doubleSuperior",
+                    "roomDescription":"Double Superior Twin/Mat (Signature) Room",
+                    "price":118.4
+                },
+                {
+                    "roomkey":"tripleSuperior",
+                    "roomDescription":"Triple (Signature) Superior Room",
+                    "price":155
+                },
+                {
+                    "roomkey":"singleSuite",
+                    "roomDescription":"Single Suite",
+                    "price":136.7
+                },
+                {
+                    "roomkey":"doubleSuite",
+                    "roomDescription":"Double Twin/Mat Suite",
+                    "price":142.8
+                },
+                {
+                    "roomkey":"tripleSuite",
+                    "roomDescription":"Triple Suite",
+                    "price":179.4
+                }
+
+            ],
+            "priceDetail": "GYE Unipark Accomodation"
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "accommodation", 
+            "pricekey": "accommodationWyndhamGYEMalecon",
+            "hotelName":"Wyndham Guayaquil Malecon",
+            "roomPriceArr": [
+                {
+                    "roomkey":"singleStandard",
+                    "roomDescription":"Single Standard (Deluxe) Room",
+                    "price":132.28
+                },
+                {
+                    "roomkey":"doubleStandard",
+                    "roomDescription":"Twin/Mat (Deluxe) Standard Room",
+                    "price":75.7,
+                    "additionalBed":46.88
+                },
+                {
+                    "roomkey":"singleJrSuite",
+                    "roomDescription":"Single Jr. Suite",
+                    "price":271.36
+                },
+                {
+                    "roomkey":"doubleStandard",
+                    "roomDescription":"Twin or Matrimonial Jr. Suite",
+                    "price":297.44,
+                    "additionalBed":46.88
+                },
+                {
+                    "roomkey":"singleSuite",
+                    "roomDescription":"Single Suite",
+                    "price":492.18
+                },
+                {
+                    "roomkey":"doubleStandard",
+                    "roomDescription":"Twin or Matrimonial Suite",
+                    "price":530.46,
+                    "additionalBed":46.88
+                }
+
+            ],
+            "priceDetail": "GYE Wyndham Malecon Accomodation"
+        }
     ]
 }
