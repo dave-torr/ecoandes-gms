@@ -8,6 +8,8 @@ import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import EditIcon from '@mui/icons-material/Edit';
 import EditOffIcon from '@mui/icons-material/EditOff';
+import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
+import CancelPresentationIcon from '@mui/icons-material/CancelPresentation';
 
 import { aDropdownPicker, anInputDisplayer} from "../components/forms"
 import {GMSNavii} from "./../components/navis"
@@ -30,6 +32,7 @@ let catalogIndex={
     "continentalVarCosts":"Continental Variable Costs",
     "ikalaHotels":"Ikala Hotels & Yacuma",
     "LTCPartnerAccoms":"LTC Partner Accomodations",
+    "transport": "Transport"
 }
 
 const sampleDeparture={
@@ -111,14 +114,14 @@ const sampleDeparture={
         },
         {
         "guest":{
-            "guestName": "Hegi Segara",
+            "guestName": "Tony Money",
             "guestDOB": "6/5/1942",
             "guestID": String,
             "passport": "A256824",
             "nationality": "Tibet",
         },
         "guest2":{
-            "guestName": "Majorne Kepecz",
+            "guestName": "Jackson Traxxion",
             "guestDOB": "6/7/95",
             "guestID": String,
             "guestNotes": [
@@ -128,7 +131,7 @@ const sampleDeparture={
             "nationality": "Tibet",
         },
         "guest3":{
-            "guestName": "Third Guest",
+            "guestName": "Third Sunday",
             "guestDOB": "6/7/98",
             "guestID": String,
             "guestNotes": [
@@ -168,6 +171,21 @@ const sampleDeparture={
         "singleSupp": true,
         }
     ],
+    "tourLeader":
+        {
+        "guest":{
+            "guestName": "Zoltan Leadre",
+            "guestDOB": "10/28/1952",
+            "guestID": String,
+            "guestNotes": [
+                "Librarian",
+            ],
+            "passport": "A256824",
+            "nationality": "Tibet",
+            "sex":"male"
+        },
+        "singleSupp": true
+        },
     "dayByDayExp":[
         [
             {            
@@ -420,6 +438,7 @@ const { data: session } = useSession()
     // utils
     const [addHotelTrig, setHotelAddTrig]=useState(false)
     const [editSwitch, setEditSwitch]=useState(false)
+    const [docsSwitch, setDocSwitch]=useState(false)
 
     useEffect(()=>{
         {paxStats(theDeparture, setPaxData)}
@@ -585,9 +604,6 @@ const { data: session } = useSession()
         return result;
     }
 
-    const editOperationsBTN=()=>{
-
-    }
     // expense form
     const expenseEditor=(theExpense, setTheExpense, contactArr, dayIndx, theDep, setTheDep, roomingData)=>{
         if(theExpense){ 
@@ -827,7 +843,7 @@ const { data: session } = useSession()
                     <div className={styles.aColumn}> 
                         {elem.roomsTotal?<>
                             <div className={styles.roomOptLabel}>Room total</div>
-                            <div className={styles.aRoomDescription}> ${elem.roomsTotal}</div> 
+                            <div className={styles.aRoomDescription}> ${elem.roomsTotal.toFixed(2)}</div> 
                         </> :<> </>}
                     </div>
                 </div>
@@ -906,7 +922,7 @@ const { data: session } = useSession()
                     }
                     }
                 })
-                return totalAdder
+                return totalAdder.toFixed(2)
             }
 
             return(<>
@@ -944,7 +960,6 @@ const { data: session } = useSession()
             <form className={styles.expenseForm} 
             onSubmit={(e)=>{
                 // send to back end 
-
                 e.preventDefault()
                 let updatingExpArr
                 if(theDep.dayByDayExp[dayIndx]){
@@ -959,7 +974,6 @@ const { data: session } = useSession()
                     ...theDep,
                     "dayByDayExp": theDep.dayByDayExp
                 })
-
                 setPriceChartKey()
                 setTheExpense()
                 setExpTrig(false)
@@ -1030,21 +1044,24 @@ const { data: session } = useSession()
         </>)
         } 
     }
+
+
     // Main disp
     const aFileDisplayer=(theItin, theDep)=>{
         return(<>
         {/* keys */}
             <div className={styles.keySelectors}>
-        {/* Selection */}
             {fileDisplayKey!="intro"&&<> 
-                <span onClick={()=>setFileKey("intro")}>home </span></>}
+                <span onClick={()=>{setFileKey("intro"); setExpTrig(false)}}>home </span></>}
             {fileDisplayKey!="rooming"&&<> 
-                <span onClick={()=>setFileKey("rooming")}>pax & rooming </span></>}
+                <span onClick={()=>{setFileKey("rooming"); setExpTrig(false)}}>pax & rooming </span></>}
             {fileDisplayKey!="providers"&&<> {providerArr.length>0&&<> 
-                <span onClick={()=>setFileKey("providers")}>providers </span>
+                <span onClick={()=>{setFileKey("providers"); setExpTrig(false)}}>providers </span>
                 </>}</>}
             {fileDisplayKey!="expenses"&&<> 
-                <span onClick={()=>setFileKey("expenses")}>expenses</span></>}
+                <span onClick={()=>{setFileKey("expenses"); setExpTrig(false)}}>expenses</span></>}
+            {fileDisplayKey!="dayByDay"&&<> 
+                <span onClick={()=>{setFileKey("dayByDay"); setExpTrig(false)}}>day by day</span></>}
             </div>
         {/* Display */}
             <div className={styles.aFileContainer}>
@@ -1060,11 +1077,13 @@ const { data: session } = useSession()
             {fileDisplayKey==="expenses"&&<>
                 {expenseDisplayer(theDep.dayByDayExp, theItin.dayByDay)}
             </>}
+            {fileDisplayKey==="dayByDay"&&<>
+                {dayByDayDisp(theItin.dayByDay)}
+            </>}
 
             </div>
         </>)
     }
-
     const itineraryHeaderDisp=(theItin, theDep)=>{
         let LTCLogoSwitcher
         if(theItin){
@@ -1118,8 +1137,18 @@ const { data: session } = useSession()
 
 
         return(<>
-            {LTCLogoSwitcher}
-            <h1>{theItin.tripName}</h1>
+            <div className={styles.operationsPageHeader}>
+                <div>
+                    {LTCLogoSwitcher}
+                    <h1>{theItin.tripName}</h1>
+                </div>
+                <div style={{cursor:"pointer", paddingRight: "40px"}} 
+                    onClick={()=>{
+                    if(editSwitch){setEditSwitch(false)} else {setEditSwitch(true)}
+                }}>
+                {editSwitch?<><EditOffIcon/></>: <><EditIcon/></>}
+            </div>
+            </div>
             <div className={styles.roomingListCont} > 
                 <div className={styles.detailDispl}>
                     {theItin.tripLang&&<>{eachIntroDetail("trip language", theItin.tripLang)}</>}
@@ -1137,6 +1166,7 @@ const { data: session } = useSession()
         </>)
         }
     }
+
     const theRoomingBreakdownDispl=()=>{
         return(<>
             <div className={styles.roomingListTotalCont}>
@@ -1180,6 +1210,7 @@ const { data: session } = useSession()
         if(theDeparture){
         let eachRoom=theDeparture.roomingList.map((elem, i)=>
             <React.Fragment key={i}>
+            {!elem.tourLeader&&<>
                 <div className={styles.eachRoomDisplayer}>
                     <div style={{width:"33px"}}> {i+1} </div>
                     <div className={styles.aRoomingDetail} style={{width:"108px", borderLeft:"solid 1px black"}}>
@@ -1193,6 +1224,7 @@ const { data: session } = useSession()
                         {elem.guest4&&<>{eachGuestData(elem.guest4)}</>}
                     </div>
                 </div>
+            </>}
             </React.Fragment> )
 
         let noteDisp
@@ -1217,7 +1249,7 @@ const { data: session } = useSession()
                 {editSwitch? <><EditOffIcon/></>: <><EditIcon/></>}
             </div>
         </div>
-            {paxData&&<><div className={styles.guestTotal}>{paxData.paxTotal} guests</div></>} 
+        {paxData&&<><div className={styles.guestTotal}>{paxData.paxTotal} guests</div></>} 
         {theRoomingBreakdownDispl()}
         <div className={styles.roomingListGrid}>
             <div className={styles.roomingListKEYS}>
@@ -1230,6 +1262,24 @@ const { data: session } = useSession()
                 <div style={{width:"66px", borderLeft:"solid 1px black" }}> AGE </div>
             </div>
             {eachRoom}
+            <h4>Tour Leader</h4>
+            {theDeparture.tourLeader&& <>
+                <div className={styles.eachRoomDisplayer}>
+                    <div style={{width:"33px"}}> TL </div>
+                    <div className={styles.aRoomingDetail} style={{width:"108px", borderLeft:"solid 1px black"}}>
+                        SINGLE
+                    </div>
+                    <div style={{display:"flex", flexDirection:"column"}}>
+                        {eachGuestData(theDeparture.tourLeader.guest)}
+                    </div>
+                </div>
+                <div className={styles.eachRoomDisplayer}>
+                    <span style={{textTransform:"capitalize"}}>
+                    <strong>NOTES:</strong> &nbsp;
+                    {theDeparture.tourLeader.guest.guestNotes.map((elem,i)=><React.Fragment key={i}>{i>0&&<>, </>} {elem}</React.Fragment>)}
+                    </span>
+                </div>                           
+            </>}
         </div>
 
         {eachNote.length>0&&<>
@@ -1242,10 +1292,12 @@ const { data: session } = useSession()
                 {noteDisp}
             </div>
         </>}
+
         </div>
         </>)
     }
     }    
+    // expenses
     const expenseDisplayer=(theExpenseArr, dayByDay )=>{
 
         const anExpenseDisp=(eachExp, expIndex, dailyExpArray)=>{
@@ -1305,7 +1357,7 @@ const { data: session } = useSession()
                             })
                         }}> <RemoveCircleOutlineIcon/> </span></>}
                     {eachExp.priceDetail} 
-                    {eachExp.hotelName&&<>- {elem.hotelName}
+                    {eachExp.hotelName&&<>- {eachExp.hotelName}
                     </>}
                 </div>
                 <div style={{display:"flex", textAlign:"end"}}>
@@ -1363,29 +1415,76 @@ const { data: session } = useSession()
         </>)
         }
     }
+    // contact arr
     const contactArrDisp=(theArr)=>{
         if(theArr.length>0){
             const guideTypeSwitcher=(theKey)=>{
                 switch (theKey) {
                     case "guideExpense":
                         return " - Guide Service:";
-                        
                 }
             }
             let eachContact=theArr.map((elem, i)=><React.Fragment key={i}>
-                <div className={styles.anExpenseDisp}>
+                <div className={styles.aProviderDisp}>
                 {/* have different displayers for guides, accoms, transport, other providers */}
-                    <div><strong>{elem.contactName}</strong> {guideTypeSwitcher(elem.expenseKey)} {elem.priceDetail&&<>{elem.priceDetail}</>}</div>
-                    {elem.contactNumb!=100000 &&<><div> # 0{elem.contactNumb}</div></>}
+                    <div className={styles.providerRow}>
+                        <div>
+                            <strong>{elem.contactName}</strong>   
+                            {guideTypeSwitcher(elem.expenseKey)}{elem.priceDetail&&<> {elem.priceDetail}</>}
+                        </div>
+                        {elem.contactNumb!=100000 &&<><div> # 0{elem.contactNumb}</div></>}
+                    </div>
+
+                    {docsSwitch&& <>
+                    <div className={styles.providerRow}>
+                          <div className={styles.eachDocBTN} onClick={()=>{
+                            
+                          }}> Work Order + </div>
+                          <div className={styles.eachDocBTN} onClick={()=>{
+
+                          }}> Contract + </div>
+                    </div>
+                    </>}
                 </div>
             </React.Fragment> )
             return(<>
-                <h2>Providers:</h2>
+                <div className={styles.operationsPageHeader}> 
+                    <h2>Providers:</h2>
+                    <div style={{cursor:"pointer"}} onClick={()=>{
+                        if(docsSwitch){setDocSwitch(false)}else{setDocSwitch(true)}
+                    }}>
+                        {docsSwitch? <><CancelPresentationIcon/></>:<><DocumentScannerIcon/></>}
+                    </div>
+                </div>
+
                 {eachContact}
+
+                operational Docs:
+                <li> Orden de trabajo </li>
+                <li> Requerimietno economico </li>
+                <li> Contrato </li>
+
             </>)            
         }
     }
-
+    // day by day disp
+    const dayByDayDisp=(theDays)=>{
+        console.log(theDays)
+        let theProgramDays=theDays.map((elem,i)=><React.Fragment key={i}>
+            <div className={styles.eachDayCont}>
+                <div className={styles.dailyTitleCont}>  
+                    <h5> Day {i+1}: {elem.dayTitle&&<>{elem.dayTitle}</>}</h5>
+                </div>
+                {elem.dayDescription}
+            </div>
+        </React.Fragment> )
+        return(<>
+            <h2>Day by Day:</h2>
+            <div className={styles.dayByDayCont}>
+                {theProgramDays}
+            </div>
+        </>)
+    }
     /////////////////////////////////////////////////////
     /////////////////////////////////////////////////////
 
@@ -1404,7 +1503,7 @@ const { data: session } = useSession()
                     <dd>create different docs from templates, and display each provider's services </dd>
                     <dd> Contracts, operational documents, per provider </dd>
                     <dd> edit each expense </dd>
-                    
+                    <li>yacht reservation form </li>
                 </dl>
             </ul>
 

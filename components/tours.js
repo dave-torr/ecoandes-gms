@@ -115,19 +115,20 @@ export function ATourCard(props){
 
 export function TextTourCard(props){
     let theTour = props.aTour
-
+    console.log(theTour)
     if(props.type===1) {
         return(<>
         <Link href={`/tours/${theTour.id}`}>
             <a className={styles.textTourCard} >
                 <div style={{width: "100%", display:"flex", justifyContent:"space-between", alignContent: "center"}}>
-                    <div style={{textTransform:"capitalize", display:"flex", justifyContent:"center" }}> 
+                    <div style={{textTransform:"capitalize", display:"flex", justifyContent:"center"}}> 
                     <PlaceIcon/> {theTour.countryList[0]}
                     </div>
                 
-                    <div style={{textTransform:"capitalize", display:"flex", justifyContent:"center" }}> 
-                    <HikingIcon /> {theTour.difficulty}/5 
-                    </div>
+                    {theTour.difficulty&&<>
+                    <div style={{display:"flex", justifyContent:"center" }}>
+                    <HikingIcon /> {theTour.difficulty}/5</div></>}
+
                 </div>
                     <div className={styles.tourCardTripName}> {theTour.tripName} </div>
                     <div> {theTour.duration}D | {theTour.tourType} </div>
@@ -144,16 +145,16 @@ export function TextTourCard(props){
             props.setDialogTrigger(true)
         }}>
             <div style={{width: "100%", display:"flex", justifyContent:"space-between", alignContent: "center"}}>
-                <div style={{textTransform:"capitalize", display:"flex", justifyContent:"center" }}> 
+                <div style={{textTransform:"capitalize", display:"flex", justifyContent:"center"}}> 
                 <PlaceIcon/> {theTour.countryList[0]}
                 </div>
             
-                <div style={{textTransform:"capitalize", display:"flex", justifyContent:"center" }}> 
-                <HikingIcon /> {theTour.difficulty}/5 
-                </div>
+                {theTour.difficulty&&<>
+                    <div style={{display:"flex", justifyContent:"center" }}>
+                    <HikingIcon /> {theTour.difficulty}/5</div></>}
             </div>
                 <div className={styles.tourCardTripName}> {theTour.tripName} </div>
-                <div> {theTour.duration}D | {theTour.tourType} </div>
+                <div>{theTour.duration}D {theTour.tourType&&<>| {theTour.tourType}</>}</div>
         </div>
     </>)
     }

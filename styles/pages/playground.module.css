@@ -296,6 +296,10 @@
 .keySelectors span:nth-of-type(3):hover{
     background-color: rgba(247, 131, 42, 0.959);
 }
+.keySelectors span:nth-of-type(4):hover{
+    background-color: rgba(102, 13, 198, 0.959);
+    color: white;
+}
 
 
 /* rooming List */
@@ -534,6 +538,42 @@
 }
 .roomOptInput{
     display: flex;
+}
+
+.dayByDayCont{
+    display: flex;
+    flex-direction: column;
+}
+
+.eachDayCont{
+    padding: 3px 9px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* operational docs */
+.aProviderDisp{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-bottom: solid 1px black;
+    margin: 6px 0;
+}
+.providerRow{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.providerRow:nth-of-type(2){
+    justify-content: flex-start;
+}
+
+.eachDocBTN{
+    border: solid 1px black;
+    padding: 6px;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    margin: 9px;
 }
 
 /*  // // // //  */

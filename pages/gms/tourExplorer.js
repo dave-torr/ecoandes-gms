@@ -149,7 +149,7 @@ const { data: session } = useSession()
             {fetchedItinArr?<>
                 {LTCTourExplorar(fetchedItinArr, userUIFilters, theFilterLabel, "your", false, 2, setPickedItin, setItinDispTrigger )}
             </>: <>
-                <div style={{width:"96%", padding:"15px" }}>
+                <div className={styles.userBTNCont}>
                     <div className={styles.aGenBTN} 
                     onClick={async()=>{
                         if(!itineraryFetcherTrig){
@@ -222,7 +222,7 @@ const { data: session } = useSession()
             {fetchedItinArr2?<>
                 {LTCTourExplorar(fetchedItinArr2, userUIFilters, theFilterLabel, "All LTC", false, 2, setPickedItin, setItinDispTrigger )}
             </>: <>
-                <div style={{width:"96%", padding:"15px" }}>
+                <div className={styles.userBTNCont}>
                     <div className={styles.aGenBTN} 
                     onClick={async()=>{
                         if(!itineraryFetcherTrig2){
@@ -300,10 +300,10 @@ const { data: session } = useSession()
                 <h1>Tour Explorer</h1>
             
 
+                {LTCTourExplorar(filteredItineraries, userUIFilters, theFilterLabel, "LTC Published", true, 1 )}
                 {fetchUserItineraries()}
                 {allItinsDisp()}
 
-                {LTCTourExplorar(filteredItineraries, userUIFilters, theFilterLabel, "LTC Published", true, 1 )}
 
             </>}
             </div>

@@ -1,0 +1,27 @@
+[
+    {
+        "contactName":"Jan Jorg Strik",
+        "countryArr":["panama"],
+        "companyObj":{
+            "companyName":"Vapues",
+            "companyRole":"Founder & director"
+        },
+        "contactType":"individual",
+        "contactObj":{
+            "email": "jan@vapues.com",
+            "phone": "(507) 6648 5346",
+            "address": "Calle Peñuela 23, Isla Taboga, Panama",
+            "website": "www.vapues.com"
+        }
+    },
+    {
+        "contactName":"Vapues",
+        "countryArr":["panama"],
+        "contactType":"company",
+        "contactObj":{
+            "phone": "(507) 6648 5346",
+            "address": "Calle Peñuela 23, Isla Taboga, Panama",
+            "website": "www.vapues.com"
+        }
+    }
+]
