@@ -359,10 +359,24 @@
     border-top: none;
     height: fit-content;
     text-align: center;
+    position: inherit;
 }
 
 .eachRoomDisplayer  span{
     padding: 3px;
+}
+
+.editRoomingIcon{
+    position: absolute;
+    left: -44px;
+    cursor: pointer;
+}
+
+.deleteARoomIcon{
+    position: absolute;
+    right: -44px;
+    color: red;
+    cursor: pointer;
 }
 
 .aRoomingDetail{

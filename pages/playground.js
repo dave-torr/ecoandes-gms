@@ -40,151 +40,168 @@ const sampleDeparture={
     "tourCode":"EC AE 12 23 / GE 47 23",
     "roomingList": [
         {
-        "guest":{
-            "guestName": "Yeti Dicho",
-            "guestDOB": "10/28/1992",
-            "guestID": String,
-            "guestNotes": [
-                "Alergic to Peanuts",
-                "Vegetarian"
-            ],
-            "passport": "A256824",
-            "nationality": "Tibet",
-            "sex":"male"
-        },
-        "guest2":{
-            "guestName": "Mrs. Snow",
-            "guestDOB": "10/27/93",
-            "guestID": String,
-            "passport": "A256824",
-            "nationality": "Tibet",
-            "sex":"female"
-        },
+        "guestArr":[
+            {
+                "guestName": "Yeti Dicho",
+                "guestDOB": "10/28/1992",
+                "guestID": String,
+                "guestNotes": [
+                    "Alergic to Peanuts",
+                    "Vegetarian"
+                ],
+                "passport": "A256824",
+                "nationality": "Tibet",
+                "sex":"male"
+            },
+            {
+                "guestName": "Mrs. Snow",
+                "guestDOB": "10/27/93",
+                "guestID": String,
+                "passport": "A256824",
+                "nationality": "Tibet",
+                "sex":"female"
+            },
+
+        ],
         "accomodationType": "matrimonial",
         "singleSupp": false,
         },
         {
-        "guest":{
-            "guestName": "Yeti Michu",
-            "guestDOB": "10/7/1992",
-            "guestID": String,
-            "guestNotes": [
-                "Alergic to Peanuts",
-                "Vegetarian"
-            ],
-            "passport": "A256824",
-            "nationality": "Tibet",
-        },
-        "guest2":{
-            "guestName": "Mrs. Icicle",
-            "guestDOB": "6/9/93",
-            "guestID": String,
-            "guestNotes": [
-                "werewolf"
-            ],
-            "passport": "A256824",
-            "nationality": "Tibet",
-        },
+        "guestArr":[
+            {
+                "guestName": "Yeti Michu",
+                "guestDOB": "10/7/1992",
+                "guestID": String,
+                "guestNotes": [
+                    "Alergic to Peanuts",
+                    "Vegetarian"
+                ],
+                "passport": "A256824",
+                "nationality": "Tibet",
+            },
+            {
+                "guestName": "Mrs. Icicle",
+                "guestDOB": "6/9/93",
+                "guestID": String,
+                "guestNotes": [
+                    "werewolf"
+                ],
+                "passport": "A256824",
+                "nationality": "Tibet",
+            },
+        ],
         "accomodationType": "matrimonial",
         "singleSupp": false,
         },
         {
-        "guest":{
-            "guestName": "Hegi Segara",
-            "guestDOB": "6/5/1942",
-            "guestID": String,
-            "guestNotes": [
-                "Alergic to Shrimp",
-            ],
-            "passport": "A256824",
-            "nationality": "Tibet",
-        },
-        "guest2":{
-            "guestName": "Majorne Kepecz",
-            "guestDOB": "6/7/95",
-            "guestID": String,
-            "guestNotes": [
-                "Gluten free"
-            ],
-            "passport": "A256824",
-            "nationality": "Tibet",
-        },
+        "guestArr":[
+            {
+                "guestName": "Hegi Segara",
+                "guestDOB": "6/5/1942",
+                "guestID": String,
+                "guestNotes": [
+                    "Alergic to Shrimp",
+                ],
+                "passport": "A256824",
+                "nationality": "Tibet",
+            },
+            {
+                "guestName": "Majorne Kepecz",
+                "guestDOB": "6/7/95",
+                "guestID": String,
+                "guestNotes": [
+                    "Gluten free"
+                ],
+                "passport": "A256824",
+                "nationality": "Tibet",
+            },
+        ],
         "accomodationType": "twin",
         "singleSupp": false,
         },
         {
-        "guest":{
-            "guestName": "Tony Money",
-            "guestDOB": "6/5/1942",
-            "guestID": String,
-            "passport": "A256824",
-            "nationality": "Tibet",
-        },
-        "guest2":{
-            "guestName": "Jackson Traxxion",
-            "guestDOB": "6/7/95",
-            "guestID": String,
-            "guestNotes": [
-            "Gluten free"
-            ],
-            "passport": "A256824",
-            "nationality": "Tibet",
-        },
-        "guest3":{
-            "guestName": "Third Sunday",
-            "guestDOB": "6/7/98",
-            "guestID": String,
-            "guestNotes": [
-            "Gluten free"
-            ],
-            "passport": "A2664",
-            "nationality": "Malaysia",
-        },
+        "guestArr":[
+            {
+                "guestName": "Tony Money",
+                "guestDOB": "6/5/1942",
+                "guestID": String,
+                "passport": "A256824",
+                "nationality": "Tibet",
+            },
+            {
+                "guestName": "Jackson Traxxion",
+                "guestDOB": "6/7/95",
+                "guestID": String,
+                "guestNotes": [
+                "Gluten free"
+                ],
+                "passport": "A256824",
+                "nationality": "Tibet",
+            },
+            {
+                "guestName": "Third Sunday",
+                "guestDOB": "6/7/98",
+                "guestID": String,
+                "guestNotes": [
+                "Gluten free"
+                ],
+                "passport": "A2664",
+                "nationality": "Malaysia",
+            },
+        ],
         "accomodationType": "triple",
         "singleSupp": false,
         },
         {
-        "guest":{
-            "guestName": "Mr.Bear Donoso",
-            "guestDOB": "8/15/1972",
-            "guestID": String,
-            "guestNotes": [
-                "Alergic to Peanuts",
-                "Vegetarian"
-            ],
-            "passport": "A256824",
-            "nationality": "Nepal",
-        },
+        "guestArr":[
+            {
+                "guestName": "Mr.Bear Donoso",
+                "guestDOB": "8/15/1972",
+                "guestID": String,
+                "guestNotes": [
+                    "Alergic to Peanuts",
+                    "Vegetarian"
+                ],
+                "passport": "A256824",
+                "nationality": "Nepal",
+            },
+        ],
         "singleSupp": true,
         },
         {
-        "guest":{
-            "guestName": "Tiger Ton",
-            "guestDOB": "8/15/1978",
-            "guestID": String,
-            "guestNotes": [
-                "Fruits in room every day",
-            ],
-            "passport": "A256824",
-            "nationality": "Amazon Jungle",
-        },
+        "guestArr":[
+            {
+                "guestName": "Tiger Ton",
+                "guestDOB": "8/15/1978",
+                "guestID": String,
+                "guestNotes": [
+                    "Fruits in room every day",
+                ],
+                "passport": "A256824",
+                "nationality": "Amazon Jungle",
+            },
+        ],
         "singleSupp": true,
         }
     ],
     "tourLeader":
         {
-        "guest":{
-            "guestName": "Zoltan Leadre",
-            "guestDOB": "10/28/1952",
-            "guestID": String,
-            "guestNotes": [
-                "Librarian",
+            "singleSupp": true,
+            "guestArr":[
+                {
+                "guestName": "Zoltan Leadre",
+                "guestDOB": "10/28/1952",
+                "guestID": String,
+                "guestNotes": [
+                    "Librarian",
+                ],
+                "passport": "A256824",
+                "nationality": "Tibet",
+                "sex":"male"
+                }
+
             ],
-            "passport": "A256824",
-            "nationality": "Tibet",
-            "sex":"male"
-        },
-        "singleSupp": true
+
         },
     "dayByDayExp":[
         [
@@ -440,6 +457,8 @@ const { data: session } = useSession()
     const [editSwitch, setEditSwitch]=useState(false)
     const [docsSwitch, setDocSwitch]=useState(false)
 
+    const [roomingEditIndex, setRoomingEditIndex]=useState(null)
+
     useEffect(()=>{
         {paxStats(theDeparture, setPaxData)}
 
@@ -480,26 +499,19 @@ const { data: session } = useSession()
         let nationalityArr=[]
         // each guest loop
         theItin.roomingList.forEach((elem)=>{
-            if(elem.guest){
-                paxTotal= paxTotal + 1;
-                const findContact = nationalityArr.find(element => element === elem.guest.nationality)
-                if(!findContact){nationalityArr.push(elem.guest.nationality)}
+
+            if(elem.guestArr){
+                paxTotal= paxTotal+ elem.guestArr.length
+                // nationality arr, use ???
+                elem.guestArr.forEach((guestElemz)=>{
+                    const findContact = nationalityArr.find(element => element === guestElemz.nationality )
+                        if(!findContact){
+                            nationalityArr.push(guestElemz.nationality)
+
+                        }
+                })
             }
-            if(elem.guest2){
-                paxTotal= paxTotal + 1
-                const findContact = nationalityArr.find(element => element === elem.guest2.nationality)
-                if(!findContact){nationalityArr.push(elem.guest2.nationality)}
-            }
-            if(elem.guest3){
-                paxTotal= paxTotal + 1
-                const findContact = nationalityArr.find(element => element === elem.guest3.nationality)
-                if(!findContact){nationalityArr.push(elem.guest3.nationality)}
-            }
-            if(elem.guest4){
-                paxTotal= paxTotal + 1
-                const findContact = nationalityArr.find(element => element === elem.guest4.nationality)
-                if(!findContact){nationalityArr.push(elem.guest4.nationality)}
-            }
+
             if(elem.singleSupp){
                 roomObj={
                     ...roomObj,
@@ -1065,23 +1077,25 @@ const { data: session } = useSession()
             </div>
         {/* Display */}
             <div className={styles.aFileContainer}>
-            {fileDisplayKey==="intro"&&<>
-                {itineraryHeaderDisp(theItin, theDep)}
-            </>}
-            {fileDisplayKey==="rooming"&&<>
-                {roomingListDisp(theDep)}
-            </>}
-            {fileDisplayKey==="providers"&&<>
-                {contactArrDisp(providerArr)}
-            </>}
-            {fileDisplayKey==="expenses"&&<>
-                {expenseDisplayer(theDep.dayByDayExp, theItin.dayByDay)}
-            </>}
-            {fileDisplayKey==="dayByDay"&&<>
-                {dayByDayDisp(theItin.dayByDay)}
-            </>}
-
+                {fileDisplayKey==="intro"&&<>
+                    {itineraryHeaderDisp(theItin, theDep)}
+                </>}
+                {fileDisplayKey==="rooming"&&<>
+                    {roomingListDisp(theDep)}
+                </>}
+                {fileDisplayKey==="providers"&&<>
+                    {contactArrDisp(providerArr)}
+                </>}
+                {fileDisplayKey==="expenses"&&<>
+                    {expenseDisplayer(theDep.dayByDayExp, theItin.dayByDay)}
+                </>}
+                {fileDisplayKey==="dayByDay"&&<>
+                    {dayByDayDisp(theItin.dayByDay)}
+                </>}
             </div>
+            {temporaryRoomObj.guestArr&&<>
+                {roomingListEdit()}
+            </>}
         </>)
     }
     const itineraryHeaderDisp=(theItin, theDep)=>{
@@ -1135,6 +1149,7 @@ const { data: session } = useSession()
             </>)
         }
 
+        let paxTotalCount=<>{paxData?.paxTotal} / {sampleDeparture?.maxPaxNumb} maximum</>
 
         return(<>
             <div className={styles.operationsPageHeader}>
@@ -1146,8 +1161,8 @@ const { data: session } = useSession()
                     onClick={()=>{
                     if(editSwitch){setEditSwitch(false)} else {setEditSwitch(true)}
                 }}>
-                {editSwitch?<><EditOffIcon/></>: <><EditIcon/></>}
-            </div>
+                    {editSwitch?<><EditOffIcon/></>: <><EditIcon/></>}
+                </div>
             </div>
             <div className={styles.roomingListCont} > 
                 <div className={styles.detailDispl}>
@@ -1156,6 +1171,7 @@ const { data: session } = useSession()
                     {theItin.aComp&&<>{eachIntroDetail("company", theItin.aComp)}</>}
                     {theItin.compContact&&<>{eachIntroDetail("contact", theItin.compContact)}</>}
                     {theItin.tripRef&&<>{eachIntroDetail("trip Reference", theItin.tripRef)}</>}
+                    {theItin.tripRef&&<>{eachIntroDetail("guests", paxTotalCount)}</>}
                 </div>
                 <h2> Tour Dates </h2>
                 <div className={styles.theDatesCont}> 
@@ -1207,21 +1223,42 @@ const { data: session } = useSession()
             </>)
         }
 
+
         if(theDeparture){
         let eachRoom=theDeparture.roomingList.map((elem, i)=>
             <React.Fragment key={i}>
             {!elem.tourLeader&&<>
                 <div className={styles.eachRoomDisplayer}>
+                {editSwitch&&<>
+                    <div className={styles.editRoomingIcon} onClick={()=>{
+                        setTempRoomObj(elem)
+                        window.scrollTo({
+                            top: 20000,
+                            behavior: "smooth",
+                        });
+                    }}>
+                    <EditIcon />
+                    </div>
+                    <div className={styles.deleteARoomIcon} onClick={()=>{
+                        let tempRooming = [...theDeparture.roomingList]
+                        tempRooming.splice(i,1)
+                        setTheDeparture({
+                            ...theDeparture,
+                            "roomingList":tempRooming
+                        })
+                    }}>
+                    <RemoveCircleOutlineIcon />
+                    </div>
+                </>}
                     <div style={{width:"33px"}}> {i+1} </div>
                     <div className={styles.aRoomingDetail} style={{width:"108px", borderLeft:"solid 1px black"}}>
                         {elem.singleSupp&&<>SINGLE</>}
                         {elem.accomodationType}
                     </div>
                     <div style={{display:"flex", flexDirection:"column"}}>
-                        {eachGuestData(elem.guest)}
-                        {elem.guest2&&<>{eachGuestData(elem.guest2)}</>}
-                        {elem.guest3&&<>{eachGuestData(elem.guest3)}</>}
-                        {elem.guest4&&<>{eachGuestData(elem.guest4)}</>}
+
+                        {elem.guestArr.map((guestElem, i)=> <> {eachGuestData(guestElem)}</> ) }
+
                     </div>
                 </div>
             </>}
@@ -1241,62 +1278,123 @@ const { data: session } = useSession()
 
         return(<>
         <div className={styles.roomingListCont}>
-        <div className={styles.operationsPageHeader}> 
-            <h2> Rooming List</h2>
-            <div style={{cursor:"pointer", paddingRight: "140px"}} onClick={()=>{
-                if(editSwitch){setEditSwitch(false)} else {setEditSwitch(true)}
-            }}>
-                {editSwitch? <><EditOffIcon/></>: <><EditIcon/></>}
-            </div>
-        </div>
-        {paxData&&<><div className={styles.guestTotal}>{paxData.paxTotal} guests</div></>} 
-        {theRoomingBreakdownDispl()}
-        <div className={styles.roomingListGrid}>
-            <div className={styles.roomingListKEYS}>
-                <div style={{width:"33px"}}> # </div>
-                <div style={{width:"108px", borderLeft:"solid 1px black"}}>ROOM TYPE</div>
-                <div style={{width:"180px", borderLeft:"solid 1px black", textAlign:"start" }}>&nbsp;&nbsp;GUEST NAME </div>
-                <div style={{width:"120px", borderLeft:"solid 1px black" }}> NATIONALITY </div>
-                <div style={{width:"100px", borderLeft:"solid 1px black" }}> D.O.B. </div>
-                <div style={{width:"120px", borderLeft:"solid 1px black" }}> PASSPORT </div>
-                <div style={{width:"66px", borderLeft:"solid 1px black" }}> AGE </div>
-            </div>
-            {eachRoom}
-            <h4>Tour Leader</h4>
-            {theDeparture.tourLeader&& <>
-                <div className={styles.eachRoomDisplayer}>
-                    <div style={{width:"33px"}}> TL </div>
-                    <div className={styles.aRoomingDetail} style={{width:"108px", borderLeft:"solid 1px black"}}>
-                        SINGLE
-                    </div>
-                    <div style={{display:"flex", flexDirection:"column"}}>
-                        {eachGuestData(theDeparture.tourLeader.guest)}
-                    </div>
-                </div>
-                <div className={styles.eachRoomDisplayer}>
-                    <span style={{textTransform:"capitalize"}}>
-                    <strong>NOTES:</strong> &nbsp;
-                    {theDeparture.tourLeader.guest.guestNotes.map((elem,i)=><React.Fragment key={i}>{i>0&&<>, </>} {elem}</React.Fragment>)}
-                    </span>
-                </div>                           
-            </>}
-        </div>
+            <div className={styles.operationsPageHeader}> 
+                <h2> Rooming List</h2>
 
-        {eachNote.length>0&&<>
-            <h2>Guest Notes </h2>
+                {/* edit data */}
+                <div style={{cursor:"pointer", paddingRight: "140px"}} onClick={()=>{
+                    if(editSwitch){setEditSwitch(false); setTempRoomObj({})} else {setEditSwitch(true)}
+                }}>
+                    {editSwitch? <><EditOffIcon/></>: <><EditIcon/></>}
+                </div>
+            </div>
+            {paxData&&<><div className={styles.guestTotal}>{paxData.paxTotal} guests</div></>} 
+            {theRoomingBreakdownDispl()}
             <div className={styles.roomingListGrid}>
-            <div className={styles.roomingListKEYS}>
-                <div style={{width:"180px" }}> GUEST NAME </div>
-                <div style={{borderLeft:"solid 1px black" }}>&nbsp; SPECIAL INDICATIONS </div>
+                <div className={styles.roomingListKEYS}>
+                    <div style={{width:"33px"}}> # </div>
+                    <div style={{width:"108px", borderLeft:"solid 1px black"}}>ROOM TYPE</div>
+                    <div style={{width:"180px", borderLeft:"solid 1px black", textAlign:"start" }}>&nbsp;&nbsp;GUEST NAME </div>
+                    <div style={{width:"120px", borderLeft:"solid 1px black" }}> NATIONALITY </div>
+                    <div style={{width:"100px", borderLeft:"solid 1px black" }}> D.O.B. </div>
+                    <div style={{width:"120px", borderLeft:"solid 1px black" }}> PASSPORT </div>
+                    <div style={{width:"66px", borderLeft:"solid 1px black" }}> AGE </div>
+                </div>
+                {eachRoom}
+
+                {/* Tour Leader Data */}
+                {theDeparture.tourLeader&& <>
+                    <h4>Tour Leader</h4>
+                    <div className={styles.eachRoomDisplayer}>
+                    {/* edit data */}
+                    {editSwitch&&<>
+                        <div className={styles.editRoomingIcon} onClick={()=>{
+                            setTempRoomObj(theDeparture.tourLeader)
+                        }} > 
+                        <EditIcon />
+                        </div>
+                        <div className={styles.deleteARoomIcon} onClick={()=>{
+                                setTheDeparture({
+                                    ...theDeparture,
+                                    "tourLeader":null
+                                })
+                            }}>
+                            <RemoveCircleOutlineIcon />
+                        </div>
+                    </>}
+                        <div style={{width:"33px"}}> TL </div>
+                        <div className={styles.aRoomingDetail} style={{width:"108px", borderLeft:"solid 1px black"}}>
+                            SINGLE
+                        </div>
+                        <div style={{display:"flex", flexDirection:"column"}}>
+
+                            {theDeparture.tourLeader.guestArr.map((guestElem, i)=> <> {eachGuestData(guestElem)}</> ) }
+                        </div>
+                    </div>
+                    <div className={styles.eachRoomDisplayer}>
+                        <span style={{textTransform:"capitalize"}}>
+                        <strong>NOTES:</strong> &nbsp;
+                        {theDeparture.tourLeader.guestArr[0].guestNotes.map((theNote,i)=><React.Fragment key={i}>{i>0&&<>,</>} {theNote}</React.Fragment>)}
+                        </span>
+                    </div>
+
+                </>}
             </div>
-                {noteDisp}
-            </div>
-        </>}
+
+            {eachNote.length>0&&<>
+                <h2>Guest Notes </h2>
+                <div className={styles.roomingListGrid}>
+                <div className={styles.roomingListKEYS}>
+                    <div style={{width:"180px" }}> GUEST NAME </div>
+                    <div style={{borderLeft:"solid 1px black" }}>&nbsp; SPECIAL INDICATIONS </div>
+                </div>
+                    {noteDisp}
+                </div>
+            </>}
 
         </div>
         </>)
     }
-    }    
+    }
+    const roomingListEdit=()=>{
+        // add roomin and guest
+
+        // edit room and guests
+
+        let eachGuestForm
+        if(temporaryRoomObj){
+            eachGuestForm= temporaryRoomObj.guestArr.map((eachGuestElm,i)=><React.Fragment key={i}>
+
+                <h4>Edit guest #{i+1}</h4>
+                <div className={styles.aDataRow}>
+                    <div style={{width: "47%" }}> 
+                        {anInputDisplayer("Guest Name*", "guestName", "text", false, eachGuestElm.guestName, temporaryRoomObj, setTempRoomObj)}
+                        </div> 
+                    <div style={{width: "47%" }}> 
+                        {anInputDisplayer("Nationality", "nationality", "text", false, eachGuestElm.nationality, temporaryRoomObj, setTempRoomObj)}
+                        </div>
+                </div>                
+                <div className={styles.aDataRow}>
+                    <div style={{width: "47%" }}> 
+                        {anInputDisplayer("Passport", "passport", "text", false, eachGuestElm.passport, temporaryRoomObj, setTempRoomObj)}
+                        </div> 
+                    <div style={{width: "47%" }}> 
+                        {anInputDisplayer("Nationality", "nationality", "date", false, "cucu", temporaryRoomObj, setTempRoomObj)}
+                        </div>
+                </div>                
+            </React.Fragment> )
+        }
+
+        return(<>
+        <br/><br/>
+            <div className={styles.aFileContainer }> 
+                <h2>Edit a room: </h2>
+                {eachGuestForm}
+            </div>
+        </>)
+    }
+
+
     // expenses
     const expenseDisplayer=(theExpenseArr, dayByDay )=>{
 
@@ -1438,7 +1536,7 @@ const { data: session } = useSession()
                     {docsSwitch&& <>
                     <div className={styles.providerRow}>
                           <div className={styles.eachDocBTN} onClick={()=>{
-                            
+
                           }}> Work Order + </div>
                           <div className={styles.eachDocBTN} onClick={()=>{
 
@@ -1487,6 +1585,7 @@ const { data: session } = useSession()
     }
     /////////////////////////////////////////////////////
     /////////////////////////////////////////////////////
+
 
     return(<>
 
