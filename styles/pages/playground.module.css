@@ -36,8 +36,6 @@
     text-transform: uppercase;
 }
 
-
-
 .multiOptsCont{
     display: flex;
     margin: 12px 0;
@@ -685,7 +683,8 @@
     flex-direction: column;
     width: 100%;
     border-bottom: solid 1px black;
-    margin: 6px 0;
+    border-right: solid 1px black;
+    padding: 9px 12px;
 }
 .providerRow{
     display: flex;
@@ -702,6 +701,27 @@
     text-transform: uppercase;
     font-size: 0.8em;
     margin: 9px;
+    cursor: pointer;
+}
+
+.documentGeneraExpense{
+    display: flex;
+    justify-content: space-between;
+    width: 96%;
+    border-bottom: solid 1px black;
+    border-right: solid 1px black;
+    margin-left: 4%;
+    align-items: center;
+}
+
+.documentGeneraExpense span{
+    font-size: 0.8em;
+    padding: 3px 5px;
+}
+
+.documentGeneraExpense strong{
+    margin-right: 9px;
+    text-transform: uppercase;
 }
 
 /*  // // // //  */
