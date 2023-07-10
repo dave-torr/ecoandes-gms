@@ -145,11 +145,22 @@
     color: white;
 }
 
-
-
-
 .expenseForm{
     font-size: 0.9em;
+}
+
+.totalExpCont{
+    width: 100%;
+    border: solid 2px black;
+    padding: 9px 12px;
+    margin-top: 9px;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: flex-end;
+}
+.totalExpCont span{
+    width: 94px;
+    text-align: end;
 }
 
 .aDataRow{
@@ -204,6 +215,13 @@
     font-size: 0.9em;
 }
 
+.anExpenseDisp strong{
+    width: 230px;
+    word-wrap: break-word;
+    border-right: solid 1px black;
+    padding-right: 3px;
+}
+
 .rmvExpBTN{
     color: red;
     padding-right: 6px;
@@ -217,8 +235,8 @@
     width: 97%;
     margin: 0 11px;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
     padding: 6px;
     font-size: 0.9em;
 
@@ -250,9 +268,8 @@
     width: 760px;
     background-color: white;
     box-shadow: var(--frst-box-shadow);
-    padding: 12px;
+    padding: 6px 12px;
     z-index: 0;
-    min-height: 40vh;
 }
 
 .operationsPageHeader{
@@ -294,10 +311,14 @@
     color: white;
 }
 .keySelectors span:nth-of-type(3):hover{
-    background-color: rgba(247, 131, 42, 0.959);
+    background-color: rgba(255, 115, 8, 0.959);
 }
 .keySelectors span:nth-of-type(4):hover{
     background-color: rgba(102, 13, 198, 0.959);
+    color: white;
+}
+.keySelectors span:nth-of-type(5):hover{
+    background-color: crimson;
     color: white;
 }
 
@@ -327,6 +348,26 @@
     width: 100%;
 }
 
+.addRoomBTN{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    font-weight: 600;
+    color: red;
+    transition: all ease-in 0.3s;
+    border-radius: 5px;
+    padding: 9px 12px;
+    margin-bottom: 6px;
+}
+
+.addRoomBTN:hover{
+    background-color: coral;
+    color: white;
+
+}
+
 .guestTotal{
     border: solid 1px black;
     margin-bottom: 9px;
@@ -337,6 +378,18 @@
     position: absolute;
     top: 15px;
     right: 0;
+}
+
+.roomTypeIndicator{
+    text-transform: uppercase;
+    border: solid 1px black;
+    font-size: 1.2em;
+    letter-spacing: 1px;
+    padding: 9px 12px;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    cursor: crosshair;
 }
 
 .roomingListTotalCont div{
@@ -372,6 +425,15 @@
     cursor: pointer;
 }
 
+
+/* inputUserUI */
+.inputAndRow{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 346px;
+}
+
 .deleteARoomIcon{
     position: absolute;
     right: -44px;
@@ -404,6 +466,52 @@
     border-bottom: solid 3px black;
     padding: 9px 0;
 }
+.eachGuestTitleEdit{
+    width: 100%;
+    border-top: solid 1px black;
+    margin-top: 9px;
+    padding-top: 9px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.eachGuestTitleEdit span{
+    color: red;
+}
+
+.roomEditSwitcher{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.roomEditSwitcher h3{
+    width: 130px;
+    text-align: end;
+}
+
+.depNotesCont{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.guestNotesCont{
+    display: flex;
+}
+
+.eachGuestNote{
+    display: flex;
+    align-items: center;
+    font-size: 0.8em;
+    border: solid 2px black;
+    border-radius: 5px;
+    padding: 3px 9px;
+    width: fit-content;
+    cursor: pointer;
+    margin: 3px 0;text-transform: capitalize;
+}
 
 .detailDispl{
     display: flex;
@@ -424,9 +532,12 @@
 }
 
 .eachDateCont{
-    width: calc(50% - 9px);
-    padding: 18px 21px;
+    padding: 15px 18px;
     border: solid 1px black;
+    min-height: 69px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .theDatesCont{
@@ -457,6 +568,7 @@
     border: solid 1px black; padding: 6px;
     margin: 6px 0;
     display: flex;
+    align-items: center;
 }
 
 .roomTotalBox{
@@ -508,9 +620,11 @@
     width: 99px;
 }
 .aColumn:nth-of-type(3){
+    display: flex;
     text-align: center;
     width: 120px;
     align-items: center;
+    justify-content: flex-end;
 }
 .aColumn:nth-of-type(4){
     text-align: start;

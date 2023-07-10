@@ -4,6 +4,7 @@ import { useSession } from "next-auth/react"
 
 
 import Switch from '@mui/material/Switch';
+import { FormControlLabel } from '@mui/material';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import EditIcon from '@mui/icons-material/Edit';
@@ -11,7 +12,7 @@ import EditOffIcon from '@mui/icons-material/EditOff';
 import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
 import CancelPresentationIcon from '@mui/icons-material/CancelPresentation';
 
-import { aDropdownPicker, anInputDisplayer} from "../components/forms"
+import { aDropdownPicker, aSwitcher, anInputDisplayer} from "../components/forms"
 import {GMSNavii} from "./../components/navis"
 
 import LTCPriceTables from "../data/LTCPriceTables2023.json"
@@ -39,6 +40,7 @@ const sampleDeparture={
     "itineraryID": "quacks",
     "tourCode":"EC AE 12 23 / GE 47 23",
     "roomingList": [
+        // must have guest notes arr
         {
         "guestArr":[
             {
@@ -56,6 +58,7 @@ const sampleDeparture={
             {
                 "guestName": "Mrs. Snow",
                 "guestDOB": "10/27/93",
+                "guestNotes":[],
                 "guestID": String,
                 "passport": "A256824",
                 "nationality": "Tibet",
@@ -127,6 +130,7 @@ const sampleDeparture={
                 "guestID": String,
                 "passport": "A256824",
                 "nationality": "Tibet",
+                "guestNotes":[],
             },
             {
                 "guestName": "Jackson Traxxion",
@@ -423,6 +427,21 @@ const sampleItin={
     }
 }
 
+const aRoomModel={
+        "guestArr":[
+            {
+                "guestName": String,
+                "guestDOB": String,
+                "guestID": String,
+                "guestNotes": [],
+                "passport": String,
+                "nationality": String,
+                "sex": String
+            }
+        ],
+        "accomodationType": "single",
+        "singleSupp": true,       
+    }
 
 // Bitacora logo:
 // import TrackChangesIcon from '@mui/icons-material/TrackChanges';
@@ -445,6 +464,7 @@ const { data: session } = useSession()
     // the expense obj
     const [expenseTrig, setExpTrig]=useState(false)
     const [temporaryRoomObj, setTempRoomObj]=useState({})
+    const [newRoomObj, setRoomObj]=useState(aRoomModel)
     const [anExpense, setAnExpense]=useState()
     const [dayIndex, setDayIndex]=useState()
 
@@ -456,8 +476,12 @@ const { data: session } = useSession()
     const [addHotelTrig, setHotelAddTrig]=useState(false)
     const [editSwitch, setEditSwitch]=useState(false)
     const [docsSwitch, setDocSwitch]=useState(false)
-
+    const [addGuest, setAddGuest]=useState(false)
+    const [guestAddCount, setGuestAddCount]=useState(0)
+    const [addGuestNote, setAddGuestNote]=useState(false)
+    const [addDepartureNote, setAddDepartureNote]=useState(false)
     const [roomingEditIndex, setRoomingEditIndex]=useState(null)
+    const [documentGenerator, setDocumentGenera]=useState(false)
 
     useEffect(()=>{
         {paxStats(theDeparture, setPaxData)}
@@ -467,7 +491,7 @@ const { data: session } = useSession()
 
         // does this need to run every time theDep changes?
         theDeparture.dayByDayExp.forEach((elem)=>{
-            elem.forEach((element)=>{
+            elem?.forEach((element)=>{
                 const findContact = tempContArr.find(elemental => elemental.contactName === element.contactName)
                 if(findContact===undefined){
                     let tempProviderObj = {
@@ -500,10 +524,10 @@ const { data: session } = useSession()
         // each guest loop
         theItin.roomingList.forEach((elem)=>{
 
-            if(elem.guestArr){
-                paxTotal= paxTotal+ elem.guestArr.length
+            if(elem?.guestArr){
+                paxTotal= paxTotal+ elem?.guestArr.length
                 // nationality arr, use ???
-                elem.guestArr.forEach((guestElemz)=>{
+                elem?.guestArr.forEach((guestElemz)=>{
                     const findContact = nationalityArr.find(element => element === guestElemz.nationality )
                         if(!findContact){
                             nationalityArr.push(guestElemz.nationality)
@@ -512,31 +536,31 @@ const { data: session } = useSession()
                 })
             }
 
-            if(elem.singleSupp){
+            if(elem?.singleSupp){
                 roomObj={
                     ...roomObj,
                     "singleRooms":roomObj.singleRooms + 1
                 }
             }
-            if(elem.accomodationType==="twin"){
+            if(elem?.accomodationType==="twin"){
                 roomObj={
                     ...roomObj,
                     "twinRooms":roomObj.twinRooms + 1
                 }
             }
-            if(elem.accomodationType==="matrimonial"){
+            if(elem?.accomodationType==="matrimonial"){
                 roomObj={
                     ...roomObj,
                     "matrimonialRooms":roomObj.matrimonialRooms + 1
                 }
             }
-            if(elem.accomodationType==="triple"){
+            if(elem?.accomodationType==="triple"){
                 roomObj={
                     ...roomObj,
                     "tripleRooms":roomObj.tripleRooms + 1
                 }
             }
-            if(elem.accomodationType==="quad"){
+            if(elem?.accomodationType==="quad"){
                 roomObj={
                     ...roomObj,
                     "quadRooms":roomObj.quadRooms + 1
@@ -570,14 +594,14 @@ const { data: session } = useSession()
         if(priceChartKey){
             theSecondLevel = priceChart[priceChartKey]
             theSecondLevel.forEach((elem, i) => {
-                priceChartKeyArrTwo.push(elem.priceKey)
+                priceChartKeyArrTwo.push(elem?.priceKey)
             });
             theSecondLevel.forEach((elem, i) => {
-                optNameArr2.push(elem.priceDetail)
+                optNameArr2.push(elem?.priceDetail)
             });
             dropdownOpts= theSecondLevel.map((elem,i)=><React.Fragment key={i}> 
                 <option value={JSON.stringify(elem)}>                 
-                {elem.priceDetail} </option>
+                {elem?.priceDetail} </option>
             </React.Fragment>)
         }
 
@@ -616,6 +640,1191 @@ const { data: session } = useSession()
         return result;
     }
 
+
+
+
+    // general utils
+    const editOffFunction=()=>{
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+        setEditSwitch(false)
+        setTempRoomObj({})
+        setAddGuest(false)
+        setGuestAddCount(0)
+    }
+
+
+    /////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////
+    // Main disp
+    const aFileDisplayer=(theItin, theDep)=>{
+        return(<>
+        {/* keys */}
+
+            {/* add set edit key to false for all tabs */}
+
+            <div className={styles.keySelectors}>
+            {fileDisplayKey!="intro"&&<> 
+                <span onClick={()=>{setFileKey("intro"); setEditSwitch(false); setExpTrig(false)}}>home </span></>}
+            {fileDisplayKey!="rooming"&&<> 
+                <span onClick={()=>{setFileKey("rooming"); setEditSwitch(false); setExpTrig(false)}}>pax & rooming </span></>}
+            {fileDisplayKey!="providers"&&<> {providerArr.length>0&&<> 
+                <span onClick={()=>{setFileKey("providers"); setEditSwitch(false); setExpTrig(false)}}>providers </span>
+                </>}</>}
+            {fileDisplayKey!="expenses"&&<> 
+                <span onClick={()=>{setFileKey("expenses"); setEditSwitch(false); setExpTrig(false)}}>expenses</span></>}
+            {fileDisplayKey!="dayByDay"&&<> 
+                <span onClick={()=>{setFileKey("dayByDay"); setEditSwitch(false); setExpTrig(false)}}>day by day</span></>}
+            {fileDisplayKey!="flights"&&<> 
+                <span onClick={()=>{setFileKey("flights"); setEditSwitch(false); setExpTrig(false)}}>flights</span></>}
+            </div>
+        {/* Display */}
+            <div className={styles.aFileContainer}>
+                {fileDisplayKey==="intro"&&<>
+                    {itineraryHeaderDisp(theItin, theDep)}
+                </>}
+                {fileDisplayKey==="rooming"&&<>
+                    {roomingListDisp(theDep)}
+                </>}
+                {fileDisplayKey==="providers"&&<>
+                    {contactArrDisp(providerArr)}
+                </>}
+                {fileDisplayKey==="expenses"&&<>
+                    {expenseDisplayer(theDep.dayByDayExp, theItin.dayByDay)}
+                </>}
+                {fileDisplayKey==="dayByDay"&&<>
+                    {dayByDayDisp(theItin.dayByDay)}
+                </>}
+                {fileDisplayKey==="flights"&&<>
+                    cUCUUU
+                    aDD fLIGHTS PAGE HERE
+                </>}
+            </div>
+                {fileDisplayKey==="intro"&&<>
+                    {headerEdit()}
+                </>}
+            {temporaryRoomObj.guestArr&&<>
+                {roomingListEdit("edit")}
+            </>}
+            {addGuest&&<>
+                <br/>
+                <br/>
+                {addGuestCont()}
+            </>}
+        </>)
+    }
+
+    const aDateDisp=(dateLabel, theDate, tripDuration)=>{
+        const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+        let firstDate=new Date(theDate)
+        let toDateFormatter 
+        let upperLimitDate           
+        if(tripDuration){
+            let theDuration = parseInt(tripDuration)
+            upperLimitDate = addDays(theDate, theDuration +1)
+            toDateFormatter = upperLimitDate.toLocaleDateString('en-GB', dateOptions)
+        } else {
+            toDateFormatter = firstDate.toLocaleDateString('en-GB', dateOptions)
+        }
+
+        return(<>
+        <div className={styles.eachDateCont}>
+            <div className={styles.eachDetailTitle}>{dateLabel}</div>
+            <div>  
+                {toDateFormatter}                
+            </div>
+        </div>
+        </>)
+    }
+    let paxTotalCount=<>{paxData?.paxTotal} / {theDeparture?.maxPaxNumb} maximum</>
+    // main
+    const itineraryHeaderDisp=(theItin, theDep)=>{
+        let LTCLogoSwitcher
+        if(theItin){
+        switch (theItin.LTCLogo) {
+            case "galapagosElements":
+                LTCLogoSwitcher =<><h3>Galapagos Elements</h3></>
+                break;
+            case "ecoAndes":
+                LTCLogoSwitcher=<><h3>EcoAndes Travel</h3></>
+                break;
+            case "yacuma":
+                LTCLogoSwitcher=<><h3>Yacuma EcoLodge</h3></>
+                break;
+            case "unigalapagos":
+                LTCLogoSwitcher=<><h3>Unigalapagos</h3></>
+                break;
+            default:
+                break;
+        }
+        const eachIntroDetail=(theTitle, theDetail)=>{
+            return(<>
+            <div className={styles.eachDetailCont}>
+                <div className={styles.eachDetailTitle}>{theTitle}</div>
+                <div>{theDetail}</div>
+            </div>
+            </>)
+        }
+
+
+        return(<>
+            <div className={styles.operationsPageHeader}>
+                <div>
+                    {LTCLogoSwitcher}
+                    <h1>{theItin.tripName}</h1>
+                </div>
+                <div style={{cursor:"pointer", paddingRight: "40px"}} 
+                    onClick={()=>{
+                    if(editSwitch){setEditSwitch(false)} else {setEditSwitch(true)}
+                }}>
+                    {editSwitch?<><EditOffIcon/></>: <><EditIcon/></>}
+                </div>
+            </div>
+            <div className={styles.roomingListCont} > 
+                <div className={styles.detailDispl}>
+                    {theItin.tripLang&&<>{eachIntroDetail("trip language", theItin.tripLang)}</>}
+                    {theItin.tourCode&&<>{eachIntroDetail("Tour code", theItin.tourCode)}</>}
+                    {theItin.aComp&&<>{eachIntroDetail("company", theItin.aComp)}</>}
+                    {theItin.compContact&&<>{eachIntroDetail("contact", theItin.compContact)}</>}
+                    {theItin.tripRef&&<>{eachIntroDetail("trip Reference", theItin.tripRef)}</>}
+                    {theItin.tripRef&&<>{eachIntroDetail("guests", paxTotalCount)}</>}
+                </div>
+                <h2> Tour Dates </h2>
+                <div className={styles.theDatesCont}> 
+                    <div style={{width: "47%" }}>
+                        {aDateDisp("starting date", theDep.startingDate)}
+                    </div>
+                    <div style={{width: "47%" }}>
+                        {aDateDisp("Ending date", theDep.startingDate, theDep.duration)}
+                    </div>
+                </div>
+            </div>
+        </>)
+        }
+    }
+    const headerEdit=()=>{
+        if(editSwitch){return(<>
+        <br/><br/>
+            <div className={styles.aFileContainer}>
+                <div className={styles.aDataRow}>
+                    <h2 style={{width: "47%" }}>
+                        Edit Dates and Group Maximum
+                    </h2>
+                    <div style={{cursor:"pointer"}}
+                        onClick={()=>{
+                            if(editSwitch){setEditSwitch(false)} else {setEditSwitch(true)}
+                        }}>
+                        <EditOffIcon/>
+                    </div>
+                </div>
+                <div className={styles.aDataRow}>
+                    <div style={{width: "47%" }}>
+                        {anInputDisplayer("starting Date", "startingDate", "date", false, false, theDeparture, setTheDeparture )}
+                    </div> 
+                    <div style={{width: "47%" }}>
+                        {aDateDisp("Arrival Date", theDeparture.startingDate, theDeparture.duration)}
+                    </div> 
+                </div>
+                <div className={styles.aDataRow}>
+                    <div style={{width: "47%" }}>
+                        {anInputDisplayer("Guest Maximum", "maxPaxNumb", "number", false, false, theDeparture, setTheDeparture, 0 )}
+                    </div> 
+                    <div style={{width: "47%" }}>
+                        <div className={styles.eachDateCont}>
+                            <div className={styles.eachDetailTitle}>
+                                Guest Maximum
+                            </div>
+                            {paxTotalCount}
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </>)
+        } 
+    }
+
+    // rooming and guestsguest
+    const addGuestCont=()=>{
+        
+        const guestForm=(guestIndex)=>{
+            return(<>
+                <div className={styles.aDataRow}>
+                    <div style={{width: "47%" }}> 
+                        <div className={styles.inputLabel}>
+                            Guest Name
+                        </div>
+                        <input 
+                            className={styles.inputUserUI}
+                            placeholder="Guest Name"
+                            onChange={(e)=>{
+                                let tempGuestObj={
+                                    ...newRoomObj.guestArr[guestIndex],
+                                    "guestName": e.target.value
+                                }
+                                let tempRoomUpdater = newRoomObj.guestArr.splice(guestIndex,1,tempGuestObj)
+                                setRoomObj({
+                                    ...newRoomObj,
+                                })
+                            }}
+                            type='text'
+                        />
+                    </div> 
+                    <div style={{width: "47%" }}> 
+                        <div className={styles.inputLabel}>
+                            Nationality
+                        </div>
+                        <input 
+                            className={styles.inputUserUI}
+                            placeholder="Nationality"
+                            onChange={(e)=>{
+                                let tempGuestObj={
+                                    ...newRoomObj.guestArr[guestIndex],
+                                    "nationality": e.target.value
+                                }
+                                let tempRoomUpdater = newRoomObj.guestArr.splice(guestIndex,1,tempGuestObj)
+                                setRoomObj({
+                                    ...newRoomObj,
+                                })
+                            }}
+                            type='text'
+                        />
+                    </div>
+                </div>
+                &nbsp;
+                <div className={styles.aDataRow}>
+                    <div style={{width: "47%" }}> 
+                        <div className={styles.inputLabel}>
+                            Passport
+                        </div>
+                        <input 
+                            className={styles.inputUserUI}
+                            placeholder="Passport"
+                            onChange={(e)=>{
+                                let tempGuestObj={
+                                    ...newRoomObj.guestArr[guestIndex],
+                                    "passport": e.target.value
+                                }
+                                let tempRoomUpdater = newRoomObj.guestArr.splice(guestIndex,1,tempGuestObj)
+                                setRoomObj({
+                                    ...newRoomObj,
+                                })
+                            }}
+                            type='text'
+                        />
+                        </div> 
+                    <div style={{width: "47%" }}> 
+                        <div className={styles.inputLabel}>
+                            Date of birth
+                        </div>
+                        <input 
+                            className={styles.inputUserUI}
+                            onChange={(e)=>{
+                                let tempGuestObj={
+                                    ...newRoomObj.guestArr[guestIndex],
+                                    "guestDOB": e.target.value
+                                }
+                                let tempRoomUpdater = newRoomObj.guestArr.splice(guestIndex,1,tempGuestObj)
+                                setRoomObj({
+                                    ...newRoomObj,
+                                })
+                            }}
+                            type='date'
+                        />
+                        </div>
+
+                </div>
+                &nbsp;
+                <div className={styles.aDataRow}>
+                    <div style={{width: "40%" }}> 
+                        <div className={styles.inputLabel}>
+                            Add guest note
+                        </div>
+                        <div className={styles.inputAndRow}> 
+                            <input 
+                                className={styles.inputUserUI} 
+                                type='text'
+                                onChange={(e)=>{
+                                    e.preventDefault;
+                                    setAddGuestNote(e.target.value)
+                                }}
+                                placeholder='A Note'
+                            />
+                            &nbsp;
+                            &nbsp;
+                            <span onClick={()=>{
+                                let gNIndex = newRoomObj.guestArr[guestIndex].guestNotes.length
+                                let theSplicer=newRoomObj.guestArr[guestIndex].guestNotes.splice(gNIndex, 0, addGuestNote)
+                                setRoomObj({
+                                    ...newRoomObj,
+                                })
+                            }}>
+                                <AddCircleOutlineIcon/> 
+                            </span>
+                        </div>
+                    </div>
+
+                    <div className={styles.roomTypeIndicator} onClick={()=>{
+                        setGuestAddCount(guestAddCount+1)
+                        let aTempGuestArr = newRoomObj.guestArr.concat({
+                            "guestName": String,
+                            "guestDOB": String,
+                            "guestID": String,
+                            "guestNotes": [],
+                            "passport": String,
+                            "nationality": String,
+                            "sex": String
+                        })
+                        if(newRoomObj.accomodationType==="single"){
+                            let tempRoomObj={
+                                    ...newRoomObj,
+                                    "guestArr":aTempGuestArr,
+                                    "accomodationType": "twin",
+                                    "singleSupp":false
+                                }
+                            setRoomObj({
+                                ...tempRoomObj,
+                            })
+                        } else if (newRoomObj.accomodationType==="twin" ||newRoomObj.accomodationType==="matrimonial"){
+                            let tempRoomObj={
+                                    ...newRoomObj,
+                                    "guestArr":aTempGuestArr,
+                                    "accomodationType": "triple"
+                                }
+                            setRoomObj({
+                                ...tempRoomObj,
+                            })
+                        } else if (newRoomObj.accomodationType==="triple"){
+                            let tempRoomObj={
+                                    ...newRoomObj,
+                                    "guestArr":aTempGuestArr,
+                                    "accomodationType": "quad"
+                                }
+                            setRoomObj({
+                                ...tempRoomObj,
+                            })
+                        }
+                    }} > ADD GUEST &nbsp; <AddCircleOutlineIcon/> </div>
+                </div>
+                &nbsp;
+                <div className={styles.depNotesCont}>
+                    {newRoomObj.guestArr[guestIndex]?.guestNotes.map((elem,i)=> <React.Fragment key={i}>
+                    <div className={styles.eachGuestNote} onClick={()=>{
+                        let tempGuestNotes=newRoomObj.guestArr[guestIndex].guestNotes.splice(i, 1)
+                        setRoomObj({
+                            ...newRoomObj,
+                        })
+                    }}>
+                        {elem} &nbsp; <RemoveCircleOutlineIcon />
+                    </div> &nbsp; &nbsp;                                
+                    </React.Fragment> )}
+                </div>
+            </>)
+        }
+        const handleChangez=()=>{
+            if(newRoomObj.accomodationType==="twin"){
+                let tempRoomObj={
+                        ...newRoomObj,
+                        "accomodationType": "matrimonial"
+                    }
+                setRoomObj({
+                    ...tempRoomObj,
+                })
+            } else if(newRoomObj.accomodationType==="matrimonial"){
+                let tempRoomObj={
+                        ...newRoomObj,
+                        "accomodationType": "twin"
+                    }
+                setRoomObj({
+                    ...tempRoomObj,
+                })
+            }
+        }        
+
+        return(<>
+            <form >          
+            <div className={styles.aFileContainer}>
+                <div className={styles.operationsPageHeader}>
+                    <h2> Add Room</h2>
+                    <div className={styles.addRoomBTN} onClick={()=>{
+                        if(newRoomObj.guestArr[0].guestName.length>1){
+                            // add room splicing daShiat
+                            let tempDepArre =theDeparture.roomingList.push(newRoomObj)
+                            setRoomObj({
+                                "guestArr":[
+                                    {
+                                        "guestName": String,
+                                        "guestDOB": String,
+                                        "guestID": String,
+                                        "guestNotes": [],
+                                        "passport": String,
+                                        "nationality": String,
+                                        "sex": String
+                                    }
+                                ],
+                                "accomodationType": "single",
+                                "singleSupp": true,       
+                            })
+                            setEditSwitch(false)
+                            setAddGuest(false)
+                            setGuestAddCount(0)
+                            window.scrollTo({
+                                top: 0,
+                                behavior: "smooth",
+                            });
+                            setTheDeparture({
+                                ...theDeparture
+                            })
+                        } else {
+                            window.alert("Please Add Guest Name")
+                        }
+                    }}>
+                        <AddCircleOutlineIcon/> &nbsp; add to rooming
+                    </div>
+                </div>
+                <div className={styles.operationsPageHeader}>
+                    <div> 
+                        {(newRoomObj.accomodationType==="twin" || newRoomObj.accomodationType==="matrimonial") && <>
+                        <div className={styles.roomEditSwitcher}>
+                            <h3>TWIN</h3>
+                            <div style={{marginLeft:"33px", display: "flex", alignItems: "center"}}>
+                            <FormControlLabel 
+                                control={
+                                <Switch checked={newRoomObj.accomodationType==="matrimonial"}
+                                onChange={handleChangez} />} 
+                            />            
+                            </div>
+                            <h3>MATRIMONIAL</h3>
+                        </div>
+                        </>}
+                    </div>
+                    <div className={styles.roomTypeIndicator}>
+                        {newRoomObj.accomodationType}
+                    </div>
+                </div>
+                __________________________________________________________________________________
+                <br/>
+                <br/>
+                {guestForm(0)}
+                {guestAddCount>=1&&<>
+                __________________________________________________________________________________
+                    <br/>
+                    <br/>
+                    {guestForm(1)}
+                </>}
+
+
+                {/* triple of additional bed */}
+                {guestAddCount>=2&&<>
+                __________________________________________________________________________________
+                    <br/>
+                    <br/>
+                    {guestForm(2)}
+                </>}
+            </div>
+            </form>
+        </>)
+    }
+    const theRoomingBreakdownDispl=()=>{
+        return(<>
+            <div className={styles.roomingListTotalCont}>
+                {paxData?.roomReq.singleRooms>0&&<><div>{paxData.roomReq.singleRooms} SINGLE Room{paxData.roomReq.singleRooms>1&&<>s</>}</div></>} 
+                {paxData?.roomReq.twinRooms>0&&<><div>{paxData.roomReq.twinRooms} twin Room{paxData.roomReq.twinRooms>1&&<>s</>}</div></>} 
+                {paxData?.roomReq.matrimonialRooms>0&&<><div>{paxData.roomReq.matrimonialRooms} matrimonial Room{paxData.roomReq.matrimonialRooms>1&&<>s</>}</div></>} 
+                {paxData?.roomReq.tripleRooms>0&&<><div>{paxData.roomReq.tripleRooms} triple Room{paxData.roomReq.tripleRooms>1&&<>s</>}</div></>} 
+                {paxData?.roomReq.quadRooms>0&&<><div>{paxData.roomReq.quadRooms} cuadruple Room{paxData.roomReq.quadRooms>1&&<>s</>}</div></>} 
+            </div>
+        </>)
+    }
+    const roomingListDisp=(theDeparture)=>{
+        const ageConverter=(theDOB)=>{
+            let toDate=new Date()
+            if(theDOB){
+            let clientDOB=new Date(theDOB)
+            return toDate.getUTCFullYear() - clientDOB.getUTCFullYear()
+            }
+        }
+        let eachNote=[]
+        const eachGuestData=(guestData)=>{
+            if(guestData.guestNotes){
+                eachNote.push({
+                    "name":guestData.guestName,
+                    "notes":guestData.guestNotes
+                })
+            }
+            return(<>
+                <div className={styles.roomingGuestRow}>
+                    <div style={{width:"180px", textAlign:"start"}}> &nbsp; {guestData.guestName}</div>
+                    <div style={{width:"120px", borderLeft:"solid 1px black" }}> {guestData.nationality}</div>
+                    <div style={{width:"100px", borderLeft:"solid 1px black" }}> {guestData.guestDOB}</div>
+                    <div style={{width:"120px", borderLeft:"solid 1px black" }}> {guestData.passport}</div>
+                    <div style={{width:"66px", borderLeft:"solid 1px black" }}> {guestData.guestDOB&&<>{ageConverter(guestData.guestDOB)}</>}</div>
+                </div>
+            </>)
+        }
+        if(theDeparture){
+        let eachRoom=theDeparture.roomingList.map((elem, i)=>
+            <React.Fragment key={i}>
+            {!elem?.tourLeader&&<>
+                <div className={styles.eachRoomDisplayer}>
+                {editSwitch&&<>
+                    <div className={styles.editRoomingIcon} onClick={()=>{
+                        setTempRoomObj(elem)
+                        setRoomingEditIndex(i)
+                        setAddGuest(false)
+                        window.scrollTo({
+                            top: 33000,
+                            behavior: "smooth",
+                        });
+                    }}>
+                    <EditIcon />
+                    </div>
+                    <div className={styles.deleteARoomIcon} onClick={()=>{
+                        let tempRooming = [...theDeparture.roomingList]
+                        tempRooming.splice(i,1)
+                        setTheDeparture({
+                            ...theDeparture,
+                            "roomingList":tempRooming
+                        })
+                    }}>
+                    <RemoveCircleOutlineIcon />
+                    </div>
+                </>}
+                    <div style={{width:"33px"}}> {i+1} </div>
+                    <div className={styles.aRoomingDetail} style={{width:"108px", borderLeft:"solid 1px black"}}>
+                        {elem?.singleSupp &&<>SINGLE</>}
+                        {elem?.accomodationType!="single" && <>
+                            {elem?.accomodationType}
+                        </>}
+                    </div>
+                    <div style={{display:"flex", flexDirection:"column"}}>
+                        {elem?.guestArr.map((guestElem, i)=> <> {eachGuestData(guestElem)}</> ) }
+                    </div>
+                </div>
+            </>}
+            </React.Fragment> )
+        let noteDisp
+        if(eachNote.length>0){
+            noteDisp=eachNote.map((elem,i)=><React.Fragment key={i}> 
+                {elem?.notes.length>0&&<>
+                <div className={styles.eachRoomDisplayer}>
+                    <span style={{width:"180px", textAlign:"start"}}>&nbsp;{elem?.name}</span>
+                    <span style={{borderLeft:"solid 1px black", textTransform:"capitalize", textAlign:"start", padding:"0 3px" }}> &nbsp;
+                    {elem?.notes.map((elem,i)=><React.Fragment key={i}>{i>0&&<>, </>} {elem}</React.Fragment>)}
+                    </span>
+                </div>
+                </>}
+            </React.Fragment> )
+        }
+
+        /////////////////
+        return(<>
+        <div className={styles.roomingListCont}>
+            <div className={styles.operationsPageHeader}> 
+                <h2> Rooming List</h2>
+                {/* edit data */}
+                {editSwitch&& <> 
+                    <div style={{cursor:"pointer", paddingRight: "33px"}} onClick={()=>{
+                        setAddGuest(true)
+                        window.scrollTo({
+                            top: 2000,
+                            behavior: "smooth",
+                        });
+                    }}> <AddCircleOutlineIcon /></div>
+                </>}
+                <div style={{cursor:"pointer", paddingRight: "140px"}} onClick={()=>{
+                    if(editSwitch){setEditSwitch(false); setTempRoomObj({}); setAddGuest(false)} else {setEditSwitch(true)}
+                }}>
+                    {editSwitch? <><EditOffIcon/></>: <><EditIcon/></>}
+                </div>
+
+            </div>
+            {paxData&&<><div className={styles.guestTotal}>{paxData.paxTotal} guests</div></>} 
+            {theRoomingBreakdownDispl()}
+
+            <div className={styles.roomingListGrid}>
+                <div className={styles.roomingListKEYS}>
+                    <div style={{width:"33px"}}> # </div>
+                    <div style={{width:"108px", borderLeft:"solid 1px black"}}>ROOM TYPE</div>
+                    <div style={{width:"180px", borderLeft:"solid 1px black", textAlign:"start" }}>&nbsp;&nbsp;GUEST NAME </div>
+                    <div style={{width:"120px", borderLeft:"solid 1px black" }}> NATIONALITY </div>
+                    <div style={{width:"100px", borderLeft:"solid 1px black" }}> D.O.B. </div>
+                    <div style={{width:"120px", borderLeft:"solid 1px black" }}> PASSPORT </div>
+                    <div style={{width:"66px", borderLeft:"solid 1px black" }}> AGE </div>
+                </div>
+                {eachRoom}
+                {/* Tour Leader Data */}
+                {theDeparture.tourLeader&& <>
+                    <h4>Tour Leader</h4>
+                    <div className={styles.eachRoomDisplayer}>
+                    {/* edit data */}
+                    {editSwitch&&<>
+                        <div className={styles.editRoomingIcon} onClick={()=>{
+                            setTempRoomObj(theDeparture.tourLeader)
+                        }} > 
+                        <EditIcon />
+                        </div>
+                        <div className={styles.deleteARoomIcon} onClick={()=>{
+                                setTheDeparture({
+                                    ...theDeparture,
+                                    "tourLeader":null
+                                })
+                            }}>
+                            <RemoveCircleOutlineIcon />
+                        </div>
+                    </>}
+                        <div style={{width:"33px"}}> TL </div>
+                        <div className={styles.aRoomingDetail} style={{width:"108px", borderLeft:"solid 1px black"}}>
+                            SINGLE
+                        </div>
+                        <div style={{display:"flex", flexDirection:"column"}}>
+                            {theDeparture.tourLeader.guestArr.map((guestElem, i)=> <> {eachGuestData(guestElem)}</> ) }
+                        </div>
+                    </div>
+                    <div className={styles.eachRoomDisplayer}>
+                        <span style={{textTransform:"capitalize"}}>
+                        <strong>NOTES:</strong> &nbsp;
+                        {theDeparture.tourLeader.guestArr[0].guestNotes.map((theNote,i)=><React.Fragment key={i}>{i>0&&<>,</>} {theNote}</React.Fragment>)}
+                        </span>
+                    </div>
+
+                </>}
+            </div>
+
+            {eachNote.length>0&&<>
+                <h2>Guest Notes </h2>
+                <div className={styles.roomingListGrid}>
+                <div className={styles.roomingListKEYS}>
+                    <div style={{width:"180px", textAlign:"start" }}>&nbsp; GUEST NAME </div>
+                    <div style={{borderLeft:"solid 1px black" }}>&nbsp; SPECIAL INDICATIONS </div>
+                </div>
+                    {noteDisp}
+                </div>
+            </>}
+
+            {theDeparture.departureNotes.length>0 ? <>
+            <h2>Departure Notes </h2>
+            </> : <> <br/><br/>
+                    <br/></>}
+
+            {editSwitch?<>
+                <div className={styles.aDataRow}>
+                    <div style={{width: "40%" }}> 
+                        <div className={styles.inputLabel}>
+                            Add departure note
+                        </div>
+                        <div className={styles.inputAndRow}> 
+                            <input 
+                                className={styles.inputUserUI} 
+                                type='text'
+                                onChange={(e)=>{
+                                    e.preventDefault;
+                                    setAddDepartureNote(e.target.value)
+                                }}
+                                placeholder='Departure Note'
+                            />
+                            &nbsp;
+                            &nbsp;
+                            <span onClick={()=>{
+                                let gNIndex = theDeparture.departureNotes.length
+                                let theSplicer=theDeparture.departureNotes.splice(gNIndex, 0, addDepartureNote)
+                                setTheDeparture({
+                                    ...theDeparture,
+                                })
+                            }}>
+                                <AddCircleOutlineIcon/> 
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div className={styles.depNotesCont}> 
+                    {theDeparture.departureNotes?.map((elem, i)=><>
+                        <div className={styles.eachGuestNote} onClick={()=>{
+                            let tempGuestNotes=theDeparture.departureNotes.splice(i, 1)
+                            setTheDeparture({
+                                ...theDeparture
+                            })
+                        }} >
+                            {elem}&nbsp; <RemoveCircleOutlineIcon />
+                        </div> &nbsp; &nbsp;
+                    </>)}
+                </div>
+
+
+            </> : <>
+                <div className={styles.depNotesCont}>
+                    {theDeparture.departureNotes.map((elem, i)=><>
+                        <div style={{textTransform:"capitalize"}}>
+                        {i!=0&&<>, </>}
+                           {elem}
+                        </div>
+                    </>)}
+                </div>
+            </>}
+        </div>
+        </>)
+    }
+    }
+    const roomingListEdit=()=>{
+        // add roomin and guest
+
+        let eachGuestForm
+        if(roomingEditIndex>=0){
+            eachGuestForm= theDeparture.roomingList[roomingEditIndex].guestArr.map((eachGuestElm,i)=><React.Fragment key={i}>
+                <div className={styles.eachGuestTitleEdit}>
+                    <h4>Edit guest #{i+1}</h4>
+                    <span onClick={()=>{
+                        let tempGuestArr = [...theDeparture.roomingList[roomingEditIndex].guestArr]                    
+                        tempGuestArr.splice(i, 1)
+                        if(tempGuestArr.length===3){
+                            let roomUpdate=
+                                {
+                                    ...theDeparture.roomingList[roomingEditIndex],
+                                    "guestArr":tempGuestArr,
+                                    "accomodationType": "triple",
+                                }
+                            let tempRoomiDoobie=theDeparture.roomingList.splice(roomingEditIndex,1, roomUpdate)
+                            setTheDeparture({
+                                ...theDeparture,
+                            })
+
+                        } else if (tempGuestArr.length===2){
+                            let roomUpdate=
+                                {
+                                    ...theDeparture.roomingList[roomingEditIndex],
+                                    "guestArr":tempGuestArr,
+                                    "accomodationType": "twin",
+                                }
+                            let tempRoomiDoobie=theDeparture.roomingList.splice(roomingEditIndex,1, roomUpdate)
+                            setTheDeparture({
+                                ...theDeparture,
+                            })
+                        } else if (tempGuestArr.length===1){
+                            let roomUpdate=
+                                {
+                                    ...theDeparture.roomingList[roomingEditIndex],
+                                    "guestArr":tempGuestArr,
+                                    "accomodationType": null,
+                                    "singleSupp": true,
+                                }
+                            let tempRoomiDoobie=theDeparture.roomingList.splice(roomingEditIndex,1, roomUpdate)
+                            setTheDeparture({
+                                ...theDeparture,
+                            })
+                        }
+                    }} > <RemoveCircleOutlineIcon/></span>
+                </div>
+                <div className={styles.aDataRow}>
+                    <div style={{width: "47%" }}> 
+                        <div className={styles.inputLabel}>
+                            Guest Name
+                        </div>
+                        <input 
+                            className={styles.inputUserUI}
+                            placeholder={eachGuestElm.guestName}
+                            onChange={(e)=>{
+                                let tempGuestObj={
+                                    ...eachGuestElm,
+                                    "guestName": e.target.value
+                                }
+                                let tempRoomUpdater = theDeparture.roomingList[roomingEditIndex].guestArr.splice(i,1,tempGuestObj)
+                                setTheDeparture({
+                                    ...theDeparture,
+                                })
+                            }}
+                            type='text'
+                        />
+                        </div> 
+                    <div style={{width: "47%" }}> 
+                        <div className={styles.inputLabel}>
+                            Nationality
+                        </div>
+                        <input 
+                            className={styles.inputUserUI}
+                            placeholder={eachGuestElm.nationality}
+                            onChange={(e)=>{
+                                let tempGuestObj={
+                                    ...eachGuestElm,
+                                    "nationality": e.target.value
+                                }
+                                let tempRoomUpdater = theDeparture.roomingList[roomingEditIndex].guestArr.splice(i,1,tempGuestObj)
+                                setTheDeparture({
+                                    ...theDeparture,
+                                })
+                            }}
+                            type='text'
+
+                        />
+
+                        </div>
+                </div>
+                &nbsp;
+                <div className={styles.aDataRow}>
+                    <div style={{width: "47%" }}> 
+                        <div className={styles.inputLabel}>
+                            Passport
+                        </div>
+                        <input 
+                            className={styles.inputUserUI}
+                            placeholder={eachGuestElm.passport}
+                            onChange={(e)=>{
+                                let tempGuestObj={
+                                    ...eachGuestElm,
+                                    "passport": e.target.value
+                                }
+                                let tempRoomUpdater = theDeparture.roomingList[roomingEditIndex].guestArr.splice(i,1,tempGuestObj)
+                                setTheDeparture({
+                                    ...theDeparture,
+                                })
+                            }}
+                            type='text'
+
+                        />
+
+                        </div> 
+                    <div style={{width: "47%" }}> 
+                        <div className={styles.inputLabel}>
+                            Date of birth - {eachGuestElm.guestDOB}
+                        </div>
+                        <input 
+                            className={styles.inputUserUI}
+                            onChange={(e)=>{
+                                let tempGuestObj={
+                                    ...eachGuestElm,
+                                    "guestDOB": e.target.value
+                                }
+                                let tempRoomUpdater = theDeparture.roomingList[roomingEditIndex].guestArr.splice(i,1,tempGuestObj)
+                                setTheDeparture({
+                                    ...theDeparture,
+                                })
+                            }}
+                            type='date'
+                        />
+                        </div>
+
+                </div>
+                &nbsp;
+                <div className={styles.aDataRow}>
+                    <div style={{width: "40%" }}> 
+                        <div className={styles.inputLabel}>
+                            Add note
+                        </div>
+                        <div className={styles.inputAndRow}> 
+                            <input 
+                                className={styles.inputUserUI} 
+                                type='text'
+                                onChange={(e)=>{
+                                    e.preventDefault;
+                                    setAddGuestNote(e.target.value)
+                                }}
+                                placeholder='A Note'
+                            />
+                            &nbsp;
+                            &nbsp;
+                            <span onClick={()=>{
+                                let gNIndex = eachGuestElm.guestNotes.length
+                                let theSplicer=eachGuestElm.guestNotes.splice(gNIndex, 0, addGuestNote)
+                                setTheDeparture({
+                                    ...theDeparture,
+                                })
+                            }}>
+                                <AddCircleOutlineIcon/> 
+                            </span>
+                        </div>
+                    </div>
+                    <div className={styles.roomTypeIndicator} onClick={()=>{
+
+                        let newGuestObj={
+                            "guestName": String,
+                            "guestDOB": String,
+                            "guestID": String,
+                            "guestNotes": [],
+                            "passport": String,
+                            "nationality": String,
+                            "sex": String
+                        }
+                        let tempGuestArr= theDeparture.roomingList[roomingEditIndex].guestArr.concat(newGuestObj)
+                        let tempRoom
+                        if(theDeparture.roomingList[roomingEditIndex].accomodationType==="single" || theDeparture.roomingList[roomingEditIndex].accomodationType===null){
+                            tempRoom={
+                                ...theDeparture.roomingList[roomingEditIndex],
+                                "accomodationType":"twin",
+                                "singleSupp":false,
+                                "guestArr":tempGuestArr
+                            }
+                        } else if(theDeparture.roomingList[roomingEditIndex].accomodationType==="twin" || theDeparture.roomingList[roomingEditIndex].accomodationType==="matrimonial"){
+                            tempRoom={
+                                ...theDeparture.roomingList[roomingEditIndex],
+                                "accomodationType":"triple",
+                                "singleSupp":false,
+                                "guestArr":tempGuestArr
+                            }
+                        }
+
+                        let splicerFunc=theDeparture.roomingList.splice(roomingEditIndex, 1, tempRoom)
+                        setTheDeparture({
+                            ...theDeparture
+                        })
+                    }} >
+                        ADD GUEST &nbsp; <AddCircleOutlineIcon/> 
+                    </div>
+                </div>
+                &nbsp;
+                {eachGuestElm.guestNotes?.length>0&&<>
+                    <div className={styles.guestNotesCont}>
+                    {eachGuestElm.guestNotes.map((theNote, i)=> <React.Fragment key={i}> <div className={styles.eachGuestNote} onClick={()=>{
+                        let tempGuestNotes=eachGuestElm.guestNotes.splice(i, 1)
+                        setTheDeparture({
+                            ...theDeparture
+                        })
+                    }}>
+                        {theNote} &nbsp; <RemoveCircleOutlineIcon /></div> &nbsp; &nbsp;
+                    </React.Fragment> )}
+                    </div>
+                </>}
+            </React.Fragment> )
+        }
+        let switchController
+        let acoomType= theDeparture.roomingList[roomingEditIndex].accomodationType
+        if(acoomType==="twin"){
+            switchController=false
+        } else if (acoomType==="matrimonial"){
+            switchController=true
+        }
+        let roomTypeUTIL;
+        const handleChange=()=>{
+            if (switchController) {
+                roomTypeUTIL = "twin"
+            } else {
+                roomTypeUTIL = "matrimonial"
+            }
+            let tempRoomObj={
+                ...theDeparture.roomingList[roomingEditIndex],
+                "accomodationType": roomTypeUTIL
+            }
+            let tempRoomUpdater = theDeparture.roomingList.splice(roomingEditIndex,1,tempRoomObj)
+            setTheDeparture({
+                ...theDeparture,
+            })
+        }
+
+        return(<>
+        <br/><br/>
+            <div className={styles.aFileContainer }>
+                <div className={styles.operationsPageHeader}>
+                    <h2>Edit room # {roomingEditIndex+1}:</h2>
+                    <div style={{cursor:"pointer"}} onClick={()=>{
+                        editOffFunction()
+                    }} >
+                        <EditOffIcon/>
+                    </div>
+                </div>
+                {(acoomType==="twin" || acoomType==="matrimonial")?<>
+                    <div className={styles.roomEditSwitcher}>
+                        <h3>TWIN</h3>
+                        <div style={{marginLeft:"33px", display: "flex", alignItems: "center"}}>
+                        <FormControlLabel 
+                            control={
+                            <Switch checked={switchController}
+                            onChange={handleChange} />} 
+                        />            
+                        </div>
+                        <h3>MATRIMONIAL</h3>
+                    </div>
+                </>:<>
+                <div className={styles.operationsPageHeader}>
+                    <span></span> 
+                    <div className={styles.roomTypeIndicator}> 
+                        {theDeparture.roomingList[roomingEditIndex].accomodationType}
+                    </div>
+                </div>
+
+                </>}
+                {eachGuestForm}
+            </div>
+        </>)
+    }
+
+
+    // expenses
+    const expenseDisplayer=(theExpenseArr, dayByDay )=>{
+
+        const expenseBadgeDisp=(anExpKey)=>{
+            if(anExpKey==="transportExpense"){
+                return(<><div style={{fontSize:"1.1em", marginRight:"9px", fontWeight:"700", backgroundColor:" coral", padding:"6px 9px", color:"white"  }} >T {" "}{" "}</div></>)
+            } else if(anExpKey==="guideExpense"){
+                return(<><div style={{fontSize:"1.1em", marginRight:"9px", fontWeight:"700", backgroundColor:" black", padding:"6px 9px", color:"white"  }} > G {" "}</div></>)
+            } else if(anExpKey==="accommodation"){
+                return(<><div style={{fontSize:"1.1em", marginRight:"9px", fontWeight:"700", backgroundColor:" teal", padding:"6px 9px", color:"white"  }} > A {" "}</div></>)
+            }
+        }
+        const anExpenseDisp=(eachExp, expIndex, dailyExpArray)=>{
+            let roomPriceAdder=0
+            let eachDayRooming=[]
+            if(eachExp.expenseKey==="accommodation"){
+                eachExp.roomPriceArr.forEach((elem)=>{
+                    if(elem?.reqRooms){
+                        if(elem?.reqAdditionalBed){
+                            roomPriceAdder= 
+                            roomPriceAdder
+                            +
+                            (elem?.reqAdditionalBed * elem?.additionalBed)
+                            +
+                            (elem?.reqRooms * elem?.price)
+
+                            eachDayRooming.push({
+                                "roomDescription":elem?.roomDescription,
+                                "reqRooms":elem?.reqRooms,
+                                "price":elem?.price,
+                                "reqAdditionalBed":elem?.reqAdditionalBed,
+                                "additionalBed":elem?.additionalBed,
+                            })
+                        } else {
+                            roomPriceAdder= 
+                            roomPriceAdder
+                            +
+                            (elem?.reqRooms * elem?.price)
+
+                            eachDayRooming.push({
+                                "roomDescription":elem?.roomDescription,
+                                "reqRooms":elem?.reqRooms,
+                                "price":elem?.price,
+                            })
+                        }
+                    }
+                })
+            }
+            let roomingSummary=eachDayRooming.map((elem,i)=> <React.Fragment key={i}>
+                &nbsp;&nbsp;{elem?.roomDescription} = ${elem?.price} x {elem?.reqRooms} 
+                {elem?.reqAdditionalBed&&<> + {elem?.reqAdditionalBed} additional bed{elem?.reqAdditionalBed>1&&<>s</>}</>} <br/>
+            </React.Fragment>)
+
+            return(<>
+            {eachExp.expenseKey==="accommodation"&&<> 
+            <div className={styles.accomListDisp}>
+                <strong>ROOMING REQUIREMENT:</strong>
+                {roomingSummary}
+            </div>
+            </>}
+            <div className={styles.anExpenseDisp}>
+                <div style={{width:"55%", display:"flex", alignItems:"center"}}>
+                    {editSwitch&& <>
+                        <span className={styles.rmvExpBTN} onClick={()=>{
+                            let tempArr = dailyExpArray.splice(expIndex, 1)
+                            setTheDeparture({
+                                ...theDeparture
+                            })
+                        }}> <RemoveCircleOutlineIcon/> </span></>}
+                    {expenseBadgeDisp(eachExp.expenseKey)} &nbsp;
+                    {eachExp.priceDetail}
+                    {eachExp.hotelName&&<>- {eachExp.hotelName}
+                    </>}
+                    {eachExp.varExpTickets&& <> |  {eachExp.varExpTickets} x ${eachExp.price.toFixed(2)} </>}
+                    
+                </div>
+
+                {console.log(eachExp)}
+
+                <div style={{display:"flex", textAlign:"end"}}>
+                    {providerArr.length>1&&<><strong>
+                        {eachExp.contactName!="Provider"&&<>{eachExp.contactName}</>}</strong></>}
+                    <div style={{width:"27px", textAlign:"end"}}>  </div>
+                    {eachExp.expenseKey==="accommodation"? <>
+                        <div style={{width:"66px", textAlign:"end"}}> $ {roomPriceAdder.toFixed(2)}</div>
+                    </> : eachExp.expenseKey==="variableExpense"? <>
+                        <div style={{width:"66px", textAlign:"end"}}> $ {eachExp.price.toFixed(2) * eachExp.varExpTickets }</div>
+                    </> : <> 
+                        <div style={{width:"66px", textAlign:"end"}}> $ {eachExp.price.toFixed(2)}</div>
+                    </>}
+                </div>
+            </div>
+            </>)
+        }
+        const expenseMapper=(dailyExpArr)=>{
+            if(dailyExpArr){
+                return(<>
+                    {dailyExpArr.map((element, i)=><React.Fragment key={i}>
+                        {anExpenseDisp(element, i, dailyExpArr)}
+                    </React.Fragment>)}
+                </>)
+            }
+        }
+        let eachDayTitleExp=dayByDay.map((dayElem, i)=><>
+        <React.Fragment key={i}>
+            <div className={styles.dailyTitleCont}>  
+                <h5> Day {i+1}: {dayElem.dayTitle&&<>{dayElem.dayTitle}</>}</h5>
+                {editSwitch&& <>
+                    <div className={styles.addExpBTN} onClick={()=>{
+                        setExpTrig(true)
+                        setDayIndex(i)
+                        window.scrollTo({
+                            top: 33000,
+                            behavior: "smooth",
+                        });
+                    }}>
+                    <AddCircleOutlineIcon/>
+                </div></>}
+            </div>
+            {expenseMapper(theExpenseArr[i])}
+        </React.Fragment>
+        </>)
+        const totalExpAdder=()=>{
+            let totalAggegator=0
+            theExpenseArr.forEach((elem)=>{
+                if(elem?.length>0){
+
+                    if(elem[0].expenseKey==="accommodation"){
+                        elem[0].roomPriceArr.forEach((elemental)=>{
+                            if(elemental.reqRooms){
+                                if(elemental.reqAdditionalBed){
+                                    totalAggegator=
+                                    totalAggegator
+                                    +
+                                    (elemental.reqRooms * elemental.price)
+                                    +
+                                    (elemental.reqAdditionalBed * elemental.additionalBed)
+                                } else {
+                                    totalAggegator=
+                                    totalAggegator
+                                    +
+                                    (elemental.reqRooms * elemental.price)
+                                }
+                            }
+                        })
+                        
+                    } else {
+                        totalAggegator=
+                        totalAggegator + elem[0].price
+                    }
+                }
+            })
+            return totalAggegator.toFixed(2)
+        }
+        if(theExpenseArr.length>0){
+
+        return(<>
+            <div className={styles.operationsPageHeader}> 
+                <h2>Expenses:</h2>
+                <div style={{cursor:"pointer"}} onClick={()=>{
+                    if(editSwitch){setEditSwitch(false); setExpTrig(false)} 
+                    else {setEditSwitch(true)}
+                }}>
+                    {editSwitch? <><EditOffIcon/></>:<><EditIcon/></>}
+                </div>
+            </div>
+            <div className={styles.totalExpCont}> 
+                TOTAL
+                |<span> ${totalExpAdder()} </span>
+
+            </div>
+            <div className={styles.expenseGridDisp}>
+                {eachDayTitleExp}
+            </div>
+        </>)
+        }
+    }
     // expense form
     const expenseEditor=(theExpense, setTheExpense, contactArr, dayIndx, theDep, setTheDep, roomingData)=>{
         if(theExpense){ 
@@ -643,14 +1852,14 @@ const { data: session } = useSession()
         let contactOpts
         if(contactArr.length>0){
             contactOpts=contactArr.map((elem,i)=><React.Fragment key={i}>
-            {elem.expenseKey!="accommodation"&& <>
+            {elem?.expenseKey!="accommodation"&& <>
                 <div className={styles.addContactBTN} onClick={()=>{
                     setTheExpense({
                         ...theExpense,
-                        "contactName": elem.contactName,
-                        "contactNumb": elem.contactNumb,
+                        "contactName": elem?.contactName,
+                        "contactNumb": elem?.contactNumb,
                     })
-                }}> + {elem.contactName} </div>
+                }}> + {elem?.contactName} </div>
             </>}
             </React.Fragment>)
         }
@@ -659,12 +1868,12 @@ const { data: session } = useSession()
                 <div className={styles.aRoomOpt}>
                     <div className={styles.aColumn}>
                         <div className={styles.roomOptLabel}>Room Type</div>
-                        <div className={styles.aRoomDescription}>{elem.roomDescription}</div>
+                        <div className={styles.aRoomDescription}>{elem?.roomDescription}</div>
                     </div>
                     <div className={styles.aColumn}>
                         <div className={styles.roomOptLabel}>price [room] </div>
                         <div className={styles.aRoomPrice}> 
-                            ${elem.price}
+                            ${elem?.price}
                             </div>
                     </div>
                 {/* room requ & Price Calc */}
@@ -769,10 +1978,10 @@ const { data: session } = useSession()
                     </div>                    
                 {/* Additional Bedding Req */}
                     <div className={styles.aColumn}>
-                    {elem.additionalBed&&<>
+                    {elem?.additionalBed&&<>
                     <div className={styles.roomOptLabel}>Additional bed</div>
                     <div className={styles.aRoomPrice}>
-                        +${elem.additionalBed} 
+                        +${elem?.additionalBed} 
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         <div style={{width:"18px"}}> 
                             {anExpense.roomPriceArr[i].reqAdditionalBed?<>
@@ -853,9 +2062,9 @@ const { data: session } = useSession()
                     </div>
                 {/*  price display */}
                     <div className={styles.aColumn}> 
-                        {elem.roomsTotal?<>
+                        {elem?.roomsTotal?<>
                             <div className={styles.roomOptLabel}>Room total</div>
-                            <div className={styles.aRoomDescription}> ${elem.roomsTotal.toFixed(2)}</div> 
+                            <div className={styles.aRoomDescription}> ${elem?.roomsTotal.toFixed(2)}</div> 
                         </> :<> </>}
                     </div>
                 </div>
@@ -916,25 +2125,24 @@ const { data: session } = useSession()
                 </>)
 
             }
-            const totalAdder=(theExpArr)=>{
-                let totalAdder=0
-
+            const totalPerAccom=(theExpArr)=>{
+                let totalCounter=0
                 theExpArr.forEach((elem)=>{
-                    if(elem.reqRooms){
+                    if(elem?.reqRooms){
 
-                    if(elem.reqAdditionalBed){
-                        totalAdder=
-                        totalAdder
-                        + (elem.reqAdditionalBed * elem. additionalBed)
-                        + (elem.reqRooms * elem.price)
+                    if(elem?.reqAdditionalBed){
+                        totalCounter=
+                        totalCounter
+                        + (elem?.reqAdditionalBed * elem?. additionalBed)
+                        + (elem?.reqRooms * elem?.price)
                     } else {
-                        totalAdder = 
-                        totalAdder
-                        + (elem.reqRooms * elem.price)
+                        totalCounter = 
+                        totalCounter
+                        + (elem?.reqRooms * elem?.price)
                     }
                     }
                 })
-                return totalAdder.toFixed(2)
+                return totalCounter.toFixed(2)
             }
 
             return(<>
@@ -959,9 +2167,9 @@ const { data: session } = useSession()
                 </div>
                 <div className={styles.roomTotalBox}>
                     <div className={styles.aColumn}>
-                        <div className={styles.roomTotalLabel}>Total per day</div>
+                        <div className={styles.roomTotalLabel}>Total per accommodation</div>
                         <div className={styles.aRoomPrice}> 
-                            $ {totalAdder(anExpense.roomPriceArr)}
+                            $ {totalPerAccom(anExpense.roomPriceArr)}
                         </div>
                     </div>
                 </div>
@@ -974,11 +2182,16 @@ const { data: session } = useSession()
                 // send to back end 
                 e.preventDefault()
                 let updatingExpArr
+
+// pushing all new expenses into following day, not by index
+
                 if(theDep.dayByDayExp[dayIndx]){
                     updatingExpArr=[...theDep.dayByDayExp[dayIndx]];
                 } else {
                     updatingExpArr=[]
                 }
+
+
                 updatingExpArr.push(anExpense)
                 theDep.dayByDayExp.splice(dayIndx,1,updatingExpArr)
 
@@ -989,6 +2202,7 @@ const { data: session } = useSession()
                 setPriceChartKey()
                 setTheExpense()
                 setExpTrig(false)
+                setEditSwitch(false)
             }}> 
                 {contactArr.length>0&& <>
                     <br></br>
@@ -1056,464 +2270,7 @@ const { data: session } = useSession()
         </>)
         } 
     }
-
-
-    // Main disp
-    const aFileDisplayer=(theItin, theDep)=>{
-        return(<>
-        {/* keys */}
-            <div className={styles.keySelectors}>
-            {fileDisplayKey!="intro"&&<> 
-                <span onClick={()=>{setFileKey("intro"); setExpTrig(false)}}>home </span></>}
-            {fileDisplayKey!="rooming"&&<> 
-                <span onClick={()=>{setFileKey("rooming"); setExpTrig(false)}}>pax & rooming </span></>}
-            {fileDisplayKey!="providers"&&<> {providerArr.length>0&&<> 
-                <span onClick={()=>{setFileKey("providers"); setExpTrig(false)}}>providers </span>
-                </>}</>}
-            {fileDisplayKey!="expenses"&&<> 
-                <span onClick={()=>{setFileKey("expenses"); setExpTrig(false)}}>expenses</span></>}
-            {fileDisplayKey!="dayByDay"&&<> 
-                <span onClick={()=>{setFileKey("dayByDay"); setExpTrig(false)}}>day by day</span></>}
-            </div>
-        {/* Display */}
-            <div className={styles.aFileContainer}>
-                {fileDisplayKey==="intro"&&<>
-                    {itineraryHeaderDisp(theItin, theDep)}
-                </>}
-                {fileDisplayKey==="rooming"&&<>
-                    {roomingListDisp(theDep)}
-                </>}
-                {fileDisplayKey==="providers"&&<>
-                    {contactArrDisp(providerArr)}
-                </>}
-                {fileDisplayKey==="expenses"&&<>
-                    {expenseDisplayer(theDep.dayByDayExp, theItin.dayByDay)}
-                </>}
-                {fileDisplayKey==="dayByDay"&&<>
-                    {dayByDayDisp(theItin.dayByDay)}
-                </>}
-            </div>
-            {temporaryRoomObj.guestArr&&<>
-                {roomingListEdit()}
-            </>}
-        </>)
-    }
-    const itineraryHeaderDisp=(theItin, theDep)=>{
-        let LTCLogoSwitcher
-        if(theItin){
-        switch (theItin.LTCLogo) {
-            case "galapagosElements":
-                LTCLogoSwitcher =<><h3>Galapagos Elements</h3></>
-                break;
-            case "ecoAndes":
-                LTCLogoSwitcher=<><h3>EcoAndes Travel</h3></>
-                break;
-            case "yacuma":
-                LTCLogoSwitcher=<><h3>Yacuma EcoLodge</h3></>
-                break;
-            case "unigalapagos":
-                LTCLogoSwitcher=<><h3>Unigalapagos</h3></>
-                break;
-            default:
-                break;
-        }
-        const eachIntroDetail=(theTitle, theDetail)=>{
-            return(<>
-            <div className={styles.eachDetailCont}>
-                <div className={styles.eachDetailTitle}>{theTitle}</div>
-                <div>{theDetail}</div>
-            </div>
-            </>)
-        }
-
-        const aDateDisp=(dateLabel, theDate, tripDuration)=>{
-            const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
-            let firstDate=new Date(theDate)
-            let toDateFormatter 
-            let upperLimitDate           
-            if(tripDuration){
-                let theDuration = parseInt(tripDuration)
-                upperLimitDate = addDays(theDate, theDuration +1)
-                toDateFormatter = upperLimitDate.toLocaleDateString('en-GB', dateOptions)
-            } else {
-                toDateFormatter = firstDate.toLocaleDateString('en-GB', dateOptions)
-            }
-
-            return(<>
-            <div className={styles.eachDateCont}>
-                <div className={styles.eachDetailTitle}>{dateLabel}</div>
-                <div>  
-                    {toDateFormatter}                
-                </div>
-            </div>
-            </>)
-        }
-
-        let paxTotalCount=<>{paxData?.paxTotal} / {sampleDeparture?.maxPaxNumb} maximum</>
-
-        return(<>
-            <div className={styles.operationsPageHeader}>
-                <div>
-                    {LTCLogoSwitcher}
-                    <h1>{theItin.tripName}</h1>
-                </div>
-                <div style={{cursor:"pointer", paddingRight: "40px"}} 
-                    onClick={()=>{
-                    if(editSwitch){setEditSwitch(false)} else {setEditSwitch(true)}
-                }}>
-                    {editSwitch?<><EditOffIcon/></>: <><EditIcon/></>}
-                </div>
-            </div>
-            <div className={styles.roomingListCont} > 
-                <div className={styles.detailDispl}>
-                    {theItin.tripLang&&<>{eachIntroDetail("trip language", theItin.tripLang)}</>}
-                    {theItin.tourCode&&<>{eachIntroDetail("Tour code", theItin.tourCode)}</>}
-                    {theItin.aComp&&<>{eachIntroDetail("company", theItin.aComp)}</>}
-                    {theItin.compContact&&<>{eachIntroDetail("contact", theItin.compContact)}</>}
-                    {theItin.tripRef&&<>{eachIntroDetail("trip Reference", theItin.tripRef)}</>}
-                    {theItin.tripRef&&<>{eachIntroDetail("guests", paxTotalCount)}</>}
-                </div>
-                <h2> Tour Dates </h2>
-                <div className={styles.theDatesCont}> 
-                    {aDateDisp("starting date", theDep.startingDate)}
-                    {aDateDisp("Ending date", theDep.startingDate, theDep.duration)}
-                </div>
-            </div>
-        </>)
-        }
-    }
-
-    const theRoomingBreakdownDispl=()=>{
-        return(<>
-            <div className={styles.roomingListTotalCont}>
-                {paxData?.roomReq.singleRooms>0&&<><div>{paxData.roomReq.singleRooms} SINGLE Room{paxData.roomReq.singleRooms>1&&<>s</>}</div></>} 
-                {paxData?.roomReq.twinRooms>0&&<><div>{paxData.roomReq.twinRooms} twin Room{paxData.roomReq.twinRooms>1&&<>s</>}</div></>} 
-                {paxData?.roomReq.matrimonialRooms>0&&<><div>{paxData.roomReq.matrimonialRooms} matrimonial Room{paxData.roomReq.matrimonialRooms>1&&<>s</>}</div></>} 
-                {paxData?.roomReq.tripleRooms>0&&<><div>{paxData.roomReq.tripleRooms} triple Room{paxData.roomReq.tripleRooms>1&&<>s</>}</div></>} 
-                {paxData?.roomReq.quadRooms>0&&<><div>{paxData.roomReq.quadRooms} cuadruple Room{paxData.roomReq.quadRooms>1&&<>s</>}</div></>} 
-            </div>
-        </>)
-    }
-    const roomingListDisp=(theDeparture)=>{
-
-        const ageConverter=(theDOB)=>{
-            let toDate=new Date()
-            if(theDOB){
-            let clientDOB=new Date(theDOB)
-            return toDate.getUTCFullYear() - clientDOB.getUTCFullYear()
-            }
-        }
-
-        let eachNote=[]
-        const eachGuestData=(guestData)=>{
-            if(guestData.guestNotes){
-                eachNote.push({
-                    "name":guestData.guestName,
-                    "notes":guestData.guestNotes
-                })
-            }
-            return(<>
-                <div className={styles.roomingGuestRow}>
-                    <div style={{width:"180px", textAlign:"start"}}> &nbsp; {guestData.guestName}</div>
-                    <div style={{width:"120px", borderLeft:"solid 1px black" }}> {guestData.nationality}</div>
-                    <div style={{width:"100px", borderLeft:"solid 1px black" }}> {guestData.guestDOB}</div>
-                    <div style={{width:"120px", borderLeft:"solid 1px black" }}> {guestData.passport}</div>
-                    <div style={{width:"66px", borderLeft:"solid 1px black" }}> {ageConverter(guestData.guestDOB)}</div>
-                </div>
-            </>)
-        }
-
-
-        if(theDeparture){
-        let eachRoom=theDeparture.roomingList.map((elem, i)=>
-            <React.Fragment key={i}>
-            {!elem.tourLeader&&<>
-                <div className={styles.eachRoomDisplayer}>
-                {editSwitch&&<>
-                    <div className={styles.editRoomingIcon} onClick={()=>{
-                        setTempRoomObj(elem)
-                        window.scrollTo({
-                            top: 20000,
-                            behavior: "smooth",
-                        });
-                    }}>
-                    <EditIcon />
-                    </div>
-                    <div className={styles.deleteARoomIcon} onClick={()=>{
-                        let tempRooming = [...theDeparture.roomingList]
-                        tempRooming.splice(i,1)
-                        setTheDeparture({
-                            ...theDeparture,
-                            "roomingList":tempRooming
-                        })
-                    }}>
-                    <RemoveCircleOutlineIcon />
-                    </div>
-                </>}
-                    <div style={{width:"33px"}}> {i+1} </div>
-                    <div className={styles.aRoomingDetail} style={{width:"108px", borderLeft:"solid 1px black"}}>
-                        {elem.singleSupp&&<>SINGLE</>}
-                        {elem.accomodationType}
-                    </div>
-                    <div style={{display:"flex", flexDirection:"column"}}>
-
-                        {elem.guestArr.map((guestElem, i)=> <> {eachGuestData(guestElem)}</> ) }
-
-                    </div>
-                </div>
-            </>}
-            </React.Fragment> )
-
-        let noteDisp
-        if(eachNote.length>0){
-            noteDisp=eachNote.map((elem,i)=><React.Fragment key={i}> 
-                <div className={styles.eachRoomDisplayer}>
-                    <span style={{width:"180px", textAlign:"start"}}>{elem.name}</span>
-                    <span style={{borderLeft:"solid 1px black", textTransform:"capitalize"}}> &nbsp; 
-                    {elem.notes.map((elem,i)=><React.Fragment key={i}>{i>0&&<>, </>} {elem}</React.Fragment>)}
-                    </span>
-                </div>
-            </React.Fragment> )
-        }
-
-        return(<>
-        <div className={styles.roomingListCont}>
-            <div className={styles.operationsPageHeader}> 
-                <h2> Rooming List</h2>
-
-                {/* edit data */}
-                <div style={{cursor:"pointer", paddingRight: "140px"}} onClick={()=>{
-                    if(editSwitch){setEditSwitch(false); setTempRoomObj({})} else {setEditSwitch(true)}
-                }}>
-                    {editSwitch? <><EditOffIcon/></>: <><EditIcon/></>}
-                </div>
-            </div>
-            {paxData&&<><div className={styles.guestTotal}>{paxData.paxTotal} guests</div></>} 
-            {theRoomingBreakdownDispl()}
-            <div className={styles.roomingListGrid}>
-                <div className={styles.roomingListKEYS}>
-                    <div style={{width:"33px"}}> # </div>
-                    <div style={{width:"108px", borderLeft:"solid 1px black"}}>ROOM TYPE</div>
-                    <div style={{width:"180px", borderLeft:"solid 1px black", textAlign:"start" }}>&nbsp;&nbsp;GUEST NAME </div>
-                    <div style={{width:"120px", borderLeft:"solid 1px black" }}> NATIONALITY </div>
-                    <div style={{width:"100px", borderLeft:"solid 1px black" }}> D.O.B. </div>
-                    <div style={{width:"120px", borderLeft:"solid 1px black" }}> PASSPORT </div>
-                    <div style={{width:"66px", borderLeft:"solid 1px black" }}> AGE </div>
-                </div>
-                {eachRoom}
-
-                {/* Tour Leader Data */}
-                {theDeparture.tourLeader&& <>
-                    <h4>Tour Leader</h4>
-                    <div className={styles.eachRoomDisplayer}>
-                    {/* edit data */}
-                    {editSwitch&&<>
-                        <div className={styles.editRoomingIcon} onClick={()=>{
-                            setTempRoomObj(theDeparture.tourLeader)
-                        }} > 
-                        <EditIcon />
-                        </div>
-                        <div className={styles.deleteARoomIcon} onClick={()=>{
-                                setTheDeparture({
-                                    ...theDeparture,
-                                    "tourLeader":null
-                                })
-                            }}>
-                            <RemoveCircleOutlineIcon />
-                        </div>
-                    </>}
-                        <div style={{width:"33px"}}> TL </div>
-                        <div className={styles.aRoomingDetail} style={{width:"108px", borderLeft:"solid 1px black"}}>
-                            SINGLE
-                        </div>
-                        <div style={{display:"flex", flexDirection:"column"}}>
-
-                            {theDeparture.tourLeader.guestArr.map((guestElem, i)=> <> {eachGuestData(guestElem)}</> ) }
-                        </div>
-                    </div>
-                    <div className={styles.eachRoomDisplayer}>
-                        <span style={{textTransform:"capitalize"}}>
-                        <strong>NOTES:</strong> &nbsp;
-                        {theDeparture.tourLeader.guestArr[0].guestNotes.map((theNote,i)=><React.Fragment key={i}>{i>0&&<>,</>} {theNote}</React.Fragment>)}
-                        </span>
-                    </div>
-
-                </>}
-            </div>
-
-            {eachNote.length>0&&<>
-                <h2>Guest Notes </h2>
-                <div className={styles.roomingListGrid}>
-                <div className={styles.roomingListKEYS}>
-                    <div style={{width:"180px" }}> GUEST NAME </div>
-                    <div style={{borderLeft:"solid 1px black" }}>&nbsp; SPECIAL INDICATIONS </div>
-                </div>
-                    {noteDisp}
-                </div>
-            </>}
-
-        </div>
-        </>)
-    }
-    }
-    const roomingListEdit=()=>{
-        // add roomin and guest
-
-        // edit room and guests
-
-        let eachGuestForm
-        if(temporaryRoomObj){
-            eachGuestForm= temporaryRoomObj.guestArr.map((eachGuestElm,i)=><React.Fragment key={i}>
-
-                <h4>Edit guest #{i+1}</h4>
-                <div className={styles.aDataRow}>
-                    <div style={{width: "47%" }}> 
-                        {anInputDisplayer("Guest Name*", "guestName", "text", false, eachGuestElm.guestName, temporaryRoomObj, setTempRoomObj)}
-                        </div> 
-                    <div style={{width: "47%" }}> 
-                        {anInputDisplayer("Nationality", "nationality", "text", false, eachGuestElm.nationality, temporaryRoomObj, setTempRoomObj)}
-                        </div>
-                </div>                
-                <div className={styles.aDataRow}>
-                    <div style={{width: "47%" }}> 
-                        {anInputDisplayer("Passport", "passport", "text", false, eachGuestElm.passport, temporaryRoomObj, setTempRoomObj)}
-                        </div> 
-                    <div style={{width: "47%" }}> 
-                        {anInputDisplayer("Nationality", "nationality", "date", false, "cucu", temporaryRoomObj, setTempRoomObj)}
-                        </div>
-                </div>                
-            </React.Fragment> )
-        }
-
-        return(<>
-        <br/><br/>
-            <div className={styles.aFileContainer }> 
-                <h2>Edit a room: </h2>
-                {eachGuestForm}
-            </div>
-        </>)
-    }
-
-
-    // expenses
-    const expenseDisplayer=(theExpenseArr, dayByDay )=>{
-
-        const anExpenseDisp=(eachExp, expIndex, dailyExpArray)=>{
-            let roomPriceAdder=0
-            let eachDayRooming=[]
-            if(eachExp.expenseKey==="accommodation"){
-                eachExp.roomPriceArr.forEach((elem)=>{
-                    if(elem.reqRooms){
-                        if(elem.reqAdditionalBed){
-                            roomPriceAdder= 
-                            roomPriceAdder
-                            +
-                            (elem.reqAdditionalBed * elem.additionalBed)
-                            +
-                            (elem.reqRooms * elem.price)
-
-                            eachDayRooming.push({
-                                "roomDescription":elem.roomDescription,
-                                "reqRooms":elem.reqRooms,
-                                "price":elem.price,
-                                "reqAdditionalBed":elem.reqAdditionalBed,
-                                "additionalBed":elem.additionalBed,
-                            })
-                        } else {
-                            roomPriceAdder= 
-                            roomPriceAdder
-                            +
-                            (elem.reqRooms * elem.price)
-
-                            eachDayRooming.push({
-                                "roomDescription":elem.roomDescription,
-                                "reqRooms":elem.reqRooms,
-                                "price":elem.price,
-                            })
-                        }
-                    }
-                })
-            }
-            let roomingSummary=eachDayRooming.map((elem,i)=> <React.Fragment key={i}>
-                {elem.roomDescription} x {elem.reqRooms} 
-                {elem.reqAdditionalBed&&<> + {elem.reqAdditionalBed} additional bed{elem.reqAdditionalBed>1&&<>s</>}</>} <br/>
-            </React.Fragment>)
-
-            return(<>
-            {eachExp.expenseKey==="accommodation"&&<> 
-            <div className={styles.accomListDisp}>
-                {roomingSummary}
-            </div>
-            </>}
-            <div className={styles.anExpenseDisp}>
-                <div style={{width:"55%", display:"flex", alignItems:"center"}}>
-                    {editSwitch&& <>
-                        <span className={styles.rmvExpBTN} onClick={()=>{
-                            let tempArr = dailyExpArray.splice(expIndex, 1)
-                            setTheDeparture({
-                                ...theDeparture
-                            })
-                        }}> <RemoveCircleOutlineIcon/> </span></>}
-                    {eachExp.priceDetail} 
-                    {eachExp.hotelName&&<>- {eachExp.hotelName}
-                    </>}
-                </div>
-                <div style={{display:"flex", textAlign:"end"}}>
-                    {providerArr.length>1&&<><strong>
-                        {eachExp.contactName!="Provider"&&<>{eachExp.contactName}</>} |</strong></>}
-                    <div style={{width:"27px", textAlign:"end"}}> {eachExp.varExpTickets&& <>{eachExp.varExpTickets} x </>} </div>
-                    {eachExp.expenseKey==="accommodation"? <>
-                        <div style={{width:"66px", textAlign:"end"}}> $ {roomPriceAdder}</div>
-                    </> :<>
-                        <div style={{width:"66px", textAlign:"end"}}> $ {eachExp.price}</div>
-                    </>}
-                </div>
-            </div>
-            </>)
-        }
-        const expenseMapper=(dailyExpArr)=>{
-            if(dailyExpArr){
-                return(<>
-                    {dailyExpArr.map((element, i)=><React.Fragment key={i}>
-                        {anExpenseDisp(element, i, dailyExpArr)}
-                    </React.Fragment>)}
-                </>)
-            }
-        }
-
-        let eachDayTitleExp=dayByDay.map((dayElem, i)=><>
-        <React.Fragment key={i}>
-            <div className={styles.dailyTitleCont}>  
-                <h5> Day {i+1}: {dayElem.dayTitle&&<>{dayElem.dayTitle}</>}</h5>
-                {editSwitch&& <>
-                    <div className={styles.addExpBTN} onClick={()=>{
-                        setExpTrig(true)
-                        setDayIndex(i)
-                    }}>
-                        <AddCircleOutlineIcon/>
-                    </div></>}
-            </div>
-            {expenseMapper(theExpenseArr[i])}
-        </React.Fragment>
-        </>)
-
-        if(theExpenseArr.length>0){
-        return(<>
-            <div className={styles.operationsPageHeader}> 
-                <h2>Expenses:</h2>
-                <div style={{cursor:"pointer"}} onClick={()=>{
-                    if(editSwitch){setEditSwitch(false); setExpTrig(false)} else {setEditSwitch(true)}
-                }}>
-                    {editSwitch? <><EditOffIcon/></>:<><EditIcon/></>}
-                </div>
-            </div>
-            <div className={styles.expenseGridDisp}>
-                {eachDayTitleExp}
-            </div>
-        </>)
-        }
-    }
-    // contact arr
+    // PROVIDER arr
     const contactArrDisp=(theArr)=>{
         if(theArr.length>0){
             const guideTypeSwitcher=(theKey)=>{
@@ -1527,25 +2284,29 @@ const { data: session } = useSession()
                 {/* have different displayers for guides, accoms, transport, other providers */}
                     <div className={styles.providerRow}>
                         <div>
-                            <strong>{elem.contactName}</strong>   
-                            {guideTypeSwitcher(elem.expenseKey)}{elem.priceDetail&&<> {elem.priceDetail}</>}
+                            <strong>{elem?.contactName}</strong>   
+                            {guideTypeSwitcher(elem?.expenseKey)}{elem?.priceDetail&&<> {elem?.priceDetail}</>}
                         </div>
-                        {elem.contactNumb!=100000 &&<><div> # 0{elem.contactNumb}</div></>}
+                        {elem?.contactNumb!=100000 &&<><div> # 0{elem?.contactNumb}</div></>}
                     </div>
 
                     {docsSwitch&& <>
                     <div className={styles.providerRow}>
                           <div className={styles.eachDocBTN} onClick={()=>{
-
+                            setDocumentGenera("worKOrder")
                           }}> Work Order + </div>
                           <div className={styles.eachDocBTN} onClick={()=>{
-
+                            setDocumentGenera("contract")
                           }}> Contract + </div>
+                          <div className={styles.eachDocBTN} onClick={()=>{
+                            setDocumentGenera("contract")
+                          }}> Cash Requirement + </div>
                     </div>
                     </>}
                 </div>
             </React.Fragment> )
             return(<>
+                <div>
                 <div className={styles.operationsPageHeader}> 
                     <h2>Providers:</h2>
                     <div style={{cursor:"pointer"}} onClick={()=>{
@@ -1555,25 +2316,22 @@ const { data: session } = useSession()
                     </div>
                 </div>
 
-                {eachContact}
+                {eachContact}                
 
-                operational Docs:
-                <li> Orden de trabajo </li>
-                <li> Requerimietno economico </li>
-                <li> Contrato </li>
-
+                </div>
             </>)            
         }
     }
+
+
     // day by day disp
     const dayByDayDisp=(theDays)=>{
-        console.log(theDays)
         let theProgramDays=theDays.map((elem,i)=><React.Fragment key={i}>
             <div className={styles.eachDayCont}>
                 <div className={styles.dailyTitleCont}>  
-                    <h5> Day {i+1}: {elem.dayTitle&&<>{elem.dayTitle}</>}</h5>
+                    <h5> Day {i+1}: {elem?.dayTitle&&<>{elem?.dayTitle}</>}</h5>
                 </div>
-                {elem.dayDescription}
+                {elem?.dayDescription}
             </div>
         </React.Fragment> )
         return(<>
@@ -1585,10 +2343,7 @@ const { data: session } = useSession()
     }
     /////////////////////////////////////////////////////
     /////////////////////////////////////////////////////
-
-
     return(<>
-
     {/* Will we need session on per page level, or just on Navi and it can controll it all???? */}
         {session&&<> 
             <GMSNavii  user={session.user} />
@@ -1601,8 +2356,12 @@ const { data: session } = useSession()
                 <dl> 
                     <dd>create different docs from templates, and display each provider's services </dd>
                     <dd> Contracts, operational documents, per provider </dd>
-                    <dd> edit each expense </dd>
-                    <li>yacht reservation form </li>
+                    {/* <li>yacht reservation form </li> */}
+                    operational Docs:
+                    <li> Orden de trabajo </li>
+                    <li> Requerimietno economico </li>
+                    <li> Contrato </li>
+                    <li> rooming List </li>
                 </dl>
             </ul>
 
