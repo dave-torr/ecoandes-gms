@@ -723,6 +723,14 @@
     margin-right: 9px;
     text-transform: uppercase;
 }
+.documentGenTotal{
+    font-size: 0.8em;
+    padding: 5px;
+    margin-left: 4%;
+    border: solid 2px black;
+    border-top: none;
+    text-align: end;
+}
 
 /*  // // // //  */
 @media (max-width: 740px) {

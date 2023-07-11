@@ -210,7 +210,7 @@ const sampleDeparture={
     "dayByDayExp":[
         [
             {            
-                "contactName" :"Mr Boxy Boxxer",
+                "contactName" :"Diego Munoz",
                 "contactNumb": 9873655,
                 "currency": "usd",
                 "expenseKey": "guideExpense",
@@ -223,7 +223,7 @@ const sampleDeparture={
         [],
         [
             {            
-                "contactName" :"Galapa Guide",
+                "contactName" :"Galo Herrera",
                 "contactNumb": 98288567,
                 "currency": "usd",
                 "expenseKey": "guideExpense",
@@ -237,6 +237,7 @@ const sampleDeparture={
 
 
     ],
+    "operationalNotes":[],
     "startingDate": "6/16/2023",
     "maxPaxNumb": 16,
     "duration": 6,
@@ -482,33 +483,44 @@ const { data: session } = useSession()
     const [addDepartureNote, setAddDepartureNote]=useState(false)
     const [roomingEditIndex, setRoomingEditIndex]=useState(null)
     const [documentGenerator, setDocumentGenera]=useState(false)
+    const [addOperationalNote, setAddOPNote]=useState(false)
 
     useEffect(()=>{
         {paxStats(theDeparture, setPaxData)}
-
         let tempContArr=[]
         if(theDeparture){
-
         // does this need to run every time theDep changes?
         theDeparture.dayByDayExp.forEach((elem)=>{
             elem?.forEach((element)=>{
                 const findContact = tempContArr.find(elemental => elemental.contactName === element.contactName)
                 if(findContact===undefined){
-                    let tempProviderObj = {
-                        "contactName": element.contactName,
-                        "contactNumb": element.contactNumb,
-                        "expenseKey": element.expenseKey,
-                        "priceDetail": element.priceDetail
+                    if(element.expenseKey==="accommodation"){
+                        let tempProviderObj = {
+                            "contactName": element.contactName,
+                            "contactNumb": element.contactNumb,
+                            "expenseKey": element.expenseKey,
+                            "priceDetail": element.priceDetail,
+                            "hotelName":element.hotelName
+                        }
+                        tempContArr.push(tempProviderObj)
+                    } else {
+                        let tempProviderObj = {
+                            "contactName": element.contactName,
+                            "contactNumb": element.contactNumb,
+                            "expenseKey": element.expenseKey,
+                            "priceDetail": element.priceDetail
+                        }
+                        tempContArr.push(tempProviderObj)
                     }
-                    tempContArr.push(tempProviderObj)
                 }
             })
         })
         }
         setProviderArr(tempContArr)
     },[theDeparture])
-
     // utils
+    let toDate = new Date()
+    const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
     const paxStats=(theItin, setPxData)=>{
         if(theItin){
 
@@ -606,7 +618,6 @@ const { data: session } = useSession()
         }
 
         return(<>
-
             {aDropdownPicker(priceChartKeyArr, "Expense Type", false, anExpense, setPriceChartKey, optNameArr )}
 
             {priceChartKey&& <> 
@@ -622,7 +633,7 @@ const { data: session } = useSession()
                     } else {
                         setAnExpense({
                             ...tempObj,
-                            "contactName": "Provider",
+                            "contactName": null,
                             "contactNumb": 100000,
                         })
                     }
@@ -639,7 +650,6 @@ const { data: session } = useSession()
         result.setDate(result.getDate() + days)
         return result;
     }
-
     // general utils
     const editOffFunction=()=>{
         window.scrollTo({
@@ -651,8 +661,6 @@ const { data: session } = useSession()
         setAddGuest(false)
         setGuestAddCount(0)
     }
-
-
     /////////////////////////////////////////////////////
     /////////////////////////////////////////////////////
     // Main disp
@@ -716,9 +724,8 @@ const { data: session } = useSession()
             </>}
         </>)
     }
-
     const aDateDisp=(dateLabel, theDate, tripDuration)=>{
-        const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+        
         let firstDate=new Date(theDate)
         let toDateFormatter 
         let upperLimitDate           
@@ -843,7 +850,6 @@ const { data: session } = useSession()
         </>)
         } 
     }
-
     // rooming and guestsguest
     const addGuestCont=()=>{
         
@@ -1233,15 +1239,15 @@ const { data: session } = useSession()
                             });
                         }}> <AddCircleOutlineIcon /></div>
                     </>}
-                    <div style={{cursor:"pointer", paddingRight: "140px"}} onClick={()=>{
+                    <div style={{cursor:"pointer", paddingRight: "196px"}} onClick={()=>{
                         if(editSwitch){setEditSwitch(false); setTempRoomObj({}); setAddGuest(false)} else {setEditSwitch(true)}
                     }}>
                         {editSwitch? <><EditOffIcon/></>: <><EditIcon/></>}
                     </div>
                 </>}
-
             </div>
-            {paxData&&<><div className={styles.guestTotal}>{paxData.paxTotal} guests</div></>} 
+            {paxData&&<><div className={styles.guestTotal}>{paxData.paxTotal} guests 
+             + {theDeparture?.tourLeader?.guestArr.length} TL </div></>} 
             {theRoomingBreakdownDispl()}
 
             <div className={styles.roomingListGrid}>
@@ -1537,7 +1543,6 @@ const { data: session } = useSession()
                         </div>
                     </div>
                     <div className={styles.roomTypeIndicator} onClick={()=>{
-
                         let newGuestObj={
                             "guestName": String,
                             "guestDOB": String,
@@ -1642,13 +1647,11 @@ const { data: session } = useSession()
                         {theDeparture.roomingList[roomingEditIndex].accomodationType}
                     </div>
                 </div>
-
                 </>}
                 {eachGuestForm}
             </div>
         </>)
     }
-
     // expenses
     const expenseBadgeDisp=(anExpKey)=>{
         if(anExpKey==="transportExpense"){
@@ -1658,6 +1661,37 @@ const { data: session } = useSession()
         } else if(anExpKey==="accommodation"){
             return(<><div style={{fontSize:"1.1em", marginRight:"9px", fontWeight:"700", backgroundColor:" teal", padding:"6px 9px", color:"white"  }} > A {" "}</div></>)
         }
+    }
+    const totalExpAdder=(expenseArr)=>{
+        let totalAggegator=0
+        expenseArr.forEach((elem)=>{
+            if(elem?.length>0){
+                if(elem[0].expenseKey==="accommodation"){
+                    elem[0].roomPriceArr.forEach((elemental)=>{
+                        if(elemental.reqRooms){
+                            if(elemental.reqAdditionalBed){
+                                totalAggegator=
+                                totalAggegator
+                                +
+                                (elemental.reqRooms * elemental.price)
+                                +
+                                (elemental.reqAdditionalBed * elemental.additionalBed)
+                            } else {
+                                totalAggegator=
+                                totalAggegator
+                                +
+                                (elemental.reqRooms * elemental.price)
+                            }
+                        }
+                    })
+                    
+                } else {
+                    totalAggegator=
+                    totalAggegator + elem[0].price
+                }
+            }
+        })
+        return totalAggegator.toFixed(2)
     }
     const expenseDisplayer=(theExpenseArr, dayByDay )=>{
 
@@ -1768,40 +1802,8 @@ const { data: session } = useSession()
             {expenseMapper(theExpenseArr[i])}
         </React.Fragment>
         </>)
-        const totalExpAdder=()=>{
-            let totalAggegator=0
-            theExpenseArr.forEach((elem)=>{
-                if(elem?.length>0){
 
-                    if(elem[0].expenseKey==="accommodation"){
-                        elem[0].roomPriceArr.forEach((elemental)=>{
-                            if(elemental.reqRooms){
-                                if(elemental.reqAdditionalBed){
-                                    totalAggegator=
-                                    totalAggegator
-                                    +
-                                    (elemental.reqRooms * elemental.price)
-                                    +
-                                    (elemental.reqAdditionalBed * elemental.additionalBed)
-                                } else {
-                                    totalAggegator=
-                                    totalAggegator
-                                    +
-                                    (elemental.reqRooms * elemental.price)
-                                }
-                            }
-                        })
-                        
-                    } else {
-                        totalAggegator=
-                        totalAggegator + elem[0].price
-                    }
-                }
-            })
-            return totalAggegator.toFixed(2)
-        }
         if(theExpenseArr.length>0){
-
         return(<>
             <div className={styles.operationsPageHeader}> 
                 <h2>Expenses:</h2>
@@ -1814,7 +1816,7 @@ const { data: session } = useSession()
             </div>
             <div className={styles.totalExpCont}> 
                 TOTAL
-                |<span> ${totalExpAdder()} </span>
+                |<span> ${totalExpAdder(theExpenseArr)} </span>
 
             </div>
             <div className={styles.expenseGridDisp}>
@@ -2173,7 +2175,6 @@ const { data: session } = useSession()
                 </div>
             </>)
         }
-
         return(<>
             <form className={styles.expenseForm} 
             onSubmit={(e)=>{
@@ -2197,6 +2198,10 @@ const { data: session } = useSession()
                 setTheExpense()
                 setExpTrig(false)
                 setEditSwitch(false)
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                });
             }}>
 
                 {contactArr.length>0&& <>
@@ -2216,7 +2221,6 @@ const { data: session } = useSession()
                 </>}
 
                 <div className={styles.aDataRow}>
-
                     <div style={{width: "47%" }}> 
                         {anInputDisplayer("Contact Name*", "contactName", "text", false, theExpense.contactName, theExpense, setTheExpense)}</div>
                     <div style={{width: "47%" }}> 
@@ -2271,7 +2275,13 @@ const { data: session } = useSession()
                     <div className={styles.providerRow}>
                         <div style={{display:"flex", width:"70%", alignItems:"center" }}>
                             {expenseBadgeDisp(elem?.expenseKey)}
-                            <strong>{elem?.contactName} </strong>   
+                            <strong>
+                            {elem?.contactName!="Provider"?<>
+                                {elem?.contactName}
+                            </>:<>
+                                Name not provided
+                            </>}</strong>
+                            {elem?.hotelName&&<> - {elem?.hotelName} Hotel</>}
                         </div>
                         {elem?.contactNumb!=100000 &&<><div> # 0{elem?.contactNumb}</div></>}
                     </div>
@@ -2300,7 +2310,10 @@ const { data: session } = useSession()
                         </>}
                         {elem?.expenseKey==="accommodation" && <>
                           <div className={styles.eachDocBTN} onClick={()=>{
-                            setDocumentGenera("accommodation")
+                            setDocumentGenera({
+                                "docKey": "accommodation",
+                                ...elem
+                            })
                           }}> Accommodation Requirements + </div>
                         </>}  
                     </div>
@@ -2322,6 +2335,34 @@ const { data: session } = useSession()
             </>)            
         }
     }
+    const totalProviderExpAdder=(expenseArr)=>{
+        let totalAggegator=0
+        expenseArr.forEach((elem)=>{
+            if(elem.expenseKey==="accommodation"){
+                elem.roomPriceArr.forEach((elemental)=>{
+                    if(elemental.reqRooms){
+                        if(elemental.reqAdditionalBed){
+                            totalAggegator=
+                            totalAggegator
+                            +
+                            (elemental.reqRooms * elemental.price)
+                            +
+                            (elemental.reqAdditionalBed * elemental.additionalBed)
+                        } else {
+                            totalAggegator=
+                            totalAggegator
+                            +
+                            (elemental.reqRooms * elemental.price)
+                        }
+                    }
+                })
+            } else {
+                totalAggegator =
+                totalAggegator + elem.price
+            }
+        })
+        return totalAggegator.toFixed(2)
+    }
     const documentCreator=(theDocs )=>{
 
         let eachProviderExp=[]
@@ -2332,31 +2373,93 @@ const { data: session } = useSession()
                 }
             })
         })
+        let eachProviderMapper
+        if(theDocs.expenseKey!="accommodation"){
+            eachProviderMapper = theDeparture.dayByDayExp.map((elem,i)=><React.Fragment key={i}>
+                {elem.find(elem2 => elem2.contactName===theDocs?.contactName)?<>
+                    <div style={{display:"flex", alignItems:"center"}}> 
+                        <h4>Day {i + 1}:</h4> &nbsp; {theItinerary?.dayByDay[i].dayTitle}
+                    </div>
+                    {/* note mapper */}
 
-        
+                    {theDeparture?.operationalNotes[i]?.length>0&&<> 
+                        <div style={{width:"90%", marginLeft:"4%"}}>
+                            <strong style={{fontSize:"0.8em"}}>GENERAL DAY NOTES</strong>
+                            <div style={{display:"flex", flexDirection:"column"}}>
+                            {theDeparture?.operationalNotes[i].map((elem,i)=> 
+                            <React.Fragment key={i}> {elem.target==="general"&&<>
+                                <span>- {elem.note}</span>
+                            </>}</React.Fragment> ) }
+                            </div>
+                        </div>
+                    </>}
 
-        // use eachProvExp for totals, final exp grid
-        let eachProviderMapper = theDeparture.dayByDayExp.map((elem,i)=><React.Fragment key={i}>
-            {/* day title */}
-            {elem.find(elem2 => elem2.contactName===theDocs?.contactName)&&<>
-                <div style={{display:"flex", alignItems:"center"}}> 
-                <h4>Day {i + 1}:</h4> &nbsp; {theItinerary?.dayByDay[i].dayTitle}
-                </div>
-            </>}
-            {elem.map(element=><>{element.contactName===theDocs?.contactName&&<>
-                {console.log(element)}
-                <div className={styles.documentGeneraExpense}>
-                    <span>
-                        <strong>{element.priceDetail}</strong> 
-                        {element.additionalDescription&&<>{element.additionalDescription}</>}
-                    </span>
-                    <span>
-                        ${element.price.toFixed(2)}
-                    </span>
-                </div>
-            </>}</>)}
-            <br/>
-        </React.Fragment>)
+
+                    {addOperationalNote? <>
+                        <div className={styles.operationsPageHeader}> 
+                            <div className={styles.inputAndRow} style={{margin:"12px 4%"}}> 
+                                <input 
+                                    className={styles.inputUserUI} 
+                                    type='text'
+                                    onChange={(e)=>{
+                                        e.preventDefault;
+                                        setAddOPNote({
+                                            ...addOperationalNote,
+                                            "note":e.target.value
+                                        })
+                                    }}
+                                    placeholder='Add Note'
+                                />
+                                &nbsp;
+                                &nbsp;
+                                <span onClick={()=>{
+                                    if(theDeparture?.operationalNotes[i]?.length>0){
+                                        console.log("cucu")
+                                        theDeparture.operationalNotes[i].push(addOperationalNote)
+                                        setTheDeparture({...theDeparture})
+                                    } else {
+                                        theDeparture.operationalNotes[i] = [addOperationalNote]
+                                        setTheDeparture({...theDeparture})
+                                        setAddOPNote(false)
+                                    }
+                                }}>
+                                    <AddCircleOutlineIcon/> 
+                                </span>
+                            </div>
+                            <span onClick={()=>setAddOPNote(false)}>
+                                <CancelPresentationIcon/>
+                            </span>
+                        </div>
+                    </> : <>
+                        <div style={{display:"flex", margin:"12px 0"}}>
+                            <span className={styles.eachGuestNote} style={{margin:"3px", marginLeft:"3%"}} onClick={()=>setAddOPNote({
+                                "target":"general"
+                            })}>
+                                Add General OP Note
+                            </span>
+                            <span className={styles.eachGuestNote} style={{margin:"3px"}} onClick={()=>setAddOPNote({
+                                "target": theDocs?.contactName
+                            })}>
+                                add targeted note
+                            </span>
+                        </div>
+                    </>}
+                </>:<> </>}
+                {elem.map(element=><>{element.contactName===theDocs?.contactName&&<>
+                    <div className={styles.documentGeneraExpense}>
+                        <span>
+                            <strong>{element.priceDetail}</strong> 
+                            {element.additionalDescription&&<>{element.additionalDescription}</>}
+                        </span>
+                        <span>
+                            ${element.price.toFixed(2)}
+                        </span>
+                    </div>
+                </>}</>)}
+                <br/>
+            </React.Fragment>)
+        }
+
         return(<>
             <div className={styles.operationsPageHeader} style={{borderBottom:"solid 1px black"}}>
                 <h2>Document Generator:</h2>
@@ -2370,35 +2473,68 @@ const { data: session } = useSession()
                 {theDocs.docKey==="workOrder"&&<> Work Order</>} 
                 {theDocs.docKey==="contract"&&<> Contract</>}
                 {theDocs.docKey==="cashReq"&&<> Economic Requirement</>}
+                {theDocs.docKey==="accommodation"&&<> Accommodations</>}
             </h1>
             <div className={styles.operationsPageHeader}>  
-                <h3>PROVIDER: {theDocs?.contactName}</h3>
-                #0{theDocs?.contactNumb}
+                <h3>PROVIDER: {theDocs?.contactName} {theDocs?.hotelName&&<><strong> {theDocs?.hotelName}</strong> </>}</h3>
+                {theDocs?.contactNumb!=100000 &&<> Phone: #0{theDocs?.contactNumb}</>}
             </div>
             <div className={styles.detailDispl}>
-                {theItinerary?.tripLang&&<>{eachIntroDetail("trip language", theItinerary.tripLang)}</>}
+                {eachIntroDetail("Date Created", toDate.toLocaleDateString('en-GB', dateOptions))}
+                {theDocs.expenseKey==="workOrder"&&<>
+                    {theItinerary?.tripLang&&<>{eachIntroDetail("trip language", theItinerary.tripLang)}</>}
+                </> }
                 {theItinerary?.tourCode&&<>{eachIntroDetail("Tour Code", theItinerary.tourCode)}</>}
                 {theItinerary?.tripRef&&<>{eachIntroDetail("Trip Reference", theItinerary.tripRef)}</>}
+                {theDeparture?.tourLeader&&<>{eachIntroDetail("Tour leader", theDeparture.tourLeader.guestArr[0].guestName)}</>}
             </div>
             <br/>
-
-            {/* {roomingListDisp(theDeparture)} */}
-
-            <h2> Day by Day Expenses</h2>
-            {eachProviderMapper}
+            {roomingListDisp(theDeparture)}
+            {theDocs.docKey!="accommodation"&&<>
+                <h2> Day by Day Requirements</h2>
+                {eachProviderMapper}
+            </>}
             <br/>
-            Service Total
+            {/* service list and total */}
+            <h2>Service Breakdown</h2>
+            {eachProviderExp.map((element,i)=><React.Fragment key={i}>
+                <div className={styles.documentGeneraExpense}>
+                    <span>
+                        D{element.dayIndex+1}: 
+                        <strong> {element.priceDetail}</strong> 
+                        {element.additionalDescription&&<>{element.additionalDescription}</>}
+                    </span>
+                    <span>
+                        ${element.price.toFixed(2)}
+                    </span>
+                </div>
+            </React.Fragment> )}
+            {theDocs.docKey!="accommodation"&&<>
+                <div className={styles.documentGenTotal}>
+                    <strong>TOTAL:</strong> USD $ {totalProviderExpAdder(eachProviderExp)}
+                </div>
+                <br/>
+                <br/>
+                <strong> Please remember to arrive 15 minutes before schedule. </strong>
+                <div style={{width:"100%", display:"flex", justifyContent:"space-between", marginTop:"44px"}}> 
+                    <div style={{textAlign:"center" }}>
+                        <div> {session?.user.name}</div>
+                        <div> Operations Department<br/> EcoAndes Travel, LTC</div> 
+                    </div>
+                    <div style={{textAlign:"center"}}>
+                        <div> {theDocs?.contactName}  </div>
+                        <div> {theDocs?.expenseKey==="guideExpense"&&<>
+                            Guide
+                        </>}</div> 
+                    </div>
+                </div>
+            </>}
             <br/>
-            Service Reminders
-            <br/>
-            Signature Area
         </>)
     }
 
-    // $12 por camiseta
-    // tallas
-    // entrega miercoles de tarde
 
+    console.log(theDeparture)
 
     // day by day disp
     const dayByDayDisp=(theDays)=>{
@@ -2424,7 +2560,7 @@ const { data: session } = useSession()
         {session&&<> 
             <GMSNavii  user={session.user} />
 
-            <h1>
+            {/* <h1>
             Cucu
             </h1>
 
@@ -2432,14 +2568,15 @@ const { data: session } = useSession()
                 <dl> 
                     <dd>create different docs from templates, and display each provider's services </dd>
                     <dd> Contracts, operational documents, per provider </dd>
-                    {/* <li>yacht reservation form </li> */}
+                    <li>yacht reservation form </li> 
                     operational Docs:
                     <li> Orden de trabajo </li>
                     <li> Requerimietno economico </li>
                     <li> Contrato </li>
                     <li> rooming List </li>
                 </dl>
-            </ul>
+            </ul> */}
+
 
             <div className={styles.playgroundPage}>
             {/* display Rooming req, rooming List Stats */}
