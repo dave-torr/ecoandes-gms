@@ -229,7 +229,7 @@ const sampleDeparture={
                 "expenseKey": "guideExpense",
                 "paxLimit": 16,
                 "price":180,
-                "priceDetail": "Galapagos Guide",
+                "priceDetail": "Full Day Service, GNP",
                 "pricekey": "fullDayServiceGALAPAGOS"
             } 
         ],
@@ -484,6 +484,7 @@ const { data: session } = useSession()
     const [roomingEditIndex, setRoomingEditIndex]=useState(null)
     const [documentGenerator, setDocumentGenera]=useState(false)
     const [addOperationalNote, setAddOPNote]=useState(false)
+    const [opDocEditSwitch, setOPDocSwitch]=useState(false)
 
     useEffect(()=>{
         {paxStats(theDeparture, setPaxData)}
@@ -660,6 +661,8 @@ const { data: session } = useSession()
         setTempRoomObj({})
         setAddGuest(false)
         setGuestAddCount(0)
+        setAddOPNote(false)
+        setOPDocSwitch(false)
     }
     /////////////////////////////////////////////////////
     /////////////////////////////////////////////////////
@@ -2380,16 +2383,55 @@ const { data: session } = useSession()
                     <div style={{display:"flex", alignItems:"center"}}> 
                         <h4>Day {i + 1}:</h4> &nbsp; {theItinerary?.dayByDay[i].dayTitle}
                     </div>
-                    {/* note mapper */}
 
+                    {/* General note mapper */}
                     {theDeparture?.operationalNotes[i]?.length>0&&<> 
-                        <div style={{width:"90%", marginLeft:"4%"}}>
-                            <strong style={{fontSize:"0.8em"}}>GENERAL DAY NOTES</strong>
+                        <div style={{width:"90%", marginLeft:"4%", marginBottom:"9px"}}>
                             <div style={{display:"flex", flexDirection:"column"}}>
-                            {theDeparture?.operationalNotes[i].map((elem,i)=> 
-                            <React.Fragment key={i}> {elem.target==="general"&&<>
-                                <span>- {elem.note}</span>
+
+                            {/* each provider's notes */}
+                            {theDeparture?.operationalNotes[i].map((elem,index)=> 
+                            <React.Fragment key={index}> {elem.target===theDocs?.contactName&&<>
+                                <div className={styles.operationsPageHeader}>
+                                    <span>- {elem.note}</span>
+                                    {opDocEditSwitch&& <>
+                                        <span onClick={()=>{
+                                            let tempArr = theDeparture?.operationalNotes[i].splice(index, 1)
+                                            setTheDeparture({
+                                                ...theDeparture
+                                            })
+                                        }}>
+                                            <RemoveCircleOutlineIcon />
+                                        </span>
+                                    </>}
+                                </div>
                             </>}</React.Fragment> ) }
+
+                            {theDeparture?.operationalNotes[i].find(elem => elem.target==="general")&&<>
+                                <strong style={{fontSize:"0.8em", marginTop:"9px"}}> GENERAL DAY NOTES</strong>
+                            </> }
+                            {theDeparture?.operationalNotes[i].map((elem,index)=> 
+                            <React.Fragment key={index}> {elem.target==="general"&&<>
+                                <div className={styles.operationsPageHeader}>
+                                    <span>- {elem.note}</span>
+                                    {opDocEditSwitch&& <>
+
+                                        <span onClick={()=>{
+                                            let tempArr = theDeparture?.operationalNotes[i].splice(index, 1)
+                                            setTheDeparture({
+                                                ...theDeparture
+                                            })
+                                        }}>
+                                            <RemoveCircleOutlineIcon />
+                                        </span>
+                                    </>}
+                                </div>
+                            </>}</React.Fragment> ) }
+
+
+
+
+
                             </div>
                         </div>
                     </>}
@@ -2431,6 +2473,7 @@ const { data: session } = useSession()
                             </span>
                         </div>
                     </> : <>
+                        {opDocEditSwitch && <> 
                         <div style={{display:"flex", margin:"12px 0"}}>
                             <span className={styles.eachGuestNote} style={{margin:"3px", marginLeft:"3%"}} onClick={()=>setAddOPNote({
                                 "target":"general"
@@ -2443,6 +2486,7 @@ const { data: session } = useSession()
                                 add targeted note
                             </span>
                         </div>
+                        </>}
                     </>}
                 </>:<> </>}
                 {elem.map(element=><>{element.contactName===theDocs?.contactName&&<>
@@ -2469,12 +2513,20 @@ const { data: session } = useSession()
                     <CancelPresentationIcon/>
                 </div>
             </div>
-            <h1> 
-                {theDocs.docKey==="workOrder"&&<> Work Order</>} 
-                {theDocs.docKey==="contract"&&<> Contract</>}
-                {theDocs.docKey==="cashReq"&&<> Economic Requirement</>}
-                {theDocs.docKey==="accommodation"&&<> Accommodations</>}
-            </h1>
+            <div className={styles.operationsPageHeader}>
+                <h1> 
+                    {theDocs.docKey==="workOrder"&&<> Work Order</>} 
+                    {theDocs.docKey==="contract"&&<> Contract</>}
+                    {theDocs.docKey==="cashReq"&&<> Economic Requirement</>}
+                    {theDocs.docKey==="accommodation"&&<> Accommodations</>}
+                </h1>
+                <div style={{cursor:"pointer"}} onClick={()=>{
+                    if(opDocEditSwitch){editOffFunction()} 
+                    else {setOPDocSwitch(true)}
+                }}>
+                    {opDocEditSwitch? <><EditOffIcon/></>:<><EditIcon/></>}
+                </div>
+            </div>
             <div className={styles.operationsPageHeader}>  
                 <h3>PROVIDER: {theDocs?.contactName} {theDocs?.hotelName&&<><strong> {theDocs?.hotelName}</strong> </>}</h3>
                 {theDocs?.contactNumb!=100000 &&<> Phone: #0{theDocs?.contactNumb}</>}
@@ -2498,7 +2550,7 @@ const { data: session } = useSession()
             {/* service list and total */}
             <h2>Service Breakdown</h2>
             {eachProviderExp.map((element,i)=><React.Fragment key={i}>
-                <div className={styles.documentGeneraExpense}>
+                <div className={styles.documentGeneraExpense} style={{borderTop:"solid 1px black", borderLeft:"solid 1px black" }}>
                     <span>
                         D{element.dayIndex+1}: 
                         <strong> {element.priceDetail}</strong> 
@@ -2510,7 +2562,7 @@ const { data: session } = useSession()
                 </div>
             </React.Fragment> )}
             {theDocs.docKey!="accommodation"&&<>
-                <div className={styles.documentGenTotal}>
+                <div className={styles.documentGenTotal} >
                     <strong>TOTAL:</strong> USD $ {totalProviderExpAdder(eachProviderExp)}
                 </div>
                 <br/>
