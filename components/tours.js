@@ -115,7 +115,6 @@ export function ATourCard(props){
 
 export function TextTourCard(props){
     let theTour = props.aTour
-    console.log(theTour)
     if(props.type===1) {
         return(<>
         <Link href={`/tours/${theTour.id}`}>

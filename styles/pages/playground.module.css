@@ -161,12 +161,7 @@
     text-align: end;
 }
 
-.aDataRow{
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-}
+
 
 .aPriceColumn{
     display: flex;
@@ -237,7 +232,6 @@
     justify-content: space-between;
     padding: 6px;
     font-size: 0.9em;
-
 }
 
 .addContactBTN{
@@ -256,12 +250,10 @@
     background-color: rgb(199, 196, 196);
     padding: 21px 0;
     min-height: 50vh;
-    padding-bottom: 22vh;
+    padding-bottom: 20vh;
 }
 
-
 /* operations  */
-
 .aFileContainer{
     width: 760px;
     background-color: white;
@@ -270,7 +262,14 @@
     z-index: 0;
 }
 
-.operationsPageHeader{
+.spaceBetRow{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.spaceBetRowPRINT{
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -495,6 +494,7 @@
     justify-content: flex-start;
     flex-wrap: wrap;
 }
+
 .guestNotesCont{
     display: flex;
 }
@@ -508,7 +508,8 @@
     padding: 3px 9px;
     width: fit-content;
     cursor: pointer;
-    margin: 3px 0;text-transform: capitalize;
+    margin: 3px 0;
+    text-transform: capitalize;
 }
 
 .detailDispl{
@@ -593,6 +594,34 @@
     margin-bottom: 6px;
     text-align: end;
 }
+
+.extraSelectors{
+    display: flex;
+    flex-direction: column;
+    min-height: 44px;
+    min-width: 33px;
+    position: fixed;
+    transform: translate(405px, 49px);
+}
+
+.extraSelectors span{
+    min-height: 33px;
+    border: solid 2px transparent;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 9px;
+    cursor: pointer;
+    color: rgb(51, 51, 51);
+    transition: all ease-in 0.3s;
+}
+
+.extraSelectors span:hover{
+    border: solid 2px rgb(51, 51, 51);
+}
+
+
 
 .aRoomDescription{
     text-transform: capitalize;
@@ -731,6 +760,8 @@
     text-align: end;
 }
 
+
+
 /*  // // // //  */
 @media (max-width: 740px) {
 
@@ -740,4 +771,25 @@
         width: 100%;
     }
 
+}
+
+@media print {
+    .playgroundPage{
+        background-color: unset;
+        padding-bottom: unset;
+    }
+    .keySelectors{
+        display: none;
+    }
+
+    .printDEL{
+        display: none;
+    }
+
+    .spaceBetRowPRINT{
+        display: none;
+    }
+    .aFileContainer{
+        box-shadow: none;
+    }
 }

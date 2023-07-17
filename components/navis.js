@@ -117,7 +117,6 @@ export function GMSNavii(props){
 
     if (props.user){
     return(<>
-
         <div className={styles.GMSNaviCont} onClick={()=>setDrawerToggle(true)}> 
 
             <div className={styles.GMSsNaviTitle}>

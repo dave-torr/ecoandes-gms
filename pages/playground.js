@@ -11,14 +11,15 @@ import EditIcon from '@mui/icons-material/Edit';
 import EditOffIcon from '@mui/icons-material/EditOff';
 import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
 import CancelPresentationIcon from '@mui/icons-material/CancelPresentation';
+import FlightIcon from '@mui/icons-material/Flight';
+import SailingIcon from '@mui/icons-material/Sailing';
 
-import { aDropdownPicker, aSwitcher, anInputDisplayer} from "../components/forms"
+import { aDropdownPicker, anInputDisplayer} from "../components/forms"
 import {GMSNavii} from "./../components/navis"
 
 import LTCPriceTables from "../data/LTCPriceTables2023.json"
 
 import styles from "./../styles/pages/playground.module.css"
-
 
 let catalogIndex={
     "adventureGuides":"Adventure Guides",
@@ -31,7 +32,7 @@ let catalogIndex={
     "galapagosDiving":"Galapagos Diving Tours",
     "maexgal":"Galapagos Luxury Island Hopping",
     "continentalVarCosts":"Continental Variable Costs",
-    "ikalaHotels":"Ikala Hotels & Yacuma",
+    "ikalaHotels":"Ikala Hotels",
     "LTCPartnerAccoms":"LTC Partner Accomodations",
     "transport": "Transport"
 }
@@ -237,14 +238,16 @@ const sampleDeparture={
 
 
     ],
+    "flights":[],
+    "cruises":[],
     "operationalNotes":[],
-    "startingDate": "6/16/2023",
+    "startingDate": "7/16/2023",
     "maxPaxNumb": 16,
     "duration": 6,
     "departureNotes":[
         "group of birders, need early breakfasts",
     ],
-    }
+}
 
 const sampleItin={
     "LTCLogo": "galapagosElements",
@@ -474,9 +477,9 @@ const { data: session } = useSession()
     const [paxData, setPaxData]=useState()
 
     // utils
-    const [addHotelTrig, setHotelAddTrig]=useState(false)
     const [editSwitch, setEditSwitch]=useState(false)
     const [docsSwitch, setDocSwitch]=useState(false)
+    const [addHotelTrig, setHotelAddTrig]=useState(false)
     const [addGuest, setAddGuest]=useState(false)
     const [guestAddCount, setGuestAddCount]=useState(0)
     const [addGuestNote, setAddGuestNote]=useState(false)
@@ -485,6 +488,7 @@ const { data: session } = useSession()
     const [documentGenerator, setDocumentGenera]=useState(false)
     const [addOperationalNote, setAddOPNote]=useState(false)
     const [opDocEditSwitch, setOPDocSwitch]=useState(false)
+
 
     useEffect(()=>{
         {paxStats(theDeparture, setPaxData)}
@@ -522,9 +526,9 @@ const { data: session } = useSession()
     // utils
     let toDate = new Date()
     const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+
     const paxStats=(theItin, setPxData)=>{
         if(theItin){
-
         let paxTotal = 0
         let roomObj= {
             "singleRooms":0,
@@ -539,12 +543,10 @@ const { data: session } = useSession()
 
             if(elem?.guestArr){
                 paxTotal= paxTotal+ elem?.guestArr.length
-                // nationality arr, use ???
                 elem?.guestArr.forEach((guestElemz)=>{
                     const findContact = nationalityArr.find(element => element === guestElemz.nationality )
                         if(!findContact){
                             nationalityArr.push(guestElemz.nationality)
-
                         }
                 })
             }
@@ -579,9 +581,7 @@ const { data: session } = useSession()
                     "quadRooms":roomObj.quadRooms + 1
                 }
             }
-
         })
-
         setPxData({
             "paxTotal":paxTotal,
             "roomReq": roomObj,
@@ -590,7 +590,6 @@ const { data: session } = useSession()
         }
     }
     const optCataloger=(priceChart)=>{
-
         let priceChartKeyArr = Object.keys(priceChart)
         let optNameArr =[]
         if(priceChartKeyArr.length>0){
@@ -598,12 +597,10 @@ const { data: session } = useSession()
                 optNameArr.push(catalogIndex[elem])
             });
         }
-
         let optNameArr2=[]
         let priceChartKeyArrTwo=[]
         let dropdownOpts
         let theSecondLevel
-
         if(priceChartKey){
             theSecondLevel = priceChart[priceChartKey]
             theSecondLevel.forEach((elem, i) => {
@@ -620,9 +617,7 @@ const { data: session } = useSession()
 
         return(<>
             {aDropdownPicker(priceChartKeyArr, "Expense Type", false, anExpense, setPriceChartKey, optNameArr )}
-
             {priceChartKey&& <> 
-
                 <select  className={styles.inputUserUI} onChange={(e)=> {
                     let tempObj=JSON.parse(e.target.value)
 
@@ -642,7 +637,6 @@ const { data: session } = useSession()
                     <option disabled selected  > Select Expense Type </option>
                     {dropdownOpts}
                 </select>
-
             </>}
         </>)
     }
@@ -663,16 +657,16 @@ const { data: session } = useSession()
         setGuestAddCount(0)
         setAddOPNote(false)
         setOPDocSwitch(false)
+        setAnExpense()
     }
+
+
     /////////////////////////////////////////////////////
     /////////////////////////////////////////////////////
     // Main disp
     const aFileDisplayer=(theItin, theDep)=>{
         return(<>
         {/* keys */}
-
-            {/* add set edit key to false for all tabs */}
-
             <div className={styles.keySelectors}>
             {fileDisplayKey!="intro"&&<> 
                 <span onClick={()=>{setFileKey("intro"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>home </span></>}
@@ -685,9 +679,21 @@ const { data: session } = useSession()
                 <span onClick={()=>{setFileKey("expenses"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>expenses</span></>}
             {fileDisplayKey!="dayByDay"&&<> 
                 <span onClick={()=>{setFileKey("dayByDay"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>day by day</span></>}
-            {fileDisplayKey!="flights"&&<> 
-                <span onClick={()=>{setFileKey("flights"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>flights</span></>}
+            {/* {fileDisplayKey!="flights"&&<> 
+                <span onClick={()=>{setFileKey("flights"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>flights</span></>} */}
             </div>
+
+      <div className={styles.extraSelectors}> 
+
+        {/* If flights, from useEffect, link to flights page */}
+        {theDep.flights.length>0 && <>
+            <span> <FlightIcon/> </span>
+        </>}
+        {theDep.cruises.length>0 && <>
+            <span> <SailingIcon/> </span>
+        </>}
+      </div>
+
         {/* Display */}
             <div className={styles.aFileContainer}>
                 {fileDisplayKey==="intro"&&<>
@@ -709,6 +715,7 @@ const { data: session } = useSession()
                 {fileDisplayKey==="dayByDay"&&<>
                     {dayByDayDisp(theItin.dayByDay)}
                 </>}
+                {/* non OP */}
                 {fileDisplayKey==="flights"&&<>
                     cUCUUU
                     aDD fLIGHTS PAGE HERE
@@ -727,14 +734,18 @@ const { data: session } = useSession()
             </>}
         </>)
     }
-    const aDateDisp=(dateLabel, theDate, tripDuration)=>{
-        
+
+    const aDateDisp=(dateLabel, theDate, tripDuration, dayIndex)=>{
         let firstDate=new Date(theDate)
         let toDateFormatter 
         let upperLimitDate           
         if(tripDuration){
             let theDuration = parseInt(tripDuration)
             upperLimitDate = addDays(theDate, theDuration +1)
+            toDateFormatter = upperLimitDate.toLocaleDateString('en-GB', dateOptions)
+        } else if (dayIndex) {
+            let theDayIndex = parseInt(dayIndex)
+            upperLimitDate = addDays(theDate, theDayIndex +1)
             toDateFormatter = upperLimitDate.toLocaleDateString('en-GB', dateOptions)
         } else {
             toDateFormatter = firstDate.toLocaleDateString('en-GB', dateOptions)
@@ -749,6 +760,7 @@ const { data: session } = useSession()
         </div>
         </>)
     }
+
     let paxTotalCount=<>{paxData?.paxTotal} / {theDeparture?.maxPaxNumb} maximum</>
     // main
     const eachIntroDetail=(theTitle, theDetail)=>{
@@ -779,7 +791,7 @@ const { data: session } = useSession()
                 break;
         }
         return(<>
-            <div className={styles.operationsPageHeader}>
+            <div className={styles.spaceBetRow}>
                 <div>
                     {LTCLogoSwitcher}
                     <h1>{theItin.tripName}</h1>
@@ -817,7 +829,7 @@ const { data: session } = useSession()
         if(editSwitch){return(<>
         <br/><br/>
             <div className={styles.aFileContainer}>
-                <div className={styles.aDataRow}>
+                <div className={styles.spaceBetRow}>
                     <h2 style={{width: "47%" }}>
                         Edit Dates and Group Maximum
                     </h2>
@@ -828,7 +840,7 @@ const { data: session } = useSession()
                         <EditOffIcon/>
                     </div>
                 </div>
-                <div className={styles.aDataRow}>
+                <div className={styles.spaceBetRow}>
                     <div style={{width: "47%" }}>
                         {anInputDisplayer("starting Date", "startingDate", "date", false, false, theDeparture, setTheDeparture )}
                     </div> 
@@ -836,7 +848,7 @@ const { data: session } = useSession()
                         {aDateDisp("Arrival Date", theDeparture.startingDate, theDeparture.duration)}
                     </div> 
                 </div>
-                <div className={styles.aDataRow}>
+                <div className={styles.spaceBetRow}>
                     <div style={{width: "47%" }}>
                         {anInputDisplayer("Guest Maximum", "maxPaxNumb", "number", false, false, theDeparture, setTheDeparture, 0 )}
                     </div> 
@@ -853,12 +865,13 @@ const { data: session } = useSession()
         </>)
         } 
     }
-    // rooming and guestsguest
+
+    // rooming and addGuests
     const addGuestCont=()=>{
         
         const guestForm=(guestIndex)=>{
             return(<>
-                <div className={styles.aDataRow}>
+                <div className={styles.spaceBetRow}>
                     <div style={{width: "47%" }}> 
                         <div className={styles.inputLabel}>
                             Guest Name
@@ -901,7 +914,7 @@ const { data: session } = useSession()
                     </div>
                 </div>
                 &nbsp;
-                <div className={styles.aDataRow}>
+                <div className={styles.spaceBetRow}>
                     <div style={{width: "47%" }}> 
                         <div className={styles.inputLabel}>
                             Passport
@@ -944,7 +957,7 @@ const { data: session } = useSession()
 
                 </div>
                 &nbsp;
-                <div className={styles.aDataRow}>
+                <div className={styles.spaceBetRow}>
                     <div style={{width: "40%" }}> 
                         <div className={styles.inputLabel}>
                             Add guest note
@@ -1053,7 +1066,7 @@ const { data: session } = useSession()
         return(<>
             <form >          
             <div className={styles.aFileContainer}>
-                <div className={styles.operationsPageHeader}>
+                <div className={styles.spaceBetRow}>
                     <h2> Add Room</h2>
                     <div className={styles.addRoomBTN} onClick={()=>{
                         if(newRoomObj.guestArr[0].guestName.length>1){
@@ -1091,7 +1104,7 @@ const { data: session } = useSession()
                         <AddCircleOutlineIcon/> &nbsp; add to rooming
                     </div>
                 </div>
-                <div className={styles.operationsPageHeader}>
+                <div className={styles.spaceBetRow}>
                     <div> 
                         {(newRoomObj.accomodationType==="twin" || newRoomObj.accomodationType==="matrimonial") && <>
                         <div className={styles.roomEditSwitcher}>
@@ -1229,12 +1242,12 @@ const { data: session } = useSession()
         /////////////////
         return(<>
         <div className={styles.roomingListCont}>
-            <div className={styles.operationsPageHeader}> 
+            <div className={styles.spaceBetRow}> 
                 <h2> Rooming List</h2>
                 {/* edit data */}
                 {!documentGenerator&&<>
                     {editSwitch&& <> 
-                        <div style={{cursor:"pointer", paddingRight: "33px"}} onClick={()=>{
+                        <div style={{cursor:"pointer", paddingRight: "33px"}}  onClick={()=>{
                             setAddGuest(true)
                             window.scrollTo({
                                 top: 2000,
@@ -1242,7 +1255,7 @@ const { data: session } = useSession()
                             });
                         }}> <AddCircleOutlineIcon /></div>
                     </>}
-                    <div style={{cursor:"pointer", paddingRight: "196px"}} onClick={()=>{
+                    <div style={{cursor:"pointer", paddingRight: "196px"}} className={styles.printDEL} onClick={()=>{
                         if(editSwitch){setEditSwitch(false); setTempRoomObj({}); setAddGuest(false)} else {setEditSwitch(true)}
                     }}>
                         {editSwitch? <><EditOffIcon/></>: <><EditIcon/></>}
@@ -1319,7 +1332,7 @@ const { data: session } = useSession()
                     <br/></>}
 
             {editSwitch?<>
-                <div className={styles.aDataRow}>
+                <div className={styles.spaceBetRow}>
                     <div style={{width: "40%" }}> 
                         <div className={styles.inputLabel}>
                             Add departure note
@@ -1427,7 +1440,7 @@ const { data: session } = useSession()
                         }
                     }} > <RemoveCircleOutlineIcon/></span>
                 </div>
-                <div className={styles.aDataRow}>
+                <div className={styles.spaceBetRow}>
                     <div style={{width: "47%" }}> 
                         <div className={styles.inputLabel}>
                             Guest Name
@@ -1472,7 +1485,7 @@ const { data: session } = useSession()
                         </div>
                 </div>
                 &nbsp;
-                <div className={styles.aDataRow}>
+                <div className={styles.spaceBetRow}>
                     <div style={{width: "47%" }}> 
                         <div className={styles.inputLabel}>
                             Passport
@@ -1517,7 +1530,7 @@ const { data: session } = useSession()
 
                 </div>
                 &nbsp;
-                <div className={styles.aDataRow}>
+                <div className={styles.spaceBetRow}>
                     <div style={{width: "40%" }}> 
                         <div className={styles.inputLabel}>
                             Add note
@@ -1623,7 +1636,7 @@ const { data: session } = useSession()
         return(<>
         <br/><br/>
             <div className={styles.aFileContainer }>
-                <div className={styles.operationsPageHeader}>
+                <div className={styles.spaceBetRow}>
                     <h2>Edit room # {roomingEditIndex+1}:</h2>
                     <div style={{cursor:"pointer"}} onClick={()=>{
                         editOffFunction()
@@ -1644,7 +1657,7 @@ const { data: session } = useSession()
                         <h3>MATRIMONIAL</h3>
                     </div>
                 </>:<>
-                <div className={styles.operationsPageHeader}>
+                <div className={styles.spaceBetRow}>
                     <span></span> 
                     <div className={styles.roomTypeIndicator}> 
                         {theDeparture.roomingList[roomingEditIndex].accomodationType}
@@ -1655,6 +1668,10 @@ const { data: session } = useSession()
             </div>
         </>)
     }
+
+
+
+
     // expenses
     const expenseBadgeDisp=(anExpKey)=>{
         if(anExpKey==="transportExpense"){
@@ -1694,7 +1711,7 @@ const { data: session } = useSession()
                 }
             }
         })
-        return totalAggegator.toFixed(2)
+        return totalAggegator?.toFixed(2)
     }
     const expenseDisplayer=(theExpenseArr, dayByDay )=>{
 
@@ -1759,7 +1776,7 @@ const { data: session } = useSession()
                     {eachExp.priceDetail}
                     {eachExp.hotelName&&<>- {eachExp.hotelName}
                     </>}
-                    {eachExp.varExpTickets&& <> |  {eachExp.varExpTickets} x ${eachExp.price.toFixed(2)} </>}
+                    {eachExp.varExpTickets&& <> |  {eachExp.varExpTickets} x ${eachExp.price?.toFixed(2)} </>}
                     
                 </div>
                 <div style={{display:"flex", textAlign:"end"}}>
@@ -1767,11 +1784,11 @@ const { data: session } = useSession()
                         {eachExp.contactName!="Provider"&&<>{eachExp.contactName}</>}</strong></>}
                     <div style={{width:"27px", textAlign:"end"}}>  </div>
                     {eachExp.expenseKey==="accommodation"? <>
-                        <div style={{width:"66px", textAlign:"end"}}> $ {roomPriceAdder.toFixed(2)}</div>
+                        <div style={{width:"66px", textAlign:"end"}}> $ {roomPriceAdder?.toFixed(2)}</div>
                     </> : eachExp.expenseKey==="variableExpense"? <>
-                        <div style={{width:"66px", textAlign:"end"}}> $ {eachExp.price.toFixed(2) * eachExp.varExpTickets }</div>
+                        <div style={{width:"66px", textAlign:"end"}}> $ {eachExp.price?.toFixed(2) * eachExp.varExpTickets }</div>
                     </> : <> 
-                        <div style={{width:"66px", textAlign:"end"}}> $ {eachExp.price.toFixed(2)}</div>
+                        <div style={{width:"66px", textAlign:"end"}}> $ {eachExp.price?.toFixed(2)}</div>
                     </>}
                 </div>
             </div>
@@ -1808,10 +1825,10 @@ const { data: session } = useSession()
 
         if(theExpenseArr.length>0){
         return(<>
-            <div className={styles.operationsPageHeader}> 
+            <div className={styles.spaceBetRow}> 
                 <h2>Expenses:</h2>
                 <div style={{cursor:"pointer"}} onClick={()=>{
-                    if(editSwitch){setEditSwitch(false); setExpTrig(false)} 
+                    if(editSwitch){setEditSwitch(false); setExpTrig(false); setAnExpense()} 
                     else {setEditSwitch(true)}
                 }}>
                     {editSwitch? <><EditOffIcon/></>:<><EditIcon/></>}
@@ -1828,6 +1845,7 @@ const { data: session } = useSession()
         </>)
         }
     }
+
     // expense form
     const expenseEditor=(theExpense, setTheExpense, contactArr, dayIndx, theDep, setTheDep, roomingData)=>{
         if(theExpense){ 
@@ -2067,7 +2085,7 @@ const { data: session } = useSession()
                     <div className={styles.aColumn}> 
                         {elem?.roomsTotal?<>
                             <div className={styles.roomOptLabel}>Room total</div>
-                            <div className={styles.aRoomDescription}> ${elem?.roomsTotal.toFixed(2)}</div> 
+                            <div className={styles.aRoomDescription}> ${elem?.roomsTotal?.toFixed(2)}</div> 
                         </> :<> </>}
                     </div>
                 </div>
@@ -2145,7 +2163,7 @@ const { data: session } = useSession()
                     }
                     }
                 })
-                return totalCounter.toFixed(2)
+                return totalCounter?.toFixed(2)
             }
 
             return(<>
@@ -2178,12 +2196,13 @@ const { data: session } = useSession()
                 </div>
             </>)
         }
+
+        // btn to add cuises, multi-day packages, per group or per pax
+
         return(<>
             <form className={styles.expenseForm} 
             onSubmit={(e)=>{
-
                 // send to back end 
-
                 e.preventDefault()
                 let updatingExpArr
                 if(theDep.dayByDayExp[dayIndx]){
@@ -2217,13 +2236,13 @@ const { data: session } = useSession()
                 </>}
 
                 {theExpense?.expenseKey==="accommodation"&& <>
-                <div className={styles.aDataRow}>
+                <div className={styles.spaceBetRow}>
                     <div style={{width: "47%" }}> 
                         {anInputDisplayer("Hotel Name", "hotelName", "text", false, theExpense.hotelName, theExpense, setTheExpense)}</div>
                 </div>
                 </>}
 
-                <div className={styles.aDataRow}>
+                <div className={styles.spaceBetRow}>
                     <div style={{width: "47%" }}> 
                         {anInputDisplayer("Contact Name*", "contactName", "text", false, theExpense.contactName, theExpense, setTheExpense)}</div>
                     <div style={{width: "47%" }}> 
@@ -2239,7 +2258,7 @@ const { data: session } = useSession()
                         {anInputDisplayer("Expense Detail", "priceDetail", "text", false, theExpense.priceDetail, theExpense, setTheExpense)}</div>
                     {accomOptAndPicker()}
                 </>:<>
-                <div className={styles.aDataRow}>
+                <div className={styles.spaceBetRow}>
                     <div style={{width: "70%" }}> 
                         {anInputDisplayer("Expense Detail", "priceDetail", "text", false, theExpense.priceDetail, theExpense, setTheExpense)}</div>
                     {theExpense.price&&<>
@@ -2269,6 +2288,8 @@ const { data: session } = useSession()
         </>)
         } 
     }
+
+
     // PROVIDER arr
     const contactArrDisp=(theArr)=>{
         if(theArr.length>0){
@@ -2325,7 +2346,7 @@ const { data: session } = useSession()
             </React.Fragment> )
             return(<>
                 <div>
-                <div className={styles.operationsPageHeader}> 
+                <div className={styles.spaceBetRow}> 
                     <h2>Providers:</h2>
                     <div style={{cursor:"pointer"}} onClick={()=>{
                         if(docsSwitch){setDocSwitch(false)}else{setDocSwitch(true)}
@@ -2364,7 +2385,7 @@ const { data: session } = useSession()
                 totalAggegator + elem.price
             }
         })
-        return totalAggegator.toFixed(2)
+        return totalAggegator?.toFixed(2)
     }
     const documentCreator=(theDocs )=>{
 
@@ -2392,7 +2413,7 @@ const { data: session } = useSession()
                             {/* each provider's notes */}
                             {theDeparture?.operationalNotes[i].map((elem,index)=> 
                             <React.Fragment key={index}> {elem.target===theDocs?.contactName&&<>
-                                <div className={styles.operationsPageHeader}>
+                                <div className={styles.spaceBetRow}>
                                     <span>- {elem.note}</span>
                                     {opDocEditSwitch&& <>
                                         <span onClick={()=>{
@@ -2412,10 +2433,9 @@ const { data: session } = useSession()
                             </> }
                             {theDeparture?.operationalNotes[i].map((elem,index)=> 
                             <React.Fragment key={index}> {elem.target==="general"&&<>
-                                <div className={styles.operationsPageHeader}>
+                                <div className={styles.spaceBetRow}>
                                     <span>- {elem.note}</span>
                                     {opDocEditSwitch&& <>
-
                                         <span onClick={()=>{
                                             let tempArr = theDeparture?.operationalNotes[i].splice(index, 1)
                                             setTheDeparture({
@@ -2427,18 +2447,12 @@ const { data: session } = useSession()
                                     </>}
                                 </div>
                             </>}</React.Fragment> ) }
-
-
-
-
-
                             </div>
                         </div>
                     </>}
 
-
                     {addOperationalNote? <>
-                        <div className={styles.operationsPageHeader}> 
+                        <div className={styles.spaceBetRow}> 
                             <div className={styles.inputAndRow} style={{margin:"12px 4%"}}> 
                                 <input 
                                     className={styles.inputUserUI} 
@@ -2496,7 +2510,7 @@ const { data: session } = useSession()
                             {element.additionalDescription&&<>{element.additionalDescription}</>}
                         </span>
                         <span>
-                            ${element.price.toFixed(2)}
+                            ${element.price?.toFixed(2)}
                         </span>
                     </div>
                 </>}</>)}
@@ -2505,7 +2519,7 @@ const { data: session } = useSession()
         }
 
         return(<>
-            <div className={styles.operationsPageHeader} style={{borderBottom:"solid 1px black"}}>
+            <div className={styles.spaceBetRowPRINT} style={{borderBottom:"solid 1px black"}}>
                 <h2>Document Generator:</h2>
                 <div style={{cursor:"pointer"}} onClick={()=>{
                     setDocumentGenera(false)
@@ -2513,24 +2527,32 @@ const { data: session } = useSession()
                     <CancelPresentationIcon/>
                 </div>
             </div>
-            <div className={styles.operationsPageHeader}>
+            <div className={styles.spaceBetRow}>
                 <h1> 
                     {theDocs.docKey==="workOrder"&&<> Work Order</>} 
                     {theDocs.docKey==="contract"&&<> Contract</>}
                     {theDocs.docKey==="cashReq"&&<> Economic Requirement</>}
-                    {theDocs.docKey==="accommodation"&&<> Accommodations</>}
+                    {theDocs.docKey==="accommodation"&&<> Accommodations Requirement</>}
                 </h1>
-                <div style={{cursor:"pointer"}} onClick={()=>{
-                    if(opDocEditSwitch){editOffFunction()} 
-                    else {setOPDocSwitch(true)}
-                }}>
-                    {opDocEditSwitch? <><EditOffIcon/></>:<><EditIcon/></>}
-                </div>
+                {theDocs.docKey!="accommodation"&& <>
+                    <div style={{cursor:"pointer"}} className={styles.printDEL} onClick={()=>{
+                        if(opDocEditSwitch){editOffFunction()} 
+                        else {setOPDocSwitch(true)}
+                    }}>
+                        {opDocEditSwitch? <><EditOffIcon/></>:<><EditIcon/></>}
+                    </div>
+                </>}
             </div>
-            <div className={styles.operationsPageHeader}>  
-                <h3>PROVIDER: {theDocs?.contactName} {theDocs?.hotelName&&<><strong> {theDocs?.hotelName}</strong> </>}</h3>
+            <div className={styles.spaceBetRow}>  
+                <h2>For: {theDocs?.contactName} </h2>
                 {theDocs?.contactNumb!=100000 &&<> Phone: #0{theDocs?.contactNumb}</>}
             </div>
+            {theDocs?.hotelName&&<><h2>For: <strong>{theDocs?.hotelName}</strong></h2></>}
+            <div>By: {session?.user.name} | Operations Department</div> <br/>
+
+            {console.log(session?.user)}
+
+
             <div className={styles.detailDispl}>
                 {eachIntroDetail("Date Created", toDate.toLocaleDateString('en-GB', dateOptions))}
                 {theDocs.expenseKey==="workOrder"&&<>
@@ -2540,28 +2562,40 @@ const { data: session } = useSession()
                 {theItinerary?.tripRef&&<>{eachIntroDetail("Trip Reference", theItinerary.tripRef)}</>}
                 {theDeparture?.tourLeader&&<>{eachIntroDetail("Tour leader", theDeparture.tourLeader.guestArr[0].guestName)}</>}
             </div>
-            <br/>
-            {roomingListDisp(theDeparture)}
+            {theDocs.docKey==="accommodation"&&<>
+                <h2>Required Dates:</h2>
+                {eachProviderExp.map((elemnt, indx)=> <React.Fragment key={indx}>
+                    <div className={styles.spaceBetRow}> 
+                        <span style={{width:"49%"}}>
+                            {aDateDisp("Date In", theDeparture.startingDate, false, elemnt.dayIndex)}
+                        </span>
+                        <span style={{width:"49%"}}>
+                            {aDateDisp("Date Out", theDeparture.startingDate, false, (elemnt.dayIndex+1))}
+                        </span>
+                    </div>
+                </React.Fragment>)}
+            </>}
+            {theDocs.docKey!="cashReq"&&<> 
+                {roomingListDisp(theDeparture)}
             {theDocs.docKey!="accommodation"&&<>
                 <h2> Day by Day Requirements</h2>
                 {eachProviderMapper}
             </>}
-            <br/>
-            {/* service list and total */}
-            <h2>Service Breakdown</h2>
-            {eachProviderExp.map((element,i)=><React.Fragment key={i}>
-                <div className={styles.documentGeneraExpense} style={{borderTop:"solid 1px black", borderLeft:"solid 1px black" }}>
-                    <span>
-                        D{element.dayIndex+1}: 
-                        <strong> {element.priceDetail}</strong> 
-                        {element.additionalDescription&&<>{element.additionalDescription}</>}
-                    </span>
-                    <span>
-                        ${element.price.toFixed(2)}
-                    </span>
-                </div>
-            </React.Fragment> )}
+            </>}
             {theDocs.docKey!="accommodation"&&<>
+                <h2>Service Breakdown</h2>
+                {eachProviderExp.map((element,i)=><React.Fragment key={i}>
+                    <div className={styles.documentGeneraExpense} style={{borderTop:"solid 1px black", borderLeft:"solid 1px black" }}>
+                        <span>
+                            D{element.dayIndex+1}: 
+                            <strong> {element.priceDetail}</strong> 
+                            {element.additionalDescription&&<>{element.additionalDescription}</>}
+                        </span>
+                        <span>
+                            ${element.price?.toFixed(2)}
+                        </span>
+                    </div>
+                </React.Fragment> )}
                 <div className={styles.documentGenTotal} >
                     <strong>TOTAL:</strong> USD $ {totalProviderExpAdder(eachProviderExp)}
                 </div>
@@ -2581,25 +2615,51 @@ const { data: session } = useSession()
                     </div>
                 </div>
             </>}
-            <br/>
         </>)
     }
 
-
-    console.log(theDeparture)
-
     // day by day disp
     const dayByDayDisp=(theDays)=>{
+
+
+        // switch to turn on or off day detail , notes
+
+        // BTN to add flights 
+
+        const flightAdder=()=>{
+            
+        }
+
+        // need to replace it with a usestate trigger
+        let descriptionSwitcher=true
+
         let theProgramDays=theDays.map((elem,i)=><React.Fragment key={i}>
             <div className={styles.eachDayCont}>
                 <div className={styles.dailyTitleCont}>  
                     <h5> Day {i+1}: {elem?.dayTitle&&<>{elem?.dayTitle}</>}</h5>
                 </div>
-                {elem?.dayDescription}
+                {descriptionSwitcher&& <>
+                    {elem?.dayDescription}
+                </>}
             </div>
+                {theDeparture.operationalNotes[i]&& <>
+                    <br/> <strong> NOTES</strong>
+                </>}
+                {theDeparture.operationalNotes.length>0&& <>
+                    {theDeparture.operationalNotes[i]?.map((elemnt, ind)=><>
+                        <div>
+                        - {elemnt.note} {elemnt.target!="general"&&<> | <strong>{elemnt.target}</strong> </>}
+                        </div>
+                    </>)}
+                </>}
         </React.Fragment> )
         return(<>
-            <h2>Day by Day:</h2>
+            <div className={styles.spaceBetRow}>
+                <h2>Day by Day:</h2>
+                <div style={{cursor:"pointer"}} onClick={()=>{
+                    
+                }}> <AddCircleOutlineIcon/> <FlightIcon/> </div>
+            </div>
             <div className={styles.dayByDayCont}>
                 {theProgramDays}
             </div>
@@ -2636,7 +2696,6 @@ const { data: session } = useSession()
             {/* Day by day elems */}
                 {theDeparture&& <>
                     {aFileDisplayer(theItinerary, theDeparture)}
-
                     {expenseTrig&&<>
                     <br/>
                         <div className={styles.aFileContainer}>
@@ -2645,7 +2704,6 @@ const { data: session } = useSession()
                         {expenseEditor(anExpense, setAnExpense, providerArr, dayIndex, theDeparture, setTheDeparture, paxData)}
                         </div>
                     </>}
-
                 </>}
 
             
@@ -2658,13 +2716,6 @@ const { data: session } = useSession()
                     setTheItinerary(sampleItin)
                     }}> Select Sample Dep </div>
             </>}
-
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
         </>}
     </>)
 }
