@@ -175,7 +175,7 @@ let tourDiff =[1,2,3,4,5]
                     </>}
 
                     {anInputDisplayer("Tour Name", "tripName", "text", true, "Trip name", aTourModel, setTourModel )}
-                    {anInputDisplayer("Duration", "duration", "number", true, "Trip duration", aTourModel, setTourModel)}
+                    {anInputDisplayer("Duration", "duration", "number", true, "Trip duration", aTourModel, setTourModel, 1)}
                     {multiOptPicker(destinationList, "Destinations", "countryList", aTourModel.countryList, aTourModel, setTourModel, setDestList )}
 
                     {anInputDisplayer("Starting", "startingPlace", "text", false, "Starting From", aTourModel, setTourModel)}

@@ -1,6 +1,8 @@
 .aGMSPage{
     background-color: var(--whitesmoke-background);
     min-height: 100vh;
+    padding: 0 9px;
+    padding-bottom: 66px;
 }
 
 .loadingStateScreen{
@@ -28,9 +30,11 @@
 .statsBar{
     width: 300px;
     box-shadow: var(--frst-box-shadow);
-    margin: 12px 21px;
     padding: 12px 21px;
     background-color: white;
+    border-bottom: solid 2px dotted;
+    margin-bottom: 60px;
+
 }
 
 .placeholderData{
@@ -38,7 +42,67 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 240px;
 }
+
+.anItinCont{
+    border: solid 1px black;
+    padding: 6px 9px;
+    margin: 6px;
+    height: fit-content;
+    white-space: nowrap;
+    height: 120px;
+    transition: all ease-in 0.3s;
+}
+
+.anItinCont:hover{
+    box-shadow: var(--frst-box-shadow);
+}
+
+.anItinCont h3{
+    width: 240px;
+    white-space: pre-wrap;
+    height: 44px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.itinPickerRow{
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    height: fit-content;
+    width: 100%;
+    padding-bottom: 6px;
+}
+
+.departureGenCont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 33px;
+}
+.createDepBTN{
+    border: solid 1px black;
+    padding: 3px 6px;
+    transform: translate(10px,0);
+    transition: all ease-in 0.3s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    font-weight: 700;
+}
+
+.createDepBTN:hover{
+    border: solid 1px black;
+    background-color: coral;
+    color: white;
+}
+
 
 /* General */
 .eachDetailTitle{
@@ -70,6 +134,7 @@
     align-items: center;
     width: 346px;
 }
+
 
 /* Dates */
 .eachDateCont{
@@ -163,6 +228,7 @@
     width: 100%;
     align-items: center;
 }
+
 
 
 /* rooming */

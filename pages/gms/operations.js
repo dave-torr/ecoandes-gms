@@ -22,6 +22,7 @@ import SailingIcon from '@mui/icons-material/Sailing';
 import { aDropdownPicker, anInputDisplayer} from "../../components/forms"
 
 import LTCPriceTables from "../../data/LTCPriceTables2023.json"
+import LTCItins from "../../data/LTCItinerary.json"
 
 
 let catalogIndex={
@@ -323,8 +324,8 @@ export default function OperationsDashboard(){
   const { data: session } = useSession()
 
   const [activeDeps, setActiveDeps]=useState([])
-  const [fetchedDeps, setFetchedDeps]=useState()
-  const [fetchedItins, setFetchedItins]=useState()
+  const [fetchedDeps, setFetchedDeps]=useState([])
+  const [fetchedItins, setFetchedItins]=useState([])
 
   // itin and dep obj, selected from fetched data, or new dep
   const [theItinerary, setTheItinerary]=useState()
@@ -545,6 +546,76 @@ export default function OperationsDashboard(){
   }
 
 
+
+
+  ///////////////////////////////////////////
+  const depSelector=(theLabel, theItineraries)=>{
+
+    const eachItinDisp=(theItinArr)=>{
+      let eachItinMapper=theItinArr.map((elem,i)=> <React.Fragment key={i}>
+        <div className={styles.anItinCont}>
+            <div className={styles.spaceBetRow}>
+              {elem.user?.name} 
+              {!elem.user&& <> {elem.countryList.map((elemz)=><> {elemz} </>)} </>}
+           </div>
+          <h3>{elem.tripName}</h3>
+          <div className={styles.spaceBetRow}>
+            {elem.duration} days
+            <span className={styles.createDepBTN} onClick={()=>{
+              setTheDeparture(aDepModel)
+              setTheItinerary({...elem})
+            }}> 
+              <AddCircleOutlineIcon/> Departure </span>
+          </div>
+        </div>
+      </React.Fragment>)
+      return(<>
+        <div className={styles.itinPickerRow}>
+          {eachItinMapper}
+        </div>
+      </>)
+    }
+    return(<>
+        <h2>{theLabel}</h2>
+        {theItineraries.length>0 && <>
+          {eachItinDisp(theItineraries)}
+        </>}
+
+        {/* {eachItinDisp(fetchedItins)} */}
+
+    </>)
+  }
+
+  const depCreator=(theItin, theDep)=>{
+
+    console.log(theDep, "theDep")
+    console.log(theItin, "theItin")
+    
+    return(<>
+      <div className={styles.departureGenCont}> 
+        <div className={styles.aFileContainer} style={{minHeight:"33vh" }} >
+          {logoSwitcher(theItin)}
+          <h2>{theItin.tripName}</h2>
+          <form >
+            Add Inputs for minimum needed info for dep:
+              Dep date, 
+              Group code,
+
+            Trip Reference
+            compamny
+            contact
+            guest max
+          </form>
+
+          <div className={styles.spaceBetRow}>
+            <span> </span>
+            <span> Create Dep BTN </span>
+          </div>
+        </div>
+      </div>
+    </>)
+  }
+
   ///////////////////////////////////////////
   // expenses
   const optCataloger=(priceChart)=>{
@@ -598,7 +669,7 @@ export default function OperationsDashboard(){
   } 
 
   ///////////////////////////////////////////
-  // Operations page functions
+  // File funtions
   const aFileDisplayer=(theItin, theDep)=>{
       return(<>
       {/* keys */}
@@ -679,7 +750,9 @@ export default function OperationsDashboard(){
     </>)
   }
   let paxTotalCount=<>{paxData?.paxTotal} / {theDeparture?.maxPaxNumb} maximum</>
-  const statsDisplatyer=(activeDepartures)=>{
+
+  // Stats
+  const statsDisplayer=(activeDepartures)=>{
     // sum up all current clients in Rooming List
     // = number of active clients.
     // sum active tours
@@ -689,9 +762,6 @@ export default function OperationsDashboard(){
     activeDepartures.forEach((elem,i)=>{
         elem.roomingList.forEach((elem)=>{
           clientGeneralSum=clientGeneralSum+1
-          if(elem.guest2){
-            clientGeneralSum=clientGeneralSum+1
-          }
         })
     })
     const eachDataRow=(theDataKey, dataValue)=>{
@@ -705,25 +775,40 @@ export default function OperationsDashboard(){
     return(<>
     <div className={styles.statsBar}> 
       {activeDepartures.length>0? <> 
-          <h3>General Statistics:</h3>
-          {eachDataRow("ACTIVE DEPARTURES:", activeDepartures.length )}
-          {eachDataRow("PAX TOTAL:", clientGeneralSum )}
-
-
+        <h3>General Statistics:</h3>
+        {eachDataRow("ACTIVE DEPARTURES:", activeDepartures.length )}
+        {eachDataRow("PAX TOTAL:", clientGeneralSum )}
         {/* Weekly responsible contact */}
         {/* List of active deps with links to each??? */}
         {/* what other quick elems can we display? Nationality? */}
-
-      </>:<> 
+      </>:<>
         <div className={styles.placeholderData}> 
           <h3>There are currently</h3>
           <h2><strong> NO DEPARTURES</strong></h2>
           <h3>in operation</h3>
-          CREATE DEP BTN
         </div>
       </>}
-    </div></>)
+
+    </div>
+    </>)
   }
+
+  const logoSwitcher=(theItin)=>{
+    switch (theItin.LTCLogo) {
+        case "galapagosElements":
+            return(<><h3>Galapagos Elements</h3></>);
+        case "ecoAndes":
+            return(<><h3>EcoAndes Travel</h3></>);
+        case "yacuma":
+            return(<><h3>Yacuma EcoLodge</h3></>);
+        case "unigalapagos":
+            return(<><h3>Unigalapagos</h3></>);
+        default:
+            break;
+    }
+  }
+
+
   const eachIntroDetail=(theTitle, theDetail)=>{
     return(<>
       <div className={styles.eachDetailCont}>
@@ -733,28 +818,11 @@ export default function OperationsDashboard(){
     </>)
   }
   const itineraryHeaderDisp=(theItin, theDep)=>{
-    let LTCLogoSwitcher
     if(theItin){
-    switch (theItin.LTCLogo) {
-        case "galapagosElements":
-            LTCLogoSwitcher =<><h3>Galapagos Elements</h3></>
-            break;
-        case "ecoAndes":
-            LTCLogoSwitcher=<><h3>EcoAndes Travel</h3></>
-            break;
-        case "yacuma":
-            LTCLogoSwitcher=<><h3>Yacuma EcoLodge</h3></>
-            break;
-        case "unigalapagos":
-            LTCLogoSwitcher=<><h3>Unigalapagos</h3></>
-            break;
-        default:
-            break;
-    }
     return(<>
         <div className={styles.spaceBetRow}>
           <div>
-              {LTCLogoSwitcher}
+              {logoSwitcher(theItin)}
               <h1>{theItin.tripName}</h1>
           </div>
           <div style={{cursor:"pointer", paddingRight: "40px"}} 
@@ -827,7 +895,7 @@ export default function OperationsDashboard(){
     }
   }
 
-  // rooming Functions
+  // rooming 
   const roomingListDisp=(theDep)=>{
     const ageConverter=(theDOB)=>{
       let toDate=new Date()
@@ -1621,7 +1689,7 @@ export default function OperationsDashboard(){
     </>)
   }
 
-  // Expenses
+  // expenses
   const expenseBadgeDisp=(anExpKey)=>{
     if(anExpKey==="transportExpense"){
         return(<><div style={{fontSize:"1.1em", marginRight:"9px", fontWeight:"700", backgroundColor:" coral", padding:"6px 9px", color:"white"  }} >T {" "}{" "}</div></>)
@@ -2227,7 +2295,7 @@ export default function OperationsDashboard(){
     } 
   }
  
-  //// PROVIDERS
+  // providers
   const contactArrDisp=(theArr)=>{
     if(theArr.length>0){
       let eachContact=theArr.map((elem, i)=><React.Fragment key={i}>
@@ -2608,10 +2676,6 @@ export default function OperationsDashboard(){
   //////////////////////////////////////////////
   //////////////////////////////////////////////
 
-
-  console.log(fetchedDeps, "fetchedDeps")
-  console.log(fetchedItins, "fetchedItins")
-
   return(<>
     <div className={styles.aGMSPage}>
       {session? <> 
@@ -2621,10 +2685,17 @@ export default function OperationsDashboard(){
             <h2>Latin Travel Collection</h2>
             <h1>Operations</h1>
         </div>
-        <strong> &nbsp; {toDateDisplayer}</strong>
-
-      {/* loading trigger set by departure fetching */}
-
+        <div className={styles.spaceBetRow}>
+          <strong>{toDateDisplayer}</strong>
+          <div>
+            {fetchedItins&&<>
+              {fetchedItins.length} GMS Itineraries,   
+            </>}
+            {LTCItins&&<>
+             {" "}{LTCItins.length} LTC Itineraries
+            </>}
+          </div>
+        </div>
 
       {loadingTrigger? <>
         {loadingScreen("Fetching Departure Data")}
@@ -2635,21 +2706,33 @@ export default function OperationsDashboard(){
           {/* Daily(monthly||weekly ) Planner */}
 
           {theDeparture? <>
-            {aFileDisplayer(theItinerary, theDeparture)}
-          </>:<>
-            {/* display itineraries and select a dep for file */}
-            {statsDisplatyer(activeDeps)}
-          </>}
 
+            {depCreator(theItinerary, theDeparture)}
+
+            {/* {aFileDisplayer(theItinerary, theDeparture)} */}
+
+
+          </>:<>
+
+            {/* display itineraries and select a dep for file */}
+
+            <h1>Departures </h1>
+
+
+            {statsDisplayer(activeDeps, )}
+            
+            
+            <h1>Create a departure: </h1>
+
+            {depSelector("GMS  Itineraires", fetchedItins)}
+            <br/><br/>
+            {depSelector("LTC Published Itineraries", LTCItins)}
+
+          </>}
 
 
         </div>
       </>}
-
-
-
-
-
 
 
       </>:<>
