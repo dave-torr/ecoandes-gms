@@ -135,20 +135,9 @@ let tourDiff =[1,2,3,4,5]
         // - Tour Duration
         // - Destinations
         // - Starting From
-        // - Client Reference (ex: Hunter x 4)
-        // - FIT | Agency | alt clientType
         // - Days in Tour
         // - Tour Language
         // - Tour Type
-
-        // If Agency:
-        //  - Tour Code
-        //  - Company
-        //  - Company Contact
-        
-
-        // Optionals:
-        //  -- Tour Dates
 
         // Hidden Details:
         //  - Submitted by (user)
@@ -183,11 +172,7 @@ let tourDiff =[1,2,3,4,5]
                     {aDropdownPicker(tourType, "tour type", "tourType", aTourModel, setTourModel)}
                     {aDropdownPicker(tourDiff, "Difficulty", "difficulty", aTourModel, setTourModel)}
 
-                    {anInputDisplayer("Reference ^", "tripRef", "text", false, "Trir Reference", aTourModel, setTourModel )}
                     {anInputDisplayer("Language ^", "tripLang", "text", false, "Tour Language", aTourModel, setTourModel )}
-                    {anInputDisplayer("Tour Code ^", "tourCode", "text", false, "Trip Code", aTourModel, setTourModel )}
-                    {anInputDisplayer("Company ^", "aComp", "text", false, "Company", aTourModel, setTourModel )}
-                    {anInputDisplayer("Contact ^", "compContact", "text", false, "Company Contact", aTourModel, setTourModel )}
                     <input type="submit" value="Next" className={styles.nextStepBTN}/>
                 </form>
             </>}

@@ -56,6 +56,7 @@ export function anInputDisplayer(inputLabel, inputId, inputType, isReq, inputPla
                 id={inputId}
                 onFocus={(e)=>{e.target.value=""}}
                 onChange={(e)=>{
+                    console.log(e.target.value, "cucu")
                     e.preventDefault()
                     let theValue
                     if(inputType==="number"){

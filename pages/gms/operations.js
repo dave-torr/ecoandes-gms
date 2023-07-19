@@ -281,8 +281,6 @@ const sampleDeparture={
     ],
 }
 
-
-
 export default function OperationsDashboard(){
 
   // OPERATIONS DASHBOARD
@@ -348,6 +346,7 @@ export default function OperationsDashboard(){
   const [roomingEditIndex, setRoomingEditIndex]=useState(null)
 
   // general utils
+  const [fileSwitch, setfileSwitch]=useState(false)
   const [editSwitch, setEditSwitch]=useState(false)
   const [docsSwitch, setDocSwitch]=useState(false)
   const [dayIndex, setDayIndex]=useState()
@@ -526,7 +525,7 @@ export default function OperationsDashboard(){
     let upperLimitDate           
     if(tripDuration){
         let theDuration = parseInt(tripDuration)
-        upperLimitDate = addDays(theDate, theDuration +1)
+        upperLimitDate = addDays(theDate, theDuration)
         toDateFormatter = upperLimitDate.toLocaleDateString('en-GB', dateOptions)
     } else if (dayIndex) {
         let theDayIndex = parseInt(dayIndex)
@@ -550,7 +549,6 @@ export default function OperationsDashboard(){
 
   ///////////////////////////////////////////
   const depSelector=(theLabel, theItineraries)=>{
-
     const eachItinDisp=(theItinArr)=>{
       let eachItinMapper=theItinArr.map((elem,i)=> <React.Fragment key={i}>
         <div className={styles.anItinCont}>
@@ -562,8 +560,21 @@ export default function OperationsDashboard(){
           <div className={styles.spaceBetRow}>
             {elem.duration} days
             <span className={styles.createDepBTN} onClick={()=>{
-              setTheDeparture(aDepModel)
-              setTheItinerary({...elem})
+                if(elem.user){
+                    setTheDeparture({
+                        ...aDepModel,
+                        "itineraryID": elem._id,
+                        "duration":elem.duration
+                    })
+                } else {
+
+                    setTheDeparture({
+                        ...aDepModel,
+                        "itineraryID": elem.id,
+                        "duration":elem.duration
+                    })
+                }
+                setTheItinerary({...elem})
             }}> 
               <AddCircleOutlineIcon/> Departure </span>
           </div>
@@ -576,41 +587,93 @@ export default function OperationsDashboard(){
       </>)
     }
     return(<>
-        <h2>{theLabel}</h2>
         {theItineraries.length>0 && <>
-          {eachItinDisp(theItineraries)}
+            <h2>{theLabel}</h2>
+            {eachItinDisp(theItineraries)}
         </>}
-
-        {/* {eachItinDisp(fetchedItins)} */}
-
     </>)
   }
-
   const depCreator=(theItin, theDep)=>{
 
-    console.log(theDep, "theDep")
-    console.log(theItin, "theItin")
+    // Add Inputs for minimum needed info for dep:
+    // Dep date, 
+    // Group code,
+    // Trip Reference
+    // compamny
+    // contact
+    // guest max
     
     return(<>
       <div className={styles.departureGenCont}> 
         <div className={styles.aFileContainer} style={{minHeight:"33vh" }} >
+        <div className={styles.spaceBetRow}>
+            <span/>
+            <div style={{cursor:"pointer"}} onClick={()=>{
+                setTheItinerary()
+                setTheDeparture()
+            }}> <CancelPresentationIcon/></div>
+        </div>
           {logoSwitcher(theItin)}
           <h2>{theItin.tripName}</h2>
-          <form >
-            Add Inputs for minimum needed info for dep:
-              Dep date, 
-              Group code,
-
-            Trip Reference
-            compamny
-            contact
-            guest max
+          <form onSubmit={(e)=>{
+            e.preventDefault(),
+            // send dep to BE
+            setfileSwitch(true)
+          }}>
+            <div className={styles.spaceBetRow}>
+                <div style={{width:"49%"}}>
+                    <div className={styles.inputLabel}>
+                        Add departure Date*
+                    </div>
+                    <input 
+                        className={styles.inputUserUI} 
+                        type='date'
+                        onChange={(e)=>{
+                            e.preventDefault;
+                            setTheDeparture({...theDeparture,
+                                "startingDate": e.target.value
+                            })
+                        }}
+                        placeholder='Departure Date'
+                    />
+                </div>
+                <div style={{width:"49%"}}>
+                    {aDateDisp("Starting Date", theDeparture.startingDate, 1)}
+                </div>
+            </div>
+            <div className={styles.spaceBetRow}>
+                <div style={{width:"49%"}}>
+                    <strong>DURATION:</strong> {theItin.duration} days
+                </div>
+                <div style={{width:"49%"}}>
+                    {aDateDisp("Ending Date", theDeparture.startingDate, theItin.duration )}
+                </div>
+            </div>
+            <div className={styles.spaceBetRow}>
+                <div style={{width:"49%"}}>
+                    {anInputDisplayer("Tour Code*", "tourCode", "text", true, "Ex: USA AZ 01 22", theDeparture, setTheDeparture, )}
+                </div>
+                <div style={{width:"49%"}}>
+                    {anInputDisplayer("reference", "tripRef", "text", false, "Ex: Lincoln x 5", theDeparture, setTheDeparture, )}
+                </div>
+            </div>
+            <div className={styles.spaceBetRow}>
+                <div style={{width:"49%"}}>
+                    {anInputDisplayer("Company*", "aComp", "text", true, "Ex: Darkwing Tours", theDeparture, setTheDeparture, )}
+                </div>
+                <div style={{width:"49%"}}>
+                    {anInputDisplayer("Contact", "compContact", "text", false, "Ex: Maria Molina", theDeparture, setTheDeparture, )}
+                </div>
+            </div>
+            <div className={styles.spaceBetRow}>
+                <div style={{width:"49%"}}>
+                    {anInputDisplayer("Guest Maximum*", "maxPaxNumb", "number", true, "Ex: 16", theDeparture, setTheDeparture, 0 )}
+                </div>
+                <div style={{width:"49%"}}>
+                <input type="submit" className={styles.submitDepBTN}  />
+                </div>
+            </div>
           </form>
-
-          <div className={styles.spaceBetRow}>
-            <span> </span>
-            <span> Create Dep BTN </span>
-          </div>
         </div>
       </div>
     </>)
@@ -792,7 +855,6 @@ export default function OperationsDashboard(){
     </div>
     </>)
   }
-
   const logoSwitcher=(theItin)=>{
     switch (theItin.LTCLogo) {
         case "galapagosElements":
@@ -807,8 +869,6 @@ export default function OperationsDashboard(){
             break;
     }
   }
-
-
   const eachIntroDetail=(theTitle, theDetail)=>{
     return(<>
       <div className={styles.eachDetailCont}>
@@ -835,11 +895,11 @@ export default function OperationsDashboard(){
         <div className={styles.roomingListCont} > 
           <div className={styles.detailDispl}>
             {theItin.tripLang&&<>{eachIntroDetail("trip language", theItin.tripLang)}</>}
-            {theItin.tourCode&&<>{eachIntroDetail("Tour code", theItin.tourCode)}</>}
-            {theItin.aComp&&<>{eachIntroDetail("company", theItin.aComp)}</>}
-            {theItin.compContact&&<>{eachIntroDetail("contact", theItin.compContact)}</>}
-            {theItin.tripRef&&<>{eachIntroDetail("trip Reference", theItin.tripRef)}</>}
-            {theItin.tripRef&&<>{eachIntroDetail("guests", paxTotalCount)}</>}
+            {theDep.tourCode&&<>{eachIntroDetail("Tour code", theDep.tourCode)}</>}
+            {theDep.aComp&&<>{eachIntroDetail("company", theDep.aComp)}</>}
+            {theDep.compContact&&<>{eachIntroDetail("contact", theDep.compContact)}</>}
+            {theDep.tripRef&&<>{eachIntroDetail("trip Reference", theDep.tripRef)}</>}
+            {theDep.maxPaxNumb&&<>{eachIntroDetail("guests", paxTotalCount)}</>}
           </div>
           <h2> Tour Dates </h2>
           <div className={styles.spaceBetRow}> 
@@ -889,6 +949,22 @@ export default function OperationsDashboard(){
                         {paxTotalCount}
                     </div>
                 </div> 
+            </div>
+            <div className={styles.spaceBetRow}>
+                <div style={{width:"49%"}}>
+                    {anInputDisplayer("Tour Code", "tourCode", "text", true, "Ex: USA AZ 01 22", theDeparture, setTheDeparture, )}
+                </div>
+                <div style={{width:"49%"}}>
+                    {anInputDisplayer("reference", "tripRef", "text", true, "Ex: Lincoln x 5", theDeparture, setTheDeparture, )}
+                </div>
+            </div>
+            <div className={styles.spaceBetRow}>
+                <div style={{width:"49%"}}>
+                    {anInputDisplayer("Company", "aComp", "text", true, "Ex: Darkwing Tours", theDeparture, setTheDeparture, )}
+                </div>
+                <div style={{width:"49%"}}>
+                    {anInputDisplayer("Contact", "compContact", "text", true, "Ex: Maria Molina", theDeparture, setTheDeparture, )}
+                </div>
             </div>
         </div>
       </>)
@@ -2707,23 +2783,22 @@ export default function OperationsDashboard(){
 
           {theDeparture? <>
 
-            {depCreator(theItinerary, theDeparture)}
+            {fileSwitch ? <>
+                <div style={{display: "flex", flexDirection:"column", alignItems:"center", margin:"15px" }}> 
+                    {aFileDisplayer(theItinerary, theDeparture)}
+                </div>
+            </>:<> 
+                {depCreator(theItinerary, theDeparture)}
+            </> }
 
-            {/* {aFileDisplayer(theItinerary, theDeparture)} */}
 
 
           </>:<>
-
             {/* display itineraries and select a dep for file */}
-
             <h1>Departures </h1>
 
-
-            {statsDisplayer(activeDeps, )}
-            
-            
+            {statsDisplayer(activeDeps, )}            
             <h1>Create a departure: </h1>
-
             {depSelector("GMS  Itineraires", fetchedItins)}
             <br/><br/>
             {depSelector("LTC Published Itineraries", LTCItins)}
