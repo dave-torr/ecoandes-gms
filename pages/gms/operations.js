@@ -18,6 +18,8 @@ import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
 import CancelPresentationIcon from '@mui/icons-material/CancelPresentation';
 import FlightIcon from '@mui/icons-material/Flight';
 import SailingIcon from '@mui/icons-material/Sailing';
+import SaveIcon from '@mui/icons-material/Save';
+import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
 
 import { aDropdownPicker, anInputDisplayer} from "../../components/forms"
 
@@ -343,6 +345,8 @@ export default function OperationsDashboard(){
   const [addGuest, setAddGuest]=useState(false)
   const [guestAddCount, setGuestAddCount]=useState(0)
   const [addGuestNote, setAddGuestNote]=useState(false)
+  const [addTLObj, setTLObj]=useState(false)
+  const [addTLNote, setTLNote]=useState(false)
   const [roomingEditIndex, setRoomingEditIndex]=useState(null)
 
   // general utils
@@ -356,6 +360,9 @@ export default function OperationsDashboard(){
   const [documentGenerator, setDocumentGenera]=useState(false)
   const [addOperationalNote, setAddOPNote]=useState(false)
   const [opDocEditSwitch, setOPDocSwitch]=useState(false)
+  const [saveDocSwitch, setSavedoc]=useState(true)
+  const [saveReminder, setSaveReminder]=useState()
+
 
   // providers
   const [providerArr, setProviderArr]=useState([])
@@ -543,12 +550,36 @@ export default function OperationsDashboard(){
       </div>
     </>)
   }
+    const saveFunction=async()=>{
+        setSavedoc(false)
+        // record to bitacora the change, 
+        // update document with similar functionality as Itinerary creation
 
+    }
+    const saveIconDisp=(theTrigger, saveIconFunct)=>{
+
+        return(<>
+            <div className={styles.saveIconCont}> 
+                {theTrigger? <>
+                    <div onClick={()=>saveIconFunct()}> 
+                        <SaveIcon />
+                    </div>
+                </> : <> 
+                    <SaveIcon fontSize={'small'} />
+                    <span> <CircularProgress color="success" /> </span>
+                </>}
+            </div>
+        </>)
+    }
 
 
 
   ///////////////////////////////////////////
   const depSelector=(theLabel, theItineraries)=>{
+
+    // need to make a dropdown filter for gms itins
+    //      with sorting by duration, date created. 
+
     const eachItinDisp=(theItinArr)=>{
       let eachItinMapper=theItinArr.map((elem,i)=> <React.Fragment key={i}>
         <div className={styles.anItinCont}>
@@ -607,18 +638,43 @@ export default function OperationsDashboard(){
       <div className={styles.departureGenCont}> 
         <div className={styles.aFileContainer} style={{minHeight:"33vh" }} >
         <div className={styles.spaceBetRow}>
-            <span/>
+            <h1> Create Departure </h1>
             <div style={{cursor:"pointer"}} onClick={()=>{
                 setTheItinerary()
                 setTheDeparture()
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                });
             }}> <CancelPresentationIcon/></div>
         </div>
           {logoSwitcher(theItin)}
           <h2>{theItin.tripName}</h2>
-          <form onSubmit={(e)=>{
+          <form onSubmit={async(e)=>{
             e.preventDefault(),
             // send dep to BE
             setfileSwitch(true)
+            setSavedoc(false)
+            let reqData = JSON.stringify({
+                ...theDeparture,
+                "dateCreated":toDate,
+                "version": 0,
+                "status": 1,
+                "user": {
+                    "name": session.user.name,
+                    "email": session.user.email
+                    }
+            })
+            const res = await fetch("/api/gms/departures", {
+                method: "POST",
+                body: reqData
+            })
+            const depCreationRes = await res.json()
+            if(res.status===200){
+                window.alert("Departure Created! Add aditional information below, and do not forget to save your work!")
+                setSavedoc(true)
+            }
+
           }}>
             <div className={styles.spaceBetRow}>
                 <div style={{width:"49%"}}>
@@ -628,6 +684,7 @@ export default function OperationsDashboard(){
                     <input 
                         className={styles.inputUserUI} 
                         type='date'
+                        required
                         onChange={(e)=>{
                             e.preventDefault;
                             setTheDeparture({...theDeparture,
@@ -736,6 +793,16 @@ export default function OperationsDashboard(){
   const aFileDisplayer=(theItin, theDep)=>{
       return(<>
       {/* keys */}
+        <div className={styles.spaceBetRow} style={{ borderTop:"solid 1px black", marginTop:"33px" }}>
+            <div onClick={()=>{
+                setTheDeparture()
+                setTheItinerary()
+            }}>
+                <CloseFullscreenIcon />
+            </div>
+            {saveIconDisp(saveDocSwitch, saveFunction, )}
+        </div>
+
       <div className={styles.keySelectors}>
         {fileDisplayKey!="intro"&&<> 
             <span onClick={()=>{setFileKey("intro"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>home </span></>}
@@ -753,7 +820,6 @@ export default function OperationsDashboard(){
       </div>
 
       <div className={styles.extraSelectors}> 
-
         {/* If flights, from useEffect, link to flights page */}
         {theDep.flights.length>0 && <>
             <span> <FlightIcon/> </span>
@@ -974,7 +1040,6 @@ export default function OperationsDashboard(){
   // rooming 
   const roomingListDisp=(theDep)=>{
     const ageConverter=(theDOB)=>{
-      let toDate=new Date()
       if(theDOB){
       let clientDOB=new Date(theDOB)
       return toDate.getUTCFullYear() - clientDOB.getUTCFullYear()
@@ -1076,8 +1141,10 @@ export default function OperationsDashboard(){
                   </div>
               </>}
           </div>
-          {paxData&&<><div className={styles.guestTotal}>{paxData.paxTotal} guests 
-            + {theDep?.tourLeader?.guestArr.length} TL </div></>} 
+          {paxData&&<><div className={styles.guestTotal}>{paxData.paxTotal} guests
+            {theDep?.tourLeader.guestArr && <> 
+                + {theDep?.tourLeader?.guestArr.length} TL </>}
+            </div></>} 
           {theRoomingBreakdownDispl()}
 
           <div className={styles.roomingListGrid}>
@@ -1091,8 +1158,10 @@ export default function OperationsDashboard(){
                   <div style={{width:"66px", borderLeft:"solid 1px black" }}> AGE </div>
               </div>
               {eachRoom}
-              {/* Tour Leader Data */}
-              {theDep.tourLeader&& <>
+
+              {/* Tour Leader Add & Data */}
+
+              {theDep.tourLeader.guestArr&& <>
                   <h4>Tour Leader</h4>
                   <div className={styles.eachRoomDisplayer}>
                   {/* edit data */}
@@ -1116,7 +1185,8 @@ export default function OperationsDashboard(){
                           SINGLE
                       </div>
                       <div style={{display:"flex", flexDirection:"column"}}>
-                          {theDep.tourLeader.guestArr.map((guestElem, i)=> <> {eachGuestData(guestElem)}</> ) }
+
+                          {theDep.tourLeader.guestArr?.map((guestElem, i)=> <> {eachGuestData(guestElem)}</> ) }
                       </div>
                   </div>
                   <div className={styles.eachRoomDisplayer}>
@@ -1125,10 +1195,11 @@ export default function OperationsDashboard(){
                       {theDep.tourLeader.guestArr[0].guestNotes.map((theNote,i)=><React.Fragment key={i}>{i>0&&<>,</>} {theNote}</React.Fragment>)}
                       </span>
                   </div>
-
               </>}
           </div>
-
+        {editSwitch && <>
+            <span > Add Tour Leader</span>
+        </>}
           {eachNote.length>0&&<>
               <h2>Guest Notes </h2>
               <div className={styles.roomingListGrid}>
@@ -1142,9 +1213,7 @@ export default function OperationsDashboard(){
 
           {theDep.departureNotes.length>0 ? <>
           <h2>Departure Notes </h2>
-          </> : <> <br/><br/>
-                  <br/></>}
-
+          </> : <> </>}
           {editSwitch?<>
               <div className={styles.spaceBetRow}>
                   <div style={{width: "40%" }}> 
@@ -1479,10 +1548,11 @@ export default function OperationsDashboard(){
   const addGuestCont=()=>{
     const guestForm=(guestIndex)=>{
         return(<>
+            <div className={styles.aLineSeparator}/>
             <div className={styles.spaceBetRow}>
                 <div style={{width: "47%" }}> 
                     <div className={styles.inputLabel}>
-                        Guest Name
+                        Guest {guestIndex +1} Name
                     </div>
                     <input 
                         className={styles.inputUserUI}
@@ -1732,21 +1802,12 @@ export default function OperationsDashboard(){
                   {newRoomObj.accomodationType}
               </div>
           </div>
-          __________________________________________________________________________________
-          <br/>
-          <br/>
-          {guestForm(0)}
+            {guestForm(0)}
           {guestAddCount>=1&&<>
-            __________________________________________________________________________________
-            <br/>
-            <br/>
             {guestForm(1)}
           </>}
           {/* triple OP or additional bed NON OP*/}
           {guestAddCount>=2&&<>
-            __________________________________________________________________________________
-            <br/>
-            <br/>
             {guestForm(2)}
           </>}
       </div>
@@ -2551,7 +2612,6 @@ export default function OperationsDashboard(){
                       &nbsp;
                       <span onClick={()=>{
                           if(theDeparture?.operationalNotes[i]?.length>0){
-                              console.log("cucu")
                               theDeparture.operationalNotes[i].push(addOperationalNote)
                               setTheDeparture({...theDeparture})
                           } else {
@@ -2629,9 +2689,6 @@ export default function OperationsDashboard(){
         </div>
         {theDocs?.hotelName&&<><h2>For: <strong>{theDocs?.hotelName}</strong></h2></>}
         <div>By: {session?.user.name} | Operations Department</div> <br/>
-
-        {console.log(session?.user)}
-
 
         <div className={styles.detailDispl}>
             {eachIntroDetail("Date Created", toDate.toLocaleDateString('en-GB', dateOptions))}
@@ -2761,6 +2818,7 @@ export default function OperationsDashboard(){
             <h2>Latin Travel Collection</h2>
             <h1>Operations</h1>
         </div>
+
         <div className={styles.spaceBetRow}>
           <strong>{toDateDisplayer}</strong>
           <div>
@@ -2772,15 +2830,12 @@ export default function OperationsDashboard(){
             </>}
           </div>
         </div>
-
       {loadingTrigger? <>
         {loadingScreen("Fetching Departure Data")}
       </>:<>
 
         <div>
-
           {/* Daily(monthly||weekly ) Planner */}
-
           {theDeparture? <>
 
             {fileSwitch ? <>
@@ -2796,7 +2851,6 @@ export default function OperationsDashboard(){
           </>:<>
             {/* display itineraries and select a dep for file */}
             <h1>Departures </h1>
-
             {statsDisplayer(activeDeps, )}            
             <h1>Create a departure: </h1>
             {depSelector("GMS  Itineraires", fetchedItins)}
@@ -2804,8 +2858,6 @@ export default function OperationsDashboard(){
             {depSelector("LTC Published Itineraries", LTCItins)}
 
           </>}
-
-
         </div>
       </>}
 

@@ -6,11 +6,9 @@ import { ObjectId } from 'mongodb';
 
 async function handler(req, res){
 
-    console.log("here @ handler")
 
     // create Itinerary
     if(req.method==="POST"){
-        console.log("Here @ POST")
 
         const client = await connectToDatabase();
         const reqData= JSON.parse(req.body)
@@ -31,7 +29,6 @@ async function handler(req, res){
     }
     // fetch user Itins
     else if (req.method==="PUT"){
-        console.log("Here @ Put")
 
         const client = await connectToDatabase();
         const reqData= JSON.parse(req.body)
@@ -56,10 +53,7 @@ async function handler(req, res){
         }
     }
     // fetch all active itins
-    else if (req.method==="GET"){ 
-
-        console.log("Here @ GET")
-        
+    else if (req.method==="GET"){   
 
         const client = await connectToDatabase();
         
@@ -78,7 +72,6 @@ async function handler(req, res){
     // edit itins
     else if (req.method==="DELETE"){ 
 
-        console.log("Here @ Delete")
 
 
         const client = await connectToDatabase();
@@ -108,9 +101,6 @@ async function handler(req, res){
         
         // EDIT ITINERARY
         else if(reqBody.dbCommand==="EDIT"){
-
-            console.log("HERE @ EDIT")
-            console.log( reqBody )
 
             let editKey = reqBody.editKey
             let editValue = reqBody.editValue

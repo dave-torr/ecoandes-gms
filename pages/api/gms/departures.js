@@ -4,63 +4,67 @@ import { ObjectId } from 'mongodb';
 
 async function handler(req, res){
     
-    console.log("Cucu")
-
     const client = await connectToDatabase();
     
-    const fetchDepartures = client
-        .db('EcoAndesGMS')
-        .collection("LTCDepartures")
-        .find()
-        .toArray();
+    // Old stuff might need to rephase func
+    // const fetchDepartures = client
+    //     .db('EcoAndesGMS')
+    //     .collection("LTCDepartures")
+    //     .find()
+    //     .toArray();
 
-    const fetchedDeps = await fetchDepartures
-    if(fetchedDeps){
-        res.status(200).json(fetchedDeps)
-        client.close();
-    }
+    // const fetchedDeps = await fetchDepartures
+    // if(fetchedDeps){
+    //     res.status(200).json(fetchedDeps)
+    //     client.close();
+    // }
 
 
     // //////////////////////////////////////////
     // //////////////////////////////////////////
     // // create Departure
-    // if(req.method==="POST"){
-    //     const client = await connectToDatabase();
-    //     const reqData= JSON.parse(req.body)
+    if(req.method==="POST"){
 
-    //     const departureCreation = client
-    //         .db('EcoAndesGMS')
-    //         .collection("LTCDepartures");
+        console.log("here at Post Yo, ")
 
-    //     const aCreatedDep = await departureCreation
-    //         .insertOne(reqData)
+        const client = await connectToDatabase();
+        const reqData= JSON.parse(req.body)
 
-    //     if(aCreatedDep){
-    //         res.status(200).json(aCreatedDep)
-    //         client.close();
-    //     }
+        const departureCreation = client
+            .db('EcoAndesGMS')
+            .collection("LTCDepartures");
+
+        const aCreatedDep = await departureCreation
+            .insertOne(reqData)
+
+        if(aCreatedDep){
+            res.status(200).json(aCreatedDep)
+            client.close();
+        }
         
-    //     // error handling
-    // }
+        // error handling
+    }
 
     // //////////////////////////////////////////
     // //////////////////////////////////////////
     // // fetch all active deps
-    // else if (req.method==="GET"){ 
-    //     const client = await connectToDatabase();
+    else if (req.method==="GET"){ 
+        const client = await connectToDatabase();
         
-    //     const fetchDepartures = client
-    //         .db('EcoAndesGMS')
-    //         .collection("LTCDepartures")
-    //         .find( { "status": {$gt: 0} } )
-    //         .toArray();
+        const fetchDepartures = client
+            .db('EcoAndesGMS')
+            .collection("LTCDepartures")
+            .find( { "status": {$gt: 0} } )
+            .toArray();
 
-    //     const fetchedDeps = await fetchDepartures
-    //     if(fetchedDeps){
-    //         res.status(200).json(fetchedDeps)
-    //         client.close();
-    //     }
-    // }
+        const fetchedDeps = await fetchDepartures
+        if(fetchedDeps){
+            res.status(200).json(fetchedDeps)
+            client.close();
+        }
+    }
+
+
 
     // //////////////////////////////////////////
     // //////////////////////////////////////////
