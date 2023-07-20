@@ -326,6 +326,7 @@ export default function OperationsDashboard(){
   const [activeDeps, setActiveDeps]=useState([])
   const [fetchedDeps, setFetchedDeps]=useState([])
   const [fetchedItins, setFetchedItins]=useState([])
+  const [upcomingDeps, setUpcomingDeps]=useState([])
 
   // itin and dep obj, selected from fetched data, or new dep
   const [theItinerary, setTheItinerary]=useState()
@@ -414,34 +415,44 @@ export default function OperationsDashboard(){
       setFetchedDeps(fetchedData);
 
       // filter for deps active today. upper limit defined by midnight end of day
-      fetchedData.forEach(element => {
-        let loweLimitDate=new Date(element.startingDate)
-        let upperLimitDate = addDays(element.startingDate, element.duration +1)
-        if(toDate > loweLimitDate && upperLimitDate > toDate ){
-          //  filters out currently active voyages. 
-          let tempArr = activeDeps.concat(element)
-          setActiveDeps(tempArr)
-        }
-      })
-      setLoadingTrig(false)
+        let theTempArr=[]
+        let anotherTempArr= []
+        fetchedData.forEach(element => {
+            let loweLimitDate=new Date(element.startingDate)
+            let theDur = parseInt(element.duration)
+            let upperLimitDate = addDays(element.startingDate, theDur+1)
+            //  filters out currently active voyages. 
+            if((toDate > loweLimitDate) && (upperLimitDate > toDate) ){
+                theTempArr.push(element)
+            }
+            if (loweLimitDate >= toDate ){
+                anotherTempArr.push(element)
+            }
+        })
+        setActiveDeps(theTempArr)
+        setUpcomingDeps(anotherTempArr)
+        setLoadingTrig(false)
     }
+
+
 
     const res2 = await fetch("/api/gms/itineraries",{
       method: "GET"
     })
     let fetchedData2 = await res2.json()
     if(fetchedData2){
-      setFetchedItins(fetchedData2)
+        setFetchedItins(fetchedData2)
     }
-  },[])  
+},[])  
 
   ///////////////////////////////////////////
   // gen Utils
   const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
   let toDateDisplayer= toDate.toLocaleDateString('en-GB', dateOptions)
-  function addDays(theDate, days){
+  
+  function addDays(theDate, someDays){
     let result = new Date(theDate);
-    result.setDate(result.getDate() + days)
+    result.setDate(result.getDate() + someDays)
     return result;
   }
   const loadingScreen=(fetchingTitle)=>{
@@ -736,6 +747,25 @@ export default function OperationsDashboard(){
     </>)
   }
 
+    const depDisplayer=(depArr, theTitle  )=>{
+
+        let depMapper = depArr.map((elem, i)=><React.Fragment key={i}>
+
+            <div className={styles.aDepCard}>
+                {elem.duration} days
+            </div>
+        </React.Fragment> )
+
+        return(<>
+        <div className={styles.depCardCont}>
+            <h2> {theTitle} </h2>
+            <div className={styles.depCardMapper} >  
+                {depMapper}
+            </div>
+        </div>
+        </>)
+    }
+
   ///////////////////////////////////////////
   // expenses
   const optCataloger=(priceChart)=>{
@@ -881,7 +911,7 @@ export default function OperationsDashboard(){
   let paxTotalCount=<>{paxData?.paxTotal} / {theDeparture?.maxPaxNumb} maximum</>
 
   // Stats
-  const statsDisplayer=(activeDepartures)=>{
+  const statsDisplayer=(activeDepartures, upcomingDeps)=>{
     // sum up all current clients in Rooming List
     // = number of active clients.
     // sum active tours
@@ -893,6 +923,7 @@ export default function OperationsDashboard(){
           clientGeneralSum=clientGeneralSum+1
         })
     })
+
     const eachDataRow=(theDataKey, dataValue)=>{
       return(<>
         <div style={{ display: "flex", justifyContent:"space-between", padding:"0 6px" }}>
@@ -906,6 +937,7 @@ export default function OperationsDashboard(){
       {activeDepartures.length>0? <> 
         <h3>General Statistics:</h3>
         {eachDataRow("ACTIVE DEPARTURES:", activeDepartures.length )}
+        {eachDataRow("UPCOMING DEPARTURES:", upcomingDeps.length )}
         {eachDataRow("PAX TOTAL:", clientGeneralSum )}
         {/* Weekly responsible contact */}
         {/* List of active deps with links to each??? */}
@@ -2808,7 +2840,6 @@ export default function OperationsDashboard(){
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
-
   return(<>
     <div className={styles.aGMSPage}>
       {session? <> 
@@ -2845,13 +2876,13 @@ export default function OperationsDashboard(){
             </>:<> 
                 {depCreator(theItinerary, theDeparture)}
             </> }
-
-
-
           </>:<>
             {/* display itineraries and select a dep for file */}
             <h1>Departures </h1>
-            {statsDisplayer(activeDeps, )}            
+            <div className={styles.spaceBetRow}> 
+                {statsDisplayer(activeDeps, upcomingDeps)}            
+                {depDisplayer(upcomingDeps, "upcoming Departures")}
+            </div>
             <h1>Create a departure: </h1>
             {depSelector("GMS  Itineraires", fetchedItins)}
             <br/><br/>
