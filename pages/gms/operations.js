@@ -61,7 +61,7 @@ const aDepModel={
     "itineraryID": String,
     "tourCode":String,
     "roomingList": [],
-    "tourLeader":{},
+    "tourLeader":false,
     "dayByDayExp":[],
     "operationalNotes":[],
     "startingDate": String,
@@ -304,21 +304,23 @@ export default function OperationsDashboard(){
   //  - - - group code
   //  - - - pax numb
   //  - - - for (guide/transport)
+  //  - - Operational notices General and targeted
 
-  //  - - Operational notices
-
-  //  - Requested Dates   DyRen
-
-  //  - Rooming List  DyRen
+  //  - Rooming List 
   //  - - each pax comments, DOB, Nationality, Room type
 
-  //  - Day By Day    DyRen
-  //  - - - filtered by guide / transport for only needed days
-  //  - - - day title, description, dailyExpenseArr, with alt display for each type of cost:
-  //  - - - let expenseKeyArr = ["guideExpense", "transportExpense", "hotelExpense", "fAndBExpense", "attractionExpense", "otherExpenses" ]
-  //  - - - 
-  
-  // - - - when analizing data, add provider to a "providerArr", and produce work order for each provider (expense Arr)
+
+    // provide hotel data & edit cap
+    // provider database
+    // -- guides
+    // -- hotels
+    // -- cruise
+    // -- transportation
+
+
+    //  NON OP: add contact from DB to expense. 
+    //  NON OP: duplicate hotel accommodations on following nights
+    //  NON OP: edit prev set expenses. 
   
     const { data: session } = useSession()
 
@@ -361,7 +363,7 @@ export default function OperationsDashboard(){
     const [addOperationalNote, setAddOPNote]=useState(false)
     const [opDocEditSwitch, setOPDocSwitch]=useState(false)
     const [saveDocSwitch, setSavedoc]=useState(true)
-    const [saveReminder, setSaveReminder]=useState()
+    // const [saveReminder, setSaveReminder]=useState()
 
 
   // providers
@@ -603,6 +605,7 @@ export default function OperationsDashboard(){
     //      with sorting by duration, date created. 
 
         const eachItinDisp=(theItinArr)=>{
+
             let eachItinMapper=theItinArr.map((elem,i)=> <React.Fragment key={i}>
             <div className={styles.anItinCont}>
                 <div className={styles.spaceBetRow}>
@@ -631,6 +634,7 @@ export default function OperationsDashboard(){
                 }}> 
                     <AddCircleOutlineIcon/> Departure </span>
                 </div>
+
             </div>
             </React.Fragment>)
             return(<>
@@ -759,9 +763,15 @@ export default function OperationsDashboard(){
     </>)
     }
     const depDisplayer=(depArr, theTitle  )=>{
-
+        const guestAdder=(roomingLi)=>{
+            let theAdder=0
+            roomingLi.forEach(elem=> {
+                theAdder = theAdder + elem.guestArr.length
+            })
+            return(<>{theAdder}</>)
+        }
+        
         let depMapper = depArr.map((elem, i)=><React.Fragment key={i}>
-
             <div className={styles.aDepCard} onClick={()=>{
                 let allItins =[
                     ...fetchedItins, ...LTCItins
@@ -771,17 +781,19 @@ export default function OperationsDashboard(){
                 setTheDeparture(elem)
                 setTheItinerary(foundItin)
             }}>
-                <div className={styles.spaceBetRow}> 
-                    
+                <div className={styles.spaceBetRow}>               
                     {elem.startingDate}
                     <span>
                         {elem.duration} D
                     </span>
                 </div>
                 <strong> {elem.tripName} </strong>
-
+                <div className={styles.spaceBetRow}>
+                    {guestAdder(elem.roomingList)}/{elem.maxPaxNumb} pax
+                </div>
             </div>
         </React.Fragment> )
+
         if(depArr.length>0){
         return(<>
             <div className={styles.depCardCont}>
@@ -851,11 +863,13 @@ export default function OperationsDashboard(){
     const aFileDisplayer=(theItin, theDep)=>{
         return(<>
         {/* keys */}
-            <div className={styles.spaceBetRow} style={{ borderTop:"solid 1px black", marginTop:"33px", cursor:"pointer" }}>
+            <div className={styles.providerFuncBar}>
                 <div onClick={()=>{
+                    setFileKey("intro")
                     setTheDeparture()
                     setTheItinerary()
                     setfileSwitch(false)
+                    setTLObj(false)
                 }}>
                     <CloseFullscreenIcon />
                 </div>
@@ -906,14 +920,6 @@ export default function OperationsDashboard(){
             </>}
             {fileDisplayKey==="expenses"&&<>
                 {expenseDisplayer(theDep.dayByDayExp, theItin.dayByDay)}
-                {expenseTrig&&<>
-                <br/>
-                    <div className={styles.aFileContainer}>
-                    <h3>Add expense to day {dayIndex+1} </h3>
-                    {optCataloger(thePriceChart)}
-                    {expenseEditor(anExpense, setAnExpense, providerArr, dayIndex, theDeparture, setTheDeparture, paxData)}
-                    </div>
-                </>}
             </>}
             {fileDisplayKey==="dayByDay"&&<>
                 {dayByDayDisp(theItin.dayByDay)}
@@ -924,6 +930,14 @@ export default function OperationsDashboard(){
                 aDD fLIGHTS PAGE HERE
             </>}
         </div>
+        {expenseTrig&&<>
+
+            <div className={styles.aFileContainer}>
+                <h3>Add expense to day {dayIndex+1} </h3>
+                {optCataloger(thePriceChart)}
+                {expenseEditor(anExpense, setAnExpense, providerArr, dayIndex, theDeparture, setTheDeparture, paxData)}
+            </div>
+        </>}
         {fileDisplayKey==="intro"&&<>
             {headerEdit()}
         </>}
@@ -934,6 +948,11 @@ export default function OperationsDashboard(){
             <br/>
             <br/>
             {addGuestCont()}
+        </>}
+        {addTLObj&&<>
+            <br/>
+            <br/>
+            {addGuestCont(true)}
         </>}
         </>)
     }
@@ -947,9 +966,10 @@ export default function OperationsDashboard(){
 
     // summ all guests in rooming list
         let clientGeneralSum = 0
+
         activeDepartures.forEach((elem,i)=>{
-            elem.roomingList.forEach((elem)=>{
-            clientGeneralSum=clientGeneralSum+1
+            elem.roomingList?.forEach((elem)=>{
+            clientGeneralSum = clientGeneralSum + elem.guestArr.length
             })
         })
 
@@ -966,8 +986,9 @@ export default function OperationsDashboard(){
         {activeDepartures.length>0? <> 
             <h3>General Statistics:</h3>
             {eachDataRow("ACTIVE DEPARTURES:", activeDepartures.length )}
-            {eachDataRow("UPCOMING DEPARTURES:", upcomingDeps.length )}
             {eachDataRow("PAX TOTAL:", clientGeneralSum )}
+            <div className={styles.aLineSeparator}/>
+            {eachDataRow("UPCOMING DEPARTURES:", upcomingDeps.length )}
             {/* Weekly responsible contact */}
             {/* List of active deps with links to each??? */}
             {/* what other quick elems can we display? Nationality? */}
@@ -1101,10 +1122,10 @@ export default function OperationsDashboard(){
   // rooming 
     const roomingListDisp=(theDep)=>{
         const ageConverter=(theDOB)=>{
-        if(theDOB){
-        let clientDOB=new Date(theDOB)
-        return toDate.getUTCFullYear() - clientDOB.getUTCFullYear()
-        }
+            if(theDOB){
+                let clientDOB=new Date(theDOB)
+                return toDate.getUTCFullYear() - clientDOB.getUTCFullYear()
+            }
         }
         let eachNote=[]
         const eachGuestData=(guestData)=>{
@@ -1196,7 +1217,7 @@ export default function OperationsDashboard(){
                         }}> <AddCircleOutlineIcon /></div>
                     </>}
                     <div style={{cursor:"pointer", paddingRight: "196px"}} className={styles.printDEL} onClick={()=>{
-                        if(editSwitch){setEditSwitch(false); setTempRoomObj({}); setAddGuest(false)} else {setEditSwitch(true)}
+                        if(editSwitch){setEditSwitch(false); setTempRoomObj({}); setAddGuest(false); setTLObj(false)} else {setEditSwitch(true)}
                     }}>
                         {editSwitch? <><EditOffIcon/></>: <><EditIcon/></>}
                     </div>
@@ -1246,7 +1267,6 @@ export default function OperationsDashboard(){
                             SINGLE
                         </div>
                         <div style={{display:"flex", flexDirection:"column"}}>
-
                             {theDep.tourLeader.guestArr?.map((guestElem, i)=> <> {eachGuestData(guestElem)}</> ) }
                         </div>
                     </div>
@@ -1260,9 +1280,13 @@ export default function OperationsDashboard(){
             </div>
             {editSwitch && <>
                 <div className={styles.spaceBetRow}>
-                    <span className={styles.inputLabel} style={{marginTop:"18px", marginBottom:"15px", cursor:'pointer' }} onClick={()=>{
-
-                    }} > Add Tour Leader <AddCircleOutlineIcon /> </span>
+                    <span className={styles.inputLabel} style={{marginTop:"18px", marginBottom:"6px", cursor:'pointer' }} onClick={()=>{
+                        setTLObj(aRoomModel)
+                        window.scrollTo({
+                            top: 33000,
+                            behavior: "smooth",
+                        });
+                    }} > Add Tour Leader &nbsp; <AddCircleOutlineIcon /> </span>
                 </div>
             </>}
             {eachNote.length>0&&<>
@@ -1610,27 +1634,43 @@ export default function OperationsDashboard(){
             </div>
         </>)
     }
-    const addGuestCont=()=>{
+
+    const addGuestCont=(isTL)=>{
         const guestForm=(guestIndex)=>{
             return(<>
                 <div className={styles.aLineSeparator}/>
                 <div className={styles.spaceBetRow}>
                     <div style={{width: "47%" }}> 
                         <div className={styles.inputLabel}>
-                            Guest {guestIndex +1} Name
+                            {isTL? <> 
+                                Tour Leader Data:                            
+                            </>:<>
+                                Guest {guestIndex +1} Name
+                            </>}
                         </div>
                         <input 
                             className={styles.inputUserUI}
                             placeholder="Guest Name"
                             onChange={(e)=>{
-                                let tempGuestObj={
-                                    ...newRoomObj.guestArr[guestIndex],
-                                    "guestName": e.target.value
+                                if(isTL){
+                                    let tempTLObj={
+                                        ...addTLObj.guestArr[0],
+                                        "guestName": e.target.value
+                                    }
+                                    let roomUpdater = addTLObj.guestArr.splice(0,1,tempTLObj)
+                                    setTLObj({
+                                        ...addTLObj
+                                    })
+                                } else {
+                                    let tempGuestObj={
+                                        ...newRoomObj.guestArr[guestIndex],
+                                        "guestName": e.target.value
+                                    }
+                                    let tempRoomUpdater = newRoomObj.guestArr.splice(guestIndex,1,tempGuestObj)
+                                    setRoomObj({
+                                        ...newRoomObj,
+                                    })
                                 }
-                                let tempRoomUpdater = newRoomObj.guestArr.splice(guestIndex,1,tempGuestObj)
-                                setRoomObj({
-                                    ...newRoomObj,
-                                })
                             }}
                             type='text'
                         />
@@ -1643,14 +1683,25 @@ export default function OperationsDashboard(){
                             className={styles.inputUserUI}
                             placeholder="Nationality"
                             onChange={(e)=>{
-                                let tempGuestObj={
-                                    ...newRoomObj.guestArr[guestIndex],
-                                    "nationality": e.target.value
+                                if(isTL){
+                                    let tempTLObj={
+                                        ...addTLObj.guestArr[0],
+                                        "nationality": e.target.value
+                                    }
+                                    let roomUpdater = addTLObj.guestArr.splice(0,1,tempTLObj)
+                                    setTLObj({
+                                        ...addTLObj
+                                    })
+                                }else{
+                                    let tempGuestObj={
+                                        ...newRoomObj.guestArr[guestIndex],
+                                        "nationality": e.target.value
+                                    }
+                                    let tempRoomUpdater = newRoomObj.guestArr.splice(guestIndex,1,tempGuestObj)
+                                    setRoomObj({
+                                        ...newRoomObj,
+                                    })
                                 }
-                                let tempRoomUpdater = newRoomObj.guestArr.splice(guestIndex,1,tempGuestObj)
-                                setRoomObj({
-                                    ...newRoomObj,
-                                })
                             }}
                             type='text'
                         />
@@ -1666,14 +1717,25 @@ export default function OperationsDashboard(){
                             className={styles.inputUserUI}
                             placeholder="Passport"
                             onChange={(e)=>{
-                                let tempGuestObj={
-                                    ...newRoomObj.guestArr[guestIndex],
-                                    "passport": e.target.value
+                                if(isTL){
+                                    let tempTLObj={
+                                        ...addTLObj.guestArr[0],
+                                        "passport": e.target.value
+                                    }
+                                    let roomUpdater = addTLObj.guestArr.splice(0,1,tempTLObj)
+                                    setTLObj({
+                                        ...addTLObj
+                                    })
+                                }else{
+                                    let tempGuestObj={
+                                        ...newRoomObj.guestArr[guestIndex],
+                                        "passport": e.target.value
+                                    }
+                                    let tempRoomUpdater = newRoomObj.guestArr.splice(guestIndex,1,tempGuestObj)
+                                    setRoomObj({
+                                        ...newRoomObj,
+                                    })
                                 }
-                                let tempRoomUpdater = newRoomObj.guestArr.splice(guestIndex,1,tempGuestObj)
-                                setRoomObj({
-                                    ...newRoomObj,
-                                })
                             }}
                             type='text'
                         />
@@ -1685,19 +1747,29 @@ export default function OperationsDashboard(){
                         <input 
                             className={styles.inputUserUI}
                             onChange={(e)=>{
-                                let tempGuestObj={
-                                    ...newRoomObj.guestArr[guestIndex],
-                                    "guestDOB": e.target.value
+                                if(isTL){
+                                    let tempTLObj={
+                                        ...addTLObj.guestArr[0],
+                                        "guestDOB": e.target.value
+                                    }
+                                    let roomUpdater = addTLObj.guestArr.splice(0,1,tempTLObj)
+                                    setTLObj({
+                                        ...addTLObj
+                                    })
+                                }else{
+                                    let tempGuestObj={
+                                        ...newRoomObj.guestArr[guestIndex],
+                                        "guestDOB": e.target.value
+                                    }
+                                    let tempRoomUpdater = newRoomObj.guestArr.splice(guestIndex,1,tempGuestObj)
+                                    setRoomObj({
+                                        ...newRoomObj,
+                                    })
                                 }
-                                let tempRoomUpdater = newRoomObj.guestArr.splice(guestIndex,1,tempGuestObj)
-                                setRoomObj({
-                                    ...newRoomObj,
-                                })
                             }}
                             type='date'
                         />
                         </div>
-
                 </div>
                 &nbsp;
                 <div className={styles.spaceBetRow}>
@@ -1711,24 +1783,36 @@ export default function OperationsDashboard(){
                                 type='text'
                                 onChange={(e)=>{
                                     e.preventDefault;
-                                    setAddGuestNote(e.target.value)
+                                    if(isTL){
+                                        setTLNote(e.target.value)
+                                    }else{
+                                        setAddGuestNote(e.target.value)
+                                    }
                                 }}
                                 placeholder='A Note'
                             />
                             &nbsp;
                             &nbsp;
                             <span onClick={()=>{
-                                let gNIndex = newRoomObj.guestArr[guestIndex].guestNotes.length
-                                let theSplicer=newRoomObj.guestArr[guestIndex].guestNotes.splice(gNIndex, 0, addGuestNote)
-                                setRoomObj({
-                                    ...newRoomObj,
-                                })
+                                if(isTL){
+                                    let TLNoteIndex=addTLObj.guestArr[0].guestNotes.length
+                                    let theSplicer =addTLObj.guestArr[0].guestNotes.splice(TLNoteIndex,0,addTLNote)
+                                    setTLObj({
+                                        ...addTLObj
+                                    })
+                                } else {
+                                    let gNIndex = newRoomObj.guestArr[guestIndex].guestNotes.length
+                                    let theSplicer=newRoomObj.guestArr[guestIndex].guestNotes.splice(gNIndex, 0, addGuestNote)
+                                    setRoomObj({
+                                        ...newRoomObj,
+                                    })
+                                }
                             }}>
                                 <AddCircleOutlineIcon/> 
                             </span>
                         </div>
                     </div>
-
+                    {!isTL&& <> 
                     <div className={styles.roomTypeIndicator} onClick={()=>{
                         setGuestAddCount(guestAddCount+1)
                         let aTempGuestArr = newRoomObj.guestArr.concat({
@@ -1770,19 +1854,33 @@ export default function OperationsDashboard(){
                             })
                         }
                     }} > ADD GUEST &nbsp; <AddCircleOutlineIcon/> </div>
+                    </>}
                 </div>
                 &nbsp;
                 <div className={styles.depNotesCont}>
-                    {newRoomObj.guestArr[guestIndex]?.guestNotes.map((elem,i)=> <React.Fragment key={i}>
-                    <div className={styles.eachGuestNote} onClick={()=>{
-                        let tempGuestNotes=newRoomObj.guestArr[guestIndex].guestNotes.splice(i, 1)
-                        setRoomObj({
-                            ...newRoomObj,
-                        })
-                    }}>
-                        {elem} &nbsp; <RemoveCircleOutlineIcon />
-                    </div> &nbsp; &nbsp;                                
-                    </React.Fragment> )}
+                    {isTL? <>
+                        {addTLObj.guestArr[0]?.guestNotes.map((elem,i)=><React.Fragment key={i}>
+                            <div className={styles.eachGuestNote} onClick={()=>{
+                                let tempTLNotes=addTLObj.guestArr[0].guestNotes.splice(i, 1)
+                                setTLObj({
+                                    ...addTLObj
+                                })
+                                }}>
+                                {elem} &nbsp; <RemoveCircleOutlineIcon />
+                            </div> &nbsp; &nbsp;                                
+                        </React.Fragment> )}
+                    </>:<>
+                        {newRoomObj.guestArr[guestIndex]?.guestNotes.map((elem,i)=> <React.Fragment key={i}>
+                            <div className={styles.eachGuestNote} onClick={()=>{
+                                let tempGuestNotes=newRoomObj.guestArr[guestIndex].guestNotes.splice(i, 1)
+                                setRoomObj({
+                                    ...newRoomObj,
+                                })
+                            }}>
+                                {elem} &nbsp; <RemoveCircleOutlineIcon />
+                            </div> &nbsp; &nbsp;                                
+                        </React.Fragment> )}
+                    </>}
                 </div>
             </>)
         }
@@ -1810,38 +1908,50 @@ export default function OperationsDashboard(){
         <form>         
         <div className={styles.aFileContainer}>
             <div className={styles.spaceBetRow}>
-                <h2> Add Room</h2>
+                <h2> Add {isTL? <> Tour Leader </>:<>Room</>}</h2>
                 <div className={styles.addRoomBTN} onClick={()=>{
-                    if(newRoomObj.guestArr[0].guestName.length>1){
-                        // add room splicing daShiat
-                        let tempDepArre =theDeparture.roomingList.push(newRoomObj)
-                        setRoomObj({
-                            "guestArr":[
-                                {
-                                    "guestName": String,
-                                    "guestDOB": String,
-                                    "guestID": String,
-                                    "guestNotes": [],
-                                    "passport": String,
-                                    "nationality": String,
-                                    "sex": String
-                                }
-                            ],
-                            "accomodationType": "single",
-                            "singleSupp": true,       
-                        })
-                        setEditSwitch(false)
-                        setAddGuest(false)
-                        setGuestAddCount(0)
-                        window.scrollTo({
-                            top: 0,
-                            behavior: "smooth",
-                        });
+                    if(isTL){
+                        // add room model to theDep
+                        // clear room model, set addTL false
+                        // closeEdit functions
                         setTheDeparture({
-                            ...theDeparture
+                            ...theDeparture,
+                            "tourLeader": addTLObj
                         })
+                        setTLObj(false)
+                        editOffFunction()
                     } else {
-                        window.alert("Please Add Guest Name")
+                        if(newRoomObj.guestArr[0].guestName.length>1){
+                            // add room splicing daShiat
+                            let tempDepArre =theDeparture.roomingList.push(newRoomObj)
+                            setRoomObj({
+                                "guestArr":[
+                                    {
+                                        "guestName": String,
+                                        "guestDOB": String,
+                                        "guestID": String,
+                                        "guestNotes": [],
+                                        "passport": String,
+                                        "nationality": String,
+                                        "sex": String
+                                    }
+                                ],
+                                "accomodationType": "single",
+                                "singleSupp": true,       
+                            })
+                            setEditSwitch(false)
+                            setAddGuest(false)
+                            setGuestAddCount(0)
+                            window.scrollTo({
+                                top: 0,
+                                behavior: "smooth",
+                            });
+                            setTheDeparture({
+                                ...theDeparture
+                            })
+                        } else {
+                            window.alert("Please Add Guest Name")
+                        }
                     }
                 }}>
                     <AddCircleOutlineIcon/> &nbsp; add to rooming
@@ -1879,6 +1989,8 @@ export default function OperationsDashboard(){
         </form>
         </>)
     }
+
+
     const theRoomingBreakdownDispl=()=>{
         return(<>
         <div className={styles.roomingListTotalCont}>
@@ -2038,27 +2150,27 @@ export default function OperationsDashboard(){
             {expenseMapper(theExpenseArr[i])}
         </React.Fragment>
         </>)
-        if(theExpenseArr.length>0){
         return(<>
             <div className={styles.spaceBetRow}> 
                 <h2>Expenses:</h2>
                 <div style={{cursor:"pointer"}} onClick={()=>{
-                    if(editSwitch){setEditSwitch(false); setExpTrig(false); setAnExpense()} 
+                    if(editSwitch){setEditSwitch(false); setExpTrig(false); setAnExpense(); setTLObj(false)} 
                     else {setEditSwitch(true)}
                 }}>
                     {editSwitch? <><EditOffIcon/></>:<><EditIcon/></>}
                 </div>
             </div>
+            {theExpenseArr.length>0 && <> 
             <div className={styles.totalExpCont}> 
                 TOTAL
                 |<span> ${totalExpAdder(theExpenseArr)} </span>
 
             </div>
+            </>}
             <div>
                 {eachDayTitleExp}
             </div>
         </>)
-        }
     }  
     const expenseEditor=(theExpense, setTheExpense, contactArr, dayIndx, theDep, setTheDep)=>{
         if(theExpense){ 
@@ -2383,15 +2495,11 @@ export default function OperationsDashboard(){
                     {(anExpense.roomPriceArr.length===0 || addHotelTrig)
                     ?<>
                         {genericRoomPriceSetter(temporaryRoomObj, setTempRoomObj, setAnExpense, anExpense)}
-
                     </>:<>
                         <div className={styles.addRoomsBTN} onClick={()=>{
                             setHotelAddTrig(true)
                         }}> + Add room </div>
                     </>}
-
-
-
 
                 </div>
                 <div className={styles.roomTotalBox}>
@@ -2405,9 +2513,7 @@ export default function OperationsDashboard(){
             </>)
         }
 
-
         // btn to add cuises, multi-day packages, per group or per pax
-
 
         ////////////
         return(<>
@@ -2614,7 +2720,7 @@ export default function OperationsDashboard(){
 
             {/* General note mapper */}
             {theDeparture?.operationalNotes[i]?.length>0&&<> 
-                <div style={{width:"90%", marginLeft:"4%", marginBottom:"9px"}}>
+                <div style={{width:"90%", marginLeft:"4%", marginBottom:"9px", fontSize:"0.9em"}}>
                     <div style={{display:"flex", flexDirection:"column"}}>
 
                     {/* each provider's notes */}
@@ -2760,9 +2866,9 @@ export default function OperationsDashboard(){
                 {theDocs.expenseKey==="workOrder"&&<>
                     {theItinerary?.tripLang&&<>{eachIntroDetail("trip language", theItinerary.tripLang)}</>}
                 </> }
-                {theItinerary?.tourCode&&<>{eachIntroDetail("Tour Code", theItinerary.tourCode)}</>}
-                {theItinerary?.tripRef&&<>{eachIntroDetail("Trip Reference", theItinerary.tripRef)}</>}
-                {theDeparture?.tourLeader&&<>{eachIntroDetail("Tour leader", theDeparture.tourLeader.guestArr[0].guestName)}</>}
+                {theDeparture?.tourCode&&<>{eachIntroDetail("Tour Code", theDeparture.tourCode)}</>}
+                {theDeparture?.tripRef&&<>{eachIntroDetail("Trip Reference", theDeparture.tripRef)}</>}
+                {theDeparture.tourLeader&&<>{eachIntroDetail("Tour leader", theDeparture.tourLeader.guestArr[0].guestName)}</>}
             </div>
             {theDocs.docKey==="accommodation"&&<>
                 <h2>Required Dates:</h2>
@@ -2779,6 +2885,8 @@ export default function OperationsDashboard(){
             </>}
             {theDocs.docKey!="cashReq"&&<> 
                 {roomingListDisp(theDeparture)}
+                <div className={styles.pageBreak}> . </div>
+            
             {theDocs.docKey!="accommodation"&&<>
                 <h2> Day by Day Requirements</h2>
                 {eachProviderMapper}
@@ -2823,18 +2931,15 @@ export default function OperationsDashboard(){
   // Day by day, and flights
     const dayByDayDisp=(theDays)=>{
 
-
+        // non MVP
         // switch to turn on or off day detail , notes
-
         // BTN to add flights 
 
         const flightAdder=()=>{
-            
         }
 
         // need to replace it with a usestate trigger
         let descriptionSwitcher=true
-
         let theProgramDays=theDays.map((elem,i)=><React.Fragment key={i}>
             <div className={styles.eachDayCont}>
                 <div className={styles.dailyTitleCont}>  
@@ -2849,7 +2954,7 @@ export default function OperationsDashboard(){
                 </>}
                 {theDeparture.operationalNotes.length>0&& <>
                     {theDeparture.operationalNotes[i]?.map((elemnt, ind)=><>
-                        <div>
+                        <div  style={{fontSize:"0.9em"}}>
                         - {elemnt.note} {elemnt.target!="general"&&<> | <strong>{elemnt.target}</strong> </>}
                         </div>
                     </>)}
@@ -2858,12 +2963,11 @@ export default function OperationsDashboard(){
         return(<>
         <div className={styles.spaceBetRow}>
             <h2>Day by Day:</h2>
-            <div style={{cursor:"pointer"}} onClick={()=>{
-                
+
+            {/* <div style={{cursor:"pointer"}} onClick={()=>{    
             // add flight functionality here
+            }}> <AddCircleOutlineIcon/> <FlightIcon/> </div> */}
 
-
-            }}> <AddCircleOutlineIcon/> <FlightIcon/> </div>
         </div>
         <div className={styles.dayByDayCont}>
             {theProgramDays}
@@ -2882,7 +2986,7 @@ export default function OperationsDashboard(){
             <h2>Latin Travel Collection</h2>
             <h1>Operations</h1>
         </div>
-        <strong>{toDateDisplayer}</strong>
+        <strong className={styles.printDEL} >{toDateDisplayer}</strong>
       {loadingTrigger? <>
         {loadingScreen("Fetching Departure Data")}
       </>:<>
@@ -2900,7 +3004,7 @@ export default function OperationsDashboard(){
           </>:<>
             {/* display itineraries and select a dep for file */}
             <h1>Departures </h1>
-            <div className={styles.spaceBetRow} style={{alignItems:"baseline" }} > 
+            <div className={styles.spaceBetRow} style={{alignItems:"baseline", justifyContent: "space-around" }} > 
                 {statsDisplayer(activeDeps, upcomingDeps)}            
                 {depDisplayer(activeDeps, "active Departures")}
                 {depDisplayer(upcomingDeps, "upcoming Departures")}

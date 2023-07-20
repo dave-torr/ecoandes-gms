@@ -3,8 +3,9 @@
         {
             "currency":"usd",
             "expenseKey": "guideExpense", 
+            "price": 100,
             "pricekey": "genericGuideExpense",
-            "priceDetail": "General Guide Services"
+            "priceDetail": "Generic Guide Services"
         },        
         {
             "currency":"usd",
@@ -178,6 +179,13 @@
         }
     ],
     "adventureGuides":[
+        {
+            "currency":"usd",
+            "expenseKey": "guideExpense", 
+            "pricekey": "genericGuideExpense",
+            "priceDetail": "Generic Adventure Guide Service",
+            "paxLimit": 6
+        },
         {
             "currency":"usd",
             "expenseKey": "guideExpense", 
@@ -1215,7 +1223,7 @@
             "expenseKey": "accommodation", 
             "pricekey": "accommodationGeneric",
             "roomPriceArr": [],
-            "priceDetail": "General Accomodation"
+            "priceDetail": "Generic Accomodation"
         },
         {
             "currency":"usd",
