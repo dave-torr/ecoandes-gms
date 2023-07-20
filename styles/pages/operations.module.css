@@ -1,6 +1,6 @@
 .aGMSPage{
     background-color: var(--whitesmoke-background);
-    min-height: 100vh;
+    min-height: 110vh;
     padding: 0 9px;
     padding-bottom: 66px;
 }
@@ -20,6 +20,7 @@
     align-items: center;
     position: relative;
     transition: all ease-in 0.2s;
+    cursor: pointer;
 }
 
 .saveIconCont span{
@@ -39,8 +40,6 @@
     box-shadow: var(--frst-box-shadow);
 }
 
-
-
 .titleBar{
     align-items: center;
     display: flex;
@@ -57,26 +56,45 @@
     padding: 12px 21px;
     background-color: white;
     border-bottom: solid 2px dotted;
-
+    transform: translateY(-11px);
 }
 .depCardCont{
     border: solid 1px black;
-    padding: 15px;
-    width: 340px;
+    padding: 12px;
+    width: 300px;
     min-height: 166px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
 .depCardMapper{
     display: flex;
-    overflow-y: hidden;
-    overflow-x: auto;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .aDepCard{
     border: solid 1px black;
     padding: 9px;
-    margin-right: 21px;
+    margin-bottom: 21px;
     width: 260px;
+    cursor: pointer;
+    transition: all ease-in 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
+.aDepCard strong{
+    text-transform: uppercase;
+    padding-top: 9px;
+}
+
+.aDepCard:hover{
+    background-color: white;
 }
 
 .placeholderData{
@@ -188,6 +206,8 @@
     font-weight: 600;
     letter-spacing: 1px;
     text-transform: uppercase;
+    display: flex;
+    align-items: center;
 }
 .inputAndRow{
     display: flex;

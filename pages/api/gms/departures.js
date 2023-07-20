@@ -6,51 +6,27 @@ async function handler(req, res){
     
     const client = await connectToDatabase();
     
-    // Old stuff might need to rephase func
-    // const fetchDepartures = client
-    //     .db('EcoAndesGMS')
-    //     .collection("LTCDepartures")
-    //     .find()
-    //     .toArray();
-
-    // const fetchedDeps = await fetchDepartures
-    // if(fetchedDeps){
-    //     res.status(200).json(fetchedDeps)
-    //     client.close();
-    // }
-
-
     // //////////////////////////////////////////
     // //////////////////////////////////////////
-    // // create Departure
+    // // create Departure OP
     if(req.method==="POST"){
-
-        console.log("here at Post Yo, ")
-
-        const client = await connectToDatabase();
         const reqData= JSON.parse(req.body)
-
         const departureCreation = client
             .db('EcoAndesGMS')
             .collection("LTCDepartures");
 
         const aCreatedDep = await departureCreation
             .insertOne(reqData)
-
         if(aCreatedDep){
             res.status(200).json(aCreatedDep)
             client.close();
         }
-        
-        // error handling
     }
 
     // //////////////////////////////////////////
     // //////////////////////////////////////////
     // // fetch all active deps
-    else if (req.method==="GET"){ 
-        const client = await connectToDatabase();
-        
+    else if (req.method==="GET"){         
         const fetchDepartures = client
             .db('EcoAndesGMS')
             .collection("LTCDepartures")
@@ -63,8 +39,30 @@ async function handler(req, res){
             client.close();
         }
     }
-
-
+    
+    // //////////////////////////////////////////
+    // //////////////////////////////////////////
+    // // edit aDeparture
+    else if (req.method==="PUT"){
+        const reqBody= JSON.parse(req.body)
+        let depObj = {...reqBody.theDeparture}
+        delete depObj._id
+        const EditItin = client
+            .db('EcoAndesGMS')
+            .collection("LTCDepartures")
+            .replaceOne(
+                {"_id": ObjectId(reqBody.theDeparture._id)},
+                depObj
+            )
+        const updatedDep = await EditItin
+        if(updatedDep?.modifiedCount){
+            console.log("updated ")
+            res.status(200).json(updatedDep)
+            client.close();
+        } else {
+            res.status(501)
+        }
+    }
 
     // //////////////////////////////////////////
     // //////////////////////////////////////////

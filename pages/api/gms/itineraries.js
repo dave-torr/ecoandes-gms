@@ -72,8 +72,6 @@ async function handler(req, res){
     // edit itins
     else if (req.method==="DELETE"){ 
 
-
-
         const client = await connectToDatabase();
         const reqBody= JSON.parse(req.body)
 
@@ -123,7 +121,9 @@ async function handler(req, res){
             if(updatedItin?.lastErrorObject.updatedExisting){
                 res.status(200).json(updatedItin)
                 client.close();
-            } else res.status(501)
+            } else {
+                res.status(501)
+            }
         }
     }
 }
