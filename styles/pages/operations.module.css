@@ -65,6 +65,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: calc(100%-340px);    
 }
 
 .depCardMapper{
@@ -77,23 +78,38 @@
 .aDepCard{
     border: solid 1px black;
     padding: 9px;
-    width: 270px;
     margin-bottom: 12px;
     cursor: pointer;
     transition: all ease-in 0.2s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.aDepCard strong{
-    text-transform: uppercase;
-    padding: 9px 0;
 }
 
 .aDepCard:hover{
     background-color: white;
+}
+.depCardRow{
+    display: flex;
+    align-items: center;
+}
+
+.depCardRow strong{
+    font-size: 0.8em;
+    text-transform: uppercase;
+    width: 250px;
+    text-align: start;
+}
+.depCardRow span:nth-of-type(1){
+    font-size: 0.9em;
+    padding-right: 9px;
+}
+.depCardRow span:nth-of-type(2){
+    font-size: 0.9em;
+    padding: 0 12px;
+}
+
+.depCardRow div:nth-of-type(1){
+    padding-top: 9px;
+    font-size: 1.2em;
+    text-transform: capitalize;
 }
 
 .placeholderData{

@@ -20,6 +20,7 @@ import FlightIcon from '@mui/icons-material/Flight';
 import SailingIcon from '@mui/icons-material/Sailing';
 import SaveIcon from '@mui/icons-material/Save';
 import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
+import EditNoteIcon from '@mui/icons-material/EditNote';
 
 import { aDropdownPicker, anInputDisplayer} from "../../components/forms"
 
@@ -321,6 +322,14 @@ export default function OperationsDashboard(){
     //  NON OP: add contact from DB to expense. 
     //  NON OP: duplicate hotel accommodations on following nights
     //  NON OP: edit prev set expenses. 
+
+    
+    
+    
+    // For active departures, show day title of currently running day, hotel, guide name.
+    // planner page: print horizontally, 
+
+
   
     const { data: session } = useSession()
 
@@ -762,7 +771,7 @@ export default function OperationsDashboard(){
         </div>
     </>)
     }
-    const depDisplayer=(depArr, theTitle  )=>{
+    const depDisplayer=(depArr, theTitle, isActive  )=>{
         const guestAdder=(roomingLi)=>{
             let theAdder=0
             roomingLi.forEach(elem=> {
@@ -770,8 +779,43 @@ export default function OperationsDashboard(){
             })
             return(<>{theAdder}</>)
         }
-        
-        let depMapper = depArr.map((elem, i)=><React.Fragment key={i}>
+        let allItins =[
+            ...fetchedItins, ...LTCItins
+        ]        
+        const currentOPDay=(theDep, availTtins, dispCntroller)=>{
+            let startingDate = new Date(theDep.startingDate)
+            let dayIndex =  Math.ceil((toDate.getTime() - startingDate.getTime()) / (1000*3600 *24))
+            let foundItin = availTtins.find(element => (element.id === theDep.itineraryID)||(element._id === theDep.itineraryID))
+
+            if(dispCntroller==="dayTitle"){
+                return(<><div> {foundItin?.dayByDay[dayIndex-1].dayTitle} </div></>)
+            } else if(dispCntroller==="dayCount"){
+                return(<>{dayIndex}</>)
+            }
+        }
+
+        let depMapper 
+        if(isActive){
+            depMapper= depArr.map((elem, i)=><React.Fragment key={i}>
+            <div className={styles.aDepCard} onClick={()=>{
+                let foundItin = allItins.find(element => (element.id === elem.itineraryID)||(element._id === elem.itineraryID))
+                setfileSwitch(true)
+                setTheDeparture(elem)
+                setTheItinerary(foundItin)
+            }}>
+                <div className={styles.depCardRow}>
+                    {/* <span>{elem.startingDate}</span> */}
+                    <strong> {elem.tripName} </strong>
+                    <span>{currentOPDay(elem, allItins, "dayCount")}/{elem.duration} days &nbsp; | </span>
+                    {guestAdder(elem.roomingList)}/{elem.maxPaxNumb} pax
+                </div>
+                <div className={styles.depCardRow}>
+                    {currentOPDay(elem, allItins, "dayTitle")}
+                </div>
+            </div>
+        </React.Fragment> )
+        } else {
+            depMapper = depArr.map((elem, i)=><React.Fragment key={i}>
             <div className={styles.aDepCard} onClick={()=>{
                 let allItins =[
                     ...fetchedItins, ...LTCItins
@@ -781,18 +825,16 @@ export default function OperationsDashboard(){
                 setTheDeparture(elem)
                 setTheItinerary(foundItin)
             }}>
-                <div className={styles.spaceBetRow}>               
+                <div className={styles.spaceBetRow}> 
                     {elem.startingDate}
                     <span>
                         {elem.duration} D
                     </span>
                 </div>
                 <strong> {elem.tripName} </strong>
-                <div className={styles.spaceBetRow}>
-                    {guestAdder(elem.roomingList)}/{elem.maxPaxNumb} pax
-                </div>
             </div>
         </React.Fragment> )
+        }
 
         if(depArr.length>0){
         return(<>
@@ -2566,7 +2608,6 @@ export default function OperationsDashboard(){
                 {/* <div style={{width: "21%" }}>
                     {aDropdownPicker(currencyArr, "$", "currency", theExpense, setTheExpense, false, false)}</div>  */}
             </div>
-
             {theExpense?.expenseKey==="accommodation"?<>
                 <div style={{width: "70%" }}> 
                 {anInputDisplayer("Expense Detail", "priceDetail", "text", false, theExpense.priceDetail, theExpense, setTheExpense)}</div>
@@ -2818,7 +2859,7 @@ export default function OperationsDashboard(){
         {elem.map(element=><>{element.contactName===theDocs?.contactName&&<>
             <div className={styles.documentGeneraExpense}>
             <span>
-                <strong>{element.priceDetail}</strong> 
+                <strong>{element.priceDetail}</strong> <br/>
                 {element.additionalDescription&&<>{element.additionalDescription}</>}
             </span>
             <span>
@@ -2898,7 +2939,7 @@ export default function OperationsDashboard(){
                     <div className={styles.documentGeneraExpense} style={{borderTop:"solid 1px black", borderLeft:"solid 1px black" }}>
                         <span>
                             D{element.dayIndex+1}: 
-                            <strong> {element.priceDetail}</strong> 
+                            <strong> {element.priceDetail}</strong> <br/>
                             {element.additionalDescription&&<>{element.additionalDescription}</>}
                         </span>
                         <span>
@@ -2928,27 +2969,38 @@ export default function OperationsDashboard(){
         </>)
     }
 
-  // Day by day, and flights
     const dayByDayDisp=(theDays)=>{
 
         // non MVP
-        // switch to turn on or off day detail , notes
-        // BTN to add flights 
+        // flight adder BTN
+        // Cruise Adder BTN
+        // switch to turn on or off day detail
+
+        // print capability: Dep Dates, 
 
         const flightAdder=()=>{
+
         }
 
         // need to replace it with a usestate trigger
         let descriptionSwitcher=true
         let theProgramDays=theDays.map((elem,i)=><React.Fragment key={i}>
             <div className={styles.eachDayCont}>
-                <div className={styles.dailyTitleCont}>  
+                <div className={styles.spaceBetRow} style={{marginTop:"15px" }}>  
                     <h5> Day {i+1}: {elem?.dayTitle&&<>{elem?.dayTitle}</>}</h5>
+                    {editSwitch&& <> 
+                    <span onClick={()=>{
+                        // set note trigger
+                    }}>
+                        <AddCircleOutlineIcon/>
+                    </span>
+                    </>}
                 </div>
-                {descriptionSwitcher&& <>
-                    {elem?.dayDescription}
-                </>}
+                {elem?.dayDescription}
             </div>
+
+                
+
                 {theDeparture.operationalNotes[i]&& <>
                     <br/> <strong> NOTES</strong>
                 </>}
@@ -2967,7 +3019,10 @@ export default function OperationsDashboard(){
             {/* <div style={{cursor:"pointer"}} onClick={()=>{    
             // add flight functionality here
             }}> <AddCircleOutlineIcon/> <FlightIcon/> </div> */}
-
+            <div style={{cursor:"pointer"}} onClick={()=>{    
+            // add flight functionality here
+            setEditSwitch(true)
+            }}> <EditNoteIcon/> </div>
         </div>
         <div className={styles.dayByDayCont}>
             {theProgramDays}
@@ -3006,9 +3061,10 @@ export default function OperationsDashboard(){
             <h1>Departures </h1>
             <div className={styles.spaceBetRow} style={{alignItems:"baseline", justifyContent: "space-around" }} > 
                 {statsDisplayer(activeDeps, upcomingDeps)}            
-                {depDisplayer(activeDeps, "active Departures")}
-                {depDisplayer(upcomingDeps, "upcoming Departures")}
+                {depDisplayer(activeDeps, "active Departures", true)}
+                {depDisplayer(upcomingDeps, "upcoming Departures", false)}
             </div>
+
             <div className={styles.spaceBetRow} >
                 <h1>Create a departure: </h1>
                 <div> {fetchedItins&&<>{fetchedItins.length} GMS Itineraries,</>}

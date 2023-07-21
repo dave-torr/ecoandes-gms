@@ -250,6 +250,14 @@
             "currency":"usd",
             "expenseKey": "transportExpense", 
             "pricekey": "transferService",
+            "price": 2,
+            "priceDetail": "Generic Transport",
+            "paxLimit": 16
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "transportExpense", 
+            "pricekey": "transferService",
             "priceArr": [45, 45, 50, 50, 50, 50, 40, 40, 40, 40, 70, 70, 70, 70, 90, 90],
             "priceDetail": "UIO Transfer IN/OUT Service",
             "paxLimit": 16
