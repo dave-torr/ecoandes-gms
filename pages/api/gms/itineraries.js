@@ -6,11 +6,11 @@ import { ObjectId } from 'mongodb';
 
 async function handler(req, res){
 
+    const client = await connectToDatabase();
 
     // create Itinerary
     if(req.method==="POST"){
 
-        const client = await connectToDatabase();
         const reqData= JSON.parse(req.body)
 
         const itineraryCreation = client
@@ -24,13 +24,10 @@ async function handler(req, res){
             res.status(200).json(aCreatedItin)
             client.close();
         }
-        
-        // error handling
     }
     // fetch user Itins
     else if (req.method==="PUT"){
 
-        const client = await connectToDatabase();
         const reqData= JSON.parse(req.body)
 
         const FetchedUserItins = client
@@ -53,10 +50,7 @@ async function handler(req, res){
         }
     }
     // fetch all active itins
-    else if (req.method==="GET"){   
-
-        const client = await connectToDatabase();
-        
+    else if (req.method==="GET"){           
         const FetchedUserItins = client
             .db('EcoAndesGMS')
             .collection("LTCItineraries")
@@ -94,7 +88,10 @@ async function handler(req, res){
             if(updatedItin?.lastErrorObject.updatedExisting){
                 res.status(200).json(updatedItin)
                 client.close();
-            } else res.status(501)
+            } else {
+                res.status(501)
+                client.close();
+                }
         }
         
         // EDIT ITINERARY
@@ -123,6 +120,7 @@ async function handler(req, res){
                 client.close();
             } else {
                 res.status(501)
+                client.close();
             }
         }
     }

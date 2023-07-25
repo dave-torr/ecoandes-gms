@@ -40,7 +40,7 @@ export function aTextInput(aPlaceholder, inputId, anObject, setAnObject, inputTy
 // Operational Inputs
 
 // Updated general input displayer
-export function anInputDisplayer(inputLabel, inputId, inputType, isReq, inputPlaceholder, anObject, setAnObject, numbMin ){
+export function anInputDisplayer(inputLabel, inputId, inputType, isReq, inputPlaceholder, anObject, setAnObject, numbMin, numbMax ){
     return(<>
         <div className={styles.theInputContainer}>
             <div className={styles.anInputRow}>
@@ -52,7 +52,7 @@ export function anInputDisplayer(inputLabel, inputId, inputType, isReq, inputPla
                 className={styles.inputUserUI}
                 type={inputType}
                 required={isReq}
-                placeholder={inputPlaceholder}
+                placeholder={inputPlaceholder ? inputPlaceholder : undefined}
                 id={inputId}
                 onFocus={(e)=>{e.target.value=""}}
                 onChange={(e)=>{
@@ -69,6 +69,7 @@ export function anInputDisplayer(inputLabel, inputId, inputType, isReq, inputPla
                     })
                 }}
                 min={numbMin}
+                max={numbMax}
             />
         </div>
     </>)
@@ -437,7 +438,7 @@ export function TourDateAdder(props){
 }
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
-const flightsAdder=(setDay, theTravelDay, flightInfoObj, setFlightObj, setFlightTrigger )=>{
+export const flightsAdder=(setDay, theTravelDay, flightInfoObj, setFlightObj, setFlightTrigger )=>{
     return(<>
     <div className={styles.dayAdditionalsCont}>
             <h4>Add flight info here:</h4>
@@ -451,6 +452,7 @@ const flightsAdder=(setDay, theTravelDay, flightInfoObj, setFlightObj, setFlight
                 &nbsp;&nbsp;
                 {anInputDisplayer("To", "arriLocation", "text", false, "", flightInfoObj, setFlightObj,)}
             </div>
+            
             <div style={{ display:"flex" }}>
                 {anInputDisplayer("Airline", "airline", "text", false, "", flightInfoObj, setFlightObj,)}
                 &nbsp;&nbsp;
@@ -786,8 +788,6 @@ export function EditDayByDay(props){
         </>}
     </>)
 }
-
-
 export function IncExclAdder(props){
 
     const [tourInclusions, setInclusions]=useState([])

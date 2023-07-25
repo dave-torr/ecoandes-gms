@@ -21,12 +21,12 @@ import SailingIcon from '@mui/icons-material/Sailing';
 import SaveIcon from '@mui/icons-material/Save';
 import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
 import EditNoteIcon from '@mui/icons-material/EditNote';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
-import { aDropdownPicker, anInputDisplayer} from "../../components/forms"
+import { aDropdownPicker, anInputDisplayer, flightsAdder} from "../../components/forms"
 
 import LTCPriceTables from "../../data/LTCPriceTables2023.json"
 import LTCItins from "../../data/LTCItinerary.json"
-
 
 let catalogIndex={
     "adventureGuides":"Adventure Guides",
@@ -75,215 +75,6 @@ const aDepModel={
 
 let toDate= new Date()
 
-const sampleDeparture={
-    "itineraryID": "quacks",
-    "tourCode":"EC AE 12 23 / GE 47 23",
-    "roomingList": [
-        // must have guest notes arr
-        {
-        "guestArr":[
-            {
-                "guestName": "Yeti Dicho",
-                "guestDOB": "10/28/1992",
-                "guestID": String,
-                "guestNotes": [
-                    "Alergic to Peanuts",
-                    "Vegetarian"
-                ],
-                "passport": "A256824",
-                "nationality": "Tibet",
-                "sex":"male"
-            },
-            {
-                "guestName": "Mrs. Snow",
-                "guestDOB": "10/27/93",
-                "guestNotes":[],
-                "guestID": String,
-                "passport": "A256824",
-                "nationality": "Tibet",
-                "sex":"female"
-            },
-
-        ],
-        "accomodationType": "matrimonial",
-        "singleSupp": false,
-        },
-        {
-        "guestArr":[
-            {
-                "guestName": "Yeti Michu",
-                "guestDOB": "10/7/1992",
-                "guestID": String,
-                "guestNotes": [
-                    "Alergic to Peanuts",
-                    "Vegetarian"
-                ],
-                "passport": "A256824",
-                "nationality": "Tibet",
-            },
-            {
-                "guestName": "Mrs. Icicle",
-                "guestDOB": "6/9/93",
-                "guestID": String,
-                "guestNotes": [
-                    "werewolf"
-                ],
-                "passport": "A256824",
-                "nationality": "Tibet",
-            },
-        ],
-        "accomodationType": "matrimonial",
-        "singleSupp": false,
-        },
-        {
-        "guestArr":[
-            {
-                "guestName": "Hegi Segara",
-                "guestDOB": "6/5/1942",
-                "guestID": String,
-                "guestNotes": [
-                    "Alergic to Shrimp",
-                ],
-                "passport": "A256824",
-                "nationality": "Tibet",
-            },
-            {
-                "guestName": "Majorne Kepecz",
-                "guestDOB": "6/7/95",
-                "guestID": String,
-                "guestNotes": [
-                    "Gluten free"
-                ],
-                "passport": "A256824",
-                "nationality": "Tibet",
-            },
-        ],
-        "accomodationType": "twin",
-        "singleSupp": false,
-        },
-        {
-        "guestArr":[
-            {
-                "guestName": "Tony Money",
-                "guestDOB": "6/5/1942",
-                "guestID": String,
-                "passport": "A256824",
-                "nationality": "Tibet",
-                "guestNotes":[],
-            },
-            {
-                "guestName": "Jackson Traxxion",
-                "guestDOB": "6/7/95",
-                "guestID": String,
-                "guestNotes": [
-                "Gluten free"
-                ],
-                "passport": "A256824",
-                "nationality": "Tibet",
-            },
-            {
-                "guestName": "Third Sunday",
-                "guestDOB": "6/7/98",
-                "guestID": String,
-                "guestNotes": [
-                "Gluten free"
-                ],
-                "passport": "A2664",
-                "nationality": "Malaysia",
-            },
-        ],
-        "accomodationType": "triple",
-        "singleSupp": false,
-        },
-        {
-        "guestArr":[
-            {
-                "guestName": "Mr.Bear Donoso",
-                "guestDOB": "8/15/1972",
-                "guestID": String,
-                "guestNotes": [
-                    "Alergic to Peanuts",
-                    "Vegetarian"
-                ],
-                "passport": "A256824",
-                "nationality": "Nepal",
-            },
-        ],
-        "singleSupp": true,
-        },
-        {
-        "guestArr":[
-            {
-                "guestName": "Tiger Ton",
-                "guestDOB": "8/15/1978",
-                "guestID": String,
-                "guestNotes": [
-                    "Fruits in room every day",
-                ],
-                "passport": "A256824",
-                "nationality": "Amazon Jungle",
-            },
-        ],
-        "singleSupp": true,
-        }
-    ],
-    "tourLeader":
-        {
-            "singleSupp": true,
-            "guestArr":[
-                {
-                "guestName": "Zoltan Leadre",
-                "guestDOB": "10/28/1952",
-                "guestID": String,
-                "guestNotes": [
-                    "Librarian",
-                ],
-                "passport": "A256824",
-                "nationality": "Tibet",
-                "sex":"male"
-                }
-
-            ],
-
-        },
-    "dayByDayExp":[
-        [
-            {            
-                "contactName" :"Diego Munoz",
-                "contactNumb": 9873655,
-                "currency": "usd",
-                "expenseKey": "guideExpense",
-                "paxLimit": 16,
-                "price":55,
-                "priceDetail": "Transfer Service",
-                "pricekey": "transferService"
-            } 
-        ],
-        [],
-        [
-            {            
-                "contactName" :"Galo Herrera",
-                "contactNumb": 98288567,
-                "currency": "usd",
-                "expenseKey": "guideExpense",
-                "paxLimit": 16,
-                "price":180,
-                "priceDetail": "Full Day Service, GNP",
-                "pricekey": "fullDayServiceGALAPAGOS"
-            } 
-        ],
-    ],
-    "flights":[],
-    "cruises":[],
-    "operationalNotes":[],
-    "startingDate": "7/16/2023",
-    "maxPaxNumb": 16,
-    "duration": 6,
-    "departureNotes":[
-        "group of birders, need early breakfasts",
-    ],
-}
-
 export default function OperationsDashboard(){
 
   // OPERATIONS DASHBOARD
@@ -329,8 +120,6 @@ export default function OperationsDashboard(){
     // For active departures, show day title of currently running day, hotel, guide name.
     // planner page: print horizontally, 
 
-
-  
     const { data: session } = useSession()
 
     const [activeDeps, setActiveDeps]=useState([])
@@ -372,11 +161,10 @@ export default function OperationsDashboard(){
     const [addOperationalNote, setAddOPNote]=useState(false)
     const [opDocEditSwitch, setOPDocSwitch]=useState(false)
     const [saveDocSwitch, setSavedoc]=useState(true)
-    // const [saveReminder, setSaveReminder]=useState()
-
 
   // providers
     const [providerArr, setProviderArr]=useState([])
+    const [flightObj, setFlightObj]=useState(false)
 
     useEffect(()=>{
         {paxDataExtractor(theDeparture, setPaxData)}
@@ -551,7 +339,7 @@ export default function OperationsDashboard(){
         let toDateFormatter 
         let upperLimitDate           
         if(tripDuration){
-            let theDuration = parseInt(tripDuration)
+            let theDuration = parseInt(tripDuration)-1
             upperLimitDate = addDays(theDate, theDuration)
             toDateFormatter = upperLimitDate.toLocaleDateString('en-GB', dateOptions)
         } else if (dayIndex) {
@@ -603,7 +391,6 @@ export default function OperationsDashboard(){
             </div>
         </>)
     }
-
 
     ///////////////////////////////////////////
     ///////////////////////////////////////////
@@ -771,7 +558,7 @@ export default function OperationsDashboard(){
         </div>
     </>)
     }
-    const depDisplayer=(depArr, theTitle, isActive  )=>{
+    const depDisplayer=(depArr, theTitle, isActive )=>{
         const guestAdder=(roomingLi)=>{
             let theAdder=0
             roomingLi.forEach(elem=> {
@@ -806,7 +593,7 @@ export default function OperationsDashboard(){
                 <div className={styles.depCardRow}>
                     {/* <span>{elem.startingDate}</span> */}
                     <strong> {elem.tripName} </strong>
-                    <span>{currentOPDay(elem, allItins, "dayCount")}/{elem.duration} days &nbsp; | </span>
+                    <span>{currentOPDay(elem, allItins, "dayCount")}/{elem.duration} days &nbsp;</span>
                     {guestAdder(elem.roomingList)}/{elem.maxPaxNumb} pax
                 </div>
                 <div className={styles.depCardRow}>
@@ -839,13 +626,103 @@ export default function OperationsDashboard(){
         if(depArr.length>0){
         return(<>
             <div className={styles.depCardCont}>
-                <h2> {theTitle} </h2>
+                <div className={styles.spaceBetRow}>
+                    <h2> {theTitle} </h2>
+                    <span>{depArr.length}</span>
+                </div>
                 <div className={styles.depCardMapper} >  
                     {depMapper}
                 </div>
             </div>
         </>)
         }
+    }
+    // flights
+    const flightsAdderForm=(minDate, )=>{
+        let theDateOpts = []
+        for (let i=0; i< parseInt(theDeparture.duration); i++ ){
+            theDateOpts.push({
+                "dayIndex": i,
+                "theDate": addDays(minDate, i+1)
+            })
+        }
+        return(<>
+        <form >
+            <h3> Please add flights here: </h3>
+            <div className={styles.spaceBetRow}> 
+                <div style={{width:"48%" }}> 
+                    <div className={styles.inputLabel}>
+                        Select Date
+                    </div>
+                    {theDateOpts&& <> 
+                    <select className={styles.inputUserUI} required name="Date Selector" 
+                        onChange={()=>{
+
+                        }}>
+
+                        {/* {theDateOpts.map((elem,i)=><option key={i} value={JSON.stringify(elem)}> */}
+                           {/* {elem.theDate}
+                        </option>)} */}
+                        {theDateOpts.map((elem,i)=><React.Fragment key={i}>
+                            <option> {elem.theDate.toLocaleDateString('en-GB', dateOptions)} </option>
+                        </React.Fragment>)}
+                    </select>                 
+                    </>}
+                </div>
+                <div style={{width:"48%" }}> 
+                    {anInputDisplayer("flight time", "depTime", "time", true, false, flightObj, setFlightObj )}
+                </div>
+            </div>
+            <div className={styles.spaceBetRow}> 
+                <div style={{width:"48%" }}> 
+                    {anInputDisplayer("from", "depLocation", "text", true, false, flightObj, setFlightObj)}
+                </div>
+                <div style={{width:"48%" }}> 
+                    {anInputDisplayer("to", "arriLocation", "text", true, false, flightObj, setFlightObj )}
+                </div>
+            </div>
+            <div className={styles.spaceBetRow}> 
+                <div style={{width:"48%" }}> 
+                    {anInputDisplayer("Airline", "airline", "text", true, false, flightObj, setFlightObj)}
+                </div>
+                <div style={{width:"48%" }}> 
+                    {anInputDisplayer("flight #", "flightNumb", "text", true, false, flightObj, setFlightObj )}
+                </div>
+            </div>
+            <div className={styles.spaceBetRow}> 
+                <div style={{width:"48%" }}> 
+                    {anInputDisplayer("Confirmation #", "confNumber", "text", true, false, flightObj, setFlightObj )}
+                </div>
+                <div className={styles.roomTypeIndicator}> 
+                    Add flight &nbsp; <AddCircleOutlineIcon/> 
+                </div>
+            </div>
+        </form>
+        </>)
+    }
+    const flightsDisp=()=>{
+        let parsedDate = parseInt(theDeparture.duration)-2
+        let minDate = addDays(theDeparture.startingDate, -1).toISOString().split("T")[0]
+
+        
+        return(<>
+            <div className={styles.spaceBetRow}> 
+                <h2>Flights</h2>
+                <div style={{cursor:"pointer", paddingRight: "12px"}} 
+                    onClick={()=>{
+                    if(editSwitch){setEditSwitch(false)} else {setEditSwitch(true)}
+                }}>
+                    {theDeparture.flights.length>0 && <>
+                    {editSwitch?<><EditOffIcon/></>:<><EditIcon/></>}
+                    </>}
+                </div>                
+            </div>
+            {theDeparture.flights.length>0? <> 
+
+            </>:<>
+                {flightsAdderForm(minDate)}
+            </>}
+        </>)
     }
 
   ///////////////////////////////////////////
@@ -905,43 +782,40 @@ export default function OperationsDashboard(){
     const aFileDisplayer=(theItin, theDep)=>{
         return(<>
         {/* keys */}
-            <div className={styles.providerFuncBar}>
-                <div onClick={()=>{
-                    setFileKey("intro")
-                    setTheDeparture()
-                    setTheItinerary()
-                    setfileSwitch(false)
-                    setTLObj(false)
-                }}>
-                    <CloseFullscreenIcon />
-                </div>
-                {saveIconDisp(saveDocSwitch, saveFunction, )}
+        <div className={styles.providerFuncBar}>
+            <div onClick={()=>{
+                setFileKey("intro")
+                setTheDeparture()
+                setTheItinerary()
+                setfileSwitch(false)
+                setTLObj(false)
+            }}>
+                <CloseFullscreenIcon />
             </div>
-
-        <div className={styles.keySelectors}>
-            {fileDisplayKey!="intro"&&<> 
-                <span onClick={()=>{setFileKey("intro"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>home </span></>}
-            {fileDisplayKey!="rooming"&&<> 
-                <span onClick={()=>{setFileKey("rooming"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>pax & rooming </span></>}
-            {fileDisplayKey!="providers"&&<> {providerArr.length>0&&<> 
-                <span onClick={()=>{setFileKey("providers"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>providers </span>
-                </>}</>}
-            {fileDisplayKey!="expenses"&&<> 
-                <span onClick={()=>{setFileKey("expenses"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>expenses</span></>}
-            {fileDisplayKey!="dayByDay"&&<> 
-                <span onClick={()=>{setFileKey("dayByDay"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>day by day</span></>}
-            {/* {fileDisplayKey!="flights"&&<> 
-                <span onClick={()=>{setFileKey("flights"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>flights</span></>} */}
+            {saveIconDisp(saveDocSwitch, saveFunction, )}
         </div>
 
-        <div className={styles.extraSelectors}> 
-            {/* If flights, from useEffect, link to flights page */}
-            {theDep.flights.length>0 && <>
-                <span> <FlightIcon/> </span>
-            </>}
-            {theDep.cruises.length>0 && <>
-                <span> <SailingIcon/> </span>
-            </>}
+        <div className={styles.spaceBetRow} style={{width:"760px" }}>
+            <span onClick={()=>{
+                // Delete Departure
+            }}> 
+            {/* <DeleteForeverIcon/>  */}
+            </span>
+            <div className={styles.keySelectors}>
+                {fileDisplayKey!="intro"&&<> 
+                    <span onClick={()=>{setFileKey("intro"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>home </span></>}
+                {fileDisplayKey!="rooming"&&<> 
+                    <span onClick={()=>{setFileKey("rooming"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>pax & rooming </span></>}
+                {fileDisplayKey!="providers"&&<> {providerArr.length>0&&<> 
+                    <span onClick={()=>{setFileKey("providers"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>providers </span>
+                    </>}</>}
+                {fileDisplayKey!="expenses"&&<> 
+                    <span onClick={()=>{setFileKey("expenses"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>expenses</span></>}
+                {fileDisplayKey!="dayByDay"&&<> 
+                    <span onClick={()=>{setFileKey("dayByDay"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>day by day</span></>}
+                {/* {fileDisplayKey!="flights"&&<> 
+                    <span onClick={()=>{setFileKey("flights"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>flights</span></>} */}
+            </div>
         </div>
 
 
@@ -966,14 +840,26 @@ export default function OperationsDashboard(){
             {fileDisplayKey==="dayByDay"&&<>
                 {dayByDayDisp(theItin.dayByDay)}
             </>}
-            {/* non OP */}
+
             {fileDisplayKey==="flights"&&<>
-                cUCUUU
-                aDD fLIGHTS PAGE HERE
+                {flightsDisp()}
+            </>}
+            {fileDisplayKey==="cruises"&&<>
+
             </>}
         </div>
-        {expenseTrig&&<>
 
+        <div className={styles.extraSelectors}> 
+            {/* If flights, from useEffect, link to flights page */}
+            {(fileDisplayKey!="flights"&& theDep.roomingList.length>0) &&<>
+                <span onClick={()=>{setFileKey("flights")}}> <FlightIcon/> </span>
+            </>}
+            {(fileDisplayKey!="cruises"&& theDep.roomingList.length>0) &&<>
+                <span onClick={()=>{setFileKey("cruises")}}> <SailingIcon/> </span>
+            </>}
+        </div>
+
+        {expenseTrig&&<>
             <div className={styles.aFileContainer}>
                 <h3>Add expense to day {dayIndex+1} </h3>
                 {optCataloger(thePriceChart)}
@@ -986,7 +872,7 @@ export default function OperationsDashboard(){
         {temporaryRoomObj.guestArr&&<>
             {roomingListEdit("edit")}
         </>}
-        {addGuest&&<>
+        { (addGuest || paxData?.paxTotal===0) &&<>
             <br/>
             <br/>
             {addGuestCont()}
@@ -998,6 +884,7 @@ export default function OperationsDashboard(){
         </>}
         </>)
     }
+
     let paxTotalCount=<>{paxData?.paxTotal} / {theDeparture?.maxPaxNumb} maximum</>
 
   // Stats
@@ -1272,6 +1159,7 @@ export default function OperationsDashboard(){
             {theRoomingBreakdownDispl()}
 
             <div className={styles.roomingListGrid}>
+                {paxData.paxTotal>0 && <>
                 <div className={styles.roomingListKEYS}>
                     <div style={{width:"33px"}}> # </div>
                     <div style={{width:"108px", borderLeft:"solid 1px black"}}>ROOM TYPE</div>
@@ -1281,10 +1169,10 @@ export default function OperationsDashboard(){
                     <div style={{width:"120px", borderLeft:"solid 1px black" }}> PASSPORT </div>
                     <div style={{width:"66px", borderLeft:"solid 1px black" }}> AGE </div>
                 </div>
+                </>}
                 {eachRoom}
 
                 {/* Tour Leader Add & Data */}
-
                 {theDep.tourLeader.guestArr&& <>
                     <h4>Tour Leader</h4>
                     <div className={styles.eachRoomDisplayer}>
@@ -1676,7 +1564,6 @@ export default function OperationsDashboard(){
             </div>
         </>)
     }
-
     const addGuestCont=(isTL)=>{
         const guestForm=(guestIndex)=>{
             return(<>
@@ -2016,7 +1903,7 @@ export default function OperationsDashboard(){
                 </>}
                 </div>
                 <div className={styles.roomTypeIndicator}>
-                    {newRoomObj.accomodationType}
+                    {newRoomObj.accomodationType} &nbsp; <AddCircleOutlineIcon/> 
                 </div>
             </div>
                 {guestForm(0)}
@@ -2031,9 +1918,8 @@ export default function OperationsDashboard(){
         </form>
         </>)
     }
-
-
     const theRoomingBreakdownDispl=()=>{
+        if(paxData.paxTotal>0){
         return(<>
         <div className={styles.roomingListTotalCont}>
             {paxData?.roomReq.singleRooms>0&&<><div>{paxData.roomReq.singleRooms} SINGLE Room{paxData.roomReq.singleRooms>1&&<>s</>}</div></>} 
@@ -2043,6 +1929,7 @@ export default function OperationsDashboard(){
             {paxData?.roomReq.quadRooms>0&&<><div>{paxData.roomReq.quadRooms} cuadruple Room{paxData.roomReq.quadRooms>1&&<>s</>}</div></>} 
         </div>
         </>)
+        } 
     }
 
   // expenses
