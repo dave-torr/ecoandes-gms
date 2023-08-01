@@ -27,6 +27,7 @@ import { aDropdownPicker, anInputDisplayer, flightsAdder} from "../../components
 
 import LTCPriceTables from "../../data/LTCPriceTables2023.json"
 import LTCItins from "../../data/LTCItinerary.json"
+import EcoAndesItins from "../../data/ecoAndesFixedDepartures.json"
 
 let catalogIndex={
     "adventureGuides":"Adventure Guides",
@@ -117,6 +118,11 @@ export default function OperationsDashboard(){
     const [fetchedDeps, setFetchedDeps]=useState([])
     const [fetchedItins, setFetchedItins]=useState([])
     const [upcomingDeps, setUpcomingDeps]=useState([])
+    const [fixedDeps, setFixedDeps]=useState([])
+
+    const [itinFetcherGMSSwitch, setGMSItinFetcherSwitch]=useState(false)
+    const [itinFetcherLTCSwitch, setLTCItinFetcherSwitch]=useState(false)
+    const [ecoAndesFixedDepartures, setEcoAndesFD]=useState(false)
 
     // itin and dep obj, selected from fetched data, or new dep
     const [theItinerary, setTheItinerary]=useState()
@@ -221,14 +227,12 @@ export default function OperationsDashboard(){
             setUpcomingDeps(anotherTempArr)
             setLoadingTrig(false)
         }
-
-
-
         const res2 = await fetch("/api/gms/itineraries",{
-        method: "GET"
+            method: "GET"
         })
         let fetchedData2 = await res2.json()
         if(fetchedData2){
+            // filter / sort functions
             setFetchedItins(fetchedData2)
         }
     },[])  
@@ -587,6 +591,12 @@ export default function OperationsDashboard(){
         let depMapper 
         if(isActive){
             depMapper= depArr.map((elem, i)=><React.Fragment key={i}>
+            <div className={styles.spaceBetRow}> 
+                <div /> 
+                <div className={styles.depCardFileTab}>
+                    {elem.tourCode}
+                </div>
+            </div>
             <div className={styles.aDepCard} onClick={()=>{
                 let foundItin = allItins.find(element => (element.id === elem.itineraryID)||(element._id === elem.itineraryID))
                 setfileSwitch(true)
@@ -596,8 +606,9 @@ export default function OperationsDashboard(){
                 <div className={styles.depCardRow}>
                     {/* <span>{elem.startingDate}</span> */}
                     <strong> {elem.tripName} </strong>
-                    <span>{currentOPDay(elem, allItins, "dayCount")}/{elem.duration} days &nbsp;</span>
+                    <span>{currentOPDay(elem, allItins, "dayCount")}/{elem.duration} days &nbsp;
                     {guestAdder(elem.roomingList)}/{elem.maxPaxNumb} pax
+                    </span>
                 </div>
                 <div className={styles.depCardRow}>
                     {currentOPDay(elem, allItins, "dayTitle")}
@@ -1070,7 +1081,7 @@ export default function OperationsDashboard(){
             <div className={styles.aFileContainer}>
                 <div className={styles.spaceBetRow}>
                     <h2 style={{width: "47%" }}>
-                        Edit Dates and Group Maximum
+                        Edit Departure general information
                     </h2>
                     <div style={{cursor:"pointer"}}
                         onClick={()=>{
@@ -1078,6 +1089,32 @@ export default function OperationsDashboard(){
                         }}>
                         <EditOffIcon/>
                     </div>
+                </div>
+                <div className={styles.spaceBetRow} >
+
+                    <div style={{width: "47%" }}>
+                        <div className={styles.inputLabel}>
+                            Set departure status
+                        </div>
+                        <select className={styles.inputUserUI} onChange={(e)=>{
+                            e.preventDefault()
+                            setTheDeparture({
+                                ...theDeparture,
+                                "saleProcess": e.target.value
+                            })
+                        }} >
+                            <option disabled defaultValue > Select Status </option>
+                            {theDeparture.saleProcess!=="onSale"&& <>  
+                                <option value="onSale"> On Sale</option></>}
+                            {theDeparture.saleProcess!=="reserved"&& <>  
+                                <option value="reserved"> Reserved</option></>}
+                            {theDeparture.saleProcess!=="confirmed"&& <>  
+                                <option value="confirmed"> Confirmed</option></>}
+                        </select>
+                    </div>
+
+                    {departureStatusDisp(theDeparture)}
+                
                 </div>
                 <div className={styles.spaceBetRow}>
                     <div style={{width: "47%" }}>
@@ -2976,10 +3013,16 @@ export default function OperationsDashboard(){
             {/* <div style={{cursor:"pointer"}} onClick={()=>{    
             // add flight functionality here
             }}> <AddCircleOutlineIcon/> <FlightIcon/> </div> */}
-            <div style={{cursor:"pointer"}} onClick={()=>{    
+
+
+            {/* <div style={{cursor:"pointer"}} onClick={()=>{    
             // add flight functionality here
             setEditSwitch(true)
-            }}> <EditNoteIcon/> </div>
+            }}> <EditNoteIcon/> </div> */}
+
+
+
+
         </div>
         <div className={styles.dayByDayCont}>
             {theProgramDays}
@@ -2997,7 +3040,7 @@ export default function OperationsDashboard(){
             <HubIcon fontSize="large" />
             <h2>Latin Travel Collection</h2>
             <h1>Operations</h1>
-        </div>
+        </div>  
         <strong className={styles.printDEL} >{toDateDisplayer}</strong>
       {loadingTrigger? <>
         {loadingScreen("Fetching Departure Data")}
@@ -3027,10 +3070,67 @@ export default function OperationsDashboard(){
                 <div> {fetchedItins&&<>{fetchedItins.length} GMS Itineraries,</>}
                     {LTCItins&&<>{" "}{LTCItins.length} LTC Itineraries</>}
                 </div>
+
             </div>
-            {depSelector("GMS  Itineraires", fetchedItins)}
+            {fetchedItins.length>0 ? <> 
+                {depSelector("GMS  Itineraires", fetchedItins)}
+            </> : <> 
+                <div className={styles.depTrigBTN} onClick={async()=>{
+                    // fetch GMS itineraries
+                    if(!itinFetcherGMSSwitch){
+                    setGMSItinFetcherSwitch(true)
+                        const res2 = await fetch("/api/gms/itineraries",{
+                            method: "GET"
+                        })
+                        let fetchedData2 = await res2.json()
+                        if(fetchedData2){
+                            // filter / sort functions
+                            setFetchedItins(fetchedData2)
+                        }
+                    }
+                }} > 
+                    {itinFetcherGMSSwitch ? <>
+                        <CircularProgress />
+                    </>:<>
+                        <AddCircleOutlineIcon/> &nbsp; &nbsp; departure from GMS itineraries
+                    </> }
+                </div>
+            </> }
+
             <br/><br/>
-            {depSelector("LTC Published Itineraries", LTCItins)}
+            {itinFetcherLTCSwitch ? <> 
+                {depSelector("LTC Published Itineraries", LTCItins)}
+            </> :<> 
+                <div className={styles.depTrigBTN} onClick={()=>{
+                    setLTCItinFetcherSwitch(true)
+                }} >
+                
+                    {itinFetcherLTCSwitch ? <>
+                        <CircularProgress />
+                    </>:<>
+                        <AddCircleOutlineIcon/> &nbsp; &nbsp; departure from LTC itineraries
+                    </> }
+
+                </div>
+            </> }
+
+            <br/><br/>
+            {ecoAndesFixedDepartures ? <> 
+                {depSelector("EcoAndes Fixed Departures", EcoAndesItins)}
+            </> :<> 
+                <div className={styles.depTrigBTN} onClick={()=>{
+                    setEcoAndesFD(true)
+                }} >
+                
+                    {ecoAndesFixedDepartures ? <>
+                        <CircularProgress />
+                    </>:<>
+                        <AddCircleOutlineIcon/> &nbsp; &nbsp; departure from EcoAndes FD itineraries
+                    </> }
+
+                </div>
+            </> }
+
 
           </>}
         </div>
