@@ -3,7 +3,7 @@
         {
             "currency":"usd",
             "expenseKey": "guideExpense", 
-            "price": 100,
+            "price": 60,
             "pricekey": "genericGuideExpense",
             "priceDetail": "Generic Guide Services"
         },        
@@ -148,6 +148,14 @@
         {
             "currency":"usd",
             "expenseKey": "guideExpense", 
+            "pricekey": "driGuideGeneric",
+            "price": 50,
+            "priceDetail": "DRIVER GUIDE: Generic",
+            "paxLimit": 3
+        }, 
+        {
+            "currency":"usd",
+            "expenseKey": "guideExpense", 
             "pricekey": "driGuideTransfer",
             "price": 60,
             "priceDetail": "DRIVER GUIDE: Transfer Service",
@@ -220,6 +228,14 @@
         }
     ],
     "nativeGuides":[
+        {
+            "currency":"usd",
+            "expenseKey": "guideExpense", 
+            "pricekey": "nativeGuide",
+            "price": 33,
+            "priceDetail": "Native Guide: GENERIC",
+            "paxLimit": 16
+        },
         {
             "currency":"usd",
             "expenseKey": "guideExpense", 
@@ -344,6 +360,13 @@
         {
             "currency":"usd",
             "expenseKey": "variableExpense", 
+            "pricekey": "genericVariableExpense",
+            "price": 4,
+            "priceDetail": "Generic Variable Expense"
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "variableExpense", 
             "pricekey": "UIOBasilicaEntFee",
             "price": 4,
             "priceDetail": "Basilica Entrance Fee",
@@ -456,6 +479,13 @@
         }
     ],
     "galapagosVarCosts":[
+        {
+            "currency":"usd",
+            "expenseKey": "variableExpense", 
+            "pricekey": "genericGalapagosExpense",
+            "price": 20,
+            "priceDetail": "Generic Galapagos Expense"
+        },
         {
             "currency":"usd",
             "expenseKey": "variableExpense", 
@@ -610,6 +640,13 @@
         {
             "currency":"usd",
             "expenseKey": "groupExpense", 
+            "pricekey": "genericGalapagosCharter",
+            "price": 10,
+            "priceDetail": "Generic Galapagos Costs"
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "groupExpense", 
             "pricekey": "baggageWaterTaxiFLO",
             "price": 10,
             "priceDetail": "Baggage Water Taxi FLOREANA",
@@ -654,6 +691,13 @@
         }
     ],
     "galapagosDayTours":[
+        {
+            "currency":"usd",
+            "expenseKey": "GPSDayTour", 
+            "pricekey": "genericGalapagosDayTour",
+            "price": 100,
+            "priceDetail": "Generic Galapagos Day Tour"
+        },
         {
             "currency":"usd",
             "expenseKey": "GPSDayTour", 
@@ -889,6 +933,14 @@
         }
     ],
     "galapagosDiving":[
+        {
+            "currency":"usd",
+            "expenseKey": "GPSDivingTour", 
+            "pricekey": "genericGalapagosDiving",
+            "price": 180,
+            "priceDetail": "Generic Galapagos Diving",
+            "paxLimit": 10
+        },
         {
             "currency":"usd",
             "expenseKey": "GPSDivingTour", 

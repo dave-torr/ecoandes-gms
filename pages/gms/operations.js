@@ -14,11 +14,11 @@ import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import EditIcon from '@mui/icons-material/Edit';
 import EditOffIcon from '@mui/icons-material/EditOff';
-import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
 import CancelPresentationIcon from '@mui/icons-material/CancelPresentation';
+import SaveIcon from '@mui/icons-material/Save';
+import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
 import FlightIcon from '@mui/icons-material/Flight';
 import SailingIcon from '@mui/icons-material/Sailing';
-import SaveIcon from '@mui/icons-material/Save';
 import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
@@ -71,6 +71,7 @@ const aDepModel={
     "departureNotes":[],
     "flights":[],
     "cruises":[],
+    "saleProcess": "onSale"
 }
 
 let toDate= new Date()
@@ -88,20 +89,9 @@ export default function OperationsDashboard(){
 
   // Generate opDocs, roomingLists, automatic emails for providers.  
 
-  // OPERATIONS DOCUMENTS:
-  // - ORDEN DE TRABAJO:
-  //  - - General Doc Data:
-  //  - - - Date
-  //  - - - from
-  //  - - - group code
-  //  - - - pax numb
-  //  - - - for (guide/transport)
-  //  - - Operational notices General and targeted
-
-  //  - Rooming List 
-  //  - - each pax comments, DOB, Nationality, Room type
-
-
+    // OPERATIONS DOCUMENTS:
+    // - ORDEN DE TRABAJO:
+    //  - Rooming List 
     // provide hotel data & edit cap
     // provider database
     // -- guides
@@ -113,7 +103,8 @@ export default function OperationsDashboard(){
     //  NON OP: add contact from DB to expense. 
     //  NON OP: duplicate hotel accommodations on following nights
     //  NON OP: edit prev set expenses. 
-
+    //  Yacht Reservation Form
+    // requerimiento economico (cash management)
     
     
     
@@ -391,6 +382,18 @@ export default function OperationsDashboard(){
             </div>
         </>)
     }
+    const departureStatusDisp=(theDep)=>{
+        return(<> 
+        <div className={styles.depStatusIndicator}>
+            {theDep.saleProcess==="onSale"? 
+                <> <span className={styles.statusOne}>.</span>on Sale</> 
+            : theDep.saleProcess==="reserved"?
+                <><span className={styles.statusTwo}>.</span>Reserved</> 
+            : theDep.saleProcess==="confirmed"&&
+                <><span className={styles.statusThree}>.</span>Confirmed</> }
+        </div>
+        </>)
+    }
 
     ///////////////////////////////////////////
     ///////////////////////////////////////////
@@ -637,6 +640,7 @@ export default function OperationsDashboard(){
         </>)
         }
     }
+
     // flights
     const flightsAdderForm=(minDate, )=>{
         let theDateOpts = []
@@ -646,31 +650,93 @@ export default function OperationsDashboard(){
                 "theDate": addDays(minDate, i+1)
             })
         }
+        let aTempGuestArr =[]
+        theDeparture.roomingList.forEach(elem=> {
+            elem.guestArr.forEach(elemental=>{
+                aTempGuestArr.push(elemental.guestName)
+            })
+        })
         return(<>
-        <form >
+        <form id="flightAdderForm" onSubmit={(e)=>{
+            e.preventDefault();
+            // add to flight arr with day index
+
+            console.log("add flight to dep")
+
+        }}>
             <h3> Please add flights here: </h3>
+            <div className={styles.spaceBetRow}>                
+                <div className={styles.roomEditSwitcher}>
+                    <h3>GUEST FLIGHT</h3>
+                    <div style={{marginLeft:"33px", display: "flex", alignItems: "center"}}>
+                    <FormControlLabel 
+                        control={
+                        <Switch checked={flightObj.target==="group"}
+                        onChange={()=>{
+                            if(flightObj.target==="group"){
+                                setFlightObj({
+                                    ...flightObj,
+                                    "target": "client"
+                                })
+                            } else {
+                                setFlightObj({
+                                    ...flightObj,
+                                    "target": "group"
+                                })
+                            }
+                        }}/>} 
+                    />            
+                    </div>
+                    <h3>GROUP FLIGHT</h3>
+                </div>
+
+                {flightObj.target==="client"&& <>
+                <div style={{width:"48%" }}>
+                    <div className={styles.inputLabel}>
+                        Select Client
+                    </div>
+                    <select className={styles.inputUserUI} required name="Flight Target Selector" onChange={(e)=>{
+                        setFlightObj({
+                            ...flightObj,
+                            "clientName":e.target.value
+                        })
+                    }}>
+                        <option disabled>Please select from guests</option>
+                        {aTempGuestArr.map((elem,i)=><React.Fragment key={i} >
+                            <option value={elem} >{elem} </option>
+                        </React.Fragment> )}
+                    </select>
+                </div>
+                </>}
+
+            </div>
             <div className={styles.spaceBetRow}> 
                 <div style={{width:"48%" }}> 
                     <div className={styles.inputLabel}>
                         Select Date
                     </div>
                     {theDateOpts&& <> 
-                    <select className={styles.inputUserUI} required name="Date Selector" 
-                        onChange={()=>{
-
+                    <select className={styles.inputUserUI} required name="Flight Date Selector" 
+                        onChange={(e)=>{
+                            // set dayIndex for each flight & Flight Date
+                            let parsedVal= JSON.parse(e.target.value)
+                            setFlightObj({
+                                ...flightObj,
+                                "dayIndex":parsedVal.dayIndex,
+                                "theDate":parsedVal.theDate,
+                            })
                         }}>
-
-                        {/* {theDateOpts.map((elem,i)=><option key={i} value={JSON.stringify(elem)}> */}
-                           {/* {elem.theDate}
-                        </option>)} */}
                         {theDateOpts.map((elem,i)=><React.Fragment key={i}>
-                            <option> {elem.theDate.toLocaleDateString('en-GB', dateOptions)} </option>
+                            <option value={JSON.stringify(elem)}> {elem.theDate.toLocaleDateString('en-GB', dateOptions)} </option>
                         </React.Fragment>)}
                     </select>                 
                     </>}
                 </div>
                 <div style={{width:"48%" }}> 
-                    {anInputDisplayer("flight time", "depTime", "time", true, false, flightObj, setFlightObj )}
+                    <div className={styles.inputLabel}>
+                        Select Date
+                    </div>
+                    <input className={styles.inputUserUI} type="time" />
                 </div>
             </div>
             <div className={styles.spaceBetRow}> 
@@ -693,18 +759,18 @@ export default function OperationsDashboard(){
                 <div style={{width:"48%" }}> 
                     {anInputDisplayer("Confirmation #", "confNumber", "text", true, false, flightObj, setFlightObj )}
                 </div>
-                <div className={styles.roomTypeIndicator}> 
-                    Add flight &nbsp; <AddCircleOutlineIcon/> 
+                <input 
+                    className={styles.roomTypeIndicator} 
+                    value={`Add flight`} 
+                    type="submit"
+                    /> 
                 </div>
-            </div>
         </form>
         </>)
     }
     const flightsDisp=()=>{
-        let parsedDate = parseInt(theDeparture.duration)-2
         let minDate = addDays(theDeparture.startingDate, -1).toISOString().split("T")[0]
 
-        
         return(<>
             <div className={styles.spaceBetRow}> 
                 <h2>Flights</h2>
@@ -852,7 +918,10 @@ export default function OperationsDashboard(){
         <div className={styles.extraSelectors}> 
             {/* If flights, from useEffect, link to flights page */}
             {(fileDisplayKey!="flights"&& theDep.roomingList.length>0) &&<>
-                <span onClick={()=>{setFileKey("flights")}}> <FlightIcon/> </span>
+                <span onClick={()=>{
+                    setFileKey("flights"); 
+                    setFlightObj({"target": "group"})
+                }}> <FlightIcon/> </span>
             </>}
             {(fileDisplayKey!="cruises"&& theDep.roomingList.length>0) &&<>
                 <span onClick={()=>{setFileKey("cruises")}}> <SailingIcon/> </span>
@@ -958,26 +1027,30 @@ export default function OperationsDashboard(){
         if(theItin){
         return(<>
             <div className={styles.spaceBetRow}>
-            <div>
-                {logoSwitcher(theItin)}
-                <h1>{theItin.tripName}</h1>
+                <div>
+                    {logoSwitcher(theItin)}
+                    <h1>{theItin.tripName}</h1>
+                </div>
+                <div className={styles.aColumn}>
+                {departureStatusDisp(theDep)}
+                <div style={{cursor:"pointer", paddingRight: "20px"}} 
+                    onClick={()=>{
+                    if(editSwitch){setEditSwitch(false)} else {setEditSwitch(true)}
+                }}>
+                    {editSwitch?<><EditOffIcon/></>: <><EditIcon/></>}
+                </div>
+                </div>
             </div>
-            <div style={{cursor:"pointer", paddingRight: "40px"}} 
-                onClick={()=>{
-                if(editSwitch){setEditSwitch(false)} else {setEditSwitch(true)}
-            }}>
-                {editSwitch?<><EditOffIcon/></>: <><EditIcon/></>}
-            </div>
-            </div>
+
             <div className={styles.roomingListCont} > 
-            <div className={styles.detailDispl}>
-                {theItin.tripLang&&<>{eachIntroDetail("trip language", theItin.tripLang)}</>}
-                {theDep.tourCode&&<>{eachIntroDetail("Tour code", theDep.tourCode)}</>}
-                {theDep.aComp&&<>{eachIntroDetail("company", theDep.aComp)}</>}
-                {theDep.compContact&&<>{eachIntroDetail("contact", theDep.compContact)}</>}
-                {theDep.tripRef&&<>{eachIntroDetail("trip Reference", theDep.tripRef)}</>}
-                {theDep.maxPaxNumb&&<>{eachIntroDetail("guests", paxTotalCount)}</>}
-            </div>
+                <div className={styles.detailDispl}>
+                    {theItin.tripLang&&<>{eachIntroDetail("trip language", theItin.tripLang)}</>}
+                    {theDep.tourCode&&<>{eachIntroDetail("Tour code", theDep.tourCode)}</>}
+                    {theDep.aComp&&<>{eachIntroDetail("company", theDep.aComp)}</>}
+                    {theDep.compContact&&<>{eachIntroDetail("contact", theDep.compContact)}</>}
+                    {theDep.tripRef&&<>{eachIntroDetail("trip Reference", theDep.tripRef)}</>}
+                    {theDep.maxPaxNumb&&<>{eachIntroDetail("guests", paxTotalCount)}</>}
+                </div>
             <h2> Tour Dates </h2>
             <div className={styles.spaceBetRow}> 
                 <div style={{width: "47%" }}>
@@ -1834,15 +1907,12 @@ export default function OperationsDashboard(){
         }        
 
         return(<>
-        <form>         
+        <form id="tourLeaderForm">         
         <div className={styles.aFileContainer}>
             <div className={styles.spaceBetRow}>
                 <h2> Add {isTL? <> Tour Leader </>:<>Room</>}</h2>
                 <div className={styles.addRoomBTN} onClick={()=>{
                     if(isTL){
-                        // add room model to theDep
-                        // clear room model, set addTL false
-                        // closeEdit functions
                         setTheDeparture({
                             ...theDeparture,
                             "tourLeader": addTLObj
@@ -2965,10 +3035,7 @@ export default function OperationsDashboard(){
           </>}
         </div>
       </>}
-
-
       </>:<>
-
         {/* nav export to reuse on all pages */}
         GMS Sgn in OPTS
       </> }

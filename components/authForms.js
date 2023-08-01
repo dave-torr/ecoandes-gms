@@ -129,3 +129,53 @@ export function UserSignupModal(props){
         </Dialog>
     </>)
 }
+
+export function UserSignUpForm(props){
+
+    const [userSignUpObj, setSignUpObj]=useState({
+        name: String,
+        email: String, 
+        password: String, 
+        company: String,
+        department: String,
+        companyTitle: String,
+        clientType: "LTC",
+        userType: String,
+        // planning & Sales, operations, admin, 
+        resArray: [],
+        signUpStream: "website",
+        active: true,
+        signUpDate: toDate
+    })
+
+    const submitSignUp=async()=>{
+        let stringReqBody= JSON.stringify(userSignUpObj)
+
+        // check api route to see if user is signed up immediately
+
+        const res = await fetch("/api/auth/signUp",{
+            method: "POST",
+            body: stringReqBody
+        })
+        const userSignup = await res.json()
+        if(res.status===201){
+            window.alert("User Created!")
+        } else {
+            window.alert(`Error with sign up: ${userSignup.message}`)
+        }
+    }
+
+    const userForm=()=>{
+
+        return(<>
+            
+        </>)
+    }
+
+
+
+return(<>
+
+
+
+</>)}

@@ -38,13 +38,18 @@ export default function GMS(){
             <Link href="/gms/pix">  
             <a>Pix</a>
             </Link></>}
+
+            {session.user.name==="David Torres"&&<>
+            <Link href="/gms/adminDash">  
+            <a>Admin</a>
+            </Link></>}
             
             {session.user.name==="David Torres"&&<>
             <Link href="/gms/operations">  
             <a>Operations</a>
             </Link></>}
 
-            {/* Non admin Toutes */}
+        {/* Non admin Toutes */}
             <Link href="/gms/tourCreator">  
             <a>Tour Creator</a>
             </Link>

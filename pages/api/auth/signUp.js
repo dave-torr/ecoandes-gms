@@ -37,7 +37,9 @@ async function handler(req, res){
         companyTitle: reqData.role,
         userType: reqData.userType,
         profilePic: reqData.profilePic,
+        signUpDate: reqData.signUpDate,
         signUpStream: "website",
+        clientType: "LTC",
         active: true
       }
 

@@ -54,7 +54,7 @@ export function anInputDisplayer(inputLabel, inputId, inputType, isReq, inputPla
                 required={isReq}
                 placeholder={inputPlaceholder ? inputPlaceholder : undefined}
                 id={inputId}
-                onFocus={(e)=>{e.target.value=""}}
+                // onFocus={(e)=>{e.target.value=""}}
                 onChange={(e)=>{
                     e.preventDefault()
                     let theValue
@@ -68,8 +68,8 @@ export function anInputDisplayer(inputLabel, inputId, inputType, isReq, inputPla
                         [inputId]:theValue
                     })
                 }}
-                min={numbMin}
-                max={numbMax}
+                min={numbMin ? numbMin : undefined }
+                max={numbMax ? numbMax : undefined }
             />
         </div>
     </>)
