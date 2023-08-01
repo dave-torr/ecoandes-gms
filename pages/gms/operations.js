@@ -574,12 +574,14 @@ export default function OperationsDashboard(){
             return(<>{theAdder}</>)
         }
         let allItins =[
-            ...fetchedItins, ...LTCItins
+            ...fetchedItins, ...LTCItins, ...EcoAndesItins
         ]        
         const currentOPDay=(theDep, availTtins, dispCntroller)=>{
             let startingDate = new Date(theDep.startingDate)
             let dayIndex =  Math.ceil((toDate.getTime() - startingDate.getTime()) / (1000*3600 *24))
             let foundItin = availTtins.find(element => (element.id === theDep.itineraryID)||(element._id === theDep.itineraryID))
+
+            console.log(theDep)
 
             if(dispCntroller==="dayTitle"){
                 return(<><div> {foundItin?.dayByDay[dayIndex-1].dayTitle} </div></>)
@@ -592,10 +594,10 @@ export default function OperationsDashboard(){
         if(isActive){
             depMapper= depArr.map((elem, i)=><React.Fragment key={i}>
             <div className={styles.spaceBetRow}> 
-                <div /> 
                 <div className={styles.depCardFileTab}>
                     {elem.tourCode}
                 </div>
+                <div/> 
             </div>
             <div className={styles.aDepCard} onClick={()=>{
                 let foundItin = allItins.find(element => (element.id === elem.itineraryID)||(element._id === elem.itineraryID))
@@ -604,14 +606,14 @@ export default function OperationsDashboard(){
                 setTheItinerary(foundItin)
             }}>
                 <div className={styles.depCardRow}>
-                    {/* <span>{elem.startingDate}</span> */}
-                    <strong> {elem.tripName} </strong>
-                    <span>{currentOPDay(elem, allItins, "dayCount")}/{elem.duration} days &nbsp;
-                    {guestAdder(elem.roomingList)}/{elem.maxPaxNumb} pax
-                    </span>
+                    {currentOPDay(elem, allItins, "dayTitle")}
                 </div>
                 <div className={styles.depCardRow}>
-                    {currentOPDay(elem, allItins, "dayTitle")}
+                    {/* <span>{elem.startingDate}</span> */}
+                    <strong> {elem.tripName} </strong>
+                    <span>{currentOPDay(elem, allItins,"dayCount")}/{elem.duration} days &nbsp; | &nbsp;
+                    {guestAdder(elem.roomingList)}/{elem.maxPaxNumb} pax
+                    </span>
                 </div>
             </div>
         </React.Fragment> )
@@ -642,7 +644,7 @@ export default function OperationsDashboard(){
             <div className={styles.depCardCont}>
                 <div className={styles.spaceBetRow}>
                     <h2> {theTitle} </h2>
-                    <span>{depArr.length}</span>
+                    <span>{depArr.length} departures </span>
                 </div>
                 <div className={styles.depCardMapper} >  
                     {depMapper}
@@ -984,20 +986,19 @@ export default function OperationsDashboard(){
 
         const eachDataRow=(theDataKey, dataValue)=>{
         return(<>
-            <div style={{ display: "flex", justifyContent:"space-between", padding:"0 6px" }}>
-            <h5> {theDataKey} </h5>
-            <h5> {dataValue} </h5>
+            <div style={{ display: "flex", justifyContent:"space-between", padding:"2px 3px" }}>
+                <span> {theDataKey} </span>
+                <span> {dataValue} </span>
             </div>
         </>)
         }
         return(<>
         <div className={styles.statsBar}> 
         {activeDepartures.length>0? <> 
-            <h3>General Statistics:</h3>
-            {eachDataRow("ACTIVE DEPARTURES:", activeDepartures.length )}
-            {eachDataRow("PAX TOTAL:", clientGeneralSum )}
+            {eachDataRow("Active Departures:", activeDepartures.length )}
+            {eachDataRow("Pax Total:", clientGeneralSum )}
             <div className={styles.aLineSeparator}/>
-            {eachDataRow("UPCOMING DEPARTURES:", upcomingDeps.length )}
+            {eachDataRow("Upcoming Departures:", upcomingDeps.length )}
             {/* Weekly responsible contact */}
             {/* List of active deps with links to each??? */}
             {/* what other quick elems can we display? Nationality? */}
@@ -1262,9 +1263,9 @@ export default function OperationsDashboard(){
                     </div>
                 </>}
             </div>
-            {paxData&&<><div className={styles.guestTotal}>{paxData.paxTotal} guests
+            {paxData&&<><div className={styles.guestTotal}>{paxData.paxTotal} guest{paxData.paxTotal>1&&<>s</>}
                 {theDep?.tourLeader.guestArr && <> 
-                    + {theDep?.tourLeader?.guestArr.length} TL </>}
+                    {" "} + {theDep?.tourLeader?.guestArr.length} TL </>}
                 </div></>} 
             {theRoomingBreakdownDispl()}
 
@@ -1677,7 +1678,7 @@ export default function OperationsDashboard(){
     const addGuestCont=(isTL)=>{
         const guestForm=(guestIndex)=>{
             return(<>
-                <div className={styles.aLineSeparator}/>
+                <div className={styles.aLineSeparator}/> <br/>
                 <div className={styles.spaceBetRow}>
                     <div style={{width: "47%" }}> 
                         <div className={styles.inputLabel}>
@@ -1892,7 +1893,7 @@ export default function OperationsDashboard(){
                                 ...tempRoomObj,
                             })
                         }
-                    }} > ADD GUEST &nbsp; <AddCircleOutlineIcon/> </div>
+                    }} > ADD GUEST TO ROOM &nbsp; <AddCircleOutlineIcon/></div>
                     </>}
                 </div>
                 &nbsp;
@@ -1906,7 +1907,7 @@ export default function OperationsDashboard(){
                                 })
                                 }}>
                                 {elem} &nbsp; <RemoveCircleOutlineIcon />
-                            </div> &nbsp; &nbsp;                                
+                            </div> &nbsp; &nbsp;   
                         </React.Fragment> )}
                     </>:<>
                         {newRoomObj.guestArr[guestIndex]?.guestNotes.map((elem,i)=> <React.Fragment key={i}>
@@ -1917,7 +1918,7 @@ export default function OperationsDashboard(){
                                 })
                             }}>
                                 {elem} &nbsp; <RemoveCircleOutlineIcon />
-                            </div> &nbsp; &nbsp;                                
+                            </div> &nbsp; &nbsp;  
                         </React.Fragment> )}
                     </>}
                 </div>
@@ -2010,7 +2011,7 @@ export default function OperationsDashboard(){
                 </>}
                 </div>
                 <div className={styles.roomTypeIndicator}>
-                    {newRoomObj.accomodationType} &nbsp; <AddCircleOutlineIcon/> 
+                    {newRoomObj.accomodationType}
                 </div>
             </div>
                 {guestForm(0)}
@@ -2962,7 +2963,6 @@ export default function OperationsDashboard(){
             </>}
         </>)
     }
-
     const dayByDayDisp=(theDays)=>{
 
         // non MVP
@@ -3045,8 +3045,6 @@ export default function OperationsDashboard(){
       {loadingTrigger? <>
         {loadingScreen("Fetching Departure Data")}
       </>:<>
-
-        <div>
           {/* Daily(monthly||weekly ) Planner */}
           {theDeparture? <>
             {fileSwitch ? <>
@@ -3058,14 +3056,17 @@ export default function OperationsDashboard(){
             </> }
           </>:<>
             {/* display itineraries and select a dep for file */}
-            <h1>Departures </h1>
-            <div className={styles.spaceBetRow} style={{alignItems:"baseline", justifyContent: "space-around" }} > 
+            <div className={styles.spaceBetRow}> 
+                <h1>Departures </h1>
                 {statsDisplayer(activeDeps, upcomingDeps)}            
-                {depDisplayer(activeDeps, "active Departures", true)}
-                {depDisplayer(upcomingDeps, "upcoming Departures", false)}
             </div>
+            {depDisplayer(activeDeps, "active Departures", true)}
+            {depDisplayer(upcomingDeps, "upcoming Departures", false)}
 
-            <div className={styles.spaceBetRow} >
+            <br/><br/>
+            <div className={styles.aLineSeparator}/>
+
+            <div className={styles.spaceBetRow}>
                 <h1>Create a departure: </h1>
                 <div> {fetchedItins&&<>{fetchedItins.length} GMS Itineraries,</>}
                     {LTCItins&&<>{" "}{LTCItins.length} LTC Itineraries</>}
@@ -3121,19 +3122,14 @@ export default function OperationsDashboard(){
                 <div className={styles.depTrigBTN} onClick={()=>{
                     setEcoAndesFD(true)
                 }} >
-                
                     {ecoAndesFixedDepartures ? <>
                         <CircularProgress />
                     </>:<>
                         <AddCircleOutlineIcon/> &nbsp; &nbsp; departure from EcoAndes FD itineraries
                     </> }
-
                 </div>
-            </> }
-
-
+            </>}
           </>}
-        </div>
       </>}
       </>:<>
         {/* nav export to reuse on all pages */}
