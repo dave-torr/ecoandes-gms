@@ -42,7 +42,8 @@ let catalogIndex={
     "continentalVarCosts":"Continental Variable Costs",
     "ikalaHotels":"Ikala Hotels",
     "LTCPartnerAccoms":"LTC Partner Accomodations",
-    "transport": "Transport"
+    "transport": "Transport",
+    "hotelAdditionalServices": "Hotel Services"
 }
 const aRoomModel={
   "guestArr":[
@@ -581,8 +582,6 @@ export default function OperationsDashboard(){
             let dayIndex =  Math.ceil((toDate.getTime() - startingDate.getTime()) / (1000*3600 *24))
             let foundItin = availTtins.find(element => (element.id === theDep.itineraryID)||(element._id === theDep.itineraryID))
 
-            console.log(theDep)
-
             if(dispCntroller==="dayTitle"){
                 return(<><div> {foundItin?.dayByDay[dayIndex-1].dayTitle} </div></>)
             } else if(dispCntroller==="dayCount"){
@@ -655,7 +654,8 @@ export default function OperationsDashboard(){
     }
 
     // flights
-    const flightsAdderForm=(minDate, )=>{
+    const flightsAdderForm=()=>{
+        let minDate = addDays(theDeparture.startingDate, -1).toISOString().split("T")[0]
         let theDateOpts = []
         for (let i=0; i< parseInt(theDeparture.duration); i++ ){
             theDateOpts.push({
@@ -673,8 +673,18 @@ export default function OperationsDashboard(){
         <form id="flightAdderForm" onSubmit={(e)=>{
             e.preventDefault();
             // add to flight arr with day index
-
-            console.log("add flight to dep")
+            let dayIndex= flightObj.dayIndex
+            let tempFlightArr=[]
+            if(theDeparture.flights[dayIndex]){
+                tempFlightArr = [...theDeparture.flights[dayIndex]]
+            } 
+            tempFlightArr.push(flightObj)
+            theDeparture.flights[dayIndex] = tempFlightArr
+            setTheDeparture({
+                ...theDeparture,
+                "flights": theDeparture.flights
+            })
+            setEditSwitch(false)
 
         }}>
             <h3> Please add flights here: </h3>
@@ -704,7 +714,7 @@ export default function OperationsDashboard(){
                 </div>
 
                 {flightObj.target==="client"&& <>
-                <div style={{width:"48%" }}>
+                <div style={{width:"48%", paddingBottom:"12px" }}>
                     <div className={styles.inputLabel}>
                         Select Client
                     </div>
@@ -739,6 +749,7 @@ export default function OperationsDashboard(){
                                 "theDate":parsedVal.theDate,
                             })
                         }}>
+                        <option selected disabled > Please pick a date </option>
                         {theDateOpts.map((elem,i)=><React.Fragment key={i}>
                             <option value={JSON.stringify(elem)}> {elem.theDate.toLocaleDateString('en-GB', dateOptions)} </option>
                         </React.Fragment>)}
@@ -747,9 +758,14 @@ export default function OperationsDashboard(){
                 </div>
                 <div style={{width:"48%" }}> 
                     <div className={styles.inputLabel}>
-                        Select Date
+                        Select time
                     </div>
-                    <input className={styles.inputUserUI} type="time" />
+                    <input className={styles.inputUserUI} type="time" onChange={(e)=>{
+                        setFlightObj({
+                            ...flightObj,
+                            "departureTime": e.target.value
+                        })
+                    }} />
                 </div>
             </div>
             <div className={styles.spaceBetRow}> 
@@ -777,13 +793,33 @@ export default function OperationsDashboard(){
                     value={`Add flight`} 
                     type="submit"
                     /> 
-                </div>
+            </div>
         </form>
         </>)
     }
+    const eachFlight=(flightData, dayFlightArr, flightIndx)=>{
+        return(<>
+        <div className={styles.spaceBetRow}>
+            {editSwitch && <>
+                <span style={{ color:"red", cursor:"pointer" }} onClick={()=>{
+                    dayFlightArr.splice(flightIndx, 1)
+                    setTheDeparture({...theDeparture})
+                    setEditSwitch(false)
+                }}> <RemoveCircleOutlineIcon/> </span>
+            </>}
+            <div className={styles.flightDisplayer}>
+                <span>{flightData.theDate&&<>{new Date(flightData.theDate).toDateString()}</>}</span>
+                <span>{flightData.target==="group"? <>GROUP FLIGHT</>:<>{flightData.clientName}</>}</span>
+                <span>{flightData.departureTime&&<><strong>Time:</strong><br/> {flightData.departureTime}</>}</span>                
+                <span>{flightData.depLocation&& <><strong>FROM:</strong><br/> {flightData.depLocation}</>}</span>
+                <span>{flightData.arriLocation&& <><strong>TO:</strong><br/>{flightData.arriLocation}</>}</span>
+                <span>{flightData.airline&& <><strong>airline:</strong><br/>{flightData.airline}</>}</span>
+                <span>{flightData.confNumber&& <><strong>confirmation:</strong><br/>{flightData.confNumber}</>}</span>
+            </div>
+        </div>
+        </>)
+    }
     const flightsDisp=()=>{
-        let minDate = addDays(theDeparture.startingDate, -1).toISOString().split("T")[0]
-
         return(<>
             <div className={styles.spaceBetRow}> 
                 <h2>Flights</h2>
@@ -797,9 +833,16 @@ export default function OperationsDashboard(){
                 </div>                
             </div>
             {theDeparture.flights.length>0? <> 
-
+                {theDeparture.flights.map((elem, i)=> <React.Fragment key={i}>
+                    {elem?.length>0 && <>
+                        Day {i+1}:
+                        {elem.map((element, i)=><React.Fragment key={i}>
+                            {eachFlight(element, elem, i)}
+                        </React.Fragment>)}
+                    </>}
+                </React.Fragment>)}
             </>:<>
-                {flightsAdderForm(minDate)}
+                {flightsAdderForm()}
             </>}
         </>)
     }
@@ -922,6 +965,9 @@ export default function OperationsDashboard(){
 
             {fileDisplayKey==="flights"&&<>
                 {flightsDisp()}
+                {editSwitch&& <>
+                    <br/> {flightsAdderForm()}
+                </>}
             </>}
             {fileDisplayKey==="cruises"&&<>
 
@@ -936,9 +982,12 @@ export default function OperationsDashboard(){
                     setFlightObj({"target": "group"})
                 }}> <FlightIcon/> </span>
             </>}
-            {(fileDisplayKey!="cruises"&& theDep.roomingList.length>0) &&<>
+
+            {/* future cruise functionality */}
+            {/* {(fileDisplayKey!="cruises"&& theDep.roomingList.length>0) &&<>
                 <span onClick={()=>{setFileKey("cruises")}}> <SailingIcon/> </span>
-            </>}
+            </>} */}
+
         </div>
 
         {expenseTrig&&<>
@@ -2051,6 +2100,9 @@ export default function OperationsDashboard(){
         }
     }
     const totalExpAdder=(expenseArr)=>{
+
+        // not working proterly, need to check WTF
+
         let totalAggegator=0
         expenseArr.forEach((elem)=>{
             if(elem?.length>0){
@@ -2197,13 +2249,11 @@ export default function OperationsDashboard(){
                     {editSwitch? <><EditOffIcon/></>:<><EditIcon/></>}
                 </div>
             </div>
-            {theExpenseArr.length>0 && <> 
+            {/* {theExpenseArr.length>0 && <> 
             <div className={styles.totalExpCont}> 
-                TOTAL
-                |<span> ${totalExpAdder(theExpenseArr)} </span>
-
+                TOTAL &nbsp; |<span> ${totalExpAdder(theExpenseArr)} </span>
             </div>
-            </>}
+            </>} */}
             <div>
                 {eachDayTitleExp}
             </div>
@@ -2235,7 +2285,16 @@ export default function OperationsDashboard(){
         let contactOpts
         if(contactArr.length>0){
             contactOpts=contactArr.map((elem,i)=><React.Fragment key={i}>
-            {elem?.expenseKey!="accommodation"&& <>
+            {elem?.expenseKey==="accommodation"? <>
+                <div className={styles.addContactBTN} onClick={()=>{
+                    setTheExpense({
+                        ...theExpense,
+                        "contactName": elem?.contactName,
+                        "contactNumb": elem?.contactNumb,
+                        "hotelName": elem?.hotelName
+                    })
+                }}> + {elem.hotelName} </div>
+            </>:<>
                 <div className={styles.addContactBTN} onClick={()=>{
                     setTheExpense({
                         ...theExpense,
@@ -2579,6 +2638,7 @@ export default function OperationsDashboard(){
                     behavior: "smooth",
                 });
             }}>
+
             {contactArr.length>0&& <>
                 <br></br>
                 {theExpense?.expenseKey==="accommodation"?<> 
@@ -2626,7 +2686,7 @@ export default function OperationsDashboard(){
                     {anInputDisplayer("Additional Description", "additionalDescription", "text", false, "Extra service details", theExpense, setTheExpense)}</div> 
                     {theExpense.expenseKey==="variableExpense"? <> 
                     <div style={{width: "25%" }}> 
-                        {anInputDisplayer("#Needed", "varExpTickets", "number", true, paxData.paxTotal, theExpense, setTheExpense)}</div>
+                        {anInputDisplayer("#Needed", "varExpTickets", "number", true, "Required", theExpense, setTheExpense)}</div>
                     </>:<>
                     <div style={{width: "25%" }}> 
                     {anInputDisplayer("max pax", "paxLimit", "number", false, theExpense.paxLimit, theExpense, setTheExpense)}</div>
@@ -2740,7 +2800,7 @@ export default function OperationsDashboard(){
         // for work orders, econ requirements, contracts
         let eachProviderExp=[]
         theDeparture.dayByDayExp.forEach((element, i)=>{
-        element.forEach(elem=>{
+        element?.forEach(elem=>{
             if(elem.contactName===theDocs?.contactName){
                 eachProviderExp.push({...elem, "dayIndex": i})
             }
@@ -2749,7 +2809,7 @@ export default function OperationsDashboard(){
         let eachProviderMapper
         if(theDocs.expenseKey!="accommodation"){
         eachProviderMapper = theDeparture.dayByDayExp.map((elem,i)=><React.Fragment key={i}>
-            {elem.find(elem2 => elem2.contactName===theDocs?.contactName)?<>
+            {elem?.find(elem2 => elem2.contactName===theDocs?.contactName)?<>
             <div style={{display:"flex", alignItems:"center"}}> 
                 <h4>Day {i + 1}:</h4> &nbsp; {theItinerary?.dayByDay[i].dayTitle}
             </div>
@@ -2799,7 +2859,6 @@ export default function OperationsDashboard(){
                     </div>
                 </div>
             </>}
-
             {addOperationalNote? <>
                 <div className={styles.spaceBetRow}> 
                     <div className={styles.inputAndRow} style={{margin:"12px 4%"}}> 
@@ -2851,20 +2910,22 @@ export default function OperationsDashboard(){
                 </>}
             </>}
             </>:<> </>}
-        {elem.map(element=><>{element.contactName===theDocs?.contactName&&<>
-            <div className={styles.documentGeneraExpense}>
-            <span>
-                <strong>{element.priceDetail}</strong> <br/>
-                {element.additionalDescription&&<>{element.additionalDescription}</>}
-            </span>
-            <span>
-                ${element.price?.toFixed(2)}
-            </span>
-            </div>
-        </>}</>)}
-        <br/>
+            {elem?.map(element=><>{element.contactName===theDocs?.contactName&&<>
+                <div className={styles.documentGeneraExpense}>
+                <span>
+                    <strong>{element.priceDetail}</strong> <br/>
+                    {element.additionalDescription&&<>{element.additionalDescription}</>}
+                </span>
+                <span>
+                    ${element.price?.toFixed(2)}
+                </span>
+                </div>
+            </>}</>)}
+            <br/>
         </React.Fragment>)
         }
+
+
         return(<>
             <div className={styles.spaceBetRowPRINT} style={{borderBottom:"solid 1px black"}}>
                 <h2>Document Generator:</h2>
@@ -2892,9 +2953,8 @@ export default function OperationsDashboard(){
             </div>
             <div className={styles.spaceBetRow}>  
                 <h2>For: {theDocs?.contactName} </h2>
-                {theDocs?.contactNumb!=100000 &&<> Phone: #0{theDocs?.contactNumb}</>}
             </div>
-            {theDocs?.hotelName&&<><h2>For: <strong>{theDocs?.hotelName}</strong></h2></>}
+            {theDocs?.hotelName&&<><h2><strong>{theDocs?.hotelName}</strong></h2></>}
             <div>By: {session?.user.name} | Operations Department</div> <br/>
 
             <div className={styles.detailDispl}>
@@ -2909,6 +2969,7 @@ export default function OperationsDashboard(){
             {theDocs.docKey==="accommodation"&&<>
                 <h2>Required Dates:</h2>
                 {eachProviderExp.map((elemnt, indx)=> <React.Fragment key={indx}>
+                {elemnt.expenseKey==="accommodation"&&<>
                     <div className={styles.spaceBetRow}> 
                         <span style={{width:"49%"}}>
                             {aDateDisp("Date In", theDeparture.startingDate, false, elemnt.dayIndex)}
@@ -2917,15 +2978,34 @@ export default function OperationsDashboard(){
                             {aDateDisp("Date Out", theDeparture.startingDate, false, (elemnt.dayIndex+1))}
                         </span>
                     </div>
+                </>}
                 </React.Fragment>)}
             </>}
             {theDocs.docKey!="cashReq"&&<> 
                 {roomingListDisp(theDeparture)}
-                <div className={styles.pageBreak}> . </div>
+                <div className={styles.pageBreak}>.</div>
             
-            {theDocs.docKey!="accommodation"&&<>
+            {theDocs.docKey!="accommodation"?<>
                 <h2> Day by Day Requirements</h2>
                 {eachProviderMapper}
+            </>:<> 
+                {eachProviderExp.find(elem => elem.expenseKey!="accommodation")&& <> 
+                    <h2> Additional Services</h2>
+                    {eachProviderExp.map((elemz, i)=> <>
+                    {console.log(elemz)}
+                        {elemz.expenseKey!="accommodation"&&<> 
+                            <div className={styles.documentGeneraExpense}>
+                            <span>
+                                <strong>{elemz.priceDetail}</strong> <br/>
+                                {elemz.additionalDescription&&<>{elemz.additionalDescription}</>}
+                            </span>
+                            <span>
+                                ${elemz.price?.toFixed(2)} {elemz.varExpTickets&&<> x {elemz.varExpTickets} <br/> TOTAL: $ {elemz.price?.toFixed(2) * elemz.varExpTickets}  </>} 
+                            </span>
+                            </div>                        
+                        </>}
+                    </>)}
+                </>}
             </>}
             </>}
             {theDocs.docKey!="accommodation"&&<>
@@ -2966,63 +3046,49 @@ export default function OperationsDashboard(){
     const dayByDayDisp=(theDays)=>{
 
         // non MVP
-        // flight adder BTN
         // Cruise Adder BTN
         // switch to turn on or off day detail
-
-        // print capability: Dep Dates, 
-
-        const flightAdder=()=>{
-
-        }
 
         // need to replace it with a usestate trigger
         let descriptionSwitcher=true
         let theProgramDays=theDays.map((elem,i)=><React.Fragment key={i}>
             <div className={styles.eachDayCont}>
-                <div className={styles.spaceBetRow} style={{marginTop:"15px" }}>  
-                    <h5> Day {i+1}: {elem?.dayTitle&&<>{elem?.dayTitle}</>}</h5>
-                    {editSwitch&& <> 
+                <div className={styles.spaceBetRow} style={{marginTop:"15px" }}>
+                <h5> Day {i+1}: {elem?.dayTitle&&<>{elem?.dayTitle}</>}</h5>
+                    {/* {editSwitch&& <> 
                     <span onClick={()=>{
                         // set note trigger
                     }}>
                         <AddCircleOutlineIcon/>
                     </span>
-                    </>}
+                    </>} */}
                 </div>
                 {elem?.dayDescription}
             </div>
 
-                
+            {theDeparture.flights[i]&& <> 
+                &nbsp;<strong>Flights:</strong>
+                <div style={{ paddingRight:"12px"}}>
+                {theDeparture.flights[i].map((elem,i)=><React.Fragment>
+                    {eachFlight(elem)}
+                </React.Fragment> )}
+                </div>
+            </>}
 
-                {theDeparture.operationalNotes[i]&& <>
-                    <br/> <strong> NOTES</strong>
-                </>}
-                {theDeparture.operationalNotes.length>0&& <>
-                    {theDeparture.operationalNotes[i]?.map((elemnt, ind)=><>
-                        <div  style={{fontSize:"0.9em"}}>
-                        - {elemnt.note} {elemnt.target!="general"&&<> | <strong>{elemnt.target}</strong> </>}
-                        </div>
-                    </>)}
-                </>}
+            {theDeparture.operationalNotes[i]&& <>
+                <br/> <strong> NOTES</strong>
+            </>}
+            {theDeparture.operationalNotes.length>0&& <>
+                {theDeparture.operationalNotes[i]?.map((elemnt, ind)=><>
+                    <div  style={{fontSize:"0.9em"}}>
+                    - {elemnt.note} {elemnt.target!="general"&&<> | <strong>{elemnt.target}</strong> </>}
+                    </div>
+                </>)}
+            </>}
         </React.Fragment> )
         return(<>
         <div className={styles.spaceBetRow}>
             <h2>Day by Day:</h2>
-
-            {/* <div style={{cursor:"pointer"}} onClick={()=>{    
-            // add flight functionality here
-            }}> <AddCircleOutlineIcon/> <FlightIcon/> </div> */}
-
-
-            {/* <div style={{cursor:"pointer"}} onClick={()=>{    
-            // add flight functionality here
-            setEditSwitch(true)
-            }}> <EditNoteIcon/> </div> */}
-
-
-
-
         </div>
         <div className={styles.dayByDayCont}>
             {theProgramDays}
@@ -3099,9 +3165,24 @@ export default function OperationsDashboard(){
             </> }
 
             <br/><br/>
+            {ecoAndesFixedDepartures ? <> 
+                {depSelector("EcoAndes Fixed Departures", EcoAndesItins)}
+            </>:<> 
+                <div className={styles.depTrigBTN} onClick={()=>{
+                    setEcoAndesFD(true)
+                }} >
+                    {ecoAndesFixedDepartures ? <>
+                        <CircularProgress />
+                    </>:<>
+                        <AddCircleOutlineIcon/> &nbsp; &nbsp; departure from EcoAndes FD itineraries
+                    </> }
+                </div>
+            </>}
+
+            <br/><br/>
             {itinFetcherLTCSwitch ? <> 
                 {depSelector("LTC Published Itineraries", LTCItins)}
-            </> :<> 
+            </>:<> 
                 <div className={styles.depTrigBTN} onClick={()=>{
                     setLTCItinFetcherSwitch(true)
                 }} >
@@ -3112,21 +3193,6 @@ export default function OperationsDashboard(){
                         <AddCircleOutlineIcon/> &nbsp; &nbsp; departure from LTC itineraries
                     </> }
 
-                </div>
-            </> }
-
-            <br/><br/>
-            {ecoAndesFixedDepartures ? <> 
-                {depSelector("EcoAndes Fixed Departures", EcoAndesItins)}
-            </> :<> 
-                <div className={styles.depTrigBTN} onClick={()=>{
-                    setEcoAndesFD(true)
-                }} >
-                    {ecoAndesFixedDepartures ? <>
-                        <CircularProgress />
-                    </>:<>
-                        <AddCircleOutlineIcon/> &nbsp; &nbsp; departure from EcoAndes FD itineraries
-                    </> }
                 </div>
             </>}
           </>}

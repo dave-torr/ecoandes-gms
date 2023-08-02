@@ -3,7 +3,6 @@
     min-height: 150vh;
     padding: 0 9px;
     padding-bottom: 66px;
-    justify-content: center;
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -105,6 +104,7 @@
     border-radius: 5px;
     padding: 1px 9px;
     padding-bottom: 3px;
+    background-color: white;
     transform: translateY(2px);
 }
 
@@ -141,6 +141,37 @@
     justify-content: center;
     align-items: center;
     width: 240px;
+}
+
+.flightDisplayer{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 12px;
+    border-bottom: dotted 1px black;
+}
+
+.flightDisplayer span{
+    width: 99px;
+}
+.flightDisplayer span:nth-of-type(1){
+    width: 100px;
+    text-align: center;
+}
+.flightDisplayer span:nth-of-type(2){
+    width: 100px;
+    text-align: center;
+}
+.flightDisplayer span:nth-of-type(3){
+    width: 60px;
+    text-align: center;
+    border-right: solid 1px black;
+    margin-right: 6px;
+}
+.flightDisplayer strong{
+    font-size: 0.8em;
+    text-transform: uppercase;
 }
 
 

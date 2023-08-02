@@ -1690,5 +1690,35 @@
             ],
             "priceDetail": "GYE Wyndham Malecon Accomodation"
         }
+    ],
+    "hotelAdditionalServices":[
+        {
+            "currency":"usd",
+            "expenseKey": "variableExpense", 
+            "pricekey": "hotelMealService",
+            "price": 15,
+            "priceDetail": "Meal Service, Variable Expense"
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "variableExpense", 
+            "pricekey": "boxLunch",
+            "price": 10,
+            "priceDetail": "Box Lunch, Variable Expense"
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "variableExpense", 
+            "pricekey": "excursion",
+            "price": 35,
+            "priceDetail": "Generic Excursion"
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "variableExpense", 
+            "pricekey": "meetingReservation",
+            "price": 80,
+            "priceDetail": "Meeting Room/Event hall reservation"
+        }
     ]
 }
