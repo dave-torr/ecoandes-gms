@@ -935,8 +935,12 @@
     .aGMSPage{
         background-color: unset;
         padding-bottom: unset;
+        min-height: fit-content;
     }
     .keySelectors{
+        display: none;
+    }
+    .extraSelectors{
         display: none;
     }
     .printDEL{

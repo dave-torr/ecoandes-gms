@@ -987,8 +987,8 @@ export default function OperationsDashboard(){
             {/* {(fileDisplayKey!="cruises"&& theDep.roomingList.length>0) &&<>
                 <span onClick={()=>{setFileKey("cruises")}}> <SailingIcon/> </span>
             </>} */}
-
         </div>
+
 
         {expenseTrig&&<>
             <div className={styles.aFileContainer}>
@@ -2658,10 +2658,6 @@ export default function OperationsDashboard(){
                 {anInputDisplayer("Contact Name*", "contactName", "text", false, theExpense.contactName, theExpense, setTheExpense)}</div>
                 <div style={{width: "47%" }}> 
                 {anInputDisplayer("Phone #", "contactNumb", "number", false, theExpense.contactNumb, theExpense, setTheExpense)}</div>
-            
-                {/* currency  non op */}
-                {/* <div style={{width: "21%" }}>
-                    {aDropdownPicker(currencyArr, "$", "currency", theExpense, setTheExpense, false, false)}</div>  */}
             </div>
             {theExpense?.expenseKey==="accommodation"?<>
                 <div style={{width: "70%" }}> 
@@ -2674,6 +2670,7 @@ export default function OperationsDashboard(){
                 {theExpense.price&&<>
                 <div style={{width: "25%" }}> 
                     {anInputDisplayer("Price", "price", "number", false, theExpense.price, theExpense, setTheExpense)}</div>
+                 
                     </>}
                 </div>
                 {theExpense.priceArr&&<>
@@ -2693,7 +2690,29 @@ export default function OperationsDashboard(){
                     </>}
                 </div>
             </>}
-            <input className={styles.secondaryBTN} type="submit" value="Add Expense to Day +" />
+            <div className={styles.spaceBetRow}> 
+                <div style={{width: "35%" }}>
+                    <div className={styles.spaceBetRow}>
+                        <div style={{display:"flex" }}>
+                            <label for="cashCheckBox" className={styles.inputLabel}> Economic Requirement</label> &nbsp;
+                            <input type='checkbox' id="cashCheckBox" onChange={()=>{
+                                if(theExpense.econReq){
+                                    setTheExpense({
+                                        ...theExpense,
+                                        "econReq":false
+                                    }) 
+                                } else {
+                                    setTheExpense({
+                                        ...theExpense,
+                                        "econReq":true
+                                    }) 
+                                }
+                            }} /> 
+                        </div>
+                    </div>
+                </div>    
+                <input className={styles.secondaryBTN} type="submit" value="Add Expense to Day +" />
+            </div>
             </form>
         </>)
         } 
@@ -2789,6 +2808,9 @@ export default function OperationsDashboard(){
             }
             }
             })
+        } else if (elem.varExpTickets){
+            totalAggegator =
+            totalAggegator + (elem.price * elem.varExpTickets)
         } else {
             totalAggegator =
             totalAggegator + elem.price
@@ -2813,7 +2835,6 @@ export default function OperationsDashboard(){
             <div style={{display:"flex", alignItems:"center"}}> 
                 <h4>Day {i + 1}:</h4> &nbsp; {theItinerary?.dayByDay[i].dayTitle}
             </div>
-
             {/* General note mapper */}
             {theDeparture?.operationalNotes[i]?.length>0&&<> 
                 <div style={{width:"90%", marginLeft:"4%", marginBottom:"9px", fontSize:"0.9em"}}>
@@ -2917,15 +2938,13 @@ export default function OperationsDashboard(){
                     {element.additionalDescription&&<>{element.additionalDescription}</>}
                 </span>
                 <span>
-                    ${element.price?.toFixed(2)}
+                    ${element.price?.toFixed(2)} {element.varExpTickets&&<> x {element.varExpTickets} = ${element.price?.toFixed(2) * element.varExpTickets}</>}
                 </span>
                 </div>
             </>}</>)}
             <br/>
         </React.Fragment>)
         }
-
-
         return(<>
             <div className={styles.spaceBetRowPRINT} style={{borderBottom:"solid 1px black"}}>
                 <h2>Document Generator:</h2>
@@ -2956,16 +2975,21 @@ export default function OperationsDashboard(){
             </div>
             {theDocs?.hotelName&&<><h2><strong>{theDocs?.hotelName}</strong></h2></>}
             <div>By: {session?.user.name} | Operations Department</div> <br/>
-
+            <div style={{ display:"flex", width:"100%", justifyContent:"space-around" }}>
+                {aDateDisp("trip Starting Date", theDeparture.startingDate, )}
+                {aDateDisp("trip ending Date", theDeparture.startingDate, theDeparture.duration )}
+            </div>
             <div className={styles.detailDispl}>
                 {eachIntroDetail("Date Created", toDate.toLocaleDateString('en-GB', dateOptions))}
                 {theDocs.expenseKey==="workOrder"&&<>
                     {theItinerary?.tripLang&&<>{eachIntroDetail("trip language", theItinerary.tripLang)}</>}
-                </> }
+                </>}
                 {theDeparture?.tourCode&&<>{eachIntroDetail("Tour Code", theDeparture.tourCode)}</>}
                 {theDeparture?.tripRef&&<>{eachIntroDetail("Trip Reference", theDeparture.tripRef)}</>}
                 {theDeparture.tourLeader&&<>{eachIntroDetail("Tour leader", theDeparture.tourLeader.guestArr[0].guestName)}</>}
+                {theDeparture.duration&&<>{eachIntroDetail("Duration", `${theDeparture.duration} days`)}</>}
             </div>
+
             {theDocs.docKey==="accommodation"&&<>
                 <h2>Required Dates:</h2>
                 {eachProviderExp.map((elemnt, indx)=> <React.Fragment key={indx}>
@@ -2981,34 +3005,52 @@ export default function OperationsDashboard(){
                 </>}
                 </React.Fragment>)}
             </>}
-            {theDocs.docKey!="cashReq"&&<> 
+            {theDocs.docKey!="cashReq"&&<>
                 {roomingListDisp(theDeparture)}
                 <div className={styles.pageBreak}>.</div>
-            
-            {theDocs.docKey!="accommodation"?<>
-                <h2> Day by Day Requirements</h2>
-                {eachProviderMapper}
-            </>:<> 
-                {eachProviderExp.find(elem => elem.expenseKey!="accommodation")&& <> 
-                    <h2> Additional Services</h2>
+                {theDocs.docKey!="accommodation"?<>
+                    <h2> Day by Day Requirements</h2>
+                    {eachProviderMapper}
+                </>:<> 
+                    {eachProviderExp.find(elem => elem.expenseKey!="accommodation")&& <> 
+                        <h2> Additional Services</h2>
+                        {eachProviderExp.map((elemz, i)=> <>
+                        {console.log(elemz)}
+                            {elemz.expenseKey!="accommodation"&&<> 
+                                <div className={styles.documentGeneraExpense}>
+                                <span>
+                                    <strong>{elemz.priceDetail}</strong> <br/>
+                                    {elemz.additionalDescription&&<>{elemz.additionalDescription}</>}
+                                </span>
+                                <span>
+                                    ${elemz.price?.toFixed(2)} {elemz.varExpTickets&&<> x {elemz.varExpTickets} <br/> TOTAL: ${elemz.price?.toFixed(2) * elemz.varExpTickets}</>}
+                                </span>
+                                </div>                        
+                            </>}
+                        </>)}
+                    </>}
+                </>}
+            </>}
+            {theDocs.docKey==="cashReq"&&<> 
+                {eachProviderExp.find(elem => elem.econReq)&& <> 
+                    <h2> Economic Requirements</h2>
                     {eachProviderExp.map((elemz, i)=> <>
-                    {console.log(elemz)}
-                        {elemz.expenseKey!="accommodation"&&<> 
+                        {elemz.econReq&&<> 
                             <div className={styles.documentGeneraExpense}>
                             <span>
                                 <strong>{elemz.priceDetail}</strong> <br/>
                                 {elemz.additionalDescription&&<>{elemz.additionalDescription}</>}
                             </span>
                             <span>
-                                ${elemz.price?.toFixed(2)} {elemz.varExpTickets&&<> x {elemz.varExpTickets} <br/> TOTAL: $ {elemz.price?.toFixed(2) * elemz.varExpTickets}  </>} 
+                                ${elemz.price?.toFixed(2)} {elemz.varExpTickets&&<> x {elemz.varExpTickets} = ${elemz.price?.toFixed(2) * elemz.varExpTickets}</>} 
                             </span>
                             </div>                        
                         </>}
                     </>)}
                 </>}
             </>}
-            </>}
-            {theDocs.docKey!="accommodation"&&<>
+
+            {(theDocs.docKey!="accommodation" && theDocs.docKey!="cashReq")&&<>
                 <h2>Service Breakdown</h2>
                 {eachProviderExp.map((element,i)=><React.Fragment key={i}>
                     <div className={styles.documentGeneraExpense} style={{borderTop:"solid 1px black", borderLeft:"solid 1px black" }}>
@@ -3018,7 +3060,7 @@ export default function OperationsDashboard(){
                             {element.additionalDescription&&<>{element.additionalDescription}</>}
                         </span>
                         <span>
-                            ${element.price?.toFixed(2)}
+                            ${element.price?.toFixed(2)} {element.varExpTickets&&<> x {element.varExpTickets} = ${element.price?.toFixed(2) * element.varExpTickets}</>}
                         </span>
                     </div>
                 </React.Fragment> )}
@@ -3041,6 +3083,7 @@ export default function OperationsDashboard(){
                     </div>
                 </div>
             </>}
+            <br/>
         </>)
     }
     const dayByDayDisp=(theDays)=>{
