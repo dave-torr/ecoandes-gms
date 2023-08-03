@@ -215,5 +215,614 @@
             "extras",
             "tips"
         ]
+    },
+    {
+        "tripName": "Djoser NL JECGA",
+        "id": "djoserNLJecga",
+        "duration": 20,
+        "difficulty": 1,
+        "imgArr": [
+        ],
+        "tourOverview":"Choose  Ecuador  as  your  holiday  destination!  This  beautiful country  is  a  paradise  everywhere  you  look  at  it.  Let  yourself  be amazed  by  its  culture  expressed  majestically  in  its  churches, buildings, and heritage cities. In Quito, discover the best-preserved Historic Center in South America. In the Coast you'll fall in love with its views, beaches, and the abundance of fauna that they enclose. Increase  your  adrenaline  by  practicing  a  variety  of  adventure sports  that  Ecuador  has  to  offer.  And  do  not  forget  to  delight yourself  with  the  taste  of  its  gastronomic  diversity,  which  you'll find while touring this country full of magic and charm.",
+        "countryList": ["ecuador"],
+        "dayByDay":[
+            {
+                "dayTitle": "Arrival in Quito",
+                "dayDescription": "Upon your arrival in the city of Quito, our private transport will take us to our hotel. Our check-in will be followed by a destination and itinerary briefing with our local staff and Tour Leader.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Quito – City Line",
+                "dayDescription": "Quito, the capital of Ecuador, is an incredibly diverse city, that offers a bit for everyone. From a gorgeous historic downtown to the amazing sights atop a volcano, there are plenty of options to choose from. Teleferiqo cable car which will take us up to an altitude of 4,100 meters above sea level, on the foothills of Pichincha Volcano. (20 mins way). Once there we can start either do a short walk around observing the beautiful “Paramo” ecosystem, or hike towards the summit of the volcano 4,800 meters (3h30 hours). The weather can change suddenly, so it is advisable to wear the appropriate clothing: a windbreaker, non-slip shoes, comfortable clothing that protects against possible rain and cold wind. We will come back to the historic downtown for lunch (on your own). The historic downtown area is a prime example of colonial architecture, we will be able to visit Plaza de la Independencia, the amazing Compañía Church known as the “golden church”, the Cathedral of the City and we will finish with a panoramic view from “El Panecillo”. The Yaku Water Museum can be an alternative to the hike at Teleferiqo, where we can enjoy learning about the water and its use and conservation in great hands-on expositions and games. Additionally, we can visit the gorgeous ‘Jardin Botanico’ Botanical Gardens, the fascinating world of reptiles and amphibians at the  Serpentarium, or the Orchidarium of Quito where we will enjoy observing different kinds of Orchids existing in the country.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Quito – Otavalo",
+                "dayDescription": "After breakfast we will visit the Monument of the Middle of the World “Mitad del Mundo” where the northern hemisphere meets the southern hemisphere, in addition to a stop by the Ethnographical Intiñan Museum. Our first stop as we head north, will be at the Cochasqui Pyramids Archeological Site. Built by the pre-Inca Cochasqui indigenous communities, the pyramids were used as astronomical observations, agricultural calendars, and religious ceremonies. On the area we can observe a typical indigenous Andean house and the gorgeous llamas and alpacas roaming around. We continue our drive towards Otavalo where we will check into our hotel. After lunch we will go for a short walk around the beautiful Cuicocha Lake located at the foothills of the high Cotacachi Volcano. During the hike we will observe several high Andean native plants such as the Pumamaki, Lupines, Chuquiraguas, etc. If we are lucky perhaps, we can glance at the flight of the Condor. Alternatively, a boat ride on the lake can be arranged instead of the hike. Transport back to the hotel.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Otavalo",
+                "dayDescription": "In the morning after breakfast, we will visit to the colorful Indigenous market in Otavalo, the largest indigenous market of its kind in South America. You’ll arrive just in time to bargain for beautiful tapestries, local paintings, hand-knitted wool sweaters, socks and gloves, wood carvings, silver jewelry, embroidered blouses, and straw hats, to name only a few of the items on offer.After lunch we drive east to the base of the Imbabura volcano to make an easy walk to the Peguche waterfall considered by the local Indigenous people a sacred place. This is a nice easy walk through the forest ending with the view of the beautiful waterfall. Later, we will visit to the small town of San Antonio where we can observe and buy beautiful wood handicrafts. Hotel in Otavalo. ",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Otavalo - Papallacta - Tena",
+                "dayDescription": "Our day starts with a southward drive for about 3 hours towards the beautiful highlands of Papallacta.  On the way on we will stop at the small town of Cayambe to try the delicious biscochos and the “manjar de leche” caramel. Then we will continue towards the Papallacta Highlands, a beautiful place surrounded by green cloud forest mountains where we find the ‘Termas de Papallacta’ Resort, a nice place with lot of green areas and where kids and adults will enjoy the hot water springs. After lunch (on your own), we continue our drive east, as we head into the forest, and passing the town of Baeza towards the city of Tena where we spend the night in a local hotel",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast, dinner and accommodation"
+                ]
+                
+            },
+            {
+                "dayTitle": "Tena – Yacuma Lodge",
+                "dayDescription": "After a relaxing morning in Tena, a 2-hour drive will take us deep into the Amazon rainforest. We will first arrive near the Arajuno River, where we board a canoe which will take us to visit the “Amazoonico”, a wildlife rescue center and where we can observe the different species which were rescued from animal traffic dealers. Time to enjoy our packed lunch. From “Amazoonico” we will take a boat that will take us towards Yacuma Ecolodge. For our adventurous guests, we will be able to practice tubbing down the river from this spot, don’t forget your swimming suit! Our luggage will be transported towards Santa Rosa Town where another boat will take the bags towards the Yacuma Lodge located on a beautiful spot in the deep jungle area and where you will be welcomed by a typical cold drink. Here we will have time to settle in the lodge’s comfortable Quechua-style bungalows. After a short rest, and in the company of one of our expert’s indigenous guides we will visit to the Quechua indigenous community of Chontayacu, where you will have the opportunity to learn about local customs and the way of life in the jungle. Here we can test our pottery making skills, purchase some locally produced works of art, and visit the local school. Later in the afternoon, return to the lodge for dinner. Our native guide will organize a night walk around the lodge to discover insects, arachnids, amphibians, and birds. Note: the lodge will provide rubber boots for all excursions.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "breakfast, dinner and Accommodation at Yacuma Jungle Ecolodge",
+                    "box lunch",
+                    "noted Excursions",
+                    "native Guides"
+                ]
+            },
+            {
+                "dayTitle": "Yacuma lodge",
+                "dayDescription": "After breakfast, we’ll begin a 2–3-hour hike through the deep primary rainforest. Along the way an indigenous guide will show us the many species of plants and describe their medicinal purposes to us, a practice that goes back hundreds of years, and which is an important part of the Quichua community.  With luck we perhaps will see monkeys and birds such as oropendolas and parrots. Return to the lodge for lunch and after a rest we will go by canoe to the shores of the Napo River to try our luck in gold panning. Then later in the afternoon we go to the Yacuma Lagoon to fish for piranhas and other species of fish. Later in the afternoon we return to the lodge for dinner and then in the evening we will enjoy gathering around the fire pit, with a typical drink of the jungle, and maybe some music from our staff",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "breakfast, lunch, dinner and Accommodation at Yacuma Jungle Ecolodge",
+                    "noted Excursions",
+                    "native Guides"
+                ]
+            },
+            {
+                "dayTitle": "Yacuma – Baños",
+                "dayDescription": "Yacuma is an extraordinary spot for birdwatching and an early morning wakeup call will take us to a Clay Lick, where tens of parrots enjoy munching on the minerals on the clay walls. After breakfast and a relaxing time, we will canoe back to Santa Rosa village from where we will start our drive towards the city of Baños. On the way on we will stop at Puyo town where we find the “balsa” handicraft shops. Then later on passing the small towns of Rio Verde and Rio Negro we will arrive to a place where we make a walk to observe the impressive “Pailon del Diablo” (Devil’s Cauldron) waterfall. Using a cable car we can cross the deep Pastaza River canyon, a challenging adventure. Finally, we will arrive in the town of Baños where we will be allocated a comfortable hotel, after about a 4-and-a-half-hour drive.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "canoe rides",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Baños",
+                "dayDescription": "This day you can enjoy a variety of adventure and relaxing options around the picturesque town of Baños, such as white-water rafting, horseback riding around the beautiful highlands, a challenging mountain bike tour, or relaxing in one of the hot springs or small cafes that Baños has to offer. The activities depend on the interests of the group and must be organized with the TL.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Baños - Riobamba",
+                "dayDescription": "In the morning and after breakfast we will drive towards the city of Ambato. On the way we will stop at the town of the Salasaca, well known for its interesting dresses and for the beautiful tapestries produced here. Then we will continue to Ambato city from where we drive towards the highlands of the immense Chimborazo, an extinct volcano which, for a long time was considered the highest mountain in the world (however and it is important to know that measured from the center of earth in fact Chimborazo is the highest peak on the terrestrial globe). Here we can observe the gracious Vicuñas, a highland Camelid. We’ll walk around the Whymper refuge, located at 5,042 m. We suggest you take sweets with you in case of altitude sickness and wear the appropriate clothing for this altitude such as a windbreaker, non-slip hiking or running shoes, and clothing that protects against possible rain and cold wind. Later, we continue our drive until we arrive in our hotel in the city of Riobamba",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Riobamba –Ingapirca - Cuenca ",
+                "dayDescription": "Early morning, we will continue our way towards Ingapirca where we will find the fascinating pre-Inca and Inca Ruins, but not before stopping by a viewpoint of the “Devil’s Nose train. Ingapirca was used for astronomical observations, agricultural calendars, and religious ceremonies. After visiting Ingapirca the trip continues to the charming city of Cuenca.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Cuenca",
+                "dayDescription": "We will leave Cuenca in the morning and drive to Gualaceo, an important market town. Here, fine hand-woven shawls, belts and household goods are sold. There is also an animal market across the covered bridge. The biggest market in this village takes place every Sunday. Only a few kilometers away from Gualaceo ,the village of Chordeleg is located, which is famous for its gold and silver filigree jewelry and for its textiles. Sigsig is a pleasant colonial village located 25 Km from Gualaceo and is the center of this hat-making region.  Transport back to Cuenca after visiting these interesting sites. ",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Cuenca ",
+                "dayDescription": "This day we will have two options to choose from: The Cajas National Park is one of the most important natural reserves of southern Ecuador. It is the main source of water for Cuenca, and an IBA (important bird area), dedicated to conservation. These highlands are full of incredible landscapes, animals and creatures, and well-preserved forests. We will do a 2–3-hour morning excursion to Cajas national park and return in the afternoon to Cuenca for an afternoon city tour. The southern city of Cuenca is one of the most important of Ecuador. With incredible colonial influence, gorgeous landscapes and a friendly vibe, the city is one of the most welcoming in South America. We will explore the main highlights of the city on foot and driving from the city center.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Cuenca – Guayaquil",
+                "dayDescription": "In the morning, we will travel to the city of Guayaquil, the biggest city in Ecuador, and one of the most modern ports of the Pacific Ocean. We’ll check in at our hotel accommodation in Guayaquil, before heading out to explore the city. Our visits can include Bolivar Park with the famous green iguanas that inhabit this place, the ‘Malecon’ boardwalk of Guayaquil and the great ‘Historical Park’",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Guayaquil – San Cristobal ",
+                "dayDescription": "Transfer to the airport for your flight to Galapagos. Upon your arrival at the small city of Puerto Baquerizo in San Cristobal Island, we will transfer you to the Hotel. After lunch (on your own) we will visit the Interpretation Centre of San Cristobal where our guides will explain about the Galapagos Islands, their formation, people, and fauna. We will then visit the “Cerro de las Tijeretas” which is a unique site to observe two types of frigates birds nesting in the same colony. The view and the landscapes are very beautiful. At the base of Tijeretas Hill we find a nice bay where is possible to snorkel with sea lions in a clear blue bay. Return to the town, and on the way, on a nearby beach you can observe playful sea lions.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation",
+                    "english speaking galapagos naturalist guide",
+                    "activities as described in program"
+                ]
+            },
+            {
+                "dayTitle": "San Cristobal – Highlands – Tortoise Breading Center – Puerto Chino",
+                "dayDescription": "This day we’ll enjoy of a full day guided tour to visit the highlands of San Cristobal: Cerro Colorado Tortoise Breading Center, known as “La Galapaguera”, is a sanctuary for giant Galapagos tortoises, where you can observe this exotic animal in a semi-natural state. Here you can walk ecological trails, where you will delight in observing birds and native vegetation of San Cristóbal. The complex also has a complete information center that reveals the great variety of Galapagos tortoises throughout the archipelago. Then we will visit Junco Lagoon, that is a freshwater reservoir formed by a natural crater of volcanic origin on the heights of San Cristóbal Island, a good site for birdwatching. Finally, we will visit “Puerto Chino”, one of the most beautiful white coral-sand beaches, home to a small Galapagos Sea Lion colony, marine Iguanas, Sally Lightfoot Crabs, and a variety of shorebirds.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation",
+                    "english speaking galapagos naturalist guide",
+                    "activities as described in program"
+                ]
+            },
+            {
+                "dayTitle": "San Cristobal – Floreana Island – Isabela",
+                "dayDescription": "Early in the morning, we start our navigation towards the historic Floreana Island. We will take a traditional transportation called “chiva” where we will go towards the highlands of Floreana, to an area known as “Asilo de la Paz”. Then, we will go towards Playa Negra, here we will have the opportunity to practice some snorkel (equipment not included, rental available).  After lunch (on your own) we start our navigation towards Isabela Island, the biggest on the Archipelago of Galapagos. After 2 hours of navigation, we will arrive at the town of Pto. Villamil and arrange your transfer to the hotel.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation",
+                    "english speaking galapagos naturalist guide",
+                    "water taxi services",
+                    "interisland speedboat"
+                ]
+            },
+            {
+                "dayTitle": "Sierra Negra Volcano & Tintoreras tour (pool basis)",
+                "dayDescription": "In the morning, our transport will take us up to the highlands of Isabela Island. After arriving at the National Park checkpoint, we will start our easy hike up to the rim of the crater of the Sierra Negra volcano. This crater, considered amongst the largest in the world (approximately 11 kms diameter), is one of the most impressive examples of the volcanic activity in the Islands. In the bottom of the crater, we can observe cooled down lava flows from recent eruptions. Return to our hike starting point and then by car transport back to Pto. Villamil. In the afternoon after lunch, we go for a shared tour to the place known as las Tintoreras, a place where we can observe sharks, marine turtles, marine iguanas, and with luck, some penguins, as well as snorkel. Transport back to the hotel and free time to rest and enjoy the beach of this tranquil, beautiful Island in the Pacific Ocean.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation",
+                    "english speaking galapagos naturalist guide",
+                    "shared group tour"
+                ]
+            },
+            {
+                "dayTitle": "Isabela – Santa Cruz",
+                "dayDescription": "After breakfast, we will visit the fantastic Tortoise Breading Center and explore the area known as Humedales (Wetlands of Isabela) by walking on its well-kept boardwalk. Here we have a chance of observing fantastic shorebirds of the area, including the fantastic Flamingo subspecies that lives in the Galapagos. We will then board our speedboat and head back the Island of Santa Cruz. Upon arrival at Santa Cruz and after check in the hotel, we go for a visit to the well-known Charles Darwin Station, tortoise breading center of Santa Cruz Island",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation",
+                    "english speaking galapagos naturalist guide",
+                    "water taxi services",
+                    "interisland speedboat"
+                ]
+            },
+            {
+                "dayTitle": "Galapagos Transfer out",
+                "dayDescription": "Morning transfer to the Airport located on Baltra Island for your fly to Guayaquil where you will be connecting with your international flight back home. On the way to Baltra Island we will make a stop to observe “Los Gemelos” twin crater formation",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast"
+                ]
+            }
+
+        ],
+        "tourType": "360° itineraries",
+        "price": 5800,
+        "prices": {
+            "priceType": "fixedDeparture",
+            "singlesupp": 280,
+            "dblOccupancy": true,
+            "priceNotice": "hotel categories will depend on locally available properties"
+        },
+        "included": [
+            "hotels: double room accommodation with private facilities",
+            "provate transfers & transportation",
+            "Yacuma Jungle EcoLodge activities",
+            "local guides in Yacuma",
+            "Galapagos Naturalist Guide services",
+            "speedboat inter-island ferry service",
+            "noted meals"
+        ],
+        "notIncluded": [
+            "personal travel insurance (REQUIRED)",
+            "international/regional flights",
+            "additional Inca Trail porters",
+            "personal trekking gear",
+            "extras",
+            "tips"
+        ]
+    },
+    {
+        "tripName": "Djoser NL EC",
+        "id": "djoserNLec",
+        "duration": 18,
+        "difficulty": 1,
+        "imgArr": [
+        ],
+        "tourOverview":"Choose  Ecuador  as  your  holiday  destination!  This  beautiful country  is  a  paradise  everywhere  you  look  at  it.  Let  yourself  be amazed  by  its  culture  expressed  majestically  in  its  churches, buildings, and heritage cities. In Quito, discover the best-preserved Historic Center in South America. In the Coast you'll fall in love with its views, beaches, and the abundance of fauna that they enclose. Increase  your  adrenaline  by  practicing  a  variety  of  adventure sports  that  Ecuador  has  to  offer.  And  do  not  forget  to  delight yourself  with  the  taste  of  its  gastronomic  diversity,  which  you'll find while touring this country full of magic and charm.",
+        "countryList": ["ecuador"],
+        "dayByDay":[
+            {
+                "dayTitle": "Arrival in Quito",
+                "dayDescription": "Upon your arrival in the city of Quito, our private transport will take us to our hotel. Our check-in will be followed by a destination and itinerary briefing with our local staff and Tour Leader.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Quito: TeleferiQo – City Tour",
+                "dayDescription": "Quito, the capital of Ecuador, is an incredibly diverse city, that offers a bit for everyone. From a gorgeous historic downtown to the amazing sights atop a volcano, there are plenty of options to choose from. TeleferiQo cable car which will take us up to an altitude of 4,100 meters above the sea level, on the foothills of Pichincha Volcano. (20 mins way). Once there we can start either do a short walk around observing the beautiful “Paramo” ecosystem, or hike towards the summit of the volcano 4,800 meters (3h30 hours). The weather can change suddenly, so it is advisable to wear the appropriate clothing: a windbreaker, non-slip shoes, comfortable clothing that protects against possible rain and cold wind. We will come back to the historic downtown for lunch (on your own). The historic downtown area is a prime example of colonial architecture, we will be able to visit Plaza de la Independencia, the amazing Compañía Church known as the “golden church”, the Cathedral of the City and we will finish with a panoramic view from “El Panecillo”. The Yaku Water Museum can be an alternative to the hike at TeleferiQo, where we can enjoy learning about the water and its use and conservation in great hands-on expositions and games. Additionally, we can visit the gorgeous ‘Jardin Botanico’ Botanical Gardens, the fascinating world of reptiles and amphibians at the  Serpentarium, or the Orchidarium of Quito where we will enjoy observing different kinds of Orchids existing in the country.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Quito – Middle of the World - Cochasquí – Peguche Otavalo",
+                "dayDescription": "After breakfast we will visit the Monument of the Middle of the World “Mitad del Mundo” where the northern hemisphere meets the southern hemisphere, in addition to a stop by the Ethnographical Intiñan Museum. Our first stop as we head north, will be at the Cochasqui Pyramids Archeological Site. Built by the pre-Inca Cochasqui indigenous community, the pyramids were used as astronomical observations, agricultural calendars, and religious ceremonies. On the area we can observe a typical indigenous Andean house and the gorgeous llamas and alpacas roaming around. We continue our drive towards Otavalo where we will check into our hotel. After lunch (on your own) we drive east to the base of the Imbabura volcano to make an easy walk to the Peguche waterfall considered by the local Indigenous people a sacred place. This is a nice easy walk through the forest ending with the view of the beautiful waterfall. Later, we will visit to the small town of San Antonio where we can observe and buy beautiful wood handicrafts. Hotel in Otavalo",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Otavalo – Artisanal Indigenous Market – Cuicocha - Cotacachi",
+                "dayDescription": "In the morning after breakfast, we will visit to the colorful Indigenous market in Otavalo, the largest indigenous market of its kind in South America. You’ll arrive just in time to bargain for beautiful tapestries, local paintings, hand-knitted wool sweaters, socks and gloves, wood carvings, silver jewelry, embroidered blouses, and straw hats, to name only a few of the items on offer. After lunch we will go for a short walk around the beautiful Cuicocha Lake located at the foothills of the high Cotacachi Volcano. During the hike we will observe several high Andean native plants such as the Pumamaki, Lupines, Chuquiraguas, etc. If we are lucky perhaps, we can glance at the flight of the Condor. Alternatively, a boat ride on the lake can be arranged instead of the hike. Finally, we will visit Cotacachi town, where we will be able to admire leather items created by the locals. Return to hotel in Otavalo.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Otavalo – Papallaca",
+                "dayDescription": "Our day starts with a southward drive for about 3 hours towards the beautiful highlands of Papallacta.  On the way on we will stop at the small town of Cayambe to try the delicious biscochos and the “manjar de leche” caramel. Then we will continue towards the Papallacta Highlands, a beautiful place surrounded by green cloud forest mountains where we find the ‘Termas de Papallacta’ Resort, a nice place with lot of green areas and where kids and adults will enjoy the hot water springs. ",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast, dinner and accommodation",
+                    "canoe rides",
+                    "native guides"
+                ]
+                
+            },
+            {
+                "dayTitle": "Papallacta – Yacuma Lodge",
+                "dayDescription": "After a relaxing morning from Papallacta, a 2-hour drive will take us to the rainforest. We will pass through the towns of Baeza and Tena before to start our journey into the mysterious Amazon jungle. We will stop by Tena for lunch and then continue our drive for about 2 hours to arrive to Santa Rosa village from where a 25-30 minutes canoe ride will take us to Yacuma Lodge located on a beautiful spot in the deep jungle area and where you will be welcomed by a typical cold drink. Here we will have time to settle in the lodge’s typical comfortable Quechua bungalows. In the company of one of our expert’s native guides, we will go to the Yacuma Lagoon to fish for piranhas and other species. Later in the afternoon, return to the lodge for dinner. ",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "breakfast, dinner and Accommodation at Yacuma Jungle Ecolodge",
+                    "noted Excursions",
+                    "native Guides"
+                ]
+            },
+            {
+                "dayTitle": "Yacuma lodge",
+                "dayDescription": "After breakfast, and in the company of one of our expert’s local indigenous guides, we will take a 2 hour walk through the jungle to know more about medicinal jungle plants. After lunch, we will visit to the Quechua indigenous community of Chontayacu, where you will have the opportunity to learn about local customs and the way of life in the jungle. Here we can test our pottery making skills, purchase some locally produced works of art, and visit the local school. Later in the afternoon we return to the lodge for dinner and then in the evening we will enjoy gathering around the fire pit, with a typical drink of the jungle, and maybe some music from our staff. ",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "breakfast, lunch, dinner and Accommodation at Yacuma Jungle Ecolodge",
+                    "noted Excursions",
+                    "native Guides"
+                ]
+            },
+            {
+                "dayTitle": "Yacuma – Baños",
+                "dayDescription": "Yacuma is an extraordinary spot for birdwatching and an early morning wakeup call will take us to a Clay Lick, where tens of parrots enjoy munching on the minerals on the clay walls. After breakfast and a relaxing time, we will canoe back to Santa Rosa village from where we will start our drive towards the city of Baños. On the way on we will stop at Puyo town where we find the “balsa” handicraft shops. Then later on passing the small towns of Rio Verde and Rio Negro we will arrive to a place where we make a walk to observe the impressive “Pailon del Diablo” (Devil’s Cauldron) waterfall. Using a cable car we can cross the deep Pastaza River canyon, a challenging adventure. Finally, we will arrive in the town of Baños where we will be allocated a comfortable hotel, after about a 4-and-a-half-hour drive.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Baños",
+                "dayDescription": "This day you can enjoy of a variety of adventure and relaxing options around the picturesque town of Baños, such as white-water rafting, horseback riding around the beautiful highlands, a challenging mountain bike tour, or relax in one of the hot springs or small cafes that Baños has to offer. The activities depend on the interests of the group and must be organized with the TL.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Baños - Chimborazo - Riobamba",
+                "dayDescription": "In the morning and after breakfast we will drive towards the city of Ambato. On the way we will stop at the town of the Salasaca, well known for its interesting dresses and for the beautiful tapestries produced here. Then we will continue to Ambato city from where we drive towards the highlands of the immense Chimborazo, an extinct volcano which, for a long time was considered the highest mountain in the world (however and it is important to know that measured from the center of earth in fact Chimborazo is the highest peak on the terrestrial globe). Here we can observe the gracious Vicuñas, a highland Camelid. We’ll walk around the Whymper refuge, located at 5,042 m. We suggest you take sweets with you in case of altitude sickness and wear the appropriate clothing for this altitude such as a windbreaker, non-slip hiking or running shoes, and clothing that protects against possible rain and cold wind. Later, we continue our drive until we arrive in our hotel in the city of Riobamba. ",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Riobamba – Calpi - Guano – Latacunga",
+                "dayDescription": "In the morning and after breakfast we will make our first stop in Calpi where we will have some options to visit, like its local market, the Alpaca Museum or simply make a tour around to see its beautiful colonial church. Then, we will drive towards Balbanera Church, the first catholic church built on Ecuadorian land. We will continue our way to Guano, where we will have the opportunity to visit the “Guano Mummy” discovered in 1949, dating back to colonial times.  After lunch time (on your own) we will continue to Latacunga where we will have free time with our TL to explore the city and maybe try the delicious “Allullas” a kind of crunchy bread typical of this city. ",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Latacunga– Parque Nacional Cotopaxi – Chugchilan",
+                "dayDescription": "Early in the morning, our transport will take us to the Cotopaxi Volcano parking lot (4600m). From there a 1-hour walk will take us to the Rivas Mountain Hut at 4800m. With some luck, we can observe the Andean wolf, birds and even foxes. We recommend you take some sweets with you to avoid any altitude sickness. Then, will have the opportunity to visit Limpiopungo Lake, where we will take a walk around its shores and see some Andean birds. After this amazing visit, we will head to Chugchilan, a nice small Andean town located very close to the well-known Quilotoa Lake, where we will overnight",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Chugchilan – Quilotoa – La Mana",
+                "dayDescription": "After breakfast, we will drive to Quilotoa Lake, during the tour, we admire various ecosystems and landscapes typical of the Andes. Once in Quilotoa, we will have the opportunity to see the crafts cradle of skilled artisans of Zumbahua and Tigua indigenous communities located near Quilotoa Lake. We continue the viewpoint of the Quilotoa Volcanic Lagoon; an impressive  volcanic lagoon of turquoise water that is the perfect setting to take excellent photographs. Lunch in a local restaurant (on your own). It is important to know that, to get to the shores of the lake, we will have to descend the crater for around 50 minutes, with a return hike of about 1.30 to 2 hours, depending on the physical state of the participants. We will then continue our road towards La Maná where we will stay overnight.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "La Mana – Portoviejo – Puerto Lopez",
+                "dayDescription": "Early, after breakfast, we will drive towards a typical Banana Plantation Farm. Here we will see the process of production and some of the uses the banana, a staple of Ecuadorian cuisine with all the varieties that are grown here. After lunchtime we will check out some waterfalls in the area, following a nice cloud forest path through the vegetation. We will continue to the small fishing town of Puerto Lopez where we will stay overnight.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Pto. López",
+                "dayDescription": "We will have a day plenty of wonderful options for discovering the coastal region and Puerto Lopez: A)Humpback Whale watching (from June until September) B) Full day Isla de la Plata Shared tour C) Full day Diving excursion (PADI or equivalent license needed) D)Agua Blanca archeological site and Machalilla National Park (@ Los Frailes Beach)or just relax at the beach in Puerto Lopez",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Pto. López",
+                "dayDescription": "We will have a day plenty of wonderful options for discovering the coastal region and Puerto Lopez: A)Humpback Whale watching (from June until September) B) Full day Isla de la Plata Shared tour C) Full day Diving excursion (PADI or equivalent license needed) D)Agua Blanca archeological site and Machalilla National Park (@ Los Frailes Beach)or just relax at the beach in Puerto Lopez",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Puerto López - Guayaquil",
+                "dayDescription": "In the morning, we will travel to the city of Guayaquil, the biggest city in Ecuador, and one of the most modern ports of the Pacific Ocean. We’ll check in at our hotel accommodation in Guayaquil, before heading out to explore the city. Our visits can include Bolivar Park with the famous green iguanas that inhabit this place, the ‘Malecon’ boardwalk of Guayaquil and the great ‘Historical Park’.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Guayaquil Transfer Out",
+                "dayDescription": "Depending on your departure time, activities in the morning can be arranged. Transfer to the airport in time to catch your international flight back home included.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast"
+                ]
+            }
+
+        ],
+        "tourType": "360° itineraries",
+        "price": 5800,
+        "prices": {
+            "priceType": "fixedDeparture",
+            "singlesupp": 280,
+            "dblOccupancy": true,
+            "priceNotice": "hotel categories will depend on locally available properties"
+        },
+        "included": [
+            "hotels: double room accommodation with private facilities",
+            "provate transfers & transportation",
+            "Yacuma Jungle EcoLodge activities",
+            "local guides in Yacuma",
+            "Galapagos Naturalist Guide services",
+            "speedboat inter-island ferry service",
+            "noted meals"
+        ],
+        "notIncluded": [
+            "personal travel insurance (REQUIRED)",
+            "international/regional flights",
+            "additional Inca Trail porters",
+            "personal trekking gear",
+            "extras",
+            "tips"
+        ]
+    },
+    {
+        "tripName": "Djoser NL JECU",
+        "id": "djoserNLjecu",
+        "duration": 20,
+        "difficulty": 1,
+        "imgArr": [
+        ],
+        "tourOverview":"Choose  Ecuador  as  your  holiday  destination!  This  beautiful country  is  a  paradise  everywhere  you  look  at  it.  Let  yourself  be amazed  by  its  culture  expressed  majestically  in  its  churches, buildings, and heritage cities. In Quito, discover the best-preserved Historic Center in South America. In the Coast you'll fall in love with its views, beaches, and the abundance of fauna that they enclose. Increase  your  adrenaline  by  practicing  a  variety  of  adventure sports  that  Ecuador  has  to  offer.  And  do  not  forget  to  delight yourself  with  the  taste  of  its  gastronomic  diversity,  which  you'll find while touring this country full of magic and charm.",
+        "countryList": ["ecuador"],
+        "dayByDay":[
+            {
+                "dayTitle": "Arrival in Quito",
+                "dayDescription": "Upon your arrival in the city of Quito, our private transport will take us to our hotel. Our check-in will be followed by a destination and itinerary briefing with our local staff and Tour Leader.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Quito: City Tour",
+                "dayDescription": "Quito, the capital of Ecuador, is an incredibly diverse city, that offers a bit for everyone. From a gorgeous historic downtown to the amazing sights atop a volcano, there are plenty of options to choose from. TeleferiQo cable car which will take us up to an altitude of 4,100 meters above the sea level, on the foothills of Pichincha Volcano. (20 mins way). Once there we can start either do a short walk around observing the beautiful “Paramo” ecosystem, or hike towards the summit of the volcano 4,800 meters (3h30 hours). The weather can change suddenly, so it is advisable to wear the appropriate clothing: a windbreaker, non-slip shoes, comfortable clothing that protects against possible rain and cold wind. We will come back to the historic downtown for lunch (on your own). The historic downtown area is a prime example of colonial architecture, we will be able to visit Plaza de la Independencia, the amazing Compañía Church known as the “golden church”, the Cathedral of the City and we will finish with a panoramic view from “El Panecillo”. The Yaku Water Museum can be an alternative to the hike at TeleferiQo, where we can enjoy learning about the water and its use and conservation in great hands-on expositions and games. Additionally, we can visit the gorgeous ‘Jardin Botanico’ Botanical Gardens, the fascinating world of reptiles and amphibians at the  Serpentarium, or the Orchidarium of Quito where we will enjoy observing different kinds of Orchids existing in the country.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Quito – Middle of the World - Cochasquí – Cuicocha - Otavalo",
+                "dayDescription": "After breakfast we will visit the Monument of the Middle of the World “Mitad del Mundo” where the northern hemisphere meets the southern hemisphere, in addition to a stop by the Ethnographical Intiñan Museum. Our first stop as we head north, will be at the Cochasqui Pyramids Archeological Site. Built by the pre-Inca Cochasqui indigenous community, the pyramids were used as astronomical observations, agricultural calendars, and religious ceremonies. On the area we can observe a typical indigenous Andean house and the gorgeous llamas and alpacas roaming around. We continue our drive towards Otavalo where we will check into our hotel. After lunch we will go for a short walk around the beautiful Cuicocha Lake located at the foothills of the high Cotacachi Volcano. During the hike we will observe several high Andean native plants such as the Pumamaki, Lupines, Chuquiraguas, etc. If we are lucky perhaps, we can glance at the flight of the Condor. Alternatively, a boat ride on the lake can be arranged instead of the hike. Transport back to the hotel.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Otavalo",
+                "dayDescription": "In the morning after breakfast, we will visit to the colorful Indigenous market in Otavalo, the largest indigenous market of its kind in South America. You’ll arrive just in time to bargain for beautiful tapestries, local paintings, hand-knitted wool sweaters, socks and gloves, wood carvings, silver jewelry, embroidered blouses, and straw hats, to name only a few of the items on offer.After lunch (on your own) we drive east to the base of the Imbabura volcano to make an easy walk to the Peguche waterfall considered by the local Indigenous people a sacred place. This is a nice easy walk through the forest ending with the view of the beautiful waterfall. Later, we will visit to the small town of San Antonio where we can observe and buy beautiful wood handicrafts. Hotel in Otavalo.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Otavalo - Papallacta - Tena",
+                "dayDescription": "Our day starts with a southward drive for about 3 hours towards the beautiful highlands of Papallacta.  On the way on we will stop at the small town of Cayambe to try the delicious biscochos and the “manjar de leche” caramel. Then we will continue towards the Papallacta Highlands, a beautiful place surrounded by green cloud forest mountains where we find the ‘Termas de Papallacta’ Resort, a nice place with lot of green areas and where kids and adults will enjoy the hot water springs. After lunch (on your own), we continue our drive east, as we head into the forest, and pass the town of Baeza towards the city of Tena where we spend the night in a local hotel",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast, dinner and accommodation"
+                ]
+                
+            },
+            {
+                "dayTitle": "Tena – Yacuma Lodge",
+                "dayDescription": "After a relaxing morning in Tena, a 2-hour drive will take us deep into the Amazon rainforest. We will first arrive near the Arajuno River, where we board a canoe which will take us to visit the “Amazoonico”, a wildlife rescue center and where we can observe the different species which were rescued from animal traffic dealers. Time to enjoy our packed lunch. From “Amazoonico” we will take a boat that will take us towards Yacuma Ecolodge. For our adventurous guests, we will be able to practice tubbing down the river from this spot, don’t forget your swimming suit! Our luggage will be transported towards Santa Rosa Town where another boat will take the bags towards the Yacuma Lodge located on a beautiful spot in the deep jungle area and where you will be welcomed by a typical cold drink. Here we will have time to settle in the lodge’s comfortable Quechua-style bungalows. After a short rest, and in the company of one of our expert’s indigenous guides we will visit to the Quechua indigenous community of Chontayacu, where you will have the opportunity to learn about local customs and the way of life in the jungle. Here we can test our pottery making skills, purchase some locally produced works of art, and visit the local school. Later in the afternoon, return to the lodge for dinner. Our native guide will organize a night walk around the lodge to discover insects, arachnids, amphibians, and birds. Note: the lodge will provide rubber boots for all excursions.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "breakfast, dinner and Accommodation at Yacuma Jungle Ecolodge",
+                    "noted Excursions",
+                    "box lunch",
+                    "native Guides"
+                ]
+            },
+            {
+                "dayTitle": "Yacuma lodge",
+                "dayDescription": "After breakfast, we’ll begin a 2–3-hour hike through the deep primary rainforest. Along the way an indigenous guide will show us the many species of plants and describe their medicinal purposes to us, a practice that goes back hundreds of years, and which is an important part of the Quichua community.  With luck we perhaps will see monkeys and birds such as oropendolas and parrots. Return to the lodge for lunch and after a rest we will go by canoe to the shores of the Napo River to try our luck in gold panning. Then later in the afternoon we go to the Yacuma Lagoon to fish for piranhas and other species of fish. Later in the afternoon we return to the lodge for dinner and then in the evening we will enjoy gathering around the fire pit, with a typical drink of the jungle, and maybe some music from our staff. ",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "breakfast, lunch, dinner and Accommodation at Yacuma Jungle Ecolodge",
+                    "noted Excursions",
+                    "native Guides"
+                ]
+            },
+            {
+                "dayTitle": "Yacuma – Baños",
+                "dayDescription": "Yacuma is an extraordinary spot for birdwatching and an early morning wakeup call will take us to a Clay Lick, where tens of parrots enjoy munching on the minerals on the clay walls. After breakfast and a relaxing time, we will canoe back to Santa Rosa village from where we will start our drive towards the city of Baños. On the way on we will stop at Puyo town where we find the “balsa” handicraft shops. After passing the small towns of Rio Verde and Rio Negro we will arrive to a place where we make a walk to observe the impressive “Pailon del Diablo” (Devil’s Cauldron) waterfall. Using a cable car we can cross the deep Pastaza River canyon, a challenging adventure. Finally, we will arrive in the town of Baños where we will be allocated a comfortable hotel, after about a 4-and-a-half-hour drive",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Baños",
+                "dayDescription": "These days you can enjoy of a variety of adventure and relaxing options around the picturesque town of Baños, such as white-water rafting, horseback riding around the beautiful highlands, a challenging mountain bike tour, or relax in one of the hot springs or small cafes that Baños has to offer. The activities depend on the interests of the group and must be organized with the TL.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Baños",
+                "dayDescription": "These days you can enjoy of a variety of adventure and relaxing options around the picturesque town of Baños, such as white-water rafting, horseback riding around the beautiful highlands, a challenging mountain bike tour, or relax in one of the hot springs or small cafes that Baños has to offer. The activities depend on the interests of the group and must be organized with the TL.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Baños - Chimborazo - Riobamba",
+                "dayDescription": "In the morning and after breakfast, we will drive towards the city of Ambato. On the way we will stop at the town of the Salasaca, well known for its interesting dresses and for the beautiful tapestries produced here. Then we will continue to Ambato city from where we drive towards the highlands of the immense Chimborazo, an extinct volcano which, for a long time was considered the highest mountain in the world (however and it is important to know that measured from the center of earth in fact Chimborazo is the highest peak on the terrestrial globe). Here we can observe the gracious Vicuñas, a highland Camelid. We’ll walk around the Whymper refuge, located at 5,042 m. We suggest you take sweets with you in case of altitude sickness and wear the appropriate clothing for this altitude such as a windbreaker, non-slip hiking or running shoes, and clothing that protects against possible rain and cold wind. Later, we continued our drive until we arrive in our hotel in the city of Riobamba",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Riobamba –Ingapirca - Cuenca",
+                "dayDescription": "Early morning, we will continue our way towards Ingapirca where we will find the fascinating pre-Inca and Inca Ruins, but not before stopping by a viewpoint of the “Devil’s Nose Train”. Ingapirca was used for astronomical observations, agricultural calendars, and religious ceremonies. After visiting Ingapirca the trip continues to the charming city of Cuenca",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Cuenca",
+                "dayDescription": "We will leave Cuenca in the morning and drive to Gualaceo, an important market town. Here, fine hand-woven shawls, belts, and household goods are sold. There is also an animal market across the covered bridge. The biggest market in this village takes place every Sunday. Only a few kilometers away from Gualaceo ,the village of Chordeleg is located, which is famous for its gold and silver filigree jewelry and for its textiles. Sigsig is a pleasant colonial village located 25 Km from Gualaceo and is the center of this hat-making region.  Transport back to Cuenca after visiting these interesting sites. ",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Cuenca",
+                "dayDescription": "The southern city of Cuenca is one of the most important of Ecuador. With incredible colonial influence, gorgeous landscapes and a friendly vibe, the city is one of the most welcoming in South America. This day we will have two options to choose from: The Cajas National Park is one of the most important natural reserves of southern Ecuador. It is the main source of water for Cuenca, and an IBA (important bird area), dedicated to conservation. These highlands are full of incredible landscapes, animals and creatures, and well-preserved forests. We will do a 2–3-hour morning excursion to Cajas N.P. and return in the afternoon to Cuenca for an afternoon city tour. As an alternative to Cajas National Park, we can enjoy our city tour in the morning and have an afternoon free to explore the city or just relax.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Cuenca – Guayaquil",
+                "dayDescription": "In the morning, we will travel to the city of Guayaquil, the biggest city in Ecuador, and one of the most modern ports of the Pacific Ocean. We’ll check in at our hotel accommodation in Guayaquil, before heading out to explore the city. Our visits can include Bolivar Park with the famous green iguanas that inhabit this place, the ‘Malecon’ boardwalk of Guayaquil and the great ‘Historical Park’.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Guayaquil – Pto. Lopez ",
+                "dayDescription": "From Guayaquil and following the “Route of the Sun”, a picturesque beachside road system that connects the small seaside towns of the coast. We will continue driving towards the small town of Pto. Lopez located near the Machalilla National Park just on the shores of the Pacific Ocean. We will check in and enjoy a free afternoon where various options of activities exist",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Pto. López",
+                "dayDescription": "We will have a day plenty of wonderful options for discovering the coastal region and Puerto Lopez: A)Humpback Whale watching (from June until September) B) Full day Isla de la Plata Shared tour C) Full day Diving excursion (PADI or equivalent license needed) D)Agua Blanca archeological site and Machalilla National Park (@ Los Frailes Beach)or just relax at the beach in Puerto Lopez",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Pto. López",
+                "dayDescription": "We will have a day plenty of wonderful options for discovering the coastal region and Puerto Lopez: A)Humpback Whale watching (from June until September) B) Full day Isla de la Plata Shared tour C) Full day Diving excursion (PADI or equivalent license needed) D)Agua Blanca archeological site and Machalilla National Park (@ Los Frailes Beach)or just relax at the beach in Puerto Lopez",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Puerto López - Guayaquil",
+                "dayDescription": "In the morning, we will travel to the city of Guayaquil, the biggest city in Ecuador, and one of the most modern ports of the Pacific Ocean. We’ll check in at our hotel accommodation in Guayaquil, before heading out to explore the city. Our visits can include Bolivar Park with the famous green iguanas that inhabit this place, the ‘Malecon’ boardwalk of Guayaquil and the great ‘Historical Park’.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Guayaquil Transfer Out",
+                "dayDescription": "Depending on your departure time, activities in the morning can be arranged. Transfer to the airport in time to catch your international flight back home included.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Hotel breakfast"
+                ]
+            }
+        ],
+        "tourType": "360° itineraries",
+        "price": 5800,
+        "prices": {
+            "priceType": "fixedDeparture",
+            "singlesupp": 280,
+            "dblOccupancy": true,
+            "priceNotice": "hotel categories will depend on locally available properties"
+        },
+        "included": [
+            "hotels: double room accommodation with private facilities",
+            "provate transfers & transportation",
+            "Yacuma Jungle EcoLodge activities",
+            "local guides in Yacuma",
+            "Galapagos Naturalist Guide services",
+            "speedboat inter-island ferry service",
+            "noted meals"
+        ],
+        "notIncluded": [
+            "personal travel insurance (REQUIRED)",
+            "international/regional flights",
+            "additional Inca Trail porters",
+            "personal trekking gear",
+            "extras",
+            "tips"
+        ]
     }
 ]

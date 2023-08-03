@@ -196,7 +196,7 @@ const { data: session } = useSession()
                         <InfoIcon/> </div>
                 </>}
 
-                {(session?.user.hierarchy===2 || session?.user.name===pickedItin?.user.name) &&<>
+                {(session?.user.hierarchy===1 || session?.user.name===pickedItin?.user.name) &&<>
                     <div className={styles.tourEditBTN} style={{left:"228px"}} onClick={()=>setEditItinTrig(true)} >  
                         <EditNoteIcon /> </div>
 

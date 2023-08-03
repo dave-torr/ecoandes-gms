@@ -391,7 +391,7 @@ export default function OperationsDashboard(){
         return(<> 
         <div className={styles.depStatusIndicator}>
             {theDep.saleProcess==="onSale"? 
-                <> <span className={styles.statusOne}>.</span>on Sale</> 
+                <><span className={styles.statusOne}>.</span>on Sale</> 
             : theDep.saleProcess==="reserved"?
                 <><span className={styles.statusTwo}>.</span>Reserved</> 
             : theDep.saleProcess==="confirmed"&&
@@ -399,7 +399,6 @@ export default function OperationsDashboard(){
         </div>
         </>)
     }
-
     ///////////////////////////////////////////
     ///////////////////////////////////////////
     // dep utilities
@@ -915,7 +914,7 @@ export default function OperationsDashboard(){
                 <CloseFullscreenIcon />
             </div>
             {saveIconDisp(saveDocSwitch, saveFunction, )}
-        </div>
+        </div> <br/><br/>
 
         <div className={styles.spaceBetRow} style={{width:"760px" }}>
             <span onClick={()=>{
@@ -1094,12 +1093,14 @@ export default function OperationsDashboard(){
                 </div>
                 <div className={styles.aColumn}>
                 {departureStatusDisp(theDep)}
-                <div style={{cursor:"pointer", paddingRight: "20px"}} 
-                    onClick={()=>{
-                    if(editSwitch){setEditSwitch(false)} else {setEditSwitch(true)}
-                }}>
-                    {editSwitch?<><EditOffIcon/></>: <><EditIcon/></>}
-                </div>
+                {(session?.user.hierarchy===1 || session?.user.department==="Operaciones")&& <>
+                    <div style={{cursor:"pointer", paddingRight: "20px"}} 
+                        onClick={()=>{
+                        if(editSwitch){setEditSwitch(false)} else {setEditSwitch(true)}
+                    }}>
+                        {editSwitch?<><EditOffIcon/></>: <><EditIcon/></>}
+                    </div>
+                    </>}
                 </div>
             </div>
 
@@ -1153,13 +1154,10 @@ export default function OperationsDashboard(){
                                 "saleProcess": e.target.value
                             })
                         }} >
-                            <option disabled defaultValue > Select Status </option>
-                            {theDeparture.saleProcess!=="onSale"&& <>  
-                                <option value="onSale"> On Sale</option></>}
-                            {theDeparture.saleProcess!=="reserved"&& <>  
-                                <option value="reserved"> Reserved</option></>}
-                            {theDeparture.saleProcess!=="confirmed"&& <>  
-                                <option value="confirmed"> Confirmed</option></>}
+                            <option disabled selected > Select Status </option>
+                                <option value="onSale"> On Sale</option>
+                                <option value="reserved"> Reserved</option>
+                                <option value="confirmed"> Confirmed</option>
                         </select>
                     </div>
 
@@ -1218,7 +1216,7 @@ export default function OperationsDashboard(){
         }
         let eachNote=[]
         const eachGuestData=(guestData)=>{
-        if(guestData.guestNotes){
+        if(guestData.guestNotes.length>0){
             eachNote.push({
                 "name":guestData.guestName,
                 "notes":guestData.guestNotes
@@ -1288,6 +1286,8 @@ export default function OperationsDashboard(){
             </>}
         </React.Fragment> )
         }
+
+        console.log(eachNote)
 
         /////////////////
         return(<>
@@ -2276,8 +2276,8 @@ export default function OperationsDashboard(){
             </React.Fragment>)
             priceArrDispAndEditor=<><div className={styles.priceDataRow}>
                 <div className={styles.aPriceColumn}>
-                    <span><strong>Pax </strong></span> 
-                    <span><strong>$$- </strong></span>
+                    <span><strong>Pax</strong></span> 
+                    <span><strong>$$</strong></span>
                 </div> 
                 {priceAndPx}
             </div></> 
@@ -2669,8 +2669,7 @@ export default function OperationsDashboard(){
                     {anInputDisplayer("Expense Detail", "priceDetail", "text", false, theExpense.priceDetail, theExpense, setTheExpense)}</div>
                 {theExpense.price&&<>
                 <div style={{width: "25%" }}> 
-                    {anInputDisplayer("Price", "price", "number", false, theExpense.price, theExpense, setTheExpense)}</div>
-                 
+                    {anInputDisplayer("Price", "price", "number", true, theExpense.price, theExpense, setTheExpense)}</div>
                     </>}
                 </div>
                 {theExpense.priceArr&&<>
@@ -2975,10 +2974,12 @@ export default function OperationsDashboard(){
             </div>
             {theDocs?.hotelName&&<><h2><strong>{theDocs?.hotelName}</strong></h2></>}
             <div>By: {session?.user.name} | Operations Department</div> <br/>
-            <div style={{ display:"flex", width:"100%", justifyContent:"space-around" }}>
-                {aDateDisp("trip Starting Date", theDeparture.startingDate, )}
-                {aDateDisp("trip ending Date", theDeparture.startingDate, theDeparture.duration )}
-            </div>
+            {theDocs.docKey!="accommodation" &&<> 
+                <div style={{ display:"flex", width:"100%", justifyContent:"space-around" }}>
+                    {aDateDisp("trip Starting Date", theDeparture.startingDate, )}
+                    {aDateDisp("trip ending Date", theDeparture.startingDate, theDeparture.duration )}
+                </div>
+            </>}
             <div className={styles.detailDispl}>
                 {eachIntroDetail("Date Created", toDate.toLocaleDateString('en-GB', dateOptions))}
                 {theDocs.expenseKey==="workOrder"&&<>
@@ -3067,6 +3068,8 @@ export default function OperationsDashboard(){
                 <div className={styles.documentGenTotal} >
                     <strong>TOTAL:</strong> USD $ {totalProviderExpAdder(eachProviderExp)}
                 </div>
+            </>}
+            {theDocs.docKey!="accommodation" && <> 
                 <br/>
                 <br/>
                 <strong> Please remember to arrive 15 minutes before schedule. </strong>
@@ -3137,6 +3140,11 @@ export default function OperationsDashboard(){
             {theProgramDays}
         </div>
         </>)
+    }
+
+// departure creators
+    const createDepsBTNS=()=>{
+      // add dep creators BTNS, and itins displayers
     }
 
   //////////////////////////////////////////////

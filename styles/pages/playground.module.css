@@ -3,10 +3,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(199, 196, 196);
+    background-color: rgb(149, 102, 102);
     padding: 21px 0;
     min-height: 100vh;
     padding-bottom: 20vh;
+}
+
+.cucu{
+    transition: all ease-in 0.2s;
+    font-size: 2em;
+    background-color: burlywood;
+    padding: 21px;
+
+}
+.cucu:hover{
+    font-size: 2em;
+    background-color: rgb(42, 151, 181);
+    transform: translate(70px, 70px);
 }
 
 .depStatusIndicator{

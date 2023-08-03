@@ -317,9 +317,8 @@
     font-size: 0.9em;
     display: flex;
     justify-content: center;
-    margin-right: 44px;
-    margin-bottom: 18px;
     width: 100px;
+    padding-bottom: 12px;
 }
 
 .depStatusIndicator span{
@@ -417,7 +416,7 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-    transform: translate(399px, 120px);
+    transform: translate(399px, 160px);
     z-index: 0;
 }
 
@@ -615,12 +614,12 @@
     letter-spacing: 1px;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 12px;
-    width: 100%;
+    margin-bottom: 9px;
+    width: 728px;
 }
 
 .roomingListTotalCont div{
-    width: 180px;
+    width: 160px;
     font-size: 0.9em;
     margin: 0 3px;
     text-align: center;

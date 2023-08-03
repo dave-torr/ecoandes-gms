@@ -36,6 +36,9 @@ export default function PlaygroundPage(props){
         {session&&<> 
             <GMSNavii  user={session.user} />
             <div className={styles.playgroundPage}>
+
+
+            <div className={styles.cucu}> Cucu</div>
                 {departureStatusDisp({"status": "confirmed"})}
             </div>
         </>}

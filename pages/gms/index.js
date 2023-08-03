@@ -44,12 +44,11 @@ export default function GMS(){
             <a>Admin</a>
             </Link></>}
             
-            {session.user.name==="David Torres"&&<>
+        {/* Non admin Toutes */}
             <Link href="/gms/operations">  
             <a>Operations</a>
-            </Link></>}
+            </Link>
 
-        {/* Non admin Toutes */}
             <Link href="/gms/tourCreator">  
             <a>Tour Creator</a>
             </Link>
