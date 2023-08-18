@@ -165,11 +165,11 @@ export function GMSNavii(props){
                     <a>Admin Dash</a>
                     </Link></>}
                     </>}
-                    
+                    <br/>
                 {/* Non admin Toutes */}
                     {router.pathname!="/gms/operations"&&<><Link href="/gms/operations">  
                     <a>Operations</a>
-                    </Link> <br/> </>}
+                    </Link></>}
                     {router.pathname!="/gms/tourCreator"&&<><Link href="/gms/tourCreator">  
                     <a>Tour Creator</a>
                     </Link></>}

@@ -112,7 +112,7 @@ const { data: session } = useSession()
                         </select>
                     </div>
                 </>}
-                {theItins.length>0? <>
+                {(theItins.length>0 && localOrFetched==="LTC Published")? <>
                     <SortingItinUI 
                         sortContr={sortContr} 
                         setSortContr={setSortContr}

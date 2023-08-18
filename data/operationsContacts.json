@@ -1,0 +1,46 @@
+{
+    "galapagosGuides":[
+        {"name": "LARS FRITCHI", "homeBase": "scx", "cui": 1715154934, "email": "larsfrit@yahoo.com", "licence": 471, "licenceExp": "10/20/2026", "language": ["english" ], "dailyRate": 200.00, "facturacion": "RIMPE"},
+        {"name": "INDIRA TORRES", "homeBase": "scx", "cui": 926140435, "email": "indira.torres@outlook.com", "licence": 866, "licenceExp": "20/09/2026", "language": ["english" ], "dailyRate": 160.00,  "facturacion": "RIMPE"},
+        {"name": "JUAN ZAMBONINO", "homeBase": "scx", "cui": 2000058525, "email": "zambonaino28@hotmail.com", "licence": 744, "licenceExp": "20/09/2026", "language": ["english" ], "dailyRate": 160.00},
+        {"name": "FEDERICO CARRION", "homeBase": "scx", "cui": 2000071478, "email": "lewis_galapagos@yahoo.com", "phono": 996542677, "licence":633, "licenceExp": "24/02/2027", "language": ["english" ], "dailyRate": 160.00,  "facturacion": "RIMPE"},
+        {"name": "JIMMY PEÑAHERRERA", "homeBase": "scx", "cui": 2000040184, "email": "jimmypena1973@gmail.com", "phono": 986144841, "licence":282, "licenceExp": "10/19/2026", "language": ["english" ], "dailyRate": 150.00},
+        {"name": "EDISON JAYA", "homeBase": "scx", "cui": 2000027686, "email": "jackloco2001@hotmail.com", "phono": 999181914, "licence":59, "licenceExp": "10/25/2026", "language": ["english" ], "dailyRate": 160.00,  "facturacion": "RIMPE"},
+        {"name": "GALO HERRERA", "homeBase": "scx", "cui": 914595368, "email":	"galoxavier1978@gmail.com", "phono": 997091112, "licence":591, "licenceExp": "04/10/2026", "language": ["english" ], "dailyRate": 160.00,  "facturacion": "RIMPE"},
+        {"name": "JOEL ZABALA", "homeBase": "scx", "cui": 2000064580, "email": "jazrus@gmail.com", "phono": 997160547, "licence":833, "licenceExp": "16/09/2026", "language": ["english" ], "dailyRate": 150.00},
+        {"name": "ASTRID FREIRE", "homeBase": "scx", "cui": 2000099206, "email": "astridcarolinafreiretrejo@gmail.com", "phono": 996691501, "licence":834, "licenceExp": "10/19/2026", "language": ["english" ], "dailyRate": 150.00, "facturacion": "FACTURA"},
+        {"name": "ERICKA ARIAS", "homeBase": "scx", "cui": 1600588733, "email": "erickitap_11@hotmail.com", "phono": 969719500, "licence":932, "licenceExp": "10/19/2026", "language": ["english", "french"], "dailyRate": 160.00,  "facturacion": "RIMPE"},
+        {"name": "MARGOTH FREIRE", "homeBase": "scx", "cui": 1801351162, "email": "mermarfa@gmail.com", "phono": 993035915, "licence":323, "licenceExp": "10/15/2026", "language": ["english" ], "dailyRate": 150.00},
+        {"name": "IVANOVA SANCHEZ", "homeBase": "scx", "cui": 925967556, "email": "ivanova_sanchez@outlook.com", "phono": 997475725, "licence":983, "licenceExp": "08/09/2026", "language": ["english" ], "dailyRate": 180.00,  "facturacion": "RIMPE"},
+        {"name": "GRACIELA CEVALLOS", "homeBase": "scx", "cui": 904759206, "email": "peladoda@yahoo.com", "phono": 985915042, "licence":135, "licenceExp": "21/09/2026", "language": ["english" ], "dailyRate":180.00,  "facturacion": "RIMPE"},
+        {"name": "JHOVER ALVAREZ", "homeBase": "scx", "cui": 1708858871, "email": "jhoveralvarez@gmail.com", "phono": 998518938, "licence":228, "licenceExp": "27/09/2026", "language": ["english", "french", "german"], "dailyRate":180.00, "altLangRate": 200.00, "facturacion":"RIMPE"},
+        {"name": "EDISON MATAPUNCHO", "homeBase": "sbl", "cui": 2000069811, "email": "edimatapuncho@gmail.com", "phono": 990797687, "licence": 699, "licenceExp": "10/26/2026","language":["INGLES"], "dailyRate": 160.00,	"facturacion": "RIMPE"},
+        {"name": "ANTONY VILLACIS", "homeBase": "sbl", "cui": 2000083754, "email": "antonyvillacis@hotmail.com", "phono": 994646849, "licence": 950, "licenceExp": "10/17/2026","language":["INGLES"], "dailyRate": 160.00,	"facturacion": "RIMPE"},
+        {"name": "MA. FERNANDA GORDILLO ", "homeBase": "sbl", "cui": 2000039582, "email": "mafergordillo36@gmail.com",	"phono": 986095336, "licence": 696, "licenceExp": "10/13/2026","language":["INGLES"], "dailyRate": 160.00,	"facturacion": "RIMPE"},
+        {"name": "BORIS VALVERDE", "homeBase": "sbl", "cui": 910972983, "email": "borito39b@hotmail.com",	"phono": 994820384, "licence": 774, "licenceExp": "10/31/2026","language":["INGLES"], "dailyRate": 150.00,	"facturacion": "RIMPE"},
+        {"name": "AZUCENA CARPIO", "homeBase": "sbl", "cui": 2000026332, "email": "azucar.2009@hotmail.com",	"phono": 960012296, "licence": 16, "licenceExp": "10/21/2026","language":["INGLES"], "dailyRate": 160.00,	"facturacion": "RIMPE"},
+        {"name": "MARTIN OJEDA", "homeBase": "sbl", "cui": 916476989, "email": "luisojeda76@gmail.com",	"phono": 996780330, "licence": 702, "licenceExp": "10/12/2026","language":["INGLES"], "dailyRate": 160.00,	"facturacion": "RIMPE"},
+        {"name": "GENESIS CORONEL", "homeBase": "sbl", "cui": 2000079182, "email": "genesisccm@yahoo.es",	"phono": 983558217, "licence": 842, "licenceExp": "10/13/2026","language":["INGLES"], "dailyRate": 160.00,	"facturacion": "RIMPE"},
+        {"name": "KAREN ASCENCIO", "homeBase": "sbl", "cui": 2000117347, "email": "karen.ascencio94@gmail.com",	"phono": 999568673, "licence": 892, "licenceExp": "31/08/2026","language":["INGLES"], "dailyRate": 160.00,	"facturacion": "RIMPE"}
+    ],
+    "continentalGuides":[
+        {"name": "JUAN DAVID MANTILLA", "cui":	1713765418, "email": null, "phono": 992739066, "licence": null, "language":["INGLES"], "category": ["driverGuide"]},
+        {"name": "KIMBERLY LAGLA", "cui":	1722148655, "email": "samantha.laglac@gmail.com", "phono": 992847450, "licence": null, "language":["INGLES"], "category": ["driverGuide"]},
+        {"name": "FATIMA BARBA", "cui":	1724613862, "email": "fati_b23@hotmail.com", "phono": 984386333, "licence": null, "language":["INGLES"], "category": ["driverGuide"]},
+        {"name": "ANALIA ARRATA", "cui":	1717524829, "email": "analia-arrata@hotmail.com", "phono": 998464571, "licence": null, "language":["INGLES"],"category": ["driverGuide", "guide"]},
+        {"name": "PABLO SALAZAR", "cui":	1719084897, "email": "pablo.salazarmartinez@gmail.com", "phono": 995634990, "licence": null, "language":["INGLES"],"category": ["driverGuide", "guide"]},
+        {"name": "JUAN VIZCAÍNO", "cui":	1711048403, "email": "juanfvizcaino@hotmail.com", "phono": 993095558, "licence": null, "language":["INGLES"],"category": ["driverGuide", "guide"]},
+        {"name": "DIEGO MUÑOZ", "cui":	1719903401, "email": "exploraecuadorahora@gmail.com", "phono": 989579220, "licence": null,		"language":["INGLES", "ITALIANO", "FRANCES"],"category": [ "guide"]},
+        {"name": "JESSICA VERA", "cui":	1751311018, "email":"jessica_a_vera@hotmail.com", "phono": 983620548, "licence": 2634, "licenceExp": "11/8/2023",	"language":["ALEMAN"],"category": [ "guide"]},
+        {"name": "EDDY ROBALINO", "cui":	null, "email": "eddyrobalino@hotmail.com", "phono": 997928377, "licence": null,			"language":["ALEMAN" ],"category": [ "guide"]},
+        {"name": "WALTHER GARCIA", "cui":	916729635, "email": "wonderfultrip.ec@yahoo.com", "phono": 985101235, "licence": 1285,	"licenceExp": "10/11/2026",	"language":["ALEMAN", "INGLES" ],"category": [ "guide"] }
+    ],
+    "transport":[
+        {"company": "JL TURISMO", "razonSocial":"JORGE LEDESMA CIA. LTDA.", "ruc": 1791395298001, "repLegal": "JORGE EDUARDO LEDESMA GARCIA", "cui": 200430411, "location": "CONTINENTE"},
+        {"company": "GIRASOL", "razonSocial":"GIRASOLTOUR CIA. LTDA.","ruc":1791792890001, "repLegal":"ANGEL GALO GARCIA BAYAS",	"cui":201056512, "location": "CONTINENTE"},
+        {"company": "VISITECUADOR", "razonSocial":"VISITECUADOR S.A.", "ruc":1792219590001, "repLegal":"RUBEN VEGA",	"cui":1706449491, "location": "CONTINENTE"},
+        {"company": "VIKINGOTOUR", "razonSocial":"TRANSPORTES TURISTICOS VIKINGOTOUR CIA. LTDA.", "ruc":1792061180001, "repLegal":"BENALCAZAR GARZON JORGE ISAIAS", "cui":1001868759, "location": "CONTINENTE"},
+        {"company": "RAMIRO NARANJO", "razonSocial":"R&R" , "ruc":1802635621001, "repLegal":"RAMIRO NARANJO", "cui":1802635621, "location": "SANTA CRUZ"	},
+        {"company": "ALEX OYASA", "razonSocial": "ALEX OYASA" ,"location": "SANTA CRUZ"	}
+    ]
+}
