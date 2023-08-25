@@ -96,6 +96,8 @@ const { data: session } = useSession()
             <option value={elem} > {elem} </option>
         </React.Fragment>)
 
+        console.log(theItins)
+
         return<>
             <div className={styles.itinCardDisp}>
                 <h2> {localOrFetched} Itineraries</h2>
@@ -112,14 +114,14 @@ const { data: session } = useSession()
                         </select>
                     </div>
                 </>}
-                {(theItins.length>0 && localOrFetched==="LTC Published")? <>
-                    <SortingItinUI 
+                {theItins.length>0 ? <>
+                    {/* <SortingItinUI 
                         sortContr={sortContr} 
                         setSortContr={setSortContr}
                         sortOrder={sortOrder}
                         setSortOrder={setSortOrder}
                         priceSortTrigger={priceSortTrigger}
-                    />
+                    /> */}
                     <div className={styles.tourCardDisp } > {eachTourCard} </div>
                 </>:<>
                     <div className={styles.nonToursPlaceholder}> 
@@ -143,6 +145,8 @@ const { data: session } = useSession()
     const [deleteItinTrig, setDelItinTrig]=useState(false)
     const [editItinTrig, setEditItinTrig]=useState(false)
     const [itinDataTrig, setDataTrig]=useState(false)
+
+    console.log(fetchedItinArr)
 
     const fetchUserItineraries=()=>{
         return(<>

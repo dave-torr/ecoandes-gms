@@ -1,0 +1,53 @@
+.aProviderCont{
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    min-height: 99px;
+    background-color: white;
+    box-shadow: var(--frst-box-shadow);
+    padding: 6px 21px;
+    transition: all ease-in 0.3s;
+}
+
+.aProviderCont h2{
+    margin: 0;
+    padding: 0;
+}
+
+.spaceBetRow{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.aContactRow{
+    display: flex;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    font-weight: 600;
+    align-items: center;
+}
+
+.aContactRow span{
+    margin-left: 12px;
+    cursor: pointer;
+}
+
+.hotelLinksDisp{
+    display: flex;
+    margin-bottom: 12px;
+}
+
+.hotelLinksDisp a{
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.hotelRoomDisp{
+    display: flex;
+    justify-content: space-between;
+    border: solid 1px black;
+    padding: 9px;
+    margin-bottom: 12px;
+    font-size: 0.8em;
+}

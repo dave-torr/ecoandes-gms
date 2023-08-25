@@ -1223,7 +1223,7 @@
                 }
             ],
             "priceDetail": "Accomodation Ikala Galapagos Hotel - Pto. Ayora",
-            "contactName":"Jose Andrade: Ikala Hotels",
+            "contactName":"Jose Andrade",
             "contactNumb": 999729265
         },
         {
@@ -1422,6 +1422,7 @@
                     "price":185.76
                 }
             ],
+
             "priceDetail": "UIO Wyndham Airport Accomodation"
         },
         {

@@ -914,6 +914,12 @@
     flex-direction: column;
 }
 
+.partnerLogoCont{
+    display: flex;
+    padding: 0 12px;
+    padding-top: 21px;
+}
+
 @media (max-width: 600px) {
     .detailDispl{
         display: flex;

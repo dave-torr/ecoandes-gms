@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
+import Image from "next/image"
 import { GMSNavii } from "../../components/navis";
 import { useSession } from "next-auth/react"
 
@@ -23,7 +24,12 @@ import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
-import { aDropdownPicker, anInputDisplayer, flightsAdder} from "../../components/forms"
+import LTCLogoBLK from "../../public/assets/logos/ecoAndesBLK.png"
+import GalapagosElementsLogo from "../../public/assets/logos/galapagosElementsLogo.png"
+import YacumaLogo from "../../public/assets/logos/yacuma.png"
+import UnigpsLogo from "../../public/assets/logos/unigalapagos.png"
+
+import { aDropdownPicker, anInputDisplayer, radioSelectors} from "../../components/forms"
 
 import LTCPriceTables from "../../data/LTCPriceTables2023.json"
 import LTCItins from "../../data/LTCItinerary.json"
@@ -75,6 +81,24 @@ const aDepModel={
     "cruises":[],
     "saleProcess": "onSale"
 }
+const logoSwitcherArr=[
+    {
+        "radioKey": "EcoAndes Travel",
+        "radioVal": "ecoAndes"
+    },
+    {
+        "radioKey": "Galapagos Elements",
+        "radioVal": "galapagosElements"
+    },
+    {
+        "radioKey": "Yacuma EcoLodge",
+        "radioVal": "yacuma"
+    },
+    {
+        "radioKey": "Unigalapagos",
+        "radioVal": "unigalapagos"
+    },
+]
 
 let toDate= new Date()
 
@@ -116,7 +140,6 @@ export default function OperationsDashboard(){
     const { data: session } = useSession()
 
     const [activeDeps, setActiveDeps]=useState([])
-    const [fetchedDeps, setFetchedDeps]=useState([])
     const [fetchedItins, setFetchedItins]=useState([])
     const [upcomingDeps, setUpcomingDeps]=useState([])
 
@@ -208,8 +231,6 @@ export default function OperationsDashboard(){
         })
         let fetchedData = await res.json()
         if(fetchedData){
-        setFetchedDeps(fetchedData);
-
         // filter for deps active today. upper limit defined by midnight end of day
             let theTempArr=[]
             let anotherTempArr= []
@@ -400,6 +421,39 @@ export default function OperationsDashboard(){
         </div>
         </>)
     }
+    const logoSwitcher=(theItin, dispSwitch)=>{
+        if(dispSwitch==="text"){
+            switch (theItin.LTCLogo) {
+                case "galapagosElements":
+                    return(<><h3>Galapagos Elements</h3></>);
+                case "ecoAndes":
+                    return(<><h3>EcoAndes Travel</h3></>);
+                case "yacuma":
+                    return(<><h3>Yacuma EcoLodge</h3></>);
+                case "unigalapagos":
+                    return(<><h3>Unigalapagos</h3></>);
+                default:
+                    break;
+            }
+        } else if (dispSwitch==="logo"){
+            switch (theItin.LTCLogo) {
+                case "galapagosElements":
+                    return(<><div style={{display: "flex", justifyContent:"center", paddingTop: "27px"}} >
+                <Image height={80} width={210} src={GalapagosElementsLogo} alt="Galapagos Elements Logo" /></div></>);
+                case "ecoAndes":
+                    return(<><div className={styles.partnerLogoCont}>
+                <Image height={45} width={180} src={LTCLogoBLK} alt="EcoAndes Travel Logo" /></div></>);
+                case "yacuma":
+                    return(<><div className={styles.partnerLogoCont}>
+                <Image height={55} width={210} src={YacumaLogo} alt="Yacuma Logo" /></div></>);
+                case "unigalapagos":
+                    return(<><div className={styles.partnerLogoCont}>
+                <Image height={75} width={110} src={UnigpsLogo} alt="Unigalapagos Logo" /></div></>);
+                default:
+                    break;
+            }
+        }
+    }
     ///////////////////////////////////////////
     ///////////////////////////////////////////
     // dep utilities
@@ -454,9 +508,11 @@ export default function OperationsDashboard(){
             </>}
         </>)
     }
+
     const depCreator=(theItin, theDep)=>{
 
     // Add Inputs for minimum needed info for dep:
+    // Logo
     // Dep date, 
     // Group code,
     // Trip Reference
@@ -467,46 +523,49 @@ export default function OperationsDashboard(){
     return(<>
         <div className={styles.departureGenCont}> 
         <div className={styles.aFileContainer} style={{minHeight:"33vh" }} >
-        <div className={styles.spaceBetRow}>
-            <h1> Create Departure </h1>
-            <div style={{cursor:"pointer"}} onClick={()=>{
-                setTheItinerary()
-                setTheDeparture()
-                window.scrollTo({
-                    top: 0,
-                    behavior: "smooth",
-                });
-            }}> <CancelPresentationIcon/></div>
-        </div>
-            {logoSwitcher(theItin)}
-            <h2>{theItin.tripName}</h2>
+            <div className={styles.spaceBetRow}>
+                <h1> Create Departure </h1>
+                <div style={{cursor:"pointer"}} onClick={()=>{
+                    setTheItinerary()
+                    setTheDeparture()
+                    window.scrollTo({
+                        top: 0,
+                        behavior: "smooth",
+                    });
+                }}> <CancelPresentationIcon/></div>
+            </div>
+            <div className={styles.spaceBetRow}>
+                <h2>{theItin.tripName}</h2>
+                {logoSwitcher(theItin, "logo")}
+            </div>
+            <br/>
             <form onSubmit={async(e)=>{
-            e.preventDefault(),
-            // send dep to BE
-            setfileSwitch(true)
-            setSavedoc(false)
-            let reqData = JSON.stringify({
-                ...theDeparture,
-                "dateCreated":toDate,
-                "tripName": theItin.tripName,
-                "version": 0,
-                "status": 1,
-                "user": {
-                    "name": session.user.name,
-                    "email": session.user.email
-                    }
-            })
-            const res = await fetch("/api/gms/departures", {
-                method: "POST",
-                body: reqData
-            })
-            const depCreationRes = await res.json()
-            if(res.status===200){
-                window.alert("Departure Created! Add aditional information below, and do not forget to save your work!")
-                setSavedoc(true)
-            }
-
+                e.preventDefault(),
+                // send dep to BE
+                setfileSwitch(true)
+                setSavedoc(false)
+                let reqData = JSON.stringify({
+                    ...theDeparture,
+                    "dateCreated":toDate,
+                    "tripName": theItin.tripName,
+                    "version": 0,
+                    "status": 1,
+                    "user": {
+                        "name": session.user.name,
+                        "email": session.user.email
+                        }
+                })
+                const res = await fetch("/api/gms/departures", {
+                    method: "POST",
+                    body: reqData
+                })
+                const depCreationRes = await res.json()
+                if(res.status===200){
+                    window.alert("Departure Created! Add aditional information below, and do not forget to save your work!")
+                    setSavedoc(true)
+                }
             }}>
+            <br/>        
             <div className={styles.spaceBetRow}>
                 <div style={{width:"49%"}}>
                     <div className={styles.inputLabel}>
@@ -526,7 +585,7 @@ export default function OperationsDashboard(){
                     />
                 </div>
                 <div style={{width:"49%"}}>
-                    {aDateDisp("Starting Date", theDeparture.startingDate, 1)}
+                    {aDateDisp("Starting Date", theDeparture.startingDate, 2)}
                 </div>
             </div>
             <div className={styles.spaceBetRow}>
@@ -534,7 +593,7 @@ export default function OperationsDashboard(){
                     <strong>DURATION:</strong> {theItin.duration} days
                 </div>
                 <div style={{width:"49%"}}>
-                    {aDateDisp("Ending Date", theDeparture.startingDate, theItin.duration )}
+                    {aDateDisp("Ending Date", theDeparture.startingDate, parseInt(theItin.duration)+1 )}
                 </div>
             </div>
             <div className={styles.spaceBetRow}>
@@ -1067,20 +1126,7 @@ export default function OperationsDashboard(){
         </div>
         </>)
     }
-    const logoSwitcher=(theItin)=>{
-        switch (theItin.LTCLogo) {
-            case "galapagosElements":
-                return(<><h3>Galapagos Elements</h3></>);
-            case "ecoAndes":
-                return(<><h3>EcoAndes Travel</h3></>);
-            case "yacuma":
-                return(<><h3>Yacuma EcoLodge</h3></>);
-            case "unigalapagos":
-                return(<><h3>Unigalapagos</h3></>);
-            default:
-                break;
-        }
-    }
+
     const eachIntroDetail=(theTitle, theDetail)=>{
         return(<>
         <div className={styles.eachDetailCont}>
@@ -1094,7 +1140,7 @@ export default function OperationsDashboard(){
         return(<>
             <div className={styles.spaceBetRow}>
                 <div>
-                    {logoSwitcher(theItin)}
+                    {logoSwitcher(theItin, "text")}
                     <h1>{theItin.tripName}</h1>
                 </div>
                 <div className={styles.aColumn}>
@@ -3170,9 +3216,7 @@ export default function OperationsDashboard(){
     }
 
 // departure creators
-    const createDepsBTNS=()=>{
-      // add dep creators BTNS, and itins displayers
-    }
+
 
   //////////////////////////////////////////////
   //////////////////////////////////////////////
