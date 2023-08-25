@@ -260,6 +260,8 @@ export default function OperationsDashboard(){
         }
     },[])  
 
+    console.log(theDeparture)
+
   ///////////////////////////////////////////
   // gen Utils
     const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
@@ -285,6 +287,7 @@ export default function OperationsDashboard(){
             behavior: "smooth",
         });
         setEditSwitch(false)
+        setAddGuestTrig(false)
         setTempRoomObj({})
         setAddGuest(false)
         setGuestAddCount(0)
@@ -606,7 +609,7 @@ export default function OperationsDashboard(){
             </div>
             <div className={styles.spaceBetRow}>
                 <div style={{width:"49%"}}>
-                    {anInputDisplayer("Company*", "aComp", "text", true, "Ex: Darkwing Tours", theDeparture, setTheDeparture, )}
+                    {anInputDisplayer("Company", "aComp", "text", false, "Ex: Darkwing Tours", theDeparture, setTheDeparture, )}
                 </div>
                 <div style={{width:"49%"}}>
                     {anInputDisplayer("Contact", "compContact", "text", false, "Ex: Maria Molina", theDeparture, setTheDeparture, )}
@@ -669,8 +672,7 @@ export default function OperationsDashboard(){
                     {currentOPDay(elem, allItins, "dayTitle")}
                 </div>
                 <div className={styles.depCardRow}>
-                    {/* <span>{elem.startingDate}</span> */}
-                    <strong> {elem.tripName} </strong>
+                    <strong>{elem.tripName}</strong>
                     <span>{currentOPDay(elem, allItins,"dayCount")}/{elem.duration} days &nbsp; | &nbsp;
                     {guestAdder(elem.roomingList)}/{elem.maxPaxNumb} pax
                     </span>
@@ -694,7 +696,7 @@ export default function OperationsDashboard(){
                         {elem.duration} D
                     </span>
                 </div>
-                <strong> {elem.tripName} </strong>
+                <strong style={{textTransform:"capitalize" }}> {elem.tripName} </strong>
             </div>
         </React.Fragment> )
         }
@@ -716,7 +718,8 @@ export default function OperationsDashboard(){
 
     // flights
     const flightsAdderForm=()=>{
-        let minDate = addDays(theDeparture.startingDate, -1).toISOString().split("T")[0]
+        let minDate = new Date(theDeparture.startingDate).toISOString().split("T")[0]
+        
         let theDateOpts = []
         for (let i=0; i< parseInt(theDeparture.duration); i++ ){
             theDateOpts.push({
@@ -1267,11 +1270,18 @@ export default function OperationsDashboard(){
             }
         }
         let eachNote=[]
+        let bootArr=[]
         const eachGuestData=(guestData)=>{
             if(guestData.guestNotes.length>0){
                 eachNote.push({
                     "name":guestData.guestName,
                     "notes":guestData.guestNotes
+                })
+            }
+            if(guestData.bootSize){
+                bootArr.push({
+                    "name":guestData.guestName,
+                    "bootSize":guestData.bootSize
                 })
             }
             return(<>
@@ -1284,6 +1294,7 @@ export default function OperationsDashboard(){
                 </div>
             </>)
         }
+        
         if(theDep){
         let eachRoom=theDep.roomingList.map((elem, i)=>
         <React.Fragment key={i}>
@@ -1339,6 +1350,17 @@ export default function OperationsDashboard(){
             </>}
         </React.Fragment> )
         }
+        let bootDisp
+        if(bootArr.length>0){
+        bootDisp=bootArr.map((elem,i)=><React.Fragment key={i}> 
+            <div className={styles.eachRoomDisplayer}>
+                <span style={{width:"180px", textAlign:"start"}}>&nbsp;{elem?.name}</span>
+                <span style={{borderLeft:"solid 1px black", textTransform:"capitalize", textAlign:"start", padding:"0 3px" }}> &nbsp;{elem?.bootSize}</span>
+            </div>
+        </React.Fragment> )
+        }
+
+
         let eachTLRoom=theDep.tourLeader?.map((elemTL, i)=><React.Fragment key={i}>
             <div className={styles.eachRoomDisplayer}>
             {editSwitch&&<>
@@ -1448,11 +1470,21 @@ export default function OperationsDashboard(){
                     {noteDisp}
                 </div>
             </>}
+            {bootArr.length>0&&<>
+                <h2>Guest Boot sizes </h2>
+                <div className={styles.roomingListGrid}>
+                <div className={styles.roomingListKEYS}>
+                    <div style={{width:"180px", textAlign:"start" }}>&nbsp; GUEST NAME </div>
+                    <div style={{borderLeft:"solid 1px black" }}>&nbsp; Boot Size </div>
+                </div>
+                    {bootDisp}
+                </div>
+            </>}
 
             {theDep.departureNotes.length>0 ? <>
             <h2>Departure Notes </h2>
             </> : <> </>}
-            {editSwitch?<>
+            {editSwitch?<> <br/>
                 <div className={styles.spaceBetRow}>
                     <div style={{width: "40%" }}> 
                         <div className={styles.inputLabel}>
@@ -1525,43 +1557,43 @@ export default function OperationsDashboard(){
             <div className={styles.eachGuestTitleEdit}>
                 <h4>Edit guest #{i+1}</h4>
                 <span onClick={()=>{
-                let tempGuestArr = [...sourceArr[roomIndexz].guestArr]                    
-                tempGuestArr.splice(i, 1)
-                if(tempGuestArr.length===3){
-                    let roomUpdate=
-                    {
-                        ...sourceArr[roomIndexz],
-                        "guestArr":tempGuestArr,
-                        "accomodationType": "triple",
+                    let tempGuestArr = [...sourceArr[roomIndexz].guestArr]                    
+                    tempGuestArr.splice(i, 1)
+                    if(tempGuestArr.length===3){
+                        let roomUpdate=
+                        {
+                            ...sourceArr[roomIndexz],
+                            "guestArr":tempGuestArr,
+                            "accomodationType": "triple",
+                        }
+                        let tempRoomiDoobie=sourceArr.splice(roomIndexz,1, roomUpdate)
+                        setTheDeparture({
+                        ...theDeparture,
+                        })
+                    } else if (tempGuestArr.length===2){
+                        let roomUpdate=
+                            {
+                                ...sourceArr[roomIndexz],
+                                "guestArr":tempGuestArr,
+                                "accomodationType": "twin",
+                            }
+                        let tempRoomiDoobie=sourceArr.splice(roomIndexz,1, roomUpdate)
+                        setTheDeparture({
+                            ...theDeparture,
+                        })
+                    } else if (tempGuestArr.length===1){
+                        let roomUpdate=
+                            {
+                                ...sourceArr[roomIndexz],
+                                "guestArr":tempGuestArr,
+                                "accomodationType": null,
+                                "singleSupp": true,
+                            }
+                        let tempRoomiDoobie=sourceArr.splice(roomIndexz,1, roomUpdate)
+                        setTheDeparture({
+                            ...theDeparture,
+                        })
                     }
-                    let tempRoomiDoobie=sourceArr.splice(roomIndexz,1, roomUpdate)
-                    setTheDeparture({
-                    ...theDeparture,
-                    })
-                } else if (tempGuestArr.length===2){
-                    let roomUpdate=
-                        {
-                            ...sourceArr[roomIndexz],
-                            "guestArr":tempGuestArr,
-                            "accomodationType": "twin",
-                        }
-                    let tempRoomiDoobie=sourceArr.splice(roomIndexz,1, roomUpdate)
-                    setTheDeparture({
-                        ...theDeparture,
-                    })
-                } else if (tempGuestArr.length===1){
-                    let roomUpdate=
-                        {
-                            ...sourceArr[roomIndexz],
-                            "guestArr":tempGuestArr,
-                            "accomodationType": null,
-                            "singleSupp": true,
-                        }
-                    let tempRoomiDoobie=sourceArr.splice(roomIndexz,1, roomUpdate)
-                    setTheDeparture({
-                        ...theDeparture,
-                    })
-                }
                 }} > <RemoveCircleOutlineIcon/></span>
             </div>
             <div className={styles.spaceBetRow}>
@@ -1680,41 +1712,31 @@ export default function OperationsDashboard(){
                         </span>
                     </div>
                 </div>
-                <div className={styles.roomTypeIndicator} onClick={()=>{
-                    let newGuestObj={
-                        "guestName": String,
-                        "guestDOB": String,
-                        "guestID": String,
-                        "guestNotes": [],
-                        "passport": String,
-                        "nationality": String,
-                        "sex": String
-                    }
-                    let tempGuestArr= sourceArr[roomIndexz].guestArr.concat(newGuestObj)
-                    let tempRoom
-                    if(sourceArr[roomIndexz].accomodationType==="single" || sourceArr[roomIndexz].accomodationType===null){
-                        tempRoom={
-                            ...sourceArr[roomIndexz],
-                            "accomodationType":"twin",
-                            "singleSupp":false,
-                            "guestArr":tempGuestArr
-                        }
-                    } else if(sourceArr[roomIndexz].accomodationType==="twin" || sourceArr[roomIndexz].accomodationType==="matrimonial"){
-                        tempRoom={
-                            ...sourceArr[roomIndexz],
-                            "accomodationType":"triple",
-                            "singleSupp":false,
-                            "guestArr":tempGuestArr
-                        }
-                    }
-
-                    let splicerFunc=sourceArr.splice(roomIndexz, 1, tempRoom)
-                    setTheDeparture({
-                        ...theDeparture
-                    })
-                }} >
-                    ADD GUEST &nbsp; <AddCircleOutlineIcon/> 
+                <div style={{width: "47%" }}> 
+                    <div className={styles.inputLabel}>
+                        Boot size
+                    </div>
+                    <div className={styles.inputAndRow}> 
+                        <input 
+                            className={styles.inputUserUI} 
+                            type='number'
+                            onChange={(e)=>{
+                                let tempGuestObj={
+                                    ...eachGuestElm,
+                                    "bootSize": e.target.value
+                                }
+                                let tempRoomUpdater = sourceArr[roomIndexz].guestArr.splice(i,1,tempGuestObj)
+                                setTheDeparture({
+                                    ...theDeparture,
+                                })
+                            }}
+                            placeholder='Ex: 42'
+                            min={0}
+                            max={50}
+                        />
+                    </div>
                 </div>
+
             </div>
             &nbsp;
             {eachGuestElm.guestNotes?.length>0&&<>
@@ -1729,6 +1751,41 @@ export default function OperationsDashboard(){
                 </React.Fragment> )}
                 </div>
             </>}
+            <div className={styles.roomTypeIndicator} onClick={()=>{
+                let newGuestObj={
+                    "guestName": String,
+                    "guestDOB": String,
+                    "guestID": String,
+                    "guestNotes": [],
+                    "passport": String,
+                    "nationality": String,
+                    "sex": String
+                }
+                let tempGuestArr= sourceArr[roomIndexz].guestArr.concat(newGuestObj)
+                let tempRoom
+                if(sourceArr[roomIndexz].accomodationType==="single" || sourceArr[roomIndexz].accomodationType===null){
+                    tempRoom={
+                        ...sourceArr[roomIndexz],
+                        "accomodationType":"twin",
+                        "singleSupp":false,
+                        "guestArr":tempGuestArr
+                    }
+                } else if(sourceArr[roomIndexz].accomodationType==="twin" || sourceArr[roomIndexz].accomodationType==="matrimonial"){
+                    tempRoom={
+                        ...sourceArr[roomIndexz],
+                        "accomodationType":"triple",
+                        "singleSupp":false,
+                        "guestArr":tempGuestArr
+                    }
+                }
+
+                let splicerFunc=sourceArr.splice(roomIndexz, 1, tempRoom)
+                setTheDeparture({
+                    ...theDeparture
+                })
+            }} >
+            ADD GUEST &nbsp; <AddCircleOutlineIcon/> 
+            </div>
         </React.Fragment> )
         }
         let switchController
@@ -1968,49 +2025,27 @@ export default function OperationsDashboard(){
                             </span>
                         </div>
                     </div>
-                    {!isTL&& <> 
-                    <div className={styles.roomTypeIndicator} onClick={()=>{
-                        setGuestAddCount(guestAddCount+1)
-                        let aTempGuestArr = newRoomObj.guestArr.concat({
-                            "guestName": String,
-                            "guestDOB": String,
-                            "guestID": String,
-                            "guestNotes": [],
-                            "passport": String,
-                            "nationality": String,
-                            "sex": String
-                        })
-                        if(newRoomObj.accomodationType==="single"){
-                            let tempRoomObj={
-                                    ...newRoomObj,
-                                    "guestArr":aTempGuestArr,
-                                    "accomodationType": "twin",
-                                    "singleSupp":false
+                    <div style={{width:"47%"}}>
+                        <div className={styles.inputLabel}>Boot Size</div>
+                        <input 
+                            type="number"
+                            min={0}
+                            max={60}
+                            className={styles.inputUserUI} 
+                            placeholder='Ex: 42'
+                            onChange={(e)=>{
+                                e.preventDefault()
+                                let tempGuestObj={
+                                    ...newRoomObj.guestArr[guestIndex],
+                                    "bootSize": e.target.value
                                 }
-                            setRoomObj({
-                                ...tempRoomObj,
-                            })
-                        } else if (newRoomObj.accomodationType==="twin" ||newRoomObj.accomodationType==="matrimonial"){
-                            let tempRoomObj={
+                                let tempRoomUpdater = newRoomObj.guestArr.splice(guestIndex,1,tempGuestObj)
+                                setRoomObj({
                                     ...newRoomObj,
-                                    "guestArr":aTempGuestArr,
-                                    "accomodationType": "triple"
-                                }
-                            setRoomObj({
-                                ...tempRoomObj,
-                            })
-                        } else if (newRoomObj.accomodationType==="triple"){
-                            let tempRoomObj={
-                                    ...newRoomObj,
-                                    "guestArr":aTempGuestArr,
-                                    "accomodationType": "quad"
-                                }
-                            setRoomObj({
-                                ...tempRoomObj,
-                            })
-                        }
-                    }} > ADD GUEST TO ROOM &nbsp; <AddCircleOutlineIcon/></div>
-                    </>}
+                                })                                
+                            }}
+                        />
+                    </div>                    
                 </div>
                 &nbsp;
                 <div className={styles.depNotesCont}>
@@ -2038,6 +2073,50 @@ export default function OperationsDashboard(){
                         </React.Fragment> )}
                     </>}
                 </div>
+                &nbsp;
+                {!isTL&& <> 
+                <div className={styles.roomTypeIndicator} onClick={()=>{
+                    setGuestAddCount(guestAddCount+1)
+                    let aTempGuestArr = newRoomObj.guestArr.concat({
+                        "guestName": String,
+                        "guestDOB": String,
+                        "guestID": String,
+                        "guestNotes": [],
+                        "passport": String,
+                        "nationality": String,
+                        "sex": String
+                    })
+                    if(newRoomObj.accomodationType==="single"){
+                        let tempRoomObj={
+                                ...newRoomObj,
+                                "guestArr":aTempGuestArr,
+                                "accomodationType": "twin",
+                                "singleSupp":false
+                            }
+                        setRoomObj({
+                            ...tempRoomObj,
+                        })
+                    } else if (newRoomObj.accomodationType==="twin" ||newRoomObj.accomodationType==="matrimonial"){
+                        let tempRoomObj={
+                                ...newRoomObj,
+                                "guestArr":aTempGuestArr,
+                                "accomodationType": "triple"
+                            }
+                        setRoomObj({
+                            ...tempRoomObj,
+                        })
+                    } else if (newRoomObj.accomodationType==="triple"){
+                        let tempRoomObj={
+                                ...newRoomObj,
+                                "guestArr":aTempGuestArr,
+                                "accomodationType": "quad"
+                            }
+                        setRoomObj({
+                            ...tempRoomObj,
+                        })
+                    }
+                }} > ADD GUEST TO ROOM &nbsp; <AddCircleOutlineIcon/></div>
+                </>}
             </>)
         }
         const handleChangez=()=>{
