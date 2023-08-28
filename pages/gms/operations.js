@@ -19,17 +19,14 @@ import CancelPresentationIcon from '@mui/icons-material/CancelPresentation';
 import SaveIcon from '@mui/icons-material/Save';
 import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
 import FlightIcon from '@mui/icons-material/Flight';
-import SailingIcon from '@mui/icons-material/Sailing';
 import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
-import EditNoteIcon from '@mui/icons-material/EditNote';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 import LTCLogoBLK from "../../public/assets/logos/ecoAndesBLK.png"
 import GalapagosElementsLogo from "../../public/assets/logos/galapagosElementsLogo.png"
 import YacumaLogo from "../../public/assets/logos/yacuma.png"
 import UnigpsLogo from "../../public/assets/logos/unigalapagos.png"
 
-import { aDropdownPicker, anInputDisplayer, radioSelectors} from "../../components/forms"
+import { aDropdownPicker, anInputDisplayer } from "../../components/forms"
 
 import LTCPriceTables from "../../data/LTCPriceTables2023.json"
 import LTCItins from "../../data/LTCItinerary.json"
@@ -183,6 +180,12 @@ export default function OperationsDashboard(){
     const [addOperationalNote, setAddOPNote]=useState(false)
     const [opDocEditSwitch, setOPDocSwitch]=useState(false)
     const [saveDocSwitch, setSavedoc]=useState(true)
+    const [documentDispTrigs, setDocTrigs]=useState({
+        "logo":true,
+        "roomingList":true,
+        "guestNotes":true,
+        "bootSizes":true,
+    })
 
   // providers
     const [providerArr, setProviderArr]=useState([])
@@ -260,8 +263,6 @@ export default function OperationsDashboard(){
         }
     },[])  
 
-    console.log(theDeparture)
-
   ///////////////////////////////////////////
   // gen Utils
     const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
@@ -282,10 +283,6 @@ export default function OperationsDashboard(){
         </>)
     }
     const editOffFunction=()=>{
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-        });
         setEditSwitch(false)
         setAddGuestTrig(false)
         setTempRoomObj({})
@@ -294,6 +291,7 @@ export default function OperationsDashboard(){
         setAddOPNote(false)
         setOPDocSwitch(false)
         setAnExpense()
+        setEditTLTrig(false)
     }
     const paxDataExtractor=(theDep, setPxData)=>{
         if(theDep){
@@ -991,7 +989,14 @@ export default function OperationsDashboard(){
                 {fileDisplayKey!="intro"&&<> 
                     <span onClick={()=>{setFileKey("intro"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>home </span></>}
                 {fileDisplayKey!="rooming"&&<> 
-                    <span onClick={()=>{setFileKey("rooming"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>pax & rooming </span></>}
+                    <span onClick={()=>{setFileKey("rooming"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false);
+                    setDocTrigs({
+                        "logo":true,
+                        "roomingList":true,
+                        "guestNotes":true,
+                        "bootSizes":true,
+                    })
+                    }}>pax & rooming </span></>}
                 {fileDisplayKey!="providers"&&<> {providerArr.length>0&&<> 
                     <span onClick={()=>{setFileKey("providers"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>providers </span>
                     </>}</>}
@@ -1398,11 +1403,21 @@ export default function OperationsDashboard(){
                     </span>
                 </div>
             </>}
+            {elemTL.guestArr[0].bootSize&&<>
+                <div className={styles.eachRoomDisplayer}>
+                    <span style={{textTransform:"capitalize"}}>
+                    <strong>BOOT SIZE:</strong> &nbsp;
+                    {elemTL.guestArr[0].bootSize}
+                    </span>
+                </div>
+            </>}
         </React.Fragment>)
 
         /////////////////
         return(<>
         <div className={styles.roomingListCont}>
+            {/* rooming */}
+            {documentDispTrigs.roomingList&&<> 
             <div className={styles.spaceBetRow}> 
                 <h2> Rooming List</h2>
                 {/* edit data */}
@@ -1460,6 +1475,11 @@ export default function OperationsDashboard(){
                     }} > Add Tour Leader &nbsp; <AddCircleOutlineIcon /> </span>
                 </div>
             </>}
+            </>}
+
+            {/* guest Notes */}
+            {documentDispTrigs.guestNotes&&<>
+            
             {eachNote.length>0&&<>
                 <h2>Guest Notes </h2>
                 <div className={styles.roomingListGrid}>
@@ -1469,7 +1489,10 @@ export default function OperationsDashboard(){
                 </div>
                     {noteDisp}
                 </div>
-            </>}
+            </>}</>}
+
+            {/* boot Size */}
+            {documentDispTrigs.bootSizes&&<>
             {bootArr.length>0&&<>
                 <h2>Guest Boot sizes </h2>
                 <div className={styles.roomingListGrid}>
@@ -1479,7 +1502,7 @@ export default function OperationsDashboard(){
                 </div>
                     {bootDisp}
                 </div>
-            </>}
+            </>}</>}
 
             {theDep.departureNotes.length>0 ? <>
             <h2>Departure Notes </h2>
@@ -2969,6 +2992,99 @@ export default function OperationsDashboard(){
     }
 
     // docs
+    const documentTriggers=()=>{
+        return(<>
+        <div className={styles.printDEL} style={{borderBottom:"solid 1px black", paddingBottom:"12px"}}>
+            <div className={styles.spaceBetRow}>
+                <div style={{ width:"47%", display:"flex" }}>
+                <h4>Logo</h4> &nbsp;&nbsp;
+                <FormControlLabel 
+                        control={
+                        <Switch checked={documentDispTrigs.logo}
+                        onChange={()=>{
+                            if(documentDispTrigs.logo){
+                                setDocTrigs({
+                                    ...documentDispTrigs,
+                                    "logo": false
+                                })
+                            } else {
+                                setDocTrigs({
+                                    ...documentDispTrigs,
+                                    "logo": true
+                                })
+                            }
+                        }}/>} 
+                    /> 
+                </div>
+                <div style={{ width:"47%", display:"flex" }}>
+                <h4>Rooming Lost</h4> &nbsp;&nbsp;
+                <FormControlLabel 
+                        control={
+                        <Switch checked={documentDispTrigs.roomingList}
+                        onChange={()=>{
+                            if(documentDispTrigs.roomingList){
+                                setDocTrigs({
+                                    ...documentDispTrigs,
+                                    "roomingList": false
+                                })
+                            } else {
+                                setDocTrigs({
+                                    ...documentDispTrigs,
+                                    "roomingList": true
+                                })
+                            }
+                        }}/>} 
+                    /> 
+                </div>
+
+            </div>
+            <div className={styles.spaceBetRow}>
+                <div style={{ width:"47%", display:"flex" }}>
+                <h4>Guest Notes</h4> &nbsp;&nbsp;
+                <FormControlLabel 
+                        control={
+                        <Switch checked={documentDispTrigs.guestNotes}
+                        onChange={()=>{
+                            if(documentDispTrigs.guestNotes){
+                                setDocTrigs({
+                                    ...documentDispTrigs,
+                                    "guestNotes": false
+                                })
+                            } else {
+                                setDocTrigs({
+                                    ...documentDispTrigs,
+                                    "guestNotes": true
+                                })
+                            }
+                        }}/>} 
+                    /> 
+                </div>
+                <div style={{ width:"47%", display:"flex" }}>
+                <h4>Guest Boot Sizes </h4> &nbsp;&nbsp;
+                <FormControlLabel 
+                        control={
+                        <Switch checked={documentDispTrigs.bootSizes}
+                        onChange={()=>{
+                            if(documentDispTrigs.bootSizes){
+                                setDocTrigs({
+                                    ...documentDispTrigs,
+                                    "bootSizes": false
+                                })
+                            } else {
+                                setDocTrigs({
+                                    ...documentDispTrigs,
+                                    "bootSizes": true
+                                })
+                            }
+                        }}/>} 
+                    /> 
+                </div>
+
+            </div>
+        </div>
+        </>)
+    }
+
     const documentCreator=(theDocs)=>{
         // for work orders, econ requirements, contracts
         let eachProviderExp=[]
@@ -2997,7 +3113,7 @@ export default function OperationsDashboard(){
                         <div className={styles.spaceBetRow}>
                             <span>- {elem.note}</span>
                             {opDocEditSwitch&& <>
-                                <span onClick={()=>{
+                                <span style={{color:"red"}} onClick={()=>{
                                     let tempArr = theDeparture?.operationalNotes[i].splice(index, 1)
                                     setTheDeparture({
                                         ...theDeparture
@@ -3048,7 +3164,7 @@ export default function OperationsDashboard(){
                         />
                         &nbsp;
                         &nbsp;
-                        <span onClick={()=>{
+                        <span style={{color:"red"}} onClick={()=>{
                             if(theDeparture?.operationalNotes[i]?.length>0){
                                 theDeparture.operationalNotes[i].push(addOperationalNote)
                                 setTheDeparture({...theDeparture})
@@ -3068,12 +3184,12 @@ export default function OperationsDashboard(){
             </> : <>
                 {opDocEditSwitch && <> 
                 <div style={{display:"flex", margin:"12px 0"}}>
-                    <span className={styles.eachGuestNote} style={{margin:"3px", marginLeft:"3%"}} onClick={()=>setAddOPNote({
+                    <span className={styles.eachGuestNote} style={{color:"red", margin:"3px", marginLeft:"3%"}} onClick={()=>setAddOPNote({
                         "target":"general"
                     })}>
-                        Add General OP Note
+                        Add General Operational Note
                     </span>
-                    <span className={styles.eachGuestNote} style={{margin:"3px"}} onClick={()=>setAddOPNote({
+                    <span className={styles.eachGuestNote} style={{margin:"3px", color:"red",}} onClick={()=>setAddOPNote({
                         "target": theDocs?.contactName
                     })}>
                         add targeted note
@@ -3097,7 +3213,7 @@ export default function OperationsDashboard(){
         </React.Fragment>)
         }
         return(<>
-            <div className={styles.spaceBetRowPRINT} style={{borderBottom:"solid 1px black"}}>
+            <div className={styles.spaceBetRowPRINT}>
                 <h2>Document Generator:</h2>
                 <div style={{cursor:"pointer"}} onClick={()=>{
                     setDocumentGenera(false)
@@ -3105,6 +3221,7 @@ export default function OperationsDashboard(){
                     <CancelPresentationIcon/>
                 </div>
             </div>
+            {documentTriggers()}
             <div className={styles.spaceBetRow}>
                 <h1> 
                     {theDocs.docKey==="workOrder"&&<> Work Order</>} 
@@ -3139,7 +3256,10 @@ export default function OperationsDashboard(){
                 </>}
                 {theDeparture?.tourCode&&<>{eachIntroDetail("Tour Code", theDeparture.tourCode)}</>}
                 {theDeparture?.tripRef&&<>{eachIntroDetail("Trip Reference", theDeparture.tripRef)}</>}
-                {theDeparture.tourLeader&&<>{eachIntroDetail("Tour leader", theDeparture.tourLeader.guestArr[0].guestName)}</>}
+
+                {theDeparture.tourLeader.length>0&&<>{eachIntroDetail("Tour leader", theDeparture.tourLeader[0].guestArr[0].guestName)}</>}
+
+
                 {theDeparture.duration&&<>{eachIntroDetail("Duration", `${theDeparture.duration} days`)}</>}
             </div>
 
@@ -3168,7 +3288,6 @@ export default function OperationsDashboard(){
                     {eachProviderExp.find(elem => elem.expenseKey!="accommodation")&& <> 
                         <h2> Additional Services</h2>
                         {eachProviderExp.map((elemz, i)=> <>
-                        {console.log(elemz)}
                             {elemz.expenseKey!="accommodation"&&<> 
                                 <div className={styles.documentGeneraExpense}>
                                 <span>
@@ -3241,6 +3360,8 @@ export default function OperationsDashboard(){
             <br/>
         </>)
     }
+
+
     const dayByDayDisp=(theDays)=>{
 
         // non MVP
@@ -3248,21 +3369,21 @@ export default function OperationsDashboard(){
         // switch to turn on or off day detail
 
         // need to replace it with a usestate trigger
-        let descriptionSwitcher=true
         let theProgramDays=theDays.map((elem,i)=><React.Fragment key={i}>
             <div className={styles.eachDayCont}>
                 <div className={styles.spaceBetRow} style={{marginTop:"15px" }}>
                 <h5> Day {i+1}: {elem?.dayTitle&&<>{elem?.dayTitle}</>}</h5>
-                    {/* {editSwitch&& <> 
                     <span onClick={()=>{
                         // set note trigger
                     }}>
                         <AddCircleOutlineIcon/>
                     </span>
-                    </>} */}
                 </div>
                 {elem?.dayDescription}
             </div>
+            {addOperationalNote&& <>
+            
+            </>}
 
             {theDeparture.flights[i]&& <> 
                 &nbsp;<strong>Flights:</strong>
