@@ -899,12 +899,11 @@ export default function OperationsDashboard(){
         </div>
         </>)
     }
-
     const flightsDisp=()=>{
         return(<>
             <div className={styles.spaceBetRow}> 
                 <h2>Flights</h2>
-                {(session?.user.hierarchy===1 || session?.user.name===theDep.assignment)&& <>
+                {(session?.user.hierarchy===1 || session?.user.name===theDeparture.assignment)&& <>
                     <div style={{cursor:"pointer", paddingRight: "12px"}} 
                         onClick={()=>{
                         if(editSwitch){setEditSwitch(false)} else {setEditSwitch(true)}
@@ -929,8 +928,8 @@ export default function OperationsDashboard(){
         </>)
     }
 
-  ///////////////////////////////////////////
-  // expenses
+    ///////////////////////////////////////////
+    // expenses
     const optCataloger=(priceChart)=>{
         let priceChartKeyArr = Object.keys(priceChart)
         let optNameArr =[]
@@ -981,8 +980,8 @@ export default function OperationsDashboard(){
         </>)
     } 
 
-  ///////////////////////////////////////////
-  // File funtions
+    ///////////////////////////////////////////
+    // File funtions
     const aFileDisplayer=(theItin, theDep)=>{
         return(<>
         {/* keys */}
@@ -1107,7 +1106,6 @@ export default function OperationsDashboard(){
         </>}
         </>)
     }
-
     let paxTotalCount=<>{paxData?.paxTotal} / {theDeparture?.maxPaxNumb} maximum</>
 
     // Stats
@@ -1154,7 +1152,7 @@ export default function OperationsDashboard(){
         </div>
         </>)
     }
-    // home
+    // file home
     const eachIntroDetail=(theTitle, theDetail)=>{
         return(<>
         <div className={styles.eachDetailCont}>
@@ -1163,7 +1161,6 @@ export default function OperationsDashboard(){
         </div>
         </>)
     }
-
     const itineraryHeaderDisp=(theItin, theDep)=>{
         if(theItin){
         return(<>
@@ -1307,8 +1304,6 @@ export default function OperationsDashboard(){
         </>)
         }
     }
-
-  // rooming 
     const roomingListDisp=(theDep)=>{
         const ageConverter=(theDOB)=>{
             if(theDOB){
@@ -2932,8 +2927,7 @@ export default function OperationsDashboard(){
         </>)
         } 
     }
- 
-  // providers
+    // providers
     const contactArrDisp=(theArr)=>{
         console.log(theArr, "TheArr")
         if(theArr.length>0){
@@ -3037,7 +3031,6 @@ export default function OperationsDashboard(){
         })
         return totalAggegator.toFixed(2)
     }
-
     // docs
     const documentTriggers=()=>{
         return(<>
@@ -3498,10 +3491,6 @@ export default function OperationsDashboard(){
         </div>
         </>)
     }
-
-// departure creators
-  //////////////////////////////////////////////
-  //////////////////////////////////////////////
 
   return(<>
     <div className={styles.aGMSPage}>
