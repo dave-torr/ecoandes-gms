@@ -78,24 +78,6 @@ const aDepModel={
     "cruises":[],
     "saleProcess": "onSale"
 }
-const logoSwitcherArr=[
-    {
-        "radioKey": "EcoAndes Travel",
-        "radioVal": "ecoAndes"
-    },
-    {
-        "radioKey": "Galapagos Elements",
-        "radioVal": "galapagosElements"
-    },
-    {
-        "radioKey": "Yacuma EcoLodge",
-        "radioVal": "yacuma"
-    },
-    {
-        "radioKey": "Unigalapagos",
-        "radioVal": "unigalapagos"
-    },
-]
 
 let toDate= new Date()
 
@@ -114,20 +96,21 @@ export default function OperationsDashboard(){
 
     // OPERATIONS DOCUMENTS:
     // - ORDEN DE TRABAJO:
-    //  - Rooming List 
+    // - Rooming List 
+    // - requerimiento economico (cash management)
     // provide hotel data & edit cap
-    // provider database
+
+
+    // NON OP provider database
     // -- guides
     // -- hotels
     // -- cruise
     // -- transportation
 
-
     //  NON OP: add contact from DB to expense. 
     //  NON OP: duplicate hotel accommodations on following nights
     //  NON OP: edit prev set expenses. 
     //  Yacht Reservation Form
-    // requerimiento economico (cash management)
     
     
     
@@ -1090,7 +1073,7 @@ export default function OperationsDashboard(){
 
     let paxTotalCount=<>{paxData?.paxTotal} / {theDeparture?.maxPaxNumb} maximum</>
 
-  // Stats
+    // Stats
     const statsDisplayer=(activeDepartures, upcomingDeps)=>{
         // sum up all current clients in Rooming List
         // = number of active clients.
@@ -1134,7 +1117,7 @@ export default function OperationsDashboard(){
         </div>
         </>)
     }
-
+    // home
     const eachIntroDetail=(theTitle, theDetail)=>{
         return(<>
         <div className={styles.eachDetailCont}>
@@ -1144,6 +1127,7 @@ export default function OperationsDashboard(){
         </>)
     }
     const itineraryHeaderDisp=(theItin, theDep)=>{
+
         if(theItin){
         return(<>
             <div className={styles.spaceBetRow}>
@@ -1166,6 +1150,7 @@ export default function OperationsDashboard(){
 
             <div className={styles.roomingListCont} > 
                 <div className={styles.detailDispl}>
+                    {theItin.duration&&<>{eachIntroDetail("duration", `${theItin.duration} Days`)}</>}
                     {theItin.tripLang&&<>{eachIntroDetail("trip language", theItin.tripLang)}</>}
                     {theDep.tourCode&&<>{eachIntroDetail("Tour code", theDep.tourCode)}</>}
                     {theDep.aComp&&<>{eachIntroDetail("company", theDep.aComp)}</>}
@@ -1202,7 +1187,6 @@ export default function OperationsDashboard(){
                     </div>
                 </div>
                 <div className={styles.spaceBetRow} >
-
                     <div style={{width: "47%" }}>
                         <div className={styles.inputLabel}>
                             Set departure status
@@ -1229,7 +1213,7 @@ export default function OperationsDashboard(){
                         {anInputDisplayer("starting Date", "startingDate", "date", false, theDeparture.startingDate, theDeparture, setTheDeparture )}
                     </div> 
                     <div style={{width: "47%" }}>
-                        {aDateDisp("Arrival Date", theDeparture.startingDate, theDeparture.duration)}
+                        {aDateDisp("Arrival Date", theDeparture.startingDate, theDeparture.duration+1 )}
                     </div> 
                 </div>
                 <div className={styles.spaceBetRow}>
@@ -2273,9 +2257,7 @@ export default function OperationsDashboard(){
         }
     }
     const totalExpAdder=(expenseArr)=>{
-
         // not working proterly, need to check WTF
-
         let totalAggegator=0
         expenseArr.forEach((elem)=>{
             if(elem?.length>0){
@@ -2304,7 +2286,7 @@ export default function OperationsDashboard(){
                 }
             }
         })
-            return totalAggegator?.toFixed(2)
+            return totalAggegator
     }
     const expenseDisplayer=(theExpenseArr, dayByDay )=>{
         const anExpenseDisp=(eachExp, expIndex, dailyExpArray)=>{
@@ -2367,18 +2349,18 @@ export default function OperationsDashboard(){
                     {eachExp.priceDetail}
                     {eachExp.hotelName&&<>- {eachExp.hotelName}
                     </>}
-                    {eachExp.varExpTickets&& <> |  {eachExp.varExpTickets} x ${eachExp.price?.toFixed(2)} </>}
+                    {eachExp.varExpTickets&& <> |  {eachExp.varExpTickets} x ${eachExp.price} </>}
                 </div>
                 <div style={{display:"flex", textAlign:"end"}}>
                     {providerArr.length>1&&<><strong>
                         {eachExp.contactName!="Provider"&&<>{eachExp.contactName}</>}</strong></>}
                     <div style={{width:"27px", textAlign:"end"}}>  </div>
                     {eachExp.expenseKey==="accommodation"? <>
-                        <div style={{width:"66px", textAlign:"end"}}> $ {roomPriceAdder?.toFixed(2)}</div>
+                        <div style={{width:"66px", textAlign:"end"}}> $ {roomPriceAdder}</div>
                     </> : eachExp.expenseKey==="variableExpense"? <>
-                        <div style={{width:"66px", textAlign:"end"}}> $ {eachExp.price?.toFixed(2) * eachExp.varExpTickets }</div>
+                        <div style={{width:"66px", textAlign:"end"}}> $ {eachExp.price * eachExp.varExpTickets }</div>
                     </> : <> 
-                        <div style={{width:"66px", textAlign:"end"}}> $ {eachExp.price?.toFixed(2)}</div>
+                        <div style={{width:"66px", textAlign:"end"}}> $ {eachExp.price}</div>
                     </>}
                 </div>
             </div>
@@ -2674,7 +2656,7 @@ export default function OperationsDashboard(){
                 <div className={styles.aColumn}> 
                     {elem?.roomsTotal?<>
                         <div className={styles.roomOptLabel}>Room total</div>
-                        <div className={styles.aRoomDescription}> ${elem?.roomsTotal?.toFixed(2)}</div> 
+                        <div className={styles.aRoomDescription}> ${elem?.roomsTotal}</div> 
                     </> :<> </>}
                 </div>
                 </div>
@@ -2752,7 +2734,7 @@ export default function OperationsDashboard(){
                     }
                     }
                 })
-                return totalCounter?.toFixed(2)
+                return totalCounter
             }
 
             return(<>
@@ -2892,6 +2874,7 @@ export default function OperationsDashboard(){
  
   // providers
     const contactArrDisp=(theArr)=>{
+        console.log(theArr, "TheArr")
         if(theArr.length>0){
         let eachContact=theArr.map((elem, i)=><React.Fragment key={i}>
             <div className={styles.aProviderDisp}>
@@ -2912,12 +2895,15 @@ export default function OperationsDashboard(){
             <div className={styles.providerRow}>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 {(elem?.expenseKey==="transportExpense" || elem?.expenseKey==="guideExpense" )&& <>
+
                     <div className={styles.eachDocBTN} onClick={()=>{
                     setDocumentGenera({
                         "docKey": "workOrder",
                         ...elem
                     })
                     }}> Work Order + </div>
+
+
                     <div className={styles.eachDocBTN} onClick={()=>{
                     setDocumentGenera({
                         "docKey": "cashReq",
@@ -2969,26 +2955,26 @@ export default function OperationsDashboard(){
                     totalAggegator=
                     totalAggegator
                     +
-                    (elemental.reqRooms * elemental.price)
+                    (elemental.reqRooms * (parseFloat(elemental.price)) )
                     +
                     (elemental.reqAdditionalBed * elemental.additionalBed)
                 } else {
                 totalAggegator=
                 totalAggegator
                 +
-                (elemental.reqRooms * elemental.price)
+                (elemental.reqRooms * parseFloat(elemental.price))
             }
             }
             })
         } else if (elem.varExpTickets){
             totalAggegator =
-            totalAggegator + (elem.price * elem.varExpTickets)
+            totalAggegator + (parseFloat(elem.price) * elem.varExpTickets)
         } else {
             totalAggegator =
-            totalAggegator + elem.price
+            totalAggegator + parseFloat(elem.price)
         }
         })
-        return totalAggegator?.toFixed(2)
+        return totalAggegator.toFixed(2)
     }
 
     // docs
@@ -3017,7 +3003,7 @@ export default function OperationsDashboard(){
                     /> 
                 </div>
                 <div style={{ width:"47%", display:"flex" }}>
-                <h4>Rooming Lost</h4> &nbsp;&nbsp;
+                <h4>Rooming List</h4> &nbsp;&nbsp;
                 <FormControlLabel 
                         control={
                         <Switch checked={documentDispTrigs.roomingList}
@@ -3084,7 +3070,6 @@ export default function OperationsDashboard(){
         </div>
         </>)
     }
-
     const documentCreator=(theDocs)=>{
         // for work orders, econ requirements, contracts
         let eachProviderExp=[]
@@ -3106,7 +3091,6 @@ export default function OperationsDashboard(){
             {theDeparture?.operationalNotes[i]?.length>0&&<> 
                 <div style={{width:"90%", marginLeft:"4%", marginBottom:"9px", fontSize:"0.9em"}}>
                     <div style={{display:"flex", flexDirection:"column"}}>
-
                     {/* each provider's notes */}
                     {theDeparture?.operationalNotes[i].map((elem,index)=> 
                     <React.Fragment key={index}> {elem.target===theDocs?.contactName&&<>
@@ -3124,7 +3108,6 @@ export default function OperationsDashboard(){
                             </>}
                         </div>
                     </>}</React.Fragment> ) }
-
                     {theDeparture?.operationalNotes[i].find(elem => elem.target==="general")&&<>
                         <strong style={{fontSize:"0.8em", marginTop:"9px"}}> GENERAL DAY NOTES</strong>
                     </> }
@@ -3205,7 +3188,7 @@ export default function OperationsDashboard(){
                     {element.additionalDescription&&<>{element.additionalDescription}</>}
                 </span>
                 <span>
-                    ${element.price?.toFixed(2)} {element.varExpTickets&&<> x {element.varExpTickets} = ${element.price?.toFixed(2) * element.varExpTickets}</>}
+                    ${parseFloat(element.price).toFixed(2)} {element.varExpTickets&&<> x {element.varExpTickets} = ${(element.price * element.varExpTickets).toFixed(2)}</>}
                 </span>
                 </div>
             </>}</>)}
@@ -3221,7 +3204,10 @@ export default function OperationsDashboard(){
                     <CancelPresentationIcon/>
                 </div>
             </div>
-            {documentTriggers()}
+            {theDocs.docKey!="cashReq"&&<>
+                {documentTriggers()}</>}
+            {documentDispTrigs.logo && <> <span style={{ display:"flex", justifyContent:"center", width:"100%" }}>
+                {logoSwitcher(theItinerary, "logo")}</span></>}
             <div className={styles.spaceBetRow}>
                 <h1> 
                     {theDocs.docKey==="workOrder"&&<> Work Order</>} 
@@ -3229,7 +3215,7 @@ export default function OperationsDashboard(){
                     {theDocs.docKey==="cashReq"&&<> Economic Requirement</>}
                     {theDocs.docKey==="accommodation"&&<> Accommodations Requirement</>}
                 </h1>
-                {theDocs.docKey!="accommodation"&& <>
+                {(theDocs.docKey!="accommodation"&& theDocs.docKey!="cashReq")&& <>
                     <div style={{cursor:"pointer"}} className={styles.printDEL} onClick={()=>{
                         if(opDocEditSwitch){editOffFunction()} 
                         else {setOPDocSwitch(true)}
@@ -3244,9 +3230,13 @@ export default function OperationsDashboard(){
             {theDocs?.hotelName&&<><h2><strong>{theDocs?.hotelName}</strong></h2></>}
             <div>By: {session?.user.name} | Operations Department</div> <br/>
             {theDocs.docKey!="accommodation" &&<> 
-                <div style={{ display:"flex", width:"100%", justifyContent:"space-around" }}>
+                <div className={styles.spaceBetRow}>
+                    <div style={{width:"48%"}}>
                     {aDateDisp("trip Starting Date", theDeparture.startingDate, )}
+                    </div>
+                    <div style={{width:"48%"}}>
                     {aDateDisp("trip ending Date", theDeparture.startingDate, theDeparture.duration )}
+                    </div>
                 </div>
             </>}
             <div className={styles.detailDispl}>
@@ -3256,13 +3246,9 @@ export default function OperationsDashboard(){
                 </>}
                 {theDeparture?.tourCode&&<>{eachIntroDetail("Tour Code", theDeparture.tourCode)}</>}
                 {theDeparture?.tripRef&&<>{eachIntroDetail("Trip Reference", theDeparture.tripRef)}</>}
-
                 {theDeparture.tourLeader.length>0&&<>{eachIntroDetail("Tour leader", theDeparture.tourLeader[0].guestArr[0].guestName)}</>}
-
-
                 {theDeparture.duration&&<>{eachIntroDetail("Duration", `${theDeparture.duration} days`)}</>}
             </div>
-
             {theDocs.docKey==="accommodation"&&<>
                 <h2>Required Dates:</h2>
                 {eachProviderExp.map((elemnt, indx)=> <React.Fragment key={indx}>
@@ -3295,7 +3281,7 @@ export default function OperationsDashboard(){
                                     {elemz.additionalDescription&&<>{elemz.additionalDescription}</>}
                                 </span>
                                 <span>
-                                    ${elemz.price?.toFixed(2)} {elemz.varExpTickets&&<> x {elemz.varExpTickets} <br/> TOTAL: ${elemz.price?.toFixed(2) * elemz.varExpTickets}</>}
+                                    ${parseFloat(elemz.price).toFixed(2)} {elemz.varExpTickets&&<> x {elemz.varExpTickets} <br/> TOTAL: ${(elemz.price * elemz.varExpTickets).toFixed(2)}</>}
                                 </span>
                                 </div>                        
                             </>}
@@ -3303,7 +3289,7 @@ export default function OperationsDashboard(){
                     </>}
                 </>}
             </>}
-            {theDocs.docKey==="cashReq"&&<> 
+            {theDocs.docKey==="cashReq"&&<>
                 {eachProviderExp.find(elem => elem.econReq)&& <> 
                     <h2> Economic Requirements</h2>
                     {eachProviderExp.map((elemz, i)=> <>
@@ -3314,14 +3300,13 @@ export default function OperationsDashboard(){
                                 {elemz.additionalDescription&&<>{elemz.additionalDescription}</>}
                             </span>
                             <span>
-                                ${elemz.price?.toFixed(2)} {elemz.varExpTickets&&<> x {elemz.varExpTickets} = ${elemz.price?.toFixed(2) * elemz.varExpTickets}</>} 
+                                ${parseFloat(elemz.price).toFixed(2)} {elemz.varExpTickets&&<> x {elemz.varExpTickets} = ${(elemz.price * elemz.varExpTickets).toFixed(2)}</>} 
                             </span>
                             </div>                        
                         </>}
                     </>)}
                 </>}
             </>}
-
             {(theDocs.docKey!="accommodation" && theDocs.docKey!="cashReq")&&<>
                 <h2>Service Breakdown</h2>
                 {eachProviderExp.map((element,i)=><React.Fragment key={i}>
@@ -3331,8 +3316,9 @@ export default function OperationsDashboard(){
                             <strong> {element.priceDetail}</strong> <br/>
                             {element.additionalDescription&&<>{element.additionalDescription}</>}
                         </span>
+                            {element.econReq&& <> CASH REQ. </>}
                         <span>
-                            ${element.price?.toFixed(2)} {element.varExpTickets&&<> x {element.varExpTickets} = ${element.price?.toFixed(2) * element.varExpTickets}</>}
+                            ${parseFloat(element.price).toFixed(2)} {element.varExpTickets&&<> x {element.varExpTickets} = ${(element.price * element.varExpTickets).toFixed(2)} </>}
                         </span>
                     </div>
                 </React.Fragment> )}
@@ -3360,8 +3346,6 @@ export default function OperationsDashboard(){
             <br/>
         </>)
     }
-
-
     const dayByDayDisp=(theDays)=>{
 
         // non MVP
@@ -3373,17 +3357,45 @@ export default function OperationsDashboard(){
             <div className={styles.eachDayCont}>
                 <div className={styles.spaceBetRow} style={{marginTop:"15px" }}>
                 <h5> Day {i+1}: {elem?.dayTitle&&<>{elem?.dayTitle}</>}</h5>
-                    <span onClick={()=>{
-                        // set note trigger
-                    }}>
-                        <AddCircleOutlineIcon/>
-                    </span>
                 </div>
                 {elem?.dayDescription}
             </div>
+
             {addOperationalNote&& <>
-            
+                <div className={styles.spaceBetRow}> 
+                    <div className={styles.inputAndRow} style={{margin:"12px", display:"flex",  alignItems:"center" }}> 
+                        <input 
+                            className={styles.inputUserUI} 
+                            type='text'
+                            onChange={(e)=>{
+                                e.preventDefault;
+                                setAddOPNote({
+                                    ...addOperationalNote,
+                                    "note":e.target.value
+                                })
+                            }}
+                            placeholder='Add Note'
+                        />
+                        &nbsp;
+                        &nbsp;
+                        &nbsp;
+                        <span style={{color:"red", cursor:"pointer" }} onClick={()=>{
+                            if(theDeparture?.operationalNotes[i]?.length>0){
+                                theDeparture.operationalNotes[i].push(addOperationalNote)
+                                setTheDeparture({...theDeparture})
+                            } else {
+                                theDeparture.operationalNotes[i] = [addOperationalNote]
+                                setTheDeparture({...theDeparture})
+                                setAddOPNote(false)
+                            }
+                        }}>
+                            <AddCircleOutlineIcon/> 
+                        </span>
+                    </div>
+                </div>
             </>}
+
+
 
             {theDeparture.flights[i]&& <> 
                 &nbsp;<strong>Flights:</strong>
@@ -3393,7 +3405,6 @@ export default function OperationsDashboard(){
                 </React.Fragment> )}
                 </div>
             </>}
-
             {theDeparture.operationalNotes[i]&& <>
                 <br/> <strong> NOTES</strong>
             </>}
@@ -3408,6 +3419,19 @@ export default function OperationsDashboard(){
         return(<>
         <div className={styles.spaceBetRow}>
             <h2>Day by Day:</h2>
+            {addOperationalNote? <>
+                <span onClick={()=>setAddOPNote(false)}>
+                    <CancelPresentationIcon/>
+                </span>
+            </>:<>
+                <span onClick={()=>{
+                    setAddOPNote({
+                        "target":"general"
+                        })
+                    }}>
+                    <AddCircleOutlineIcon/>
+                </span>
+            </>}
         </div>
         <div className={styles.dayByDayCont}>
             {theProgramDays}
@@ -3416,8 +3440,6 @@ export default function OperationsDashboard(){
     }
 
 // departure creators
-
-
   //////////////////////////////////////////////
   //////////////////////////////////////////////
   return(<>
@@ -3459,8 +3481,8 @@ export default function OperationsDashboard(){
                 <div> {fetchedItins&&<>{fetchedItins.length} GMS Itineraries,</>}
                     {LTCItins&&<>{" "}{LTCItins.length} LTC Itineraries</>}
                 </div>
-
             </div>
+
             {fetchedItins.length>0 ? <> 
                 {depSelector("GMS  Itineraires", fetchedItins)}
             </> : <> 

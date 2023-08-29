@@ -96,8 +96,6 @@ const { data: session } = useSession()
             <option value={elem} > {elem} </option>
         </React.Fragment>)
 
-        console.log(theItins)
-
         return<>
             <div className={styles.itinCardDisp}>
                 <h2> {localOrFetched} Itineraries</h2>

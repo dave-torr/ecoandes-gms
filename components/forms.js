@@ -52,6 +52,7 @@ export function anInputDisplayer(inputLabel, inputId, inputType, isReq, inputPla
                 className={styles.inputUserUI}
                 type={inputType}
                 required={isReq}
+                step="any"
                 placeholder={inputPlaceholder ? inputPlaceholder : undefined}
                 id={inputId}
                 // onFocus={(e)=>{e.target.value=""}}
@@ -59,7 +60,7 @@ export function anInputDisplayer(inputLabel, inputId, inputType, isReq, inputPla
                     e.preventDefault()
                     let theValue
                     if(inputType==="number"){
-                        theValue = parseInt(e.target.value)
+                        theValue = parseFloat(e.target.value)
                     } else {
                         theValue = e.target.value
                     }

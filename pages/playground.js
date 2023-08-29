@@ -10,13 +10,14 @@ import LTCPriceTables from "../data/LTCPriceTables2023.json"
 import { aHotelDisplayer } from '../components/operations/providers'
 
 import styles from "./../styles/pages/playground.module.css"
+import { anInputDisplayer } from '../components/forms'
 
 // Bitacora logo:
 // import TrackChangesIcon from '@mui/icons-material/TrackChanges';
 
 export default function PlaygroundPage(props){
     const { data: session } = useSession()
-
+    const [testerNumb, setTester]=useState({})
     /////////////////////////////////////////////////////
     /////////////////////////////////////////////////////
 
@@ -80,6 +81,12 @@ export default function PlaygroundPage(props){
             <div className={styles.playgroundPage}>
 
             {aHotelDisplayer(sampleHotel)}
+
+            <span style={{ width:"400px", backgroundColor:"white", minHeight:"150px", margin:"21px" }} > 
+                {anInputDisplayer("number", "aNumb", "number", false, "number", testerNumb, setTester, 0, 1000 )}
+
+                {testerNumb.aNumb&& <> {testerNumb.aNumb} </>}
+            </span>
 
             </div> 
         </>}

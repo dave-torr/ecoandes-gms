@@ -942,6 +942,10 @@
         padding-bottom: unset;
         min-height: fit-content;
     }
+    .pageBreak{
+        page-break-after: always;
+        color: white;
+    }
     .keySelectors{
         display: none;
     }

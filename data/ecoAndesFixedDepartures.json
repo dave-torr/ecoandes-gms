@@ -1,6 +1,7 @@
 [
     {
         "tripName": "Djoser NL ECGA",
+        "LTCLogo": "ecoAndes",
         "id": "djoserNLecga",
         "duration": 20,
         "difficulty": 1,
@@ -218,6 +219,7 @@
     },
     {
         "tripName": "Djoser NL JECGA",
+        "LTCLogo": "ecoAndes",
         "id": "djoserNLJecga",
         "duration": 20,
         "difficulty": 1,
@@ -435,6 +437,7 @@
     },
     {
         "tripName": "Djoser NL EC",
+        "LTCLogo": "ecoAndes",
         "id": "djoserNLec",
         "duration": 18,
         "difficulty": 1,
@@ -624,6 +627,7 @@
     },
     {
         "tripName": "Djoser NL JECU",
+        "LTCLogo": "ecoAndes",
         "id": "djoserNLjecu",
         "duration": 20,
         "difficulty": 1,
