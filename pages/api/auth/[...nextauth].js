@@ -47,9 +47,11 @@ export default NextAuth({
     callbacks:{
         async jwt({ token, user }) {
             if (user) {
-            token.userType = user.userType
+            token.department = user.department
             token.profilePic = user.profilePic
             token.hierarchy = user.hierarchy
+            token.companyTitle = user.companyTitle
+            token.userType = user.userType
             }
             return token
         },
@@ -58,9 +60,11 @@ export default NextAuth({
             if( token ){
                 session.user = {
                     ...session.user,
-                    "userType": token.userType,
                     "profilePic": token.profilePic,
-                    "hierarchy": token.hierarchy
+                    "userType": token.userType,
+                    "hierarchy": token.hierarchy,
+                    "department": token.department,
+                    "companyTitle": token.companyTitle,
                 }
             return session  
             }

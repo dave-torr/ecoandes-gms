@@ -4,8 +4,6 @@ import { useSession, signIn, signOut } from "next-auth/react"
 
 import Dialog from '@mui/material/Dialog';
 import CircularProgress from '@mui/material/CircularProgress';
-
-
 import {aTextInput} from "./forms"
 
 import styles from "../styles/components/forms.module.css"
@@ -55,7 +53,9 @@ export function SignOutBtn(){
     return(<>
         <div className={styles.authBar}>
             {session&&<> 
-                <div className={styles.signOutBTN} onClick={()=>signOut()}>Sign Out</div>
+                <div className={styles.signOutBTN} onClick={()=>{
+                    signOut()
+                }}>Sign Out</div>
             </>}
         </div>
     </>)

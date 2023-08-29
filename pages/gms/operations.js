@@ -32,6 +32,10 @@ import LTCPriceTables from "../../data/LTCPriceTables2023.json"
 import LTCItins from "../../data/LTCItinerary.json"
 import EcoAndesItins from "../../data/ecoAndesFixedDepartures.json"
 
+
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+
 let catalogIndex={
     "adventureGuides":"Adventure Guides",
     "driverGuideServices":"Driver Guides",
@@ -492,7 +496,6 @@ export default function OperationsDashboard(){
             </>}
         </>)
     }
-
     const depCreator=(theItin, theDep)=>{
 
     // Add Inputs for minimum needed info for dep:
@@ -524,12 +527,14 @@ export default function OperationsDashboard(){
             </div>
             <br/>
             <form onSubmit={async(e)=>{
-                e.preventDefault(),
+                e.preventDefault();
+
                 // send dep to BE
                 setfileSwitch(true)
                 setSavedoc(false)
-                let reqData = JSON.stringify({
-                    ...theDeparture,
+                let reqData;
+                reqData = {
+                    ...theDep,
                     "dateCreated":toDate,
                     "tripName": theItin.tripName,
                     "version": 0,
@@ -538,18 +543,48 @@ export default function OperationsDashboard(){
                         "name": session.user.name,
                         "email": session.user.email
                         }
-                })
+                }
+                if(session?.user.hierarchy!=1){
+                    reqData = {
+                    ...theDep,
+                    "assignment": session.user.name
+                    }
+                }
+
                 const res = await fetch("/api/gms/departures", {
                     method: "POST",
-                    body: reqData
+                    body: JSON.stringify(reqData)
                 })
                 const depCreationRes = await res.json()
                 if(res.status===200){
                     window.alert("Departure Created! Add aditional information below, and do not forget to save your work!")
                     setSavedoc(true)
                 }
+
             }}>
-            <br/>        
+            <br/>
+
+
+            {session?.user.hierarchy===1&& <>
+            <div className={styles.spaceBetRow}>
+                <div style={{width:"47%"}}>
+                    <div className={styles.inputLabel}> Assign Folder to: </div>
+                    <select className={styles.inputUserUI} onChange={(e)=>{
+                        e.preventDefault()
+                        setTheDeparture({
+                            ...theDep,
+                            "assignment": e.target.value
+                        })
+                    }}> 
+                        <option disabled selected > Select Folder Operator </option>
+                        <option value="Cristina Paez"> Cristina Paez </option>
+                        <option value="Carolina Cruz"> Carolina Cruz </option>
+                        <option value="Carlos del Salto"> Carlos del Salto </option>
+                    </select> &nbsp;
+                </div>
+            </div>
+            </> }            
+
             <div className={styles.spaceBetRow}>
                 <div style={{width:"49%"}}>
                     <div className={styles.inputLabel}>
@@ -561,7 +596,7 @@ export default function OperationsDashboard(){
                         required
                         onChange={(e)=>{
                             e.preventDefault;
-                            setTheDeparture({...theDeparture,
+                            setTheDeparture({...theDep,
                                 "startingDate": e.target.value
                             })
                         }}
@@ -569,7 +604,7 @@ export default function OperationsDashboard(){
                     />
                 </div>
                 <div style={{width:"49%"}}>
-                    {aDateDisp("Starting Date", theDeparture.startingDate, 2)}
+                    {aDateDisp("Starting Date", theDep.startingDate, 2)}
                 </div>
             </div>
             <div className={styles.spaceBetRow}>
@@ -577,28 +612,28 @@ export default function OperationsDashboard(){
                     <strong>DURATION:</strong> {theItin.duration} days
                 </div>
                 <div style={{width:"49%"}}>
-                    {aDateDisp("Ending Date", theDeparture.startingDate, parseInt(theItin.duration)+1 )}
+                    {aDateDisp("Ending Date", theDep.startingDate, parseInt(theItin.duration)+1 )}
                 </div>
             </div>
             <div className={styles.spaceBetRow}>
                 <div style={{width:"49%"}}>
-                    {anInputDisplayer("Tour Code*", "tourCode", "text", true, "Ex: USA AZ 01 22", theDeparture, setTheDeparture, )}
+                    {anInputDisplayer("Tour Code*", "tourCode", "text", true, "Ex: USA AZ 01 22", theDep, setTheDeparture, )}
                 </div>
                 <div style={{width:"49%"}}>
-                    {anInputDisplayer("reference", "tripRef", "text", false, "Ex: Lincoln x 5", theDeparture, setTheDeparture, )}
-                </div>
-            </div>
-            <div className={styles.spaceBetRow}>
-                <div style={{width:"49%"}}>
-                    {anInputDisplayer("Company", "aComp", "text", false, "Ex: Darkwing Tours", theDeparture, setTheDeparture, )}
-                </div>
-                <div style={{width:"49%"}}>
-                    {anInputDisplayer("Contact", "compContact", "text", false, "Ex: Maria Molina", theDeparture, setTheDeparture, )}
+                    {anInputDisplayer("reference", "tripRef", "text", false, "Ex: Lincoln x 5", theDep, setTheDeparture, )}
                 </div>
             </div>
             <div className={styles.spaceBetRow}>
                 <div style={{width:"49%"}}>
-                    {anInputDisplayer("Guest Maximum*", "maxPaxNumb", "number", true, "Ex: 16", theDeparture, setTheDeparture, 0 )}
+                    {anInputDisplayer("Company", "aComp", "text", false, "Ex: Darkwing Tours", theDep, setTheDeparture, )}
+                </div>
+                <div style={{width:"49%"}}>
+                    {anInputDisplayer("Contact", "compContact", "text", false, "Ex: Maria Molina", theDep, setTheDeparture, )}
+                </div>
+            </div>
+            <div className={styles.spaceBetRow}>
+                <div style={{width:"49%"}}>
+                    {anInputDisplayer("Guest Maximum*", "maxPaxNumb", "number", true, "Ex: 16", theDep, setTheDeparture, 0 )}
                 </div>
                 <div style={{width:"49%"}}>
                 <input type="submit" className={styles.submitDepBTN}  />
@@ -854,7 +889,7 @@ export default function OperationsDashboard(){
             </>}
             <div className={styles.flightDisplayer}>
                 <span>{flightData.theDate&&<>{new Date(flightData.theDate).toDateString()}</>}</span>
-                <span>{flightData.target==="group"? <>GROUP FLIGHT</>:<>{flightData.clientName}</>}</span>
+                <span>{flightData.target==="group"?<><strong>GROUP FLIGHT</strong></>:<>{flightData.clientName}</>}</span>
                 <span>{flightData.departureTime&&<><strong>Time:</strong><br/> {flightData.departureTime}</>}</span>                
                 <span>{flightData.depLocation&& <><strong>FROM:</strong><br/> {flightData.depLocation}</>}</span>
                 <span>{flightData.arriLocation&& <><strong>TO:</strong><br/>{flightData.arriLocation}</>}</span>
@@ -864,18 +899,20 @@ export default function OperationsDashboard(){
         </div>
         </>)
     }
+
     const flightsDisp=()=>{
         return(<>
             <div className={styles.spaceBetRow}> 
                 <h2>Flights</h2>
-                <div style={{cursor:"pointer", paddingRight: "12px"}} 
-                    onClick={()=>{
-                    if(editSwitch){setEditSwitch(false)} else {setEditSwitch(true)}
-                }}>
-                    {theDeparture.flights.length>0 && <>
-                    {editSwitch?<><EditOffIcon/></>:<><EditIcon/></>}
-                    </>}
-                </div>                
+                {(session?.user.hierarchy===1 || session?.user.name===theDep.assignment)&& <>
+                    <div style={{cursor:"pointer", paddingRight: "12px"}} 
+                        onClick={()=>{
+                        if(editSwitch){setEditSwitch(false)} else {setEditSwitch(true)}
+                    }}>
+                        {theDeparture.flights.length>0 && <>
+                        {editSwitch?<><EditOffIcon/></>:<><EditIcon/></>}
+                        </>}
+                </div></>}
             </div>
             {theDeparture.flights.length>0? <> 
                 {theDeparture.flights.map((elem, i)=> <React.Fragment key={i}>
@@ -1126,8 +1163,8 @@ export default function OperationsDashboard(){
         </div>
         </>)
     }
-    const itineraryHeaderDisp=(theItin, theDep)=>{
 
+    const itineraryHeaderDisp=(theItin, theDep)=>{
         if(theItin){
         return(<>
             <div className={styles.spaceBetRow}>
@@ -1137,7 +1174,7 @@ export default function OperationsDashboard(){
                 </div>
                 <div className={styles.aColumn}>
                 {departureStatusDisp(theDep)}
-                {(session?.user.hierarchy===1 || session?.user.department==="Operaciones")&& <>
+                {(session?.user.hierarchy===1 || session?.user.name===theDep.assignment)&& <>
                     <div style={{cursor:"pointer", paddingRight: "20px"}} 
                         onClick={()=>{
                         if(editSwitch){setEditSwitch(false)} else {setEditSwitch(true)}
@@ -1147,7 +1184,7 @@ export default function OperationsDashboard(){
                     </>}
                 </div>
             </div>
-
+            {theDep.assignment&&<>{eachIntroDetail("folder Assignment", theDep.assignment)}</>}
             <div className={styles.roomingListCont} > 
                 <div className={styles.detailDispl}>
                     {theItin.duration&&<>{eachIntroDetail("duration", `${theItin.duration} Days`)}</>}
@@ -1157,6 +1194,7 @@ export default function OperationsDashboard(){
                     {theDep.compContact&&<>{eachIntroDetail("contact", theDep.compContact)}</>}
                     {theDep.tripRef&&<>{eachIntroDetail("trip Reference", theDep.tripRef)}</>}
                     {theDep.maxPaxNumb&&<>{eachIntroDetail("guests", paxTotalCount)}</>}
+                    
                 </div>
             <h2> Tour Dates </h2>
             <div className={styles.spaceBetRow}> 
@@ -1186,6 +1224,26 @@ export default function OperationsDashboard(){
                         <EditOffIcon/>
                     </div>
                 </div>
+                <br/>
+                {session?.user.hierarchy===1&& <>
+                <div className={styles.spaceBetRow}>
+                    <div style={{width:"47%"}}>
+                        <div className={styles.inputLabel}> Assign Folder to: </div>
+                        <select className={styles.inputUserUI} onChange={(e)=>{
+                            e.preventDefault()
+                            setTheDeparture({
+                                ...theDeparture,
+                                "assignment": e.target.value
+                            })
+                        }}> 
+                            <option disabled selected > Select Folder Operator </option>
+                            <option value="Cristina Paez"> Cristina Paez </option>
+                            <option value="Carolina Cruz"> Carolina Cruz </option>
+                            <option value="Carlos del Salto"> Carlos del Salto </option>
+                        </select> &nbsp;
+                    </div>
+                </div>
+                </> }
                 <div className={styles.spaceBetRow} >
                     <div style={{width: "47%" }}>
                         <div className={styles.inputLabel}>
@@ -1289,6 +1347,7 @@ export default function OperationsDashboard(){
         <React.Fragment key={i}>
             {!elem?.tourLeader&&<>
             <div className={styles.eachRoomDisplayer}>
+
             {editSwitch&&<>
                 <div className={styles.editRoomingIcon} onClick={()=>{
                     setTempRoomObj(elem)
@@ -1348,8 +1407,6 @@ export default function OperationsDashboard(){
             </div>
         </React.Fragment> )
         }
-
-
         let eachTLRoom=theDep.tourLeader?.map((elemTL, i)=><React.Fragment key={i}>
             <div className={styles.eachRoomDisplayer}>
             {editSwitch&&<>
@@ -1415,11 +1472,13 @@ export default function OperationsDashboard(){
                             });
                         }}> <AddCircleOutlineIcon /></div>
                     </>}
-                    <div style={{cursor:"pointer", paddingRight: "196px"}} className={styles.printDEL} onClick={()=>{
-                        if(editSwitch){setEditSwitch(false); setTempRoomObj({}); setAddGuest(false); setTLObj(false)} else {setEditSwitch(true)}
-                    }}>
-                        {editSwitch? <><EditOffIcon/></>: <><EditIcon/></>}
-                    </div>
+                    {(session?.user.hierarchy===1 || session?.user.name===theDep.assignment)&&<> 
+                        <div style={{cursor:"pointer", paddingRight: "196px"}} className={styles.printDEL} onClick={()=>{
+                            if(editSwitch){setEditSwitch(false); setTempRoomObj({}); setAddGuest(false); setTLObj(false)} else {setEditSwitch(true)}
+                        }}>
+                            {editSwitch? <><EditOffIcon/></>: <><EditIcon/></>}
+                        </div>
+                    </>}
                 </>}
             </div>
             {paxData&&<><div className={styles.guestTotal}>{paxData.paxTotal} guest{paxData.paxTotal>1&&<>s</>}
@@ -2397,12 +2456,14 @@ export default function OperationsDashboard(){
         return(<>
             <div className={styles.spaceBetRow}> 
                 <h2>Expenses:</h2>
-                <div style={{cursor:"pointer"}} onClick={()=>{
-                    if(editSwitch){setEditSwitch(false); setExpTrig(false); setAnExpense(); setTLObj(false)} 
-                    else {setEditSwitch(true)}
-                }}>
-                    {editSwitch? <><EditOffIcon/></>:<><EditIcon/></>}
-                </div>
+                {(session?.user.hierarchy===1 || session?.user.name===theDeparture.assignment)&&<>
+                    <div style={{cursor:"pointer"}} onClick={()=>{
+                        if(editSwitch){setEditSwitch(false); setExpTrig(false); setAnExpense(); setTLObj(false)} 
+                        else {setEditSwitch(true)}
+                    }}>
+                        {editSwitch? <><EditOffIcon/></>:<><EditIcon/></>}
+                    </div>
+                </> }
             </div>
             {/* {theExpenseArr.length>0 && <> 
             <div className={styles.totalExpCont}> 
@@ -3215,13 +3276,15 @@ export default function OperationsDashboard(){
                     {theDocs.docKey==="cashReq"&&<> Economic Requirement</>}
                     {theDocs.docKey==="accommodation"&&<> Accommodations Requirement</>}
                 </h1>
-                {(theDocs.docKey!="accommodation"&& theDocs.docKey!="cashReq")&& <>
-                    <div style={{cursor:"pointer"}} className={styles.printDEL} onClick={()=>{
-                        if(opDocEditSwitch){editOffFunction()} 
-                        else {setOPDocSwitch(true)}
-                    }}>
-                        {opDocEditSwitch? <><EditOffIcon/></>:<><EditIcon/></>}
-                    </div>
+                {(session?.user.hierarchy===1 || session?.user.name===theDeparture.assignment)&& <>
+                    {(theDocs.docKey!="accommodation"&& theDocs.docKey!="cashReq")&& <>
+                        <div style={{cursor:"pointer"}} className={styles.printDEL} onClick={()=>{
+                            if(opDocEditSwitch){editOffFunction()} 
+                            else {setOPDocSwitch(true)}
+                        }}>
+                            {opDocEditSwitch? <><EditOffIcon/></>:<><EditIcon/></>}
+                        </div>
+                    </>}
                 </>}
             </div>
             <div className={styles.spaceBetRow}>  
@@ -3348,7 +3411,7 @@ export default function OperationsDashboard(){
     }
     const dayByDayDisp=(theDays)=>{
 
-        // non MVP
+        // non OP
         // Cruise Adder BTN
         // switch to turn on or off day detail
 
@@ -3394,17 +3457,6 @@ export default function OperationsDashboard(){
                     </div>
                 </div>
             </>}
-
-
-
-            {theDeparture.flights[i]&& <> 
-                &nbsp;<strong>Flights:</strong>
-                <div style={{ paddingRight:"12px"}}>
-                {theDeparture.flights[i].map((elem,i)=><React.Fragment>
-                    {eachFlight(elem)}
-                </React.Fragment> )}
-                </div>
-            </>}
             {theDeparture.operationalNotes[i]&& <>
                 <br/> <strong> NOTES</strong>
             </>}
@@ -3414,6 +3466,14 @@ export default function OperationsDashboard(){
                     - {elemnt.note} {elemnt.target!="general"&&<> | <strong>{elemnt.target}</strong> </>}
                     </div>
                 </>)}
+            </>}
+            {theDeparture.flights[i]&& <> 
+                &nbsp;<strong>Flights:</strong>
+                <div style={{ paddingRight:"12px"}}>
+                {theDeparture.flights[i].map((elem,i)=><React.Fragment>
+                    {eachFlight(elem)}
+                </React.Fragment> )}
+                </div>
             </>}
         </React.Fragment> )
         return(<>
@@ -3442,9 +3502,10 @@ export default function OperationsDashboard(){
 // departure creators
   //////////////////////////////////////////////
   //////////////////////////////////////////////
+
   return(<>
     <div className={styles.aGMSPage}>
-      {session? <> 
+    {session&&<> 
         <GMSNavii user={session.user} />
         <div className={styles.titleBar}>
             <HubIcon fontSize="large" />
@@ -3452,99 +3513,96 @@ export default function OperationsDashboard(){
             <h1>Operations</h1>
         </div>  
         <strong className={styles.printDEL} >{toDateDisplayer}</strong>
-      {loadingTrigger? <>
-        {loadingScreen("Fetching Departure Data")}
-      </>:<>
-          {/* Daily(monthly||weekly ) Planner */}
-          {theDeparture? <>
-            {fileSwitch ? <>
-                <div style={{display: "flex", flexDirection:"column", alignItems:"center", margin:"15px" }}> 
-                    {aFileDisplayer(theItinerary, theDeparture)}
+        {loadingTrigger? <>
+            {loadingScreen("Fetching Departure Data")}
+        </>:<>
+            {/* Daily(monthly||weekly ) Planner */}
+            {theDeparture? <>
+                {fileSwitch ? <>
+                    <div style={{display: "flex", flexDirection:"column", alignItems:"center", margin:"15px" }}> 
+                        {aFileDisplayer(theItinerary, theDeparture)}
+                    </div>
+                </>:<> 
+                    {depCreator(theItinerary, theDeparture)}
+                </> }
+            </>:<>
+                {/* display itineraries and select a dep for file */}
+                <div className={styles.spaceBetRow}> 
+                    <h1>Departures </h1>
+                    {statsDisplayer(activeDeps, upcomingDeps)}            
                 </div>
-            </>:<> 
-                {depCreator(theItinerary, theDeparture)}
-            </> }
-          </>:<>
-            {/* display itineraries and select a dep for file */}
-            <div className={styles.spaceBetRow}> 
-                <h1>Departures </h1>
-                {statsDisplayer(activeDeps, upcomingDeps)}            
-            </div>
-            {depDisplayer(activeDeps, "active Departures", true)}
-            {depDisplayer(upcomingDeps, "upcoming Departures", false)}
+                {depDisplayer(activeDeps, "active Departures", true)}
+                {depDisplayer(upcomingDeps, "upcoming Departures", false)}
 
-            <br/><br/>
-            <div className={styles.aLineSeparator}/>
+                <br/><br/>
+                <div className={styles.aLineSeparator}/>
 
-            <div className={styles.spaceBetRow}>
-                <h1>Create a departure: </h1>
-                <div> {fetchedItins&&<>{fetchedItins.length} GMS Itineraries,</>}
-                    {LTCItins&&<>{" "}{LTCItins.length} LTC Itineraries</>}
+                <div className={styles.spaceBetRow}>
+                    <h1>Create a departure: </h1>
+                    <div> {fetchedItins&&<>{fetchedItins.length} GMS Itineraries,</>}
+                        {LTCItins&&<>{" "}{LTCItins.length} LTC Itineraries</>}
+                    </div>
                 </div>
-            </div>
 
-            {fetchedItins.length>0 ? <> 
-                {depSelector("GMS  Itineraires", fetchedItins)}
-            </> : <> 
-                <div className={styles.depTrigBTN} onClick={async()=>{
-                    // fetch GMS itineraries
-                    if(!itinFetcherGMSSwitch){
-                    setGMSItinFetcherSwitch(true)
-                        const res2 = await fetch("/api/gms/itineraries",{
-                            method: "GET"
-                        })
-                        let fetchedData2 = await res2.json()
-                        if(fetchedData2){
-                            // filter / sort functions
-                            setFetchedItins(fetchedData2)
+                {fetchedItins.length>0 ? <> 
+                    {depSelector("GMS  Itineraires", fetchedItins)}
+                </> : <> 
+                    <div className={styles.depTrigBTN} onClick={async()=>{
+                        // fetch GMS itineraries
+                        if(!itinFetcherGMSSwitch){
+                        setGMSItinFetcherSwitch(true)
+                            const res2 = await fetch("/api/gms/itineraries",{
+                                method: "GET"
+                            })
+                            let fetchedData2 = await res2.json()
+                            if(fetchedData2){
+                                // filter / sort functions
+                                setFetchedItins(fetchedData2)
+                            }
                         }
-                    }
-                }} > 
-                    {itinFetcherGMSSwitch ? <>
-                        <CircularProgress />
-                    </>:<>
-                        <AddCircleOutlineIcon/> &nbsp; &nbsp; departure from GMS itineraries
-                    </> }
-                </div>
-            </> }
+                    }} > 
+                        {itinFetcherGMSSwitch ? <>
+                            <CircularProgress />
+                        </>:<>
+                            <AddCircleOutlineIcon/> &nbsp; &nbsp; departure from GMS itineraries
+                        </> }
+                    </div>
+                </> }
 
-            <br/><br/>
-            {ecoAndesFixedDepartures ? <> 
-                {depSelector("EcoAndes Fixed Departures", EcoAndesItins)}
-            </>:<> 
-                <div className={styles.depTrigBTN} onClick={()=>{
-                    setEcoAndesFD(true)
-                }} >
-                    {ecoAndesFixedDepartures ? <>
-                        <CircularProgress />
-                    </>:<>
-                        <AddCircleOutlineIcon/> &nbsp; &nbsp; departure from EcoAndes FD itineraries
-                    </> }
-                </div>
+                <br/><br/>
+                {ecoAndesFixedDepartures ? <> 
+                    {depSelector("EcoAndes Fixed Departures", EcoAndesItins)}
+                </>:<> 
+                    <div className={styles.depTrigBTN} onClick={()=>{
+                        setEcoAndesFD(true)
+                    }} >
+                        {ecoAndesFixedDepartures ? <>
+                            <CircularProgress />
+                        </>:<>
+                            <AddCircleOutlineIcon/> &nbsp; &nbsp; departure from EcoAndes FD itineraries
+                        </> }
+                    </div>
+                </>}
+
+                <br/><br/>
+                {itinFetcherLTCSwitch ? <> 
+                    {depSelector("LTC Published Itineraries", LTCItins)}
+                </>:<> 
+                    <div className={styles.depTrigBTN} onClick={()=>{
+                        setLTCItinFetcherSwitch(true)
+                    }} >
+                    
+                        {itinFetcherLTCSwitch ? <>
+                            <CircularProgress />
+                        </>:<>
+                            <AddCircleOutlineIcon/> &nbsp; &nbsp; departure from LTC itineraries
+                        </> }
+
+                    </div>
+                </>}
             </>}
-
-            <br/><br/>
-            {itinFetcherLTCSwitch ? <> 
-                {depSelector("LTC Published Itineraries", LTCItins)}
-            </>:<> 
-                <div className={styles.depTrigBTN} onClick={()=>{
-                    setLTCItinFetcherSwitch(true)
-                }} >
-                
-                    {itinFetcherLTCSwitch ? <>
-                        <CircularProgress />
-                    </>:<>
-                        <AddCircleOutlineIcon/> &nbsp; &nbsp; departure from LTC itineraries
-                    </> }
-
-                </div>
-            </>}
-          </>}
-      </>}
-      </>:<>
-        {/* nav export to reuse on all pages */}
-        GMS Sgn in OPTS
-      </> }
-  </div>
+        </>}
+    </>}
+    </div>
   </>)
 }
