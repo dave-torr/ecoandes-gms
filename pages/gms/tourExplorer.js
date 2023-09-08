@@ -144,8 +144,6 @@ const { data: session } = useSession()
     const [editItinTrig, setEditItinTrig]=useState(false)
     const [itinDataTrig, setDataTrig]=useState(false)
 
-    console.log(fetchedItinArr)
-
     const fetchUserItineraries=()=>{
         return(<>
             {fetchedItinArr?<>

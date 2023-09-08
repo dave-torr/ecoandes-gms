@@ -15,14 +15,42 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 export function aHotelDisplayer(aHotel){
-    console.log(aHotel)
+    // console.log(aHotel)
 
 // target='_blank' href="https://wa.me/593979469989"
 
     const starDisp=(starz)=>{
-        for(let i =0; i<starz+1; i++ ){
-            return(<> <StarBorderIcon/> </>)
+        let starArr=[]
+        for(let i = 0; i<starz; i++ ){
+            starArr.push( <StarBorderIcon/> )
         }  
+        return(<>
+            {starArr}
+        </>)
+    }
+
+    const additionalServicesDisp=(servArr)=>{
+        if(servArr){return(<>
+            <Accordion defaultExpanded={false}>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" >
+                    <h2> Additional Services </h2>
+                </AccordionSummary>
+                <AccordionDetails>
+                    {servArr.map((elem, i)=><React.Fragment key={i}>
+                    <div className={styles.hotelRoomDisp}>
+                        <div style={{ display:"flex", flexDirection:"column", width:"50%", textTransform:"capitalize" }}> 
+                            {elem.priceDescription}
+                            <strong> {elem.priceType} </strong>
+                        </div>              
+                        <div style={{ display:"flex", flexDirection:"column", width:"40%", textTransform:"capitalize" }}> 
+                            <span> <strong> PRICE: </strong> USD $ {elem.price}</span>
+                            {elem.guestMax &&<> <span><strong>MAXIMUM GUESTS: </strong>  {elem.guestMax} Pax  </span>  </> }
+                        </div>              
+                    </div>
+                    </React.Fragment> )}
+                </AccordionDetails>
+            </Accordion>
+        </>)} 
     }
 
     return(<>
@@ -34,7 +62,7 @@ export function aHotelDisplayer(aHotel){
                     {starDisp(aHotel.stars)}
                 </div>
             </div>
-            <div style={{ textTransform:"capitalize",  }}> 
+            <div style={{ textTransform:"capitalize"}}> 
             {aHotel.city && <> {aHotel.city} </> } | 
             {aHotel.country && <> {aHotel.country} </> } </div> <br/>
 
@@ -61,9 +89,11 @@ export function aHotelDisplayer(aHotel){
                 <AccordionDetails>                    
                     {aHotel.contactArr?.map((elem,i)=><React.Fragment>
                     <div className={styles.spaceBetRow}>
-                        <h4> {elem.name&& <>{elem.name}</>}</h4>
                         <div className={styles.aContactRow}>
-                            {elem.role&& <> {elem.role}</>}
+                            <h4>{elem.name&& <>{elem.name}</>}</h4>
+                            {elem.role&& <>&nbsp; &nbsp;{elem.role}</>}
+                        </div>
+                        <div className={styles.aContactRow}>
                             {elem.email&& <>
                                 <span><a target='_blank' href={`mailto:${elem.email}`}> <MailOutlineIcon/> </a></span></>}
                             {elem.phono&& <>
@@ -114,6 +144,8 @@ export function aHotelDisplayer(aHotel){
                 </AccordionDetails>
             </Accordion>
             </>}
+
+            {additionalServicesDisp(aHotel.additionalServices)}
         </div>
     </>)
 

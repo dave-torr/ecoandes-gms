@@ -973,8 +973,8 @@ export default function OperationsDashboard(){
                 })
             }
             }}>
-            <option disabled selected > Select Expense Type </option>
-            {dropdownOpts}
+                <option disabled selected > Select Expense Type </option>
+                {dropdownOpts}
             </select>
         </>}
         </>)
@@ -999,11 +999,7 @@ export default function OperationsDashboard(){
         </div> <br/><br/>
 
         <div className={styles.spaceBetRow} style={{width:"760px" }}>
-            <span onClick={()=>{
-                // Delete Departure
-            }}> 
-            {/* <DeleteForeverIcon/>  */}
-            </span>
+            <span />
             <div className={styles.keySelectors}>
                 {fileDisplayKey!="intro"&&<> 
                     <span onClick={()=>{setFileKey("intro"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>home </span></>}
@@ -1029,6 +1025,14 @@ export default function OperationsDashboard(){
         </div>
         {/* Display */}
         <div className={styles.aFileContainer}>
+            {logoSwitcher(theItin, "text")}
+            <div className={styles.spaceBetRow}>
+                <div>
+                    <h3>{theItin.tourCode}</h3>
+                    <h1>{theItin.tripName}</h1>
+                </div>
+                {departureStatusDisp(theDep)}
+            </div>
             {fileDisplayKey==="intro"&&<>
                 {itineraryHeaderDisp(theItin, theDep)}
             </>}
@@ -1157,7 +1161,7 @@ export default function OperationsDashboard(){
         return(<>
         <div className={styles.eachDetailCont}>
             <div className={styles.eachDetailTitle}>{theTitle}</div>
-            <div>{theDetail}</div>
+            <div style={{ textTransform:"capitalize" }} >{theDetail}</div>
         </div>
         </>)
     }
@@ -1165,12 +1169,8 @@ export default function OperationsDashboard(){
         if(theItin){
         return(<>
             <div className={styles.spaceBetRow}>
-                <div>
-                    {logoSwitcher(theItin, "text")}
-                    <h1>{theItin.tripName}</h1>
-                </div>
+                <div />
                 <div className={styles.aColumn}>
-                {departureStatusDisp(theDep)}
                 {(session?.user.hierarchy===1 || session?.user.name===theDep.assignment)&& <>
                     <div style={{cursor:"pointer", paddingRight: "20px"}} 
                         onClick={()=>{
@@ -1186,7 +1186,6 @@ export default function OperationsDashboard(){
                 <div className={styles.detailDispl}>
                     {theItin.duration&&<>{eachIntroDetail("duration", `${theItin.duration} Days`)}</>}
                     {theItin.tripLang&&<>{eachIntroDetail("trip language", theItin.tripLang)}</>}
-                    {theDep.tourCode&&<>{eachIntroDetail("Tour code", theDep.tourCode)}</>}
                     {theDep.aComp&&<>{eachIntroDetail("company", theDep.aComp)}</>}
                     {theDep.compContact&&<>{eachIntroDetail("contact", theDep.compContact)}</>}
                     {theDep.tripRef&&<>{eachIntroDetail("trip Reference", theDep.tripRef)}</>}
@@ -3296,14 +3295,15 @@ export default function OperationsDashboard(){
                 </div>
             </>}
             <div className={styles.detailDispl}>
+                {theDeparture?.tripName&&<>{eachIntroDetail("Tour Name", theDeparture.tripName)}</>}
                 {eachIntroDetail("Date Created", toDate.toLocaleDateString('en-GB', dateOptions))}
+                {theDeparture?.tourCode&&<>{eachIntroDetail("Tour Code", theDeparture.tourCode)}</>}
+                {theDeparture.duration&&<>{eachIntroDetail("Duration", `${theDeparture.duration} days`)}</>}
+                {theDeparture?.tripRef&&<>{eachIntroDetail("Trip Reference", theDeparture.tripRef)}</>}
+                {theDeparture.tourLeader.length>0&&<>{eachIntroDetail("Tour leader", theDeparture.tourLeader[0].guestArr[0].guestName)}</>}
                 {theDocs.expenseKey==="workOrder"&&<>
                     {theItinerary?.tripLang&&<>{eachIntroDetail("trip language", theItinerary.tripLang)}</>}
                 </>}
-                {theDeparture?.tourCode&&<>{eachIntroDetail("Tour Code", theDeparture.tourCode)}</>}
-                {theDeparture?.tripRef&&<>{eachIntroDetail("Trip Reference", theDeparture.tripRef)}</>}
-                {theDeparture.tourLeader.length>0&&<>{eachIntroDetail("Tour leader", theDeparture.tourLeader[0].guestArr[0].guestName)}</>}
-                {theDeparture.duration&&<>{eachIntroDetail("Duration", `${theDeparture.duration} days`)}</>}
             </div>
             {theDocs.docKey==="accommodation"&&<>
                 <h2>Required Dates:</h2>

@@ -855,7 +855,7 @@ export function RectangularTourCard(props){
 }
 
 
-// tour displayer LTC
+// tour displayer LTC NON OP, need to isolate state for each ver
 export function SortingItinUI(props){
     // const [sortContr, setSortContr]=useState("duration")
     // const [props.sortOrder, setSortOrder]=useState("ascending")
@@ -1094,7 +1094,15 @@ export function ItinEditor(props){
         if(editObjTemplate.editKey){
         return(<>
             <div className={loadingStateStyle}>
-                <span onClick={()=>{if(!loadingTrig){props.setDialogTrig(false)}}}> 
+                <span onClick={()=>{if(!loadingTrig){
+                    setEditStep(0)
+                    setEditTemplate({
+                        ...editObjTemplate,
+                        "editKey": 0, 
+                        "editValue": undefined
+                    })
+                    props.setDialogTrig(false)
+                    }}}> 
                     Cancel</span> 
                 <span onClick={async()=>{
                     setLoadingTrig(true)

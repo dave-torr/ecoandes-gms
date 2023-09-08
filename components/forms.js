@@ -40,7 +40,7 @@ export function aTextInput(aPlaceholder, inputId, anObject, setAnObject, inputTy
 // Operational Inputs
 
 // Updated general input displayer
-export function anInputDisplayer(inputLabel, inputId, inputType, isReq, inputPlaceholder, anObject, setAnObject, numbMin, numbMax ){
+export function anInputDisplayer(inputLabel, inputId, inputType, isReq, inputValue, anObject, setAnObject, numbMin, numbMax ){
     return(<>
         <div className={styles.theInputContainer}>
             <div className={styles.anInputRow}>
@@ -53,7 +53,8 @@ export function anInputDisplayer(inputLabel, inputId, inputType, isReq, inputPla
                 type={inputType}
                 required={isReq}
                 step="any"
-                placeholder={inputPlaceholder ? inputPlaceholder : undefined}
+                defaultValue={inputValue ? inputValue : undefined }
+                placeholder={inputType}
                 id={inputId}
                 // onFocus={(e)=>{e.target.value=""}}
                 onChange={(e)=>{
@@ -75,6 +76,7 @@ export function anInputDisplayer(inputLabel, inputId, inputType, isReq, inputPla
         </div>
     </>)
 }
+
 
 // multi OptDisplayer
 export function multiOptPicker(theOptsArr, inputLabel, inputId, resultingList, anObject, setAnObject, setOptsArr){
@@ -142,7 +144,7 @@ export function multiOptPicker(theOptsArr, inputLabel, inputId, resultingList, a
     </>)
 }
 // simple optPicker
-export function aDropdownPicker(theOptsArr, inputLabel, inputId, anObject, setAnObject, optLabelArr, inputLabelSwitch ){
+export function aDropdownPicker(theOptsArr, inputLabel, inputId, anObject, setAnObject, optLabelArr, inputLabelSwitch,  ){
 
     let theOptions
 
@@ -205,7 +207,7 @@ export function aSwitcher(switcherController, anObject, setAnObject, objectElemK
 
 }
 
-export function aTextArea(inputLabel, inputId, isReq, inputPlaceholder, anObject, setAnObject ){
+export function aTextArea(inputLabel, inputId, isReq, inputValue, anObject, setAnObject ){
     return(<>
         <div className={styles.theInputContainer}>
             <div className={styles.anInputRow}>
@@ -217,7 +219,8 @@ export function aTextArea(inputLabel, inputId, isReq, inputPlaceholder, anObject
                 required={isReq}
                 className={styles.aDayDescriptionInput}
                 id={inputId}
-                placeholder={inputPlaceholder}
+                defaultValue={inputValue ? inputValue : undefined }
+                placeholder="Enter Text Here"
                 onChange={(e)=>{
                     e.preventDefault()
                     setAnObject({

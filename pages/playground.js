@@ -9,15 +9,16 @@ import LTCPriceTables from "../data/LTCPriceTables2023.json"
 
 import { aHotelDisplayer } from '../components/operations/providers'
 
+
+
 import styles from "./../styles/pages/playground.module.css"
-import { anInputDisplayer } from '../components/forms'
 
 // Bitacora logo:
 // import TrackChangesIcon from '@mui/icons-material/TrackChanges';
 
 export default function PlaygroundPage(props){
     const { data: session } = useSession()
-    const [testerNumb, setTester]=useState({})
+    const [testerObj, setTester]=useState({})
     /////////////////////////////////////////////////////
     /////////////////////////////////////////////////////
 
@@ -72,21 +73,49 @@ export default function PlaygroundPage(props){
                     "email":"sales@ikalagalapagoshotel.com",
                 }
             ],
+            "additionalServices":[
+                {
+                    "priceKey":"additionalServices",
+                    "priceDescription":"standard dinner",
+                    "priceType":"per person",
+                    "price":20
+                },    
+                {
+                    "priceKey":"additionalServices",
+                    "priceDescription":"premium dinner",
+                    "priceType":"per person",
+                    "price":30
+                },
+                {
+                    "priceKey":"additionalServices",
+                    "priceDescription":"taxi airport pickup",
+                    "priceType":"per group",
+                    "guestMax":4,
+                    "price":35
+                },
+                {
+                    "priceKey":"additionalServices",
+                    "priceDescription":"taxi airport pickup",
+                    "priceType":"per group",
+                    "guestMax":12,
+                    "price":85
+                },
+            ]
         }
 
+    let sampleVal="previous Value"
+
+    console.log(testerObj)
 
     return(<>
         {session&&<> 
             <GMSNavii  user={session.user} />
             <div className={styles.playgroundPage}>
 
-            {aHotelDisplayer(sampleHotel)}
+            <div style={{ width: "90%", backgroundColor:"white", padding:"33px" }} >
+            
+            </div>
 
-            <span style={{ width:"400px", backgroundColor:"white", minHeight:"150px", margin:"21px" }} > 
-                {anInputDisplayer("number", "aNumb", "number", false, "number", testerNumb, setTester, 0, 1000 )}
-
-                {testerNumb.aNumb&& <> {testerNumb.aNumb} </>}
-            </span>
 
             </div> 
         </>}
