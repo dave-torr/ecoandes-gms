@@ -161,7 +161,6 @@ export function TextTourCard(props){
 //////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 export function TourDifficultyCard(props){
-
     const tourDiffSwitcher=(theDiff)=>{
         switch(theDiff){
             case 1:
@@ -610,16 +609,16 @@ export function TourDisplayer(props){
             partnerLogo=<div className={styles.partnerLogoCont}>
                 <Image height={75} width={110} src={UnigpsLogo} alt="Unigalapagos Logo" /></div>
         } else if(!aTour.LTCLogo){
-            partnerLogo=false
+            partnerLogo=false 
         }        
 
         let countryList = aTour.countryList.map((elem, i)=><React.Fragment key={i}> { i >0 &&<> / </>}{elem} </React.Fragment>)
 
         return(<>
-            {aTour.LTCLogo&&<>
+            {aTour.LTCLogo?<>
                 <div className={styles.partnerLogo}>
                 {partnerLogo} </div> 
-            </>}
+            </>:<><span style={{height: "30px"}}/></>}
             <div className={styles.tourTitleCard}>
                 <h1 className={styles.tourTitleBar}>
                     {aTour.tripName}{aTour.duration&&<> | {aTour.duration} Days</>}</h1>
@@ -1090,6 +1089,14 @@ export function ItinEditor(props){
         "editValue": undefined
     })
 
+    useEffect(()=>{
+        // edits the selected tour data locally, so refresh is not needed.
+        props.editTour({
+            ...theTour,
+            [editObjTemplate.editKey] : editObjTemplate.editValue
+        })
+    },[editObjTemplate])
+
     const editItinUserBtns=()=>{
         if(editObjTemplate.editKey){
         return(<>
@@ -1121,9 +1128,18 @@ export function ItinEditor(props){
                             })
                         const itinUpdate = await res.json()
                         if(res.status===200){
-                            window.alert("Itinerary Edited! Taking you to Tour Explorer")
-                            location.reload()
-                        }
+                            let theSplicer = props.itinArr.splice(props.itinIndex, 1, theTour)
+                            props.setItinArr(props.itinArr)
+                            window.alert("Itinerary Edited!")
+                            setLoadingTrig(false)
+                            setEditStep(0)
+                            setEditTemplate({
+                                ...editObjTemplate,
+                                "editKey": 0, 
+                                "editValue": undefined
+                            })
+                            props.setDialogTrig(false)
+                            }
                         }
                     }}>
                     Edit
@@ -1132,10 +1148,8 @@ export function ItinEditor(props){
         </>)
         } 
     }
-
     const editInputMatrix = {
         // translates to editItinStep index base 1 ++
-        // at the moment IMG edit functionality is not OP.
         "firstCatObj": 
             [ "genAndSuppTourData", "dayByDay", "images"],
         "genAndSuppStruct": 
@@ -1344,8 +1358,6 @@ export function ItinEditor(props){
             </div>
         </>)
     }
-
-
     return(<>
         <Dialog open={props.dialogTrig} maxWidth={"xl"} fullWidth 
         onClose={()=>{

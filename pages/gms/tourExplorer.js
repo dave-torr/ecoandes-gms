@@ -34,14 +34,14 @@ export default function TourExplorerPage(props){
 // sesh
 const { data: session } = useSession()
 
-
+    // for itin filter
     let tourType = ["active", "family", "cruise", "expedition", "private", "voyage"]
 
     let tourTypes = ["all types", "historic", "nature", "360° itineraries", "climbing", "trekking" ]
 
-    let theDestinations= LTCGenData.countryList
-
     let operationRegions= ['galapagos', "patagonia", 'amazon', 'peru', "chile", "argentina", 'ecuador' ]    
+
+    let theDestinations= LTCGenData.countryList
 
     // Filters
     const [userUIFilters, setUserFilters]=useState(theDestinations)
@@ -76,11 +76,19 @@ const { data: session } = useSession()
             setFilteredItins([...filteredItineraries].sort(((a,b)=> b[sortContr] - a[sortContr])))
     },[sortOrder])
 
-
+    const [itinIndex, setItinIndex]=useState()
     const [pickedItin, setPickedItin] =useState()
     const [itinDispTrigger, setItinDispTrigger]=useState(false)
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
+    const [itineraryFetcherTrig, setFetchTrig]= useState(false)
+    const [fetchedItinArr, setFetchedItArr]=useState()
+
+    // itin user UI
+    const [copyItinTrig, setCopyTrig]=useState(false)
+    const [deleteItinTrig, setDelItinTrig]=useState(false)
+    const [editItinTrig, setEditItinTrig]=useState(false)
+    const [itinDataTrig, setDataTrig]=useState(false)
 
     useEffect(()=>{
         window.scrollTo({top: 0})
@@ -89,7 +97,8 @@ const { data: session } = useSession()
     const LTCTourExplorar=(theItins, filterArr, filterLabel, localOrFetched, priceSortTrigger, cardType, setItin, setItinDispTrigger)=>{
 
         let eachTourCard = theItins.map((elem, i)=><React.Fragment key={i}>
-            <div><TextTourCard aTour={elem} type={cardType} setItin={setItin} setDialogTrigger={setItinDispTrigger} /></div>
+            <div onClick={()=>{setItinIndex(i)}}>
+                <TextTourCard aTour={elem} type={cardType} setItin={setItin} setDialogTrigger={setItinDispTrigger} /></div>
         </React.Fragment> )
 
         let eachSelectOpt=filterArr.map((elem, i)=><React.Fragment key={i}>
@@ -99,7 +108,8 @@ const { data: session } = useSession()
         return<>
             <div className={styles.itinCardDisp}>
                 <h2> {localOrFetched} Itineraries</h2>
-                Tours: {theItins.length}          
+                Tours: {theItins.length}
+
                 {priceSortTrigger&&<>
                     <div className={styles.filterUICont}> 
                         <label htmlFor="filterDropdownUI">{filterLabel}: &nbsp;</label>
@@ -113,6 +123,8 @@ const { data: session } = useSession()
                     </div>
                 </>}
                 {theItins.length>0 ? <>
+
+                {/* update sorting function to filter out each user, sort by duration. */}
                     {/* <SortingItinUI 
                         sortContr={sortContr} 
                         setSortContr={setSortContr}
@@ -133,48 +145,6 @@ const { data: session } = useSession()
         </>
     }
 
-    const [itineraryFetcherTrig, setFetchTrig]= useState(false)
-    const [fetchedItinArr, setFetchedItArr]=useState()
-    const [itineraryFetcherTrig2, setFetchTrig2]= useState(false)
-    const [fetchedItinArr2, setFetchedItArr2]=useState()
-
-    // itin user UI
-    const [copyItinTrig, setCopyTrig]=useState(false)
-    const [deleteItinTrig, setDelItinTrig]=useState(false)
-    const [editItinTrig, setEditItinTrig]=useState(false)
-    const [itinDataTrig, setDataTrig]=useState(false)
-
-    const fetchUserItineraries=()=>{
-        return(<>
-            {fetchedItinArr?<>
-                {LTCTourExplorar(fetchedItinArr, userUIFilters, theFilterLabel, "your", false, 2, setPickedItin, setItinDispTrigger )}
-            </>: <>
-                <div className={styles.userBTNCont}>
-                    <div className={styles.aGenBTN} 
-                    onClick={async()=>{
-                        if(!itineraryFetcherTrig){
-                        setFetchTrig(true)
-                        let stringifiedUserName=JSON.stringify(session.user.name)
-                        const res = await fetch("/api/gms/itineraries", {
-                            method: "PUT",
-                            body: stringifiedUserName
-                        })
-                        const itineraryFetcher = await res.json()
-                            if(itineraryFetcher){
-                                setFetchedItArr(itineraryFetcher)
-                            }
-                        }
-                    }}>
-                        {itineraryFetcherTrig? <>
-                            <CircularProgress />
-                        </>:<>
-                            Get your itineraries
-                        </> }
-                    </div>
-                </div>
-            </> }
-        </>)
-    }
     const selectedItinDips=()=>{
         return(<>
             {pickedItin&&<>
@@ -219,24 +189,24 @@ const { data: session } = useSession()
     }
     const allItinsDisp=()=>{
         return(<>
-            {fetchedItinArr2?<>
-                {LTCTourExplorar(fetchedItinArr2, userUIFilters, theFilterLabel, "All LTC", false, 2, setPickedItin, setItinDispTrigger )}
+            {fetchedItinArr?<>
+                {LTCTourExplorar(fetchedItinArr, userUIFilters, theFilterLabel, "All LTC", false, 2, setPickedItin, setItinDispTrigger )}
             </>: <>
                 <div className={styles.userBTNCont}>
                     <div className={styles.aGenBTN} 
                     onClick={async()=>{
-                        if(!itineraryFetcherTrig2){
-                        setFetchTrig2(true)
+                        if(!itineraryFetcherTrig){
+                        setFetchTrig(true)
                         const res = await fetch("/api/gms/itineraries", {
                             method: "GET"
                         })
                         const itineraryFetcher = await res.json()
                             if(itineraryFetcher){
-                                setFetchedItArr2(itineraryFetcher)
+                                setFetchedItArr(itineraryFetcher)
                             }
                         }
                     }}>
-                        {itineraryFetcherTrig2? <>
+                        {itineraryFetcherTrig? <>
                             <CircularProgress />
                         </>:<>
                             Get all LTC itineraries
@@ -248,12 +218,7 @@ const { data: session } = useSession()
     }
 
 
-// Notes:
-
-// SPANISH ITIN DISPLAYER
-// Foto Editing, add, rmv, 
-
-    
+    // Notes:    
 
     return(<>
         {session?<> 
@@ -282,7 +247,11 @@ const { data: session } = useSession()
                     dialogTrig={editItinTrig}
                     setDialogTrig={setEditItinTrig}
                     aTour={pickedItin}
+                    editTour={setPickedItin}
                     userData={session.user}
+                    itinIndex={itinIndex}
+                    itinArr={fetchedItinArr}
+                    setItinArr={setFetchedItArr}
                 />
             
                 <ItinDataDisp
@@ -301,19 +270,15 @@ const { data: session } = useSession()
             
 
                 {LTCTourExplorar(filteredItineraries, userUIFilters, theFilterLabel, "LTC Published", true, 1 )}
-                {fetchUserItineraries()}
+                {/* {fetchUserItineraries()} */}
                 {allItinsDisp()}
 
 
             </>}
             </div>
         </>:<> 
-
-
             <div> {"/"}GMS{"/"}TOUREXPLORER </div>
-
             <span style={{width: "99vw", marginTop: "30vw", display: "flex", justifyContent: "center", alignItems: "center" }} >
-
                 <div className={styles.GMSGeneralBTN}> 
                     <Link href="/gms" >
                         <a > GMS Home Page </a>

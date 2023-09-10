@@ -25,30 +25,6 @@ async function handler(req, res){
             client.close();
         }
     }
-    // fetch user Itins
-    else if (req.method==="PUT"){
-
-        const reqData= JSON.parse(req.body)
-
-        const FetchedUserItins = client
-            .db('EcoAndesGMS')
-            .collection("LTCItineraries")
-            .find(
-                {$and:[
-                    { "user.name": reqData },
-                    { "status": {$gt: 0} },
-                ]} 
-            )
-            .toArray();
-
-        const fetchedIts = await FetchedUserItins
-
-
-        if(fetchedIts){
-            res.status(200).json(fetchedIts)
-            client.close();
-        }
-    }
     // fetch all active itins
     else if (req.method==="GET"){           
         const FetchedUserItins = client
@@ -124,6 +100,7 @@ async function handler(req, res){
             }
         }
     }
+    // "PUT Method not in use"
 }
 
 export default handler;
