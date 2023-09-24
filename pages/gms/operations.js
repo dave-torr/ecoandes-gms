@@ -1872,7 +1872,6 @@ export default function OperationsDashboard(){
             })
         }
 
-
         return(<>
         <br/><br/>
             <div className={styles.aFileContainer}>
@@ -3558,6 +3557,7 @@ export default function OperationsDashboard(){
                     </div>
                 </> }
 
+                {/* pick from EcoAndes fixed itins */}
                 <br/><br/>
                 {ecoAndesFixedDepartures ? <> 
                     {depSelector("EcoAndes Fixed Departures", EcoAndesItins)}
@@ -3573,6 +3573,8 @@ export default function OperationsDashboard(){
                     </div>
                 </>}
 
+
+                {/* Pick Published Itins */}
                 <br/><br/>
                 {itinFetcherLTCSwitch ? <> 
                     {depSelector("LTC Published Itineraries", LTCItins)}
@@ -3580,7 +3582,6 @@ export default function OperationsDashboard(){
                     <div className={styles.depTrigBTN} onClick={()=>{
                         setLTCItinFetcherSwitch(true)
                     }} >
-                    
                         {itinFetcherLTCSwitch ? <>
                             <CircularProgress />
                         </>:<>

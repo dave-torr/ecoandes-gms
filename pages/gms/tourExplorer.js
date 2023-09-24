@@ -125,13 +125,13 @@ const { data: session } = useSession()
                 {theItins.length>0 ? <>
 
                 {/* update sorting function to filter out each user, sort by duration. */}
-                    {/* <SortingItinUI 
+                    <SortingItinUI 
                         sortContr={sortContr} 
                         setSortContr={setSortContr}
                         sortOrder={sortOrder}
                         setSortOrder={setSortOrder}
                         priceSortTrigger={priceSortTrigger}
-                    /> */}
+                    />
                     <div className={styles.tourCardDisp } > {eachTourCard} </div>
                 </>:<>
                     <div className={styles.nonToursPlaceholder}> 
