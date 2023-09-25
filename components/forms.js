@@ -40,7 +40,7 @@ export function aTextInput(aPlaceholder, inputId, anObject, setAnObject, inputTy
 // Operational Inputs
 
 // Updated general input displayer
-export function anInputDisplayer(inputLabel, inputId, inputType, isReq, inputValue, anObject, setAnObject, numbMin, numbMax ){
+export function anInputDisplayer(inputLabel, inputId, inputType, isReq, inputValue, anObject, setAnObject, numbMin, numbMax, inputPlaceholder ){
     return(<>
         <div className={styles.theInputContainer}>
             <div className={styles.anInputRow}>
@@ -54,7 +54,7 @@ export function anInputDisplayer(inputLabel, inputId, inputType, isReq, inputVal
                 required={isReq}
                 step="any"
                 defaultValue={inputValue ? inputValue : undefined }
-                placeholder={inputType}
+                placeholder={inputPlaceholder ? inputPlaceholder : undefined}
                 id={inputId}
                 // onFocus={(e)=>{e.target.value=""}}
                 onChange={(e)=>{
@@ -70,7 +70,7 @@ export function anInputDisplayer(inputLabel, inputId, inputType, isReq, inputVal
                         [inputId]:theValue
                     })
                 }}
-                min={numbMin ? numbMin : undefined }
+                min={numbMin ? numbMin : 0 }
                 max={numbMax ? numbMax : undefined }
             />
         </div>

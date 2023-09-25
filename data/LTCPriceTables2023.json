@@ -359,6 +359,22 @@
         {
             "currency":"usd",
             "expenseKey": "variableExpense", 
+            "pricekey": "mealExpense",
+            "meal":"lunch",
+            "price": 15,
+            "priceDetail": "Generic Lunch Expense"
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "variableExpense", 
+            "pricekey": "mealExpense",
+            "meal":"dinner",
+            "price": 15,
+            "priceDetail": "Generic Dinner Expense"
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "variableExpense", 
             "pricekey": "UIOBasilicaEntFee",
             "price": 4,
             "priceDetail": "Basilica Entrance Fee",
@@ -379,7 +395,6 @@
             "price": 10,
             "priceDetail": "Guayasamin Entrance Fee",
             "contactName":"Museo Guayasamin, Quito"
-            
         },
         {
             "currency":"usd",
@@ -592,6 +607,7 @@
             "currency":"usd",
             "expenseKey": "variableExpense", 
             "pricekey": "SCXHighlandRanchLunch",
+            "meal":"lunch",
             "price": 16.8,
             "priceDetail": "Lunch @ Primicias (entree + main + fruit)"
         },
@@ -599,6 +615,7 @@
             "currency":"usd",
             "expenseKey": "variableExpense", 
             "pricekey": "SCXHighlandRanchBuffet",
+            "meal":"lunch",
             "price": 36.6,
             "priceDetail": "Buffet at Primicias",
             "contactName":"Rancho Primisias, Santa Cruz, Galapagos"
@@ -607,6 +624,7 @@
             "currency":"usd",
             "expenseKey": "variableExpense", 
             "pricekey": "SCXHighlandRanchLunch",
+            "meal":"lunch",
             "price": 23,
             "priceDetail": "Lunch @ Chato",
             "contactName":"Rancho Chato, Santa Cruz, Galapagos"
@@ -1689,6 +1707,7 @@
             "currency":"usd",
             "expenseKey": "variableExpense", 
             "pricekey": "hotelMealService",
+            "meal":"lunch",
             "price": 15,
             "priceDetail": "Meal Service, Variable Expense"
         },
@@ -1696,6 +1715,7 @@
             "currency":"usd",
             "expenseKey": "variableExpense", 
             "pricekey": "boxLunch",
+            "meal":"lunchBox",
             "price": 10,
             "priceDetail": "Box Lunch, Variable Expense"
         },

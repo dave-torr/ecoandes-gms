@@ -97,11 +97,10 @@
 
 .depCardFileTab{
     min-height: 12px;
-    width: 140px;
+    min-width: 140px;
     border: solid 1px black;
     border-bottom: solid 1px transparent;
     text-align: center;
-    border-radius: 5px;
     padding: 1px 9px;
     padding-bottom: 3px;
     background-color: white;
@@ -624,6 +623,44 @@
     margin: 0 3px;
     text-align: center;
 }
+
+/* create dep */
+.createDepTrig{
+    border: solid 1px black;
+    margin: 21px;
+    padding: 21px 33px;
+    font-size: 1.4em;
+    width: 240px;
+    transition: all ease-in 0.1s;
+
+}
+
+.createDepTrig:hover{
+    background-color: teal;
+    color: white;
+    box-shadow: var(--frst-box-shadow);
+    cursor: pointer;
+}
+
+/* planner */
+
+.generalPlannerGrid{
+    min-width: 810px;
+    min-height: 21px;
+    box-shadow: var(--frst-box-shadow);
+    padding: 21px;
+    border: solid 1px black;
+}
+
+
+.aPlannerCard{
+    background-color: white;
+    padding: 12px 15px;
+    border: solid 1px black;
+    margin-bottom: 9px;
+    cursor: pointer;
+}
+
 
 /* expenses: */
 .accomListDisp{

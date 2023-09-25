@@ -156,6 +156,8 @@ export default function OperationsDashboard(){
     const [roomingEditIndex, setRoomingEditIndex]=useState(null)
 
     // general utils
+    const [plannerTrig, setPlannerTrig]=useState(false)
+    const [createdep, setCreateDep]=useState(false)
     const [fileSwitch, setfileSwitch]=useState(false)
     const [editSwitch, setEditSwitch]=useState(false)
     const [docsSwitch, setDocSwitch]=useState(false)
@@ -525,6 +527,7 @@ export default function OperationsDashboard(){
                 <h2>{theItin.tripName}</h2>
                 {logoSwitcher(theItin, "logo")}
             </div>
+
             <br/>
             <form onSubmit={async(e)=>{
                 e.preventDefault();
@@ -564,10 +567,9 @@ export default function OperationsDashboard(){
             }}>
             <br/>
 
-
             {session?.user.hierarchy===1&& <>
             <div className={styles.spaceBetRow}>
-                <div style={{width:"47%"}}>
+                <div style={{width:"49%"}}>
                     <div className={styles.inputLabel}> Assign Folder to: </div>
                     <select className={styles.inputUserUI} onChange={(e)=>{
                         e.preventDefault()
@@ -582,6 +584,21 @@ export default function OperationsDashboard(){
                         <option value="Carlos del Salto"> Carlos del Salto </option>
                     </select> &nbsp;
                 </div>
+                {/* <div style={{width:"49%"}}>
+                    <div className={styles.inputLabel}> Logo Switcher </div>
+                    <select className={styles.inputUserUI} onChange={(e)=>{
+                        e.preventDefault()
+                        setTheDeparture({
+                            ...theDep,
+                            "assignment": e.target.value
+                        })
+                    }}> 
+                        <option disabled selected > Select Folder Operator </option>
+                        <option value="Cristina Paez"> Cristina Paez </option>
+                        <option value="Carolina Cruz"> Carolina Cruz </option>
+                        <option value="Carlos del Salto"> Carlos del Salto </option>
+                    </select> &nbsp;
+                </div> */}
             </div>
             </> }            
 
@@ -617,23 +634,23 @@ export default function OperationsDashboard(){
             </div>
             <div className={styles.spaceBetRow}>
                 <div style={{width:"49%"}}>
-                    {anInputDisplayer("Tour Code*", "tourCode", "text", true, "Ex: USA AZ 01 22", theDep, setTheDeparture, )}
+                    {anInputDisplayer("Tour Code*", "tourCode", "text", true, undefined, theDep, setTheDeparture, undefined, undefined, "Ex: USA AZ 01 22" )}
                 </div>
                 <div style={{width:"49%"}}>
-                    {anInputDisplayer("reference", "tripRef", "text", false, "Ex: Lincoln x 5", theDep, setTheDeparture, )}
-                </div>
-            </div>
-            <div className={styles.spaceBetRow}>
-                <div style={{width:"49%"}}>
-                    {anInputDisplayer("Company", "aComp", "text", false, "Ex: Darkwing Tours", theDep, setTheDeparture, )}
-                </div>
-                <div style={{width:"49%"}}>
-                    {anInputDisplayer("Contact", "compContact", "text", false, "Ex: Maria Molina", theDep, setTheDeparture, )}
+                    {anInputDisplayer("reference", "tripRef", "text", false, undefined, theDep, setTheDeparture, undefined, undefined, "Ex: Lincoln x 5" )}
                 </div>
             </div>
             <div className={styles.spaceBetRow}>
                 <div style={{width:"49%"}}>
-                    {anInputDisplayer("Guest Maximum*", "maxPaxNumb", "number", true, "Ex: 16", theDep, setTheDeparture, 0 )}
+                    {anInputDisplayer("Company", "aComp", "text", false, undefined, theDep, setTheDeparture, undefined, undefined, "Ex: Darkwing Tours" )}
+                </div>
+                <div style={{width:"49%"}}>
+                    {anInputDisplayer("Contact", "compContact", "text", false, undefined, theDep, setTheDeparture, undefined, undefined, "Ex: Maria Molina")}
+                </div>
+            </div>
+            <div className={styles.spaceBetRow}>
+                <div style={{width:"49%"}}>
+                    {anInputDisplayer("Guest Maximum*", "maxPaxNumb", "number", true, undefined, theDep, setTheDeparture, 0, undefined )}
                 </div>
                 <div style={{width:"49%"}}>
                 <input type="submit" className={styles.submitDepBTN}  />
@@ -644,14 +661,14 @@ export default function OperationsDashboard(){
         </div>
     </>)
     }
+    const guestAdder=(roomingLi)=>{
+        let theAdder=0
+        roomingLi.forEach(elem=> {
+            theAdder = theAdder + elem.guestArr.length
+        })
+        return(<>{theAdder}</>)
+    }
     const depDisplayer=(depArr, theTitle, isActive )=>{
-        const guestAdder=(roomingLi)=>{
-            let theAdder=0
-            roomingLi.forEach(elem=> {
-                theAdder = theAdder + elem.guestArr.length
-            })
-            return(<>{theAdder}</>)
-        }
         let allItins =[
             ...fetchedItins, ...LTCItins, ...EcoAndesItins
         ]        
@@ -1190,7 +1207,6 @@ export default function OperationsDashboard(){
                     {theDep.compContact&&<>{eachIntroDetail("contact", theDep.compContact)}</>}
                     {theDep.tripRef&&<>{eachIntroDetail("trip Reference", theDep.tripRef)}</>}
                     {theDep.maxPaxNumb&&<>{eachIntroDetail("guests", paxTotalCount)}</>}
-                    
                 </div>
             <h2> Tour Dates </h2>
             <div className={styles.spaceBetRow}> 
@@ -2298,7 +2314,79 @@ export default function OperationsDashboard(){
         } 
     }
 
-  // expenses
+    // Create Departures
+    const departureCreator=()=>{
+        return(<>
+            <div className={styles.aLineSeparator}/>
+            <div className={styles.spaceBetRow}>
+                <h1>Create a departure: </h1>
+                <div> {fetchedItins&&<>{fetchedItins.length} GMS Itineraries,</>}
+                    {LTCItins&&<>{" "}{LTCItins.length} LTC Itineraries</>}
+                </div>
+            </div>
+
+            {fetchedItins.length>0 ? <> 
+                {depSelector("GMS  Itineraires", fetchedItins)}
+            </> : <> 
+                <div className={styles.depTrigBTN} onClick={async()=>{
+                    // fetch GMS itineraries
+                    if(!itinFetcherGMSSwitch){
+                    setGMSItinFetcherSwitch(true)
+                        const res2 = await fetch("/api/gms/itineraries",{
+                            method: "GET"
+                        })
+                        let fetchedData2 = await res2.json()
+                        if(fetchedData2){
+                            // filter / sort functions
+                            setFetchedItins(fetchedData2)
+                        }
+                    }
+                }} > 
+                    {itinFetcherGMSSwitch ? <>
+                        <CircularProgress />
+                    </>:<>
+                        <AddCircleOutlineIcon/> &nbsp; &nbsp; departure from GMS itineraries
+                    </> }
+                </div>
+            </> }
+
+            {/* pick from EcoAndes fixed itins */}
+            <br/><br/>
+            {ecoAndesFixedDepartures ? <> 
+                {depSelector("EcoAndes Fixed Departures", EcoAndesItins)}
+            </>:<> 
+                <div className={styles.depTrigBTN} onClick={()=>{
+                    setEcoAndesFD(true)
+                }} >
+                    {ecoAndesFixedDepartures ? <>
+                        <CircularProgress />
+                    </>:<>
+                        <AddCircleOutlineIcon/> &nbsp; &nbsp; departure from EcoAndes FD itineraries
+                    </> }
+                </div>
+            </>}
+
+
+            {/* Pick Published Itins */}
+            <br/><br/>
+            {itinFetcherLTCSwitch ? <> 
+                {depSelector("LTC Published Itineraries", LTCItins)}
+            </>:<> 
+                <div className={styles.depTrigBTN} onClick={()=>{
+                    setLTCItinFetcherSwitch(true)
+                }} >
+                    {itinFetcherLTCSwitch ? <>
+                        <CircularProgress />
+                    </>:<>
+                        <AddCircleOutlineIcon/> &nbsp; &nbsp; departure from LTC itineraries
+                    </> }
+
+                </div>
+            </>}        
+        </>)
+    }
+
+    // expenses
     const expenseBadgeDisp=(anExpKey)=>{
         if(anExpKey==="transportExpense"){
             return(<><div style={{fontSize:"1.1em", marginRight:"9px", fontWeight:"700", backgroundColor:" coral", padding:"6px 9px", color:"white"  }} >T {" "}{" "}</div></>)
@@ -2927,7 +3015,6 @@ export default function OperationsDashboard(){
     }
     // providers
     const contactArrDisp=(theArr)=>{
-        console.log(theArr, "TheArr")
         if(theArr.length>0){
         let eachContact=theArr.map((elem, i)=><React.Fragment key={i}>
             <div className={styles.aProviderDisp}>
@@ -3491,6 +3578,131 @@ export default function OperationsDashboard(){
         </>)
     }
 
+    // planner
+    const operationsPlanner=( activeDep, upcomingDep )=>{
+
+        let allItins =[
+            ...fetchedItins, ...LTCItins, ...EcoAndesItins
+        ]
+
+        const eachDayDet=(theDayDet)=>{
+
+            let startingDate = new Date(theDayDet.startingDate)
+            let dayIndex =  Math.ceil((toDate.getTime() - startingDate.getTime()) / (1000*3600*24))
+            let foundItin = allItins.find(element => (element.id === theDayDet.itineraryID)||(element._id === theDayDet.itineraryID))
+
+            console.log(foundItin, "foundItin")
+            console.log(theDayDet, "theDayDet")
+
+            let dailyNoteDisp=[]
+            if(theDayDet.operationalNotes){
+                theDayDet.operationalNotes[dayIndex-1].forEach(elem=>dailyNoteDisp.push(elem))
+            }
+
+            let guidesDisp=[]
+            let accommodationsDisp=[]
+            let transportDisp=[]
+            let mealsDisp=[]
+            if(theDayDet.dayByDayExp){
+                theDayDet.dayByDayExp[dayIndex-1].forEach(elem=>{
+                    console.log(elem)
+                    if(elem.expenseKey==="guideExpense"){
+                        guidesDisp.push(elem)
+                    } else if(elem.expenseKey==="accommodation"){
+                        accommodationsDisp.push(elem)
+                    } else if(elem.expenseKey==="transportExpense"){
+                        transportDisp.push(elem)
+                    } else if(elem.expenseKey==="guideExpense"){
+                        mealsDisp.push(elem)
+                    }
+                })
+            }
+
+            console.log(guidesDisp, "guides")
+            console.log(accommodationsDisp, "accom")
+            console.log(transportDisp, "transport")
+            console.log(mealsDisp, "meals")
+
+
+            return(<>
+                <div style={{display:"flex", alignItems:"end"}} >
+                    <div className={styles.depCardFileTab} style={{marginRight:"9px"}} >
+                        {theDayDet?.tourCode}
+                    </div>
+                    <div style={{width:"12%"}}>
+                        {theDayDet.maxPaxNumb&& <>Day {dayIndex-1} / {theDayDet.duration} </>}
+                    </div>
+                    <div style={{width:"15%"}}>
+                        {theDayDet.maxPaxNumb&& <>{guestAdder(theDayDet.roomingList)} / {theDayDet.maxPaxNumb} Guests</>}
+                    </div>
+                    <div style={{width:"25%"}}>
+                        {foundItin.user&& <>Seller: {foundItin.user.name}</>}
+                    </div>
+                </div>
+
+                <div className={styles.aPlannerCard} onClick={()=>{
+                    setfileSwitch(true)
+                    setTheDeparture(theDayDet)
+                    setTheItinerary(foundItin)
+                }}>
+                    <div style={{fontSize:"1.3em", marginBottom:"12px"}} > {foundItin?.dayByDay[dayIndex-1].dayTitle} </div>
+
+                    <div className={styles.spaceBetRow}>
+                        {accommodationsDisp.length>0 &&<>
+                        <div style={{fontSize:"0.9em", width:"50%"}} >
+                        <strong> HOTEL OUT:</strong> <br/>
+                            {accommodationsDisp.map((elem,i)=><React.Fragment key={i}>
+                                &nbsp; -- {elem.hotelName} - {elem.contactName} | 0{elem.contactNumb}
+                            </React.Fragment> )}
+                        </div></>}
+                        {accommodationsDisp.length>0 &&<>
+                        <div style={{fontSize:"0.9em", width:"50%"}} >
+                        <strong> HOTEL IN:</strong> <br/>
+                            {accommodationsDisp.map((elem,i)=><React.Fragment key={i}>
+                                &nbsp; -- {elem.hotelName} - {elem.contactName} | 0{elem.contactNumb}
+                            </React.Fragment> )}
+                        </div></>}
+                    </div>
+
+                    {guidesDisp.length>0 &&<>
+                    <strong > GUIDES:</strong>
+                        {guidesDisp.map((elem,i)=><React.Fragment key={i}>
+                            &nbsp; -- {elem.contactName} | 0{elem.contactNumb}
+                        </React.Fragment> )}
+                    </>}
+
+                    {dailyNoteDisp.length>0 && <>
+                    <br/><strong > NOTES:</strong> 
+                    <div style={{textTransform:"capitalize"}}>
+                        {dailyNoteDisp.length>0 && <>
+                            {dailyNoteDisp.map((elem,i)=><React.Fragment key={i}>
+                            {elem.target==="general" &&<> -- {elem.note}</> }
+                            </React.Fragment> )}
+                        </>}
+                    </div>
+                    <div style={{textTransform:"capitalize"}}>
+                        {dailyNoteDisp.length>0 && <>
+                            {dailyNoteDisp.map((elem,i)=><React.Fragment key={i}>
+                            {elem.target!="general" &&<> -- <strong>{elem.target}</strong> {elem.note}</> }
+                            </React.Fragment> )}
+                        </>}
+                    </div>
+                    </>}
+                </div>
+            </>)
+        }
+
+        return(<>
+            
+            <div className={styles.generalPlannerGrid}> 
+                <h2>Weekly Planner</h2>
+                {activeDep.map((elem,i)=> <React.Fragment key={i}> 
+                    {eachDayDet(elem)}
+                </React.Fragment> )}
+            </div>
+        </>)
+    }
+
   return(<>
     <div className={styles.aGMSPage}>
     {session&&<> 
@@ -3512,8 +3724,18 @@ export default function OperationsDashboard(){
                     </div>
                 </>:<> 
                     {depCreator(theItinerary, theDeparture)}
-                </> }
-            </>:<>
+                </>}
+
+            </> : plannerTrig ? <>
+            {/* PLANNER */}
+                <div className={styles.spaceBetRowPRINT}>
+                    <span onClick={()=>{setPlannerTrig(false)}}> 
+                    <CancelPresentationIcon/> </span> 
+                </div>
+
+                {operationsPlanner(activeDeps, upcomingDeps)}            
+
+            </> : <>
                 {/* display itineraries and select a dep for file */}
                 <div className={styles.spaceBetRow}> 
                     <h1>Departures </h1>
@@ -3521,75 +3743,24 @@ export default function OperationsDashboard(){
                 </div>
                 {depDisplayer(activeDeps, "active Departures", true)}
                 {depDisplayer(upcomingDeps, "upcoming Departures", false)}
-
                 <br/><br/>
-                <div className={styles.aLineSeparator}/>
 
-                <div className={styles.spaceBetRow}>
-                    <h1>Create a departure: </h1>
-                    <div> {fetchedItins&&<>{fetchedItins.length} GMS Itineraries,</>}
-                        {LTCItins&&<>{" "}{LTCItins.length} LTC Itineraries</>}
-                    </div>
-                </div>
+                <div className={styles.createDepTrig} onClick={()=>{
+                    window.scrollTo({top: 0})
+                    setPlannerTrig(true);  
+                    }}>
+                    open planner</div>
 
-                {fetchedItins.length>0 ? <> 
-                    {depSelector("GMS  Itineraires", fetchedItins)}
-                </> : <> 
-                    <div className={styles.depTrigBTN} onClick={async()=>{
-                        // fetch GMS itineraries
-                        if(!itinFetcherGMSSwitch){
-                        setGMSItinFetcherSwitch(true)
-                            const res2 = await fetch("/api/gms/itineraries",{
-                                method: "GET"
-                            })
-                            let fetchedData2 = await res2.json()
-                            if(fetchedData2){
-                                // filter / sort functions
-                                setFetchedItins(fetchedData2)
-                            }
-                        }
-                    }} > 
-                        {itinFetcherGMSSwitch ? <>
-                            <CircularProgress />
-                        </>:<>
-                            <AddCircleOutlineIcon/> &nbsp; &nbsp; departure from GMS itineraries
-                        </> }
-                    </div>
-                </> }
-
-                {/* pick from EcoAndes fixed itins */}
-                <br/><br/>
-                {ecoAndesFixedDepartures ? <> 
-                    {depSelector("EcoAndes Fixed Departures", EcoAndesItins)}
-                </>:<> 
-                    <div className={styles.depTrigBTN} onClick={()=>{
-                        setEcoAndesFD(true)
-                    }} >
-                        {ecoAndesFixedDepartures ? <>
-                            <CircularProgress />
-                        </>:<>
-                            <AddCircleOutlineIcon/> &nbsp; &nbsp; departure from EcoAndes FD itineraries
-                        </> }
+                {createdep ? <>
+                    {departureCreator()}
+                </> : <>
+                    <div className={styles.createDepTrig} onClick={()=>{
+                        setCreateDep(true)
+                    }}> 
+                        create departure
                     </div>
                 </>}
 
-
-                {/* Pick Published Itins */}
-                <br/><br/>
-                {itinFetcherLTCSwitch ? <> 
-                    {depSelector("LTC Published Itineraries", LTCItins)}
-                </>:<> 
-                    <div className={styles.depTrigBTN} onClick={()=>{
-                        setLTCItinFetcherSwitch(true)
-                    }} >
-                        {itinFetcherLTCSwitch ? <>
-                            <CircularProgress />
-                        </>:<>
-                            <AddCircleOutlineIcon/> &nbsp; &nbsp; departure from LTC itineraries
-                        </> }
-
-                    </div>
-                </>}
             </>}
         </>}
     </>}
