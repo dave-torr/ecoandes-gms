@@ -1138,7 +1138,7 @@ export default function OperationsDashboard(){
     // summ all guests in rooming list
         let clientGeneralSum = 0
 
-        activeDepartures.forEach((elem,i)=>{
+        activeDepartures.forEach((elem)=>{
             elem.roomingList?.forEach((elem)=>{
             clientGeneralSum = clientGeneralSum + elem.guestArr.length
             })
@@ -2954,7 +2954,7 @@ export default function OperationsDashboard(){
                 <div style={{width: "47%" }}> 
                 {anInputDisplayer("Contact Name*", "contactName", "text", false, theExpense.contactName, theExpense, setTheExpense)}</div>
                 <div style={{width: "47%" }}> 
-                {anInputDisplayer("Phone #", "contactNumb", "number", false, theExpense.contactNumb, theExpense, setTheExpense)}</div>
+                {anInputDisplayer("Phone #", "contactNumb", "number", false, undefined, theExpense, setTheExpense,undefined, undefined, theExpense.contactNumb)}</div>
             </div>
             {theExpense?.expenseKey==="accommodation"?<>
                 <div style={{width: "70%" }}> 
@@ -2976,7 +2976,7 @@ export default function OperationsDashboard(){
                 </>}
                 <div style={{display: "flex", width:"100%", justifyContent:"space-between"}}>
                     <div style={{width: "70%" }}> 
-                    {anInputDisplayer("Additional Description", "additionalDescription", "text", false, "Extra service details", theExpense, setTheExpense)}</div> 
+                    {anInputDisplayer("Additional Description", "additionalDescription", "text", false, undefined, theExpense, setTheExpense, undefined, undefined, "Extra service details")}</div> 
                     {theExpense.expenseKey==="variableExpense"? <> 
                     <div style={{width: "25%" }}> 
                         {anInputDisplayer("#Needed", "varExpTickets", "number", true, "Required", theExpense, setTheExpense)}</div>
@@ -3521,7 +3521,7 @@ export default function OperationsDashboard(){
                         &nbsp;
                         &nbsp;
                         &nbsp;
-                        <span style={{color:"red", cursor:"pointer" }} onClick={()=>{
+                        <span style={{color:"red", cursor:"pointer", paddingTop:"12px" }} onClick={()=>{
                             if(theDeparture?.operationalNotes[i]?.length>0){
                                 theDeparture.operationalNotes[i].push(addOperationalNote)
                                 setTheDeparture({...theDeparture})
@@ -3536,12 +3536,20 @@ export default function OperationsDashboard(){
                     </div>
                 </div>
             </>}
-            {theDeparture.operationalNotes[i]&& <>
+            {theDeparture.operationalNotes[i]?.length>0&& <>
                 <br/> <strong> NOTES</strong>
-            </>}
-            {theDeparture.operationalNotes.length>0&& <>
                 {theDeparture.operationalNotes[i]?.map((elemnt, ind)=><>
-                    <div  style={{fontSize:"0.9em"}}>
+                    <div className={styles.aDayNote}>
+                    {addOperationalNote&& <> 
+                        <span style={{color:"red"}} onClick={()=>{
+                            let tempArr = theDeparture?.operationalNotes[i].splice(ind, 1)
+                            setTheDeparture({
+                                ...theDeparture
+                            })
+                        }}>
+                            <RemoveCircleOutlineIcon />
+                        </span>
+                        </>}
                     - {elemnt.note} {elemnt.target!="general"&&<> | <strong>{elemnt.target}</strong> </>}
                     </div>
                 </>)}
@@ -3584,18 +3592,16 @@ export default function OperationsDashboard(){
         let allItins =[
             ...fetchedItins, ...LTCItins, ...EcoAndesItins
         ]
-
         const eachDayDet=(theDayDet)=>{
 
             let startingDate = new Date(theDayDet.startingDate)
             let dayIndex =  Math.ceil((toDate.getTime() - startingDate.getTime()) / (1000*3600*24))
             let foundItin = allItins.find(element => (element.id === theDayDet.itineraryID)||(element._id === theDayDet.itineraryID))
-
-            console.log(foundItin, "foundItin")
-            console.log(theDayDet, "theDayDet")
+            let guestNumb = guestAdder(theDayDet.roomingList)
+            guestCountToday = guestCountToday + guestNumb
 
             let dailyNoteDisp=[]
-            if(theDayDet.operationalNotes){
+            if(theDayDet.operationalNotes[dayIndex-1]){
                 theDayDet.operationalNotes[dayIndex-1].forEach(elem=>dailyNoteDisp.push(elem))
             }
 
@@ -3603,9 +3609,8 @@ export default function OperationsDashboard(){
             let accommodationsDisp=[]
             let transportDisp=[]
             let mealsDisp=[]
-            if(theDayDet.dayByDayExp){
+            if(theDayDet.dayByDayExp[dayIndex-1]){
                 theDayDet.dayByDayExp[dayIndex-1].forEach(elem=>{
-                    console.log(elem)
                     if(elem.expenseKey==="guideExpense"){
                         guidesDisp.push(elem)
                     } else if(elem.expenseKey==="accommodation"){
@@ -3618,22 +3623,16 @@ export default function OperationsDashboard(){
                 })
             }
 
-            console.log(guidesDisp, "guides")
-            console.log(accommodationsDisp, "accom")
-            console.log(transportDisp, "transport")
-            console.log(mealsDisp, "meals")
-
-
             return(<>
                 <div style={{display:"flex", alignItems:"end"}} >
                     <div className={styles.depCardFileTab} style={{marginRight:"9px"}} >
                         {theDayDet?.tourCode}
                     </div>
                     <div style={{width:"12%"}}>
-                        {theDayDet.maxPaxNumb&& <>Day {dayIndex-1} / {theDayDet.duration} </>}
+                        {theDayDet.duration&& <>Day {dayIndex} / {theDayDet.duration} </>}
                     </div>
                     <div style={{width:"15%"}}>
-                        {theDayDet.maxPaxNumb&& <>{guestAdder(theDayDet.roomingList)} / {theDayDet.maxPaxNumb} Guests</>}
+                        {theDayDet.maxPaxNumb&& <>{guestNumb} / {theDayDet.maxPaxNumb} Guests</>}
                     </div>
                     <div style={{width:"25%"}}>
                         {foundItin.user&& <>Seller: {foundItin.user.name}</>}
@@ -3645,18 +3644,12 @@ export default function OperationsDashboard(){
                     setTheDeparture(theDayDet)
                     setTheItinerary(foundItin)
                 }}>
-                    <div style={{fontSize:"1.3em", marginBottom:"12px"}} > {foundItin?.dayByDay[dayIndex-1].dayTitle} </div>
 
-                    <div className={styles.spaceBetRow}>
+                    <div className={styles.aRow}>
+                        <div style={{fontSize:"1.3em", margin:"12px 0", width: "525px"}} > {foundItin?.dayByDay[dayIndex-1].dayTitle} </div>
+
                         {accommodationsDisp.length>0 &&<>
-                        <div style={{fontSize:"0.9em", width:"50%"}} >
-                        <strong> HOTEL OUT:</strong> <br/>
-                            {accommodationsDisp.map((elem,i)=><React.Fragment key={i}>
-                                &nbsp; -- {elem.hotelName} - {elem.contactName} | 0{elem.contactNumb}
-                            </React.Fragment> )}
-                        </div></>}
-                        {accommodationsDisp.length>0 &&<>
-                        <div style={{fontSize:"0.9em", width:"50%"}} >
+                        <div style={{fontSize:"0.9em", width:"350px" }} >
                         <strong> HOTEL IN:</strong> <br/>
                             {accommodationsDisp.map((elem,i)=><React.Fragment key={i}>
                                 &nbsp; -- {elem.hotelName} - {elem.contactName} | 0{elem.contactNumb}
@@ -3664,40 +3657,84 @@ export default function OperationsDashboard(){
                         </div></>}
                     </div>
 
-                    {guidesDisp.length>0 &&<>
-                    <strong > GUIDES:</strong>
-                        {guidesDisp.map((elem,i)=><React.Fragment key={i}>
-                            &nbsp; -- {elem.contactName} | 0{elem.contactNumb}
-                        </React.Fragment> )}
-                    </>}
+                    <div className={styles.aRow}>
+                        <div style={{ width:"525px", fontSize:"0.9em", }}>
 
-                    {dailyNoteDisp.length>0 && <>
-                    <br/><strong > NOTES:</strong> 
-                    <div style={{textTransform:"capitalize"}}>
+                            {guidesDisp.length>0 &&<>
+                                GUIDES &nbsp; &nbsp; &nbsp; &nbsp;
+                                {guidesDisp.map((elem,i)=>
+                                <React.Fragment key={i}>
+                                    -- {elem.contactName} | 0{elem.contactNumb}
+                                </React.Fragment> )}<br/>
+                            </>}
+
+
+                            {transportDisp.length>0 && <>
+                                TRANSPORT &nbsp;
+                                {transportDisp.map((elem, i)=> <React.Fragment key={i}>
+                                    -- {elem.contactName} | 0{elem.contactNumb}
+                                </React.Fragment>)}
+                            </>} 
+                        </div>
+
+                        <div style={{ width:"400px", fontSize:"0.9em", }}>
                         {dailyNoteDisp.length>0 && <>
-                            {dailyNoteDisp.map((elem,i)=><React.Fragment key={i}>
-                            {elem.target==="general" &&<> -- {elem.note}</> }
-                            </React.Fragment> )}
+                        <strong > NOTES:</strong> <br/>
+                        <div style={{textTransform:"capitalize"}}>
+                            {dailyNoteDisp.length>0 && <>
+                                {dailyNoteDisp.map((elem,i)=>
+                                <React.Fragment key={i}>
+                                    {elem.target==="general" &&<> -- {elem.note}</> }
+                                </React.Fragment> )}
+                            </>}
+                        </div>
+                        <div style={{textTransform:"capitalize"}}>
+                            {dailyNoteDisp.length>0 && <>
+                                {dailyNoteDisp.map((elem,i)=>
+                                <React.Fragment key={i}>
+                                    {elem.target!="general" &&<> -- <strong>{elem.target}</strong> {elem.note}</> }
+                                </React.Fragment> )}
+                            </>}
+                        </div>
                         </>}
+                        </div>
+
                     </div>
-                    <div style={{textTransform:"capitalize"}}>
-                        {dailyNoteDisp.length>0 && <>
-                            {dailyNoteDisp.map((elem,i)=><React.Fragment key={i}>
-                            {elem.target!="general" &&<> -- <strong>{elem.target}</strong> {elem.note}</> }
-                            </React.Fragment> )}
-                        </>}
-                    </div>
-                    </>}
                 </div>
             </>)
         }
 
+        let guestCountToday=0
+        activeDep.forEach((elem)=>{
+            elem.roomingList?.forEach((elem)=>{
+            guestCountToday = guestCountToday + elem.guestArr.length
+            })
+        })
+
         return(<>
-            
-            <div className={styles.generalPlannerGrid}> 
-                <h2>Weekly Planner</h2>
+            <div className={styles.spaceBetRow}>
+                <h2>Weekly Planner</h2> 
+            </div>
+
+            <div className={styles.plannerDateDisp}>
+                {toDateDisplayer}
+            </div>
+            <div className={styles.generalPlannerGrid}>
+                <div className={styles.spaceBetRow}>
+                    <span>Total Pax: {guestCountToday} </span>
+                    <span>Total Departures: {activeDep.length} </span>
+                </div> <br/>
                 {activeDep.map((elem,i)=> <React.Fragment key={i}> 
                     {eachDayDet(elem)}
+                </React.Fragment> )}
+            </div>
+            {/* next Day */}
+            <div className={styles.plannerDateDisp}>
+                {addDays(toDate, 1).toLocaleDateString('en-GB', dateOptions)}
+            </div>
+            <div className={styles.generalPlannerGrid}>
+                {activeDep.map((elem,i)=> <React.Fragment key={i}> 
+                    {/* {eachDayDet(elem)} */}
                 </React.Fragment> )}
             </div>
         </>)
@@ -3745,11 +3782,16 @@ export default function OperationsDashboard(){
                 {depDisplayer(upcomingDeps, "upcoming Departures", false)}
                 <br/><br/>
 
+
+                {session.user.name==="David Torres" && <> 
                 <div className={styles.createDepTrig} onClick={()=>{
                     window.scrollTo({top: 0})
                     setPlannerTrig(true);  
                     }}>
                     open planner</div>
+                </>}
+
+
 
                 {createdep ? <>
                     {departureCreator()}

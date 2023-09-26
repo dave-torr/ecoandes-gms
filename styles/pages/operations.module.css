@@ -8,6 +8,13 @@
     flex-direction: column;
 }
 
+.aRow{
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    justify-content: center;
+}
+
 .aLineSeparator{
     width: 100%;
     border-bottom: dotted 2px black;
@@ -645,11 +652,12 @@
 /* planner */
 
 .generalPlannerGrid{
-    min-width: 810px;
+    width: 810px;
     min-height: 21px;
     box-shadow: var(--frst-box-shadow);
-    padding: 21px;
+    padding: 12px 21px;
     border: solid 1px black;
+    overflow-x: scroll;
 }
 
 
@@ -659,8 +667,19 @@
     border: solid 1px black;
     margin-bottom: 9px;
     cursor: pointer;
+    width: fit-content;
+    min-width: 800px;
 }
 
+
+.plannerDateDisp{
+    width: 812px;
+    background-color: grey;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 6px 9px;
+}
 
 /* expenses: */
 .accomListDisp{
@@ -944,6 +963,11 @@
     padding: 3px 9px;
     display: flex;
     flex-direction: column;
+}
+
+.aDayNote{
+    display: flex;
+    align-items: center;
 }
 
 .dayByDayCont{
