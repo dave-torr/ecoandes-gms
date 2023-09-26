@@ -3586,6 +3586,9 @@ export default function OperationsDashboard(){
         </>)
     }
 
+
+    console.log(theDeparture)
+
     // planner
     const operationsPlanner=( activeDep, upcomingDep )=>{
 
@@ -3617,18 +3620,18 @@ export default function OperationsDashboard(){
                         accommodationsDisp.push(elem)
                     } else if(elem.expenseKey==="transportExpense"){
                         transportDisp.push(elem)
-                    } else if(elem.expenseKey==="guideExpense"){
+                    } else if((elem.expenseKey==="variableExpense" && elem.pricekey==="mealService"  ) ){
                         mealsDisp.push(elem)
                     }
                 })
             }
 
             return(<>
-                <div style={{display:"flex", alignItems:"end"}} >
-                    <div className={styles.depCardFileTab} style={{marginRight:"9px"}} >
+                <div className={styles.plannerFileDataRow}>
+                    <div className={styles.depCardFileTab} >
                         {theDayDet?.tourCode}
                     </div>
-                    <div style={{width:"12%"}}>
+                    <div style={{width:"12%", marginLeft:"21px"}}>
                         {theDayDet.duration&& <>Day {dayIndex} / {theDayDet.duration} </>}
                     </div>
                     <div style={{width:"15%"}}>
@@ -3646,11 +3649,11 @@ export default function OperationsDashboard(){
                 }}>
 
                     <div className={styles.aRow}>
-                        <div style={{fontSize:"1.3em", margin:"12px 0", width: "525px"}} > {foundItin?.dayByDay[dayIndex-1].dayTitle} </div>
+                        <div className={styles.plannerDayDetail}> {foundItin?.dayByDay[dayIndex-1].dayTitle} </div>
 
                         {accommodationsDisp.length>0 &&<>
-                        <div style={{fontSize:"0.9em", width:"350px" }} >
-                        <strong> HOTEL IN:</strong> <br/>
+                        <div className={styles.secondDataBox}>
+                        <strong> HOTEL IN:</strong>
                             {accommodationsDisp.map((elem,i)=><React.Fragment key={i}>
                                 &nbsp; -- {elem.hotelName} - {elem.contactName} | 0{elem.contactNumb}
                             </React.Fragment> )}
@@ -3677,17 +3680,17 @@ export default function OperationsDashboard(){
                             </>} 
                         </div>
 
-                        <div style={{ width:"400px", fontSize:"0.9em", }}>
+                        <div className={styles.secondDataBox}>
                         {dailyNoteDisp.length>0 && <>
-                        <strong > NOTES:</strong> <br/>
-                        <div style={{textTransform:"capitalize"}}>
+                        <strong > NOTES:</strong>
                             {dailyNoteDisp.length>0 && <>
                                 {dailyNoteDisp.map((elem,i)=>
                                 <React.Fragment key={i}>
-                                    {elem.target==="general" &&<> -- {elem.note}</> }
+                                    {elem.target==="general" &&<> 
+                                        -- {elem.note}<br/> 
+                                    </>}
                                 </React.Fragment> )}
                             </>}
-                        </div>
                         <div style={{textTransform:"capitalize"}}>
                             {dailyNoteDisp.length>0 && <>
                                 {dailyNoteDisp.map((elem,i)=>
@@ -3717,7 +3720,7 @@ export default function OperationsDashboard(){
             </div>
 
             <div className={styles.plannerDateDisp}>
-                {toDateDisplayer}
+                <strong> TODAY </strong> {toDateDisplayer}
             </div>
             <div className={styles.generalPlannerGrid}>
                 <div className={styles.spaceBetRow}>

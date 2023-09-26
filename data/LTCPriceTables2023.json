@@ -1706,15 +1706,31 @@
         {
             "currency":"usd",
             "expenseKey": "variableExpense", 
-            "pricekey": "hotelMealService",
-            "meal":"lunch",
+            "pricekey": "mealService",
+            "meal":"breakfast",
             "price": 15,
-            "priceDetail": "Meal Service, Variable Expense"
+            "priceDetail": "Breakfast Service, Variable Expense"
         },
         {
             "currency":"usd",
             "expenseKey": "variableExpense", 
-            "pricekey": "boxLunch",
+            "pricekey": "mealService",
+            "meal":"lunch",
+            "price": 15,
+            "priceDetail": "Lunch Service, Variable Expense"
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "variableExpense", 
+            "pricekey": "mealService",
+            "meal":"dinner",
+            "price": 25,
+            "priceDetail": "Dinner Service, Variable Expense"
+        },
+        {
+            "currency":"usd",
+            "expenseKey": "variableExpense", 
+            "pricekey": "mealService",
             "meal":"lunchBox",
             "price": 10,
             "priceDetail": "Box Lunch, Variable Expense"

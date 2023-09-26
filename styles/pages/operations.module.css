@@ -652,7 +652,8 @@
 /* planner */
 
 .generalPlannerGrid{
-    width: 810px;
+    width: 90%;
+    margin: 0 33px;
     min-height: 21px;
     box-shadow: var(--frst-box-shadow);
     padding: 12px 21px;
@@ -669,16 +670,39 @@
     cursor: pointer;
     width: fit-content;
     min-width: 800px;
+    transition: all ease-in 0.2s;
 }
 
 
 .plannerDateDisp{
-    width: 812px;
+    width: 90%;
+    margin: 0 33px;
+    border: solid 1px black;
     background-color: grey;
     color: white;
     text-transform: uppercase;
     letter-spacing: 2px;
     padding: 6px 9px;
+}
+
+.plannerDayDetail{
+    font-size: 1.3em;
+    margin: 12px 0;
+    width: 525px;
+}
+
+.secondDataBox{
+    display: flex;
+    flex-direction: column;
+    margin: 9px 0;
+    width: 300px;
+    font-size: 0.9em;
+}
+
+.plannerFileDataRow{
+    display: flex;
+    align-items: end;
+    margin-left: 9px;
 }
 
 /* expenses: */
