@@ -126,6 +126,7 @@ export default function OperationsDashboard(){
     const [activeDeps, setActiveDeps]=useState([])
     const [fetchedItins, setFetchedItins]=useState([])
     const [upcomingDeps, setUpcomingDeps]=useState([])
+    const [weeklyPlanner, setWeeklyPlanner]=useState([])
 
     const [itinFetcherGMSSwitch, setGMSItinFetcherSwitch]=useState(false)
     const [itinFetcherLTCSwitch, setLTCItinFetcherSwitch]=useState(false)
@@ -226,13 +227,34 @@ export default function OperationsDashboard(){
         // filter for deps active today. upper limit defined by midnight end of day
             let theTempArr=[]
             let anotherTempArr= []
+
+            let sndDayItins=[]
+            let trdDayItins=[]
+            let frthDayItins=[]
+            let fifthDayItins=[]
+
             fetchedData.forEach(element => {
-                let loweLimitDate=new Date(element.startingDate)
+                
+                let lowerLimitDaterr = new Date(element.startingDate)
+                let loweLimitDate=addDays(lowerLimitDaterr, 1)
                 let theDur = parseInt(element.duration)
-                let upperLimitDate = addDays(element.startingDate, theDur)
+                let upperLimitDate = addDays(element.startingDate, theDur+1)
                 //  filters out currently active voyages. 
+
                 if((toDate > loweLimitDate) && (upperLimitDate > toDate) ){
                     theTempArr.push(element)
+                }
+                if((addDays(toDate,2) > loweLimitDate) && (upperLimitDate >= addDays(toDate,2)) ){
+                    sndDayItins.push(element)
+                }
+                if((addDays(toDate,3) > loweLimitDate) && (upperLimitDate >= addDays(toDate,3)) ){
+                    trdDayItins.push(element)
+                }
+                if((addDays(toDate,4) > loweLimitDate) && (upperLimitDate >= addDays(toDate,4)) ){
+                    frthDayItins.push(element)
+                }
+                if((addDays(toDate,5) > loweLimitDate) && (upperLimitDate >= addDays(toDate,5)) ){
+                    fifthDayItins.push(element)
                 }
                 if (loweLimitDate >= toDate ){
                     anotherTempArr.push(element)
@@ -240,7 +262,9 @@ export default function OperationsDashboard(){
             })
             setActiveDeps(theTempArr)
             setUpcomingDeps(anotherTempArr)
+            setWeeklyPlanner([sndDayItins, trdDayItins, frthDayItins, fifthDayItins])
             setLoadingTrig(false)
+
         }
         const res2 = await fetch("/api/gms/itineraries",{
             method: "GET"
@@ -251,6 +275,8 @@ export default function OperationsDashboard(){
             setFetchedItins(fetchedData2)
         }
     },[])  
+
+
 
   ///////////////////////////////////////////
   // gen Utils
@@ -462,20 +488,19 @@ export default function OperationsDashboard(){
                 </div>
                 <h3>{elem.tripName}</h3>
                 <div className={styles.spaceBetRow}>
-                {elem.duration} days
+                {parseInt(elem.duration)} days
                 <span className={styles.createDepBTN} onClick={()=>{
                     if(elem.user){
                         setTheDeparture({
                             ...aDepModel,
                             "itineraryID": elem._id,
-                            "duration":elem.duration
+                            "duration":parseInt(elem.duration)
                         })
                     } else {
-
                         setTheDeparture({
                             ...aDepModel,
                             "itineraryID": elem.id,
-                            "duration":elem.duration
+                            "duration":parseInt(elem.duration)
                         })
                     }
                     setTheItinerary({...elem})
@@ -525,7 +550,8 @@ export default function OperationsDashboard(){
             </div>
             <div className={styles.spaceBetRow}>
                 <h2>{theItin.tripName}</h2>
-                {logoSwitcher(theItin, "logo")}
+                {theItin.log && <> 
+                    {logoSwitcher(theItin, "logo")} </>}
             </div>
 
             <br/>
@@ -626,10 +652,10 @@ export default function OperationsDashboard(){
             </div>
             <div className={styles.spaceBetRow}>
                 <div style={{width:"49%"}}>
-                    <strong>DURATION:</strong> {theItin.duration} days
+                    <strong>DURATION:</strong> {parseInt(theItin.duration)} days
                 </div>
                 <div style={{width:"49%"}}>
-                    {aDateDisp("Ending Date", theDep.startingDate, parseInt(theItin.duration)+1 )}
+                    {aDateDisp("Ending Date", theDep.startingDate, parseInt(theItin.duration) +1 )}
                 </div>
             </div>
             <div className={styles.spaceBetRow}>
@@ -1130,14 +1156,13 @@ export default function OperationsDashboard(){
     let paxTotalCount=<>{paxData?.paxTotal} / {theDeparture?.maxPaxNumb} maximum</>
 
     // Stats
-    const statsDisplayer=(activeDepartures, upcomingDeps)=>{
+    const statsDisplayer=(activeDepartures, ghostInside)=>{
         // sum up all current clients in Rooming List
         // = number of active clients.
         // sum active tours
 
     // summ all guests in rooming list
         let clientGeneralSum = 0
-
         activeDepartures.forEach((elem)=>{
             elem.roomingList?.forEach((elem)=>{
             clientGeneralSum = clientGeneralSum + elem.guestArr.length
@@ -1157,11 +1182,14 @@ export default function OperationsDashboard(){
         {activeDepartures.length>0? <> 
             {eachDataRow("Active Departures:", activeDepartures.length )}
             {eachDataRow("Pax Total:", clientGeneralSum )}
-            <div className={styles.aLineSeparator}/>
-            {eachDataRow("Upcoming Departures:", upcomingDeps.length )}
+
+
+
             {/* Weekly responsible contact */}
             {/* List of active deps with links to each??? */}
             {/* what other quick elems can we display? Nationality? */}
+
+
         </>:<>
             <div className={styles.placeholderData}> 
             <h3>There are currently</h3>
@@ -1214,7 +1242,7 @@ export default function OperationsDashboard(){
                     {aDateDisp("starting date", theDep.startingDate, 2)}
                 </div>
                 <div style={{width: "47%" }}>
-                    {aDateDisp("Ending date", theDep.startingDate, theDep.duration +1)}
+                    {aDateDisp("Ending date", theDep.startingDate, parseInt(theDep.duration) +1)}
                 </div>
             </div>
             </div>
@@ -1283,7 +1311,7 @@ export default function OperationsDashboard(){
                         {anInputDisplayer("starting Date", "startingDate", "date", false, theDeparture.startingDate, theDeparture, setTheDeparture )}
                     </div> 
                     <div style={{width: "47%" }}>
-                        {aDateDisp("Arrival Date", theDeparture.startingDate, theDeparture.duration+1 )}
+                        {aDateDisp("Arrival Date", theDeparture.startingDate, parseInt(theDeparture.duration)+1 )}
                     </div> 
                 </div>
                 <div className={styles.spaceBetRow}>
@@ -3376,7 +3404,7 @@ export default function OperationsDashboard(){
                     {aDateDisp("trip Starting Date", theDeparture.startingDate, )}
                     </div>
                     <div style={{width:"48%"}}>
-                    {aDateDisp("trip ending Date", theDeparture.startingDate, theDeparture.duration )}
+                    {aDateDisp("trip ending Date", theDeparture.startingDate, parseInt(theDeparture.duration) )}
                     </div>
                 </div>
             </>}
@@ -3586,22 +3614,26 @@ export default function OperationsDashboard(){
         </>)
     }
 
-
-    console.log(theDeparture)
-
     // planner
-    const operationsPlanner=( activeDep, upcomingDep )=>{
+    const operationsPlanner=( activeDep, thePlannerData )=>{
 
         let allItins =[
             ...fetchedItins, ...LTCItins, ...EcoAndesItins
         ]
-        const eachDayDet=(theDayDet)=>{
+
+        const eachDayDet=(theDayDet, dayIndexx)=>{
+
+            let tempDayIndx 
+            if(dayIndexx===0){
+                tempDayIndx = toDate
+            } else {
+                tempDayIndx = addDays(toDate,dayIndexx)
+            }
 
             let startingDate = new Date(theDayDet.startingDate)
-            let dayIndex =  Math.ceil((toDate.getTime() - startingDate.getTime()) / (1000*3600*24))
+            let dayIndex =  Math.ceil((tempDayIndx.getTime() - startingDate.getTime()) / (1000*3600*24))
             let foundItin = allItins.find(element => (element.id === theDayDet.itineraryID)||(element._id === theDayDet.itineraryID))
             let guestNumb = guestAdder(theDayDet.roomingList)
-            guestCountToday = guestCountToday + guestNumb
 
             let dailyNoteDisp=[]
             if(theDayDet.operationalNotes[dayIndex-1]){
@@ -3620,25 +3652,26 @@ export default function OperationsDashboard(){
                         accommodationsDisp.push(elem)
                     } else if(elem.expenseKey==="transportExpense"){
                         transportDisp.push(elem)
-                    } else if((elem.expenseKey==="variableExpense" && elem.pricekey==="mealService"  ) ){
+                    } else if((elem.expenseKey==="variableExpense" && elem.pricekey==="mealService")){
                         mealsDisp.push(elem)
                     }
                 })
             }
+
 
             return(<>
                 <div className={styles.plannerFileDataRow}>
                     <div className={styles.depCardFileTab} >
                         {theDayDet?.tourCode}
                     </div>
-                    <div style={{width:"12%", marginLeft:"21px"}}>
+                    <div style={{width:"90px", marginLeft:"21px"}}>
                         {theDayDet.duration&& <>Day {dayIndex} / {theDayDet.duration} </>}
                     </div>
-                    <div style={{width:"15%"}}>
-                        {theDayDet.maxPaxNumb&& <>{guestNumb} / {theDayDet.maxPaxNumb} Guests</>}
+                    <div style={{width:"90px"}}>
+                        {theDayDet.maxPaxNumb&& <>{guestNumb}  Guest{guestNumb>1&&<>s</>}</>}
                     </div>
-                    <div style={{width:"25%"}}>
-                        {foundItin.user&& <>Seller: {foundItin.user.name}</>}
+                    <div style={{width:"250px"}}>
+                        {foundItin?.user&& <>Seller: {foundItin.user.name}</>}
                     </div>
                 </div>
 
@@ -3649,7 +3682,7 @@ export default function OperationsDashboard(){
                 }}>
 
                     <div className={styles.aRow}>
-                        <div className={styles.plannerDayDetail}> {foundItin?.dayByDay[dayIndex-1].dayTitle} </div>
+                        <div className={styles.plannerDayDetail}> {foundItin?.dayByDay[dayIndex-1]?.dayTitle} </div>
 
                         {accommodationsDisp.length>0 &&<>
                         <div className={styles.secondDataBox}>
@@ -3714,6 +3747,34 @@ export default function OperationsDashboard(){
             })
         })
 
+        const dailyBreakdown=(itinArr, futureDayz)=>{
+            let eachDayCount=0
+            itinArr[futureDayz-1]?.forEach((elem)=>{
+                elem.roomingList?.forEach((elem)=>{
+                eachDayCount = eachDayCount + elem.guestArr.length
+                })
+            })
+
+            return(<>
+                <div className={styles.plannerDateDisp}>
+                    {addDays(toDate, futureDayz)?.toLocaleDateString('en-GB', dateOptions)}
+                </div>
+                <div className={styles.generalPlannerGrid}>
+                    <div className={styles.spaceBetRow}>
+                        <span>Total Pax: {eachDayCount} </span>
+                        <span>Total Departures: {itinArr[futureDayz-1]?.length} </span>
+                    </div> <br/>
+
+                    {itinArr[futureDayz-1]?.map((elem,i)=> <React.Fragment key={i}> 
+                        {eachDayDet(elem, futureDayz)}
+                    </React.Fragment> )}
+                    
+                </div>
+            </>)
+
+        }
+
+
         return(<>
             <div className={styles.spaceBetRow}>
                 <h2>Weekly Planner</h2> 
@@ -3727,21 +3788,24 @@ export default function OperationsDashboard(){
                     <span>Total Pax: {guestCountToday} </span>
                     <span>Total Departures: {activeDep.length} </span>
                 </div> <br/>
+
                 {activeDep.map((elem,i)=> <React.Fragment key={i}> 
-                    {eachDayDet(elem)}
+                    {eachDayDet(elem, 0)}
                 </React.Fragment> )}
             </div>
+
+
+            {dailyBreakdown(thePlannerData,1)}
+            {dailyBreakdown(thePlannerData,2)}
+            {dailyBreakdown(thePlannerData,3)}
+            {dailyBreakdown(thePlannerData,4)}
+
+
             {/* next Day */}
-            <div className={styles.plannerDateDisp}>
-                {addDays(toDate, 1).toLocaleDateString('en-GB', dateOptions)}
-            </div>
-            <div className={styles.generalPlannerGrid}>
-                {activeDep.map((elem,i)=> <React.Fragment key={i}> 
-                    {/* {eachDayDet(elem)} */}
-                </React.Fragment> )}
-            </div>
         </>)
     }
+
+    console.log(weeklyPlanner)
 
   return(<>
     <div className={styles.aGMSPage}>
@@ -3772,8 +3836,7 @@ export default function OperationsDashboard(){
                     <span onClick={()=>{setPlannerTrig(false)}}> 
                     <CancelPresentationIcon/> </span> 
                 </div>
-
-                {operationsPlanner(activeDeps, upcomingDeps)}            
+                {operationsPlanner(activeDeps, weeklyPlanner)}   
 
             </> : <>
                 {/* display itineraries and select a dep for file */}

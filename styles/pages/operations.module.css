@@ -652,13 +652,13 @@
 /* planner */
 
 .generalPlannerGrid{
-    width: 90%;
+    width: 780px;
     margin: 0 33px;
     min-height: 21px;
     box-shadow: var(--frst-box-shadow);
     padding: 12px 21px;
     border: solid 1px black;
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 
 
@@ -669,13 +669,12 @@
     margin-bottom: 9px;
     cursor: pointer;
     width: fit-content;
-    min-width: 800px;
     transition: all ease-in 0.2s;
 }
 
 
 .plannerDateDisp{
-    width: 90%;
+    width: 780px;
     margin: 0 33px;
     border: solid 1px black;
     background-color: grey;
@@ -689,6 +688,7 @@
     font-size: 1.3em;
     margin: 12px 0;
     width: 525px;
+    text-transform: capitalize;
 }
 
 .secondDataBox{
