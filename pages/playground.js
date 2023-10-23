@@ -7,7 +7,7 @@ import {GMSNavii} from "./../components/navis"
 
 import LTCPriceTables from "../data/LTCPriceTables2023.json"
 
-import { aHotelDisplayer } from '../components/operations/providers'
+import { aHotelDisplayer, hotelAdderForm } from '../components/operations/providers'
 
 
 
@@ -318,6 +318,8 @@ let tempDep= {
 export default function PlaygroundPage(props){
     const { data: session } = useSession()
     const [testerObj, setTester]=useState({})
+
+    const [tempAdderObj, setTempObj]=useState(false)
     /////////////////////////////////////////////////////
     /////////////////////////////////////////////////////
 
@@ -402,18 +404,15 @@ export default function PlaygroundPage(props){
             ]
         }
 
-    let sampleVal="previous Value"
-
-    console.log(testerObj)
 
     return(<>
         {session&&<> 
             <GMSNavii  user={session.user} />
             <div className={styles.playgroundPage}>
 
-            <div style={{ width: "90%", backgroundColor:"white", padding:"33px" }} >
-            
-            </div>
+                {aHotelDisplayer(sampleHotel)}
+                {aHotelDisplayer(testerObj)}
+                {hotelAdderForm(testerObj, setTester, tempAdderObj, setTempObj)}
 
 
             </div> 

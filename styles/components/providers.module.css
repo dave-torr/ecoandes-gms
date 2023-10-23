@@ -7,17 +7,23 @@
     box-shadow: var(--frst-box-shadow);
     padding: 21px;
     transition: all ease-in 0.3s;
+    margin-bottom: 21px;
 }
 
 .aProviderCont h1{
     margin: 0;
-    padding: 0;
+    padding: 0; 
+}
+.aProviderCont h2{
+    margin: 0;
+    padding: 0; 
 }
 
 .spaceBetRow{
     display: flex;
     width: 100%;
     justify-content: space-between;
+    align-items: center;
 }
 
 .aContactRow{
@@ -38,7 +44,7 @@
 }
 
 .hotelLinksDisp a{
-    margin-right: 15px;
+    margin-left: 15px;
     cursor: pointer;
 }
 
@@ -49,4 +55,20 @@
     padding: 9px;
     margin-bottom: 12px;
     font-size: 0.8em;
+}
+
+.addCntctBTN{
+    margin-top: 15px;
+    border: solid 2px black;
+    cursor: pointer;
+    padding: 9px 12px;
+    border-radius: 5px;
+
+}
+
+@media (max-width: 650px) {
+    .aProviderCont{
+        width: 96%;
+
+    }
 }

@@ -10,7 +10,7 @@ import HubIcon from '@mui/icons-material/Hub';
 import styles from "../../styles/pages/operations.module.css"
 
 import Switch from '@mui/material/Switch';
-import { FormControlLabel } from '@mui/material';
+import { Dialog, FormControlLabel } from '@mui/material';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import EditIcon from '@mui/icons-material/Edit';
@@ -20,6 +20,7 @@ import SaveIcon from '@mui/icons-material/Save';
 import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
 import FlightIcon from '@mui/icons-material/Flight';
 import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
 import LTCLogoBLK from "../../public/assets/logos/ecoAndesBLK.png"
 import GalapagosElementsLogo from "../../public/assets/logos/galapagosElementsLogo.png"
@@ -104,19 +105,19 @@ export default function OperationsDashboard(){
     // - requerimiento economico (cash management)
     // provide hotel data & edit cap
 
+    //  NON OP: edit prev set expenses. 
+    //  NON OP: duplicate hotel accommodations on following nights
 
-    // NON OP provider database
+    // NON OP 
+    //    provider database
     // -- guides
     // -- hotels
     // -- cruise
     // -- transportation
 
+    
     //  NON OP: add contact from DB to expense. 
-    //  NON OP: duplicate hotel accommodations on following nights
-    //  NON OP: edit prev set expenses. 
     //  Yacht Reservation Form
-    
-    
     
     // For active departures, show day title of currently running day, hotel, guide name.
     // planner page: print horizontally, 
@@ -550,8 +551,11 @@ export default function OperationsDashboard(){
             </div>
             <div className={styles.spaceBetRow}>
                 <h2>{theItin.tripName}</h2>
-                {theItin.log && <> 
+
+                {theItin.logo && <> 
                     {logoSwitcher(theItin, "logo")} </>}
+
+
             </div>
 
             <br/>
@@ -698,10 +702,10 @@ export default function OperationsDashboard(){
         let allItins =[
             ...fetchedItins, ...LTCItins, ...EcoAndesItins
         ]        
-        const currentOPDay=(theDep, availTtins, dispCntroller)=>{
+        const currentOPDay=(theDep, dispCntroller)=>{
             let startingDate = new Date(theDep.startingDate)
             let dayIndex =  Math.ceil((toDate.getTime() - startingDate.getTime()) / (1000*3600 *24))
-            let foundItin = availTtins.find(element => (element.id === theDep.itineraryID)||(element._id === theDep.itineraryID))
+            let foundItin = allItins.find(element => (element.id === theDep.itineraryID)||(element._id === theDep.itineraryID))
 
             if(dispCntroller==="dayTitle"){
                 return(<>
@@ -728,7 +732,7 @@ export default function OperationsDashboard(){
                 setTheItinerary(foundItin)
             }}>
                 <div className={styles.depCardRow}>
-                    {currentOPDay(elem, allItins, "dayTitle")}
+                    {currentOPDay(elem, "dayTitle")}
                 </div>
                 <div className={styles.depCardRow}>
                     <strong>{elem.tripName}</strong>
@@ -742,13 +746,29 @@ export default function OperationsDashboard(){
             depMapper = depArr.map((elem, i)=><React.Fragment key={i}>
             <div className={styles.aDepCard} onClick={()=>{
                 let allItins =[
-                    ...fetchedItins, ...LTCItins
+                    ...fetchedItins, ...LTCItins, ...EcoAndesItins
                 ]
+
+                
+
+
+                console.log("Here  oder")
+
+
                 let foundItin = allItins.find(element => (element.id === elem.itineraryID)||(element._id === elem.itineraryID))
+
+                   console.log(allItins, "Labzz 33") 
+                   console.log(foundItin, "Labzz") 
+
+
+
+
                 setfileSwitch(true)
                 setTheDeparture(elem)
                 setTheItinerary(foundItin)
             }}>
+
+            {console.log(elem)}
                 <div className={styles.spaceBetRow}> 
                     {elem.startingDate}
                     <span>
@@ -1068,11 +1088,15 @@ export default function OperationsDashboard(){
         </div>
         {/* Display */}
         <div className={styles.aFileContainer}>
-            {logoSwitcher(theItin, "text")}
+
+        {/* "HERE" */}
+
+            {/* {logoSwitcher(theItin, "text")} */}
+
             <div className={styles.spaceBetRow}>
                 <div>
-                    <h3>{theItin.tourCode}</h3>
-                    <h1>{theItin.tripName}</h1>
+                    <h3>{theItin?.tourCode}</h3>
+                    <h1>{theItin?.tripName}</h1>
                 </div>
                 {departureStatusDisp(theDep)}
             </div>
@@ -1120,13 +1144,32 @@ export default function OperationsDashboard(){
                 <span onClick={()=>{setFileKey("cruises")}}> <SailingIcon/> </span>
             </>} */}
         </div>
-        {expenseTrig&&<>
+
+
+            <Dialog open={expenseTrig}  maxWidth={"xl"} onClose={()=>setExpTrig(false)}>
+
+                <div className={styles.aFileContainer}>
+                    <h3>Add expense to day {dayIndex+1} </h3>
+                    {optCataloger(thePriceChart)}
+                    {expenseEditor(anExpense, setAnExpense, providerArr, dayIndex, theDeparture, setTheDeparture, paxData)}
+                </div>
+
+            </Dialog>
+
+
+
+
+        {/* {expenseTrig&&<>
             <div className={styles.aFileContainer}>
                 <h3>Add expense to day {dayIndex+1} </h3>
                 {optCataloger(thePriceChart)}
                 {expenseEditor(anExpense, setAnExpense, providerArr, dayIndex, theDeparture, setTheDeparture, paxData)}
             </div>
-        </>}
+        </>} */}
+
+
+
+
         {fileDisplayKey==="intro"&&<>
             {headerEdit()}
         </>}
@@ -2281,13 +2324,10 @@ export default function OperationsDashboard(){
                             setAddGuest(false)
                             setGuestAddCount(0)
                             setAddGuestNote(false)
-                            window.scrollTo({
-                                top: 0,
-                                behavior: "smooth",
-                            });
                             setTheDeparture({
                                 ...theDeparture
                             })
+                            window.alert("Room Added")
                         } else {
                             window.alert("Please Add Guest Name")
                         }
@@ -2345,7 +2385,10 @@ export default function OperationsDashboard(){
     // Create Departures
     const departureCreator=()=>{
         return(<>
-            <div className={styles.aLineSeparator}/>
+            <div className={styles.returnUIBar} onClick={()=>{setCreateDep(false)}}>
+                <span> 
+                <ArrowBackIosNewIcon/></span> BACK 
+            </div>
             <div className={styles.spaceBetRow}>
                 <h1>Create a departure: </h1>
                 <div> {fetchedItins&&<>{fetchedItins.length} GMS Itineraries,</>}
@@ -3776,7 +3819,11 @@ export default function OperationsDashboard(){
 
 
         return(<>
-            <div className={styles.spaceBetRow}>
+            <div className={styles.returnUIBar} onClick={()=>{setPlannerTrig(false)}}>
+                <span> 
+                <ArrowBackIosNewIcon/></span> BACK 
+            </div>
+            <div className={styles.spaceBetRow} style={{width: "780px"}}>
                 <h2>Weekly Planner</h2> 
             </div>
 
@@ -3805,8 +3852,6 @@ export default function OperationsDashboard(){
         </>)
     }
 
-    console.log(weeklyPlanner)
-
   return(<>
     <div className={styles.aGMSPage}>
     {session&&<> 
@@ -3816,7 +3861,7 @@ export default function OperationsDashboard(){
             <h2>Latin Travel Collection</h2>
             <h1>Operations</h1>
         </div>  
-        <strong className={styles.printDEL} >{toDateDisplayer}</strong>
+        
         {loadingTrigger? <>
             {loadingScreen("Fetching Departure Data")}
         </>:<>
@@ -3832,42 +3877,35 @@ export default function OperationsDashboard(){
 
             </> : plannerTrig ? <>
             {/* PLANNER */}
-                <div className={styles.spaceBetRowPRINT}>
-                    <span onClick={()=>{setPlannerTrig(false)}}> 
-                    <CancelPresentationIcon/> </span> 
-                </div>
+
                 {operationsPlanner(activeDeps, weeklyPlanner)}   
+
+            </> : createdep ? <>
+
+                {departureCreator()}
 
             </> : <>
                 {/* display itineraries and select a dep for file */}
-                <div className={styles.spaceBetRow}> 
-                    <h1>Departures </h1>
-                    {statsDisplayer(activeDeps, upcomingDeps)}            
-                </div>
+                <strong className={styles.printDEL} >{toDateDisplayer}</strong>
+                {statsDisplayer(activeDeps, upcomingDeps)}            
                 {depDisplayer(activeDeps, "active Departures", true)}
                 {depDisplayer(upcomingDeps, "upcoming Departures", false)}
                 <br/><br/>
 
 
-                {session.user.name==="David Torres" && <> 
                 <div className={styles.createDepTrig} onClick={()=>{
                     window.scrollTo({top: 0})
                     setPlannerTrig(true);  
                     }}>
                     open planner</div>
-                </>}
 
-
-
-                {createdep ? <>
-                    {departureCreator()}
-                </> : <>
-                    <div className={styles.createDepTrig} onClick={()=>{
-                        setCreateDep(true)
+                <div className={styles.createDepTrig} onClick={()=>{
+                    window.scrollTo({top: 0})
+                    setCreateDep(true)
                     }}> 
-                        create departure
+                    create departure
                     </div>
-                </>}
+                    
 
             </>}
         </>}
