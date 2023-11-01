@@ -480,7 +480,8 @@
 }
 .roomingListCont h2{
     width: 100%;
-    padding: 15px 0;
+    padding-top: 21px;
+    padding-left: 6px;
 }
 
 .roomingGuestRow{
@@ -549,7 +550,7 @@
     font-weight: 600;
     display: flex;
     border: solid 1px black;
-    border-bottom: solid 3px black;
+    border-bottom: solid 2px black;
     padding: 9px 0;
 }
 
@@ -707,7 +708,7 @@
 
 .plannerFileDataRow{
     display: flex;
-    align-items: end;
+    align-items: flex-end;
     margin-left: 9px;
 }
 
@@ -741,20 +742,24 @@
 .anExpenseDisp strong{
     width: 230px;
     word-wrap: break-word;
-    border-right: solid 1px black;
     padding-right: 3px;
 }
 
 .rmvExpBTN{
     color: red;
-    padding-right: 6px;
+    padding-right: 12px;
     cursor: pointer;
 }
+.editExpBTN{
+    padding-right: 12px;
+    cursor: pointer;
+}
+
+
 
 .addExpBTN{
     color: grey;
     cursor: pointer;
-
 }
 
 .dailyTitleCont{
