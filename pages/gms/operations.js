@@ -279,8 +279,6 @@ export default function OperationsDashboard(){
         }
     },[])  
 
-
-
   ///////////////////////////////////////////
   // gen Utils
     const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
@@ -372,29 +370,36 @@ export default function OperationsDashboard(){
         }
     }
     const aDateDisp=(dateLabel, theDate, tripDuration, dayIndex)=>{
-        let firstDate=new Date(theDate)
-        let toDateFormatter 
+        let firstDate=new Date(`${theDate}T00:01:00`)
+        let theDateFormatter 
         let upperLimitDate           
         if(tripDuration){
-            let theDuration = parseInt(tripDuration)-1
-            upperLimitDate = addDays(theDate, theDuration)
-            toDateFormatter = upperLimitDate.toLocaleDateString('en-GB', dateOptions)
-        } else if (dayIndex) {
+            let theDuration = parseInt(tripDuration-1)
+            upperLimitDate = addDays(firstDate, theDuration)
+            theDateFormatter = upperLimitDate.toLocaleDateString('en-GB', dateOptions)
+        } else if (dayIndex || dayIndex===0) {
             let theDayIndex = parseInt(dayIndex)
-            upperLimitDate = addDays(theDate, theDayIndex +1)
-            toDateFormatter = upperLimitDate.toLocaleDateString('en-GB', dateOptions)
+            upperLimitDate = addDays(firstDate, theDayIndex)
+            theDateFormatter = upperLimitDate.toLocaleDateString('en-GB', dateOptions)
         } else {
-            toDateFormatter = firstDate.toLocaleDateString('en-GB', dateOptions)
+            theDateFormatter = firstDate.toLocaleDateString('en-GB', dateOptions)
         }
-        return(<>
+        if(dateLabel){return(<>
         <div className={styles.eachDateCont}>
             <div className={styles.eachDetailTitle}>{dateLabel}</div>
             <div>  
-                {toDateFormatter}                
+                {theDateFormatter}                
             </div>
         </div>
-        </>)
+        </>)} else {
+            return(<>
+                {theDateFormatter}                
+            </>)
+        }
     }
+
+
+
     const saveFunction=async(theDep, )=>{
         setSavedoc(false)
         // record to bitacora the change, 
@@ -653,7 +658,7 @@ export default function OperationsDashboard(){
                     />
                 </div>
                 <div style={{width:"49%"}}>
-                    {aDateDisp("Starting Date", theDep.startingDate, 2)}
+                    {aDateDisp("Starting Date", theDep.startingDate)}
                 </div>
             </div>
             <div className={styles.spaceBetRow}>
@@ -661,7 +666,7 @@ export default function OperationsDashboard(){
                     <strong>DURATION:</strong> {parseInt(theItin.duration)} days
                 </div>
                 <div style={{width:"49%"}}>
-                    {aDateDisp("Ending Date", theDep.startingDate, parseInt(theItin.duration) +1 )}
+                    {aDateDisp("Ending Date", theDep.startingDate, parseInt(theItin.duration))}
                 </div>
             </div>
             <div className={styles.spaceBetRow}>
@@ -1264,10 +1269,10 @@ export default function OperationsDashboard(){
             <h2> Tour Dates </h2>
             <div className={styles.spaceBetRow}> 
                 <div style={{width: "47%" }}>
-                    {aDateDisp("starting date", theDep.startingDate, 2)}
+                    {aDateDisp("starting date", theDep.startingDate,)}
                 </div>
                 <div style={{width: "47%" }}>
-                    {aDateDisp("Ending date", theDep.startingDate, parseInt(theDep.duration) +1)}
+                    {aDateDisp("Ending date", theDep.startingDate, parseInt(theDep.duration))}
                 </div>
             </div>
             </div>
@@ -1393,7 +1398,7 @@ export default function OperationsDashboard(){
                         {anInputDisplayer("starting Date", "startingDate", "date", false, theDeparture.startingDate, theDeparture, setTheDeparture )}
                     </div> 
                     <div style={{width: "47%" }}>
-                        {aDateDisp("Arrival Date", theDeparture.startingDate, parseInt(theDeparture.duration)+1 )}
+                        {aDateDisp("Departure Date", theDeparture.startingDate, theDeparture.duration )}
                     </div> 
                 </div>
                 <div className={styles.spaceBetRow}>
@@ -2501,11 +2506,13 @@ export default function OperationsDashboard(){
     // expenses
     const expenseBadgeDisp=(anExpKey)=>{
         if(anExpKey==="transportExpense"){
-            return(<><div style={{fontSize:"1.1em", marginRight:"9px", fontWeight:"700", backgroundColor:" coral", padding:"6px 9px", color:"white"  }} >T {" "}{" "}</div></>)
+            return(<><div style={{fontSize:"1.1em", fontWeight:"700", backgroundColor:" coral", padding:"6px 9px", color:"white"  }} >T {" "}{" "}</div></>)
         } else if(anExpKey==="guideExpense"){
-            return(<><div style={{fontSize:"1.1em", marginRight:"9px", fontWeight:"700", backgroundColor:" black", padding:"6px 9px", color:"white"  }} > G {" "}</div></>)
+            return(<><div style={{fontSize:"1.1em", fontWeight:"700", backgroundColor:" black", padding:"6px 9px", color:"white"  }} > G {" "}</div></>)
         } else if(anExpKey==="accommodation"){
-            return(<><div style={{fontSize:"1.1em", marginRight:"9px", fontWeight:"700", backgroundColor:" teal", padding:"6px 9px", color:"white"  }} > A {" "}</div></>)
+            return(<><div style={{fontSize:"1.1em", fontWeight:"700", backgroundColor:" teal", padding:"6px 9px", color:"white"  }} > A {" "}</div></>)
+        } else {
+            return(<><span style={{width:"36px"}} /></>)
         }
     }
     const totalExpAdder=(expenseArr)=>{
@@ -2908,7 +2915,7 @@ export default function OperationsDashboard(){
                     {expenseBadgeDisp(eachExp.expenseKey)} &nbsp;
                     {eachExp.hotelName&&<><strong>{eachExp.hotelName}</strong></>}
                     {eachExp.priceDetail}
-                    {eachExp.varExpTickets&& <>{eachExp.varExpTickets} x ${eachExp.price} </>}
+                    {eachExp.varExpTickets&& <> &nbsp; {eachExp.varExpTickets} x ${eachExp.price} </>}
                 </div>
                 <div style={{display:"flex", textAlign:"end"}}>
                     {providerArr.length>1&&<><strong>
@@ -3372,7 +3379,7 @@ export default function OperationsDashboard(){
         if(theDocs.expenseKey!="accommodation"){
         eachProviderMapper = theDeparture.dayByDayExp.map((elem,i)=><React.Fragment key={i}>
             {elem?.find(elem2 => elem2.contactName===theDocs?.contactName)?<>
-            <div style={{display:"flex", alignItems:"center"}}> 
+            <div style={{display:"flex", alignItems:"center"}}>
                 <h4>Day {i + 1}:</h4> &nbsp; {theItinerary?.dayByDay[i].dayTitle}
             </div>
             {/* General note mapper */}
@@ -3522,7 +3529,7 @@ export default function OperationsDashboard(){
             {theDocs.docKey!="accommodation" &&<> 
                 <div className={styles.spaceBetRow}>
                     <div style={{width:"48%"}}>
-                    {aDateDisp("trip Starting Date", theDeparture.startingDate, )}
+                    {aDateDisp("trip Starting Date", theDeparture.startingDate)}
                     </div>
                     <div style={{width:"48%"}}>
                     {aDateDisp("trip ending Date", theDeparture.startingDate, parseInt(theDeparture.duration) )}
@@ -3546,10 +3553,11 @@ export default function OperationsDashboard(){
                 {elemnt.expenseKey==="accommodation"&&<>
                     <div className={styles.spaceBetRow}> 
                         <span style={{width:"49%"}}>
-                            {aDateDisp("Date In", theDeparture.startingDate, false, elemnt.dayIndex)}
+                            {aDateDisp("Date In", theDeparture.startingDate, undefined, elemnt.dayIndex)}
                         </span>
                         <span style={{width:"49%"}}>
-                            {aDateDisp("Date Out", theDeparture.startingDate, false, (elemnt.dayIndex+1))}
+                            {aDateDisp("Date Out", theDeparture.startingDate, undefined, elemnt.dayIndex+1)}
+                            
                         </span>
                     </div>
                 </>}
