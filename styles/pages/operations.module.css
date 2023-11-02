@@ -561,6 +561,18 @@
     flex-wrap: wrap;
 }
 
+.homeNotesDisp{
+    display: flex;
+    flex-direction: column;
+    padding-left: 12px;
+    font-size: 0.9em;
+}
+
+.homeNotesDisp li{
+    padding: 0;
+    margin: 0;
+}
+
 .eachGuestNote{
     display: flex;
     align-items: center;

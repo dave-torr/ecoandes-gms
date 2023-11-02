@@ -397,9 +397,6 @@ export default function OperationsDashboard(){
             </>)
         }
     }
-
-
-
     const saveFunction=async(theDep, )=>{
         setSavedoc(false)
         // record to bitacora the change, 
@@ -478,6 +475,14 @@ export default function OperationsDashboard(){
             }
         }
     }
+    const detailWithTitleDisp=(theTitle, theDetail)=>{
+        return(<>
+        <div className={styles.eachDetailCont}>
+            <div className={styles.eachDetailTitle}>{theTitle}</div>
+            <div style={{ textTransform:"capitalize" }} >{theDetail}</div>
+        </div>
+        </>)
+    }
     ///////////////////////////////////////////
     ///////////////////////////////////////////
     // dep utilities
@@ -492,7 +497,9 @@ export default function OperationsDashboard(){
             <div className={styles.anItinCont}>
                 <div className={styles.spaceBetRow}>
                     {elem.user?.name} 
-                    {!elem.user&& <> {elem.countryList.map((elemz)=><> {elemz} </>)} </>}
+                    {!elem.user&& <> {elem.countryList.map((elemz,i)=>
+                        <React.Fragment key={i}>
+                            {elemz} </React.Fragment>)} </>}
                 </div>
                 <h3>{elem.tripName}</h3>
                 <div className={styles.spaceBetRow}>
@@ -1091,7 +1098,7 @@ export default function OperationsDashboard(){
                 {departureStatusDisp(theDep)}
             </div>
             {fileDisplayKey==="intro"&&<>
-                {itineraryHeaderDisp(theItin, theDep)}
+                {aFileHome(theItin, theDep)}
             </>}
             {fileDisplayKey==="rooming"&&<>
                 {roomingListDisp(theDep)}
@@ -1158,7 +1165,7 @@ export default function OperationsDashboard(){
         </Dialog>
 
         {fileDisplayKey==="intro"&&<>
-            {headerEdit()}
+            {aFileHomeEdit()}
         </>}
         {addGuestTrig&&<>
             {roomingListEdit(false, roomingEditIndex, )}
@@ -1183,8 +1190,8 @@ export default function OperationsDashboard(){
         </>}
         </>)
     }
-    let paxTotalCount=<>{paxData?.paxTotal} / {theDeparture?.maxPaxNumb} maximum</>
-
+    /////////////////////////////////////////
+    /////////////////////////////////////////
     // Stats
     const statsDisplayer=(activeDepartures, ghostInside)=>{
         // sum up all current clients in Rooming List
@@ -1231,16 +1238,11 @@ export default function OperationsDashboard(){
         </div>
         </>)
     }
+    /////////////////////////////////////////
+    /////////////////////////////////////////
     // file home
-    const eachIntroDetail=(theTitle, theDetail)=>{
-        return(<>
-        <div className={styles.eachDetailCont}>
-            <div className={styles.eachDetailTitle}>{theTitle}</div>
-            <div style={{ textTransform:"capitalize" }} >{theDetail}</div>
-        </div>
-        </>)
-    }
-    const itineraryHeaderDisp=(theItin, theDep)=>{
+    let paxTotalCount=<>{paxData?.paxTotal} / {theDeparture?.maxPaxNumb} maximum</>
+    const aFileHome=(theItin, theDep)=>{
         if(theItin){
         return(<>
             <div className={styles.spaceBetRow}>
@@ -1256,16 +1258,18 @@ export default function OperationsDashboard(){
                     </>}
                 </div>
             </div>
-            {theDep.assignment&&<>{eachIntroDetail("folder Assignment", theDep.assignment)}</>}
+            {theDep.assignment&&<>{detailWithTitleDisp("folder Assignment", theDep.assignment)}</>}
             <div className={styles.roomingListCont} > 
                 <div className={styles.detailDispl}>
-                    {theItin.duration&&<>{eachIntroDetail("duration", `${theItin.duration} Days`)}</>}
-                    {theItin.tripLang&&<>{eachIntroDetail("trip language", theItin.tripLang)}</>}
-                    {theDep.aComp&&<>{eachIntroDetail("company", theDep.aComp)}</>}
-                    {theDep.compContact&&<>{eachIntroDetail("contact", theDep.compContact)}</>}
-                    {theDep.tripRef&&<>{eachIntroDetail("trip Reference", theDep.tripRef)}</>}
-                    {theDep.maxPaxNumb&&<>{eachIntroDetail("guests", paxTotalCount)}</>}
+                    {theItin.duration&&<>{detailWithTitleDisp("duration", `${theItin.duration} Days`)}</>}
+                    {theItin.tripLang&&<>{detailWithTitleDisp("trip language", theItin.tripLang)}</>}
+                    {theDep.aComp&&<>{detailWithTitleDisp("company", theDep.aComp)}</>}
+                    {theDep.compContact&&<>{detailWithTitleDisp("contact", theDep.compContact)}</>}
+                    {theDep.tripRef&&<>{detailWithTitleDisp("trip Reference", theDep.tripRef)}</>}
+                    {theDep.maxPaxNumb&&<>{detailWithTitleDisp("guests", paxTotalCount)}</>}
                 </div>
+            </div>
+            <br/>
             <h2> Tour Dates </h2>
             <div className={styles.spaceBetRow}> 
                 <div style={{width: "47%" }}>
@@ -1275,10 +1279,9 @@ export default function OperationsDashboard(){
                     {aDateDisp("Ending date", theDep.startingDate, parseInt(theDep.duration))}
                 </div>
             </div>
-            </div>
 
 
-            {theDep.departureNotes.length>0 ? <>
+            {theDep.departureNotes.length>0 ? <><br/>
             <h2>Departure Notes </h2>
             </> : <> </>}
             {editSwitch?<> <br/>
@@ -1313,7 +1316,8 @@ export default function OperationsDashboard(){
                 </div>
                 <br/>
                 <div className={styles.depNotesCont}> 
-                    {theDep.departureNotes?.map((elem, i)=><>
+                    {theDep.departureNotes?.map((elem, i)=>
+                    <React.Fragment key={i}>
                         <div className={styles.eachGuestNote} onClick={()=>{
                             let tempGuestNotes=theDep.departureNotes.splice(i, 1)
                             setTheDeparture({
@@ -1322,21 +1326,22 @@ export default function OperationsDashboard(){
                         }} >
                             {elem}&nbsp; <RemoveCircleOutlineIcon />
                         </div> &nbsp; &nbsp;
-                    </>)}
+                    </React.Fragment>)
+                    }
                 </div>
             </> : <>
-                <div className={styles.depNotesCont}>
-                    {theDep.departureNotes.map((elem, i)=><>
-                        &nbsp; &nbsp; <li style={{textTransform:"capitalize"}}>
-                           {elem}</li> <br/>
-                    </>)}
+                <div className={styles.homeNotesDisp}>
+                    {theDep.departureNotes.map((elem, i)=><React.Fragment key={i}>
+                        &nbsp; &nbsp; <li>
+                           {elem}</li>
+                    </React.Fragment>)}
                 </div>
                 <br/>
             </>}
         </>)
         }
     }
-    const headerEdit=()=>{
+    const aFileHomeEdit=()=>{
         if(editSwitch){return(<>
         <br/><br/>
             <div className={styles.aFileContainer}>
@@ -1558,7 +1563,13 @@ export default function OperationsDashboard(){
                     SINGLE
                 </div>
                 <div style={{display:"flex", flexDirection:"column"}}>
-                    {elemTL.guestArr?.map((guestElem, i)=> <>{eachGuestData(guestElem)}</> ) }
+
+
+                    {elemTL.guestArr?.map((guestElem, i)=> <React.Fragment key={i}>
+                        {eachGuestData(guestElem)}
+                    </React.Fragment>)}
+
+
                 </div>
             </div>
             {elemTL.guestArr[0].guestNotes.length>0 &&  <>
@@ -1708,7 +1719,7 @@ export default function OperationsDashboard(){
                 </div>
                 <br/>
                 <div className={styles.depNotesCont}> 
-                    {theDep.departureNotes?.map((elem, i)=><>
+                    {theDep.departureNotes?.map((elem, i)=><React.Fragment key={i}>
                         <div className={styles.eachGuestNote} onClick={()=>{
                             let tempGuestNotes=theDep.departureNotes.splice(i, 1)
                             setTheDeparture({
@@ -1717,16 +1728,15 @@ export default function OperationsDashboard(){
                         }} >
                             {elem}&nbsp; <RemoveCircleOutlineIcon />
                         </div> &nbsp; &nbsp;
-                    </>)}
+                    </React.Fragment>)}
                 </div>
             </> : <>
                 <div className={styles.depNotesCont}>
-                    {theDep.departureNotes.map((elem, i)=><>
-                        &nbsp; &nbsp; <div style={{textTransform:"capitalize"}}>
-                        {i!=0&&<>, </>}
+                    {theDep.departureNotes.map((elem, i)=><React.Fragment key={i}>
+                        <li style={{textTransform:"capitalize"}}>
                             {elem} 
-                        </div>
-                    </>)}
+                        </li> &nbsp; &nbsp; &nbsp; &nbsp;
+                    </React.Fragment>)}
                 </div>
                 <br/>
             </>}
@@ -2941,8 +2951,7 @@ export default function OperationsDashboard(){
             </>)
         }
         }
-        let eachDayTitleExp=dayByDay.map((dayElem, i)=><>
-        <React.Fragment key={i}>
+        let eachDayTitleExp=dayByDay.map((dayElem, i)=><React.Fragment key={i}>
             <div className={styles.dailyTitleCont}>  
                 <h5> Day {i+1}: {dayElem.dayTitle&&<>{dayElem.dayTitle}</>}</h5>
                 {editSwitch&& <>
@@ -2954,8 +2963,7 @@ export default function OperationsDashboard(){
                 </div></>}
             </div>
             {expenseMapper(theExpenseArr[i], i)}
-        </React.Fragment>
-        </>)
+        </React.Fragment>        )
         return(<>
             <div className={styles.spaceBetRow}> 
                 <h2>Expenses:</h2>
@@ -2973,7 +2981,6 @@ export default function OperationsDashboard(){
             </div>
         </>)
     }  
-
     const expenseAdder=(theExpense, setTheExpense, contactArr, dayIndx, theDep, setTheDep)=>{
         if(theExpense){ 
         let priceArrDispAndEditor
@@ -3124,10 +3131,7 @@ export default function OperationsDashboard(){
         </>)
         } 
     }
-
-
     const expenseEditor=(theExpense, setTheExpense, expenseIndex, dayIndx, theDep, setTheDep)=>{
-        
         if(theExpense?.expenseKey==="accommodation"){
             return(<>
                 <h3>Edit Accommodation</h3>
@@ -3161,13 +3165,31 @@ export default function OperationsDashboard(){
                     </div>
                 </form>
             </>)
-        } else {
+        } else if(theExpense) {
+            console.log(theExpense)
             return(<>
+                <h3>Edit Expense</h3>
+                <form>
+                    {theExpense?.priceKey==="meal"&& <><h3>Meal Service</h3></>}
+                    <div className={styles.spaceBetRow}>
+                        <div style={{width: "47%" }}> 
+                            {anInputDisplayer("Hotel Name", "hotelName", "text", false, theExpense.hotelName, theExpense, setTheExpense)}</div>
+                        <div style={{width: "47%" }}> 
+                            {anInputDisplayer("Price Detail", "priceDetail", "text", false, theExpense.priceDetail, theExpense, setTheExpense)}</div>
+                    </div>
+                    <div className={styles.spaceBetRow}>
+                        <div style={{width: "47%" }}> 
+                        {anInputDisplayer("Contact Name*", "contactName", "text", false, theExpense.contactName, theExpense, setTheExpense)}</div>
+                        <div style={{width: "47%" }}> 
+                        {anInputDisplayer("Phone #", "contactNumb", "number", false, theExpense.contactNumb, theExpense, setTheExpense)}</div>
+                    </div>
 
+
+                    {/* add price, number required, econ req, checkbox,  */}
+
+                </form>
             </>)
         }
-
-
     }
     // providers
     const contactArrDisp=(theArr)=>{
@@ -3537,14 +3559,14 @@ export default function OperationsDashboard(){
                 </div>
             </>}
             <div className={styles.detailDispl}>
-                {theDeparture?.tripName&&<>{eachIntroDetail("Tour Name", theDeparture.tripName)}</>}
-                {eachIntroDetail("Date Created", toDate.toLocaleDateString('en-GB', dateOptions))}
-                {theDeparture?.tourCode&&<>{eachIntroDetail("Tour Code", theDeparture.tourCode)}</>}
-                {theDeparture.duration&&<>{eachIntroDetail("Duration", `${theDeparture.duration} days`)}</>}
-                {theDeparture?.tripRef&&<>{eachIntroDetail("Trip Reference", theDeparture.tripRef)}</>}
-                {theDeparture.tourLeader.length>0&&<>{eachIntroDetail("Tour leader", theDeparture.tourLeader[0].guestArr[0].guestName)}</>}
+                {theDeparture?.tripName&&<>{detailWithTitleDisp("Tour Name", theDeparture.tripName)}</>}
+                {detailWithTitleDisp("Date Created", toDate.toLocaleDateString('en-GB', dateOptions))}
+                {theDeparture?.tourCode&&<>{detailWithTitleDisp("Tour Code", theDeparture.tourCode)}</>}
+                {theDeparture.duration&&<>{detailWithTitleDisp("Duration", `${theDeparture.duration} days`)}</>}
+                {theDeparture?.tripRef&&<>{detailWithTitleDisp("Trip Reference", theDeparture.tripRef)}</>}
+                {theDeparture.tourLeader.length>0&&<>{detailWithTitleDisp("Tour leader", theDeparture.tourLeader[0].guestArr[0].guestName)}</>}
                 {theDocs.expenseKey==="workOrder"&&<>
-                    {theItinerary?.tripLang&&<>{eachIntroDetail("trip language", theItinerary.tripLang)}</>}
+                    {theItinerary?.tripLang&&<>{detailWithTitleDisp("trip language", theItinerary.tripLang)}</>}
                 </>}
             </div>
             {theDocs.docKey==="accommodation"&&<>
@@ -3572,7 +3594,7 @@ export default function OperationsDashboard(){
                 </>:<> 
                     {eachProviderExp.find(elem => elem.expenseKey!="accommodation")&& <> 
                         <h2> Additional Services</h2>
-                        {eachProviderExp.map((elemz, i)=> <>
+                        {eachProviderExp.map((elemz, i)=><React.Fragment key={i}>
                             {elemz.expenseKey!="accommodation"&&<> 
                                 <div className={styles.documentGeneraExpense}>
                                 <span>
@@ -3584,14 +3606,14 @@ export default function OperationsDashboard(){
                                 </span>
                                 </div>                        
                             </>}
-                        </>)}
+                        </React.Fragment>)}
                     </>}
                 </>}
             </>}
             {theDocs.docKey==="cashReq"&&<>
                 {eachProviderExp.find(elem => elem.econReq)&& <> 
                     <h2> Economic Requirements</h2>
-                    {eachProviderExp.map((elemz, i)=> <>
+                    {eachProviderExp.map((elemz, i)=><React.Fragment key={i}>
                         {elemz.econReq&&<> 
                             <div className={styles.documentGeneraExpense}>
                             <span>
@@ -3603,7 +3625,7 @@ export default function OperationsDashboard(){
                             </span>
                             </div>                        
                         </>}
-                    </>)}
+                    </React.Fragment>)}
                 </>}
             </>}
             {(theDocs.docKey!="accommodation" && theDocs.docKey!="cashReq")&&<>
@@ -3695,7 +3717,7 @@ export default function OperationsDashboard(){
             </>}
             {theDeparture.operationalNotes[i]?.length>0&& <>
                 <br/> <strong> NOTES</strong>
-                {theDeparture.operationalNotes[i]?.map((elemnt, ind)=><>
+                {theDeparture.operationalNotes[i]?.map((elemnt, ind)=><React.Fragment key={ind}>
                     <div className={styles.aDayNote}>
                     {addOperationalNote&& <> 
                         <span style={{color:"red"}} onClick={()=>{
@@ -3709,7 +3731,7 @@ export default function OperationsDashboard(){
                         </>}
                     - {elemnt.note} {elemnt.target!="general"&&<> | <strong>{elemnt.target}</strong> </>}
                     </div>
-                </>)}
+                </React.Fragment>)}
             </>}
             {theDeparture.flights[i]&& <> 
                 &nbsp;<strong>Flights:</strong>
@@ -3986,8 +4008,6 @@ export default function OperationsDashboard(){
                     }}> 
                     create departure
                     </div>
-                    
-
             </>}
         </>}
     </>}
