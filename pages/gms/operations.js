@@ -3132,9 +3132,15 @@ export default function OperationsDashboard(){
         } 
     }
     const expenseEditor=(theExpense, setTheExpense, expenseIndex, dayIndx, theDep, setTheDep)=>{
-        if(theExpense?.expenseKey==="accommodation"){
+        if(theExpense){
+            console.log(theExpense)
             return(<>
-                <h3>Edit Accommodation</h3>
+                {theExpense?.expenseKey==="accommodation"&& <> 
+                    <h3>Edit Accommodation</h3>
+                </>}
+                {theExpense?.meal && <>
+                    <h3>Edit Meal Service</h3>
+                </>}
                 <form className={styles.expenseForm} 
                     onSubmit={(e)=>{
                         e.preventDefault()
@@ -3145,48 +3151,58 @@ export default function OperationsDashboard(){
                         setDayIndex()
                         setExpEditTrig(false)
                     }}>
+                    {(theExpense?.expenseKey==="accommodation" || theExpense?.hotelName) && <> 
                     <div className={styles.spaceBetRow}>
                         <div style={{width: "47%" }}> 
                             {anInputDisplayer("Hotel Name", "hotelName", "text", false, theExpense.hotelName, theExpense, setTheExpense)}</div>
                     </div>
+                    </>}
                     <div className={styles.spaceBetRow}>
                         <div style={{width: "47%" }}> 
                         {anInputDisplayer("Contact Name*", "contactName", "text", false, theExpense.contactName, theExpense, setTheExpense)}</div>
                         <div style={{width: "47%" }}> 
                         {anInputDisplayer("Phone #", "contactNumb", "number", false, theExpense.contactNumb, theExpense, setTheExpense)}</div>
                     </div>
-                    <div style={{width: "66%" }}> 
-                        {anInputDisplayer("Expense Detail", "priceDetail", "text", false, theExpense.priceDetail, theExpense, setTheExpense)}</div>
-                        <br/>
-                    {accomOptAndPicker()}
+                    <div className={styles.spaceBetRow}>
+                        {(theExpense?.expenseKey==="accommodation" || theExpense?.hotelName)&& <>
+                        <div style={{width: "47%" }}> 
+                            {anInputDisplayer("Expense Detail", "priceDetail", "text", false, theExpense.priceDetail, theExpense, setTheExpense)}</div></>}
+                    </div>
+                     <div className={styles.spaceBetRow}>
+                         <div style={{width: "33%" }}>
+                         {anInputDisplayer("Price", "price", "number", true, theExpense.price, theExpense, setTheExpense)}
+                         </div>
+
+                         <div style={{width: "33%" }}>
+                         {anInputDisplayer("# Needed", "varExpTickets", "number", true, theExpense.varExpTickets, theExpense, setTheExpense)}
+                         </div>
+                         <div style={{display:"flex" }}>
+                             <label for="cashCheckBox" className={styles.inputLabel}> Economic <br/> Requirement</label> &nbsp;
+                           <input type='checkbox' id="cashCheckBox" onChange={()=>{
+                                 if(theExpense.econReq){
+                                     setTheExpense({
+                                         ...theExpense,
+                                         "econReq":false
+                                     }) 
+                                 } else {
+                                     setTheExpense({
+                                         ...theExpense,
+                                         "econReq":true
+                                     }) 
+                                 }
+                             }} /> 
+                         </div>
+                     </div>
+
+
+                    {theExpense?.expenseKey==="accommodation"&& <> 
+                        {accomOptAndPicker()}
+                    </>}
+
                     <div className={styles.spaceBetRow}>
                         <span/>
-                        <input className={styles.secondaryBTN} type="submit" value="Edit Accommodation Expense" />
+                        <input className={styles.secondaryBTN} type="submit" value="Edit Expense" />
                     </div>
-                </form>
-            </>)
-        } else if(theExpense) {
-            console.log(theExpense)
-            return(<>
-                <h3>Edit Expense</h3>
-                <form>
-                    {theExpense?.priceKey==="meal"&& <><h3>Meal Service</h3></>}
-                    <div className={styles.spaceBetRow}>
-                        <div style={{width: "47%" }}> 
-                            {anInputDisplayer("Hotel Name", "hotelName", "text", false, theExpense.hotelName, theExpense, setTheExpense)}</div>
-                        <div style={{width: "47%" }}> 
-                            {anInputDisplayer("Price Detail", "priceDetail", "text", false, theExpense.priceDetail, theExpense, setTheExpense)}</div>
-                    </div>
-                    <div className={styles.spaceBetRow}>
-                        <div style={{width: "47%" }}> 
-                        {anInputDisplayer("Contact Name*", "contactName", "text", false, theExpense.contactName, theExpense, setTheExpense)}</div>
-                        <div style={{width: "47%" }}> 
-                        {anInputDisplayer("Phone #", "contactNumb", "number", false, theExpense.contactNumb, theExpense, setTheExpense)}</div>
-                    </div>
-
-
-                    {/* add price, number required, econ req, checkbox,  */}
-
                 </form>
             </>)
         }
