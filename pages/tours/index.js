@@ -21,6 +21,152 @@ import { MultiSelect, Select } from '@mantine/core';
 
 
 import Head from "next/head"
+
+
+// CORRECT ITIN MOFOOO
+let AmazonJungleSpotlight =     {
+        "tripName": "Amazon Jungle Spotlight",
+        "id": "amazon-jungle-7D",
+        "duration": 7,
+        "difficulty": 1,
+        "imgArr": ["https://dsm04pap002files.storage.live.com/y4mErBtxz6hHX1NjMtG7cwvUNDdiC-wM9-I4xL0z3AIbynCbs4LRAoZwBfBpMW8AQ5BbZorvCRLhDKz5paPT1sDrx2BzlfKaa8vsaxX1V3Km4bOVWN07y4PPMYvpO9ZznWdVWINVrX8q-AGYlj3BQ9BRUxFbZchOak4x5M047NxyIIecgcFUuaJ-u7lEmWC_rGq?width=2000&height=1150&cropmode=none",
+        "https://dsm04pap002files.storage.live.com/y4muo6e3ghMUuh8ubftWrZLkXXB-nIp707rpDQzIQcqySBoIYIn86urIQpnGdDjyiDc0LHuNrLq-tgcYGpfcfNHeqc4VscM63lbQmKEAaP2lURzx-JSdEaXzyI0Wpe_ktva6pEmBDa5NMHYIlYJCyHVGP307t7rswlRESoVZhB51EMO3mpTQkkNad0bliL1DCLw?width=2000&height=1150&cropmode=none",
+        "https://dsm04pap002files.storage.live.com/y4me4ZvGKY-wIWIM6WiV9cnFv7H6cL15Y0eevmkw4Z3qphry0wVUIr8P1NxYkAsfKsY6kgZPiZ8gXZYgs36pNi_ZFv_-_-HNoT5F_xIme65a8Zps3hcPDZPW0oxvMa9UYNqIlf1BfeP42P0bJ75-YO0UOWTiPcqVo9XG8Lqmu3QriHlGYiDvlltxyDaNbiEnQlR?width=2000&height=1150&cropmode=none",
+        "https://dsm04pap002files.storage.live.com/y4m2sWwYbvTyOK2Ybef8FvxZwY-GqeVvWLA9_TlzaNN2UdGrsXZGdNuY6QiYYdAmIXqbZYZKi3W0xE3OSknO2fiTcYrmm1ctA-KmxF6vEvCpsbjxN9rlA1sMgccY9QUDQA1LDPuOZhT5gqJxmzZGGXnngF4du92yzeF6HQl7WSyuq1okwvyD_Q5IZ8haS2h4MEO?width=2000&height=1150&cropmode=none",
+        "https://dsm04pap002files.storage.live.com/y4mle51wOkVGuzBLw3y5vNUUcJZrVV5N2HixVv-A4tBM35-OzBkkqtSiMoCSnTK_krhh3GUTVmLoUn6wdahGl3GRS98NtcPwj4FFhN2unW70j9M03OGXH7glzxFHGSw9D7RoZ0ZHJ_aJk7buq0oHKAKf3DlB43YKhnXL-Hwwe93MjsmcfLbvCVzD2S9WMy-vpTD?width=2000&height=1150&cropmode=none",
+        "https://dsm04pap002files.storage.live.com/y4mNaOZUNbhnNFgM3yMQDlbHefOIu-Iujp6Aukqi1Z1LHb5WRK52d2F6iHWXuIeAqTyr1Pjn2QBXSEbGO9ypmFJwaI4j0koEyaXuv3x10Wst3PeCtnukiRK5aCDodf8d3WbRv5iYP1hS9wZYrDEypsUs0Ti6QsGyvZpBgfklPEVBOQgzaS_KzC0Fyeo4lmFRNnD?width=2000&height=1150&cropmode=none",
+        "https://dsm04pap002files.storage.live.com/y4mWJCVpV8XifmRhCjBzDkET3_t1VvIo0ID2-nx1loi9V5sfHojYuZvBDPiulj198bLUzUGuOdNvPVQhT5CwWWRCBrzv4w23flM1dtgjMPbLGP40WG77iCSGIK8Dt-noQqruwQ6TjJF4hnMFT3Pt9FylzDQUHuesut1Q6qTTxcCqPAHM8f-G3E8KqVMdGd6ZYSM?width=2000&height=1150&cropmode=none",
+        "https://dsm04pap002files.storage.live.com/y4mC_Z4HE0UsCJ9g0ipxRbmUVgLwnYM-e2fVz2WIytOp7PxDbBh-ZcvDSLffnUwz2SdDc3pD6grSWhh1SpOb2Hxa8itdJtzQNoqmdyP8lXGl0l6poVwiXE6_dFI1I9Y8hiR57rkJdarpG2ZP2qpYauf6jDskz6PVxfda7vFubF8ctdW24KkLaK0tiqIG187-8WW?width=2000&height=1150&cropmode=none"
+
+        ],
+        "sqrImg":"https://dsm04pap002files.storage.live.com/y4mLHpICHI0_0-oHMe9lamzU-jzDUCU6AHJc8G8qRpwaXJ1qHyQnOndP3lX4aJniagyPDEMqyB7Sm3_twj9CrB-dXaOjYzpj0aZVLTxY_YiDl6Vw4mxwp-r3MDeoSzx_FDo624YoH-dCffMjlaiEHB7crrSrsGPk_hLot9Blx_3n-RaUBwyTomuWASi6ueo80RG?width=1000&height=1000&cropmode=none",
+        "horizImg":"https://dsm04pap002files.storage.live.com/y4mBXTa5domV7j2IA9CxavganRpUi4Syi0gRs5uwS5gJXzMdMYnUsg30-_ImJSHzGeilww4YvsClCG_eXCGJwYQioo5E11-tT2-zijCPPWCjItkETNoiRJMaFjpT6-C8VvqHjuVnt1O9_TRFzIWAyjHgt7lSb5mlQdlJeNYOmXQMmG8cKEg3uYl2MTZPHXU5KpS?width=1000&height=500&cropmode=none",
+        "tourOverview":"The Amazon Jungle is known as the 'Lungs of the Earth', due to the sheer abundance of vegetable life that breathes oxigen back into the atmosphere. Explore the incredible abundance of life in the midst of the most biodiverse place on planet Earth. This 7 day voyage takes you to Yacuma EcoLodge and Rainforest Reserve, a sustainability-focused project with over 240 species of birds, over 40 species of amphibians and reptiles, all within a private 270 hectare protected reserve of the upper Amazon Basin. ",
+        "countryList": ["ecuador", "amazon"],
+        "dayByDay":[
+            {
+                "dayTitle": "Thursday: Arrival in Quito",
+                "dayDescription": "Upon your arrival in Quito, you will be welcomed and transferred to your hotel of choice. You will have a short briefing about next day activities",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "English speaking Guide Services"
+                ]
+            },
+            {
+                "dayTitle": "Quito - Galapagos",
+                "dayDescription": "After breakfast we will head to the airport to take our regional flight to the Galapagos Islands. We will begin our 8 day Yacht Catamaran Anahi Itinerary throught eh fabulous Galapagos Islands. Upon arriving to Galapagos we will begin our Daily yacht activities, with our porffessional Galapagos Naturalist guide and crew in the highlands of Santa Cruz. ",
+                "dayInclusions": [
+                    "Hotel breakfast & Highland ranch lunch",
+                    "Private Transfers",
+                    "Entrance Fees",
+                    "flight to the Galapagos Islands",
+                    "Galapagos National Park Guide services",
+                    "onboard dinner"
+                ]
+            },          
+            {
+                "dayTitle": "Isabela Island",
+                "dayDescription": " DAY 2 Cruise               ",
+                "dayInclusions": [
+                    "onboard breakfast, lunch and dinner",
+                    "Galapagos National Park Guide services"
+                ]
+            },
+            {
+                "dayTitle": "Day 3 Cruise",
+                "dayDescription": "Day 3 Cruise",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Private Transfers",
+                    "Entrance Fees",
+                    "flight to the Galapagos Islands",
+                    "Lunch",
+                    "English speaking Guide Services"
+                    
+                ]
+            },
+            {
+                "dayTitle": "Day 4 Cruise",
+                "dayDescription": "Day 4 cruise",
+                "dayInclusions": [
+                    "hotel breakfast",
+                    "Lunch",
+                    "Galapagos National Park Guide services",
+                    "Private Transfers"
+                ]
+            },
+            {
+                "dayTitle": "Day 5 cruise",
+                "dayDescription": "sssss",
+                "dayInclusions": [
+                    "Hotel breakfast",
+                    "Galapagos National Park Guide services"
+                ]
+            },
+            {
+                "dayTitle": "Day 6 cruise",
+                "dayDescription": "day 6 cruise",
+                "dayInclusions": [
+                    "Hotel breakfast, lunch and dinner",
+                    "navigation onboard Galapagos Elements Wind yacht",
+                    "Galapagos National Park Guide services"
+                ]
+            },
+            {
+                "dayTitle": "Day 7 cruise",
+                "dayDescription": "day 7 cruise",
+                "dayInclusions": [
+                    "Galapagos National Park Guide services"
+                ]
+            },
+            {
+                "dayTitle": "Final cruise day",
+                "dayDescription": "final cruise day",
+                "dayInclusions": [
+                    "Galapagos National Park Guide services"
+                ]
+            },
+            {
+                "dayTitle": "Otavalo tour - Airport transfer",
+                "dayDescription": "Otavalo Indigenous Market - Irport Transfer",
+                "dayInclusions": [
+                    "hotel breakfast",
+                    "Entrance Fees",
+                    "Private Transportation",
+                    "English speaking Guide Services"
+                ]
+            }
+        ],
+        "tourType": "nature",
+        "price": 900,
+        "paymentLink":"59021713",
+        "weTravelURL": "https://www.wetravel.com/trips/amazon-jungle-spotlight-latin-travel-collection-tena-59021713",
+        "prices": {
+            "priceType": "fixedDeparture",
+            "singlesupp": 310,
+            "dblOccupancy": true,
+            "priceNotice": "hotel categories will depend on locally available properties",
+            "departureDates":"Every Saturday"
+        },
+        "included": [
+            "noted meals",
+            "entrance fees",
+            "noted transfers and transfers",
+            "4 Day Yacuma EcoLodge Bromelia Package",
+            "hotels: double room accommodation with private facilities",
+            "english/spanish speaking guide services"
+        ],
+        "notIncluded": [
+            "personal travel insurance (REQUIRED)",
+            "personal expenses",
+            "extras",
+            "tips"
+        ]
+    }
+
+
+
+    
 ///////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////

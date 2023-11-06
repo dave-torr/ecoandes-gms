@@ -1086,13 +1086,11 @@ export default function OperationsDashboard(){
         {/* Display */}
         <div className={styles.aFileContainer}>
 
-        {/* "HERE" */}
-
             {/* {logoSwitcher(theItin, "text")} */}
 
             <div className={styles.spaceBetRow}>
                 <div>
-                    <h3>{theItin?.tourCode}</h3>
+                    <h3>{theDep?.tourCode}</h3>
                     <h1>{theItin?.tripName}</h1>
                 </div>
                 {departureStatusDisp(theDep)}
@@ -1114,7 +1112,7 @@ export default function OperationsDashboard(){
                 {expenseDisplayer(theDep.dayByDayExp, theItin.dayByDay)}
             </>}
             {fileDisplayKey==="dayByDay"&&<>
-                {dayByDayDisp(theItin.dayByDay)}
+                {dayByDayDisp(theItin.dayByDay, theDep.startingDate)}
             </>}
 
             {fileDisplayKey==="flights"&&<>
@@ -3443,7 +3441,7 @@ export default function OperationsDashboard(){
                     </>}</React.Fragment> ) }
                     {theDeparture?.operationalNotes[i].find(elem => elem.target==="general")&&<>
                         <strong style={{fontSize:"0.8em", marginTop:"9px"}}> GENERAL DAY NOTES</strong>
-                    </> }
+                    </>}
                     {theDeparture?.operationalNotes[i].map((elem,index)=> 
                     <React.Fragment key={index}> {elem.target==="general"&&<>
                         <div className={styles.spaceBetRow}>
@@ -3480,7 +3478,7 @@ export default function OperationsDashboard(){
                         />
                         &nbsp;
                         &nbsp;
-                        <span style={{color:"red"}} onClick={()=>{
+                        <span onClick={()=>{
                             if(theDeparture?.operationalNotes[i]?.length>0){
                                 theDeparture.operationalNotes[i].push(addOperationalNote)
                                 setTheDeparture({...theDeparture})
@@ -3508,7 +3506,7 @@ export default function OperationsDashboard(){
                     <span className={styles.eachGuestNote} style={{margin:"3px", color:"red",}} onClick={()=>setAddOPNote({
                         "target": theDocs?.contactName
                     })}>
-                        add targeted note
+                        add note for {theDocs?.contactName}
                     </span>
                 </div>
                 </>}
@@ -3603,15 +3601,23 @@ export default function OperationsDashboard(){
             </>}
             {theDocs.docKey!="cashReq"&&<>
                 {roomingListDisp(theDeparture)}
+
+                {/* FFD - is it necesary? */}
                 <div className={styles.pageBreak}>.</div>
+                
+
                 {theDocs.docKey!="accommodation"?<>
                     <h2> Day by Day Requirements</h2>
                     {eachProviderMapper}
                 </>:<> 
                     {eachProviderExp.find(elem => elem.expenseKey!="accommodation")&& <> 
+                        
+                        {/* dep details intro again, with separate doc feel */}
                         <h2> Additional Services</h2>
                         {eachProviderExp.map((elemz, i)=><React.Fragment key={i}>
                             {elemz.expenseKey!="accommodation"&&<> 
+                                &nbsp; - {aDateDisp(undefined, theDeparture.startingDate, undefined, i)}
+                                {console.log(theDeparture)}
                                 <div className={styles.documentGeneraExpense}>
                                 <span>
                                     <strong>{elemz.priceDetail}</strong> <br/>
@@ -3683,7 +3689,7 @@ export default function OperationsDashboard(){
             <br/>
         </>)
     }
-    const dayByDayDisp=(theDays)=>{
+    const dayByDayDisp=(theDays, startingDate)=>{
 
         // non OP
         // Cruise Adder BTN
@@ -3693,7 +3699,12 @@ export default function OperationsDashboard(){
         let theProgramDays=theDays.map((elem,i)=><React.Fragment key={i}>
             <div className={styles.eachDayCont}>
                 <div className={styles.spaceBetRow} style={{marginTop:"15px" }}>
-                <h5> Day {i+1}: {elem?.dayTitle&&<>{elem?.dayTitle}</>}</h5>
+
+                    <h5> Day {i+1}: {elem?.dayTitle&&<>{elem?.dayTitle}</>}</h5>
+
+                    <div className={styles.eachDateDisp}> 
+                        {aDateDisp(undefined, startingDate, undefined, i)}
+                    </div>
                 </div>
                 {elem?.dayDescription}
             </div>
@@ -3716,7 +3727,7 @@ export default function OperationsDashboard(){
                         &nbsp;
                         &nbsp;
                         &nbsp;
-                        <span style={{color:"red", cursor:"pointer", paddingTop:"12px" }} onClick={()=>{
+                        <span style={{cursor:"pointer", paddingTop:"12px" }} onClick={()=>{
                             if(theDeparture?.operationalNotes[i]?.length>0){
                                 theDeparture.operationalNotes[i].push(addOperationalNote)
                                 setTheDeparture({...theDeparture})
@@ -3757,6 +3768,7 @@ export default function OperationsDashboard(){
                 </React.Fragment> )}
                 </div>
             </>}
+            <span style={{width:"100%", height:"5px", borderBottom:"dotted 2px grey ", paddingBottom:"33px", marginBottom:"9px"  }} />
         </React.Fragment> )
         return(<>
         <div className={styles.spaceBetRow}>

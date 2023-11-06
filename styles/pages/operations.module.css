@@ -573,6 +573,12 @@
     margin: 0;
 }
 
+.eachDateDisp{
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8em;
+}
+
 .eachGuestNote{
     display: flex;
     align-items: center;
@@ -980,10 +986,10 @@
 .documentGeneraExpense{
     display: flex;
     justify-content: space-between;
-    width: 96%;
+    width: 98%;
     border-bottom: solid 1px black;
     border-right: solid 1px black;
-    margin-left: 4%;
+    margin-left: 1%;
     align-items: center;
 }
 
