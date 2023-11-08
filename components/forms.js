@@ -207,7 +207,7 @@ export function aSwitcher(switcherController, anObject, setAnObject, objectElemK
 
 }
 
-export function aTextArea(inputLabel, inputId, isReq, inputValue, anObject, setAnObject ){
+export function aTextArea(inputLabel, inputId, isReq, inputValue, anObject, setAnObject, placeholderz ){
     return(<>
         <div className={styles.theInputContainer}>
             <div className={styles.anInputRow}>
@@ -220,7 +220,7 @@ export function aTextArea(inputLabel, inputId, isReq, inputValue, anObject, setA
                 className={styles.aDayDescriptionInput}
                 id={inputId}
                 defaultValue={inputValue ? inputValue : undefined }
-                placeholder="Enter Text Here"
+                placeholder={placeholderz ? placeholderz : undefined}
                 onChange={(e)=>{
                     e.preventDefault()
                     setAnObject({
@@ -440,6 +440,8 @@ export function TourDateAdder(props){
         </>
     )
 }
+
+// FFD in Operations
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
 export const flightsAdder=(setDay, theTravelDay, flightInfoObj, setFlightObj, setFlightTrigger )=>{
@@ -478,6 +480,10 @@ export const flightsAdder=(setDay, theTravelDay, flightInfoObj, setFlightObj, se
         </div>
     </>)
 }
+
+// FFD not in use anymore, in Operations
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
 const guideAdder=(guideInfoObj, setGuideObj, theTravelDay, setDay, setGuideTrigger)=>{
     return(<>
     <div className={styles.dayAdditionalsCont}>
@@ -500,6 +506,7 @@ const guideAdder=(guideInfoObj, setGuideObj, theTravelDay, setDay, setGuideTrigg
     </>)
 }
 
+// FFD
 const flightDataDisplayer=(theTravelDay, setTravelDay)=>{
     if(theTravelDay.flightData.length>0){
     let eachFlight = theTravelDay.flightData.map((elem, i)=><React.Fragment key={i}>
@@ -523,7 +530,7 @@ const flightDataDisplayer=(theTravelDay, setTravelDay)=>{
     </>)
     } 
 }
-
+// FFD
 const guideDataDisp=(theTravelDay, setTravelDay)=>{
     if(theTravelDay.guideData.length>0){
     let eachGuide = theTravelDay.guideData.map((elem,i)=><React.Fragment key={i}>
@@ -588,32 +595,15 @@ export function DayByDayAdder(props){
         </>}
             
             {/* Day Description */}
-            {anInputDisplayer("Day Title", "dayTitle", "text", true, "Main daily activity", aTravelDay, setTravelDay )}
-            {aTextArea("Day detail", "dayDescription", true, "Describe daily activities", aTravelDay, setTravelDay)}
+            {anInputDisplayer("Day Title", "dayTitle", "text", true, undefined, aTravelDay, setTravelDay, undefined, undefined, "Main daily activity" )}
+            {aTextArea("Day detail", "dayDescription", true, undefined, aTravelDay, setTravelDay, "Describe daily activities")}
             {inputToList("add to day", "dayInclusions", aTravelDay, setTravelDay, aTravelDay.dayInclusions, incluPlaceholder, setPlaceholder)}
 
             {/* daily hotel accom */}
-            {anInputDisplayer("Overnight Property ^", "overnightProperty", "text", false, "Hotel / Lodge Name", aTravelDay, setTravelDay)}
+            {anInputDisplayer("Overnight Property", "overnightProperty", "text", false, undefined, aTravelDay, setTravelDay, undefined, undefined, "Hotel / Lodge Name")}
+
 
             {/* non MVP */}
-            {/* {additionalsAdder()} */}
-
-
-            {flightDataDisplayer(aTravelDay, setTravelDay)}
-            {flightTrigger? <>
-                {flightsAdder(setTravelDay, aTravelDay, flightInfoObj, setFlightObj, setFlightTrigger )}: 
-            </>:<>
-                <div className={styles.secondaryBTN} onClick={()=>setFlightTrigger(true)}>Add Flights</div>
-            </>}
-
-            {guideDataDisp(aTravelDay, setTravelDay)}
-            {guideTrigger? <>
-                {guideAdder(guideInfoObj, setGuideObj, aTravelDay, setTravelDay, setGuideTrig)}
-            </>:<>
-                <div className={styles.secondaryBTN} onClick={()=>setGuideTrig(true)}>Add Guides</div>
-            </>}
-
-            {/* list flights on this day */}
 
             <div type="submit" className={styles.submitDayBTN} 
                 onClick={()=>{

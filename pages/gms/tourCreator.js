@@ -162,22 +162,17 @@ let tourDiff =[1,2,3,4,5]
                     {aTourModel.LTCLogo&&<>
                         {radioSelectors(logoSwitcherArr, "logoRadios", aTourModel, setTourModel, "LTCLogo")}
                     </>}
-
-                    {anInputDisplayer("Tour Name", "tripName", "text", true, "Trip name", aTourModel, setTourModel )}
-                    {anInputDisplayer("Duration", "duration", "number", true, "Trip duration", aTourModel, setTourModel, 1)}
+                    {anInputDisplayer("Tour Name *", "tripName", "text", true, undefined, aTourModel, setTourModel, undefined, undefined, "Tour Name" )}
+                    {anInputDisplayer("Duration *", "duration", "number", true, undefined, aTourModel, setTourModel, 1, undefined, "Tour Duration")}
                     {multiOptPicker(destinationList, "Destinations", "countryList", aTourModel.countryList, aTourModel, setTourModel, setDestList )}
-
-                    {anInputDisplayer("Starting", "startingPlace", "text", false, "Starting From", aTourModel, setTourModel)}
-                    {anInputDisplayer("Overview", "tourOverview", "text", false, "Tour Overview", aTourModel, setTourModel)}
+                    {anInputDisplayer("Starting", "startingPlace", "text", false, undefined, aTourModel, setTourModel, undefined, undefined, "Starting From")}
+                    {anInputDisplayer("Overview", "tourOverview", "text", false, undefined, aTourModel, setTourModel, undefined, undefined, "Tour Overview")}
                     {aDropdownPicker(tourType, "tour type", "tourType", aTourModel, setTourModel)}
                     {aDropdownPicker(tourDiff, "Difficulty", "difficulty", aTourModel, setTourModel)}
-
-                    {anInputDisplayer("Language ^", "tripLang", "text", false, "Tour Language", aTourModel, setTourModel )}
+                    {anInputDisplayer("Language", "tripLang", "text", false, undefined, aTourModel, setTourModel, undefined, undefined, "Tour Language" )}
                     <input type="submit" value="Next" className={styles.nextStepBTN}/>
                 </form>
             </>}
-
-
         </>)
     }
     const dayByDayFormDispl=()=>{
@@ -299,6 +294,11 @@ let tourDiff =[1,2,3,4,5]
                         ...aTourModel,
                         "imgArr": tempImgArr
                     })
+
+                    // rmv image from img arr
+                    console.log("here cucu")
+                    
+
                 }} >  +  </div>
                 <div className={styles.imgRefData}>
                     <div>{elem.imgCountry}</div>

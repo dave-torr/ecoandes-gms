@@ -1004,9 +1004,10 @@
 }
 
 .documentGenTotal{
+    width: 98%;
+    margin-left: 1%;
     font-size: 0.8em;
     padding: 5px;
-    margin-left: 4%;
     border: solid 2px black;
     text-align: end;
 }

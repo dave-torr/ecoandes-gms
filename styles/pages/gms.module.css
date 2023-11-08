@@ -26,10 +26,11 @@
   border: solid 1px black;
   padding: 12px;
   width: 300px;
-  text-align: center;
   background-color: whitesmoke;
   transition: all ease-in 0.3s;
   margin-top: 21px;
+  display: flex;
+  justify-content: center;
 }
 
 .gmsBTNCont a:hover{

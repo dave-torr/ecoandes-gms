@@ -718,8 +718,9 @@ export default function OperationsDashboard(){
         ]        
         const currentOPDay=(theDep, dispCntroller)=>{
             let startingDate = new Date(theDep.startingDate)
-            let dayIndex =  Math.ceil((toDate.getTime() - startingDate.getTime()) / (1000*3600 *24))
+            let dayIndex =  Math.ceil((toDate.getTime() - startingDate.getTime()) / (1000*3600 *24))-1
             let foundItin = allItins.find(element => (element.id === theDep.itineraryID)||(element._id === theDep.itineraryID))
+
             if(dispCntroller==="dayTitle"){
                 return(<>
                 <div> {foundItin?.dayByDay[dayIndex-1].dayTitle}</div>
@@ -1070,6 +1071,7 @@ export default function OperationsDashboard(){
                         "roomingList":true,
                         "guestNotes":true,
                         "bootSizes":true,
+                        "dayDescript":false,
                     })
                     }}>pax & rooming </span></>}
                 {fileDisplayKey!="providers"&&<> {providerArr.length>0&&<> 
@@ -2514,11 +2516,11 @@ export default function OperationsDashboard(){
     // expenses
     const expenseBadgeDisp=(anExpKey)=>{
         if(anExpKey==="transportExpense"){
-            return(<><div style={{fontSize:"1.1em", fontWeight:"700", backgroundColor:" coral", padding:"6px 9px", color:"white"  }} >T {" "}{" "}</div></>)
+            return(<><div style={{fontSize:"1.1em", fontWeight:"700", marginRight:"6px",  backgroundColor:" coral", padding:"6px 9px", color:"white"  }} >T {" "}{" "}</div></>)
         } else if(anExpKey==="guideExpense"){
-            return(<><div style={{fontSize:"1.1em", fontWeight:"700", backgroundColor:" black", padding:"6px 9px", color:"white"  }} > G {" "}</div></>)
+            return(<><div style={{fontSize:"1.1em", fontWeight:"700", marginRight:"6px",  backgroundColor:" black", padding:"6px 9px", color:"white"  }} > G {" "}</div></>)
         } else if(anExpKey==="accommodation"){
-            return(<><div style={{fontSize:"1.1em", fontWeight:"700", backgroundColor:" teal", padding:"6px 9px", color:"white"  }} > A {" "}</div></>)
+            return(<><div style={{fontSize:"1.1em", fontWeight:"700", marginRight:"6px",  backgroundColor:" teal", padding:"6px 9px", color:"white"  }} > A {" "}</div></>)
         } else {
             return(<><span style={{width:"36px"}} /></>)
         }
@@ -3396,7 +3398,28 @@ export default function OperationsDashboard(){
                         }}/>} 
                     /> 
                 </div>
-
+            </div>
+            <div className={styles.spaceBetRow}>
+                <div style={{ width:"47%", display:"flex" }}>
+                <h4>Day Description </h4> &nbsp;&nbsp;
+                <FormControlLabel 
+                        control={
+                        <Switch checked={documentDispTrigs.dayDescript}
+                        onChange={()=>{
+                            if(documentDispTrigs.dayDescript){
+                                setDocTrigs({
+                                    ...documentDispTrigs,
+                                    "dayDescript": false
+                                })
+                            } else {
+                                setDocTrigs({
+                                    ...documentDispTrigs,
+                                    "dayDescript": true
+                                })
+                            }
+                        }}/>} 
+                    /> 
+                </div>
             </div>
         </div>
         </>)
@@ -3413,18 +3436,29 @@ export default function OperationsDashboard(){
         })
         let eachProviderMapper
         if(theDocs.expenseKey!="accommodation"){
-        eachProviderMapper = theDeparture.dayByDayExp.map((elem,i)=><React.Fragment key={i}>
-            {elem?.find(elem2 => elem2.contactName===theDocs?.contactName)?<>
+        eachProviderMapper = theDeparture.dayByDayExp.map((elem,i)=>
+        <React.Fragment key={i}>
+            { elem?.find(elem2 => elem2.contactName===theDocs?.contactName) &&<>
             <div style={{display:"flex", alignItems:"center"}}>
                 <h4>Day {i + 1}:</h4> &nbsp; {theItinerary?.dayByDay[i].dayTitle}
             </div>
-            {/* General note mapper */}
+
+            {/* day description */}
+            {documentDispTrigs.dayDescript&& <> 
+               {theItinerary?.dayByDay[i].dayDescription}
+            </>}
+
+           
             {theDeparture?.operationalNotes[i]?.length>0&&<> 
                 <div style={{width:"90%", marginLeft:"4%", marginBottom:"9px", fontSize:"0.9em"}}>
                     <div style={{display:"flex", flexDirection:"column"}}>
-                    {/* each provider's notes */}
+
+                    
+                    {theDeparture?.operationalNotes[i].find(elem => elem.target==="general")&&<>
+                        <strong style={{marginTop:"9px"}}>DAY NOTES</strong>
+                    </>}
                     {theDeparture?.operationalNotes[i].map((elem,index)=> 
-                    <React.Fragment key={index}> {elem.target===theDocs?.contactName&&<>
+                    <React.Fragment key={index}> {elem.target==="general"&&<>
                         <div className={styles.spaceBetRow}>
                             <span>- {elem.note}</span>
                             {opDocEditSwitch&& <>
@@ -3439,15 +3473,17 @@ export default function OperationsDashboard(){
                             </>}
                         </div>
                     </>}</React.Fragment> ) }
-                    {theDeparture?.operationalNotes[i].find(elem => elem.target==="general")&&<>
-                        <strong style={{fontSize:"0.8em", marginTop:"9px"}}> GENERAL DAY NOTES</strong>
+
+                    {/* each provider's notes */}
+                    {theDeparture?.operationalNotes[i].find(elem => elem.target===theDocs?.contactName) &&<>
+                        <strong style={{marginTop:"9px"}}> {theDocs?.contactName} Notes </strong>
                     </>}
                     {theDeparture?.operationalNotes[i].map((elem,index)=> 
-                    <React.Fragment key={index}> {elem.target==="general"&&<>
+                    <React.Fragment key={index}> {elem.target===theDocs?.contactName &&<>
                         <div className={styles.spaceBetRow}>
                             <span>- {elem.note}</span>
                             {opDocEditSwitch&& <>
-                                <span onClick={()=>{
+                                <span style={{color:"red"}} onClick={()=>{
                                     let tempArr = theDeparture?.operationalNotes[i].splice(index, 1)
                                     setTheDeparture({
                                         ...theDeparture
@@ -3461,6 +3497,8 @@ export default function OperationsDashboard(){
                     </div>
                 </div>
             </>}
+
+            {/* Operational note mapper */}
             {addOperationalNote? <>
                 <div className={styles.spaceBetRow}> 
                     <div className={styles.inputAndRow} style={{margin:"12px 4%"}}> 
@@ -3511,7 +3549,8 @@ export default function OperationsDashboard(){
                 </div>
                 </>}
             </>}
-            </>:<> </>}
+            </>}
+
             {elem?.map(element=><>{element.contactName===theDocs?.contactName&&<>
                 <div className={styles.documentGeneraExpense}>
                 <span>
@@ -3523,7 +3562,6 @@ export default function OperationsDashboard(){
                 </span>
                 </div>
             </>}</>)}
-            <br/>
         </React.Fragment>)
         }
         return(<>
@@ -3564,10 +3602,10 @@ export default function OperationsDashboard(){
             <div>By: {session?.user.name} | Operations Department</div> <br/>
             {theDocs.docKey!="accommodation" &&<> 
                 <div className={styles.spaceBetRow}>
-                    <div style={{width:"48%"}}>
+                    <div style={{width:"49%"}}>
                     {aDateDisp("trip Starting Date", theDeparture.startingDate)}
                     </div>
-                    <div style={{width:"48%"}}>
+                    <div style={{width:"49%"}}>
                     {aDateDisp("trip ending Date", theDeparture.startingDate, parseInt(theDeparture.duration) )}
                     </div>
                 </div>
@@ -3593,7 +3631,6 @@ export default function OperationsDashboard(){
                         </span>
                         <span style={{width:"49%"}}>
                             {aDateDisp("Date Out", theDeparture.startingDate, undefined, elemnt.dayIndex+1)}
-                            
                         </span>
                     </div>
                 </>}
@@ -3601,17 +3638,14 @@ export default function OperationsDashboard(){
             </>}
             {theDocs.docKey!="cashReq"&&<>
                 {roomingListDisp(theDeparture)}
-
                 {/* FFD - is it necesary? */}
-                <div className={styles.pageBreak}>.</div>
-                
-
+                <div className={styles.pageBreak}> </div>
                 {theDocs.docKey!="accommodation"?<>
                     <h2> Day by Day Requirements</h2>
                     {eachProviderMapper}
+                    <br/><br/> 
                 </>:<> 
                     {eachProviderExp.find(elem => elem.expenseKey!="accommodation")&& <> 
-                        
                         {/* dep details intro again, with separate doc feel */}
                         <h2> Additional Services</h2>
                         {eachProviderExp.map((elemz, i)=><React.Fragment key={i}>
@@ -3756,7 +3790,7 @@ export default function OperationsDashboard(){
                             <RemoveCircleOutlineIcon />
                         </span>
                         </>}
-                    - {elemnt.note} {elemnt.target!="general"&&<> | <strong>{elemnt.target}</strong> </>}
+                    {elemnt.target!="general"?<> <strong>{elemnt.target} &nbsp; | </strong> </> : <> - </> } {elemnt.note}
                     </div>
                 </React.Fragment>)}
             </>}
@@ -3806,11 +3840,11 @@ export default function OperationsDashboard(){
             if(dayIndexx===0){
                 tempDayIndx = toDate
             } else {
-                tempDayIndx = addDays(toDate,dayIndexx)
+                tempDayIndx = addDays(toDate, dayIndexx)
             }
 
             let startingDate = new Date(theDayDet.startingDate)
-            let dayIndex =  Math.ceil((tempDayIndx.getTime() - startingDate.getTime()) / (1000*3600*24))
+            let dayIndex =  Math.ceil((tempDayIndx.getTime() - startingDate.getTime()) / (1000*3600*24))-1
             let foundItin = allItins.find(element => (element.id === theDayDet.itineraryID)||(element._id === theDayDet.itineraryID))
             let guestNumb = guestAdder(theDayDet.roomingList)
 
@@ -3845,7 +3879,7 @@ export default function OperationsDashboard(){
                     </div>
                     <div style={{width:"90px", marginLeft:"21px"}}>
                         {theDayDet.duration&& <>Day {dayIndex} / {theDayDet.duration} </>}
-                    </div>
+                    </div> &nbsp;
                     <div style={{width:"90px"}}>
                         {theDayDet.maxPaxNumb&& <>{guestNumb}  Guest{guestNumb>1&&<>s</>}</>}
                     </div>
