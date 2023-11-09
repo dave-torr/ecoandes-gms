@@ -103,7 +103,6 @@
     margin-bottom: 12px;
     cursor: pointer;
     transition: all ease-in 0.2s;
-    /* width: fit-content; */
 }
 
 .aDepCard:hover{
@@ -117,9 +116,10 @@
     border-bottom: solid 1px transparent;
     text-align: center;
     padding: 1px 9px;
-    padding-bottom: 3px;
+    padding-bottom: 9px;
     background-color: white;
-    transform: translateY(2px);
+    transform: translateY(6px);
+    border-radius: 6px;
 }
 
 .depCardRow{
@@ -695,6 +695,7 @@
     cursor: pointer;
     width: fit-content;
     transition: all ease-in 0.2s;
+    z-index: 5;
 }
 
 

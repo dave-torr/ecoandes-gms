@@ -3863,7 +3863,9 @@ export default function OperationsDashboard(){
             let mealsDisp=[]
             if(theDayDet.dayByDayExp[dayIndex-1]){
                 theDayDet.dayByDayExp[dayIndex-1].forEach(elem=>{
-                    if(elem.expenseKey==="guideExpense"){
+                    if(elem.pricekey==="mealBudget" || elem.pricekey==="accommodationBudget"  ){
+                        console.log(elem, "cucu")
+                    } else if(elem.expenseKey==="guideExpense"){
                         guidesDisp.push(elem)
                     } else if(elem.expenseKey==="accommodation"){
                         accommodationsDisp.push(elem)
@@ -3874,7 +3876,6 @@ export default function OperationsDashboard(){
                     }
                 })
             }
-
 
             return(<>
                 <div className={styles.plannerFileDataRow}>
@@ -3920,11 +3921,10 @@ export default function OperationsDashboard(){
                             {transportDisp.length>0 && <>
                                 TRANSPORT &nbsp;
 
-                                {console.log(transportDisp)}
-
-                                {transportDisp.map((elem, i)=> <React.Fragment key={i}>
+                                {transportDisp.map((elem, i)=> 
+                                <React.Fragment key={i}> 
                                     -- {elem.contactName} | 0{elem.contactNumb}
-                                </React.Fragment>)}
+                                    </React.Fragment>)}
                             </>} 
                         </div>
 
