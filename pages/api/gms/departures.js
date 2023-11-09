@@ -56,7 +56,6 @@ async function handler(req, res){
             )
         const updatedDep = await EditItin
         if(updatedDep?.modifiedCount){
-            console.log("updated ")
             res.status(200).json(updatedDep)
             client.close();
         } else {

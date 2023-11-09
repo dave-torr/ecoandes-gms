@@ -718,7 +718,8 @@ export default function OperationsDashboard(){
         ]        
         const currentOPDay=(theDep, dispCntroller)=>{
             let startingDate = new Date(theDep.startingDate)
-            let dayIndex =  Math.ceil((toDate.getTime() - startingDate.getTime()) / (1000*3600 *24))-1
+            let dayIndex =  Math.ceil((toDate.getTime() - startingDate.getTime()) / (1000*3600 *24))
+            // check dates to see WTF
             let foundItin = allItins.find(element => (element.id === theDep.itineraryID)||(element._id === theDep.itineraryID))
 
             if(dispCntroller==="dayTitle"){
@@ -3051,7 +3052,7 @@ export default function OperationsDashboard(){
                 setPriceChartKey()
                 setTheExpense()
                 setExpTrig(false)
-                setEditSwitch(false)
+                // setEditSwitch(false)
             }}>
 
             {contactArr.length>0&& <>
@@ -3439,7 +3440,7 @@ export default function OperationsDashboard(){
         eachProviderMapper = theDeparture.dayByDayExp.map((elem,i)=>
         <React.Fragment key={i}>
             { elem?.find(elem2 => elem2.contactName===theDocs?.contactName) &&<>
-            <div style={{display:"flex", alignItems:"center"}}>
+            <div style={{display:"flex", alignItems:"center", marginTop:"12px"}}>
                 <h4>Day {i + 1}:</h4> &nbsp; {theItinerary?.dayByDay[i].dayTitle}
             </div>
 
@@ -3667,15 +3668,18 @@ export default function OperationsDashboard(){
                 </>}
             </>}
             {theDocs.docKey==="cashReq"&&<>
-                {eachProviderExp.find(elem => elem.econReq)&& <> 
+
+                {eachProviderExp.find(elem => elem.econReq)&& <> <br/>
                     <h2> Economic Requirements</h2>
                     {eachProviderExp.map((elemz, i)=><React.Fragment key={i}>
                         {elemz.econReq&&<> 
+                            <br/>
+                            {aDateDisp(undefined, theDeparture.startingDate, undefined, elemz.dayIndex )}
                             <div className={styles.documentGeneraExpense}>
-                            <span>
-                                <strong>{elemz.priceDetail}</strong> <br/>
-                                {elemz.additionalDescription&&<>{elemz.additionalDescription}</>}
-                            </span>
+                                <span>
+                                    <strong>{elemz.priceDetail}</strong> <br/>
+                                    {elemz.additionalDescription&&<>{elemz.additionalDescription}</>}
+                                </span>
                             <span>
                                 ${parseFloat(elemz.price).toFixed(2)} {elemz.varExpTickets&&<> x {elemz.varExpTickets} = ${(elemz.price * elemz.varExpTickets).toFixed(2)}</>} 
                             </span>
@@ -3768,7 +3772,7 @@ export default function OperationsDashboard(){
                             } else {
                                 theDeparture.operationalNotes[i] = [addOperationalNote]
                                 setTheDeparture({...theDeparture})
-                                setAddOPNote(false)
+                                // setAddOPNote(false)
                             }
                         }}>
                             <AddCircleOutlineIcon/> 
@@ -3787,10 +3791,10 @@ export default function OperationsDashboard(){
                                 ...theDeparture
                             })
                         }}>
-                            <RemoveCircleOutlineIcon />
+                            <RemoveCircleOutlineIcon /> &nbsp;
                         </span>
                         </>}
-                    {elemnt.target!="general"?<> <strong>{elemnt.target} &nbsp; | </strong> </> : <> - </> } {elemnt.note}
+                    {elemnt.target!="general"?<> <strong>{elemnt.target} &nbsp; | &nbsp; </strong> </> : <> - </> } {elemnt.note}
                     </div>
                 </React.Fragment>)}
             </>}
@@ -3844,7 +3848,7 @@ export default function OperationsDashboard(){
             }
 
             let startingDate = new Date(theDayDet.startingDate)
-            let dayIndex =  Math.ceil((tempDayIndx.getTime() - startingDate.getTime()) / (1000*3600*24))-1
+            let dayIndex =  Math.ceil((tempDayIndx.getTime() - startingDate.getTime()) / (1000*3600*24))
             let foundItin = allItins.find(element => (element.id === theDayDet.itineraryID)||(element._id === theDayDet.itineraryID))
             let guestNumb = guestAdder(theDayDet.roomingList)
 
@@ -3915,6 +3919,9 @@ export default function OperationsDashboard(){
                             </>}
                             {transportDisp.length>0 && <>
                                 TRANSPORT &nbsp;
+
+                                {console.log(transportDisp)}
+
                                 {transportDisp.map((elem, i)=> <React.Fragment key={i}>
                                     -- {elem.contactName} | 0{elem.contactNumb}
                                 </React.Fragment>)}
