@@ -160,6 +160,8 @@ export default function OperationsDashboard(){
     const [roomingEditIndex, setRoomingEditIndex]=useState(null)
 
     // general utils
+    
+    const [exitDocTrig, setexitDocTrig]=useState(false)
     const [plannerTrig, setPlannerTrig]=useState(false)
     const [createdep, setCreateDep]=useState(false)
     const [fileSwitch, setfileSwitch]=useState(false)
@@ -1046,49 +1048,69 @@ export default function OperationsDashboard(){
     // File funtions
     const aFileDisplayer=(theItin, theDep)=>{
         return(<>
-        {/* keys */}
-        <div className={styles.providerFuncBar}>
-            <div onClick={()=>{
-                setFileKey("intro")
-                setTheDeparture()
-                setTheItinerary()
-                setfileSwitch(false)
-                setTLObj(false)
-            }}>
-                <CloseFullscreenIcon />
-            </div>
-            {saveIconDisp(saveDocSwitch, saveFunction, )}
-        </div> <br/><br/>
-
-        <div className={styles.spaceBetRow} style={{width:"760px" }}>
-            <span />
-            <div className={styles.keySelectors}>
-                {fileDisplayKey!="intro"&&<> 
-                    <span onClick={()=>{setFileKey("intro"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>home </span></>}
-                {fileDisplayKey!="rooming"&&<> 
-                    <span onClick={()=>{setFileKey("rooming"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false);
-                    setDocTrigs({
-                        "logo":true,
-                        "roomingList":true,
-                        "guestNotes":true,
-                        "bootSizes":true,
-                        "dayDescript":false,
-                    })
-                    }}>pax & rooming </span></>}
-                {fileDisplayKey!="providers"&&<> {providerArr.length>0&&<> 
-                    <span onClick={()=>{setFileKey("providers"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>providers </span>
-                    </>}</>}
-                {fileDisplayKey!="expenses"&&<> 
-                    <span onClick={()=>{setFileKey("expenses"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>expenses</span></>}
-                {fileDisplayKey!="dayByDay"&&<> 
-                    <span onClick={()=>{setFileKey("dayByDay"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>day by day</span></>}
-                {/* {fileDisplayKey!="flights"&&<> 
-                    <span onClick={()=>{setFileKey("flights"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>flights</span></>} */}
-            </div>
-        </div>
-        {/* Display */}
         <div className={styles.aFileContainer}>
-
+        {/* keys */}
+            <div className={styles.aDepKeysandNav}>
+                <div className={styles.depFunctBar}>
+                    <div onClick={()=>{
+                        setexitDocTrig(true)
+                    }}>
+                        <CloseFullscreenIcon />
+                    </div>
+                    <Dialog open={exitDocTrig} onClose={()=>{setexitDocTrig(false)}}>
+                        <div className={styles.spaceBetRow} style={{padding:"21px", width:"550px"}}> 
+                            <div className={styles.submitDepBTN} onClick={()=>{
+                                setFileKey("intro")
+                                setTheDeparture()
+                                setTheItinerary()
+                                setfileSwitch(false)
+                                setTLObj(false)
+                                setexitDocTrig(false)
+                            }}> 
+                                Exit
+                            </div>
+                            <div className={styles.submitDepBTN} onClick={()=>{
+                                saveFunction(theDeparture)
+                                setFileKey("intro")
+                                setTheDeparture()
+                                setTheItinerary()
+                                setfileSwitch(false)
+                                setTLObj(false)
+                                setexitDocTrig(false)
+                            }}> 
+                                Save and Exit
+                            </div>
+                        </div>
+                    </Dialog>
+                    {saveIconDisp(saveDocSwitch, saveFunction, )}
+                </div> 
+                <div className={styles.spaceBetRow}>
+                    <span />
+                    <div className={styles.keySelectors}>
+                        {fileDisplayKey!="intro"&&<> 
+                            <span onClick={()=>{setFileKey("intro"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>home </span></>}
+                        {fileDisplayKey!="rooming"&&<> 
+                            <span onClick={()=>{setFileKey("rooming"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false);
+                            setDocTrigs({
+                                "logo":true,
+                                "roomingList":true,
+                                "guestNotes":true,
+                                "bootSizes":true,
+                                "dayDescript":false,
+                            })
+                            }}>pax & rooming </span></>}
+                        {fileDisplayKey!="providers"&&<> {providerArr.length>0&&<> 
+                            <span onClick={()=>{setFileKey("providers"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>providers </span>
+                            </>}</>}
+                        {fileDisplayKey!="expenses"&&<> 
+                            <span onClick={()=>{setFileKey("expenses"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>expenses</span></>}
+                        {fileDisplayKey!="dayByDay"&&<> 
+                            <span onClick={()=>{setFileKey("dayByDay"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>day by day</span></>}
+                        {/* {fileDisplayKey!="flights"&&<> 
+                            <span onClick={()=>{setFileKey("flights"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>flights</span></>} */}
+                    </div>
+                </div>
+            </div>
             {/* {logoSwitcher(theItin, "text")} */}
 
             <div className={styles.spaceBetRow}>
@@ -4040,7 +4062,7 @@ export default function OperationsDashboard(){
             {/* Daily(monthly||weekly ) Planner */}
             {theDeparture? <>
                 {fileSwitch ? <>
-                    <div style={{display: "flex", flexDirection:"column", alignItems:"center", margin:"15px" }}> 
+                    <div style={{display: "flex", flexDirection:"column", alignItems:"center", margin:"15px", position:"relative", width:"760px" }}> 
                         {aFileDisplayer(theItinerary, theDeparture)}
                     </div>
                 </>:<> 

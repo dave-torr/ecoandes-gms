@@ -109,6 +109,7 @@
     background-color: white;
 }
 
+/* DEPARTURES */
 .depCardFileTab{
     min-height: 12px;
     min-width: 140px;
@@ -365,6 +366,24 @@
 }
 
 /* File displayer */
+.aDepKeysandNav{
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background-color: white;
+    padding: 9px;
+    width: 100%;
+    border-bottom: dotted;
+}
+
+.depFunctBar{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
 .aFileContainer{
     width: 760px;
     background-color: white;
@@ -383,13 +402,13 @@
     width: calc(50% - 9px);
     padding: 9px 21px;
 }
+
+
 .keySelectors{
-    display: flex;
-    justify-content: flex-end;
+    display: flex;    
 }
 
 .keySelectors span{
-    transform: translateY(9px);
     width: 133px;
     padding: 6px;
     text-align: center;
@@ -947,17 +966,8 @@
     color: white;
 }
 
-/* providers */
-.providerFuncBar{
-    border-top: solid 1px black;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    margin-top: 15px;
-}
 
+/* providers */
 .aProviderDisp{
     display: flex;
     flex-direction: column;
@@ -1081,7 +1091,7 @@
     .titleBar{
         display: none;
     }
-    .providerFuncBar{
+    .depFunctBar{
         display: none;
     }
 }

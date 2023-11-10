@@ -797,6 +797,21 @@
     "semver" "^7.3.5"
     "tar" "^6.1.11"
 
+"@microsoft/microsoft-graph-client@^3.0.7":
+  "integrity" "sha512-/AazAV/F+HK4LIywF9C+NYHcJo038zEnWkteilcxC1FM/uK/4NVGDKGrxx7nNq1ybspAroRKT4I1FHfxQzxkUw=="
+  "resolved" "https://registry.npmjs.org/@microsoft/microsoft-graph-client/-/microsoft-graph-client-3.0.7.tgz"
+  "version" "3.0.7"
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    "tslib" "^2.2.0"
+
+"@mongodb-js/saslprep@^1.1.0":
+  "integrity" "sha512-t7c5K033joZZMspnHg/gWPE4kandgc2OxE74aYOtGKfgB9VPuVJPix0H6fhmm2erj5PBJ21mqcx34lpIGtUCsQ=="
+  "resolved" "https://registry.npmjs.org/@mongodb-js/saslprep/-/saslprep-1.1.1.tgz"
+  "version" "1.1.1"
+  dependencies:
+    "sparse-bitfield" "^3.0.3"
+
 "@mui/base@5.0.0-alpha.126":
   "integrity" "sha512-I5e52A0Muv9Gaoy2GcqbYrQ6dpRyC2UXeA00brT3HuW0nF0E4fiTOIqdNTN+N5gyaYK0z3O6jtLt/97CCrIxVA=="
   "resolved" "https://registry.npmjs.org/@mui/base/-/base-5.0.0-alpha.126.tgz"
@@ -3316,7 +3331,7 @@
   "resolved" "https://registry.npmjs.org/mkdirp/-/mkdirp-1.0.4.tgz"
   "version" "1.0.4"
 
-"mongodb-connection-string-url@^2.5.4":
+"mongodb-connection-string-url@^2.6.0":
   "integrity" "sha512-WvTZlI9ab0QYtTYnuMLgobULWhokRjtC7db9LtcVfJ+Hsnyr5eo6ZtNAt3Ly24XZScGMelOcGtm7lSn0332tPQ=="
   "resolved" "https://registry.npmjs.org/mongodb-connection-string-url/-/mongodb-connection-string-url-2.6.0.tgz"
   "version" "2.6.0"
@@ -3325,16 +3340,16 @@
     "whatwg-url" "^11.0.0"
 
 "mongodb@^4.1.4":
-  "integrity" "sha512-0EB113Fsucaq1wsY0dOhi1fmZOwFtLOtteQkiqOXGklvWMnSH3g2QS53f0KTP+/6qOkuoXE2JksubSZNmxeI+g=="
-  "resolved" "https://registry.npmjs.org/mongodb/-/mongodb-4.16.0.tgz"
-  "version" "4.16.0"
+  "integrity" "sha512-MBuyYiPUPRTqfH2dV0ya4dcr2E5N52ocBuZ8Sgg/M030nGF78v855B3Z27mZJnp8PxjnUquEnAtjOsphgMZOlQ=="
+  "resolved" "https://registry.npmjs.org/mongodb/-/mongodb-4.17.1.tgz"
+  "version" "4.17.1"
   dependencies:
     "bson" "^4.7.2"
-    "mongodb-connection-string-url" "^2.5.4"
+    "mongodb-connection-string-url" "^2.6.0"
     "socks" "^2.7.1"
   optionalDependencies:
     "@aws-sdk/credential-providers" "^3.186.0"
-    "saslprep" "^1.0.3"
+    "@mongodb-js/saslprep" "^1.1.0"
 
 "ms@^2.1.1", "ms@2.1.2":
   "integrity" "sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w=="
@@ -3890,13 +3905,6 @@
     "get-intrinsic" "^1.1.3"
     "is-regex" "^1.1.4"
 
-"saslprep@^1.0.3":
-  "integrity" "sha512-/MY/PEMbk2SuY5sScONwhUDsV2p77Znkb/q3nSVstq/yQzYJOH/Azh29p9oJLsl3LnQwSvZDKagDGBsBwSooag=="
-  "resolved" "https://registry.npmjs.org/saslprep/-/saslprep-1.0.3.tgz"
-  "version" "1.0.3"
-  dependencies:
-    "sparse-bitfield" "^3.0.3"
-
 "scheduler@^0.20.2":
   "integrity" "sha512-2eWfGgAqqWFGqtdMmcL5zCMK1U8KlXv8SQFGglL3CEtd0aDVDWgeF/YoCmvln55m5zSk3J/20hTaSBeSObsQDQ=="
   "resolved" "https://registry.npmjs.org/scheduler/-/scheduler-0.20.2.tgz"
@@ -4282,7 +4290,7 @@
   "resolved" "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz"
   "version" "1.14.1"
 
-"tslib@^2.0.3", "tslib@^2.3.1", "tslib@^2.4.0", "tslib@^2.5.0":
+"tslib@^2.0.3", "tslib@^2.2.0", "tslib@^2.3.1", "tslib@^2.4.0", "tslib@^2.5.0":
   "integrity" "sha512-336iVw3rtn2BUK7ORdIAHTyxHGRIHVReokCR3XjbckJMK7ms8FysBfhLR8IXnAgy7T0PTPNBWKiH514FOW/WSg=="
   "resolved" "https://registry.npmjs.org/tslib/-/tslib-2.5.0.tgz"
   "version" "2.5.0"

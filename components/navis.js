@@ -131,7 +131,7 @@ export function GMSNavii(props){
                     <span />
                 </div>
                 <div className={styles.gmsUserProfilePic}>
-                    <Image 
+                    <img 
                         src={props.user.profilePic}
                         alt={`${props.user.name}'s profile pic`}
                         width={55}

@@ -18,6 +18,7 @@
     "@mantine/modals": "^4.2.11",
     "@mantine/next": "^4.2.11",
     "@mantine/notifications": "^4.2.11",
+    "@microsoft/microsoft-graph-client": "^3.0.7",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.12.1",
     "@mui/styles": "^5.12.0",
