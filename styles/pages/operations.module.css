@@ -371,9 +371,9 @@
     top: 0;
     z-index: 5;
     background-color: white;
-    padding: 9px;
+    padding: 0 9px;
     width: 100%;
-    border-bottom: dotted;
+    border-bottom: solid 1px black;
 }
 
 .depFunctBar{
@@ -382,6 +382,7 @@
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
+    height: 35px;
 }
 
 .aFileContainer{
@@ -420,7 +421,7 @@
 }
 
 .keySelectors span:hover{
-    transform: translateY(3px);
+    transform: translateY(9px);
     cursor: pointer;
 }
 
@@ -1092,6 +1093,10 @@
         display: none;
     }
     .depFunctBar{
+        display: none;
+    }
+
+    .aDepKeysandNav{
         display: none;
     }
 }

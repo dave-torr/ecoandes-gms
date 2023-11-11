@@ -371,14 +371,19 @@ export default function OperationsDashboard(){
         })
         }
     }
-    const aDateDisp=(dateLabel, theDate, tripDuration, dayIndex)=>{
+    const aDateDisp=(dateLabel, theDate, tripDuration, dayIndex, isShort)=>{
         let firstDate=new Date(`${theDate}T00:01:00`)
         let theDateFormatter 
         let upperLimitDate           
         if(tripDuration){
             let theDuration = parseInt(tripDuration-1)
             upperLimitDate = addDays(firstDate, theDuration)
-            theDateFormatter = upperLimitDate.toLocaleDateString('en-GB', dateOptions)
+            if(isShort){
+                theDateFormatter = upperLimitDate.toDateString
+                
+            } else {
+                theDateFormatter = upperLimitDate.toLocaleDateString('en-GB', dateOptions)
+            }
         } else if (dayIndex || dayIndex===0) {
             let theDayIndex = parseInt(dayIndex)
             upperLimitDate = addDays(firstDate, theDayIndex)
@@ -444,7 +449,7 @@ export default function OperationsDashboard(){
         </div>
         </>)
     }
-    const logoSwitcher=(theItin, dispSwitch)=>{
+    const logoDisplayer=(theItin, dispSwitch)=>{
         if(dispSwitch==="text"){
             switch (theItin.LTCLogo) {
                 case "galapagosElements":
@@ -476,6 +481,41 @@ export default function OperationsDashboard(){
                     break;
             }
         }
+    }
+    const logoSwitcher=()=>{
+        const logoSwitcherArr=[
+            {
+                "radioKey": "EcoAndes Travel",
+                "radioVal": "ecoAndes"
+            },
+            {
+                "radioKey": "Galapagos Elements",
+                "radioVal": "galapagosElements"
+            },
+            {
+                "radioKey": "Yacuma EcoLodge",
+                "radioVal": "yacuma"
+            },
+            {
+                "radioKey": "Unigalapagos",
+                "radioVal": "unigalapagos"
+            },
+        ]
+                
+        return(<>
+            <select onChange={(e)=>{
+                console.log(theItinerary, e.target.value, "cucu")
+                e.target.value
+                setTheItinerary({
+                    ...theItinerary,
+                    "LTCLogo": e.target.value
+                })
+            }} >  
+                {logoSwitcherArr.map((elem,i)=><React.Fragment key={i}>
+                    <option value={elem.radioVal}>{elem.radioKey} </option>
+                </React.Fragment>)}
+            </select>
+        </>)
     }
     const detailWithTitleDisp=(theTitle, theDetail)=>{
         return(<>
@@ -569,9 +609,7 @@ export default function OperationsDashboard(){
                 <h2>{theItin.tripName}</h2>
 
                 {theItin.logo && <> 
-                    {logoSwitcher(theItin, "logo")} </>}
-
-
+                    {logoDisplayer(theItin, "logo")} </>}
             </div>
 
             <br/>
@@ -1044,175 +1082,7 @@ export default function OperationsDashboard(){
         </>)
     } 
 
-    ///////////////////////////////////////////
-    // File funtions
-    const aFileDisplayer=(theItin, theDep)=>{
-        return(<>
-        <div className={styles.aFileContainer}>
-        {/* keys */}
-            <div className={styles.aDepKeysandNav}>
-                <div className={styles.depFunctBar}>
-                    <div onClick={()=>{
-                        setexitDocTrig(true)
-                    }}>
-                        <CloseFullscreenIcon />
-                    </div>
-                    <Dialog open={exitDocTrig} onClose={()=>{setexitDocTrig(false)}}>
-                        <div className={styles.spaceBetRow} style={{padding:"21px", width:"550px"}}> 
-                            <div className={styles.submitDepBTN} onClick={()=>{
-                                setFileKey("intro")
-                                setTheDeparture()
-                                setTheItinerary()
-                                setfileSwitch(false)
-                                setTLObj(false)
-                                setexitDocTrig(false)
-                            }}> 
-                                Exit
-                            </div>
-                            <div className={styles.submitDepBTN} onClick={()=>{
-                                saveFunction(theDeparture)
-                                setFileKey("intro")
-                                setTheDeparture()
-                                setTheItinerary()
-                                setfileSwitch(false)
-                                setTLObj(false)
-                                setexitDocTrig(false)
-                            }}> 
-                                Save and Exit
-                            </div>
-                        </div>
-                    </Dialog>
-                    {saveIconDisp(saveDocSwitch, saveFunction, )}
-                </div> 
-                <div className={styles.spaceBetRow}>
-                    <span />
-                    <div className={styles.keySelectors}>
-                        {fileDisplayKey!="intro"&&<> 
-                            <span onClick={()=>{setFileKey("intro"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>home </span></>}
-                        {fileDisplayKey!="rooming"&&<> 
-                            <span onClick={()=>{setFileKey("rooming"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false);
-                            setDocTrigs({
-                                "logo":true,
-                                "roomingList":true,
-                                "guestNotes":true,
-                                "bootSizes":true,
-                                "dayDescript":false,
-                            })
-                            }}>pax & rooming </span></>}
-                        {fileDisplayKey!="providers"&&<> {providerArr.length>0&&<> 
-                            <span onClick={()=>{setFileKey("providers"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>providers </span>
-                            </>}</>}
-                        {fileDisplayKey!="expenses"&&<> 
-                            <span onClick={()=>{setFileKey("expenses"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>expenses</span></>}
-                        {fileDisplayKey!="dayByDay"&&<> 
-                            <span onClick={()=>{setFileKey("dayByDay"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>day by day</span></>}
-                        {/* {fileDisplayKey!="flights"&&<> 
-                            <span onClick={()=>{setFileKey("flights"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>flights</span></>} */}
-                    </div>
-                </div>
-            </div>
-            {/* {logoSwitcher(theItin, "text")} */}
 
-            <div className={styles.spaceBetRow}>
-                <div>
-                    <h3>{theDep?.tourCode}</h3>
-                    <h1>{theItin?.tripName}</h1>
-                </div>
-                {departureStatusDisp(theDep)}
-            </div>
-            {fileDisplayKey==="intro"&&<>
-                {aFileHome(theItin, theDep)}
-            </>}
-            {fileDisplayKey==="rooming"&&<>
-                {roomingListDisp(theDep)}
-            </>}
-            {fileDisplayKey==="providers"&&<>
-                {documentGenerator? <> 
-                    {documentCreator(documentGenerator)}
-                </>:<>
-                    {contactArrDisp(providerArr)}
-                </>} 
-            </>}
-            {fileDisplayKey==="expenses"&&<>
-                {expenseDisplayer(theDep.dayByDayExp, theItin.dayByDay)}
-            </>}
-            {fileDisplayKey==="dayByDay"&&<>
-                {dayByDayDisp(theItin.dayByDay, theDep.startingDate)}
-            </>}
-
-            {fileDisplayKey==="flights"&&<>
-                {flightsDisp()}
-                {editSwitch&& <>
-                    <br/> {flightsAdderForm()}
-                </>}
-            </>}
-            {fileDisplayKey==="cruises"&&<>
-
-            </>}
-        </div>
-        <div className={styles.extraSelectors}> 
-            {/* If flights, from useEffect, link to flights page */}
-            {(fileDisplayKey!="flights"&& theDep.roomingList.length>0) &&<>
-                <span onClick={()=>{
-                    setFileKey("flights"); 
-                    setFlightObj({"target": "group"})
-                }}> <FlightIcon/> </span>
-            </>}
-
-            {/* future cruise functionality */}
-            {/* {(fileDisplayKey!="cruises"&& theDep.roomingList.length>0) &&<>
-                <span onClick={()=>{setFileKey("cruises")}}> <SailingIcon/> </span>
-            </>} */}
-        </div>
-
-        {/* Expense Adder Dialog */}
-        <Dialog open={expenseTrig}  maxWidth={"xl"} onClose={()=>setExpTrig(false)}>
-
-            <div className={styles.aFileContainer}>
-                <h3>Add expense to day {dayIndex+1} </h3>
-                {optCataloger(thePriceChart)}
-                {expenseAdder(anExpense, setAnExpense, providerArr, dayIndex, theDeparture, setTheDeparture, paxData)}
-            </div>
-        </Dialog>
-
-        {/* Expense Editor Dialog */}
-        <Dialog open={expenseEditTrig}  maxWidth={"xl"} onClose={()=>{
-            setExpEditTrig(false)
-            setAnExpense()
-            setExpenseIndex()
-        }}>
-
-            <div className={styles.aFileContainer}>
-                {expenseEditor(anExpense, setAnExpense, expenseIndex, dayIndex, theDeparture, setTheDeparture, paxData)}
-            </div>
-        </Dialog>
-
-        {fileDisplayKey==="intro"&&<>
-            {aFileHomeEdit()}
-        </>}
-        {addGuestTrig&&<>
-            {roomingListEdit(false, roomingEditIndex, )}
-        </>}
-
-        {editTLTrig&& <> 
-            {roomingListEdit(true, roomingEditIndex)}
-        </>}
-        {(addGuest || paxData?.paxTotal===0) &&<>
-            <br/>
-            <br/>
-            <div className={styles.printDEL}>
-                {addGuestCont()}
-            </div>
-        </>}
-        {addTLObj&&<>
-            <br/>
-            <br/>
-            <div className={styles.printDEL}>
-                {addGuestCont(true)}
-            </div>
-        </>}
-        </>)
-    }
     /////////////////////////////////////////
     /////////////////////////////////////////
     // Stats
@@ -3168,7 +3038,7 @@ export default function OperationsDashboard(){
                     onSubmit={(e)=>{
                         e.preventDefault()
                         let tempArr = theDep?.dayByDayExp[dayIndx].splice(expenseIndex,1, theExpense)
-                        setTheDep(theDep)
+                        setTheDep(theDep) 
                         setExpenseIndex()
                         setAnExpense()
                         setDayIndex()
@@ -3302,36 +3172,52 @@ export default function OperationsDashboard(){
             </>)            
         }
     }
-    const totalProviderExpAdder=(expenseArr)=>{
+    const totalProviderExpAdder=(expenseArr, econReq)=>{
         let totalAggegator=0
-        expenseArr.forEach((elem)=>{
-        if(elem.expenseKey==="accommodation"){
-            elem.roomPriceArr.forEach((elemental)=>{
-            if(elemental.reqRooms){
-                if(elemental.reqAdditionalBed){
+        let totalEconReq = 0
+            expenseArr.forEach((elem)=>{
+            if(elem.expenseKey==="accommodation"){
+                elem.roomPriceArr.forEach((elemental)=>{
+                if(elemental.reqRooms){
+                    if(elemental.reqAdditionalBed){
+                        totalAggegator=
+                        totalAggegator
+                        +
+                        (elemental.reqRooms * (parseFloat(elemental.price)) )
+                        +
+                        (elemental.reqAdditionalBed * elemental.additionalBed)
+                    } else {
                     totalAggegator=
                     totalAggegator
                     +
-                    (elemental.reqRooms * (parseFloat(elemental.price)) )
-                    +
-                    (elemental.reqAdditionalBed * elemental.additionalBed)
+                    (elemental.reqRooms * parseFloat(elemental.price))
+                }
+                }
+                })
+            } else if (elem.econReq){
+                if (elem.varExpTickets){
+                    totalEconReq =
+                    totalEconReq + (parseFloat(elem.price) * elem.varExpTickets)
                 } else {
-                totalAggegator=
-                totalAggegator
-                +
-                (elemental.reqRooms * parseFloat(elemental.price))
+                    totalEconReq =
+                    totalEconReq + parseFloat(elem.price)
+                }
+            } else{
+                if (elem.varExpTickets){
+                    totalAggegator =
+                    totalAggegator + (parseFloat(elem.price) * elem.varExpTickets)
+                } else {
+                    totalAggegator =
+                    totalAggegator + parseFloat(elem.price)
+                }
             }
-            }
-            })
-        } else if (elem.varExpTickets){
-            totalAggegator =
-            totalAggegator + (parseFloat(elem.price) * elem.varExpTickets)
-        } else {
-            totalAggegator =
-            totalAggegator + parseFloat(elem.price)
-        }
         })
-        return totalAggegator.toFixed(2)
+
+        if(econReq){
+            return totalEconReq.toFixed(2)
+        }else{
+            return totalAggegator.toFixed(2)
+        }
     }
     // docs
     const documentTriggers=()=>{
@@ -3359,26 +3245,9 @@ export default function OperationsDashboard(){
                     /> 
                 </div>
                 <div style={{ width:"47%", display:"flex" }}>
-                <h4>Rooming List</h4> &nbsp;&nbsp;
-                <FormControlLabel 
-                        control={
-                        <Switch checked={documentDispTrigs.roomingList}
-                        onChange={()=>{
-                            if(documentDispTrigs.roomingList){
-                                setDocTrigs({
-                                    ...documentDispTrigs,
-                                    "roomingList": false
-                                })
-                            } else {
-                                setDocTrigs({
-                                    ...documentDispTrigs,
-                                    "roomingList": true
-                                })
-                            }
-                        }}/>} 
-                    /> 
+                    <h4>Logo Selector </h4> &nbsp;&nbsp;
+                    {logoSwitcher()}
                 </div>
-
             </div>
             <div className={styles.spaceBetRow}>
                 <div style={{ width:"47%", display:"flex" }}>
@@ -3424,6 +3293,26 @@ export default function OperationsDashboard(){
             </div>
             <div className={styles.spaceBetRow}>
                 <div style={{ width:"47%", display:"flex" }}>
+                    <h4>Rooming List</h4> &nbsp;&nbsp;
+                    <FormControlLabel 
+                        control={
+                        <Switch checked={documentDispTrigs.roomingList}
+                        onChange={()=>{
+                            if(documentDispTrigs.roomingList){
+                                setDocTrigs({
+                                    ...documentDispTrigs,
+                                    "roomingList": false
+                                })
+                            } else {
+                                setDocTrigs({
+                                    ...documentDispTrigs,
+                                    "roomingList": true
+                                })
+                            }
+                        }}/>} 
+                    /> 
+                </div>
+                <div style={{ width:"47%", display:"flex" }}>
                 <h4>Day Description </h4> &nbsp;&nbsp;
                 <FormControlLabel 
                         control={
@@ -3459,133 +3348,137 @@ export default function OperationsDashboard(){
         })
         let eachProviderMapper
         if(theDocs.expenseKey!="accommodation"){
-        eachProviderMapper = theDeparture.dayByDayExp.map((elem,i)=>
-        <React.Fragment key={i}>
-            { elem?.find(elem2 => elem2.contactName===theDocs?.contactName) &&<>
-            <div style={{display:"flex", alignItems:"center", marginTop:"12px"}}>
-                <h4>Day {i + 1}:</h4> &nbsp; {theItinerary?.dayByDay[i].dayTitle}
-            </div>
-
-            {/* day description */}
-            {documentDispTrigs.dayDescript&& <> 
-               {theItinerary?.dayByDay[i].dayDescription}
-            </>}
-
-           
-            {theDeparture?.operationalNotes[i]?.length>0&&<> 
-                <div style={{width:"90%", marginLeft:"4%", marginBottom:"9px", fontSize:"0.9em"}}>
-                    <div style={{display:"flex", flexDirection:"column"}}>
-
-                    
-                    {theDeparture?.operationalNotes[i].find(elem => elem.target==="general")&&<>
-                        <strong style={{marginTop:"9px"}}>DAY NOTES</strong>
-                    </>}
-                    {theDeparture?.operationalNotes[i].map((elem,index)=> 
-                    <React.Fragment key={index}> {elem.target==="general"&&<>
-                        <div className={styles.spaceBetRow}>
-                            <span>- {elem.note}</span>
-                            {opDocEditSwitch&& <>
-                                <span style={{color:"red"}} onClick={()=>{
-                                    let tempArr = theDeparture?.operationalNotes[i].splice(index, 1)
-                                    setTheDeparture({
-                                        ...theDeparture
-                                    })
-                                }}>
-                                    <RemoveCircleOutlineIcon />
-                                </span>
-                            </>}
-                        </div>
-                    </>}</React.Fragment> ) }
-
-                    {/* each provider's notes */}
-                    {theDeparture?.operationalNotes[i].find(elem => elem.target===theDocs?.contactName) &&<>
-                        <strong style={{marginTop:"9px"}}> {theDocs?.contactName} Notes </strong>
-                    </>}
-                    {theDeparture?.operationalNotes[i].map((elem,index)=> 
-                    <React.Fragment key={index}> {elem.target===theDocs?.contactName &&<>
-                        <div className={styles.spaceBetRow}>
-                            <span>- {elem.note}</span>
-                            {opDocEditSwitch&& <>
-                                <span style={{color:"red"}} onClick={()=>{
-                                    let tempArr = theDeparture?.operationalNotes[i].splice(index, 1)
-                                    setTheDeparture({
-                                        ...theDeparture
-                                    })
-                                }}>
-                                    <RemoveCircleOutlineIcon />
-                                </span>
-                            </>}
-                        </div>
-                    </>}</React.Fragment> ) }
+            eachProviderMapper = theDeparture.dayByDayExp.map((elem,i)=>
+            <React.Fragment key={i}>
+                { elem?.find(elem2 => elem2.contactName===theDocs?.contactName) &&<>
+                <div className={styles.spaceBetRow} style={{marginTop:"12px"}} >
+                    <div style={{display:"flex", alignItems:"center"}}>
+                        <h4>Day {i + 1}:</h4> &nbsp; {theItinerary?.dayByDay[i].dayTitle}
                     </div>
-                </div>
-            </>}
+                    {aDateDisp(undefined, theDeparture.startingDate, undefined, i)}
+                </div>    
 
-            {/* Operational note mapper */}
-            {addOperationalNote? <>
-                <div className={styles.spaceBetRow}> 
-                    <div className={styles.inputAndRow} style={{margin:"12px 4%"}}> 
-                        <input 
-                            className={styles.inputUserUI} 
-                            type='text'
-                            onChange={(e)=>{
-                                e.preventDefault;
-                                setAddOPNote({
-                                    ...addOperationalNote,
-                                    "note":e.target.value
-                                })
-                            }}
-                            placeholder='Add Note'
-                        />
-                        &nbsp;
-                        &nbsp;
-                        <span onClick={()=>{
-                            if(theDeparture?.operationalNotes[i]?.length>0){
-                                theDeparture.operationalNotes[i].push(addOperationalNote)
-                                setTheDeparture({...theDeparture})
-                            } else {
-                                theDeparture.operationalNotes[i] = [addOperationalNote]
-                                setTheDeparture({...theDeparture})
-                                setAddOPNote(false)
-                            }
-                        }}>
-                            <AddCircleOutlineIcon/> 
+                {/* day description */}
+                {documentDispTrigs.dayDescript&& <> 
+                {theItinerary?.dayByDay[i].dayDescription}
+                </>}
+
+                {theDeparture?.operationalNotes[i]?.length>0&&<> 
+                    <div style={{width:"90%", marginLeft:"4%", marginBottom:"9px", fontSize:"0.9em"}}>
+                        <div style={{display:"flex", flexDirection:"column"}}>
+
+                        
+                        {theDeparture?.operationalNotes[i].find(elem => elem.target==="general")&&<>
+                            <strong style={{marginTop:"9px"}}>DAY NOTES</strong>
+                        </>}
+                        {theDeparture?.operationalNotes[i].map((elem,index)=> 
+                        <React.Fragment key={index}> {elem.target==="general"&&<>
+                            <div className={styles.spaceBetRow}>
+                                <span>- {elem.note}</span>
+                                {opDocEditSwitch&& <>
+                                    <span style={{color:"red"}} onClick={()=>{
+                                        let tempArr = theDeparture?.operationalNotes[i].splice(index, 1)
+                                        setTheDeparture({
+                                            ...theDeparture
+                                        })
+                                    }}>
+                                        <RemoveCircleOutlineIcon />
+                                    </span>
+                                </>}
+                            </div>
+                        </>}</React.Fragment> ) }
+
+                        {/* each provider's notes */}
+                        {theDeparture?.operationalNotes[i].find(elem => elem.target===theDocs?.contactName) &&<>
+                            <strong style={{marginTop:"9px"}}> {theDocs?.contactName} Notes </strong>
+                        </>}
+                        {theDeparture?.operationalNotes[i].map((elem,index)=> 
+                        <React.Fragment key={index}> {elem.target===theDocs?.contactName &&<>
+                            <div className={styles.spaceBetRow}>
+                                <span>- {elem.note}</span>
+                                {opDocEditSwitch&& <>
+                                    <span style={{color:"red"}} onClick={()=>{
+                                        let tempArr = theDeparture?.operationalNotes[i].splice(index, 1)
+                                        setTheDeparture({
+                                            ...theDeparture
+                                        })
+                                    }}>
+                                        <RemoveCircleOutlineIcon />
+                                    </span>
+                                </>}
+                            </div>
+                        </>}</React.Fragment> ) }
+                        </div>
+                    </div>
+                </>}
+
+                {/* Operational note mapper */}
+                {addOperationalNote? <>
+                    <div className={styles.spaceBetRow}> 
+                        <div className={styles.inputAndRow} style={{margin:"12px 4%"}}> 
+                            <input 
+                                className={styles.inputUserUI} 
+                                type='text'
+                                onChange={(e)=>{
+                                    e.preventDefault;
+                                    setAddOPNote({
+                                        ...addOperationalNote,
+                                        "note":e.target.value
+                                    })
+                                }}
+                                placeholder='Add Note'
+                            />
+                            &nbsp;
+                            &nbsp;
+                            <span onClick={()=>{
+                                if(theDeparture?.operationalNotes[i]?.length>0){
+                                    theDeparture.operationalNotes[i].push(addOperationalNote)
+                                    setTheDeparture({...theDeparture})
+                                } else {
+                                    theDeparture.operationalNotes[i] = [addOperationalNote]
+                                    setTheDeparture({...theDeparture})
+                                    setAddOPNote(false)
+                                }
+                            }}>
+                                <AddCircleOutlineIcon/> 
+                            </span>
+                        </div>
+                        <span onClick={()=>setAddOPNote(false)}>
+                            <CancelPresentationIcon/>
                         </span>
                     </div>
-                    <span onClick={()=>setAddOPNote(false)}>
-                        <CancelPresentationIcon/>
-                    </span>
-                </div>
-            </> : <>
-                {opDocEditSwitch && <> 
-                <div style={{display:"flex", margin:"12px 0"}}>
-                    <span className={styles.eachGuestNote} style={{color:"red", margin:"3px", marginLeft:"3%"}} onClick={()=>setAddOPNote({
-                        "target":"general"
-                    })}>
-                        Add General Operational Note
-                    </span>
-                    <span className={styles.eachGuestNote} style={{margin:"3px", color:"red",}} onClick={()=>setAddOPNote({
-                        "target": theDocs?.contactName
-                    })}>
-                        add note for {theDocs?.contactName}
-                    </span>
-                </div>
+                </> : <>
+                    {opDocEditSwitch && <> 
+                    <div style={{display:"flex", margin:"12px 0"}}>
+                        <span className={styles.eachGuestNote} style={{color:"red", margin:"3px", marginLeft:"3%"}} onClick={()=>setAddOPNote({
+                            "target":"general"
+                        })}>
+                            Add General Operational Note
+                        </span>
+                        <span className={styles.eachGuestNote} style={{margin:"3px", color:"red",}} onClick={()=>setAddOPNote({
+                            "target": theDocs?.contactName
+                        })}>
+                            add note for {theDocs?.contactName}
+                        </span>
+                    </div>
+                    </>}
                 </>}
-            </>}
-            </>}
+                </>}
 
-            {elem?.map(element=><>{element.contactName===theDocs?.contactName&&<>
-                <div className={styles.documentGeneraExpense}>
-                <span>
-                    <strong>{element.priceDetail}</strong> <br/>
-                    {element.additionalDescription&&<>{element.additionalDescription}</>}
-                </span>
-                <span>
-                    ${parseFloat(element.price).toFixed(2)} {element.varExpTickets&&<> x {element.varExpTickets} = ${(element.price * element.varExpTickets).toFixed(2)}</>}
-                </span>
-                </div>
-            </>}</>)}
-        </React.Fragment>)
+                {elem?.map(element=><>{(!element.econReq && element.contactName===theDocs?.contactName)&&<>
+                    {!element.econReq && <>
+                    </> }
+                    <div className={styles.documentGeneraExpense}>
+                    <span>
+                        <strong>{element.priceDetail}</strong> <br/>
+                        {element.additionalDescription&&<>{element.additionalDescription}</>}
+                    </span>
+                    <span>
+                        ${parseFloat(element.price).toFixed(2)} {element.varExpTickets&&<> x {element.varExpTickets} = ${(element.price * element.varExpTickets).toFixed(2)}</>}
+                    </span>
+                    </div>
+                </>}</>)}
+            </React.Fragment>)
         }
         return(<>
             <div className={styles.spaceBetRowPRINT}>
@@ -3597,9 +3490,9 @@ export default function OperationsDashboard(){
                 </div>
             </div>
             {theDocs.docKey!="cashReq"&&<>
-                {documentTriggers()}</>}
+                {documentTriggers(theDocs.docKey)}</>}
             {documentDispTrigs.logo && <> <span style={{ display:"flex", justifyContent:"center", width:"100%" }}>
-                {logoSwitcher(theItinerary, "logo")}</span></>}
+                {logoDisplayer(theItinerary, "logo")}</span></>}
             <div className={styles.spaceBetRow}>
                 <h1> 
                     {theDocs.docKey==="workOrder"&&<> Work Order</>} 
@@ -3690,7 +3583,6 @@ export default function OperationsDashboard(){
                 </>}
             </>}
             {theDocs.docKey==="cashReq"&&<>
-
                 {eachProviderExp.find(elem => elem.econReq)&& <> <br/>
                     <h2> Economic Requirements</h2>
                     {eachProviderExp.map((elemz, i)=><React.Fragment key={i}>
@@ -3708,26 +3600,34 @@ export default function OperationsDashboard(){
                             </div>                        
                         </>}
                     </React.Fragment>)}
+                    <br/><br/>
+                    <div className={styles.documentGenTotal} >
+                        <strong>TOTAL:</strong> USD $ {totalProviderExpAdder(eachProviderExp, true)}
+                    </div>
                 </>}
             </>}
             {(theDocs.docKey!="accommodation" && theDocs.docKey!="cashReq")&&<>
                 <h2>Service Breakdown</h2>
                 {eachProviderExp.map((element,i)=><React.Fragment key={i}>
+                {!element.econReq && <>
                     <div className={styles.documentGeneraExpense} style={{borderTop:"solid 1px black", borderLeft:"solid 1px black" }}>
                         <span>
                             D{element.dayIndex+1}: 
                             <strong> {element.priceDetail}</strong> <br/>
                             {element.additionalDescription&&<>{element.additionalDescription}</>}
                         </span>
-                            {element.econReq&& <> CASH REQ. </>}
                         <span>
                             ${parseFloat(element.price).toFixed(2)} {element.varExpTickets&&<> x {element.varExpTickets} = ${(element.price * element.varExpTickets).toFixed(2)} </>}
                         </span>
                     </div>
+                </>}
                 </React.Fragment> )}
+
                 <div className={styles.documentGenTotal} >
                     <strong>TOTAL:</strong> USD $ {totalProviderExpAdder(eachProviderExp)}
                 </div>
+
+
             </>}
             {theDocs.docKey!="accommodation" && <> 
                 <br/>
@@ -4045,63 +3945,231 @@ export default function OperationsDashboard(){
             {/* next Day */}
         </>)
     }
-
-  return(<>
-    <div className={styles.aGMSPage}>
-    {session&&<> 
-        <GMSNavii user={session.user} />
-        <div className={styles.titleBar}>
-            <HubIcon fontSize="large" />
-            <h2>Latin Travel Collection</h2>
-            <h1>Operations</h1>
-        </div>  
-        
-        {loadingTrigger? <>
-            {loadingScreen("Fetching Departure Data")}
-        </>:<>
-            {/* Daily(monthly||weekly ) Planner */}
-            {theDeparture? <>
-                {fileSwitch ? <>
-                    <div style={{display: "flex", flexDirection:"column", alignItems:"center", margin:"15px", position:"relative", width:"760px" }}> 
-                        {aFileDisplayer(theItinerary, theDeparture)}
-                    </div>
-                </>:<> 
-                    {depCreator(theItinerary, theDeparture)}
-                </>}
-
-            </> : plannerTrig ? <>
-            {/* PLANNER */}
-
-                {operationsPlanner(activeDeps, weeklyPlanner)}   
-
-            </> : createdep ? <>
-
-                {departureCreator()}
-
-            </> : <>
-                {/* display itineraries and select a dep for file */}
-                <strong className={styles.printDEL} >{toDateDisplayer}</strong>
-                {statsDisplayer(activeDeps, upcomingDeps)}            
-                {depDisplayer(activeDeps, "active Departures", true)}
-                {depDisplayer(upcomingDeps, "upcoming Departures", false)}
-                <br/><br/>
-
-
-                <div className={styles.createDepTrig} onClick={()=>{
-                    window.scrollTo({top: 0})
-                    setPlannerTrig(true);  
+    ///////////////////////////////////////////
+    // File funtions
+    const aFileDisplayer=(theItin, theDep)=>{
+        return(<>
+        <div className={styles.aFileContainer}>
+        {/* keys */}
+            <div className={styles.aDepKeysandNav}>
+                <div className={styles.depFunctBar}>
+                    <div onClick={()=>{
+                        setexitDocTrig(true)
                     }}>
-                    open planner</div>
-
-                <div className={styles.createDepTrig} onClick={()=>{
-                    window.scrollTo({top: 0})
-                    setCreateDep(true)
-                    }}> 
-                    create departure
+                        <CloseFullscreenIcon />
                     </div>
+                    <Dialog open={exitDocTrig} onClose={()=>{setexitDocTrig(false)}}>
+                        <div className={styles.spaceBetRow} style={{padding:"21px", width:"550px"}}> 
+                            <div className={styles.submitDepBTN} onClick={()=>{
+                                setFileKey("intro")
+                                setTheDeparture()
+                                setTheItinerary()
+                                setfileSwitch(false)
+                                setTLObj(false)
+                                setexitDocTrig(false)
+                            }}> 
+                                Exit
+                            </div>
+                            <div className={styles.submitDepBTN} onClick={()=>{
+                                saveFunction(theDeparture)
+                                setFileKey("intro")
+                                setTheDeparture()
+                                setTheItinerary()
+                                setfileSwitch(false)
+                                setTLObj(false)
+                                setexitDocTrig(false)
+                            }}> 
+                                Save and Exit
+                            </div>
+                        </div>
+                    </Dialog>
+                    {saveIconDisp(saveDocSwitch, saveFunction, )}
+                </div> 
+                <div className={styles.spaceBetRow}>
+                    <span />
+                    <div className={styles.keySelectors}>
+                        {fileDisplayKey!="intro"&&<> 
+                            <span onClick={()=>{setFileKey("intro"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>home </span></>}
+                        {fileDisplayKey!="rooming"&&<> 
+                            <span onClick={()=>{setFileKey("rooming"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false);
+                            setDocTrigs({
+                                "logo":true,
+                                "roomingList":true,
+                                "guestNotes":true,
+                                "bootSizes":true,
+                                "dayDescript":false,
+                            })
+                            }}>pax & rooming </span></>}
+                        {fileDisplayKey!="providers"&&<> {providerArr.length>0&&<> 
+                            <span onClick={()=>{setFileKey("providers"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>providers </span>
+                            </>}</>}
+                        {fileDisplayKey!="expenses"&&<> 
+                            <span onClick={()=>{setFileKey("expenses"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>expenses</span></>}
+                        {fileDisplayKey!="dayByDay"&&<> 
+                            <span onClick={()=>{setFileKey("dayByDay"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>day by day</span></>}
+                        {/* {fileDisplayKey!="flights"&&<> 
+                            <span onClick={()=>{setFileKey("flights"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>flights</span></>} */}
+                    </div>
+                </div>
+            </div>
+
+            <div className={styles.spaceBetRow}>
+                <div>
+                    <h3>{theDep?.tourCode}</h3>
+                    <h1>{theItin?.tripName}</h1>
+                </div>
+                {departureStatusDisp(theDep)}
+            </div>
+            {fileDisplayKey==="intro"&&<>
+                {aFileHome(theItin, theDep)}
+            </>}
+            {fileDisplayKey==="rooming"&&<>
+                {roomingListDisp(theDep)}
+            </>}
+            {fileDisplayKey==="providers"&&<>
+                {documentGenerator? <> 
+                    {documentCreator(documentGenerator)}
+                </>:<>
+                    {contactArrDisp(providerArr)}
+                </>} 
+            </>}
+            {fileDisplayKey==="expenses"&&<>
+                {expenseDisplayer(theDep.dayByDayExp, theItin.dayByDay)}
+            </>}
+            {fileDisplayKey==="dayByDay"&&<>
+                {dayByDayDisp(theItin.dayByDay, theDep.startingDate)}
+            </>}
+
+            {fileDisplayKey==="flights"&&<>
+                {flightsDisp()}
+                {editSwitch&& <>
+                    <br/> {flightsAdderForm()}
+                </>}
+            </>}
+            {fileDisplayKey==="cruises"&&<>
+
+            </>}
+        </div>
+        <div className={styles.extraSelectors}> 
+            {/* If flights, from useEffect, link to flights page */}
+            {(fileDisplayKey!="flights"&& theDep.roomingList.length>0) &&<>
+                <span onClick={()=>{
+                    setFileKey("flights"); 
+                    setFlightObj({"target": "group"})
+                }}> <FlightIcon/> </span>
+            </>}
+
+            {/* future cruise functionality */}
+            {/* {(fileDisplayKey!="cruises"&& theDep.roomingList.length>0) &&<>
+                <span onClick={()=>{setFileKey("cruises")}}> <SailingIcon/> </span>
+            </>} */}
+        </div>
+
+        {/* Expense Adder Dialog */}
+        <Dialog open={expenseTrig}  maxWidth={"xl"} onClose={()=>setExpTrig(false)}>
+
+            <div className={styles.aFileContainer}>
+                <h3>Add expense to day {dayIndex+1} </h3>
+                {optCataloger(thePriceChart)}
+                {expenseAdder(anExpense, setAnExpense, providerArr, dayIndex, theDeparture, setTheDeparture, paxData)}
+            </div>
+        </Dialog>
+
+        {/* Expense Editor Dialog */}
+        <Dialog open={expenseEditTrig}  maxWidth={"xl"} onClose={()=>{
+            setExpEditTrig(false)
+            setAnExpense()
+            setExpenseIndex()
+        }}>
+
+            <div className={styles.aFileContainer}>
+                {expenseEditor(anExpense, setAnExpense, expenseIndex, dayIndex, theDeparture, setTheDeparture, paxData)}
+            </div>
+        </Dialog>
+
+        {fileDisplayKey==="intro"&&<>
+            {aFileHomeEdit()}
+        </>}
+        {addGuestTrig&&<>
+            {roomingListEdit(false, roomingEditIndex, )}
+        </>}
+
+        {editTLTrig&& <> 
+            {roomingListEdit(true, roomingEditIndex)}
+        </>}
+        {(addGuest || paxData?.paxTotal===0) &&<>
+            <br/>
+            <br/>
+            <div className={styles.printDEL}>
+                {addGuestCont()}
+            </div>
+        </>}
+        {addTLObj&&<>
+            <br/>
+            <br/>
+            <div className={styles.printDEL}>
+                {addGuestCont(true)}
+            </div>
+        </>}
+        </>)
+    }
+
+    return(<>
+        <div className={styles.aGMSPage}>
+        {session&&<> 
+            <GMSNavii user={session.user} />
+            <div className={styles.titleBar}>
+                <HubIcon fontSize="large" />
+                <h2>Latin Travel Collection</h2>
+                <h1>Operations</h1>
+            </div>  
+            
+            {loadingTrigger? <>
+                {loadingScreen("Fetching Departure Data")}
+            </>:<>
+                {/* Daily(monthly||weekly ) Planner */}
+                {theDeparture? <>
+                    {fileSwitch ? <>
+                        <div style={{display: "flex", flexDirection:"column", alignItems:"center", margin:"15px", position:"relative", width:"760px" }}> 
+                            {aFileDisplayer(theItinerary, theDeparture)}
+                        </div>
+                    </>:<> 
+                        {depCreator(theItinerary, theDeparture)}
+                    </>}
+
+                </> : plannerTrig ? <>
+                {/* PLANNER */}
+
+                    {operationsPlanner(activeDeps, weeklyPlanner)}   
+
+                </> : createdep ? <>
+
+                    {departureCreator()}
+
+                </> : <>
+                    {/* display itineraries and select a dep for file */}
+                    <strong className={styles.printDEL} >{toDateDisplayer}</strong>
+                    {statsDisplayer(activeDeps, upcomingDeps)}            
+                    {depDisplayer(activeDeps, "active Departures", true)}
+                    {depDisplayer(upcomingDeps, "upcoming Departures", false)}
+                    <br/><br/>
+
+
+                    <div className={styles.createDepTrig} onClick={()=>{
+                        window.scrollTo({top: 0})
+                        setPlannerTrig(true);  
+                        }}>
+                        open planner</div>
+
+                    <div className={styles.createDepTrig} onClick={()=>{
+                        window.scrollTo({top: 0})
+                        setCreateDep(true)
+                        }}> 
+                        create departure
+                        </div>
+                </>}
             </>}
         </>}
-    </>}
-    </div>
-  </>)
+        </div>
+    </>)
 }
