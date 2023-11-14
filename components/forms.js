@@ -663,7 +663,7 @@ export function DayByDayAdder(props){
         <form style={{width:"100%"}} id="theDayFormID">
 
         {/* Auto fill  HEREEE */}
-            {/* <div className={styles.addFromRecordBTN} onClick={async()=>{
+            <div className={styles.addFromRecordBTN} onClick={async()=>{
                     setAutoFillTrig(true)
                     if(!autoFilLocArr){
                         const res = await fetch("/api/googleApi", {
@@ -679,7 +679,7 @@ export function DayByDayAdder(props){
                     } else {
 
                     }
-                }}> <PlaylistAddIcon/> &nbsp; Autofill </div> */}
+                }}> <PlaylistAddIcon/> &nbsp; Autofill </div>
 
         {props.editDayTrigger? <>
             <h3>Edit day {props.editDayTrigger}:</h3> 

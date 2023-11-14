@@ -3,8 +3,6 @@ import secrets from "./../../secrets.json"
 
 let spreadsheetID = process.env.spreadsheetID
 
-console.log(JSON.stringify(secrets), "YOOOOO")
-
 async function handler(req,res){
     if(req.method==="GET"){
 
@@ -28,7 +26,8 @@ async function handler(req,res){
             const jwt = new google.auth.JWT(
             secrets.client_email,
             null,
-            (secrets.private_key|| '').replace(/\\n/g, '\n'),
+            // (secrets.private_key|| '').replace(/\\n/g, '\n'),
+            (secrets.private_key|| ''),
             target, 
             );
             const sheets = google.sheets({ version: "v4",auth: jwt })
