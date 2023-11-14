@@ -1,5 +1,5 @@
 import { google } from "googleapis";
-import secrets from "./../../secrets.json"
+// import secrets from "./../../secrets.json"
 
 let spreadsheetID = process.env.spreadsheetID
 
@@ -20,14 +20,15 @@ async function handler(req,res){
     } else if(req.method==="POST"){
         // fetch according to selected range 
         let reqSheet = req.body
-        console.log(`${reqSheet}!A:B`)
         try{
             const target = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
             const jwt = new google.auth.JWT(
-            secrets.client_email,
+            // secrets.client_email,
+            process.env.GOOGLE_CLIENT_EMAIL,
             null,
             // (secrets.private_key|| '').replace(/\\n/g, '\n'),
-            (secrets.private_key|| ''),
+            // (secrets.private_key|| ''),
+            (process.env.GOOGLE_PRIVATE_KEY|| ''),
             target, 
             );
             const sheets = google.sheets({ version: "v4",auth: jwt })

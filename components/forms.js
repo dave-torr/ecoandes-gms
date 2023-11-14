@@ -616,7 +616,8 @@ export function DayByDayAdder(props){
                         <select id="LocationDropdown" onChange={(e)=>{
                             setLocSelection(`${e.target.value}`)
                         }} >
-                        {theGeneralLocat.map((elem,i)=><React.Fragment key={i}>
+                            <option selected disabled >Select a location </option>
+                            {theGeneralLocat.map((elem,i)=><React.Fragment key={i}>
                             <option value={elem.properties.title} > {`${elem.properties.title}`} </option>
                         </React.Fragment> )}
                         </select>

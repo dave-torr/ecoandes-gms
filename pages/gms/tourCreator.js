@@ -2,7 +2,6 @@ import React, { useState, useEffect  } from "react";
 import { useRouter } from 'next/router'
 import { nanoid } from 'nanoid'
 
-import secrects from "../../secrets.json"
 
 // components
 import { useSession, signIn, signOut } from "next-auth/react"
@@ -391,14 +390,6 @@ let tourDiff =[1,2,3,4,5]
             </div>
         </>)
     }
-
-    // let theFile = secrects.private_key.replace(/\\n/g, '\n')
-    // console.log(theFile)
-    // const credential = JSON.parse(
-    //     Buffer.from(`${JSON.stringify(secrects)}`, "base64").toString()
-    // );
-
-    // console.log(credential)
 
     return(<>
         <div className={styles.generalPageCont}>
