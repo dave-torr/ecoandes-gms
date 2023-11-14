@@ -586,25 +586,25 @@ export function DayByDayAdder(props){
     // const [guideInfoObj, setGuideObj]=useState({})
     // const [guideTrigger, setGuideTrig]=useState(false)
     const [autofillTrig, setAutoFillTrig]=useState(false)
-    const [autoFilLocArr, setAutofillLoc]=useState(false)
+    const [autoFillData, setAutoFillData]=useState(false)
     const [locSelection, setLocSelection]=useState(false)
     const [autofillOpts, setAutofillOps]=useState()
 
     useEffect(async()=>{
         setAutofillOps()
-        if(locSelection){
-            const res = await fetch("/api/googleApi",{
-                method: "POST",
-                body: locSelection
-            })
-            const locData = await res.json()
-            if(res.status===200){
-                setAutofillOps(locData)
-                console.log(locData)
-            }
-        }
+
     },[locSelection])
     const autofillSelector=(theGeneralLocat)=>{
+        let locArr = []
+        if(theGeneralLocat){
+            theGeneralLocat?.forEach(element => {
+                console.log(element)
+                const findContact = locArr.find(elemental=> elemental === element.location)
+                if(!findContact){
+                    locArr.push(element.location)
+                }
+            })
+        }
         return(<>
             <Dialog open={autofillTrig} maxWidth="xl" onClose={()=>setAutoFillTrig(false)}>
                 <div className={styles.autofillCont}> 
@@ -617,8 +617,8 @@ export function DayByDayAdder(props){
                             setLocSelection(`${e.target.value}`)
                         }} >
                             <option selected disabled >Select a location </option>
-                            {theGeneralLocat.map((elem,i)=><React.Fragment key={i}>
-                            <option value={elem.properties.title} > {`${elem.properties.title}`} </option>
+                            {locArr.map((elem,i)=><React.Fragment key={i}>
+                            <option value={elem} > {elem} </option>
                         </React.Fragment> )}
                         </select>
 
@@ -628,7 +628,9 @@ export function DayByDayAdder(props){
                             {autofillOpts.map((elem,i)=><React.Fragment key={i}>
                                 <div className={styles.eachAutoFill} >
                                     <div style={{width: "25%"}}> 
+                                    
                                         {elem[0]} 
+
                                         {i>0&& <>
                                             <br/><br/><br/>
                                             <div className={styles.addFromRecordBTN} onClick={()=>{
@@ -644,10 +646,14 @@ export function DayByDayAdder(props){
                                         </>}
                                     
                                     </div>
-                                    <div style={{width: "75%"}}> {elem[1]} </div>
+                                    <div style={{width: "75%"}}> 
+                                    
+                                        {elem[1]} 
+                                    
+                                    </div>
                                 </div>
                             </React.Fragment> )}
-                            </div>
+                        </div>
                         </> }
                     </>:<>
                         <CircularProgress />
@@ -660,25 +666,21 @@ export function DayByDayAdder(props){
 
 
     return(<>
-    {autofillSelector(autoFilLocArr)}
+    {/* {autofillSelector(autoFillData)} */}
         <form style={{width:"100%"}} id="theDayFormID">
 
         {/* Auto fill  HEREEE */}
             <div className={styles.addFromRecordBTN} onClick={async()=>{
                     setAutoFillTrig(true)
-                    if(!autoFilLocArr){
-                        const res = await fetch("/api/googleApi", {
+                    if(!autoFillData){
+                        const res = await fetch("/api/gms/dayByDayDB", {
                             method: "GET"
                         })
                         const docData = await res.json()
                         if(res.status===200){
-                            setAutofillLoc(
-                                docData.data.sheets
-                            )
-                        //  Error catching
+                            console.log(docData)
+                            setAutoFillData(docData)
                         }
-                    } else {
-
                     }
                 }}> <PlaylistAddIcon/> &nbsp; Autofill </div>
 
@@ -691,7 +693,7 @@ export function DayByDayAdder(props){
             {/* Day Description */}
             {anInputDisplayer("Day Title", "dayTitle", "text", true, aTravelDay.dayTitle, aTravelDay, setTravelDay, undefined, undefined, "Main daily activity" )}
             <label className={styles.inputLabel} > Day detail </label>
-            <div contenteditable="true" onInput={(e)=>{
+            <div contentEditable="true" onInput={(e)=>{
                 setTravelDay({
                     ...aTravelDay,
                     "dayDescription" : e.target.innerHTML

@@ -2755,7 +2755,7 @@
     "merge2" "^1.4.1"
     "slash" "^3.0.0"
 
-"google-auth-library@^9.0.0":
+"google-auth-library@^9.0.0", "google-auth-library@^9.2.0":
   "integrity" "sha512-1oV3p0JhNEhVbj26eF3FAJcv9MXXQt4S0wcvKZaDbl4oHq5V3UJoSbsGZGQNcjoCdhW4kDSwOs11wLlHog3fgQ=="
   "resolved" "https://registry.npmjs.org/google-auth-library/-/google-auth-library-9.2.0.tgz"
   "version" "9.2.0"

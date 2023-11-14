@@ -313,9 +313,32 @@ let tempDep= {
 
 export default function PlaygroundPage(){
     const { data: session } = useSession()
-    const [testerObj, setTester]=useState({})
+    const [tempData, setTempData]=useState()
 
-    const [tempAdderObj, setTempObj]=useState(false)
+    const [locObject, setTempObj]=useState(false)
+    const [autofillOpts, setAutofillOps]=useState()
+
+
+
+    useEffect(async()=>{
+        setAutofillOps()
+        if(locObject){
+            const res = await fetch("/api/googleApi",{
+                method: "POST",
+                body: locObject
+            })
+            const locData = await res.json()
+            if(res.status===200){
+                setAutofillOps(locData)
+                console.log(locData)
+            }
+        }
+    },[locObject])
+    
+    useEffect(()=>{
+        console.log(autofillOpts)
+    },[autofillOpts])
+
     /////////////////////////////////////////////////////
     /////////////////////////////////////////////////////
 
@@ -400,6 +423,8 @@ export default function PlaygroundPage(){
             ]
         }
 
+    console.log(autofillOpts)
+
     const getGoogleDataBTN=()=>{
 
         return(<>
@@ -410,10 +435,71 @@ export default function PlaygroundPage(){
                     })
                     const docData = await res.json()
                     if(res.status===200){
-                        console.log(docData)
+                        setTempData(docData.data.sheets)
                     } else (res)
                 }}
             > GET DATA</div>
+            {tempData && <> 
+                <select id="LocationDropdown" onChange={(e)=>{
+                    setTempObj(`${e.target.value}`)
+                }} >
+                    <option selected disabled >Select a location </option>
+                    {tempData.map((elem,i)=><React.Fragment key={i}>
+                    <option value={elem.properties.title} > {`${elem.properties.title}`} </option>
+                </React.Fragment> )}
+                </select>
+            </>}
+            {autofillOpts && <>
+                <div className={styles.autofillGrid}> 
+                <label className={styles.inputLabel}> Pick a description to add to day </label>
+                    {autofillOpts.map((elem,i)=><React.Fragment key={i}>
+                        <div className={styles.eachAutoFill} >
+                            <div style={{width: "25%"}}>
+                                <div contentEditable onInput={(e)=>{
+                                    let splicer = autofillOpts[i].splice(0, 1, e.target.innerHTML )
+                                    setAutofillOps(autofillOpts)
+                                }} >
+                                {elem[0]} 
+                                </div>
+
+                                {i>0&& <>
+                                    <br/><br/><br/>
+                                    <div className={styles.addFromRecordBTN} onClick={async()=>{
+                                        let aRecordObj ={
+                                            "location": locObject,
+                                            "title": elem[0],
+                                            "description": elem[1],
+                                            "createdBy": session.user.name
+                                        }
+                                        const res = await fetch("/api/gms/dayByDayDB",{
+                                            method: "POST",
+                                            body: JSON.stringify(aRecordObj)
+                                        })
+                                        let databaseRes = await res.json()
+                                        if(res.status===200){
+                                            let splicer = autofillOpts.splice(i, 1)
+                                            setAutofillOps(autofillOpts)
+                                            window.alert("template created")
+                                            console.log(autofillOpts)
+                                        }
+                                    }}> 
+                                        + add to backEnd
+                                    </div>
+                                </>}
+                            
+                            </div>
+                            <div style={{width: "75%"}}> 
+                            <div contentEditable onInput={(e)=>{
+                                    let splicer = autofillOpts[i].splice(1, 1, e.target.innerHTML )
+                                    setAutofillOps(autofillOpts)
+                                }} >
+                                {elem[1]} 
+                            </div>
+                            </div>
+                        </div>
+                    </React.Fragment> )}
+                </div>
+            </>}
         </>)
     }
 
@@ -424,7 +510,7 @@ export default function PlaygroundPage(){
 
                 {/* {aHotelDisplayer(sampleHotel)}
                 {aHotelDisplayer(testerObj)}
-                {hotelAdderForm(testerObj, setTester, tempAdderObj, setTempObj)} */}
+                {hotelAdderForm(testerObj, setTester, locObject, setTempObj)} */}
 
                 {getGoogleDataBTN()}
 

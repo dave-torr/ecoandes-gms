@@ -391,6 +391,14 @@ let tourDiff =[1,2,3,4,5]
         </>)
     }
 
+    
+
+    // const credential = JSON.parse(
+    //     Buffer.from(process.env.GOOGLE_APPLICATION_CREDENTIALS, 'base64').toString().replace(/\n/g,"")
+    // )
+
+    // console.log(process.env.GOOGLE_APPLICATION_CREDENTIALS)
+
     return(<>
         <div className={styles.generalPageCont}>
             {session?<>
