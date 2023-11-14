@@ -28,7 +28,7 @@ async function handler(req,res){
             null,
             // (secrets.private_key|| '').replace(/\\n/g, '\n'),
             // (secrets.private_key|| ''),
-            (process.env.GOOGLE_PRIVATE_KEY|| ''),
+            (process.env.GOOGLE_PRIVATE_KEY|| '').replace(/\\n/g, '\n'),
             target, 
             );
             const sheets = google.sheets({ version: "v4",auth: jwt })
