@@ -3,14 +3,10 @@ import { useState } from 'react'
 import { useSession } from "next-auth/react"
 
 
+
 import {GMSNavii} from "./../components/navis"
-
 import LTCPriceTables from "../data/LTCPriceTables2023.json"
-
 import { aHotelDisplayer, hotelAdderForm } from '../components/operations/providers'
-
-
-
 import styles from "./../styles/pages/playground.module.css"
 
 // Bitacora logo:
@@ -315,7 +311,7 @@ let tempDep= {
     "assignment": "Carlos del Salto"
 };
 
-export default function PlaygroundPage(props){
+export default function PlaygroundPage(){
     const { data: session } = useSession()
     const [testerObj, setTester]=useState({})
 
@@ -404,16 +400,33 @@ export default function PlaygroundPage(props){
             ]
         }
 
+    const getGoogleDataBTN=()=>{
+
+        return(<>
+            <div
+                onClick={async()=>{
+                    const res = await fetch("/api/googleApi", {
+                        method: "GET"
+                    })
+                    const docData = await res.json()
+                    if(res.status===200){
+                        console.log(docData)
+                    } else (res)
+                }}
+            > GET DATA</div>
+        </>)
+    }
 
     return(<>
         {session&&<> 
             <GMSNavii  user={session.user} />
             <div className={styles.playgroundPage}>
 
-                {aHotelDisplayer(sampleHotel)}
+                {/* {aHotelDisplayer(sampleHotel)}
                 {aHotelDisplayer(testerObj)}
-                {hotelAdderForm(testerObj, setTester, tempAdderObj, setTempObj)}
+                {hotelAdderForm(testerObj, setTester, tempAdderObj, setTempObj)} */}
 
+                {getGoogleDataBTN()}
 
             </div> 
         </>}

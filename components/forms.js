@@ -7,11 +7,13 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import CancelIcon from '@mui/icons-material/Cancel';
 import Switch from '@mui/material/Switch';
 import AddBoxIcon from '@mui/icons-material/AddBox';
+import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 
 import FormControlLabel from '@mui/material/FormControlLabel';
 
 //////////////////////////////////////////////////////////
 import styles from "../styles/components/forms.module.css"
+import { CircularProgress, Dialog } from "@mui/material";
 
 // Flag for Deletion
 export function aTextInput(aPlaceholder, inputId, anObject, setAnObject, inputType, reqBoolean){
@@ -76,7 +78,6 @@ export function anInputDisplayer(inputLabel, inputId, inputType, isReq, inputVal
         </div>
     </>)
 }
-
 
 // multi OptDisplayer
 export function multiOptPicker(theOptsArr, inputLabel, inputId, resultingList, anObject, setAnObject, setOptsArr){
@@ -564,7 +565,7 @@ export function DayByDayAdder(props){
     //  day detail
     //  day inclusion list
 
-    // version.2: need to figure out css to avoid wasted space
+    // SEND TO OPERATIONS:
     //  flights:
     //      flightRoute, flightCode, depDate, depTime
     //      confNumber, Arrivaltimes
@@ -580,13 +581,105 @@ export function DayByDayAdder(props){
         "guideData":[],
     })
     const [incluPlaceholder, setPlaceholder]=useState("")
-    const [flightTrigger, setFlightTrigger]=useState(false)
-    const [flightInfoObj, setFlightObj]=useState({})
-    const [guideInfoObj, setGuideObj]=useState({})
-    const [guideTrigger, setGuideTrig]=useState(false)
+    // const [flightTrigger, setFlightTrigger]=useState(false)
+    // const [flightInfoObj, setFlightObj]=useState({})
+    // const [guideInfoObj, setGuideObj]=useState({})
+    // const [guideTrigger, setGuideTrig]=useState(false)
+    const [autofillTrig, setAutoFillTrig]=useState(false)
+    const [autoFilLocArr, setAutofillLoc]=useState(false)
+    const [locSelection, setLocSelection]=useState(false)
+    const [autofillOpts, setAutofillOps]=useState()
+
+    useEffect(async()=>{
+        setAutofillOps()
+        if(locSelection){
+            const res = await fetch("/api/googleApi",{
+                method: "POST",
+                body: locSelection
+            })
+            const locData = await res.json()
+            if(res.status===200){
+                setAutofillOps(locData)
+                console.log(locData)
+            }
+        }
+    },[locSelection])
+    const autofillSelector=(theGeneralLocat)=>{
+        return(<>
+            <Dialog open={autofillTrig} maxWidth="xl" onClose={()=>setAutoFillTrig(false)}>
+                <div className={styles.autofillCont}> 
+                    <h2>Autofill Day {props.aTour.dayByDay.length + 1} </h2>
+                    {theGeneralLocat ? <>
+                        <label htmlFor="LocationDropdown" className={styles.inputLabel}>
+                            Select General Location
+                        </label>
+                        <select id="LocationDropdown" onChange={(e)=>{
+                            setLocSelection(`${e.target.value}`)
+                        }} >
+                        {theGeneralLocat.map((elem,i)=><React.Fragment key={i}>
+                            <option value={elem.properties.title} > {`${elem.properties.title}`} </option>
+                        </React.Fragment> )}
+                        </select>
+
+                        {autofillOpts && <>
+                        <div className={styles.autofillGrid}> 
+                        <label className={styles.inputLabel}> Pick a description to add to day </label>
+                            {autofillOpts.map((elem,i)=><React.Fragment key={i}>
+                                <div className={styles.eachAutoFill} >
+                                    <div style={{width: "25%"}}> 
+                                        {elem[0]} 
+                                        {i>0&& <>
+                                            <br/><br/><br/>
+                                            <div className={styles.addFromRecordBTN} onClick={()=>{
+                                                setTravelDay({
+                                                    ...aTravelDay,
+                                                    "dayTitle": elem[0],
+                                                    "dayDescription": elem[1]
+                                                })
+                                                setAutoFillTrig(false)
+                                            }}> 
+                                                + add to day
+                                            </div>
+                                        </>}
+                                    
+                                    </div>
+                                    <div style={{width: "75%"}}> {elem[1]} </div>
+                                </div>
+                            </React.Fragment> )}
+                            </div>
+                        </> }
+                    </>:<>
+                        <CircularProgress />
+                    </> }
+                </div>
+            </Dialog>
+        </>)
+
+    }
+
 
     return(<>
+    {autofillSelector(autoFilLocArr)}
         <form style={{width:"100%"}} id="theDayFormID">
+
+        {/* Auto fill  HEREEE */}
+            {/* <div className={styles.addFromRecordBTN} onClick={async()=>{
+                    setAutoFillTrig(true)
+                    if(!autoFilLocArr){
+                        const res = await fetch("/api/googleApi", {
+                            method: "GET"
+                        })
+                        const docData = await res.json()
+                        if(res.status===200){
+                            setAutofillLoc(
+                                docData.data.sheets
+                            )
+                        //  Error catching
+                        }
+                    } else {
+
+                    }
+                }}> <PlaylistAddIcon/> &nbsp; Autofill </div> */}
 
         {props.editDayTrigger? <>
             <h3>Edit day {props.editDayTrigger}:</h3> 
@@ -595,10 +688,17 @@ export function DayByDayAdder(props){
         </>}
             
             {/* Day Description */}
-            {anInputDisplayer("Day Title", "dayTitle", "text", true, undefined, aTravelDay, setTravelDay, undefined, undefined, "Main daily activity" )}
-            {aTextArea("Day detail", "dayDescription", true, undefined, aTravelDay, setTravelDay, "Describe daily activities")}
+            {anInputDisplayer("Day Title", "dayTitle", "text", true, aTravelDay.dayTitle, aTravelDay, setTravelDay, undefined, undefined, "Main daily activity" )}
+            <label className={styles.inputLabel} > Day detail </label>
+            <div contenteditable="true" onInput={(e)=>{
+                setTravelDay({
+                    ...aTravelDay,
+                    "dayDescription" : e.target.innerHTML
+                })
+            }} className={styles.inputUserUI}>
+                {aTravelDay.dayDescription ? aTravelDay.dayDescription : <> </>}
+            </div>
             {inputToList("add to day", "dayInclusions", aTravelDay, setTravelDay, aTravelDay.dayInclusions, incluPlaceholder, setPlaceholder)}
-
             {/* daily hotel accom */}
             {anInputDisplayer("Overnight Property", "overnightProperty", "text", false, undefined, aTravelDay, setTravelDay, undefined, undefined, "Hotel / Lodge Name")}
 
@@ -617,7 +717,9 @@ export function DayByDayAdder(props){
                             ],
                             "flightData":[],
                             "guideData":[],
+                            "dayDescription": ""
                         })
+                        setLocSelection()
                         props.setEditDayTrig(false)
                     } else {
                         let tempList=props.aTour.dayByDay.concat(aTravelDay)

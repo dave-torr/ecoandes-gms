@@ -78,13 +78,19 @@ let tourDiff =[1,2,3,4,5]
     const [destinationList, setDestList] = useState([...ecoAndesDestinations])
     const [tourCreatorStep, settourCreatorStep]=useState(0)
     const [editDayTrigger, setEditDayTrig]=useState(false)
+
+
     // img state mngmt
+    // Bring in pics from Colombia
     const [fetchedImgArrs, setFetchedImgs]=useState()
     const [filteredImgArr, setFilteredImgs]=useState()
     const [loadingState, setLoadingState]=useState(false)
     const [imgDestFilter, setImgFilter]=useState(0)
 
     const [submitionTrig, setSubmitTrig]=useState(false)
+
+    const [addDayDescriTrig, setAddDayDesc] =useState(false)
+
 
     // utils
     const stepBTNs=(nextOrPrev)=>{
@@ -193,6 +199,8 @@ let tourDiff =[1,2,3,4,5]
             }} > D {i+1}</div>
         </React.Fragment>)
         
+
+
 
         return(<>
         {tourCreatorStep===1&&<>
@@ -349,7 +357,6 @@ let tourDiff =[1,2,3,4,5]
             </div>
         </>)
     }
-
     const sendToBackEnd=(theTour, userData)=>{
         return(<>
             <div className={styles.nextStepBTN} 

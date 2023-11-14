@@ -111,6 +111,57 @@
     justify-content: space-between;
 }
 
+.addFromRecordBTN{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    border-bottom: solid 1px;
+    border-right: solid 1px;
+    padding:  3px 10px;
+    transition: all ease-in 0.2s;
+}
+
+.addFromRecordBTN:hover{
+    color: white;
+    background-color: rgb(55, 62, 69);
+    cursor: pointer;
+}
+
+.autofillCont select{
+    padding: 9px 12px;
+    font-size: 1.1em;
+}
+
+.autofillCont{
+    width: 650px;
+    min-height: 400px;
+    padding: 9px 15px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    text-align: start;
+}
+
+
+
+
+.autofillGrid{
+    display: flex;
+    flex-direction: column;
+    margin-top: 33px;
+}
+.autofillGrid div:first-of-type{
+    font-weight: 700;
+}
+
+.eachAutoFill{
+    border: solid 1px black;
+    display: flex;
+    padding: 3px 6px;
+}
+
+
+
 .submitDayBTN{
     width: 100%;
     margin: 15px 0;

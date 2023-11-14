@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start --openssl-legacy-provider ",
     "lint": "next lint"
   },
   "dependencies": {
@@ -29,6 +29,7 @@
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
     "dayjs": "^1.11.3",
+    "googleapis": "^128.0.0",
     "mongodb": "^4.1.4",
     "nanoid": "^4.0.2",
     "next": "^12.1.0",
