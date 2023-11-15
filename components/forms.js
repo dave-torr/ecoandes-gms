@@ -505,7 +505,7 @@ const guideAdder=(guideInfoObj, setGuideObj, theTravelDay, setDay, setGuideTrigg
         </div>
     </div>
     </>)
-}
+}   
 
 // FFD
 const flightDataDisplayer=(theTravelDay, setTravelDay)=>{
@@ -591,14 +591,15 @@ export function DayByDayAdder(props){
     const [autofillOpts, setAutofillOps]=useState()
 
     useEffect(async()=>{
-        setAutofillOps()
-
+        if(locSelection){
+            let filteringArr = autoFillData.filter((elem=> elem.location === locSelection))
+            setAutofillOps(filteringArr)
+        }
     },[locSelection])
     const autofillSelector=(theGeneralLocat)=>{
         let locArr = []
         if(theGeneralLocat){
             theGeneralLocat?.forEach(element => {
-                console.log(element)
                 const findContact = locArr.find(elemental=> elemental === element.location)
                 if(!findContact){
                     locArr.push(element.location)
@@ -624,32 +625,25 @@ export function DayByDayAdder(props){
 
                         {autofillOpts && <>
                         <div className={styles.autofillGrid}> 
-                        <label className={styles.inputLabel}> Pick a description to add to day </label>
+                        <label className={styles.inputLabel}> Pick a description to add to day </label> <br/>
                             {autofillOpts.map((elem,i)=><React.Fragment key={i}>
                                 <div className={styles.eachAutoFill} >
                                     <div style={{width: "25%"}}> 
-                                    
-                                        {elem[0]} 
-
-                                        {i>0&& <>
-                                            <br/><br/><br/>
-                                            <div className={styles.addFromRecordBTN} onClick={()=>{
-                                                setTravelDay({
-                                                    ...aTravelDay,
-                                                    "dayTitle": elem[0],
-                                                    "dayDescription": elem[1]
-                                                })
-                                                setAutoFillTrig(false)
-                                            }}> 
-                                                + add to day
-                                            </div>
-                                        </>}
-                                    
+                                        {elem.title} 
+                                        <br/>
+                                        <div className={styles.addFromRecordBTN} onClick={()=>{
+                                            setTravelDay({
+                                                ...aTravelDay,
+                                                "dayTitle": elem.title,
+                                                "dayDescription": elem.description
+                                            })
+                                            setAutoFillTrig(false)
+                                        }}> 
+                                            + add to day
+                                        </div>
                                     </div>
                                     <div style={{width: "75%"}}> 
-                                    
-                                        {elem[1]} 
-                                    
+                                        {elem.description} 
                                     </div>
                                 </div>
                             </React.Fragment> )}
@@ -664,9 +658,10 @@ export function DayByDayAdder(props){
 
     }
 
+    console.log(autofillOpts)
 
     return(<>
-    {/* {autofillSelector(autoFillData)} */}
+    {autofillSelector(autoFillData)}
         <form style={{width:"100%"}} id="theDayFormID">
 
         {/* Auto fill  HEREEE */}
