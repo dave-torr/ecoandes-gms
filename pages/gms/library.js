@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useSession } from "next-auth/react"
 
@@ -9,7 +9,7 @@ import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
 import styles from "../../styles/pages/library.module.css";
 
 
-function LibraryPage({ posts }){
+function LibraryPage(){
     const { data: session } = useSession()
 // library page will list elements of DB that should be accesible for Operations, Sales, Finance, etc.
 
@@ -22,9 +22,25 @@ function LibraryPage({ posts }){
 // Templates
 // activities, itin descriptions, 
 
-    const [libPage, setLibPage] = useState()
+    const [library, setLibrary] = useState()
 
-    console.log(posts)
+    useEffect(async()=>{
+        // fetches itin autofill
+        const res = await fetch("http://localhost:3000/api/gms/dayByDayDB", {
+            method: "GET"
+        })
+        const posts = await res.json()
+        if (res.status === 200){
+            setLibrary({
+                ...posts
+            })
+        }
+
+
+    },[])
+
+
+    console.log(library)
 
     return(<>
     {session && <>
@@ -38,18 +54,5 @@ function LibraryPage({ posts }){
     </>}</>)
 }
 
-export async function getStaticProps(){
-    const res = await fetch("http://localhost:3000/api/gms/dayByDayDB", {
-        method: "GET"
-    })
-    const posts = await res.json()
-
-    return{
-        props: {
-            posts
-        },
-        revalidate: 30,
-    }
-}
 
 export default LibraryPage
