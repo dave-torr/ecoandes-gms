@@ -123,6 +123,7 @@ export default function OperationsDashboard(){
     // planner page: print horizontally, 
 
     const { data: session } = useSession()
+    const [theLang, setLang]= useState("english")
 
     const [activeDeps, setActiveDeps]=useState([])
     const [fetchedItins, setFetchedItins]=useState([])
@@ -444,8 +445,10 @@ export default function OperationsDashboard(){
                 <><span className={styles.statusOne}>.</span>on Sale</> 
             : theDep.saleProcess==="reserved"?
                 <><span className={styles.statusTwo}>.</span>Reserved</> 
-            : theDep.saleProcess==="confirmed"&&
-                <><span className={styles.statusThree}>.</span>Confirmed</> }
+            : theDep.saleProcess==="confirmed"?
+                <><span className={styles.statusFour}>.</span>confirmed</> 
+            : theDep.saleProcess==="running"&&
+                <><span className={styles.statusThree}>.</span>running</> }
         </div>
         </>)
     }
@@ -504,7 +507,6 @@ export default function OperationsDashboard(){
                 
         return(<>
             <select onChange={(e)=>{
-                console.log(theItinerary, e.target.value, "cucu")
                 e.target.value
                 setTheItinerary({
                     ...theItinerary,
@@ -1285,6 +1287,7 @@ export default function OperationsDashboard(){
                                 <option value="onSale"> On Sale</option>
                                 <option value="reserved"> Reserved</option>
                                 <option value="confirmed"> Confirmed</option>
+                                <option value="running"> Running</option>
                         </select>
                     </div>
 
@@ -1397,7 +1400,13 @@ export default function OperationsDashboard(){
             </>}
             <div style={{width:"33px"}}> {i+1} </div>
                 <div className={styles.aRoomingDetail} style={{width:"108px", borderLeft:"solid 1px black"}}>
-                    {elem?.singleSupp &&<>SINGLE</>}
+                    {elem?.singleSupp &&<>
+                    {theLang==="english"? <>
+                        SINGLE
+                    </>: theLang==="espanol" && <>
+                        SENCILLA
+                    </>}
+                    </>}
                     {elem?.accomodationType!="single" && <>
                         {elem?.accomodationType}
                     </>}
@@ -1453,22 +1462,28 @@ export default function OperationsDashboard(){
             </>}
                 <div style={{width:"33px"}}> TL </div>
                 <div className={styles.aRoomingDetail} style={{width:"108px", borderLeft:"solid 1px black"}}>
-                    SINGLE
+                    {theLang==="english"? <>
+                        SINGLE
+                    </>: theLang==="espanol" && <>
+                        SENCILLA
+                    </>}
                 </div>
                 <div style={{display:"flex", flexDirection:"column"}}>
-
-
                     {elemTL.guestArr?.map((guestElem, i)=> <React.Fragment key={i}>
                         {eachGuestData(guestElem)}
                     </React.Fragment>)}
-
-
                 </div>
             </div>
             {elemTL.guestArr[0].guestNotes.length>0 &&  <>
                 <div className={styles.eachRoomDisplayer}>
                     <span style={{textTransform:"capitalize"}}>
-                    <strong>NOTES:</strong> &nbsp;
+                    <strong>
+                    {theLang==="english"? <>
+                        NOTES:
+                    </>: theLang==="espanol" && <>
+                        NOTASÑ
+                    </>}
+                    </strong> &nbsp;
                     {elemTL.guestArr[0].guestNotes.map((theNote,i)=><React.Fragment key={i}>{i>0&&<>,</>} {theNote}</React.Fragment>)}
                     </span>
                 </div>
@@ -1476,7 +1491,13 @@ export default function OperationsDashboard(){
             {elemTL.guestArr[0].bootSize&&<>
                 <div className={styles.eachRoomDisplayer}>
                     <span style={{textTransform:"capitalize"}}>
-                    <strong>BOOT SIZE:</strong> &nbsp;
+                    <strong>
+                    {theLang==="english"? <>
+                        BOOT SIZE:
+                    </>: theLang==="espanol" && <>
+                        TAMAÑO BOTAS
+                    </>}
+                    </strong> &nbsp;
                     {elemTL.guestArr[0].bootSize}
                     </span>
                 </div>
@@ -1488,8 +1509,14 @@ export default function OperationsDashboard(){
         <div className={styles.roomingListCont}>
             {/* rooming */}
             {documentDispTrigs.roomingList&&<> 
-            <div className={styles.spaceBetRow}> 
-                <h2> Rooming List</h2>
+            <div className={styles.spaceBetRow}>             
+                <h2> 
+                    {theLang==="english"? <>
+                        Rooming List
+                    </>: theLang==="espanol" && <>
+                        Lista de Acomodacion & Huespedes
+                    </>}
+                </h2>
                 {/* edit data */}
                 {!documentGenerator&&<>
                     {editSwitch&& <> 
@@ -1510,7 +1537,12 @@ export default function OperationsDashboard(){
                     </>}
                 </>}
             </div>
-            {paxData&&<><div className={styles.guestTotal}>{paxData.paxTotal} guest{paxData.paxTotal>1&&<>s</>}
+            {paxData&&<><div className={styles.guestTotal}>{paxData.paxTotal} 
+                {theLang==="english"? <>
+                    guest{paxData.paxTotal>1&&<>s</>}
+                </>: theLang==="espanol" && <>
+                    huesped{paxData.paxTotal>1&&<>es</>}
+                </>}
                 {theDep?.tourLeader.length>0 && <> 
                     {" "} + {theDep?.tourLeader?.length} TL </>}
                 </div></>} 
@@ -1520,12 +1552,48 @@ export default function OperationsDashboard(){
                 {paxData.paxTotal>0 && <>
                 <div className={styles.roomingListKEYS}>
                     <div style={{width:"33px"}}> # </div>
-                    <div style={{width:"108px", borderLeft:"solid 1px black"}}>ROOM TYPE</div>
-                    <div style={{width:"180px", borderLeft:"solid 1px black", textAlign:"start" }}>&nbsp;&nbsp;GUEST NAME </div>
-                    <div style={{width:"120px", borderLeft:"solid 1px black" }}> NATIONALITY </div>
-                    <div style={{width:"100px", borderLeft:"solid 1px black" }}> D.O.B. </div>
-                    <div style={{width:"120px", borderLeft:"solid 1px black" }}> PASSPORT </div>
-                    <div style={{width:"66px", borderLeft:"solid 1px black" }}> AGE </div>
+                    <div style={{width:"108px", borderLeft:"solid 1px black"}}>
+                    {theLang==="english"? <>
+                        ROOM TYPE
+                    </>: theLang==="espanol" && <>
+                        TIPO HAB.
+                    </>}
+                    </div>
+                    <div style={{width:"180px", borderLeft:"solid 1px black", textAlign:"start" }}>&nbsp;&nbsp;
+                    {theLang==="english"? <>
+                        GUEST NAME 
+                    </>: theLang==="espanol" && <>
+                        NOMBRE HUESPED
+                    </>}
+                    </div>
+                    <div style={{width:"120px", borderLeft:"solid 1px black" }}> 
+                    {theLang==="english"? <>
+                        NATIONALITY 
+                    </>: theLang==="espanol" && <>
+                        NACIONALIDAD
+                    </>}
+                    </div>
+                    <div style={{width:"100px", borderLeft:"solid 1px black" }}> 
+                    {theLang==="english"? <>
+                        D.O.B. 
+                    </>: theLang==="espanol" && <>
+                        F. NACI
+                    </>}
+                    </div>
+                    <div style={{width:"120px", borderLeft:"solid 1px black" }}> 
+                    {theLang==="english"? <>
+                        PASSPORT 
+                    </>: theLang==="espanol" && <>
+                        PASAPORTE
+                    </>}
+                    </div>
+                    <div style={{width:"66px", borderLeft:"solid 1px black" }}> 
+                    {theLang==="english"? <>
+                        AGE 
+                    </>: theLang==="espanol" && <>
+                        EDAD
+                    </>}
+                    </div>
                 </div>
                 </>}
                 {eachRoom}
@@ -1553,11 +1621,29 @@ export default function OperationsDashboard(){
             {documentDispTrigs.guestNotes&&<>
             
             {eachNote.length>0&&<>
-                <h2>Guest Notes </h2>
+                <h2>
+                    {theLang==="english"? <>
+                        Guest Notes 
+                    </>: theLang==="espanol" && <>
+                        Notas de Huespedes
+                    </>}
+                </h2>
                 <div className={styles.roomingListGrid}>
                 <div className={styles.roomingListKEYS}>
-                    <div style={{width:"180px", textAlign:"start" }}>&nbsp; GUEST NAME </div>
-                    <div style={{borderLeft:"solid 1px black" }}>&nbsp; SPECIAL INDICATIONS </div>
+                    <div style={{width:"180px", textAlign:"start" }}>&nbsp; 
+                        {theLang==="english"? <>
+                        GUEST NAME 
+                    </>: theLang==="espanol" && <>
+                        Nombre huesped
+                    </>}
+                    </div>
+                    <div style={{borderLeft:"solid 1px black" }}>&nbsp; 
+                        {theLang==="english"? <>
+                        SPECIAL INDICATIONS 
+                    </>: theLang==="espanol" && <>
+                        Indicaciones especiales
+                    </>}
+                    </div>
                 </div>
                     {noteDisp}
                 </div>
@@ -1566,11 +1652,29 @@ export default function OperationsDashboard(){
             {/* boot Size */}
             {documentDispTrigs.bootSizes&&<>
             {bootArr.length>0&&<>
-                <h2>Guest Boot sizes </h2>
+                <h2>
+                {theLang==="english"? <>
+                    Guest Boot sizes 
+                </>: theLang==="espanol" && <>
+                    Tamaño botas huespedes
+                </>}
+                </h2>
                 <div className={styles.roomingListGrid}>
                 <div className={styles.roomingListKEYS}>
-                    <div style={{width:"180px", textAlign:"start" }}>&nbsp; GUEST NAME </div>
-                    <div style={{borderLeft:"solid 1px black" }}>&nbsp; Boot Size </div>
+                    <div style={{width:"180px", textAlign:"start" }}>&nbsp; 
+                    {theLang==="english"? <>
+                        GUEST NAME 
+                    </>: theLang==="espanol" && <>
+                        Nombre huesped
+                    </>}
+                    </div>
+                    <div style={{borderLeft:"solid 1px black" }}>&nbsp; 
+                    {theLang==="english"? <>
+                        Boot Size 
+                    </>: theLang==="espanol" && <>
+                        tamaño botas
+                    </>}
+                    </div>
                 </div>
                     {bootDisp}
                 </div>
@@ -1578,7 +1682,13 @@ export default function OperationsDashboard(){
 
 
             {theDep.departureNotes.length>0 ? <>
-            <h2>Departure Notes </h2>
+            <h2>
+                {theLang==="english"? <>
+                    Departure Notes 
+                </>: theLang==="espanol" && <>
+                    Notas de salida
+                </>}
+            </h2>
             </> : <> </>}
             {editSwitch?<> <br/>
                 <div className={styles.spaceBetRow}>
@@ -2321,11 +2431,45 @@ export default function OperationsDashboard(){
         if(paxData.paxTotal>0){
         return(<>
         <div className={styles.roomingListTotalCont}>
-            {paxData?.roomReq.singleRooms>0&&<><div>{paxData.roomReq.singleRooms} SINGLE Room{paxData.roomReq.singleRooms>1&&<>s</>}</div></>} 
-            {paxData?.roomReq.twinRooms>0&&<><div>{paxData.roomReq.twinRooms} twin Room{paxData.roomReq.twinRooms>1&&<>s</>}</div></>} 
-            {paxData?.roomReq.matrimonialRooms>0&&<><div>{paxData.roomReq.matrimonialRooms} matrimonial Room{paxData.roomReq.matrimonialRooms>1&&<>s</>}</div></>} 
-            {paxData?.roomReq.tripleRooms>0&&<><div>{paxData.roomReq.tripleRooms} triple Room{paxData.roomReq.tripleRooms>1&&<>s</>}</div></>} 
-            {paxData?.roomReq.quadRooms>0&&<><div>{paxData.roomReq.quadRooms} cuadruple Room{paxData.roomReq.quadRooms>1&&<>s</>}</div></>} 
+            {paxData?.roomReq.singleRooms>0&&<><div>
+            {theLang==="english"? <>
+                SINGLE{paxData.roomReq.singleRooms>1&&<>s</>} 
+            </>: theLang==="espanol" && <>
+                SENCILLA{paxData.roomReq.singleRooms>1&&<>s</>} 
+            </>} 
+            &nbsp; x {paxData.roomReq.singleRooms}</div></>} 
+            {paxData?.roomReq.twinRooms>0&&<><div>
+            {theLang==="english"? <>
+                twin Room{paxData.roomReq.twinRooms>1&&<>s</>}
+            </>: theLang==="espanol" && <>
+                habitacion{paxData.roomReq.twinRooms>1&&<>es</>} doble{paxData.roomReq.twinRooms>1&&<>s</>}
+            </>}
+            &nbsp; x {paxData.roomReq.twinRooms} 
+            </div></>} 
+            {paxData?.roomReq.matrimonialRooms>0&&<><div>
+            {theLang==="english"? <>
+                matrimonial Room{paxData.roomReq.matrimonialRooms>1&&<>s</>}
+            </>: theLang==="espanol" && <>
+                habitacion{paxData.roomReq.twinRooms>1&&<>es</>} matrimonial{paxData.roomReq.twinRooms>1&&<>es</>}
+            </>}
+            &nbsp; x {paxData.roomReq.matrimonialRooms} 
+            </div></>} 
+            {paxData?.roomReq.tripleRooms>0&&<><div>
+            {theLang==="english"? <>
+                triple Room{paxData.roomReq.tripleRooms>1&&<>s</>}
+            </>: theLang==="espanol" && <>
+                habitacion{paxData.roomReq.twinRooms>1&&<>es</>} triples{paxData.roomReq.twinRooms>1&&<>es</>}
+            </>}
+            &nbsp; x {paxData.roomReq.tripleRooms} 
+            </div></>} 
+            {paxData?.roomReq.quadRooms>0&&<><div>
+            {theLang==="english"? <>
+                cuadruple Room{paxData.roomReq.quadRooms>1&&<>s</>}
+            </>: theLang==="espanol" && <>
+                habitacion{paxData.roomReq.twinRooms>1&&<>es</>} cuadruple{paxData.roomReq.twinRooms>1&&<>s</>}
+            </>}
+            &nbsp; x {paxData.roomReq.quadRooms} 
+            </div></>} 
         </div>
         </>)
         } 
@@ -3026,7 +3170,6 @@ export default function OperationsDashboard(){
     }
     const expenseEditor=(theExpense, setTheExpense, expenseIndex, dayIndx, theDep, setTheDep)=>{
         if(theExpense){
-            console.log(theExpense)
             return(<>
                 {theExpense?.expenseKey==="accommodation"&& <> 
                     <h3>Edit Accommodation</h3>
@@ -3245,8 +3388,10 @@ export default function OperationsDashboard(){
                     /> 
                 </div>
                 <div style={{ width:"47%", display:"flex" }}>
+                {documentDispTrigs.logo && <> 
                     <h4>Logo Selector </h4> &nbsp;&nbsp;
                     {logoSwitcher()}
+                </>}
                 </div>
             </div>
             <div className={styles.spaceBetRow}>
@@ -3333,6 +3478,20 @@ export default function OperationsDashboard(){
                     /> 
                 </div>
             </div>
+
+            <h4>language:</h4>
+            <input type="radio" id="English" name="fav_language" defaultChecked value="english" onClick={(e)=>{
+                setLang(e.target.value)
+            }}/>
+            <label for="English">English</label>
+            <input type="radio" id="Espanol" name="fav_language" value="espanol" onClick={(e)=>{
+                setLang(e.target.value)
+            }}/>
+            <label for="Espanol">Español</label>
+
+
+
+
         </div>
         </>)
     }
@@ -3353,7 +3512,11 @@ export default function OperationsDashboard(){
                 { elem?.find(elem2 => elem2.contactName===theDocs?.contactName) &&<>
                 <div className={styles.spaceBetRow} style={{marginTop:"12px"}} >
                     <div style={{display:"flex", alignItems:"center"}}>
-                        <h4>Day {i + 1}:</h4> &nbsp; {theItinerary?.dayByDay[i].dayTitle}
+                        <h4>{theLang==="english"? <>
+                            Day
+                        </>: theLang==="espanol" && <>
+                            Dia
+                        </>}{i + 1}:</h4> &nbsp; {theItinerary?.dayByDay[i].dayTitle}
                     </div>
                     {aDateDisp(undefined, theDeparture.startingDate, undefined, i)}
                 </div>    
@@ -3480,6 +3643,40 @@ export default function OperationsDashboard(){
                 </>}</>)}
             </React.Fragment>)
         }
+        let chosenGloss={}
+        const engGlossary={
+            "tripStart": "Trip Starting Date",
+            "tripEnd": "Trip Ending Date",
+            "tourName": "Tour Name",
+            "createdDate": "Date Created",
+            "duration": "Duration",
+            "tripRef": "Trip Reference",
+            "tourLeader": "Tour Leader",
+            "tourLang": "Tour Language",
+            "tourCode": "Tour Code",
+            "dateIn": "Date In",
+            "dateOut": "Date Out",
+        }
+        const spaGlossary={
+            "tripStart": "Fecha Inicio Viaje",
+            "tripEnd": "Fecha Fin Viaje",
+            "tourName": "Itinerario",
+            "createdDate": "Fecha:",
+            "duration": "Duracion itinerario",
+            "tripRef": "Referencia Itinerario",
+            "tourLeader": "Tour Leader",
+            "tourLang": "Lenguaje Programa",
+            "tourCode": "Codigo Grupo",
+            "dateIn": "Fecha Entrada",
+            "dateOut": "Fecha salida",
+        }
+        if(theLang==="english"){
+            chosenGloss = engGlossary
+        } else if ( theLang === "espanol"){
+            chosenGloss = spaGlossary
+        }
+
+
         return(<>
             <div className={styles.spaceBetRowPRINT}>
                 <h2>Document Generator:</h2>
@@ -3495,10 +3692,26 @@ export default function OperationsDashboard(){
                 {logoDisplayer(theItinerary, "logo")}</span></>}
             <div className={styles.spaceBetRow}>
                 <h1> 
-                    {theDocs.docKey==="workOrder"&&<> Work Order</>} 
+                    {theDocs.docKey==="workOrder"&&<> 
+                    {theLang==="english"? <>
+                        Work Order
+                    </>: theLang==="espanol" && <>
+                        Orden de Trabajo
+                    </>}
+                    </>} 
                     {theDocs.docKey==="contract"&&<> Contract</>}
-                    {theDocs.docKey==="cashReq"&&<> Economic Requirement</>}
-                    {theDocs.docKey==="accommodation"&&<> Accommodations Requirement</>}
+                    {theDocs.docKey==="cashReq"&&<>
+                    {theLang==="english"? <>
+                        Economic Requirement
+                    </>: theLang==="espanol" && <>
+                        Requerimiento Economico
+                    </>}</>}
+                    {theDocs.docKey==="accommodation"&&<> 
+                    {theLang==="english"? <>
+                        Accommodations Requirement
+                    </>: theLang==="espanol" && <>
+                        Requerimiento Hospedaje
+                    </>}</>}
                 </h1>
                 {(session?.user.hierarchy===1 || session?.user.name===theDeparture.assignment)&& <>
                     {(theDocs.docKey!="accommodation"&& theDocs.docKey!="cashReq")&& <>
@@ -3512,33 +3725,49 @@ export default function OperationsDashboard(){
                 </>}
             </div>
             <div className={styles.spaceBetRow}>  
-                <h2>For: {theDocs?.contactName} </h2>
+                <h2>{theLang==="english"? <>
+                        For:
+                    </>: theLang==="espanol" && <>
+                        Para:
+                    </>}
+                    {theDocs?.contactName} 
+                </h2>
             </div>
             {theDocs?.hotelName&&<><h2><strong>{theDocs?.hotelName}</strong></h2></>}
-            <div>By: {session?.user.name} | Operations Department</div> <br/>
+            <div>{theLang==="english"? <>
+                        By:
+                    </>: theLang==="espanol" && <>
+                        Por:
+                    </>}
+            {session?.user.name}</div> <br/>
+            <div className={styles.detailDispl}>
+                {theDeparture?.tripName&&<>{detailWithTitleDisp(chosenGloss.tourName, theDeparture.tripName)}</>}
+                {detailWithTitleDisp(chosenGloss.createdDate, toDate.toLocaleDateString('en-GB', dateOptions))}
+                {theDeparture?.tourCode&&<>{detailWithTitleDisp(chosenGloss.tourCode, theDeparture.tourCode)}</>}
+                {theDeparture.duration&&<>{detailWithTitleDisp(chosenGloss.duration, `${theDeparture.duration} days`)}</>}
+                {theDeparture?.tripRef&&<>{detailWithTitleDisp(chosenGloss.tripRef, theDeparture.tripRef)}</>}
+                {theDeparture.tourLeader.length>0&&<>{detailWithTitleDisp(chosenGloss.tourLeader, theDeparture.tourLeader[0].guestArr[0].guestName)}</>}
+                {theDocs.expenseKey==="workOrder"&&<>
+                    {theItinerary?.tripLang&&<>{detailWithTitleDisp(chosenGloss.tourLang, theItinerary.tripLang)}</>}
+                </>}
+            </div>
             {theDocs.docKey!="accommodation" &&<> 
                 <div className={styles.spaceBetRow}>
                     <div style={{width:"49%"}}>
-                    {aDateDisp("trip Starting Date", theDeparture.startingDate)}
+                    {aDateDisp(chosenGloss.tripStart, theDeparture.startingDate)}
                     </div>
                     <div style={{width:"49%"}}>
-                    {aDateDisp("trip ending Date", theDeparture.startingDate, parseInt(theDeparture.duration) )}
+                    {aDateDisp(chosenGloss.tripEnd, theDeparture.startingDate, parseInt(theDeparture.duration) )}
                     </div>
                 </div>
             </>}
-            <div className={styles.detailDispl}>
-                {theDeparture?.tripName&&<>{detailWithTitleDisp("Tour Name", theDeparture.tripName)}</>}
-                {detailWithTitleDisp("Date Created", toDate.toLocaleDateString('en-GB', dateOptions))}
-                {theDeparture?.tourCode&&<>{detailWithTitleDisp("Tour Code", theDeparture.tourCode)}</>}
-                {theDeparture.duration&&<>{detailWithTitleDisp("Duration", `${theDeparture.duration} days`)}</>}
-                {theDeparture?.tripRef&&<>{detailWithTitleDisp("Trip Reference", theDeparture.tripRef)}</>}
-                {theDeparture.tourLeader.length>0&&<>{detailWithTitleDisp("Tour leader", theDeparture.tourLeader[0].guestArr[0].guestName)}</>}
-                {theDocs.expenseKey==="workOrder"&&<>
-                    {theItinerary?.tripLang&&<>{detailWithTitleDisp("trip language", theItinerary.tripLang)}</>}
-                </>}
-            </div>
             {theDocs.docKey==="accommodation"&&<>
-                <h2>Required Dates:</h2>
+                <h2>{theLang==="english"? <>
+                        Required Dates:
+                    </>: theLang==="espanol" && <>
+                        Fechas requeridas
+                    </>}</h2>
+                
                 {eachProviderExp.map((elemnt, indx)=> <React.Fragment key={indx}>
                 {elemnt.expenseKey==="accommodation"&&<>
                     <div className={styles.spaceBetRow}> 
@@ -3554,20 +3783,30 @@ export default function OperationsDashboard(){
             </>}
             {theDocs.docKey!="cashReq"&&<>
                 {roomingListDisp(theDeparture)}
-                {/* FFD - is it necesary? */}
                 <div className={styles.pageBreak}> </div>
                 {theDocs.docKey!="accommodation"?<>
-                    <h2> Day by Day Requirements</h2>
+                    <h2>
+                    {theLang==="english"? <>
+                        Day by Day Requirements
+                    </>: theLang==="espanol" && <>
+                        Requerimiento Dia por Dia
+                    </>}
+                    </h2>
                     {eachProviderMapper}
                     <br/><br/> 
                 </>:<> 
                     {eachProviderExp.find(elem => elem.expenseKey!="accommodation")&& <> 
                         {/* dep details intro again, with separate doc feel */}
-                        <h2> Additional Services</h2>
+                        <h2> 
+                        {theLang==="english"? <>
+                            Additional Services
+                        </>: theLang==="espanol" && <>
+                            Servicios Adicionales
+                        </>}
+                        </h2>
                         {eachProviderExp.map((elemz, i)=><React.Fragment key={i}>
                             {elemz.expenseKey!="accommodation"&&<> 
                                 &nbsp; - {aDateDisp(undefined, theDeparture.startingDate, undefined, i)}
-                                {console.log(theDeparture)}
                                 <div className={styles.documentGeneraExpense}>
                                 <span>
                                     <strong>{elemz.priceDetail}</strong> <br/>
@@ -3584,7 +3823,13 @@ export default function OperationsDashboard(){
             </>}
             {theDocs.docKey==="cashReq"&&<>
                 {eachProviderExp.find(elem => elem.econReq)&& <> <br/>
-                    <h2> Economic Requirements</h2>
+                    <h2> 
+                    {theLang==="english"? <>
+                        Economic Requirements
+                    </>: theLang==="espanol" && <>
+                        Requerimiento Economico
+                    </>}
+                    </h2>
                     {eachProviderExp.map((elemz, i)=><React.Fragment key={i}>
                         {elemz.econReq&&<> 
                             <br/>
@@ -3607,7 +3852,13 @@ export default function OperationsDashboard(){
                 </>}
             </>}
             {(theDocs.docKey!="accommodation" && theDocs.docKey!="cashReq")&&<>
-                <h2>Service Breakdown</h2>
+                <h2>
+                    {theLang==="english"? <>
+                        Service Breakdown
+                    </>: theLang==="espanol" && <>
+                        Resumen de Servicios
+                    </>}
+                </h2>
                 {eachProviderExp.map((element,i)=><React.Fragment key={i}>
                 {!element.econReq && <>
                     <div className={styles.documentGeneraExpense} style={{borderTop:"solid 1px black", borderLeft:"solid 1px black" }}>
@@ -3632,16 +3883,26 @@ export default function OperationsDashboard(){
             {theDocs.docKey!="accommodation" && <> 
                 <br/>
                 <br/>
-                <strong> Please remember to arrive 15 minutes before schedule. </strong>
+                <strong> 
+                    {theLang==="english"? <>
+                        Please remember to arrive 15 minutes before schedule. 
+                    </>: theLang==="espanol" && <>
+                        Por favor recordar llegar 15 minutos con antelación.
+                    </>}
+                </strong>
                 <div style={{width:"100%", display:"flex", justifyContent:"space-between", marginTop:"44px"}}> 
                     <div style={{textAlign:"center" }}>
                         <div> {session?.user.name}</div>
-                        <div> Operations Department<br/> EcoAndes Travel, LTC</div> 
+                        <div>{logoDisplayer(theItinerary, "text")}</div> 
                     </div>
                     <div style={{textAlign:"center"}}>
                         <div> {theDocs?.contactName}  </div>
                         <div> {theDocs?.expenseKey==="guideExpense"&&<>
-                            Guide
+                            {theLang==="english"? <>
+                                Guide
+                            </>: theLang==="espanol" && <>
+                                Guia
+                            </>}
                         </>}</div> 
                     </div>
                 </div>
@@ -3786,7 +4047,6 @@ export default function OperationsDashboard(){
             if(theDayDet.dayByDayExp[dayIndex-1]){
                 theDayDet.dayByDayExp[dayIndex-1].forEach(elem=>{
                     if(elem.pricekey==="mealBudget" || elem.pricekey==="accommodationBudget"  ){
-                        console.log(elem, "cucu")
                     } else if(elem.expenseKey==="guideExpense"){
                         guidesDisp.push(elem)
                     } else if(elem.expenseKey==="accommodation"){

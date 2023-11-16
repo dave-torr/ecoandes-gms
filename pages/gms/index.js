@@ -4,9 +4,8 @@ import Link from 'next/link'
 
 import styles from '../../styles/pages/gms.module.css'
 
-import { SignInForm, SignOutBtn } from "./../../components/authForms"
-import {TourDisplayer } from "./../../components/tours"
-import { useSession, signOut } from "next-auth/react"
+import { SignInForm } from "./../../components/authForms"
+import { useSession } from "next-auth/react"
 
 
 /////////////////////////////////////////////
@@ -19,7 +18,6 @@ import { useSession, signOut } from "next-auth/react"
 //  - likeTourBTN  ( + 1 to likeCount in aTour )
 
 export default function GMS(){
-  const [logInTrig, setLogInTrig]=useState(false)
   const { data: session } = useSession()
 
   const gmsOptionsBTN=()=>{

@@ -355,6 +355,11 @@
     transform: translate(-63px, -43px);
 }
 
+.statusFour{
+    color: rgb(225, 255, 0);
+    transform: translate(-63px, -43px);
+}
+
 /* Dates */
 .eachDateCont{
     padding: 15px 18px;
@@ -382,7 +387,7 @@
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    height: 35px;
+    height: 48px;
 }
 
 .aFileContainer{
@@ -406,7 +411,8 @@
 
 
 .keySelectors{
-    display: flex;    
+    display: flex;
+    padding-bottom: 15px;
 }
 
 .keySelectors span{
