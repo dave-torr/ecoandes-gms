@@ -68,25 +68,31 @@
 }
 
 .statsBar{
-    width: 300px;
+    width: 240px;
     box-shadow: var(--frst-box-shadow);
     padding: 12px 18px;
     background-color: white;
-    margin: 6px;
-    margin-bottom: 12px;
     font-size: 0.9em;
     text-transform: uppercase;
+    transition: all ease-in 0.1s;
+    margin-bottom: 15px;
+}
+
+.statsBar:not(:first-of-type):hover{
+    background-color: teal;
+    color: white;
+    box-shadow: var(--frst-box-shadow);
+    cursor: pointer;
 }
 
 .depCardCont{
-    border: dotted 1px black;
-    padding: 6px 15px;
     max-height: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 0 6px;
-    width: 650px;
+    width: 480px;
+    margin-right: 21px;
 }
 
 .depCardMapper{
@@ -103,6 +109,7 @@
     margin-bottom: 12px;
     cursor: pointer;
     transition: all ease-in 0.2s;
+    width: 100%;
 }
 
 .aDepCard:hover{
@@ -391,7 +398,7 @@
 }
 
 .aFileContainer{
-    width: 760px;
+    width: 740px;
     background-color: white;
     padding: 12px;
     z-index: 1;
@@ -522,6 +529,13 @@
     border-bottom: unset;
 }
 
+.guestDataDialog div{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+}
+
 .eachRoomDisplayer{
     display: flex;
     align-items: center;
@@ -571,6 +585,11 @@
     margin: 9px;
     font-size: 0.9em;
 }
+
+.editSwitchA{
+    padding-right: 180px;
+}
+
 .roomingListKEYS{
     text-align: center;
     font-weight: 600;
@@ -681,24 +700,6 @@
     font-size: 0.9em;
     margin: 0 3px;
     text-align: center;
-}
-
-/* create dep */
-.createDepTrig{
-    border: solid 1px black;
-    margin: 21px;
-    padding: 21px 33px;
-    font-size: 1.4em;
-    width: 240px;
-    transition: all ease-in 0.1s;
-
-}
-
-.createDepTrig:hover{
-    background-color: teal;
-    color: white;
-    box-shadow: var(--frst-box-shadow);
-    cursor: pointer;
 }
 
 /* planner */
@@ -1054,7 +1055,34 @@
     padding-top: 21px;
 }
 
-@media (max-width: 600px) {
+
+.operPageHome{
+    display: flex;
+    justify-content: center;
+}
+
+.verticalCont{
+    display: flex;
+    flex-direction: column;
+}
+
+.verticalCont:not(:first-of-type){
+    padding-top: 15px;
+    border-left: solid 1px black;
+    padding-left: 21px;
+}
+
+.editBTN{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+}
+.guestPopUpIcon{
+    display: none;
+}
+
+@media (max-width: 750px) {
     .detailDispl{
         display: flex;
         flex-wrap: wrap;
@@ -1063,9 +1091,95 @@
     .placeholderBar{
         width: 93%;
     }
+    .operPageHome{
+        width: 100%;
+        flex-direction: column-reverse;
+    }
+    .depCardCont{
+        width: 90%;
+    }
+    .verticalCont{
+        align-items: center;
+        width: 100%;
+    }
 
-    .aDepCard{
-        width: 420px;
+    .verticalCont:not(:first-of-type){
+        padding-top: 15px;
+        border-left: none;
+        padding-left: 0;
+    }
+
+    .statsBar{
+        width: 90%;
+        text-align: center;
+        margin-bottom: 6px;
+    }
+    .statsBar:nth-of-type(3){
+        display: none;
+    }
+
+    .aFileContainer{
+        width: 95%;
+    }
+
+    .keySelectors span{
+        width: 96px;
+        border: solid 2px black;
+        border-radius: 5px;
+        z-index: 0;
+        margin: 0 1px;
+        font-size: 0.75em;
+    }
+    .roomingListTotalCont{
+        width: 100%;
+    }
+
+    .roomingListGrid{
+        width: 100%;
+    }
+
+    .editSwitchA{
+        display: none;
+    }
+
+    .roomingListKEYS div:nth-of-type(4){
+        display: none;
+    }
+    .roomingListKEYS div:nth-of-type(5){
+        display: none;
+    }
+    .roomingListKEYS div:nth-of-type(6){
+        display: none;
+    }
+    .roomingListKEYS div:nth-of-type(7){
+        display: none;
+    }
+
+
+    .roomingGuestRow div:nth-of-type(3){
+        display: none;
+    }
+    .roomingGuestRow div:nth-of-type(4){
+        display: none;
+    }
+    .roomingGuestRow div:nth-of-type(5){
+        display: none;
+    }
+    .roomingGuestRow div:nth-of-type(6){
+        display: none;
+    }
+
+    .guestDataDialog{
+        border: none;
+        width: 60vw;
+        padding: 21px;
+        font-size: 1.2em;
+    }
+    .editBTN{
+        display: none;
+    }
+    .guestPopUpIcon{
+        display: unset;
     }
 }
 
@@ -1080,9 +1194,6 @@
         page-break-after: always;
         color: white;
     }
-    .keySelectors{
-        display: none;
-    }
     .extraSelectors{
         display: none;
     }
@@ -1091,9 +1202,6 @@
     }
     .spaceBetRowPRINT{
         display: none;
-    }
-    .aFileContainer{
-        box-shadow: none;
     }
     .titleBar{
         display: none;

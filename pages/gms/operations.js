@@ -21,6 +21,7 @@ import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
 import FlightIcon from '@mui/icons-material/Flight';
 import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import AddCommentIcon from '@mui/icons-material/AddComment';
 
 import LTCLogoBLK from "../../public/assets/logos/ecoAndesBLK.png"
 import GalapagosElementsLogo from "../../public/assets/logos/galapagosElementsLogo.png"
@@ -165,6 +166,7 @@ export default function OperationsDashboard(){
     const [exitDocTrig, setexitDocTrig]=useState(false)
     const [plannerTrig, setPlannerTrig]=useState(false)
     const [createdep, setCreateDep]=useState(false)
+    const [guestPopUpData , setGuestPopUpData]= useState(false)
     const [fileSwitch, setfileSwitch]=useState(false)
     const [editSwitch, setEditSwitch]=useState(false)
     const [docsSwitch, setDocSwitch]=useState(false)
@@ -1141,17 +1143,14 @@ export default function OperationsDashboard(){
         if(theItin){
         return(<>
             <div className={styles.spaceBetRow}>
-                <div />
-                <div className={styles.aColumn}>
                 {(session?.user.hierarchy===1 || session?.user.name===theDep.assignment)&& <>
-                    <div style={{cursor:"pointer", paddingRight: "20px"}} 
+                    <div className={styles.editBTN} 
                         onClick={()=>{
                         if(editSwitch){setEditSwitch(false)} else {setEditSwitch(true)}
                     }}>
                         {editSwitch?<><EditOffIcon/></>: <><EditIcon/></>}
                     </div>
-                    </>}
-                </div>
+                </>}
             </div>
             {theDep.assignment&&<>{detailWithTitleDisp("folder Assignment", theDep.assignment)}</>}
             <div className={styles.roomingListCont} > 
@@ -1360,11 +1359,28 @@ export default function OperationsDashboard(){
             return(<>
                 <div className={styles.roomingGuestRow}>
                     <div style={{width:"180px", textAlign:"start"}}> &nbsp; {guestData.guestName}</div>
+                    <div onClick={()=>setGuestPopUpData(guestData)} className={styles.guestPopUpIcon} >
+                        <AddCommentIcon/>   
+                    </div>
                     <div style={{width:"120px", borderLeft:"solid 1px black" }}> {guestData.nationality}</div>
                     <div style={{width:"100px", borderLeft:"solid 1px black" }}> {guestData.guestDOB}</div>
                     <div style={{width:"120px", borderLeft:"solid 1px black" }}> {guestData.passport}</div>
                     <div style={{width:"66px", borderLeft:"solid 1px black" }}> {guestData.guestDOB&&<>{ageConverter(guestData.guestDOB)}</>}</div>
                 </div>
+                    <Dialog open={guestPopUpData} onClose={()=>setGuestPopUpData(false) } maxWidth={"xl"} >  
+                    <div className={styles.guestDataDialog}>
+                        <div >
+                            <strong>Guest Name:  </strong> {guestPopUpData.guestName}</div>
+                        <div >
+                            <strong>Nationality </strong> {guestPopUpData.nationality}</div>
+                        <div >
+                            <strong>DOB: </strong> {guestPopUpData.guestDOB}</div>
+                        <div >
+                            <strong>Passport </strong> {guestPopUpData.passport}</div>
+                        <div >
+                            <strong>Age: </strong> {guestPopUpData.guestDOB&&<>{ageConverter(guestData.guestDOB)}</>}</div>
+                    </div>
+                    </Dialog>
             </>)
         }
         
@@ -1529,7 +1545,7 @@ export default function OperationsDashboard(){
                         }}> <AddCircleOutlineIcon /></div>
                     </>}
                     {(session?.user.hierarchy===1 || session?.user.name===theDep.assignment)&&<> 
-                        <div style={{cursor:"pointer", paddingRight: "196px"}} className={styles.printDEL} onClick={()=>{
+                        <div className={styles.editSwitchA}  onClick={()=>{
                             if(editSwitch){setEditSwitch(false); setTempRoomObj({}); setAddGuest(false); setTLObj(false)} else {setEditSwitch(true)}
                         }}>
                             {editSwitch? <><EditOffIcon/></>: <><EditIcon/></>}
@@ -1537,7 +1553,7 @@ export default function OperationsDashboard(){
                     </>}
                 </>}
             </div>
-            {paxData&&<><div className={styles.guestTotal}>{paxData.paxTotal} 
+            {paxData&&<><div className={styles.guestTotal}>{paxData.paxTotal}&nbsp; 
                 {theLang==="english"? <>
                     guest{paxData.paxTotal>1&&<>s</>}
                 </>: theLang==="espanol" && <>
@@ -3005,7 +3021,7 @@ export default function OperationsDashboard(){
             <div className={styles.spaceBetRow}> 
                 <h2>Expenses:</h2>
                 {(session?.user.hierarchy===1 || session?.user.name===theDeparture.assignment)&&<>
-                    <div style={{cursor:"pointer"}} onClick={()=>{
+                    <div className={styles.editBTN} onClick={()=>{
                         if(editSwitch){setEditSwitch(false); setExpTrig(false); setAnExpense(); setTLObj(false)} 
                         else {setEditSwitch(true)}
                     }}>
@@ -3999,7 +4015,7 @@ export default function OperationsDashboard(){
                     <CancelPresentationIcon/>
                 </span>
             </>:<>
-                <span onClick={()=>{
+                <span className={styles.editBTN} onClick={()=>{
                     setAddOPNote({
                         "target":"general"
                         })
@@ -4299,16 +4315,15 @@ export default function OperationsDashboard(){
             {fileDisplayKey==="dayByDay"&&<>
                 {dayByDayDisp(theItin.dayByDay, theDep.startingDate)}
             </>}
-
             {fileDisplayKey==="flights"&&<>
                 {flightsDisp()}
                 {editSwitch&& <>
                     <br/> {flightsAdderForm()}
                 </>}
             </>}
-            {fileDisplayKey==="cruises"&&<>
+            {/* {fileDisplayKey==="cruises"&&<>
 
-            </>}
+            </>} */}
         </div>
         <div className={styles.extraSelectors}> 
             {/* If flights, from useEffect, link to flights page */}
@@ -4374,6 +4389,14 @@ export default function OperationsDashboard(){
         </>)
     }
 
+    // Op Page Home
+    const weeklyAssignment=()=>{
+        // display weekly assignment
+        return(<>
+            fetched from 
+        </>)
+    }
+
     return(<>
         <div className={styles.aGMSPage}>
         {session&&<> 
@@ -4390,9 +4413,7 @@ export default function OperationsDashboard(){
                 {/* Daily(monthly||weekly ) Planner */}
                 {theDeparture? <>
                     {fileSwitch ? <>
-                        <div style={{display: "flex", flexDirection:"column", alignItems:"center", margin:"15px", position:"relative", width:"760px" }}> 
-                            {aFileDisplayer(theItinerary, theDeparture)}
-                        </div>
+                        {aFileDisplayer(theItinerary, theDeparture)}
                     </>:<> 
                         {depCreator(theItinerary, theDeparture)}
                     </>}
@@ -4408,25 +4429,29 @@ export default function OperationsDashboard(){
 
                 </> : <>
                     {/* display itineraries and select a dep for file */}
-                    <strong className={styles.printDEL} >{toDateDisplayer}</strong>
-                    {statsDisplayer(activeDeps, upcomingDeps)}            
-                    {depDisplayer(activeDeps, "active Departures", true)}
-                    {depDisplayer(upcomingDeps, "upcoming Departures", false)}
-                    <br/><br/>
-
-
-                    <div className={styles.createDepTrig} onClick={()=>{
-                        window.scrollTo({top: 0})
-                        setPlannerTrig(true);  
-                        }}>
-                        open planner</div>
-
-                    <div className={styles.createDepTrig} onClick={()=>{
-                        window.scrollTo({top: 0})
-                        setCreateDep(true)
-                        }}> 
-                        create departure
+                    <div className={styles.operPageHome}>
+                        <div className={styles.verticalCont}>
+                            {depDisplayer(activeDeps, "active Departures", true)}
+                            {depDisplayer(upcomingDeps, "upcoming Departures", false)}
                         </div>
+                        <div className={styles.verticalCont}>
+                            <strong className={styles.printDEL} >{toDateDisplayer}</strong><br/>
+                            {statsDisplayer(activeDeps, upcomingDeps)}
+                            <div className={styles.statsBar} onClick={()=>{
+                                window.scrollTo({top: 0})
+                                setPlannerTrig(true);  
+                                }}>
+                                open planner</div>
+
+                            <div className={styles.statsBar} onClick={()=>{
+                                window.scrollTo({top: 0})
+                                setCreateDep(true)
+                                }}> 
+                                create departure
+                                </div>
+                        </div>
+                        {/* {weeklyAssignment()} */}
+                    </div>
                 </>}
             </>}
         </>}
