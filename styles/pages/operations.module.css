@@ -432,60 +432,32 @@
     transition: all ease-in 0.1s;
     margin: 0 3px;
 }
+.keySelectors span:nth-of-type(1){
+    width: fit-content;
+    border: none;
+}
 
 .keySelectors span:hover{
     transform: translateY(9px);
     cursor: pointer;
 }
 
-.keySelectors span:nth-of-type(1):hover{
+.keySelectors span:nth-of-type(2):hover{
     background-color: bisque;
 }
 
-.keySelectors span:nth-of-type(2):hover{
+.keySelectors span:nth-of-type(3):hover{
     background-color: teal;
     color: white;
 }
-.keySelectors span:nth-of-type(3):hover{
+.keySelectors span:nth-of-type(4):hover{
     background-color: rgba(255, 115, 8, 0.959);
 }
-.keySelectors span:nth-of-type(4):hover{
+.keySelectors span:nth-of-type(5):hover{
     background-color: rgba(102, 13, 198, 0.959);
     color: white;
 }
-.keySelectors span:nth-of-type(5):hover{
-    background-color: crimson;
-    color: white;
-}
 
-.extraSelectors{
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    transform: translate(399px, 160px);
-    z-index: 0;
-}
-
-
-.extraSelectors span{
-    padding: 12px;
-    transition: all ease-in 0.2s;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 5px;
-}
-
-.extraSelectors span:hover{
-    transform: translateX(6px);
-    color: white;
-}
-
-.extraSelectors span:nth-of-type(1):hover{
-    background-color: crimson;
-}
-.extraSelectors span:nth-of-type(2):hover{
-    background-color: goldenrod;
-}
 
 .spaceBetRow{
     display: flex;
@@ -1180,6 +1152,12 @@
     }
     .guestPopUpIcon{
         display: unset;
+    }
+    .extraSelectors{
+        display: none;
+    }
+    .keySelectors span:nth-of-type(1){
+        display: none;
     }
 }
 

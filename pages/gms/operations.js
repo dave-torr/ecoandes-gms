@@ -4263,7 +4263,19 @@ export default function OperationsDashboard(){
                 </div> 
                 <div className={styles.spaceBetRow}>
                     <span />
-                    <div className={styles.keySelectors}>
+                    <div className={styles.keySelectors}>        
+                            {(fileDisplayKey!="flights"&& theDep.roomingList.length>0) &&<>
+                                <span onClick={()=>{
+                                    setFileKey("flights"); 
+                                    setFlightObj({"target": "group"})
+                                }}> <FlightIcon/> </span>
+                            </>}
+
+                            {/* future cruise functionality */}
+                            {/* {(fileDisplayKey!="cruises"&& theDep.roomingList.length>0) &&<>
+                                <span onClick={()=>{setFileKey("cruises")}}> <SailingIcon/> </span>
+                            </>} */}
+
                         {fileDisplayKey!="intro"&&<> 
                             <span onClick={()=>{setFileKey("intro"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>home </span></>}
                         {fileDisplayKey!="rooming"&&<> 
@@ -4283,8 +4295,6 @@ export default function OperationsDashboard(){
                             <span onClick={()=>{setFileKey("expenses"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>expenses</span></>}
                         {fileDisplayKey!="dayByDay"&&<> 
                             <span onClick={()=>{setFileKey("dayByDay"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>day by day</span></>}
-                        {/* {fileDisplayKey!="flights"&&<> 
-                            <span onClick={()=>{setFileKey("flights"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>flights</span></>} */}
                     </div>
                 </div>
             </div>
@@ -4323,20 +4333,6 @@ export default function OperationsDashboard(){
             </>}
             {/* {fileDisplayKey==="cruises"&&<>
 
-            </>} */}
-        </div>
-        <div className={styles.extraSelectors}> 
-            {/* If flights, from useEffect, link to flights page */}
-            {(fileDisplayKey!="flights"&& theDep.roomingList.length>0) &&<>
-                <span onClick={()=>{
-                    setFileKey("flights"); 
-                    setFlightObj({"target": "group"})
-                }}> <FlightIcon/> </span>
-            </>}
-
-            {/* future cruise functionality */}
-            {/* {(fileDisplayKey!="cruises"&& theDep.roomingList.length>0) &&<>
-                <span onClick={()=>{setFileKey("cruises")}}> <SailingIcon/> </span>
             </>} */}
         </div>
 
