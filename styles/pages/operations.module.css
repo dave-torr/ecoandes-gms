@@ -16,7 +16,7 @@
 }
 
 .returnUIBar{
-    width: 800px;
+    width: 100%;
     display: flex;
     align-items: center;
     margin-bottom: 12px;
@@ -285,7 +285,7 @@
     font-size: 1.3em;
     width: 100%;
     text-align: end;
-    padding: 22px;
+    padding:12px 18px;
     text-transform: uppercase;
     font-weight: 600;
     letter-spacing: 1px;
@@ -296,6 +296,15 @@
 .submitDepBTN:hover{
     background-color: var(--ltc-teal);
     color: white;
+
+}
+
+.popUpBTN{
+    text-transform: uppercase;
+    padding: 9px 15px;
+    font-weight: 600;
+    margin: 15px;
+    border: solid 1px black;
 
 }
 
@@ -383,7 +392,6 @@
     top: 0;
     z-index: 5;
     background-color: white;
-    padding: 0 9px;
     width: 100%;
     border-bottom: solid 1px black;
 }
@@ -677,14 +685,13 @@
 /* planner */
 
 .generalPlannerGrid{
-    width: 780px;
+    width: 740px;
     margin: 0 33px;
     min-height: 21px;
     padding: 12px 21px;
     border: solid 1px black;
     overflow-x: auto;
 }
-
 
 .aPlannerCard{
     background-color: white;
@@ -699,7 +706,7 @@
 
 
 .plannerDateDisp{
-    width: 780px;
+    width: 740px;
     margin: 0 33px;
     border: solid 1px black;
     background-color: grey;
@@ -714,6 +721,11 @@
     margin: 12px 0;
     width: 525px;
     text-transform: capitalize;
+}
+
+.depCardGenData{
+    margin-left: 21px;
+    min-width: 90px;
 }
 
 .secondDataBox{
@@ -1095,7 +1107,7 @@
     }
 
     .keySelectors span{
-        width: 96px;
+        width: fit-content;
         border: solid 2px black;
         border-radius: 5px;
         z-index: 0;
@@ -1159,6 +1171,14 @@
     .keySelectors span:nth-of-type(1){
         display: none;
     }
+    .generalPlannerGrid{
+        width: 100%;
+        padding: 9px 6px;
+    }
+    .plannerDateDisp{
+        width: 100%;
+    }
+    
 }
 
 @media print {

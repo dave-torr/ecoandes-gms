@@ -4080,14 +4080,11 @@ export default function OperationsDashboard(){
                     <div className={styles.depCardFileTab} >
                         {theDayDet?.tourCode}
                     </div>
-                    <div style={{width:"90px", marginLeft:"21px"}}>
+                    <div className={styles.depCardGenData}>
                         {theDayDet.duration&& <>Day {dayIndex} / {theDayDet.duration} </>}
-                    </div> &nbsp;
-                    <div style={{width:"90px"}}>
-                        {theDayDet.maxPaxNumb&& <>{guestNumb}  Guest{guestNumb>1&&<>s</>}</>}
                     </div>
-                    <div style={{width:"250px"}}>
-                        {foundItin?.user&& <>Seller: {foundItin.user.name}</>}
+                    <div className={styles.depCardGenData}>
+                        {theDayDet.maxPaxNumb&& <>{guestNumb}  Guest{guestNumb>1&&<>s</>}</>}
                     </div>
                 </div>
 
@@ -4193,7 +4190,7 @@ export default function OperationsDashboard(){
                 <span> 
                 <ArrowBackIosNewIcon/></span> BACK 
             </div>
-            <div className={styles.spaceBetRow} style={{width: "780px"}}>
+            <div className={styles.spaceBetRow}>
                 <h2>Weekly Planner</h2> 
             </div>
 
@@ -4234,9 +4231,9 @@ export default function OperationsDashboard(){
                     }}>
                         <CloseFullscreenIcon />
                     </div>
-                    <Dialog open={exitDocTrig} onClose={()=>{setexitDocTrig(false)}}>
-                        <div className={styles.spaceBetRow} style={{padding:"21px", width:"550px"}}> 
-                            <div className={styles.submitDepBTN} onClick={()=>{
+                    <Dialog open={exitDocTrig} maxWidth={'xl'} onClose={()=>{setexitDocTrig(false)}}>
+                        <div className={styles.spaceBetRow}> 
+                            <div className={styles.popUpBTN} onClick={()=>{
                                 setFileKey("intro")
                                 setTheDeparture()
                                 setTheItinerary()
@@ -4246,7 +4243,7 @@ export default function OperationsDashboard(){
                             }}> 
                                 Exit
                             </div>
-                            <div className={styles.submitDepBTN} onClick={()=>{
+                            <div className={styles.popUpBTN} onClick={()=>{
                                 saveFunction(theDeparture)
                                 setFileKey("intro")
                                 setTheDeparture()
@@ -4255,7 +4252,7 @@ export default function OperationsDashboard(){
                                 setTLObj(false)
                                 setexitDocTrig(false)
                             }}> 
-                                Save and Exit
+                                Save & Exit
                             </div>
                         </div>
                     </Dialog>
