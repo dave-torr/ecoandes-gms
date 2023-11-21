@@ -25,6 +25,7 @@
 .tourCardDisp{
     display: flex;
     overflow-x: auto;
+    margin-top: 9px;
 }
 
 .filterUICont{

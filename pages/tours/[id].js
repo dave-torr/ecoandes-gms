@@ -5,6 +5,7 @@ import {LTCNaviBar} from "./../../components/navis"
 import {TourDisplayer} from "./../../components/tours"
 
 import TourData from "../../data/LTCItinerary"
+import EcoAndesFD from "../../data/ecoAndesFixedDepartures.json"
 
 import styles from "../../styles/pages/tourCreator.module.css"
 
@@ -74,6 +75,7 @@ function TourPage({ aTour }){
 
 // Static url pats\hs from dynamic info
 export async function getStaticPaths(){
+    let tourArr = TourData.concat(EcoAndesFD)
     const paths = TourData.map((elem, i)=>({
         params: { id: elem.id.toString() }
     }))

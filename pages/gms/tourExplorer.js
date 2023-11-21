@@ -8,6 +8,7 @@ import {TextTourCard, SortingItinUI, TourDisplayer, ItinDuplicator, ItinDeletor,
 
 
 import LTCItineraries from "../../data/LTCItinerary.json"
+import EcoAndesFD from "../../data/ecoAndesFixedDepartures.json"
 import LTCGenData from "../../data/dataAndTemplates.json"
 
 import ExploreIcon from '@mui/icons-material/Explore';
@@ -101,9 +102,12 @@ const { data: session } = useSession()
                 <TextTourCard aTour={elem} type={cardType} setItin={setItin} setDialogTrigger={setItinDispTrigger} /></div>
         </React.Fragment> )
 
-        let eachSelectOpt=filterArr.map((elem, i)=><React.Fragment key={i}>
-            <option value={elem} > {elem} </option>
-        </React.Fragment>)
+        let eachSelectOpt
+        if(filterArr!=false){
+            eachSelectOpt=filterArr.map((elem, i)=><React.Fragment key={i}>
+                <option value={elem} > {elem} </option>
+            </React.Fragment>)
+        }
 
         return<>
             <div className={styles.itinCardDisp}>
@@ -122,23 +126,25 @@ const { data: session } = useSession()
                         </select>
                     </div>
                 </>}
+
                 {theItins.length>0 ? <>
 
                 {/* update sorting function to filter out each user, sort by duration. */}
+                    {filterArr!=false&&<> 
                     <SortingItinUI 
                         sortContr={sortContr} 
                         setSortContr={setSortContr}
                         sortOrder={sortOrder}
                         setSortOrder={setSortOrder}
                         priceSortTrigger={priceSortTrigger}
-                    />
-                    <div className={styles.tourCardDisp } > {eachTourCard} </div>
+                    /></>}
+
+                <div className={styles.tourCardDisp } > {eachTourCard} </div>
                 </>:<>
                     <div className={styles.nonToursPlaceholder}> 
                         You haven't created any itineraries yet! <br/>
                         Start Here! <br/><br/>
                         <Link href="/gms/tourCreator" >Tour Creator</Link>
-
                     </div>
                 </>}
             </div>
@@ -175,7 +181,6 @@ const { data: session } = useSession()
                 </>}
             </div>
 
-                {session?.user.name===pickedItin.user.name && <></>}
                 <span className={styles.eachTourDispl}>
                     <div className={styles.eachTourDispl}>
                         <TourDisplayer 
@@ -190,7 +195,9 @@ const { data: session } = useSession()
     const allItinsDisp=()=>{
         return(<>
             {fetchedItinArr?<>
-                {LTCTourExplorar(fetchedItinArr, userUIFilters, theFilterLabel, "All LTC", false, 2, setPickedItin, setItinDispTrigger )}
+
+            {/* filter by creator, duration, sort and more! */}
+                {LTCTourExplorar(fetchedItinArr, false, theFilterLabel, "GMS ", false, 2, setPickedItin, setItinDispTrigger )}
             </>: <>
                 <div className={styles.userBTNCont}>
                     <div className={styles.aGenBTN} 
@@ -270,6 +277,7 @@ const { data: session } = useSession()
             
 
                 {LTCTourExplorar(filteredItineraries, userUIFilters, theFilterLabel, "LTC Published", true, 1 )}
+                {LTCTourExplorar(EcoAndesFD, false, false, "EcoAndes Fixed Departure", false, 2, setPickedItin, setItinDispTrigger )}
                 {/* {fetchUserItineraries()} */}
                 {allItinsDisp()}
 
