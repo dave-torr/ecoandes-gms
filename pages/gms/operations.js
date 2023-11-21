@@ -3698,6 +3698,7 @@ export default function OperationsDashboard(){
                 <h2>Document Generator:</h2>
                 <div style={{cursor:"pointer"}} onClick={()=>{
                     setDocumentGenera(false)
+                    setLang("english")
                 }}>
                     <CancelPresentationIcon/>
                 </div>
@@ -4240,6 +4241,7 @@ export default function OperationsDashboard(){
                                 setfileSwitch(false)
                                 setTLObj(false)
                                 setexitDocTrig(false)
+                                setLang("english")
                             }}> 
                                 Exit
                             </div>
@@ -4251,6 +4253,7 @@ export default function OperationsDashboard(){
                                 setfileSwitch(false)
                                 setTLObj(false)
                                 setexitDocTrig(false)
+                                setLang("english")
                             }}> 
                                 Save & Exit
                             </div>
@@ -4265,6 +4268,7 @@ export default function OperationsDashboard(){
                                 <span onClick={()=>{
                                     setFileKey("flights"); 
                                     setFlightObj({"target": "group"})
+                                    setLang("english")
                                 }}> <FlightIcon/> </span>
                             </>}
 
@@ -4274,9 +4278,9 @@ export default function OperationsDashboard(){
                             </>} */}
 
                         {fileDisplayKey!="intro"&&<> 
-                            <span onClick={()=>{setFileKey("intro"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>home </span></>}
+                            <span onClick={()=>{setFileKey("intro"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false); setLang("english") }}>home </span></>}
                         {fileDisplayKey!="rooming"&&<> 
-                            <span onClick={()=>{setFileKey("rooming"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false);
+                            <span onClick={()=>{setFileKey("rooming"); setEditSwitch(false); setDocSwitch(false); setLang("english"); setDocumentGenera(false); setExpTrig(false);
                             setDocTrigs({
                                 "logo":true,
                                 "roomingList":true,
@@ -4286,12 +4290,12 @@ export default function OperationsDashboard(){
                             })
                             }}>pax & rooming </span></>}
                         {fileDisplayKey!="providers"&&<> {providerArr.length>0&&<> 
-                            <span onClick={()=>{setFileKey("providers"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>providers </span>
+                            <span onClick={()=>{setFileKey("providers"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setLang("english"); setExpTrig(false)}}>providers </span>
                             </>}</>}
                         {fileDisplayKey!="expenses"&&<> 
-                            <span onClick={()=>{setFileKey("expenses"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>expenses</span></>}
+                            <span onClick={()=>{setFileKey("expenses"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setLang("english"); setExpTrig(false)}}>expenses</span></>}
                         {fileDisplayKey!="dayByDay"&&<> 
-                            <span onClick={()=>{setFileKey("dayByDay"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setExpTrig(false)}}>day by day</span></>}
+                            <span onClick={()=>{setFileKey("dayByDay"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setLang("english"); setExpTrig(false)}}>day by day</span></>}
                     </div>
                 </div>
             </div>

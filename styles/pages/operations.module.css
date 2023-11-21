@@ -683,7 +683,6 @@
 }
 
 /* planner */
-
 .generalPlannerGrid{
     width: 740px;
     margin: 0 33px;
@@ -703,7 +702,6 @@
     transition: all ease-in 0.2s;
     z-index: 5;
 }
-
 
 .plannerDateDisp{
     width: 740px;
@@ -771,7 +769,6 @@
 }
 
 .anExpenseDisp strong{
-    width: 230px;
     word-wrap: break-word;
     padding-right: 3px;
 }
@@ -785,8 +782,6 @@
     padding-right: 12px;
     cursor: pointer;
 }
-
-
 
 .addExpBTN{
     color: grey;

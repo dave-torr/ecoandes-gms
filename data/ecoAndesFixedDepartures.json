@@ -15,7 +15,7 @@
                 "dayDescription": "Upon your arrival in the city of Quito, our private transport will take us to our hotel. Our check-in will be followed by a destination and itinerary briefing with our local staff and Tour Leader.",
                 "dayInclusions": [
                     "Private Transfers",
-                    "Hotel breakfast and Accommodation"
+                    "Accommodation"
                 ]
             },
             {
@@ -233,7 +233,7 @@
                 "dayDescription": "Upon your arrival in the city of Quito, our private transport will take us to our hotel. Our check-in will be followed by a destination and itinerary briefing with our local staff and Tour Leader.",
                 "dayInclusions": [
                     "Private Transfers",
-                    "Hotel breakfast and Accommodation"
+                    "Accommodation"
                 ]
             },
             {
@@ -451,7 +451,7 @@
                 "dayDescription": "Upon your arrival in the city of Quito, our private transport will take us to our hotel. Our check-in will be followed by a destination and itinerary briefing with our local staff and Tour Leader.",
                 "dayInclusions": [
                     "Private Transfers",
-                    "Hotel breakfast and Accommodation"
+                    "Accommodation"
                 ]
             },
             {
@@ -641,7 +641,7 @@
                 "dayDescription": "Upon your arrival in the city of Quito, our private transport will take us to our hotel. Our check-in will be followed by a destination and itinerary briefing with our local staff and Tour Leader.",
                 "dayInclusions": [
                     "Private Transfers",
-                    "Hotel breakfast and Accommodation"
+                    "Accommodation"
                 ]
             },
             {
@@ -816,6 +816,162 @@
             "provate transfers & transportation",
             "Yacuma Jungle EcoLodge activities",
             "local guides in Yacuma",
+            "Galapagos Naturalist Guide services",
+            "speedboat inter-island ferry service",
+            "noted meals"
+        ],
+        "notIncluded": [
+            "personal travel insurance (REQUIRED)",
+            "international/regional flights",
+            "additional Inca Trail porters",
+            "personal trekking gear",
+            "extras",
+            "tips"
+        ]
+    },
+    {
+        "tripName": "Rolfs Bus 23/24",
+        "LTCLogo": "ecoAndes",
+        "id": "rolfs23.24",
+        "duration": 12,
+        "difficulty": 1,
+        "imgArr": [
+        ],
+        "tourOverview":"Looking for diversity? Are you a nature lover? Do you want to see Paradise on Earth? Then this 12-day itinerary in Ecuador and the Galapagos Islands is what you are looking for. With us you will experience the cultural, historical and natural diversity of this beautiful country, participate in some fun, adventures and see a real Paradise on   Earth",
+        "countryList": ["ecuador"],
+        "dayByDay":[
+            {
+                "dayTitle": "Arrival in Quito",
+                "dayDescription": "Upon your arrival in the city of Quito, our private transport will take us to our hotel. Our check-in will be followed by a destination and itinerary briefing with our local staff and Tour Leader, and our welcome drink.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "english / spanish speaking guide",
+                    "Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Quito City Tour & Mitad del Mundo (Equatorial Line visit)",
+                "dayDescription": "This morning we will arrange a visit to Quito's colonial town where we start a walk to the Independence Square where the Presidential Palace is located. Then we continue to the Cathedral and to El Sagrario Church we also visit the extraordinary La Compañia Church (1605). Afterwards, the guide will take you to the Plaza de San Francisco where we find the San Francisco Convent (1535). Transport to the highest viewpoint of the city, “El Panecillo” hill, and afterward our transport will take you to a visit to the typical colonial street of La Ronda. Free time for lunch. P.M. With our private transport we drive towards la Mitad del Mundo (“The Middle of the World”) where we find the monument marking the Latitude 0' 00''. Visitors can also take an elevator right to the top of the monument as well as visit the excellent ethnographical museum located inside the monument",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "english / spanish speaking guide",
+                    "Entrance Fees",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Quito – Teleferiqo – Otavalo",
+                "dayDescription": "After breakfast, we will arrange your transport to the point where the “Teleferiqo” is located. Using the cable car, you will be transported up to Cruz Loma Hill (3,900 at meters above sea level!) from where you get a spectacular view of Quito. Short walk on the highlands of Cruz Loma and weather permitting we also will get wonderful views of    the amazing volcanos of Ecuador (Cotopaxi, Cayambe, Antisana, Ruco Pichincha, etc.). He return to the “Teleferiqo”  starting point and ride down to the cable car terminus where we meet our transport, which will take us to the city of Otavalo,  home of the laborious Otavalo indigenous community. On the way, and if desired we can also visit the Cochasqui pre-Inca Ruins (entrance fee not included) and later, enjoy great views of the Imbabura volcano and San Pablo Lake. Hotel accommodations and dinner included in Otavalo.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "english / spanish speaking guide",
+                    "Entrance Fees",
+                    "Hotel breakfast and Accommodation",
+                    "dinner"
+                ]
+            },
+            {
+                "dayTitle": "Otavalo",
+                "dayDescription": "Program in Otavalo is arranged by TL and local guide.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "english / spanish speaking guide",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Otavalo – Quito Airport – Galapagos Baltra Island – Pto. Ayora Santa Cruz Island",
+                "dayDescription": "Transport from Otavalo to the airport in Tababela for your flight to Galapagos. Arrival in Baltra Island and transfer to the hotel in Puerto Ayora. On the way to the hotel, we visit the Highlands of Santa Cruz to observe Giant Tortoises in Natural State. The place is a private ranch where we can enjoy an easy walk along the highland forests of Galapagos while encountering the Giant Galapagos Tortoises in their natural state. Here you can also enjoy a delicious lunch surrounded by the lush forest. Time permitting, we will also a visit one of the ancient lava tunnels. Transfer to the hotel  in Puerto Ayora.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Tortoise ranch visit and lunch",
+                    "english / spanish speaking guide",
+                    "Hotel breakfast and accommodation"
+                ]
+                
+            },
+            {
+                "dayTitle": "Pto. Ayora Santa Cruz Island",
+                "dayDescription": "Transport from Otavalo to the airport in Tababela for your flight to Galapagos. Arrival in Baltra Island and transfer to the hotel in Puerto Ayora. On the way to the hotel, we visit the Highlands of Santa Cruz to observe Giant Tortoises in Natural State. The place is a private ranch where we can enjoy an easy walk along the highland forests of Galapagos while encountering the Giant Galapagos Tortoises in their natural state. Here you can also enjoy a delicious lunch surrounded by the lush forest. Time permitting, we will also a visit one of the ancient lava tunnels. Transfer to the hotel  in Puerto Ayora.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "english / spanish speaking guide",
+                    "Hotel breakfast and accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Pto. Ayora Santa Cruz Island",
+                "dayDescription": "After a delicious breakfast, we will get ready to visit one of the most famous sites of Santa Cruz, a dramatic rock formation and swimming spot surrounded by the endemic Opuntia Cacti, rock cliffs and an array of curious birds. Here, the crystal-clear waters, and the incredible underwater diversity make up for an exciting visit! We can stop by to swim on the “Los Alemanes” Beach, on the way back, or enjoy a refreshing juice on one of the local drink stands. Return to our hotel.In the afternoon, we have a tour to the highlands of Santa Cruz Island to visit a coffee plantation farm and craft distillery. We will then enjoy a delicious “ceviche” (typical Ecuadorian seafood-based dish) in the house of a local Galapagos family",
+                "dayInclusions": [
+                    "water Taxi",
+                    "Private Transfers to coffee farm",
+                    "english / spanish speaking guide",
+                    "Hotel breakfast and accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Puerto Ayora – Pto. Villamil (Isabela Island)",
+                "dayDescription": "At 8 a.m. in the morning and after breakfast, we walk to the pier where we board the speed boat which after around 3  hours of navigation will take you to Puerto Villamil, a small town located on Isabela Island. Upon arrival we arrange your transfer to the hotel in Isabela. After lunch (on your own) in the afternoon at 2 p.m. we organize your tour to visit “The Wetlands” of South Isabela, a RAMSAR Special Bird Area. The walk will start at the Tortoise Breeding Center of Isabela where you will find tortoises of different species and sizes. The walk then follows a well-maintained trail from which you can observe this beautiful place composed by brackish water lagoons, surrounded by 4 species of mangroves and typical trees of the area. with luck, we can observe the Galapagos Flamingos and migratory birds such as the Swallow Tailed Full (Creagrus furcatus), black necked stilts, Galapagos Rails, and much more. Transport back to the hotel and free time.",
+                "dayInclusions": [
+                    "water Taxi",
+                    "Private Transfers",
+                    "private speedboat",
+                    "english / spanish speaking guide",
+                    "Hotel breakfast and accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Isabela Island. Private tour to Sierra Negra Volcano",
+                "dayDescription": "Sierra Negra Volcano is a large shield-type volcano located at the Southeastern end of Isabela Island and it rises to an altitude of 1124m. It sits between with the volcanoes Cerro Azul to the west, and Alcedo Volcano to the north. It is also  one of the most active of the Galapagos volcanos with the most recent eruption in June 2018. Our guided tour to the volcano starts at Puerto Villamil with a car drive of about 30 minutes to the point where we start our 1 to 1.5 hour walk towards the rim of the giant caldera along its East side. The view is amazing and impressive since the caldera, with dimensions of 7.2 x 9.3 kms, is considered amongst the largest in the world (after the Ngorongoro crater in Tanzania). From the several viewpoints located along the rim of the crater, we can observe down inside of the crater the lava flow of the recent 2018 volcanic eruption. Return to Pto. Villamil for lunch (on your own) and afterwards you will have a free time to enjoy the beautiful sandy beach of Isabela.",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "Lunch Box",
+                    "english / spanish speaking guide",
+                    "Hotel breakfast and accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Isabela Island. Tintoreras Morning Tour – Sta. Cruz",
+                "dayDescription": "“The Tintoreras” is a group of lava islets located near to Pto. Villamil. It has a small bay of completely calm turquoise waters, where you can appreciate sea lions, sea turtles, marine iguanas, rays and many more species of marine fauna and flora. Most of the trail in this visit point is “Ah Ah” type lava. The first beach we will encounter is popular with sea lions and marine iguanas that nest in the area. You can also see some Nolana galapageia plants, a rare endemic plant in the area not common in Ecuador, since this species is typical of continental coastal zones and belongs to a genus whose distribution is restricted to Chile and Peru. The second beach is surrounded by button mangrove (Conocarpus erecta) and white mangrove (Laguncularia racemosa). Throughout the trail you can see many marine iguanas in the rocks or under the mangroves.Las Tintoreras is one of the few places where the iguanas breed successfully because of the absence of non-native animals that could kill the newborn reptiles. Various parts of Las Tintoreras are ideal for nesting marine iguanas. During nesting season, be very careful when exploring the area. Reef sharks (here known as Tintoreras) have nocturnal feeding habits and certain individuals remain inside the crevice and marine ponds during the day to rest. For this reason, you are not allowed to swim in this place. We’ll head back to the hotel for lunch (on your own) and rest.PM: Isabela – Santa Cruz. In the afternoon we board our speed boat which will take (2.5 to 3 hours) you back to Puerto Ayora on Santa Cruz Island. Up on arrival you will have a 5 minutes’ walk to the hotel. Free time to visit the town on your own.",
+                "dayInclusions": [
+                    "Tintoreras Tour",
+                    "snorkelling equipment",
+                    "water Taxi",
+                    "private speedboat",
+                    "english / spanish speaking guide",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Santa Cruz Island – Baltra Airport",
+                "dayDescription": "Morning transfer to the Baltra airport for your flight back to Guayaquil. On the way to the airport, we will make a short stop to visit “Los Gemelos” Craters (The Twin Craters)",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "english / spanish speaking guide",
+                    "Hotel breakfast and Accommodation"
+                ]
+            },
+            {
+                "dayTitle": "Transfer out Guayaquil",
+                "dayDescription": "Transfer from the hotel to the airport in Guayaquil",
+                "dayInclusions": [
+                    "Private Transfers",
+                    "english / spanish speaking guide",
+                    "Hotel breakfast"
+                ]
+            }
+        ],
+        "tourType": "360° itineraries",
+        "price": 1,
+        "prices": {
+            "priceType": "fixedDeparture",
+            "singlesupp": 280,
+            "dblOccupancy": true,
+            "priceNotice": "hotel categories will depend on locally available properties"
+        },
+        "included": [
+            "hotels: double room accommodation with private facilities",
+            "provate transfers & transportation",
             "Galapagos Naturalist Guide services",
             "speedboat inter-island ferry service",
             "noted meals"

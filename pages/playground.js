@@ -311,6 +311,11 @@ let tempDep= {
     "assignment": "Carlos del Salto"
 };
 
+let tempGenData={
+    "weeklyResponsible": "Carlos Del Salto",
+    "changedBy": ["David Torres"]
+}
+
 export default function PlaygroundPage(){
     const { data: session } = useSession()
     const [tempData, setTempData]=useState()
