@@ -838,6 +838,7 @@ export default function OperationsDashboard(){
         }
     }
 
+// ADD FLIGHT EDITOR!!!
     // flights
     const flightsAdderForm=()=>{
         let minDate = new Date(theDeparture.startingDate).toISOString().split("T")[0]
@@ -964,15 +965,15 @@ export default function OperationsDashboard(){
             </div>
             <div className={styles.spaceBetRow}> 
                 <div style={{width:"48%" }}> 
-                    {anInputDisplayer("Airline", "airline", "text", true, false, flightObj, setFlightObj)}
+                    {anInputDisplayer("Airline", "airline", "text", false, false, flightObj, setFlightObj)}
                 </div>
                 <div style={{width:"48%" }}> 
-                    {anInputDisplayer("flight #", "flightNumb", "text", true, false, flightObj, setFlightObj )}
+                    {anInputDisplayer("flight #", "flightNumb", "text", false, false, flightObj, setFlightObj )}
                 </div>
             </div>
             <div className={styles.spaceBetRow}> 
                 <div style={{width:"48%" }}> 
-                    {anInputDisplayer("Confirmation #", "confNumber", "text", true, false, flightObj, setFlightObj )}
+                    {anInputDisplayer("Confirmation #", "confNumber", "text", false, false, flightObj, setFlightObj )}
                 </div>
                 <input 
                     className={styles.roomTypeIndicator} 
@@ -1152,16 +1153,14 @@ export default function OperationsDashboard(){
                     </div>
                 </>}
             </div>
-            {theDep.assignment&&<>{detailWithTitleDisp("folder Assignment", theDep.assignment)}</>}
-            <div className={styles.roomingListCont} > 
-                <div className={styles.detailDispl}>
-                    {theItin.duration&&<>{detailWithTitleDisp("duration", `${theItin.duration} Days`)}</>}
-                    {theItin.tripLang&&<>{detailWithTitleDisp("trip language", theItin.tripLang)}</>}
-                    {theDep.aComp&&<>{detailWithTitleDisp("company", theDep.aComp)}</>}
-                    {theDep.compContact&&<>{detailWithTitleDisp("contact", theDep.compContact)}</>}
-                    {theDep.tripRef&&<>{detailWithTitleDisp("trip Reference", theDep.tripRef)}</>}
-                    {theDep.maxPaxNumb&&<>{detailWithTitleDisp("guests", paxTotalCount)}</>}
-                </div>
+            <div className={styles.detailDispl}>
+                {theDep.assignment&&<>{detailWithTitleDisp("folder Assignment", theDep.assignment)}</>}
+                {theItin.duration&&<>{detailWithTitleDisp("duration", `${theItin.duration} Days`)}</>}
+                {theItin.tripLang&&<>{detailWithTitleDisp("trip language", theItin.tripLang)}</>}
+                {theDep.aComp&&<>{detailWithTitleDisp("company", theDep.aComp)}</>}
+                {theDep.compContact&&<>{detailWithTitleDisp("contact", theDep.compContact)}</>}
+                {theDep.tripRef&&<>{detailWithTitleDisp("trip Reference", theDep.tripRef)}</>}
+                {theDep.maxPaxNumb&&<>{detailWithTitleDisp("guests", paxTotalCount)}</>}
             </div>
             <br/>
             <h2> Tour Dates </h2>
@@ -3261,7 +3260,6 @@ export default function OperationsDashboard(){
     }
     // providers
     const contactArrDisp=(theArr)=>{
-        if(theArr.length>0){
         let eachContact=theArr.map((elem, i)=><React.Fragment key={i}>
             <div className={styles.aProviderDisp}>
             <div className={styles.providerRow}>
@@ -3315,7 +3313,6 @@ export default function OperationsDashboard(){
             </>}
             </div>
         </React.Fragment>)
-
             return(<>
                 <div>
                 <div className={styles.spaceBetRow}> 
@@ -3329,7 +3326,6 @@ export default function OperationsDashboard(){
                 {eachContact}                
                 </div>
             </>)            
-        }
     }
     const totalProviderExpAdder=(expenseArr, econReq)=>{
         let totalAggegator=0
@@ -4016,7 +4012,7 @@ export default function OperationsDashboard(){
                     <CancelPresentationIcon/>
                 </span>
             </>:<>
-                <span className={styles.editBTN} onClick={()=>{
+                <span onClick={()=>{
                     setAddOPNote({
                         "target":"general"
                         })
@@ -4264,7 +4260,7 @@ export default function OperationsDashboard(){
                 <div className={styles.spaceBetRow}>
                     <span />
                     <div className={styles.keySelectors}>        
-                            {(fileDisplayKey!="flights"&& theDep.roomingList.length>0) &&<>
+                            {fileDisplayKey!="flights"&&<>
                                 <span onClick={()=>{
                                     setFileKey("flights"); 
                                     setFlightObj({"target": "group"})
@@ -4289,9 +4285,8 @@ export default function OperationsDashboard(){
                                 "dayDescript":false,
                             })
                             }}>pax & rooming </span></>}
-                        {fileDisplayKey!="providers"&&<> {providerArr.length>0&&<> 
-                            <span onClick={()=>{setFileKey("providers"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setLang("english"); setExpTrig(false)}}>providers </span>
-                            </>}</>}
+                        {fileDisplayKey!="providers"&&<>
+                            <span onClick={()=>{setFileKey("providers"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setLang("english"); setExpTrig(false)}}>providers </span></>}
                         {fileDisplayKey!="expenses"&&<> 
                             <span onClick={()=>{setFileKey("expenses"); setEditSwitch(false); setDocSwitch(false); setDocumentGenera(false); setLang("english"); setExpTrig(false)}}>expenses</span></>}
                         {fileDisplayKey!="dayByDay"&&<> 

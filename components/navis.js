@@ -170,9 +170,10 @@ export function GMSNavii(props){
                     {router.pathname!="/gms/operations"&&<><Link href="/gms/operations">  
                     <a>Operations</a>
                     </Link></>}
-                    {router.pathname!="/gms/tourCreator"&&<><Link href="/gms/tourCreator">  
-                    <a>Tour Creator</a>
-                    </Link></>}
+                    <div className={styles.mobileDEL}> 
+                        {router.pathname!="/gms/tourCreator"&&<><Link href="/gms/tourCreator">  
+                        <a>Tour Creator</a>
+                    </Link></>}</div>
                     {router.pathname!="/gms/tourExplorer"&&<><Link href="/gms/tourExplorer">  
                     <a>Tour Explorer</a>
                     </Link></>}

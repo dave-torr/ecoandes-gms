@@ -205,7 +205,7 @@
     }
 
 }
-@media (max-width: 600px) {
+@media (max-width: 750px) {
     .naviLogo2{
         display: none;
     }
@@ -216,7 +216,9 @@
     .LTCNaviLinks{
         margin-right: 9px;
     }
-
+    .mobileDEL{
+        display: none;
+    }
 }
 
 /* Print */
