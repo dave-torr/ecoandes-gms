@@ -658,8 +658,6 @@ export function DayByDayAdder(props){
 
     }
 
-    console.log(autofillOpts)
-
     return(<>
     {autofillSelector(autoFillData)}
         <form style={{width:"100%"}} id="theDayFormID">
@@ -687,15 +685,7 @@ export function DayByDayAdder(props){
             
             {/* Day Description */}
             {anInputDisplayer("Day Title", "dayTitle", "text", true, aTravelDay.dayTitle, aTravelDay, setTravelDay, undefined, undefined, "Main daily activity" )}
-            <label className={styles.inputLabel} > Day detail </label>
-            <div contentEditable="true" onInput={(e)=>{
-                setTravelDay({
-                    ...aTravelDay,
-                    "dayDescription" : e.target.innerHTML
-                })
-            }} className={styles.inputUserUI}>
-                {aTravelDay.dayDescription ? aTravelDay.dayDescription : <> </>}
-            </div>
+            {anInputDisplayer("Day Detail", "dayDescription", "text", false, aTravelDay.dayDescription, aTravelDay, setTravelDay, undefined, undefined, "Day Description") }
             {inputToList("add to day", "dayInclusions", aTravelDay, setTravelDay, aTravelDay.dayInclusions, incluPlaceholder, setPlaceholder)}
             {/* daily hotel accom */}
             {anInputDisplayer("Overnight Property", "overnightProperty", "text", false, undefined, aTravelDay, setTravelDay, undefined, undefined, "Hotel / Lodge Name")}

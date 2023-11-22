@@ -517,7 +517,11 @@ export default function PlaygroundPage(){
                 {aHotelDisplayer(testerObj)}
                 {hotelAdderForm(testerObj, setTester, locObject, setTempObj)} */}
 
-                {getGoogleDataBTN()}
+                {/* {getGoogleDataBTN()} */}
+
+                <div contentEditable plaintext-only onInput={(e)=>{
+                    console.log(e.target.innerHTML)
+                }} > TESTER </div>
 
             </div> 
         </>}
