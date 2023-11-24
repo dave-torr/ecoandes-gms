@@ -8,6 +8,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import Switch from '@mui/material/Switch';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
+import TextField from '@mui/material/TextField';
 
 import FormControlLabel from '@mui/material/FormControlLabel';
 
@@ -184,6 +185,36 @@ export function aDropdownPicker(theOptsArr, inputLabel, inputId, anObject, setAn
     </>) 
 }
 
+export function multiLineTextInput(theLabel, inputId, isReq, inputValue, anObject, setAnObject ){
+
+    return(<>
+        <div className={styles.theTextArea}>
+            <div className={styles.anInputRow}>
+                <label htmlFor={`${inputId}Input`} className={styles.inputLabel}>   
+                    {theLabel}</label>
+                <i> &nbsp; - &nbsp; "text" </i>
+            </div>
+            <TextField
+                required={isReq}
+                id={`${inputId}Input`}
+                multiline
+                rows={5}
+                fullWidth
+                defaultValue={inputValue}
+                variant="standard"
+                onChange={(e)=>{
+                    e.preventDefault()
+                    let theValue = e.target.value
+                    setAnObject({
+                        ...anObject,
+                        [inputId]:theValue
+                    })
+                }}
+            />
+        </div>
+    </>)
+}
+
 export function aSwitcher(switcherController, anObject, setAnObject, objectElemKey, switchTrigger ){
     const handleChange=()=>{
         if(switcherController){
@@ -212,14 +243,14 @@ export function aTextArea(inputLabel, inputId, isReq, inputValue, anObject, setA
     return(<>
         <div className={styles.theInputContainer}>
             <div className={styles.anInputRow}>
-                <label htmlFor={inputId} className={styles.inputLabel}>   
+                <label htmlFor={`${inputId}Input`} className={styles.inputLabel}>   
                     {inputLabel}</label>
                 <i> &nbsp; - &nbsp; textarea </i>
             </div>            
             <textarea
                 required={isReq}
                 className={styles.aDayDescriptionInput}
-                id={inputId}
+                id={`${inputId}Input`}
                 defaultValue={inputValue ? inputValue : undefined }
                 placeholder={placeholderz ? placeholderz : undefined}
                 onChange={(e)=>{
@@ -659,10 +690,11 @@ export function DayByDayAdder(props){
     }
 
     return(<>
-    {autofillSelector(autoFillData)}
+        {/* SORT AUTORFILL */}
+        {autofillSelector(autoFillData)}
+
         <form style={{width:"100%"}} id="theDayFormID">
 
-        {/* Auto fill  HEREEE */}
             <div className={styles.addFromRecordBTN} onClick={async()=>{
                     setAutoFillTrig(true)
                     if(!autoFillData){
@@ -671,67 +703,40 @@ export function DayByDayAdder(props){
                         })
                         const docData = await res.json()
                         if(res.status===200){
-                            console.log(docData)
                             setAutoFillData(docData)
                         }
                     }
                 }}> <PlaylistAddIcon/> &nbsp; Autofill </div>
 
-        {props.editDayTrigger? <>
-            <h3>Edit day {props.editDayTrigger}:</h3> 
-        </> : <>
             <h3>Day {props.aTour.dayByDay.length + 1}:</h3> 
-        </>}
             
-            {/* Day Description */}
             {anInputDisplayer("Day Title", "dayTitle", "text", true, aTravelDay.dayTitle, aTravelDay, setTravelDay, undefined, undefined, "Main daily activity" )}
-            {anInputDisplayer("Day Detail", "dayDescription", "text", false, aTravelDay.dayDescription, aTravelDay, setTravelDay, undefined, undefined, "Day Description") }
+            {multiLineTextInput("Day Detail", "dayDescription", false, aTravelDay.dayDescription, aTravelDay, setTravelDay )}
             {inputToList("add to day", "dayInclusions", aTravelDay, setTravelDay, aTravelDay.dayInclusions, incluPlaceholder, setPlaceholder)}
-            {/* daily hotel accom */}
             {anInputDisplayer("Overnight Property", "overnightProperty", "text", false, undefined, aTravelDay, setTravelDay, undefined, undefined, "Hotel / Lodge Name")}
-
-
-            {/* non MVP */}
 
             <div type="submit" className={styles.submitDayBTN} 
                 onClick={()=>{
-                    if(props.editDayTrigger){
-                        // wtf how does this work?
-                        let tempList = props.aTour.dayByDay.splice(props.editDayTrigger-1, 1, aTravelDay)
-                        setTravelDay({
-                            "dayInclusions":[
-                                "private Transfers",
-                                "guide Services",
-                            ],
-                            "flightData":[],
-                            "guideData":[],
-                            "dayDescription": ""
+                    let tempList=props.aTour.dayByDay.concat(aTravelDay)
+                        props.setTourModel({
+                            ...props.aTour,
+                            "dayByDay": tempList
                         })
-                        setLocSelection()
-                        props.setEditDayTrig(false)
-                    } else {
-                        let tempList=props.aTour.dayByDay.concat(aTravelDay)
-                            props.setTourModel({
-                                ...props.aTour,
-                                "dayByDay": tempList
-                            })
-                        // set default day
-                        setTravelDay({
-                            "dayInclusions":[
-                                "private Transfers",
-                                "guide Services",
-                            ],
-                            "flightData":[],
-                            "guideData":[],
-                        })
-                    }
+                    // set default day
+                    setTravelDay({
+                        "dayDescription": "",
+                        "dayInclusions":[
+                            "private Transfers",
+                            "guide Services",
+                        ],
+                        "flightData":[],
+                        "guideData":[],
+                    })
+                    const theTextArea = document.getElementById("dayDescriptionInput")
+                    theTextArea.value=""
                     document.getElementById("theDayFormID").reset()
                 }}>
-                {props.editDayTrigger? <>
-                    Change day {props.editDayTrigger}
-                </> : <>
                     Add Day to Itinerary
-                </>}
             </div>
         </form>
     </>)
@@ -788,7 +793,7 @@ export function EditDayByDay(props){
                 <div className={styles.editDayOpts} ><div style={{width: "100px", textAlign:"start" }}> Delete Day(s):</div>{deleteDayBTNS}</div>
                 <div className={styles.editDayOpts} ><div style={{width: "100px", textAlign:"start" }}> Add Day:</div> <span onClick={()=>setAddDayTrig(true)}> &nbsp;+&nbsp; </span></div>
             </div>
-            </>}
+        </>}
 
         
         {/* Edit Days */}

@@ -95,6 +95,14 @@
 /* //////////////// */
 /* Day description */
 
+.theTextArea{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+    /* background-color: red; */
+}
+
 .inputToListRow{
     display: flex;
     justify-content: space-between;
@@ -180,6 +188,9 @@
     justify-content: space-around;
     align-items: center;
 }
+
+
+
 
 
 /* FFDeletion */

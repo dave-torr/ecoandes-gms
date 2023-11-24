@@ -7,7 +7,7 @@ import { nanoid } from 'nanoid'
 import { useSession, signIn, signOut } from "next-auth/react"
 import {
     DayByDayAdder, 
-    anInputDisplayer, multiOptPicker, aDropdownPicker, inputToList, aSwitcher, radioSelectors
+    anInputDisplayer, multiOptPicker, aDropdownPicker, inputToList, aSwitcher, radioSelectors, multiLineTextInput
 } from "../../components/forms"
 import { SignInForm } from "../../components/authForms";
 import {TourDisplayer } from "../../components/tours"
@@ -27,6 +27,7 @@ import LTCGenDAta from "../../data/dataAndTemplates.json"
 
 // styles
 import styles from "../../styles/pages/tourCreator.module.css"
+import { Dialog } from "@mui/material";
 
 
 ///////////////////////////////////////////////////////////////
@@ -89,8 +90,7 @@ let tourDiff =[1,2,3,4,5]
     const [imgDestFilter, setImgFilter]=useState(0)
 
     const [submitionTrig, setSubmitTrig]=useState(false)
-
-    const [addDayDescriTrig, setAddDayDesc] =useState(false)
+    const [incluPlaceholder, setPlaceholder]=useState("")
 
 
     // utils
@@ -172,8 +172,8 @@ let tourDiff =[1,2,3,4,5]
                     {anInputDisplayer("Tour Name *", "tripName", "text", true, undefined, aTourModel, setTourModel, undefined, undefined, "Tour Name" )}
                     {anInputDisplayer("Duration *", "duration", "number", true, undefined, aTourModel, setTourModel, 1, undefined, "Tour Duration")}
                     {multiOptPicker(destinationList, "Destinations", "countryList", aTourModel.countryList, aTourModel, setTourModel, setDestList )}
-                    {anInputDisplayer("Starting", "startingPlace", "text", false, undefined, aTourModel, setTourModel, undefined, undefined, "Starting From")}
-                    {anInputDisplayer("Overview", "tourOverview", "text", false, undefined, aTourModel, setTourModel, undefined, undefined, "Tour Overview")}
+                    {anInputDisplayer("Starting City", "startingPlace", "text", false, undefined, aTourModel, setTourModel, undefined, undefined, "Starting From")}
+                    {multiLineTextInput("Overview", "tourOverview", false, undefined, aTourModel, setTourModel )}
                     {aDropdownPicker(tourType, "tour type", "tourType", aTourModel, setTourModel)}
                     {aDropdownPicker(tourDiff, "Difficulty", "difficulty", aTourModel, setTourModel)}
                     {anInputDisplayer("Language", "tripLang", "text", false, undefined, aTourModel, setTourModel, undefined, undefined, "Tour Language" )}
@@ -192,13 +192,27 @@ let tourDiff =[1,2,3,4,5]
         // ver 2
         // supplementary information
 
+
         let eachDayEditDisp = aTourModel.dayByDay.map((elem, i)=><React.Fragment key={i}> 
             <div className={styles.editDayBTN} onClick={()=>{
-                setEditDayTrig(i+1)
+                setEditDayTrig({...elem, "dayIndex": i })
             }} > D {i+1}</div>
         </React.Fragment>)
         
         return(<>
+        <Dialog open={editDayTrigger? true : false } onClose={()=>{setEditDayTrig(false)}} >
+            <div className={styles.editDayDialog}>
+                {anInputDisplayer("Day Title", "dayTitle", "text", true, editDayTrigger.dayTitle, editDayTrigger, setEditDayTrig, undefined, undefined, "Main daily activity" )}
+                {multiLineTextInput("Day Detail", "dayDescription", false, editDayTrigger.dayDescription, editDayTrigger, setEditDayTrig )}
+                {inputToList("add to day", "dayInclusions", editDayTrigger, setEditDayTrig, editDayTrigger.dayInclusions, incluPlaceholder, setPlaceholder)}
+                {anInputDisplayer("Overnight Property", "overnightProperty", "text", false, undefined, editDayTrigger, setEditDayTrig, undefined, undefined, "Hotel / Lodge Name")}
+                <div className={styles.nextStepBTN} onClick={()=>{
+                    let tempList = aTourModel.dayByDay.splice(editDayTrigger.dayIndex, 1, editDayTrigger)
+                    setEditDayTrig(false)
+                }} > Submit Day Changes </div>
+            </div>
+        </Dialog>
+
         {tourCreatorStep===1&&<>
             <div className={styles.tourCreatorFormCont}> 
             {stepBTNs("prev")}

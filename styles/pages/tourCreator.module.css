@@ -52,6 +52,14 @@
     transform: translateX(150px);
 }
 
+.editDayDialog{
+    display: flex;
+    width: 450px;
+    flex-direction: column;
+    padding: 21px;
+    
+}
+
 .upcomingTitleBar{
     width: 100%;
     display: flex;
