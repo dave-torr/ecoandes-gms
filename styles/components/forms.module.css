@@ -190,7 +190,12 @@
 }
 
 
-
+.addDayBTNCont{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
 
 /* FFDeletion */
@@ -323,8 +328,8 @@
 
 .editDayBTN{
     border: solid 1px black;
-    padding: 12px 21px;
-    margin-top: 15px;
+    padding: 9px 15px;
+    margin: 9px 12px;
     box-shadow: var(--frst-box-shadow);
 }
 

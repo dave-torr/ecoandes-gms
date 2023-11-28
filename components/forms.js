@@ -9,6 +9,8 @@ import Switch from '@mui/material/Switch';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import TextField from '@mui/material/TextField';
+import CancelPresentationIcon from '@mui/icons-material/CancelPresentation';
+
 
 import FormControlLabel from '@mui/material/FormControlLabel';
 
@@ -267,7 +269,13 @@ export function aTextArea(inputLabel, inputId, isReq, inputValue, anObject, setA
 
 export function inputToList( inputLabel, inputId, anObject, setAnObject, theListe, incluPlaceholder, setPlaceholder){
     const addToListFunct=()=>{
-        let tempList=theListe.concat(incluPlaceholder)
+        let tempList
+        if(theListe?.length>=0){
+            tempList=theListe.concat(incluPlaceholder)
+        } else {
+            tempList=[incluPlaceholder]
+        }
+
         setAnObject({
             ...anObject,
             [inputId]: tempList
@@ -757,10 +765,14 @@ export function EditDayByDay(props){
     const [incluPlaceholder, setPlaceholder]=useState("")
     const [dayIndex, setDayIndex]=useState(false)
     const [addDayTrig, setAddDayTrig] = useState(false)
+
+
     const [flightTrigger, setFlightTrigger]=useState(false)
     const [flightInfoObj, setFlightObj]=useState({})
     const [guideInfoObj, setGuideObj]=useState({})
     const [guideTrigger, setGuideTrig]=useState(false)
+
+
     useEffect(()=>{
         setTravelDay({
             ...aTravelDay,
@@ -800,7 +812,7 @@ export function EditDayByDay(props){
         {(dayIndex || dayIndex===0)&&<>
             <div style={{display:"flex", justifyContent:"space-between", width:"100%" }}> 
                 <strong>Edit Day {dayIndex+1}:</strong>
-                <div style={{border: "solid 2px black", borderRadius: "50%", padding:"1px 6px" }} onClick={()=>setDayIndex(false)}> X </div>
+                <CancelPresentationIcon />
             </div> 
         
 
@@ -815,7 +827,7 @@ export function EditDayByDay(props){
 
             {/* flights and guides */}
 
-            <div style={{width:"100%" }}>
+            {/* <div style={{width:"100%" }}>
                 {flightDataDisplayer(aTravelDay,setTravelDay)}
             {flightTrigger? <>
                 {flightsAdder(setTravelDay, aTravelDay, flightInfoObj, setFlightObj, setFlightTrigger )}: 
@@ -831,22 +843,24 @@ export function EditDayByDay(props){
             </>:<>
                 <div className={styles.secondaryBTN} onClick={()=>setGuideTrig(true)}>Add Guides</div>
             </>}
-            </div>
+            </div> */}
+
 
 
             <div className={styles.editDayBTN} 
-            onClick={()=>{
-                let tempDayArr =[...editingTour.dayByDay]
-                tempDayArr.splice(dayIndex, 1, aTravelDay)
-                props.setEditTemplate({
-                    ...props.editTemplate,
-                    "editKey": "dayByDay",
-                    "editValue": tempDayArr
-                })
-                setDayIndex(false)
-                setTravelDay({"dayInclusions":[]})
+                onClick={()=>{
+                    let tempDayArr =[...editingTour.dayByDay]
+                    tempDayArr.splice(dayIndex, 1, aTravelDay)
+                    props.setEditTemplate({
+                        ...props.editTemplate,
+                        "editKey": "dayByDay",
+                        "editValue": tempDayArr
+                    })
+                    setDayIndex(false)
+                    setTravelDay({"dayInclusions":[]})
 
-            }} > Day Ok? </div>
+                }} > Save Day </div>
+
         </>}
 
         {/* Add Day */}
@@ -864,15 +878,37 @@ export function EditDayByDay(props){
 
             {anInputDisplayer("Overnight Property", "overnightProperty", "text", true, 'Overnight Property', aTravelDay, setTravelDay )}
 
-            <div className={styles.editDayBTN} onClick={()=>{
-                let tempDayArr = editingTour.dayByDay.concat(aTravelDay)
-                props.setEditTemplate({
-                    ...props.editTemplate,
-                    "editKey": "dayByDay",
-                    "editValue": tempDayArr
-                })
-            }}>
-                Day Ok?
+            <br/>
+            <h2> Add day as:</h2>
+            <div className={styles.addDayBTNCont}>
+
+                {editingTour.dayByDay.map((elem,i)=> <React.Fragment key={i} >
+                <span className={styles.editDayBTN} onClick={()=>{
+                    let tempDayArr = editingTour.dayByDay.splice(i, 0, aTravelDay)
+                    props.setEditTemplate({
+                        ...props.editTemplate,
+                        "editKey": "dayByDay",
+                        "editValue": editingTour.dayByDay
+                    })
+                }}> 
+                    {i===0 ?<> 
+                        Starting Day
+                    </>:<>
+                        Between Day {i} & {i+1}
+                    </> }
+                </span>
+                </React.Fragment>)}
+
+                <div className={styles.editDayBTN} onClick={()=>{
+                    let tempDayArr = editingTour.dayByDay.concat(aTravelDay)
+                    props.setEditTemplate({
+                        ...props.editTemplate,
+                        "editKey": "dayByDay",
+                        "editValue": tempDayArr
+                    })
+                }}>
+                    Add Day as last day
+                </div>
             </div>  
         </>}
     </>)

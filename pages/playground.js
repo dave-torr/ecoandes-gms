@@ -8,6 +8,7 @@ import {GMSNavii} from "./../components/navis"
 import LTCPriceTables from "../data/LTCPriceTables2023.json"
 import { aHotelDisplayer, hotelAdderForm } from '../components/operations/providers'
 import styles from "./../styles/pages/playground.module.css"
+import { getUserProfile } from './api/gms/oneDrive'
 
 // Bitacora logo:
 // import TrackChangesIcon from '@mui/icons-material/TrackChanges';
@@ -435,13 +436,15 @@ export default function PlaygroundPage(){
         return(<>
             <div
                 onClick={async()=>{
-                    const res = await fetch("/api/googleApi", {
-                        method: "GET"
-                    })
-                    const docData = await res.json()
-                    if(res.status===200){
-                        setTempData(docData.data.sheets)
-                    } else (res)
+                    // const res = await fetch("/api/googleApi", {
+                    //     method: "GET"
+                    // })
+                    // const docData = await res.json()
+                    // if(res.status===200){
+                    //     setTempData(docData.data.sheets)
+                    // } else (res)
+
+                    {getUserProfile()}
                 }}
             > GET DATA</div>
             {tempData && <> 

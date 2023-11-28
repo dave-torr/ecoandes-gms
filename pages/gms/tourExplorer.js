@@ -18,9 +18,13 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import PrintIcon from '@mui/icons-material/Print';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import InfoIcon from '@mui/icons-material/Info';
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+
+import Dialog from '@mui/material/Dialog';
 
 
 import styles from "../../styles/pages/tourExplorar.module.css"
+import { inputToList } from "../../components/forms";
 
 
 
@@ -90,6 +94,8 @@ const { data: session } = useSession()
     const [deleteItinTrig, setDelItinTrig]=useState(false)
     const [editItinTrig, setEditItinTrig]=useState(false)
     const [itinDataTrig, setDataTrig]=useState(false)
+    const [noteDispTrig, setNoteTrigger]=useState(false)
+    const [incluPlaceholder, setPlaceholder]=useState("")
 
     useEffect(()=>{
         window.scrollTo({top: 0})
@@ -172,11 +178,15 @@ const { data: session } = useSession()
                         <InfoIcon/> </div>
                 </>}
 
+                <div className={styles.tourDialogBTN} style={{left:"228px"}} onClick={()=>setNoteTrigger(true)}>  
+                
+                <FormatListBulletedIcon/> </div>
+
                 {(session?.user.hierarchy===1 || session?.user.name===pickedItin?.user.name) &&<>
-                    <div className={styles.tourEditBTN} style={{left:"228px"}} onClick={()=>setEditItinTrig(true)} >  
+                    <div className={styles.tourEditBTN} style={{left:"285px"}} onClick={()=>setEditItinTrig(true)} >  
                         <EditNoteIcon /> </div>
 
-                    <div  className={styles.tourDialogBTN} style={{left:"285px"}} onClick={()=>setDelItinTrig(true)} > 
+                    <div  className={styles.tourDialogBTN} style={{left:"342px"}} onClick={()=>setDelItinTrig(true)} > 
                         <DeleteOutlineIcon/> </div>
                 </>}
             </div>
@@ -223,6 +233,26 @@ const { data: session } = useSession()
             </> }
         </>)
     }
+    const notesDisplayer=()=>{
+        return(<>
+        <Dialog open={noteDispTrig} onClose={()=>{ setNoteTrigger(false)}} className={styles.aDial} >
+        <div className={styles.aDial} >
+            <h2> Itinerary Notes </h2> <br/>
+            {pickedItin?.notes ?<>
+                <ul>
+                {pickedItin?.notes.map((elem, i)=><React.Fragment key={i} >
+                    <li> {elem}  </li>
+                </React.Fragment>  ) }
+                </ul>
+            </> : <>   
+                {inputToList("Add Note to Day", "itinNotes", pickedItin, setPickedItin, pickedItin?.notes, incluPlaceholder, setPlaceholder ) }
+
+
+            </>  }
+        </div>
+        </Dialog>
+        </>)
+    }
 
 
     // Notes:    
@@ -235,6 +265,7 @@ const { data: session } = useSession()
 
             {/* Selected Itin */}
                 {selectedItinDips()}
+                {notesDisplayer()}
 
                 <ItinDuplicator
                     dialogTrig={copyItinTrig}

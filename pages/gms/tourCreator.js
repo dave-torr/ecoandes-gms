@@ -16,11 +16,10 @@ import { Select } from '@mantine/core';
 import {anImageDisp} from "../gms/pix"
 
 
-
 // icons and imgs
 import CircularProgress from '@mui/material/CircularProgress';
 import DesignServicesIcon from '@mui/icons-material/DesignServices';
-
+import SaveIcon from '@mui/icons-material/Save';
 
 // Data
 import LTCGenDAta from "../../data/dataAndTemplates.json"
@@ -133,10 +132,190 @@ let tourDiff =[1,2,3,4,5]
         },
     ]
 
+    ///////////////////////////////////////////
+    ///////////////////////////////////////////
+    // GEN UTILS
+    const autofillFetcher=async()=>{
+
+    }
+    const imgFetcher=async()=>{
+        setLoadingState(true)
+        const res = await fetch("/api/genToolkit/pixApi",{
+            method: "GET"
+        })
+        const fetchedImages = await res.json()
+        if(res.status===200){
+            setFetchedImgs(fetchedImages)
+            setFilteredImgs(fetchedImages)
+            setLoadingState(false)
+        }
+    }
+
+
+
+    // Img picker utils
+    let imgCountry= ['all countries', "ecuador", 'peru', "chile", "argentina",]
+    useEffect(()=>{
+        if(imgDestFilter){
+            if(imgDestFilter==='all countries'){
+                setFilteredImgs(fetchedImgArrs)
+            } else {
+                let tempArr = fetchedImgArrs.filter(elem=>elem.imgCountry===imgDestFilter)
+                setFilteredImgs(tempArr)
+            }
+
+        } else if (!imgDestFilter){
+            setFilteredImgs(fetchedImgArrs)
+        }
+    },[imgDestFilter])
+
+    const imagePickers=(mainOrDay)=>{
+        
+        // add to itin with or without complimentary data?
+        // IMG Picker
+        // Loading Bar
+        // see all imgInstace
+        // Filter imgaes
+
+        if(tourCreatorStep===1){ 
+        if(!fetchedImgArrs){
+            return(<>
+            <div onClick={async()=>{
+                imgFetcher()
+            }}>
+                {loadingState? <>
+                    <CircularProgress />
+                </>:<>
+                    <div className={styles.nextStepBTN}>
+                        Fetch Itinerary Pix 
+                    </div>
+                </>}        
+            </div>
+        </>) } else if (filteredImgArr) {
+        let aPickerImg= filteredImgArr.map((elem, i)=>
+        <React.Fragment key={i}>
+            <div className={styles.eachImgDisp}>
+                {anImageDisp(elem.src, 150, "LTCWide", elem.imgAlt)}
+                <div className={styles.imgSelectorBTN} onClick={()=>{
+                    // addToItinImgArr
+                    let tempImgArr = aTourModel.imgArr.concat(elem.src)
+                    setTourModel({
+                        ...aTourModel,
+                        "imgArr": tempImgArr
+                    })
+
+                    let tempList = [...filteredImgArr]
+                    tempList.splice(i, 1)
+                    setFilteredImgs(tempList)
+
+                }} >  +  </div>
+                <div className={styles.imgRefData}>
+                    <div>{elem.imgCountry}</div>
+                    <div>{elem.imgRegion}</div>
+                    <div>{elem.imgName}</div>
+                    <div>{elem.locationDetails}</div>
+                </div>
+            </div>
+        </React.Fragment>)
+
+        return(<>
+        <div className={styles.imgSelectionCont} >
+            {stepBTNs("prev")}
+            <div style={{padding: "6px 12px"}}>
+                <Select
+                    placeholder='Image Country'
+                    data={[...imgCountry]}
+                    onChange={setImgFilter}
+                    id="imgSelectUI"
+                /></div>
+            <div style={{textAlign: "end", padding: "6px 12px"}}>
+                Images: {filteredImgArr.length} </div>
+            <div className={styles.imgPickerCont} >
+                {aPickerImg}
+            </div>
+        </div> 
+        </>)
+        }}
+    }
+    const imgPickerUIUitls=(imgArr)=>{
+        let eachSelectedImg=imgArr.map((elem, i)=><React.Fragment key={i}>
+            <div style={{padding: "6px", width:"120px", position: "relative"}}>
+                {anImageDisp(elem, 120, "LTCWide", elem.imgAlt)}
+                <div className={styles.imgSelectorBTN} onClick={()=>{
+                        let tempList=[...imgArr];
+                        tempList.splice(i, 1)
+                        setTourModel({
+                            ...aTourModel,
+                            "imgArr": tempList
+                        })
+                        let secondList=filteredImgArr.concat({"src": elem})
+                        setFilteredImgs(secondList)
+                    }}> x </div>
+            </div>
+        </React.Fragment>)
+
+        return(<>
+            <div className={styles.imgUIUtils}> 
+                {eachSelectedImg}
+            </div>
+        </>)
+    }
+    const sendToBackEnd=(theTour, userData, sendIndicator)=>{
+
+        const sendToBE=async()=>{
+            if(!submitionTrig){
+            setSubmitTrig(true)
+            let toDate = new Date()
+            let reqData = JSON.stringify({
+                ...theTour,
+                "dateCreated":toDate,
+                "version": 0,
+                "status": 1,
+                "user": {
+                    "name": userData.name,
+                    "email": userData.email
+                    }
+            })
+            const res = await fetch("/api/gms/itineraries", {
+                    method: "POST",
+                    body: reqData
+                })
+            const itinSubmition = await res.json()
+            if(res.status===200){
+                window.alert("Itinerary Created! Taking you to Tour Explorer")
+                router.push("/gms/tourExplorer")
+                }
+            }
+        }
+
+        return(<>
+            {sendIndicator===1 &&<> 
+                <div className={styles.nextStepBTN} 
+                    onClick={async()=>{sendToBE()}}>
+                {submitionTrig? <>
+                    <CircularProgress />
+                </>:<>
+                    Submit Itinerary! 
+                </>}
+                </div>  
+            </>}
+            {sendIndicator===2 && <> 
+                <div className={styles.nextStepBTN}  
+                    onClick={async()=>{sendToBE()}}>
+                    {submitionTrig? <>
+                        <CircularProgress />
+                    </>:<>
+                        Save and Exit <SaveIcon/>
+                    </>}
+                </div>
+            </>}
+        </>)
+    }
+
     ////////////////////////////////////////////
     ////////////////////////////////////////////
     // Tour Creator Steps
-    const tourDetailsIntro=()=>{
+    const tourDetailsIntro=()=>{ 
         // step one adds the following generalTourData:
         // - Trip Name
         // - Tour Duration
@@ -152,18 +331,16 @@ let tourDiff =[1,2,3,4,5]
 
         return(<>
             {tourCreatorStep===0&&<>
-                <form className={styles.tourCreatorFormCont} onSubmit={(e)=>{
+                <form onSubmit={(e)=>{
                     e.preventDefault()
                     settourCreatorStep(1)
                     setTourModel({
                         ...aTourModel,
                     })
+                    imgFetcher()
+                    autofillFetcher()
                     window.scrollTo({ top: 0, behavior: "smooth"})
                 }}>
-
-                {/* Revise Logo Switcher to check how it's changing the model */}
-
-                    {/* <LogoSwitcher aTour={aTourModel} tourEditor={setTourModel} /> */}
 
                     {aSwitcher(aTourModel.LTCLogo, aTourModel, setTourModel, "LTCLogo", "ecoAndes")}
                     {aTourModel.LTCLogo&&<>
@@ -213,8 +390,7 @@ let tourDiff =[1,2,3,4,5]
             </div>
         </Dialog>
 
-        {tourCreatorStep===1&&<>
-            <div className={styles.tourCreatorFormCont}> 
+        {tourCreatorStep===2&&<>
             {stepBTNs("prev")}
                 <div className={styles.upcomingTitleBar}>
                     Day By Day
@@ -230,188 +406,27 @@ let tourDiff =[1,2,3,4,5]
                         setTourModel={setTourModel}
                         editDayTrigger={editDayTrigger}
                         setEditDayTrig={setEditDayTrig}
+                        filteredImgArr={filteredImgArr}
+                        setFilteredImgs={setFilteredImgs}
                     />
 
                 {aTourModel.dayByDay.length>0&&<> 
                     {stepBTNs("next")}
                 </>}
-            </div>
             </>}
         </>)
     }
     const incluExluAdder=()=>{
         return(<>
-            {tourCreatorStep===2&&<> 
-                <div className={styles.tourCreatorFormCont}>
+            {tourCreatorStep===3&&<> 
                 {stepBTNs("prev")}
                     {inputToList("Included In Tour", "included", aTourModel, setTourModel, aTourModel.included, textPlaceholder, setTxtPlaceholder)}
                     {inputToList("Not Included In Tour", "notIncluded", aTourModel, setTourModel, aTourModel.notIncluded, textPlaceholder2, setTxtPlaceholder2)}
                 {aTourModel.dayByDay.length>0&&<> 
                     {stepBTNs("next")}  </>}
-                </div>
             </>}
         </>)
     }
-
-    // Img picker utils
-    let imgCountry= ['all countries', "ecuador", 'peru', "chile", "argentina",]
-    useEffect(()=>{
-        if(imgDestFilter){
-            if(imgDestFilter==='all countries'){
-                setFilteredImgs(fetchedImgArrs)
-            } else {
-                let tempArr = fetchedImgArrs.filter(elem=>elem.imgCountry===imgDestFilter)
-                setFilteredImgs(tempArr)
-            }
-
-        } else if (!imgDestFilter){
-            setFilteredImgs(fetchedImgArrs)
-        }
-    },[imgDestFilter])
-
-    const imagePickers=()=>{
-        
-        // add to itin with or without complimentary data?
-        // IMG Picker
-        // Loading Bar
-        // see all imgInstace
-        // Filter imgaes
-
-        if(tourCreatorStep===3){
-        if(!fetchedImgArrs){
-            return(<>
-            <div className={styles.tourCreatorFormCont} onClick={async()=>{
-                setLoadingState(true)
-                const res = await fetch("/api/genToolkit/pixApi",{
-                    method: "GET"
-                })
-                const fetchedImages = await res.json()
-                if(res.status===200){
-                    setFetchedImgs(fetchedImages)
-                    setFilteredImgs(fetchedImages)
-                    setLoadingState(false)
-                }
-            }}>
-                {loadingState? <>
-                    <CircularProgress />
-                </>:<>
-                    <div className={styles.nextStepBTN}>
-                        Fetch Itinerary Pix 
-                    </div>
-                </>}        
-            </div>
-        </>) } else if (filteredImgArr) {
-        let aPickerImg= filteredImgArr.map((elem, i)=>
-        <React.Fragment key={i}>
-            <div className={styles.eachImgDisp}>
-                {anImageDisp(elem.src, 150, "LTCWide", elem.imgAlt)}
-                <div className={styles.imgSelectorBTN} onClick={()=>{
-                    // addToItinImgArr
-                    let tempImgArr = aTourModel.imgArr.concat(elem.src)
-                    setTourModel({
-                        ...aTourModel,
-                        "imgArr": tempImgArr
-                    })
-
-                    // rmv image from img arr
-                    console.log("here cucu")
-                    
-
-                }} >  +  </div>
-                <div className={styles.imgRefData}>
-                    <div>{elem.imgCountry}</div>
-                    <div>{elem.imgRegion}</div>
-                    <div>{elem.imgName}</div>
-                    <div>{elem.locationDetails}</div>
-                </div>
-            </div>
-        </React.Fragment>)
-
-        return(<>
-        <div className={styles.imgSelectionCont} >
-            {stepBTNs("prev")}
-            <div style={{padding: "6px 12px"}}>
-                <Select
-                    placeholder='Image Country'
-                    data={[...imgCountry]}
-                    onChange={setImgFilter}
-                    id="imgSelectUI"
-                /></div>
-            <div style={{textAlign: "end", padding: "6px 12px"}}>
-                Images: {filteredImgArr.length} </div>
-            <div className={styles.imgPickerCont} >
-                {aPickerImg}
-            </div>
-        </div> 
-        </>)
-        }}
-    }
-    const imgPickerUIUitls=(imgArr)=>{
-        let eachSelectedImg=imgArr.map((elem, i)=><React.Fragment key={i}>
-            <div style={{padding: "6px", width:"120px", position: "relative"}}>
-                {anImageDisp(elem, 120, "LTCWide", elem.imgAlt)}
-                <div className={styles.imgSelectorBTN} onClick={()=>{
-                        let tempList=[...imgArr];
-                        tempList.splice(i, 1)
-                        setTourModel({
-                            ...aTourModel,
-                            "imgArr": tempList
-                        })
-                    }}> x </div>
-            </div>
-        </React.Fragment>)
-
-        return(<>
-            <div className={styles.imgUIUtils}> 
-                {eachSelectedImg}
-            </div>
-        </>)
-    }
-    const sendToBackEnd=(theTour, userData)=>{
-        return(<>
-            <div className={styles.nextStepBTN} 
-            onClick={async()=>{
-                if(!submitionTrig){
-                setSubmitTrig(true)
-                let toDate = new Date()
-                let reqData = JSON.stringify({
-                    ...theTour,
-                    "dateCreated":toDate,
-                    "version": 0,
-                    "status": 1,
-                    "user": {
-                        "name": userData.name,
-                        "email": userData.email
-                        }
-                })
-                const res = await fetch("/api/gms/itineraries", {
-                        method: "POST",
-                        body: reqData
-                    })
-                const itinSubmition = await res.json()
-                if(res.status===200){
-                    window.alert("Itinerary Created! Taking you to Tour Explorer")
-                    router.push("/gms/tourExplorer")
-                    }
-                }
-            }} > 
-            
-            {submitionTrig? <>
-                <CircularProgress />
-            </>:<>
-                Submit Itinerary! 
-            </>}
-            </div>
-        </>)
-    }
-
-    
-
-    // const credential = JSON.parse(
-    //     Buffer.from(process.env.GOOGLE_APPLICATION_CREDENTIALS, 'base64').toString().replace(/\n/g,"")
-    // )
-
-    // console.log(process.env.GOOGLE_APPLICATION_CREDENTIALS)
 
     return(<>
         <div className={styles.generalPageCont}>
@@ -427,11 +442,16 @@ let tourDiff =[1,2,3,4,5]
 
                         {tourDetailsIntro()}
 
+                        {imagePickers()}
+
                         {dayByDayFormDispl()}
 
                         {incluExluAdder()}
 
-                        {imagePickers()}
+                        {tourCreatorStep>0 && <>
+                            {stepBTNs("next")}
+                            {sendToBackEnd(aTourModel, session.user, 2)}
+                        </> }
 
                     </div>
                     <div className={styles.tourDispCont}>
@@ -441,7 +461,7 @@ let tourDiff =[1,2,3,4,5]
                             aTour={aTourModel} 
                             />
                         {aTourModel.imgArr.length>0&& <>
-                        {sendToBackEnd(aTourModel, session.user)}</>}
+                        {sendToBackEnd(aTourModel, session.user, 1)}</>}
                     </div>
                 </div>
             </>:<> 
