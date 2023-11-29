@@ -101,7 +101,6 @@
 .itinImgDisp{
     display: flex;
     width: 100%;
-    justify-content: space-between;
     flex-wrap: wrap;
     padding-bottom: 9px;
     border-bottom: solid 1px black;
@@ -130,7 +129,7 @@
     width: 120px;
     font-size: 0.8em;
     position: relative;
-    margin: 9px;
+    margin: 6px;
     text-transform: capitalize;
 }
 

@@ -135,6 +135,12 @@
     cursor: pointer;
 }
 
+.clearFormBTN{
+    padding: 9px;
+    font-size: 0.8em;
+    text-transform: uppercase;
+}
+
 .autofillCont select{
     padding: 9px 12px;
     font-size: 1.1em;
@@ -163,7 +169,19 @@
     padding: 3px 6px;
 }
 
+.imgPickerCont{
+    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    height: 350px;
+    justify-content: space-between;
+}
 
+.eachImgDisp{
+    margin: 9px 0;
+    position: relative;
+    border-bottom: dotted  2px;
+}
 
 .submitDayBTN{
     width: 100%;
@@ -176,6 +194,39 @@
     cursor: pointer;
     text-align: center;
     border: none;
+}
+
+.imgSelectorBTN{
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    background-color: teal;
+    color: white;
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+
+.imgRefData{
+    display: flex;
+    flex-direction: column;
+    text-transform: capitalize;
+    font-size: 0.9em;
+    width: 150px;
+}
+
+.imgRefData div:first-of-type{
+    text-align: end;
+}
+
+.imgRefData div:nth-of-type(3){
+    font-weight: 600;
 }
 
 .dayAdditionalsCont{

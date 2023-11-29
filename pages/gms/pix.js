@@ -27,7 +27,6 @@ export const anImageDisp=(imgSrc, width, imgRatio, imgAlt)=>{
         </>)
     }
 
-
 export const ImageEditor=(props)=>{
 
     const [itinImgEditArr, setTempImgArr]=useState([...props.aTour.imgArr ])
@@ -88,7 +87,7 @@ export const ImageEditor=(props)=>{
     if(filteredImgs){
         theFetchedImgs=<>
         {filteredImgs.map((elem,i)=><React.Fragment key={i}> 
-            &nbsp; {anImageWithData(elem)} &nbsp;
+            {anImageWithData(elem)}
         </React.Fragment>)}
         </>
     } else {

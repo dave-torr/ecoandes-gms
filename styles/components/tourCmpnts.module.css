@@ -1193,13 +1193,22 @@
     text-align: center;
 }
 
+.dayImgCont{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.eachDayImg{
+    margin: 9px;
+    padding: 2px 4px;
+    width: fit-content;
+    box-shadow: var(--frst-box-shadow);
+}
 
 
 
-
-
-
-@media (max-width: 1080px) {
+@media (max-width: 740px) {
 
     .aRectangCont{
         width: 100%;
@@ -1288,6 +1297,10 @@
         display: flex;
         text-shadow: 2px 2px black;
         font-size: 1.2em;
+    }
+
+    .eachDayImg{
+        width: 48%;
     }
 
 }

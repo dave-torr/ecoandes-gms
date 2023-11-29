@@ -151,8 +151,6 @@ let tourDiff =[1,2,3,4,5]
         }
     }
 
-
-
     // Img picker utils
     let imgCountry= ['all countries', "ecuador", 'peru', "chile", "argentina",]
     useEffect(()=>{
@@ -169,7 +167,7 @@ let tourDiff =[1,2,3,4,5]
         }
     },[imgDestFilter])
 
-    const imagePickers=(mainOrDay)=>{
+    const imagePickers=()=>{
         
         // add to itin with or without complimentary data?
         // IMG Picker
@@ -220,7 +218,6 @@ let tourDiff =[1,2,3,4,5]
 
         return(<>
         <div className={styles.imgSelectionCont} >
-            {stepBTNs("prev")}
             <div style={{padding: "6px 12px"}}>
                 <Select
                     placeholder='Image Country'
@@ -391,7 +388,6 @@ let tourDiff =[1,2,3,4,5]
         </Dialog>
 
         {tourCreatorStep===2&&<>
-            {stepBTNs("prev")}
                 <div className={styles.upcomingTitleBar}>
                     Day By Day
                 </div>
@@ -400,7 +396,6 @@ let tourDiff =[1,2,3,4,5]
                 <div className={styles.editDayCont} >
                     <strong>Edit:</strong> {eachDayEditDisp}
                 </div></>}
-                    
                     <DayByDayAdder
                         aTour={aTourModel}
                         setTourModel={setTourModel}
@@ -409,17 +404,12 @@ let tourDiff =[1,2,3,4,5]
                         filteredImgArr={filteredImgArr}
                         setFilteredImgs={setFilteredImgs}
                     />
-
-                {aTourModel.dayByDay.length>0&&<> 
-                    {stepBTNs("next")}
-                </>}
             </>}
         </>)
     }
     const incluExluAdder=()=>{
         return(<>
             {tourCreatorStep===3&&<> 
-                {stepBTNs("prev")}
                     {inputToList("Included In Tour", "included", aTourModel, setTourModel, aTourModel.included, textPlaceholder, setTxtPlaceholder)}
                     {inputToList("Not Included In Tour", "notIncluded", aTourModel, setTourModel, aTourModel.notIncluded, textPlaceholder2, setTxtPlaceholder2)}
                 {aTourModel.dayByDay.length>0&&<> 
@@ -439,6 +429,9 @@ let tourDiff =[1,2,3,4,5]
                 </div>
                 <div className={styles.tourCreatorLayout}>
                     <div className={styles.tMSteps}>
+                        {tourCreatorStep>0 && <>
+                            {stepBTNs("prev")}
+                        </>}
 
                         {tourDetailsIntro()}
 

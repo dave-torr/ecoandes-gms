@@ -111,7 +111,6 @@
 .tMSteps{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     margin-right: 21px;
     width: 330px;
@@ -164,19 +163,20 @@
 /* IMG PICKER STYLING */
 
 .imgSelectionCont{
-    width: 360px;
-    padding-right: 9px;
+    width: 100%;
 }
 .eachImgDisp{
-    margin: 9px 12px;
+    margin: 9px 0;
     position: relative;
     border-bottom: dotted  2px;
 }
 
 .imgPickerCont{
+    overflow-y: scroll;
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
+    height: 450px;
+    justify-content: space-between;
 }
 
 .imgSelectorBTN{

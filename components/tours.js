@@ -3,7 +3,7 @@ import Link from "next/link"
 import Image from "next/image"
 
 import {aSwitcher, radioSelectors, anInputDisplayer, multiOptPicker, aDropdownPicker, EditDayByDay, inputToList } from "./../components/forms"
-import {ImageEditor} from "./../pages/gms/pix"
+import {ImageEditor, anImageDisp} from "./../pages/gms/pix"
 
 import styles from "./../styles/components/tourCmpnts.module.css"
 
@@ -64,6 +64,15 @@ import LTCGenData from "./../data/dataAndTemplates.json"
         // localStorage.setItem("theTrips", strngifiedObj)
     // },[])
 // ///////////////////
+
+
+
+// for Operational program:
+// Pick up / Drop off times
+// guides, flights, cruises
+
+
+
 
 let ecoAndesDestinations= LTCGenData.countryList
 
@@ -465,20 +474,26 @@ export function TourDisplayer(props){
             }
         }
 
-        // const pickUpDisplayer=()=>{
-        //     let pickUpData=[
-        //         {}
-        //     ]
+        const textHTMLParser=(theText)=>{
+            let markUpText = {__html: `${theText}`}
+            return(<>
+                <div dangerouslySetInnerHTML={markUpText} />
+            </>)
+        }
 
-        //     if(pickUpData){
-
-
-
-        //         return(<>
-                
-        //         </>)
-        //     }
-        // }
+        const dailyImageDisp=(dailyImgArr, imgAlt)=>{
+            if(dailyImgArr.length>0){
+                return(<>
+                <div className={styles.dayImgCont}>
+                    {dailyImgArr.map((elem, i)=><React.Fragment key={i}>
+                        <div className={styles.eachDayImg}>
+                        {anImageDisp(elem, 510, "LTCWide", imgAlt)}
+                        </div>
+                    </React.Fragment> )}
+                </div>
+                </>)
+            }
+        }
 
         let theDays = tourDayByDay.map((elem,i)=> 
         <React.Fragment key={i}>
@@ -487,13 +502,15 @@ export function TourDisplayer(props){
                     <h3>{i+1&&<>{i+1}: </>}  {elem.dayTitle} </h3></AccordionSummary>
                 <AccordionDetails> 
                     <div style={{textAlign:"justify"}}>
-                    {elem.dayDescription}</div>
+                        {textHTMLParser(elem.dayDescription)}
+                    </div>
                     {dayInclDisp(elem.dayInclusions)}
                     {hotelDetailDisp(elem.overnightProperty)}
                     {elem.guideData&&<>{guideDataDisp(elem.guideData)}</>}
                     {elem.flightData&&<>{flightDataDisp(elem.flightData)}</>}
                     {dayNotices(elem)} 
                     {trekDataDisp(elem.trekData)}
+                    {dailyImageDisp(elem.imgArr, elem.dayTitle )}
                 </AccordionDetails>
             </Accordion>
         </React.Fragment>)
@@ -525,7 +542,6 @@ export function TourDisplayer(props){
     const carouselDisp=(theIMGArr)=>{
         if (theIMGArr.length>1)return(<>
         <div className={styles.carouselSection}>
-
             <div className={styles.tourIMGCarousel}>
                     {theIMGArr.map((elem, i)=><>
                     {i>0&&<React.Fragment key={i}>
@@ -760,6 +776,7 @@ export function TourDisplayer(props){
         </>)
     }
 
+
     return(<>
 
     {/* update dropdown triggers so that on print, all DD are open. */}
@@ -789,7 +806,7 @@ export function TourDisplayer(props){
                         {accordionDisplayer("Tour Inclusions / Exclusions", incExcCont, true)}
                         {hotelList(aTour)}</>}
                 </div>
-                {aTour.tourType&&<>
+                {(aTour.tourType || aTour.difficulty ) &&<>
                     <div className={styles.supportInfoCont}>
                         {TourTypeCard(aTour.tourType)}
                         {TourDifficultyCard(aTour.difficulty)}
