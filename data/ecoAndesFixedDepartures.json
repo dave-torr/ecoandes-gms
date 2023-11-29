@@ -2,7 +2,8 @@
     {
         "tripName": "Djoser NL ECGA",
         "LTCLogo": "ecoAndes",
-        "id": "djoserNLecga",
+        "id": "djoser-nl-ecga",
+        "shortenedURL": "djoserNLecga",
         "duration": 20,
         "difficulty": 1,
         "imgArr": [
@@ -220,6 +221,7 @@
         "tripName": "Djoser NL JECGA",
         "LTCLogo": "ecoAndes",
         "id": "djoserNLJecga",
+        "shortenedURL": "djoserNLJecga",
         "duration": 20,
         "difficulty": 1,
         "imgArr": [
@@ -437,6 +439,7 @@
         "tripName": "Djoser NL EC",
         "LTCLogo": "ecoAndes",
         "id": "djoserNLec",
+        "shortenedURL": "djoserNLec",
         "duration": 18,
         "difficulty": 1,
         "imgArr": [
@@ -626,6 +629,7 @@
         "tripName": "Djoser NL JECU",
         "LTCLogo": "ecoAndes",
         "id": "djoserNLjecu",
+        "shortenedURL": "djoserNLjecu",
         "duration": 20,
         "difficulty": 1,
         "imgArr": [
@@ -829,6 +833,7 @@
         "tripName": "Rolfs Bus 23/24",
         "LTCLogo": "ecoAndes",
         "id": "rolfs2324",
+        "shortenedURL": "rolfs2324",
         "duration": 12,
         "difficulty": 1,
         "imgArr": [
@@ -984,6 +989,7 @@
         "tripName": "Norrona Ecuador & Galapagos",
         "LTCLogo": "ecoAndes",
         "id": "norrona2324",
+        "shortenedURL": "norrona2324",
         "duration": 14,
         "difficulty": 1,
         "imgArr": [

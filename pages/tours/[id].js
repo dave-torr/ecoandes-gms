@@ -74,20 +74,38 @@ function TourPage({ aTour }){
 ///////////////////////////////////////////////////////////////////////
 
 // Static url pats\hs from dynamic info
+let tourArr = TourData.concat(EcoAndesFD)
 export async function getStaticPaths(){
-    let tourArr = TourData.concat(EcoAndesFD)
-    const paths = TourData.map((elem, i)=>({
+    // const res = fetch("http://localhost:3000/api/itineraries",{
+    //     method: "GET"
+    // })
+    // const theFetchedItins = (await res).json()
+    // console.log(theFetchedItins, "theFetchedItins")
+    // if(theFetchedItins){
+    //     console.log(theFetchedItins, "theFetchedItins")
+    // }
+    const paths = tourArr.map((elem, i)=>({
         params: { id: elem.id.toString() }
     }))
+
+
+    // get LTC Itins from DB 
+    // use shortenedURL 
+    // add LTC Itin list
+
+
     return {
         paths,
-        fallback: false
+        fallback: true
     }
 }
+
+
+
 // ssr page content from dynamic info
 export async function getStaticProps({ params }){
     // const sampleTour= { "general": "cucu" }
-    const thetours = TourData.filter(elem=> 
+    const thetours = tourArr.filter(elem=> 
         elem.id.toString() ===params.id )
 
     return{

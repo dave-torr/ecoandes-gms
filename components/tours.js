@@ -487,7 +487,7 @@ export function TourDisplayer(props){
                 <div className={styles.dayImgCont}>
                     {dailyImgArr.map((elem, i)=><React.Fragment key={i}>
                         <div className={styles.eachDayImg}>
-                        {anImageDisp(elem, 510, "LTCWide", imgAlt)}
+                        {anImageDisp(elem, 540, "LTCWide", imgAlt)}
                         </div>
                     </React.Fragment> )}
                 </div>

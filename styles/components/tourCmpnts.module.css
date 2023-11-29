@@ -1264,7 +1264,6 @@
 
     .tourDataCont{
         flex-direction: column;
-
     }
     .tourData{
         width: 100%;
@@ -1428,17 +1427,32 @@
     .aTourCTACont{
         display: none;
     }
-    .supportInfoCont {
-        flex-direction: row;
-    }     
-    .supportInfoCont span{
-        width: 50%;
-    } 
+
+
     .inclusionsExclusionsSec{
         flex-direction: row;
     }
     .incExcCont{
         width: 50%;
         margin-bottom: 6px;
+    }
+    .tourDataCont{
+        flex-direction: column;
+    }
+    .tourData{
+        width: 100%;
+    }
+    .tourDataCont{
+        flex-direction: column;
+        align-items: center;
+    }
+    .supportInfoCont{
+        width: 94%;
+        margin: 15px 0;
+        padding: 0;
+        display: flex;
+    }
+    .supportInfoCont span{
+        width: 50%;
     }
 }
