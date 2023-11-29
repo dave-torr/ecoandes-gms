@@ -119,12 +119,12 @@ export async function getStaticProps({ params }){
     let allTours=[]
     if(fetchedIts){
         allTours = tourArr.concat(fetchedIts)
-        console.log("here yooo!", allTours)
 
         const thetours = allTours.find(elem=> 
             elem.shortenedURL === params.shortenedURL )
 
         let jsonStringTour = JSON.parse(JSON.stringify(thetours))
+        console.log("here yooo!", jsonStringTour)
 
         return{
             props: {aTour: jsonStringTour }
