@@ -412,8 +412,6 @@ let tourDiff =[1,2,3,4,5]
             {tourCreatorStep===3&&<> 
                     {inputToList("Included In Tour", "included", aTourModel, setTourModel, aTourModel.included, textPlaceholder, setTxtPlaceholder)}
                     {inputToList("Not Included In Tour", "notIncluded", aTourModel, setTourModel, aTourModel.notIncluded, textPlaceholder2, setTxtPlaceholder2)}
-                {aTourModel.dayByDay.length>0&&<> 
-                    {stepBTNs("next")}  </>}
             </>}
         </>)
     }
@@ -441,10 +439,10 @@ let tourDiff =[1,2,3,4,5]
 
                         {incluExluAdder()}
 
-                        {tourCreatorStep>0 && <>
+                        {(tourCreatorStep>0 && tourCreatorStep<=2 ) && <>
                             {stepBTNs("next")}
                             {sendToBackEnd(aTourModel, session.user, 2)}
-                        </> }
+                        </>}
 
                     </div>
                     <div className={styles.tourDispCont}>
@@ -453,7 +451,7 @@ let tourDiff =[1,2,3,4,5]
                         <TourDisplayer  
                             aTour={aTourModel} 
                             />
-                        {aTourModel.imgArr.length>0&& <>
+                        {tourCreatorStep===3 &&<>
                         {sendToBackEnd(aTourModel, session.user, 1)}</>}
                     </div>
                 </div>

@@ -510,6 +510,7 @@ export function TourDisplayer(props){
                     {elem.flightData&&<>{flightDataDisp(elem.flightData)}</>}
                     {dayNotices(elem)} 
                     {trekDataDisp(elem.trekData)}
+                    <br/>
                     {dailyImageDisp(elem.imgArr, elem.dayTitle )}
                 </AccordionDetails>
             </Accordion>
