@@ -482,7 +482,7 @@ export function TourDisplayer(props){
         }
 
         const dailyImageDisp=(dailyImgArr, imgAlt)=>{
-            if(dailyImgArr.length>0){
+            if(dailyImgArr?.length>0){
                 return(<>
                 <div className={styles.dayImgCont}>
                     {dailyImgArr.map((elem, i)=><React.Fragment key={i}>
