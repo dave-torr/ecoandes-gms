@@ -1,8 +1,9 @@
 import React, { useState } from "react"
 import Head from 'next/head'
 
-import {LTCNaviBar} from "./../../components/navis"
-import {TourDisplayer} from "./../../components/tours"
+import {LTCNaviBar} from "../../components/navis"
+import {TourDisplayer} from "../../components/tours"
+import {connectToDatabase} from "../../middleware/dbMiddleware"
 
 import TourData from "../../data/LTCItinerary"
 import EcoAndesFD from "../../data/ecoAndesFixedDepartures.json"
@@ -76,40 +77,55 @@ function TourPage({ aTour }){
 // Static url pats\hs from dynamic info
 let tourArr = TourData.concat(EcoAndesFD)
 export async function getStaticPaths(){
-    // const res = fetch("http://localhost:3000/api/itineraries",{
-    //     method: "GET"
-    // })
-    // const theFetchedItins = (await res).json()
-    // console.log(theFetchedItins, "theFetchedItins")
-    // if(theFetchedItins){
-    //     console.log(theFetchedItins, "theFetchedItins")
-    // }
-    const paths = tourArr.map((elem, i)=>({
-        params: { id: elem.id.toString() }
-    }))
 
+    const client = await connectToDatabase();
+    const FetchedUserItins = client
+        .db('EcoAndesGMS')
+        .collection("LTCItineraries")
+        .find( { "status": {$gt: 0} } )
+        .toArray();
 
-    // get LTC Itins from DB 
-    // use shortenedURL 
-    // add LTC Itin list
+    const fetchedIts = await FetchedUserItins
+    let allTours=[]
+    if(fetchedIts){
+        client.close();
+        allTours = tourArr.concat(fetchedIts)
 
+        const paths = allTours.map((elem, i)=>({
+            params: { shortenedURL: elem.shortenedURL.toString() }
+        })) 
 
-    return {
-        paths,
-        fallback: true
+        return {
+            paths,
+            fallback: true
+        }
     }
 }
 
 
 
-// ssr page content from dynamic info
 export async function getStaticProps({ params }){
-    // const sampleTour= { "general": "cucu" }
-    const thetours = tourArr.filter(elem=> 
-        elem.id.toString() ===params.id )
+    const client = await connectToDatabase();
+    const FetchedUserItins = client
+        .db('EcoAndesGMS')
+        .collection("LTCItineraries")
+        .find( { "status": {$gt: 0} } )
+        .toArray();
 
-    return{
-        props: {aTour: thetours[0] }
+    const fetchedIts = await FetchedUserItins
+    let allTours=[]
+    if(fetchedIts){
+        allTours = tourArr.concat(fetchedIts)
+
+        const thetours = allTours.filter(elem=> 
+            elem.shortenedURL === params.shortenedURL )
+
+        let jsonStringTour = JSON.parse(JSON.stringify(thetours[0]))
+
+        return{
+            props: {aTour: jsonStringTour }
+        }
+
     }
 }
 export default TourPage

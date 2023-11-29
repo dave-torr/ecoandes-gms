@@ -3,7 +3,7 @@
         "tripName": "Djoser NL ECGA",
         "LTCLogo": "ecoAndes",
         "id": "djoser-nl-ecga",
-        "shortenedURL": "djoserNLecga",
+        "shortenedURL": "djoser-nl-ecga",
         "duration": 20,
         "difficulty": 1,
         "imgArr": [
@@ -221,7 +221,7 @@
         "tripName": "Djoser NL JECGA",
         "LTCLogo": "ecoAndes",
         "id": "djoserNLJecga",
-        "shortenedURL": "djoserNLJecga",
+        "shortenedURL": "djoser-nl-ecga",
         "duration": 20,
         "difficulty": 1,
         "imgArr": [
@@ -439,7 +439,7 @@
         "tripName": "Djoser NL EC",
         "LTCLogo": "ecoAndes",
         "id": "djoserNLec",
-        "shortenedURL": "djoserNLec",
+        "shortenedURL": "djoser-nl-ec",
         "duration": 18,
         "difficulty": 1,
         "imgArr": [
@@ -629,7 +629,7 @@
         "tripName": "Djoser NL JECU",
         "LTCLogo": "ecoAndes",
         "id": "djoserNLjecu",
-        "shortenedURL": "djoserNLjecu",
+        "shortenedURL": "djoser-nl-jecu",
         "duration": 20,
         "difficulty": 1,
         "imgArr": [

@@ -2,6 +2,7 @@
     {
         "tripName": "Inca Trail 360° Expedition",
         "id": "inca-trail-expedition-10D",
+        "shortenedURL": "inca-trail-expedition-10D",
         "duration": 10,
         "adventureType": "trekking",
         "difficulty": 2,
@@ -167,6 +168,7 @@
     {
         "tripName": "Classic Inca Trail",
         "id": "inca-trail-4D",
+        "shortenedURL": "inca-trail-4D",
         "duration": 4,
         "adventureType": "trekking",
         "difficulty": 2,
@@ -277,6 +279,7 @@
     {
         "tripName": "Classic Choquequirao",
         "id": "choquequirao-trek-4D",
+        "shortenedURL": "choquequirao-trek-4D",
         "duration": 4,
         "adventureType": "trekking",
         "difficulty": 3,
@@ -388,6 +391,7 @@
     {
         "tripName": "Inca Trail Spotlight",
         "id": "inca-trail-2D",
+        "shortenedURL": "inca-trail-2D",
         "duration": 2,
         "adventureType": "trekking",
         "difficulty": 2,
@@ -461,6 +465,7 @@
     {
         "tripName": "Sacred Valley + Inca Trail Spotlight",
         "id": "inca-trail-3D",
+        "shortenedURL": "inca-trail-3D",
         "duration": 3,
         "adventureType": "trekking",
         "difficulty": 2,
@@ -545,6 +550,7 @@
     {
         "tripName": "Salkantay to Machu Picchu Trek",
         "id": "salkantay-machu-pichu-5D",
+        "shortenedURL": "salkantay-machu-pichu-5D",
         "duration": 5,
         "adventureType": "trekking",
         "difficulty": 3,
@@ -672,6 +678,7 @@
     {
         "tripName": "Lares to Machu Picchu Trek",
         "id": "lares-trek-machu-pichu-4D",
+        "shortenedURL": "lares-trek-machu-pichu-4D",
         "duration": 4,
         "adventureType": "trekking",
         "difficulty": 2,
@@ -784,6 +791,7 @@
     {
         "tripName": "Climbing Mt. Pisco",
         "id": "pisco-climb-3D",
+        "shortenedURL": "pisco-climb-3D",
         "duration": 3,
         "adventureType": "climbing",
         "difficulty": 4,
@@ -873,6 +881,7 @@
     {
         "tripName": "Climbing Mt. Huascaran",
         "id": "huascaran-climb-6D",
+        "shortenedURL": "huascaran-climb-6D",
         "duration": 6,
         "adventureType": "climbing",
         "difficulty": 5,
@@ -1008,6 +1017,7 @@
     {
         "tripName": "Climbing Mt. Alpamayo",
         "id": "alpamayo-climb-8D",
+        "shortenedURL": "alpamayo-climb-8D",
         "duration": 8,
         "adventureType": "climbing",
         "difficulty": 5,
@@ -1178,6 +1188,7 @@
     {
         "tripName": "Climbing Mt. Ausangate",
         "id": "ausangate-climb-7D",
+        "shortenedURL": "ausangate-climb-7D",
         "duration": 7,
         "adventureType": "climbing & trekking",
         "difficulty": 5,
@@ -1330,6 +1341,7 @@
     {
         "tripName": "Peru Spotlight",
         "id": "lima-cusco-mapi-7D",
+        "shortenedURL": "lima-cusco-mapi-7D",
         "duration": 7,
         "difficulty": 1,
         "imgArr": ["https://dsm04pap002files.storage.live.com/y4m-QEkQYjZR1eLqh3Oyc6af2PqWSR-ARoRt9bDAPmHMNUQj9fTbrOqFCfQhjzPZgqu4prVNs4wtbMeULD2PkXQVbbh7sY8Wuj9WNsriNRA9cUbW4T1MY8-okBwlSzZdzPFozPeG3tnUhLwh8EP2pDR0yPAEYjitS0C9UoIURGDnMFromvBnxqLyw4sMttAZOv8?width=2000&height=1150&cropmode=none",
@@ -1437,6 +1449,7 @@
     {
         "tripName": "Machu Picchu & the Galapagos Islands Hopping",
         "id": "machu-picchu-galapagos-hopping-13D",
+        "shortenedURL": "machu-picchu-galapagos-hopping-13D",
         "duration": 13,
         "difficulty": 1,
         "imgArr": [
@@ -1625,6 +1638,7 @@
     {
         "tripName": "Machu Picchu & the Galapagos Islands Cruise",
         "id": "machu-picchu-galapagos-12D",
+        "shortenedURL": "machu-picchu-galapagos-12D",
         "duration": 12,
         "difficulty": 1,
         "imgArr": [
@@ -1792,6 +1806,7 @@
     {
         "tripName": "Ecuador + Galapagos Island Hopping",
         "id": "ec-galapagos-island-hopping-12D",
+        "shortenedURL": "ec-galapagos-island-hopping-12D",
         "duration": 12,
         "difficulty": 1,
         "imgArr": ["https://dsm04pap002files.storage.live.com/y4m_XtvpTGAFElRDg-lV_WfOh7h88xiWyokS8EYaPSk8Cg765GoDmrs39KHA5FnD5Lf6-Z8CVjimqT92tYUI-QaYLZoPgGyT-0-2SQBXkGDBfPWJfjSpnmDb6z529V_CtBLRNHpMwN1n9a5VftKngsL5LpQ3Smz9QTBYGLxX9zI9rsNIM1ewAuNglmqOTMT_hxP?width=2000&height=1150&cropmode=none",
@@ -1958,6 +1973,7 @@
     {
         "tripName": "Galapagos Cruise + Otavalo + Quito",
         "id": "galapagos-cruise-ec-10D",
+        "shortenedURL": "galapagos-cruise-ec-10D",
         "duration": 10,
         "difficulty": 1,
         "imgArr": ["https://dsm04pap002files.storage.live.com/y4mnbxlzj-yPwG2zGVHK1gogFcLFKxcy5BT9u3buVslZbXZxpNR3DwVB4Hhs7EL1js2qAbebX9OXdQCwqz-Wm2BM1UAAmreJc2GTsRwYJEp1nvScZOWnyMFfLk-cUHa0BKsUuCdJ2R01EbRsLBfZUxI3AdTxxZUdi0RwWoz7dmVqya9wIJ_4_PqXbR0eHU3VzeR?width=2000&height=1150&cropmode=none",
@@ -2096,6 +2112,7 @@
     {
         "tripName": "Best of Peru",
         "id": "best-peru-12D",
+        "shortenedURL": "best-peru-12D",
         "duration": 12,
         "difficulty": 1,
         "imgArr": ["https://dsm04pap002files.storage.live.com/y4m705ZWeY5hZ5ZR7tale5w_4M4Kr_qsR0KbdE7AnzP79lgvqaWwCxhvSVKI2ywvXxnbYOnJ-X4U1tXFNDhU8gmsqgVbUFFVPLbooP5bpgQz42qaCO8iHEGZITPHJpnTAqN3q0rmDiJ-n8tVmEezB_tTKnUO2xIRQSzp1Ejwu8FiPuJK3U0rp94EEYdoVBKTGZP?width=2000&height=1150&cropmode=none",
@@ -2256,6 +2273,7 @@
     {
         "tripName": "Best of Chile",
         "id": "best-chile-12D",
+        "shortenedURL": "best-chile-12D",
         "duration": 12,
         "difficulty": 1,
         "imgArr": ["https://dsm04pap002files.storage.live.com/y4mnUh-RduaLNRW1AVpZ_Fd08ViS1R3G2D5ZYfJYhn-SQf-i-eSpeL8i02oFE_zVAwKeyMErcjm5EErV-Ty34PLywrnTzqYF3YOUTQUypBCelMp7IQfIe1A-lYfL_xL3BtIP7V5ffftzNSPYYNSEhV3AdOAfA5aQdqX95pL5sq0kToQkYZ54g7Hkx16l4NdPhGi?width=2000&height=1150&cropmode=none",
@@ -2409,6 +2427,7 @@
     {
         "tripName": "Best of Argentina",
         "id": "best-argentina-12D",
+        "shortenedURL": "best-argentina-12D",
         "duration": 12,
         "difficulty": 1,
         "imgArr": ["https://dsm04pap002files.storage.live.com/y4mbwgzPzaD4EqZZpn_X36VmKgm-EX8T6k-ihGbWURhtpEg4s_TOOzGY8fIDy1NArwEEzeREd1Wm2QkAsRmfgYE4kHcAaBgk26ik12FYfCsmpjEWE-gvYutewqsd_2qn4JaSpv3gK8Wuy7U71Rg6vqi10WoNpIzAwufhXn5RO1Z7vWmks5QGOUNaN_6yxilkRwt?width=2000&height=1150&cropmode=none",
