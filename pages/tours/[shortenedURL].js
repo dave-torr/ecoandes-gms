@@ -97,7 +97,6 @@ export async function getStaticPaths(){
         const paths = allTours.map((elem, i)=>({
             params: { shortenedURL: elem.shortenedURL.toString() }
         })) 
-        console.log("here yooo!", paths)
 
         return {
             paths,
@@ -120,11 +119,12 @@ export async function getStaticProps({ params }){
     let allTours=[]
     if(fetchedIts){
         allTours = tourArr.concat(fetchedIts)
+        console.log("here yooo!", allTours)
 
-        const thetours = allTours.filter(elem=> 
+        const thetours = allTours.find(elem=> 
             elem.shortenedURL === params.shortenedURL )
 
-        let jsonStringTour = JSON.parse(JSON.stringify(thetours[0]))
+        let jsonStringTour = JSON.parse(JSON.stringify(thetours))
 
         return{
             props: {aTour: jsonStringTour }
