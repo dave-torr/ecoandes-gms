@@ -91,9 +91,11 @@ export async function getStaticPaths(){
         client.close();
         allTours = tourArr.concat(fetchedIts)
 
+
         const paths = allTours.map((elem, i)=>({
             params: { shortenedURL: elem.shortenedURL.toString() }
         })) 
+        console.log("here yooo!", paths)
 
         return {
             paths,
