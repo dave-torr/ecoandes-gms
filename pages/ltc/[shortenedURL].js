@@ -6,6 +6,7 @@ import {connectToDatabase} from "../../middleware/dbMiddleware"
 
 import styles from "../../styles/components/tourCmpnts.module.css"
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import PhoneIcon from '@mui/icons-material/Phone';
 
 import { useRouter } from "next/router"
 
@@ -20,6 +21,7 @@ const router = useRouter()
 
         console.log(aTour)
 
+
     return(<>
         <TourDisplayer aTour={aTour} />
         <div className={styles.itinLinkFooter}>
@@ -27,15 +29,20 @@ const router = useRouter()
                 <span style={{fontSize: "0.8em", fontWeight:"600"}}>CONTACT YOUR AGENT:  </span><br/> 
                 {aTour.user.name}
             </div>
-            <div> 
+            <div style={{display:"flex"}} > 
                 {aTour.user.email && <> <a href={`mailto:${aTour.user.email}?cc=planificacion@ecoandestravel.com&subject=${aTour.tripName} Request&body=Hi! I need some assistance with my trip:`}>
                     <MailOutlineIcon/> </a> 
+                </>}
+                {aTour.user.phono && <> <a href={`tel:+593${aTour.user.phono}`} target="_blank"> &nbsp; &nbsp; &nbsp;
+                    <PhoneIcon/> </a> 
                 </>}
             </div>
         </div>
     </>)
     }
 }
+
+
 
 ///////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////
