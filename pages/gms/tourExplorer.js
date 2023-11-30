@@ -19,6 +19,7 @@ import PrintIcon from '@mui/icons-material/Print';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import InfoIcon from '@mui/icons-material/Info';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import LaunchIcon from '@mui/icons-material/Launch';
 
 import Dialog from '@mui/material/Dialog';
 
@@ -189,6 +190,9 @@ const { data: session } = useSession()
                     <div  className={styles.tourDialogBTN} style={{left:"342px"}} onClick={()=>setDelItinTrig(true)} > 
                         <DeleteOutlineIcon/> </div>
                 </>}
+                <div className={styles.tourDialogBTN} style={{ left: "399px"}}>
+                <Link href={`/ltc/${pickedItin.shortenedURL}`} rel="noopener noreferrer" target="_blank"> 
+                  <LaunchIcon/></Link></div>
             </div>
 
                 <span className={styles.eachTourDispl}>
@@ -245,8 +249,7 @@ const { data: session } = useSession()
                 </React.Fragment>  ) }
                 </ul>
             </> : <>   
-                {inputToList("Add Note to Day", "itinNotes", pickedItin, setPickedItin, pickedItin?.notes, incluPlaceholder, setPlaceholder ) }
-
+                {inputToList("Add Note to Day", "itinNotes", pickedItin, setPickedItin, pickedItin.notes,incluPlaceholder, setPlaceholder ) }
 
             </>  }
         </div>

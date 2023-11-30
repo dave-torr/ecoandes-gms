@@ -72,6 +72,7 @@ let tourDiff =[1,2,3,4,5]
         "imgArr":[],
         "included":[],
         "notIncluded":[],
+        "notes":[],
         "shortenedURL":nanoid(7)
     })
     const [textPlaceholder, setTxtPlaceholder]=useState("")

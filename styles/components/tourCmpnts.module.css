@@ -1183,8 +1183,6 @@
     height: 40px;
 }
 
-
-
 .editItinOptDisp{
     width: 99%;
     display: flex;
@@ -1206,6 +1204,20 @@
     box-shadow: var(--frst-box-shadow);
 }
 
+/* on itin displ link */
+
+.itinLinkFooter{
+    position: fixed;
+    bottom: 0;
+    min-height: 33px;
+    padding: 12px 15px;
+    width: 100%;
+    background-color: white;
+    border-top: solid 3px var(--ltc-teal);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
 
 @media (max-width: 740px) {
@@ -1409,6 +1421,9 @@
 
 
 @media print{
+    .itinLinkFooter{
+        display: none;
+    }
     .sliderV2{
         display: none;
     }

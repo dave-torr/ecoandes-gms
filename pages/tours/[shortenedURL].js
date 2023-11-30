@@ -3,24 +3,12 @@ import Head from 'next/head'
 
 import {LTCNaviBar} from "../../components/navis"
 import {TourDisplayer} from "../../components/tours"
-import {connectToDatabase} from "../../middleware/dbMiddleware"
 
 import TourData from "../../data/LTCItinerary"
 import EcoAndesFD from "../../data/ecoAndesFixedDepartures.json"
 
 import styles from "../../styles/pages/tourCreator.module.css"
-import { useRouter } from "next/router"
 
-////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////
-
-// itinerary updates:
-
-// // Program descriptions are too long, change for "itinerary Highlights"
-//  // image carousel, opens up image pop up dialog.
-
-
-////////////////////////////////////////////////////////////
 
 
 // Window.print() set up for itineraries. 
@@ -30,11 +18,7 @@ import { useRouter } from "next/router"
 function TourPage({ aTour }){
 ////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////
-const router = useRouter()
-    if(router.isFallback){
-        return(<> Loading ... </>)
-    } else if(aTour){
-
+    if(aTour){
     const tourHead=(theTour)=>{
         return(<>
         <Head>
@@ -52,7 +36,7 @@ const router = useRouter()
             <meta property="og:type" content="article" />
             <meta property="og:title" content={`${theTour.tripName} tour`} />
             <meta property="og:description" content={`${theTour.tripName}: an experience offered by Latin Travel Collection, the best of South America`} />
-            <meta property="og:url" content="https://ecoandes-gms.vercel.app/tours/machu-picchu-galapagos-hopping-13D" />
+            <meta property="og:url" content={`https://ecoandes-gms.vercel.app/tours/${theTour.shortenedURL} `} />
             <meta property="og:site_name" content="Latin Travel Collection Itinerary" />
             <meta property="article:published_time" content="2023-02-02T20:11:11+00:00" />
             <meta property="og:image" content={theTour.imgArr[0]} />
@@ -84,56 +68,28 @@ const router = useRouter()
 let tourArr = TourData.concat(EcoAndesFD)
 export async function getStaticPaths(){
 
-    const client = await connectToDatabase();
-    const FetchedUserItins = client
-        .db('EcoAndesGMS')
-        .collection("LTCItineraries")
-        .find( { "status": {$gt: 0} } )
-        .toArray();
+    const paths = tourArr.map((elem, i)=>({
+        params: { shortenedURL: elem.shortenedURL.toString() }
+    })) 
 
-    const fetchedIts = await FetchedUserItins
-    let allTours=[]
-    if(fetchedIts){
-        client.close();
-        allTours = tourArr.concat(fetchedIts)
-
-
-        const paths = allTours.map((elem, i)=>({
-            params: { shortenedURL: elem.shortenedURL.toString() }
-        })) 
-
-        return {
-            paths,
-            fallback: true
-        }
+    return {
+        paths,
+        fallback: true
     }
 }
 
 
 
 export async function getStaticProps({ params }){
-    const client = await connectToDatabase();
-    const FetchedUserItins = client
-        .db('EcoAndesGMS')
-        .collection("LTCItineraries")
-        .find( { "status": {$gt: 0} } )
-        .toArray();
 
-    const fetchedIts = await FetchedUserItins
-    let allTours=[]
-    if(fetchedIts){
-        allTours = tourArr.concat(fetchedIts)
+    const thetours = tourArr.find(elem=> 
+        elem.shortenedURL === params.shortenedURL )
 
-        const thetours = allTours.find(elem=> 
-            elem.shortenedURL === params.shortenedURL )
+    let jsonStringTour = JSON.parse(JSON.stringify(thetours))
 
-        let jsonStringTour = JSON.parse(JSON.stringify(thetours))
-
-        return{
-            props: {aTour: jsonStringTour,
-            revalidate: 30 }
-        }
-
+    return{
+        props: {aTour: jsonStringTour,
+        revalidate: 30 }
     }
 }
 export default TourPage
