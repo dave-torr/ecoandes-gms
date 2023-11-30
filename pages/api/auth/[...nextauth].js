@@ -20,7 +20,6 @@ export default NextAuth({
             const user = await usersCollection.findOne({
                 email: credentials.email,
             });
-            // console.log(user, "user @ Authorizxe provider")
             if (!user) {
                 client.close();
                 throw new Error('No user found!');

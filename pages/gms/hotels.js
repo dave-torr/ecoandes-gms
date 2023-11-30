@@ -43,7 +43,6 @@ export default function HotelPage(props){
 
     const [orderedHotelLists, setOrderedHotels]=useState()
 
-    console.log(HotelEntries, "hotel entries at client")
 
     useEffect(()=>{
         if(session){

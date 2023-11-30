@@ -9,6 +9,7 @@ import TourData from "../../data/LTCItinerary"
 import EcoAndesFD from "../../data/ecoAndesFixedDepartures.json"
 
 import styles from "../../styles/pages/tourCreator.module.css"
+import { useRouter } from "next/router"
 
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
@@ -29,7 +30,10 @@ import styles from "../../styles/pages/tourCreator.module.css"
 function TourPage({ aTour }){
 ////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////
-    if(aTour){
+const router = useRouter()
+    if(router.isFallback){
+        return(<> Loading ... </>)
+    } else if(aTour){
 
     const tourHead=(theTour)=>{
         return(<>
@@ -100,7 +104,7 @@ export async function getStaticPaths(){
 
         return {
             paths,
-            fallback: false
+            fallback: true
         }
     }
 }
@@ -124,10 +128,10 @@ export async function getStaticProps({ params }){
             elem.shortenedURL === params.shortenedURL )
 
         let jsonStringTour = JSON.parse(JSON.stringify(thetours))
-        console.log("here yooo!", jsonStringTour)
 
         return{
-            props: {aTour: jsonStringTour }
+            props: {aTour: jsonStringTour,
+            revalidate: 30 }
         }
 
     }

@@ -178,7 +178,6 @@ export default function AdminDash(){
     }
 
 
-    console.log(userSignUpObj)
 
 
 ///////////////////////////////////////
