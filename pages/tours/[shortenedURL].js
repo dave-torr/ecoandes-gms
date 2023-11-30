@@ -74,7 +74,7 @@ export async function getStaticPaths(){
 
     return {
         paths,
-        fallback: true
+        fallback: false
     }
 }
 
@@ -88,8 +88,7 @@ export async function getStaticProps({ params }){
     let jsonStringTour = JSON.parse(JSON.stringify(thetours))
 
     return{
-        props: {aTour: jsonStringTour,
-        revalidate: 30 }
+        props: {aTour: jsonStringTour}
     }
 }
 export default TourPage
