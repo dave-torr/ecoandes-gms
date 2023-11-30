@@ -1,6 +1,7 @@
 [
     {
         "tripName": "Djoser NL ECGA",
+        "fixedDepartureStatus":1,
         "LTCLogo": "ecoAndes",
         "id": "djoser-nl-ecga",
         "shortenedURL": "djoser-nl-ecga",
@@ -219,6 +220,7 @@
     },
     {
         "tripName": "Djoser NL JECGA",
+        "fixedDepartureStatus":1,
         "LTCLogo": "ecoAndes",
         "id": "djoserNLJecga",
         "shortenedURL": "djoser-nl-ecga",
@@ -437,6 +439,7 @@
     },
     {
         "tripName": "Djoser NL EC",
+        "fixedDepartureStatus":1,
         "LTCLogo": "ecoAndes",
         "id": "djoserNLec",
         "shortenedURL": "djoser-nl-ec",
@@ -627,6 +630,7 @@
     },
     {
         "tripName": "Djoser NL JECU",
+        "fixedDepartureStatus":1,
         "LTCLogo": "ecoAndes",
         "id": "djoserNLjecu",
         "shortenedURL": "djoser-nl-jecu",
@@ -831,6 +835,7 @@
     },
     {
         "tripName": "Rolfs Bus 23/24",
+        "fixedDepartureStatus":1,
         "LTCLogo": "ecoAndes",
         "id": "rolfs2324",
         "shortenedURL": "rolfs2324",
@@ -987,6 +992,7 @@
     },
     {
         "tripName": "Norrona Ecuador & Galapagos",
+        "fixedDepartureStatus":1,
         "LTCLogo": "ecoAndes",
         "id": "norrona2324",
         "shortenedURL": "norrona2324",

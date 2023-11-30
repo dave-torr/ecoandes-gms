@@ -191,8 +191,16 @@ const { data: session } = useSession()
                         <DeleteOutlineIcon/> </div>
                 </>}
                 <div className={styles.tourDialogBTN} style={{ left: "399px"}}>
-                <Link href={`/ltc/${pickedItin.shortenedURL}`} rel="noopener noreferrer" target="_blank"> 
-                  <LaunchIcon/></Link></div>
+                    {pickedItin.fixedDepartureStatus ===1? <>
+                            <Link href={`/ecoandes/${pickedItin.shortenedURL}`} rel="noopener noreferrer" target="_blank"> 
+                            <LaunchIcon/></Link>
+                        
+                        </> :  <> 
+                            <Link href={`/ltc/${pickedItin.shortenedURL}`} rel="noopener noreferrer" target="_blank"> 
+                            <LaunchIcon/></Link>
+
+                        </> }   
+                  </div>
             </div>
 
                 <span className={styles.eachTourDispl}>
