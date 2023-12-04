@@ -163,7 +163,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 240px;
 }
 
 .flightDisplayer{
@@ -431,18 +430,17 @@
 }
 
 .keySelectors span{
-    width: 133px;
+    width: fit-content;
     padding: 6px;
-    text-align: center;
     border: solid 3px black;
     border-radius: 5px;
     z-index: 0;
     transition: all ease-in 0.1s;
     margin: 0 3px;
-}
-.keySelectors span:nth-of-type(1){
-    width: fit-content;
-    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .keySelectors span:hover{
@@ -1061,7 +1059,7 @@
     display: none;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 790px) {
     .detailDispl{
         display: flex;
         flex-wrap: wrap;
@@ -1161,9 +1159,6 @@
         display: unset;
     }
     .extraSelectors{
-        display: none;
-    }
-    .keySelectors span:nth-of-type(1){
         display: none;
     }
     .generalPlannerGrid{

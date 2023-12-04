@@ -7,6 +7,8 @@ import {connectToDatabase} from "../../middleware/dbMiddleware"
 import styles from "../../styles/components/tourCmpnts.module.css"
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import PhoneIcon from '@mui/icons-material/Phone';
+import LinearProgress from '@mui/material/LinearProgress';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 import { useRouter } from "next/router"
 
@@ -16,14 +18,20 @@ function TourPage({ aTour }){
 ////////////////////////////////////////////////////////////////////
 const router = useRouter()
     if(router.isFallback){
-        return(<> Loading Tour Page... </>)
+        return(<> 
+        <span style={{ width:"100%", display:"flex", justifyContent:"center", flexDirection:"column", alignItems:"center" }}>
+            Loading Travel Experience Page... 
+            <br/>
+            <LinearProgress  color="secondary" />
+        </span>
+        </>)
     } else if(aTour){
 
-        console.log(aTour)
-
-
     return(<>
-        <TourDisplayer aTour={aTour} />
+    
+        <div className={styles.theTourDisp}>
+            <TourDisplayer aTour={aTour} />
+        </div>
         <div className={styles.itinLinkFooter}>
             <div > 
                 <span style={{fontSize: "0.8em", fontWeight:"600"}}>CONTACT YOUR AGENT:  </span><br/> 
@@ -34,8 +42,9 @@ const router = useRouter()
                     <MailOutlineIcon/> </a> 
                 </>}
                 {aTour.user.phono && <> <a href={`tel:+593${aTour.user.phono}`} target="_blank"> &nbsp; &nbsp; &nbsp;
-                    <PhoneIcon/> </a> 
-                </>}
+                    <PhoneIcon/> </a> </>}
+                {aTour.user.phono && <> <a href={`tel:+593${aTour.user.phono}`} target="_blank"> &nbsp; &nbsp; &nbsp;
+                    <WhatsAppIcon/> </a> </>}
             </div>
         </div>
     </>)

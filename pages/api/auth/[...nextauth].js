@@ -51,6 +51,7 @@ export default NextAuth({
             token.hierarchy = user.hierarchy
             token.companyTitle = user.companyTitle
             token.userType = user.userType
+            token.phono = user.phono
             }
             return token
         },
@@ -64,6 +65,7 @@ export default NextAuth({
                     "hierarchy": token.hierarchy,
                     "department": token.department,
                     "companyTitle": token.companyTitle,
+                    "phono": token.phono,
                 }
             return session  
             }

@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import Image from "next/image"
+import { useRouter } from 'next/router'
+
 import { GMSNavii } from "../../components/navis";
 import { useSession } from "next-auth/react"
-
-import CircularProgress from '@mui/material/CircularProgress';
-import HubIcon from '@mui/icons-material/Hub';
+import { aDropdownPicker, anInputDisplayer } from "../../components/forms"
 
 import styles from "../../styles/pages/operations.module.css"
 
 import Switch from '@mui/material/Switch';
+import CircularProgress from '@mui/material/CircularProgress';
+import HubIcon from '@mui/icons-material/Hub';
 import { Dialog, FormControlLabel } from '@mui/material';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
@@ -28,7 +30,6 @@ import GalapagosElementsLogo from "../../public/assets/logos/galapagosElementsLo
 import YacumaLogo from "../../public/assets/logos/yacuma.png"
 import UnigpsLogo from "../../public/assets/logos/unigalapagos.png"
 
-import { aDropdownPicker, anInputDisplayer } from "../../components/forms"
 
 import LTCPriceTables from "../../data/LTCPriceTables2023.json"
 import LTCItins from "../../data/LTCItinerary.json"
@@ -1141,10 +1142,9 @@ export default function OperationsDashboard(){
     // file home
     let paxTotalCount=<>{paxData?.paxTotal} / {theDeparture?.maxPaxNumb} maximum</>
     const aFileHome=(theItin, theDep)=>{
-        if(theItin){
         return(<>
             <div className={styles.spaceBetRow}>
-                {(session?.user.hierarchy===1 || session?.user.name===theDep.assignment)&& <>
+                {(session?.user.hierarchy===1 || session?.user.name===theDep?.assignment)&& <>
                     <div className={styles.editBTN} 
                         onClick={()=>{
                         if(editSwitch){setEditSwitch(false)} else {setEditSwitch(true)}
@@ -1154,13 +1154,13 @@ export default function OperationsDashboard(){
                 </>}
             </div>
             <div className={styles.detailDispl}>
-                {theDep.assignment&&<>{detailWithTitleDisp("folder Assignment", theDep.assignment)}</>}
-                {theItin.duration&&<>{detailWithTitleDisp("duration", `${theItin.duration} Days`)}</>}
-                {theItin.tripLang&&<>{detailWithTitleDisp("trip language", theItin.tripLang)}</>}
-                {theDep.aComp&&<>{detailWithTitleDisp("company", theDep.aComp)}</>}
-                {theDep.compContact&&<>{detailWithTitleDisp("contact", theDep.compContact)}</>}
-                {theDep.tripRef&&<>{detailWithTitleDisp("trip Reference", theDep.tripRef)}</>}
-                {theDep.maxPaxNumb&&<>{detailWithTitleDisp("guests", paxTotalCount)}</>}
+                {theDep?.assignment&&<>{detailWithTitleDisp("folder Assignment", theDep?.assignment)}</>}
+                {theItin?.duration&&<>{detailWithTitleDisp("duration", `${theItin?.duration} Days`)}</>}
+                {theItin?.tripLang&&<>{detailWithTitleDisp("trip language", theItin?.tripLang)}</>}
+                {theDep?.aComp&&<>{detailWithTitleDisp("company", theDep?.aComp)}</>}
+                {theDep?.compContact&&<>{detailWithTitleDisp("contact", theDep?.compContact)}</>}
+                {theDep?.tripRef&&<>{detailWithTitleDisp("trip Reference", theDep?.tripRef)}</>}
+                {theDep?.maxPaxNumb&&<>{detailWithTitleDisp("guests", paxTotalCount)}</>}
             </div>
             <br/>
             <h2> Tour Dates </h2>
@@ -1174,7 +1174,7 @@ export default function OperationsDashboard(){
             </div>
 
 
-            {theDep.departureNotes.length>0 ? <><br/>
+            {theDep?.departureNotes.length>0 ? <><br/>
             <h2>Departure Notes </h2>
             </> : <> </>}
             {editSwitch?<> <br/>
@@ -1209,7 +1209,7 @@ export default function OperationsDashboard(){
                 </div>
                 <br/>
                 <div className={styles.depNotesCont}> 
-                    {theDep.departureNotes?.map((elem, i)=>
+                    {theDep?.departureNotes?.map((elem, i)=>
                     <React.Fragment key={i}>
                         <div className={styles.eachGuestNote} onClick={()=>{
                             let tempGuestNotes=theDep.departureNotes.splice(i, 1)
@@ -1224,7 +1224,7 @@ export default function OperationsDashboard(){
                 </div>
             </> : <>
                 <div className={styles.homeNotesDisp}>
-                    {theDep.departureNotes.map((elem, i)=><React.Fragment key={i}>
+                    {theDep?.departureNotes.map((elem, i)=><React.Fragment key={i}>
                         &nbsp; &nbsp; <li>
                            {elem}</li>
                     </React.Fragment>)}
@@ -1232,7 +1232,6 @@ export default function OperationsDashboard(){
                 <br/>
             </>}
         </>)
-        }
     }
     const aFileHomeEdit=()=>{
         if(editSwitch){return(<>
@@ -3930,7 +3929,7 @@ export default function OperationsDashboard(){
         // switch to turn on or off day detail
 
         // need to replace it with a usestate trigger
-        let theProgramDays=theDays.map((elem,i)=><React.Fragment key={i}>
+        let theProgramDays=theDays?.map((elem,i)=><React.Fragment key={i}>
             <div className={styles.eachDayCont}>
                 <div className={styles.spaceBetRow} style={{marginTop:"15px" }}>
 
@@ -3976,7 +3975,7 @@ export default function OperationsDashboard(){
                     </div>
                 </div>
             </>}
-            {theDeparture.operationalNotes[i]?.length>0&& <>
+            {theDeparture?.operationalNotes[i]?.length>0&& <>
                 <br/> <strong> NOTES</strong>
                 {theDeparture.operationalNotes[i]?.map((elemnt, ind)=><React.Fragment key={ind}>
                     <div className={styles.aDayNote}>
@@ -3994,7 +3993,7 @@ export default function OperationsDashboard(){
                     </div>
                 </React.Fragment>)}
             </>}
-            {theDeparture.flights[i]&& <> 
+            {theDeparture.flights[i]?.length>0&& <> 
                 &nbsp;<strong>Flights:</strong>
                 <div style={{ paddingRight:"12px"}}>
                 {theDeparture.flights[i].map((elem,i)=><React.Fragment>
@@ -4221,7 +4220,7 @@ export default function OperationsDashboard(){
         return(<>
         <div className={styles.aFileContainer}>
         {/* keys */}
-            <div className={styles.aDepKeysandNav}>
+            <div className={styles.aDepKeysandNav} id="floatingDepNav" >
                 <div className={styles.depFunctBar}>
                     <div onClick={()=>{
                         setexitDocTrig(true)
@@ -4316,10 +4315,10 @@ export default function OperationsDashboard(){
                 </>} 
             </>}
             {fileDisplayKey==="expenses"&&<>
-                {expenseDisplayer(theDep.dayByDayExp, theItin.dayByDay)}
+                {expenseDisplayer(theDep?.dayByDayExp, theItin?.dayByDay)}
             </>}
             {fileDisplayKey==="dayByDay"&&<>
-                {dayByDayDisp(theItin.dayByDay, theDep.startingDate)}
+                {dayByDayDisp(theItin?.dayByDay, theDep?.startingDate)}
             </>}
             {fileDisplayKey==="flights"&&<>
                 {flightsDisp()}
@@ -4398,7 +4397,6 @@ export default function OperationsDashboard(){
                 <h2>Latin Travel Collection</h2>
                 <h1>Operations</h1>
             </div>  
-            
             {loadingTrigger? <>
                 {loadingScreen("Fetching Departure Data")}
             </>:<>

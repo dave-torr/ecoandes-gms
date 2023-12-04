@@ -1219,11 +1219,19 @@
     align-items: center;
 }
 
+.theTourDisp{
+    width: 730px;
+    margin-left: calc( 50vw - 365px);
+}
+
 
 
 
 @media (max-width: 740px) {
-
+    .theTourDisp{
+        width: 100%;
+        margin-left: 0%;
+    }
     .aRectangCont{
         width: 100%;
     }

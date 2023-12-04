@@ -271,7 +271,8 @@ let tourDiff =[1,2,3,4,5]
                 "status": 1,
                 "user": {
                     "name": userData.name,
-                    "email": userData.email
+                    "email": userData.email,
+                    "phono": userData.phono
                     }
             })
             const res = await fetch("/api/gms/itineraries", {
