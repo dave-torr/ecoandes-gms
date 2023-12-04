@@ -128,13 +128,10 @@ export const ImageEditor=(props)=>{
         <div style={{width:"100%"}}>
             Current Images:
             <div className={styles.itinImgDisp}> {tourImgDispl} </div>
-
             {submitImgArrChanges()}
-
             Add Images to Itinerary:
             {theFilter()}
             <div className={styles.itinImgDisp}> {theFetchedImgs} </div>
-
         </div>
     </>)
 }

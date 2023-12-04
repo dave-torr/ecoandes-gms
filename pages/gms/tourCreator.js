@@ -81,7 +81,6 @@ let tourDiff =[1,2,3,4,5]
     const [tourCreatorStep, settourCreatorStep]=useState(0)
     const [editDayTrigger, setEditDayTrig]=useState(false)
 
-
     // img state mngmt
     // Bring in pics from Colombia
     const [fetchedImgArrs, setFetchedImgs]=useState()
@@ -304,7 +303,7 @@ let tourDiff =[1,2,3,4,5]
                     {submitionTrig? <>
                         <CircularProgress />
                     </>:<>
-                        Save and Exit <SaveIcon/>
+                        Save and Exit &nbsp; <SaveIcon/>
                     </>}
                 </div>
             </>}

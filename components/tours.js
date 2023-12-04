@@ -317,7 +317,7 @@ export function TourDisplayer(props){
 
     const accordionDisplayer=(accordTitle, accordContent, openContr, numerator)=>{
         return(<>
-        <Accordion defaultExpanded={openContr} className={styles.accordionCont}>
+        <Accordion defaultExpanded={openContr} >
             <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" > 
                 <h2>{numerator&&<>{numerator} -</>}  {accordTitle} </h2></AccordionSummary>
             <AccordionDetails> 
@@ -342,7 +342,7 @@ export function TourDisplayer(props){
             </div>
     const dayByDaydisp=(tourDayByDay, openContr)=>{
         const dayInclDisp=(dayIncl)=>{
-            if(dayIncl){
+            if(dayIncl?.length>0){
                 let theInclusions = dayIncl.map((elem, i)=><React.Fragment key={i}><li>{elem}</li></React.Fragment>)
                 return(<><div className={styles.dayInclusionCont}> 
                     <h4>Includes:</h4>
@@ -487,7 +487,7 @@ export function TourDisplayer(props){
                 <div className={styles.dayImgCont}>
                     {dailyImgArr.map((elem, i)=><React.Fragment key={i}>
                         <div className={styles.eachDayImg}>
-                        {anImageDisp(elem, 540, "LTCWide", imgAlt)}
+                        {anImageDisp(elem, 300, "LTCWide", imgAlt)}
                         </div>
                     </React.Fragment> )}
                 </div>
@@ -497,11 +497,11 @@ export function TourDisplayer(props){
 
         let theDays = tourDayByDay.map((elem,i)=> 
         <React.Fragment key={i}>
-            <Accordion className={styles.accordionCont} defaultExpanded={openContr}>
-                <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" > 
-                    <h3>{i+1&&<>{i+1}: </>}  {elem.dayTitle} </h3></AccordionSummary>
-                <AccordionDetails> 
-                    <div style={{textAlign:"justify"}}>
+            <Accordion sx={{ boxShadow:0 }} defaultExpanded={openContr}>
+                <AccordionSummary  expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" > 
+                    <h3>D {i+1&&<>{i+1}: </>}  {elem.dayTitle} </h3></AccordionSummary>
+                <AccordionDetails sx={{ pb: 0 }} > 
+                    <div className={styles.eachDayDescription}>
                         {textHTMLParser(elem.dayDescription)}
                     </div>
                     {dayInclDisp(elem.dayInclusions)}
@@ -764,7 +764,6 @@ export function TourDisplayer(props){
         }
     }
     const tourFooter=()=>{
-
         return(<>
         <footer  style={{width: "100%"}} >
             <div className={styles.footerBar} >
@@ -776,13 +775,7 @@ export function TourDisplayer(props){
         </footer>
         </>)
     }
-
-
     return(<>
-
-    {/* update dropdown triggers so that on print, all DD are open. */}
-
-
         <article className={styles.generalTourPage}>
             <div className={styles.tourContainer}>
                 {tourTitle()}
@@ -870,7 +863,6 @@ export function RectangularTourCard(props){
     </>)
     } else return(<> cu cu </>)
 }
-
 
 // tour displayer LTC NON OP, need to isolate state for each ver
 export function SortingItinUI(props){

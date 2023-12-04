@@ -121,7 +121,7 @@
 
 .addFromRecordBTN{
     display: flex;
-    width: 96%;
+    width: 100%;
     justify-content: flex-end;
     border-bottom: solid 1px;
     border-right: solid 1px;
@@ -147,9 +147,7 @@
 }
 
 .autofillCont{
-    width: 650px;
-    min-height: 400px;
-    padding: 9px 15px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -175,6 +173,28 @@
     flex-wrap: wrap;
     height: 350px;
     justify-content: space-between;
+}
+
+.selectedImgCont{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 12px 0;
+    padding-bottom: 9px;
+    border-bottom: solid 2px black;
+    flex-wrap: wrap;
+}
+
+.eachSelectedImg{
+    display: flex;
+    margin-top: 6px;
+}
+
+.cancelImg{
+    position: relative;
+    transform: translate(12px, -12px);
+    z-index: 5;
+    color: red;
 }
 
 .eachImgDisp{
@@ -229,11 +249,6 @@
     font-weight: 600;
 }
 
-.dayAdditionalsCont{
-    border-radius: 5px;
-    text-align: center;
-    margin: 21px 0;
-}
 .additionalOptionsCont{
     display: flex;
     justify-content: space-around;
@@ -382,6 +397,7 @@
     padding: 9px 15px;
     margin: 9px 12px;
     box-shadow: var(--frst-box-shadow);
+    cursor: pointer;
 }
 
 
@@ -407,12 +423,8 @@
     box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.17);
 }
 
-.submitFlightsBTN{
-    margin: 4px 4px;
-    padding: 15px 0;
-    border: solid 3px black;
-    border-radius: 5px;
-}
+
+
 
 /* ////////////// */
 /* AUTH */

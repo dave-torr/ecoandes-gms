@@ -227,14 +227,6 @@
     align-items: center;
 }
 
-.accordionCont{
-    width: 100%;
-}
-
-.accordionCont h2{
-    text-transform: uppercase;
-}
-
 .tourContainer{
     width: 100%;
     display: flex;
@@ -481,6 +473,9 @@
     transition: all ease-in 0.3s;
 }
 
+.eachDayDescription::first-letter{
+    text-transform: capitalize;
+}
 
 .iconCont{
     width: 22%;
@@ -505,17 +500,16 @@
 }
 
 .tourData{
-    width: 63%;
+    width: 66%;
 }
 
 .supportInfoCont{
-    position: sticky;
     width: 33%;
     background-color: rgb(231, 229, 229);
     box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.37);
     top: 42px;
     height: fit-content;
-    padding: 15px 3px;
+    font-size: 0.9em;
 }
 
 .sectionTitles{
@@ -523,7 +517,7 @@
 }
 
 .tourInfoDescriptor{
-    padding: 0 25px;
+    padding: 0 18px;
     text-align: justify;
     padding-bottom: 15px;
 }
@@ -565,11 +559,11 @@
 .sectionTitles{
     text-transform: uppercase;
     font-weight: 600;
-    margin: 6px 21px;
+    margin-top: 6px;
     color: var(--pop-orange);
     font-size: 1.15em;
     border-top: solid 2px var(--pop-orange);
-    padding: 12px 0;
+    padding: 12px 12px;
 }
 
 .dayInclusionCont > h4{
@@ -1194,13 +1188,14 @@
 .dayImgCont{
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .eachDayImg{
+    width: 46%;
     margin: 9px;
-    padding: 2px 4px;
-    width: fit-content;
+    padding: 1px 4px;
     box-shadow: var(--frst-box-shadow);
 }
 
@@ -1220,14 +1215,14 @@
 }
 
 .theTourDisp{
-    width: 730px;
-    margin-left: calc( 50vw - 365px);
+    width: 800px;
+    margin-left: calc( 50vw - 400px);
 }
 
 
 
 
-@media (max-width: 740px) {
+@media (max-width: 790px) {
     .theTourDisp{
         width: 100%;
         margin-left: 0%;
@@ -1321,7 +1316,7 @@
     }
 
     .eachDayImg{
-        width: 48%;
+        width: 45%;
     }
 
 }

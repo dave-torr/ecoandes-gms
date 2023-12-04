@@ -266,7 +266,6 @@ const { data: session } = useSession()
     }
 
 
-    // Notes:    
 
     return(<>
         {session?<> 
@@ -318,11 +317,9 @@ const { data: session } = useSession()
                 <h1>Tour Explorer</h1>
             
 
+                {allItinsDisp()}
                 {LTCTourExplorar(filteredItineraries, userUIFilters, theFilterLabel, "LTC Published", true, 1 )}
                 {LTCTourExplorar(EcoAndesFD, false, false, "EcoAndes Fixed Departure", false, 2, setPickedItin, setItinDispTrigger )}
-                {/* {fetchUserItineraries()} */}
-                {allItinsDisp()}
-
 
             </>}
             </div>
