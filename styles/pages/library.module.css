@@ -10,6 +10,11 @@
     transition: all ease-in 0.2s;
 }
 
+.libraryMain{
+    display: flex;
+    width: 760px;
+}
+
 .spaceBetRow{
     display: flex;
     justify-content: space-between;
@@ -121,4 +126,47 @@
     position: absolute;
     transform: translateX(-41px);
     cursor: pointer;
+}
+
+
+/* home */
+.libQuickLinks{
+    padding: 21px;
+    border-left: solid 1px black;
+    width: 40%;
+}
+
+.aQuickLink{
+    width: 240px;
+    box-shadow: var(--frst-box-shadow);
+    padding: 12px 18px;
+    background-color: white;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    transition: all ease-in 0.1s;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+.aQuickLinkDES{
+    width: 240px;
+    padding: 12px 18px;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    cursor: pointer;
+    border: solid 1px grey;
+}
+
+.aQuickLink:hover{
+    background-color: teal;
+    color: white;
+    box-shadow: var(--frst-box-shadow);
+}
+
+.libWelcome{
+    width: 60%;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }

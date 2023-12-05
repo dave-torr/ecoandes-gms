@@ -41,6 +41,10 @@ export default function GMS(){
             <Link href="/gms/adminDash">  
             <a>Admin</a>
             </Link></>}
+            {session.user.name==="David Torres"&&<>
+            <Link href="/gms/library">
+            <a>Library</a>
+            </Link></>}
             
         {/* Non admin Toutes */}
             <Link href="/gms/operations">  

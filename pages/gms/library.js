@@ -21,6 +21,7 @@ import GenDataTemplates from "./../../data/dataAndTemplates"
 
 import styles from "../../styles/pages/library.module.css";
 import { aDropdownPicker, anInputDisplayer } from '../../components/forms';
+import { aHotelDisplayer } from '../../components/operations/providers';
 
 let toDate = new Date()
 
@@ -37,7 +38,8 @@ function LibraryPage(){
 // Templates
 // activities, itin descriptions, 
 
-    const [library, setLibrary] = useState()
+    const [library, setLibrary] = useState([])
+    const [libraryTab, setLibraryTab]=useState("main")
 
     const [hotelSchema, setHotelSchema]=useState({
         "submitionDate": toDate,
@@ -46,10 +48,11 @@ function LibraryPage(){
         "roomPriceArr":[]
     })
     const [contactSchema, setContactSchema]=useState({})
-    const [hotelAdderTrig, setHotelAddTrig]= useState(true)
+    const [hotelAdderTrig, setHotelAddTrig]= useState(false)
     const [roomPriceObj, setRoomPriceObj]=useState({
         "breakfastInc":true
     })
+    const [tempObj, setTempObj]=useState({})
     const [hotelSubmition, setHotelSub]=useState(false)
 
     const marks = [
@@ -85,8 +88,7 @@ function LibraryPage(){
         }
     },[])
 
-    let providerType=["hotel", "transportCompany", "guide", "restaurant", "services", "yacht", "flotel", "ariline",  ]
-
+    let providerType=["hotel", "transportCompany", "guide", "restaurant", "services", "yacht", "flotel", "ariline"]
 
     function Categoryswitcher(categoryz){
         switch (categoryz){
@@ -175,12 +177,16 @@ function LibraryPage(){
             </div>
         </>)
     }
-    const aPriceInput=(InputLabel, inputId, )=>{
+    const aNumInput=(InputLabel, inputId, numberType)=>{
         return(<>
         <div className={styles.aPriceInputcont}>
             <label htmlFor={inputId} className={styles.anInputLabel}>{InputLabel}:</label>
-            <span>$ &nbsp;<input
-                placeholder="Price"
+            <span>
+                {numberType==="price"&&<>
+                    $ &nbsp;
+                </> }
+            <input
+                placeholder={numberType===undefined? undefined : numberType }
                 step=".01"
                 type="number"
                 id={inputId}
@@ -192,6 +198,58 @@ function LibraryPage(){
                     })
                 }}
                 /></span>
+            </div>
+        </>)
+    }
+    const anAdditServiceDis=(theService, indx)=>{
+        return(<>
+            <div className={styles.hotelRoomDisp}>
+                cucuu
+            </div>
+        </>)
+    }
+    const contactAdder=()=>{
+        return(<>
+            <div className={styles.spaceBetRow}>
+                <span style={{width:"60%" }}>
+                    {anInputDisplayer("Contact Name", "name", "text", false, contactSchema.name, contactSchema, setContactSchema, undefined, undefined, "Name of team member" )}
+                </span>
+                <span style={{width:"35%" }}>
+                    {anInputDisplayer("role", "role", "text", false, contactSchema.role, contactSchema, setContactSchema, undefined, undefined, "ex: reservations" ) }
+                </span>
+            </div>
+            <div className={styles.spaceBetRow}>
+                <span style={{width:"52%" }}>
+                    {anInputDisplayer("email", "email", "text", false, contactSchema.email, contactSchema, setContactSchema, undefined, undefined, "ex: info@ikalagalapagos.com" )}
+                </span>
+                <span style={{width:"43%" }}>
+                    {anInputDisplayer("phono", "phono", "tel", false, contactSchema.phono, contactSchema, setContactSchema, undefined, undefined, "ex: 0986775422" ) }
+                </span>
+            </div>
+            <div className={styles.spaceBetRow}>
+                <span style={{width:"43%" }}>
+                    {anInputDisplayer("whatsapp", "wapp", "tel", false, contactSchema.wapp, contactSchema, setContactSchema, undefined, undefined, "ex: 0986775422" ) }
+                </span>
+                <span style={{width:"50%", alignItems:"center" }} onClick={()=>{
+                    let tempArr = hotelSchema.contactArr.concat(contactSchema)
+                    setHotelSchema({
+                        ...hotelSchema,
+                        "contactArr": tempArr
+                    })
+                    setContactSchema({})
+                    let wappVal = document.getElementById("wapp")
+                    wappVal.value=''
+                    let nameVal = document.getElementById("name")
+                    nameVal.value=''
+                    let emailVal = document.getElementById("email")
+                    emailVal.value=''
+                    let phonoVal = document.getElementById("phono")
+                    phonoVal.value=''
+                    let roleVal = document.getElementById("role")
+                    roleVal.value=''
+                }}>
+                    <div className={styles.addRecordBTN} > Add to Contacts </div>
+                </span>
             </div>
         </>)
     }
@@ -255,47 +313,7 @@ function LibraryPage(){
                 </div>
                 <div className={styles.spaceBetRow}>
                     <div className={styles.dataColumn}>
-                        <div className={styles.spaceBetRow}>
-                            <span style={{width:"60%" }}>
-                                {anInputDisplayer("Contact Name", "name", "text", false, contactSchema.name, contactSchema, setContactSchema, undefined, undefined, "Name of team member" )}
-                            </span>
-                            <span style={{width:"35%" }}>
-                                {anInputDisplayer("role", "role", "text", false, contactSchema.role, contactSchema, setContactSchema, undefined, undefined, "ex: reservations" ) }
-                            </span>
-                        </div>
-                        <div className={styles.spaceBetRow}>
-                            <span style={{width:"52%" }}>
-                                {anInputDisplayer("email", "email", "text", false, contactSchema.email, contactSchema, setContactSchema, undefined, undefined, "ex: info@ikalagalapagos.com" )}
-                            </span>
-                            <span style={{width:"43%" }}>
-                                {anInputDisplayer("phono", "phono", "tel", false, contactSchema.phono, contactSchema, setContactSchema, undefined, undefined, "ex: 0986775422" ) }
-                            </span>
-                        </div>
-                        <div className={styles.spaceBetRow}>
-                            <span style={{width:"43%" }}>
-                                {anInputDisplayer("whatsapp", "wapp", "tel", false, contactSchema.wapp, contactSchema, setContactSchema, undefined, undefined, "ex: 0986775422" ) }
-                            </span>
-                            <span style={{width:"50%", alignItems:"center" }} onClick={()=>{
-                                let tempArr = hotelSchema.contactArr.concat(contactSchema)
-                                setHotelSchema({
-                                    ...hotelSchema,
-                                    "contactArr": tempArr
-                                })
-                                setContactSchema({})
-                                let wappVal = document.getElementById("wapp")
-                                wappVal.value=''
-                                let nameVal = document.getElementById("name")
-                                nameVal.value=''
-                                let emailVal = document.getElementById("email")
-                                emailVal.value=''
-                                let phonoVal = document.getElementById("phono")
-                                phonoVal.value=''
-                                let roleVal = document.getElementById("role")
-                                roleVal.value=''
-                            }}>
-                                <div className={styles.addRecordBTN} > Add to Contacts </div>
-                            </span>
-                        </div>
+                        {contactAdder()}
                     </div>
                     <div className={styles.dataColumn}>
                         {hotelSchema.contactArr.length>0 && <>
@@ -335,8 +353,8 @@ function LibraryPage(){
                             </>}
                         </div>
                         <div className={styles.spaceBetRow}>
-                            {aPriceInput("Rack Rates", "rackRates")}
-                            {aPriceInput("LTC Rates", "ltcRates")}
+                            {aNumInput("Rack Rates", "rackRates", "price" )}
+                            {aNumInput("LTC Rates", "ltcRates", "price" )}
                         </div>
                         <br/>
                         <div className={styles.spaceBetRow}>
@@ -349,7 +367,7 @@ function LibraryPage(){
                                     }
                                 }} />} label="Breakfast Included" />
                             {!roomPriceObj.breakfastInc&&<>
-                                {aPriceInput("Breakfast Price", "breakfastPrice")}
+                                {aNumInput("Breakfast Price", "breakfastPrice", "price" )}
                             </>}
                         </div>
                         <div className={styles.spaceBetRow}>
@@ -362,7 +380,7 @@ function LibraryPage(){
                                     }
                                 }} />} label="Extra Bed" />
                             {roomPriceObj.additionalBed&&<>
-                                {aPriceInput("Extra Bed", "additionalBed")}
+                                {aNumInput("Extra Bed", "additionalBed", "price" )}
                             </>}
                         </div>
                         <div className={styles.addRecordBTN} onClick={()=>{
@@ -395,7 +413,7 @@ function LibraryPage(){
                         }} > Add room </div>
                     </div>
                     <div className={styles.dataColumn}>
-                        {hotelSchema.roomPriceArr.length>0 && <>
+                        {hotelSchema.roomPriceArr?.length>0 && <>
                             <h3>Registered Rooms</h3>
                             {hotelSchema.roomPriceArr.map((elem, i)=><React.Fragment key={i}>
                                 {aRoomRateDisp(elem, i)}
@@ -403,6 +421,60 @@ function LibraryPage(){
                         </>}
                     </div>
                 </div>
+
+
+
+                {/* <div className={styles.sectionDivider}> 
+                    Additional Services
+                </div>
+                <div className={styles.spaceBetRow}>
+                    <div className={styles.dataColumn}>
+                        <div className={styles.spaceBetRow}>
+                            <span style={{width:"100%" }}>
+                                {anInputDisplayer("Service Description", "serviceDescription", "text", false, undefined, tempObj, setTempObj, undefined, undefined, "Ex: Standard Dinner Service" )}
+                            </span>
+                        </div>
+                        <div className={styles.spaceBetRow}>
+                            {aNumInput("Pax min", "guestMin" )}
+                            {aNumInput("Pax max", "guestMax" )}
+                        </div>
+
+
+
+                        <div className={styles.addRecordBTN} onClick={()=>{
+                            let tempArr 
+                            if(hotelSchema.serviceArr){
+                                tempArr = hotelSchema.serviceArr?.concat(tempObj)
+                            } else {
+                                tempArr=[tempObj]
+                            }
+                            setHotelSchema({
+                                ...hotelSchema,
+                                "serviceArr": tempArr
+                            })
+                            setTempObj({})
+                            let serviceDescriptionVal = document.getElementById("serviceDescription")
+                            serviceDescriptionVal.value=''
+                            let guestMinVal = document.getElementById("guestMin")
+                            guestMinVal.value=''
+                            let guestMaxVal = document.getElementById("guestMax")
+                            guestMaxVal.value=''
+
+                            // per pax, per group
+
+                        }} > Add Additional Service </div>
+                    </div>
+                    <div className={styles.dataColumn}>
+                        {hotelSchema.serviceArr?.length>0 && <>
+                            <h3>Additional Services</h3>
+                            {hotelSchema.serviceArr.map((elem, i)=><React.Fragment key={i}>
+                                {anAdditServiceDis(elem, i)}
+                            </React.Fragment>)}
+                        </>}
+                    </div>
+                </div> */}
+
+
 
                 {hotelSubmition? <>
                     <LinearProgress color="secondary" />
@@ -414,7 +486,33 @@ function LibraryPage(){
         </>)
     }
 
-    console.log(library)
+
+    const libraryDisplayer=()=>{
+
+        return(<>
+            {library.length>0 &&<>
+                {library.map((elem, i)=><React.Fragment key={i}> 
+                    {aHotelDisplayer(elem)}
+                </React.Fragment>  )}
+            </> }
+        </>)
+
+    }
+
+
+                // {
+                //     "priceKey":"additionalServices",
+                //     "priceDescription":"standard dinner",
+                //     "priceType":"per person",
+                //     "price":20
+                // },  
+
+
+
+
+
+
+    // console.log(hotelSchema)
 
     return(<>
     {session && <>
@@ -423,8 +521,44 @@ function LibraryPage(){
             <LocalLibraryIcon fontSize="large" />
             <h2>Latin Travel Collection</h2>
             <h1>Library</h1>
-        
-        {hotelAdderForm()}
+
+            {libraryTab==="main"? <>
+            <div className={styles.libraryMain}> 
+                <div className={styles.libWelcome} > 
+
+                    {/* Quick Links  */}
+                    {/* yacht Anahi  */}
+                    {/* Ikala UIO - GPS  */}
+                    {library.length>0 && <>
+                        <div className={styles.aQuickLink} onClick={()=>setLibraryTab("library")}>
+                            Access Library
+                        </div>
+                    </>}
+                </div>
+                <div className={styles.libQuickLinks} > 
+                    <div className={styles.aQuickLinkDES} >
+                        LTC Team directory
+                    </div>
+                    <div className={styles.aQuickLinkDES} >
+                        LTC product directory
+                    </div>
+                    <br/><br/>
+
+                    <div className={styles.aQuickLink} onClick={()=>setHotelAddTrig(true)}>
+                        Add Hotel to Library
+                    </div>
+                    <div className={styles.aQuickLinkDES} >
+                        add provider to Library
+                    </div>
+                </div>
+            </div>
+            </> : libraryTab==="library"&& <> 
+            
+                {libraryDisplayer()}
+            
+            </>}
+            
+            {hotelAdderForm()}
         </div>
     </>}
     {/* log in form */}

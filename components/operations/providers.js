@@ -79,18 +79,21 @@ export function aHotelDisplayer(aHotel){
     }
 
     if(aHotel){
+        console.log(aHotel)
     return(<>
         <div className={styles.aProviderCont}>
             <div className={styles.spaceBetRow}>
                 <h1>{aHotel.hotelName && <> {aHotel.hotelName} </> }</h1>
                 {/* star rating system */}
                 <div style={{ display:"flex"}}>
-                    {starDisp(aHotel.stars)}
+                    {starDisp(aHotel.accomodationCategory)}
                 </div>
             </div>
             <div style={{ textTransform:"capitalize"}}> 
-            {aHotel.city && <> {aHotel.city} | </> } 
-            {aHotel.country && <> {aHotel.country} </> } </div> <br/>
+            {aHotel.hotelAddress && <> {aHotel.hotelAddress}</> } 
+            <br/>
+            {aHotel.hotelCity && <> {aHotel.hotelCity} | </> } 
+            {aHotel.hotelProvince && <> {aHotel.hotelProvince} </> } </div> <br/>
 
             <div className={styles.spaceBetRow}>
                 <span style={{ textTransform:"uppercase",  }}>
@@ -98,12 +101,11 @@ export function aHotelDisplayer(aHotel){
                 </span>
 
                 <span className={styles.hotelLinksDisp} >
-                    {aHotel.website && <>
+                    {aHotel.hotelWebsite && <>
                     <a target='_blank' href={aHotel.website}><LanguageIcon/></a></>}
                     {aHotel.gmapsLink && <>
                     <a target='_blank' href={aHotel.gmapsLink}><LocationOnIcon/></a></>}
-                    {aHotel.email && <>
-                    <a target='_blank' href={`mailto:${aHotel.email}`}><MailOutlineIcon/></a></>}
+
                 </span>
             </div>
 
@@ -129,25 +131,40 @@ export function aHotelDisplayer(aHotel){
                 <AccordionDetails>
                     {aHotel.roomPriceArr?.map((elem,i)=><React.Fragment key={i}>
                         <div className={styles.hotelRoomDisp}>
-                            <div style={{ display:"flex", flexDirection:"column", width:"60%" }}> 
+                            <div style={{ display:"flex", flexDirection:"column", width:"50%" }}> 
                                 {elem.roomDescription &&<>
                                     <strong> ROOM TYPE </strong>
                                     {elem.roomDescription}
-                                </>} 
-                            </div>
-                            <div style={{ display:"flex", flexDirection:"column", width:"18%" }}>
-                                {elem.price &&<>
-                                    <strong> PRICE </strong>
-                                    <span style={{ textTransform:"uppercase"}}>
-                                        {aHotel.currency} ${elem.price}</span>
-                                </>} 
-                            </div>
-                            <div style={{ display:"flex", flexDirection:"column", width:"18%" }}>
-                                {elem.additionalBed &&<>
-                                    <strong> ADD. BED </strong>
-                                    <span style={{ textTransform:"uppercase"}}>
-                                        {aHotel.currency} ${elem.additionalBed}</span>
-                                </>} 
+                                </>}
+                                {elem.roomAlias &&<>
+                                    <i>{elem.roomAlias}</i>
+                                </>}
+                                <strong>Breakfast 
+                                    {elem.breakfastInc &&<> Included </>}
+                                    {elem.breakfastPrice &&<> ${elem.breakfastPrice}</>}
+                                </strong>
+
+                                </div>
+                                <div style={{ display:"flex", flexDirection:"column", width:"18%" }}>
+                                    {elem.rackRates &&<>
+                                        <strong> RACK $</strong>
+                                        <span style={{ textTransform:"uppercase"}}>
+                                        ${elem.rackRates}</span>
+                                    </>} 
+                                </div>
+                                <div style={{ display:"flex", flexDirection:"column", width:"18%" }}>
+                                    {elem.ltcRates &&<>
+                                        <strong> LTC $</strong>
+                                        <span style={{ textTransform:"uppercase"}}>
+                                        ${elem.ltcRates}</span>
+                                    </>} 
+                                </div>
+                                <div style={{ display:"flex", flexDirection:"column", width:"18%" }}>
+                                    {elem.additionalBed &&<>
+                                        <strong> ADD. BED </strong>
+                                        <span style={{ textTransform:"uppercase"}}>
+                                        ${elem.additionalBed}</span>
+                                    </>} 
                             </div>
                         </div>
 

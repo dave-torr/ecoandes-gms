@@ -165,6 +165,11 @@ export function GMSNavii(props){
                     <a>Admin Dash</a>
                     </Link></>}
                     </>}
+                    {props.user.name==="David Torres"&&<>
+                    {router.pathname!="/library"&&<><Link href="/gms/library">  
+                    <a>Library</a>
+                    </Link></>}
+                    </>}
                     <br/>
                 {/* Non admin Toutes */}
                     {router.pathname!="/gms/operations"&&<><Link href="/gms/operations">  
