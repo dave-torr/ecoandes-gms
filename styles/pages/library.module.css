@@ -7,5 +7,118 @@
     padding: 12px;
     background-color: var(--whitesmoke-background);
     overflow-x: hidden;
+    transition: all ease-in 0.2s;
 }
 
+.spaceBetRow{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.hotelAdderForm{
+    width: 100%;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dataColumn{
+    width: 46%;
+    display: flex;
+    flex-direction: column;
+}
+
+.aContactRow{
+    display: flex;
+    font-size: 0.9em;
+    font-weight: 600;
+    align-items: center;
+}
+
+.aContactRow span{
+    margin-left: 12px;
+    cursor: pointer;
+}
+
+.sectionDivider{
+    margin-top: 21px;
+    padding: 12px 0;
+    border-top: solid 1px black;
+    width: 100%;
+    font-size: 1.3em;
+}
+
+.addRecordBTN{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    border-bottom: solid 1px black;
+    border-right: solid 1px black;
+    padding: 12px 18px;
+}
+
+.addRecordBTN:hover{
+    cursor: pointer;
+    background-color: teal;
+    color: white;
+}
+
+.removeContactBTN{
+    position: absolute;
+    transform: translateX(-30px);
+    cursor: pointer;
+}
+
+.submitHotelBTN{
+    margin: 21px 0;
+    background-color: white;
+    padding: 18px 33px;
+    font-size: 1.3em;
+    transition: all ease-in 0.2s;
+}
+
+.submitHotelBTN:hover{
+    cursor: pointer;
+    background-color: teal;
+    color: white;
+}
+
+.aPriceInputcont{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.anInputLabel{
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 6px 0;
+}
+
+.aPriceInputcont input{
+    padding: 6px 9px;
+    width: 70%;
+}
+
+.hotelRoomDisp{
+    display: flex;
+    justify-content: space-between;
+    border: solid 1px black;
+    padding: 9px;
+    margin-bottom: 12px;
+    font-size: 0.8em;
+    text-transform: capitalize;
+}
+
+.hotelRoomDisp strong{
+    font-size: 0.9em;
+}
+
+.rmvHotelBTN{
+    position: absolute;
+    transform: translateX(-41px);
+    cursor: pointer;
+}

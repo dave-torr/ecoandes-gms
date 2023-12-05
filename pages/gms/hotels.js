@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSession, signOut } from "next-auth/react"
 
-
-import useHotelDB from "../api/gms/hotelsSWR" 
-
-
-
 import styles from "./../../styles/pages/gms.module.css"
 
 import CloseIcon from '@mui/icons-material/Close';
@@ -16,6 +11,31 @@ import { Loader } from '@mantine/core';
 import GenDataTemplates from "./../../data/dataAndTemplates"
 import { HotelDataDisplayer } from "../../components/hotelDB";
 let toDate = new Date()
+
+
+
+
+// export hotel adder form, delete everything else
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -37,24 +57,7 @@ export default function HotelPage(props){
     const [roomCategorySwitcher, setRoomCat] = useState("standard")
     const [breakfastController, setBreakfastCont]=useState(true)
 
-    // FETCHING HOTELS FROM DB WITH SWR
-
-    const {HotelEntries, loadingStat, errorStat}=useHotelDB()
-
     const [orderedHotelLists, setOrderedHotels]=useState()
-
-
-    useEffect(()=>{
-        if(session){
-            // set user Data to submition schema
-            setHotelSchema({
-                ...hotelSchema,
-                "submittedBy": session.user.name,
-            })
-        } else {
-
-        }
-    },[session])
 
     // useEffect=(()=>{
     //     if(HotelEntries){
@@ -66,8 +69,7 @@ export default function HotelPage(props){
 
     /////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////
-    // FFE - EXPORT TO FORMS COMPONENT MODULE
-
+    // FFD
     const aTextInput=(aPlaceholder, inputId, anObject, setAnObject, inputType, reqBoolean)=>{
         return(<>
         <div className={styles.anInputcont}>
@@ -88,6 +90,7 @@ export default function HotelPage(props){
             </div>
         </>)
     }
+
     const aPriceInput=(aPlaceholder, inputId, priceCategory, inputType, reqBoolean)=>{
         return(<>
         <div className={styles.aPriceInputcont}>
@@ -305,21 +308,28 @@ export default function HotelPage(props){
                 <div className={styles.dataContOne}>
                     <div className={styles.dataColumn}>
                         <h3>Name & Location</h3>
-                        {aTextInput("Hotel Name *", "hotelName", hotelSchema, setHotelSchema, "text", true )}
+
+                        {/* {aTextInput("Hotel Name *", "hotelName", hotelSchema, setHotelSchema, "text", true )} */}
+
                         {locationPickers(GenDataTemplates.ecuadorProvinces, "province")}
                         {locationPickers(GenDataTemplates.ecuadorCities, "city")}
-                        {aTextInput("Address *", "address", hotelSchema, setHotelSchema, "text", true )}
-                        {aTextInput("Location Notes", "locationNotes", hotelSchema, setHotelSchema, "text", false )}
+
+                        {/* {aTextInput("Address *", "address", hotelSchema, setHotelSchema, "text", true )} */}
+                        {/* {aTextInput("Location Notes", "locationNotes", hotelSchema, setHotelSchema, "text", false )} */}
+
+
                     </div>
                     <div className={styles.dataColumn}>
                         <h3>Contact</h3>
-                        {aTextInput("Contact Email *", "hotelEmail", hotelSchema, setHotelSchema, "email", true )}
+
+                        {/* {aTextInput("Contact Email *", "hotelEmail", hotelSchema, setHotelSchema, "email", true )}
                         {aTextInput("Phone (main) *", "phoneMain", hotelSchema, setHotelSchema, "number", true )}
                         {aTextInput("Phone (mobile)", "phoneMobile", hotelSchema, setHotelSchema, "number", false )}
-                        {aTextInput("Hotel Website", "hotelUrl", hotelSchema, setHotelSchema, "url", false )}
+                        {aTextInput("Hotel Website", "hotelUrl", hotelSchema, setHotelSchema, "url", false )} */}
+
+                        
                     </div>
                 </div>
-
                 {hotelSchema.priceArr?<>
                     <div className={styles.savedRatesList}>
                     {hotelSchema.priceArr.map((elem, i)=><React.Fragment key={i}> 
@@ -333,6 +343,8 @@ export default function HotelPage(props){
             </form>        
         </>)
     }
+
+
     const submitToBackEnd=async()=>{
         console.log("here at submit BTN")
         let stringifiedHotelSchema = JSON.stringify(hotelSchema)

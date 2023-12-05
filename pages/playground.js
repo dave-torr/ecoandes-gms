@@ -8,7 +8,6 @@ import {GMSNavii} from "./../components/navis"
 import LTCPriceTables from "../data/LTCPriceTables2023.json"
 import { aHotelDisplayer, hotelAdderForm } from '../components/operations/providers'
 import styles from "./../styles/pages/playground.module.css"
-import { getUserProfile } from './api/gms/oneDrive'
 
 // Bitacora logo:
 // import TrackChangesIcon from '@mui/icons-material/TrackChanges';
@@ -317,6 +316,10 @@ let tempGenData={
     "changedBy": ["David Torres"]
 }
 
+// MS graph api to get files from IMG folder
+// Hotel Database
+// provider Database
+
 export default function PlaygroundPage(){
     const { data: session } = useSession()
     const [tempData, setTempData]=useState()
@@ -431,20 +434,25 @@ export default function PlaygroundPage(){
 
     console.log(autofillOpts)
 
-    const getGoogleDataBTN=()=>{
+    const getOneDriveBTN=()=>{
 
         return(<>
             <div
                 onClick={async()=>{
-                    // const res = await fetch("/api/googleApi", {
-                    //     method: "GET"
-                    // })
-                    // const docData = await res.json()
-                    // if(res.status===200){
-                    //     setTempData(docData.data.sheets)
-                    // } else (res)
+                    const res = await fetch(`https://login.microsoftonline.com/$08521e6b-7c64-4338-a5e5-7b30ff568552/oauth2/token`, {
+                        method: "POST",
+                        body:{
+                            "grant_type": "client_credentials",
+                            "client_id": process.env.ENTRA_APP_CLIENT_ID,
+                            "client_secret": process.env.ONEDRIVE_CLIENT_SECRET,
+                            "resource": "https://graph.microsoft.com"
+                        }
+                    })
+                    const docData = await res.json()
+                    if(res.status===200){
+                        console.log(docData)
+                    } else (res)
 
-                    {getUserProfile()}
                 }}
             > GET DATA</div>
             {tempData && <> 
@@ -519,8 +527,8 @@ export default function PlaygroundPage(){
                 {/* {aHotelDisplayer(sampleHotel)}
                 {aHotelDisplayer(testerObj)}
                 {hotelAdderForm(testerObj, setTester, locObject, setTempObj)} */}
-
-                {/* {getGoogleDataBTN()} */}
+                {aHotelDisplayer(sampleHotel)}
+                {/* {getOneDriveBTN()} */}
 
                 <div contentEditable plaintext-only onInput={(e)=>{
                     console.log(e.target.innerHTML)

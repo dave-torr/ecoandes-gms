@@ -39,7 +39,7 @@ async function handler(req, res){
             client.close();
         }
     }
-    // edit itins
+    // delete or edit itins
     else if (req.method==="DELETE"){ 
 
         const client = await connectToDatabase();

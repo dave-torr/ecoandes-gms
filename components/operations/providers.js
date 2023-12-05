@@ -58,6 +58,26 @@ export function aHotelDisplayer(aHotel){
         </>)} 
     }
 
+    const aContactDisplayer=(aContact)=>{
+        return(<>
+            <div className={styles.spaceBetRow}>
+                <div className={styles.aContactRow}>
+                    <h4>{aContact.name&& <>{aContact.name}</>}</h4>
+                    {aContact.role&& <>&nbsp; &nbsp;{aContact.role}</>}
+                </div>
+                <div className={styles.aContactRow}>
+                    {aContact.email&& <>
+                        <span><a target='_blank' href={`mailto:${aContact.email}`}> <MailOutlineIcon/> </a></span></>}
+                    {aContact.phono&& <>
+                        <span><a target='_blank' href={`tel:+593${aContact.phono}`}> <PhoneForwardedIcon/></a></span></>}
+                    {aContact.wapp&& <>
+                        <span><a target='_blank' href={`https://wa.me/593${aContact.wapp}`}> 
+                        <WhatsAppIcon/></a></span></>}
+                </div>
+            </div>        
+        </>)
+    }
+
     if(aHotel){
     return(<>
         <div className={styles.aProviderCont}>
@@ -94,22 +114,8 @@ export function aHotelDisplayer(aHotel){
                     <h2> Contacts </h2>
                 </AccordionSummary>
                 <AccordionDetails>                    
-                    {aHotel.contactArr?.map((elem,i)=><React.Fragment>
-                    <div className={styles.spaceBetRow}>
-                        <div className={styles.aContactRow}>
-                            <h4>{elem.name&& <>{elem.name}</>}</h4>
-                            {elem.role&& <>&nbsp; &nbsp;{elem.role}</>}
-                        </div>
-                        <div className={styles.aContactRow}>
-                            {elem.email&& <>
-                                <span><a target='_blank' href={`mailto:${elem.email}`}> <MailOutlineIcon/> </a></span></>}
-                            {elem.phono&& <>
-                                <span><a target='_blank' href={`tel:+593${elem.phono}`}> <PhoneForwardedIcon/></a></span></>}
-                            {elem.wapp&& <>
-                                <span><a target='_blank' href={`https://wa.me/593${elem.wapp}`}> 
-                                <WhatsAppIcon/></a></span></>}
-                        </div>
-                    </div>
+                    {aHotel.contactArr?.map((elem,i)=><React.Fragment key={i}>
+                    {aContactDisplayer(elem)}
                     </React.Fragment>)}
                 </AccordionDetails>
             </Accordion>
@@ -143,9 +149,9 @@ export function aHotelDisplayer(aHotel){
                                         {aHotel.currency} ${elem.additionalBed}</span>
                                 </>} 
                             </div>
-
-
                         </div>
+
+
                     </React.Fragment> )}
                 </AccordionDetails>
             </Accordion>
