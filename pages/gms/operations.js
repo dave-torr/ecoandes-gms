@@ -987,6 +987,7 @@ export default function OperationsDashboard(){
     }
     const eachFlight=(flightData, dayFlightArr, flightIndx)=>{
         return(<>
+        <span>{flightData.theDate&&<>{new Date(flightData.theDate).toDateString()}</>}</span>
         <div className={styles.spaceBetRow}>
             {editSwitch && <>
                 <span style={{ color:"red", cursor:"pointer" }} onClick={()=>{
@@ -996,7 +997,6 @@ export default function OperationsDashboard(){
                 }}> <RemoveCircleOutlineIcon/> </span>
             </>}
             <div className={styles.flightDisplayer}>
-                <span>{flightData.theDate&&<>{new Date(flightData.theDate).toDateString()}</>}</span>
                 <span>{flightData.target==="group"?<><strong>GROUP FLIGHT</strong></>:<>{flightData.clientName}</>}</span>
                 <span>{flightData.departureTime&&<><strong>Time:</strong><br/> {flightData.departureTime}</>}</span>                
                 <span>{flightData.depLocation&& <><strong>FROM:</strong><br/> {flightData.depLocation}</>}</span>
@@ -1023,7 +1023,7 @@ export default function OperationsDashboard(){
             </div>
             {theDeparture.flights.length>0? <> 
                 {theDeparture.flights.map((elem, i)=> <React.Fragment key={i}>
-                    {elem?.length>0 && <>
+                    {elem?.length>0 && <> <br/>
                         Day {i+1}:
                         {elem.map((element, i)=><React.Fragment key={i}>
                             {eachFlight(element, elem, i)}

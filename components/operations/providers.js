@@ -82,99 +82,98 @@ export function aHotelDisplayer(aHotel){
         console.log(aHotel)
     return(<>
         <div className={styles.aProviderCont}>
-            <div className={styles.spaceBetRow}>
-                <h1>{aHotel.hotelName && <> {aHotel.hotelName} </> }</h1>
-                {/* star rating system */}
-                <div style={{ display:"flex"}}>
-                    {starDisp(aHotel.accomodationCategory)}
-                </div>
-            </div>
-            <div style={{ textTransform:"capitalize"}}> 
-            {aHotel.hotelAddress && <> {aHotel.hotelAddress}</> } 
-            <br/>
-            {aHotel.hotelCity && <> {aHotel.hotelCity} | </> } 
-            {aHotel.hotelProvince && <> {aHotel.hotelProvince} </> } </div> <br/>
-
-            <div className={styles.spaceBetRow}>
-                <span style={{ textTransform:"uppercase",  }}>
-                    {aHotel.hotelCategory && <> {aHotel.hotelCategory} </> }
-                </span>
-
-                <span className={styles.hotelLinksDisp} >
-                    {aHotel.hotelWebsite && <>
-                    <a target='_blank' href={aHotel.website}><LanguageIcon/></a></>}
-                    {aHotel.gmapsLink && <>
-                    <a target='_blank' href={aHotel.gmapsLink}><LocationOnIcon/></a></>}
-
-                </span>
-            </div>
-
-            {/* contacts for hotel */}
-            {aHotel.contactArr&& <>
-            <Accordion defaultExpanded={true}>
-                <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" >
-                    <h2> Contacts </h2>
-                </AccordionSummary>
-                <AccordionDetails>                    
-                    {aHotel.contactArr?.map((elem,i)=><React.Fragment key={i}>
-                    {aContactDisplayer(elem)}
-                    </React.Fragment>)}
-                </AccordionDetails>
-            </Accordion>
-            </>}
-
-            {aHotel.roomPriceArr&& <>
-            <Accordion defaultExpanded={false}>
-                <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" >
-                    <h2> Room Types </h2>
+                {aHotel.hotelCategory && <> {aHotel.hotelCategory} </> }
+                {aHotel.hotelCity && <>&nbsp; | &nbsp; {aHotel.hotelCity} </> }             
+            <Accordion  sx={{ boxShadow:0, padding:0 }} >
+                <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" style={{display:"flex" }} >
+                    <div className={styles.spaceBetRow}>
+                        <h1>{aHotel.hotelName && <> {aHotel.hotelName} </> }</h1>
+                        <div style={{ display:"flex"}}>
+                            {starDisp(aHotel.accomodationCategory)}
+                        </div>
+                    </div>
                 </AccordionSummary>
                 <AccordionDetails>
-                    {aHotel.roomPriceArr?.map((elem,i)=><React.Fragment key={i}>
-                        <div className={styles.hotelRoomDisp}>
-                            <div style={{ display:"flex", flexDirection:"column", width:"50%" }}> 
-                                {elem.roomDescription &&<>
-                                    <strong> ROOM TYPE </strong>
-                                    {elem.roomDescription}
-                                </>}
-                                {elem.roomAlias &&<>
-                                    <i>{elem.roomAlias}</i>
-                                </>}
-                                <strong>Breakfast 
-                                    {elem.breakfastInc &&<> Included </>}
-                                    {elem.breakfastPrice &&<> ${elem.breakfastPrice}</>}
-                                </strong>
-
-                                </div>
-                                <div style={{ display:"flex", flexDirection:"column", width:"18%" }}>
-                                    {elem.rackRates &&<>
-                                        <strong> RACK $</strong>
-                                        <span style={{ textTransform:"uppercase"}}>
-                                        ${elem.rackRates}</span>
-                                    </>} 
-                                </div>
-                                <div style={{ display:"flex", flexDirection:"column", width:"18%" }}>
-                                    {elem.ltcRates &&<>
-                                        <strong> LTC $</strong>
-                                        <span style={{ textTransform:"uppercase"}}>
-                                        ${elem.ltcRates}</span>
-                                    </>} 
-                                </div>
-                                <div style={{ display:"flex", flexDirection:"column", width:"18%" }}>
-                                    {elem.additionalBed &&<>
-                                        <strong> ADD. BED </strong>
-                                        <span style={{ textTransform:"uppercase"}}>
-                                        ${elem.additionalBed}</span>
-                                    </>} 
-                            </div>
+                    <div className={styles.spaceBetRow}>
+                        <div className={styles.addressCont}> 
+                            {aHotel.hotelAddress && <> {aHotel.hotelAddress}</> } 
+                            <br/>
+                            {aHotel.hotelCity && <> {aHotel.hotelCity} | </> } 
+                            {aHotel.hotelProvince && <> {aHotel.hotelProvince} </> } 
                         </div>
+                        <span className={styles.hotelLinksDisp} >
+                            {aHotel.hotelWebsite && <>
+                            <a target='_blank' href={aHotel.website}><LanguageIcon/></a></>}
+                            {aHotel.gmapsLink && <>
+                            <a target='_blank' href={aHotel.gmapsLink}><LocationOnIcon/></a></>}
+                        </span>
+                    </div>
+                    {/* contacts for hotel */}
+                    {aHotel.contactArr&& <>
+                    <Accordion defaultExpanded={true}>
+                        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" >
+                            <h2> Contacts </h2>
+                        </AccordionSummary>
+                        <AccordionDetails>                    
+                            {aHotel.contactArr?.map((elem,i)=><React.Fragment key={i}>
+                            {aContactDisplayer(elem)}
+                            </React.Fragment>)}
+                        </AccordionDetails>
+                    </Accordion>
+                    </>}
+                    {aHotel.roomPriceArr&& <>
+                    <Accordion defaultExpanded={false}>
+                        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" >
+                            <h2> Room Types </h2>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                            {aHotel.roomPriceArr?.map((elem,i)=><React.Fragment key={i}>
+                                <div className={styles.hotelRoomDisp}>
+                                    <div style={{ display:"flex", flexDirection:"column", width:"50%" }}> 
+                                        {elem.roomDescription &&<>
+                                            <strong> ROOM TYPE </strong>
+                                            {elem.roomDescription}
+                                        </>}
+                                        {elem.roomAlias &&<>
+                                            <i>{elem.roomAlias}</i>
+                                        </>}
+                                        <strong>Breakfast 
+                                            {elem.breakfastInc &&<> Included </>}
+                                            {elem.breakfastPrice &&<> ${elem.breakfastPrice}</>}
+                                        </strong>
+
+                                        </div>
+                                        <div style={{ display:"flex", flexDirection:"column", width:"18%" }}>
+                                            {elem.rackRates &&<>
+                                                <strong> RACK $</strong>
+                                                <span style={{ textTransform:"uppercase"}}>
+                                                ${elem.rackRates}</span>
+                                            </>} 
+                                        </div>
+                                        <div style={{ display:"flex", flexDirection:"column", width:"18%" }}>
+                                            {elem.ltcRates &&<>
+                                                <strong> LTC $</strong>
+                                                <span style={{ textTransform:"uppercase"}}>
+                                                ${elem.ltcRates}</span>
+                                            </>} 
+                                        </div>
+                                        <div style={{ display:"flex", flexDirection:"column", width:"18%" }}>
+                                            {elem.additionalBed &&<>
+                                                <strong> ADD. BED </strong>
+                                                <span style={{ textTransform:"uppercase"}}>
+                                                ${elem.additionalBed}</span>
+                                            </>} 
+                                    </div>
+                                </div>
 
 
-                    </React.Fragment> )}
+                            </React.Fragment> )}
+                        </AccordionDetails>
+                    </Accordion>
+                    </>}
+                    {additionalServicesDisp(aHotel.additionalServices)}
                 </AccordionDetails>
             </Accordion>
-            </>}
-
-            {additionalServicesDisp(aHotel.additionalServices)}
         </div>
     </>)
     }

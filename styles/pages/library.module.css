@@ -15,6 +15,14 @@
     width: 760px;
 }
 
+.backBTN{
+    width: 600px;
+    display: flex;
+    align-items: center;
+    margin: 21px 0;
+    cursor: pointer;
+}
+
 .spaceBetRow{
     display: flex;
     justify-content: space-between;
@@ -169,4 +177,19 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+@media (max-width: 700px) {
+
+    .backBTN{
+        width: 100%;
+    }
+    .libraryMain{
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .libQuickLinks{
+        display: none;
+    }
 }

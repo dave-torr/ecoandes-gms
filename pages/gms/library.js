@@ -11,6 +11,7 @@ import PhoneForwardedIcon from '@mui/icons-material/PhoneForwarded';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import CancelPresentationIcon from '@mui/icons-material/CancelPresentation';
 import LinearProgress from '@mui/material/LinearProgress';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
@@ -490,6 +491,9 @@ function LibraryPage(){
     const libraryDisplayer=()=>{
 
         return(<>
+        <div className={styles.backBTN} onClick={()=>{
+            setLibraryTab("main")
+        }} ><ArrowBackIosNewIcon/> BACK </div>
             {library.length>0 &&<>
                 {library.map((elem, i)=><React.Fragment key={i}> 
                     {aHotelDisplayer(elem)}
