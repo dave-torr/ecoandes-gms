@@ -953,6 +953,8 @@ export function ItinDuplicator(props){
     const [loadingTrig, setLoadingTrig]=useState(false)
     const [loadingStateStyle, setLoadingStyle]=useState(styles.tourCopyBTNS)
 
+    // NEED TO CREATE NEW SHORTENED URL FOR DUPLICATED PROGRAMS.
+
     return(<>
         <Dialog open={props.dialogTrig}>
             <div className={styles.userUIDialogCont}>

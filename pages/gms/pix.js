@@ -108,7 +108,7 @@ export const ImageEditor=(props)=>{
     }
 
     const submitImgArrChanges=()=>{
-        console.log(props.editTemplate)
+        // console.log(props.editTemplate)
         if (props.editTemplate.editKey===0){
         return(<>
             <div className={styles.editImgsTrig} onClick={()=>{
@@ -117,10 +117,12 @@ export const ImageEditor=(props)=>{
                     "editKey": "imgArr",
                     "editValue": itinImgEditArr
                 })
-            }}> Sumbit Images </div>
+            }}> Submit Images </div>
         </>)
         } 
     }
+
+    // Remove Images from filtered Arr
 
     return(<>
     {/* add edit itin BTN */}
