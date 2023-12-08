@@ -413,6 +413,16 @@
     margin-bottom: 21px;
 }
 
+.eachCheckbox{
+    padding: 9px;
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+}
+.eachCheckbox label{
+    padding-left: 9px;
+}
+
 .detailDispl{
     display: flex;
     flex-wrap: wrap;

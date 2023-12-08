@@ -24,6 +24,7 @@ import FlightIcon from '@mui/icons-material/Flight';
 import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import AddCommentIcon from '@mui/icons-material/AddComment';
+import ChecklistIcon from '@mui/icons-material/Checklist';
 
 import LTCLogoBLK from "../../public/assets/logos/ecoAndesBLK.png"
 import GalapagosElementsLogo from "../../public/assets/logos/galapagosElementsLogo.png"
@@ -177,7 +178,6 @@ export default function OperationsDashboard(){
     const [roomingEditIndex, setRoomingEditIndex]=useState(null)
 
     // general utils
-    
     const [exitDocTrig, setexitDocTrig]=useState(false)
     const [plannerTrig, setPlannerTrig]=useState(false)
     const [createdep, setCreateDep]=useState(false)
@@ -199,6 +199,7 @@ export default function OperationsDashboard(){
         "guestNotes":true,
         "bootSizes":true,
     })
+    const [tempChecklist, setTempCheckList]=useState()
 
   // providers
     const [providerArr, setProviderArr]=useState([])
@@ -1064,7 +1065,6 @@ export default function OperationsDashboard(){
             </>}
         </>)
     }
-
     ///////////////////////////////////////////
     // expenses
     const optCataloger=(priceChart)=>{
@@ -1116,8 +1116,6 @@ export default function OperationsDashboard(){
         </>}
         </>)
     } 
-
-
     /////////////////////////////////////////
     /////////////////////////////////////////
     // Stats
@@ -4489,11 +4487,74 @@ export default function OperationsDashboard(){
             {/* next Day */}
         </>)
     }
+    console.log(theDeparture)
+    const departureChecklistDisp=()=>{
+        return(<>
+        <h2>Checklist</h2>
+            {theDeparture.theCheckList&&<>
+            {Object.keys(theDeparture.theCheckList).map((elem, i)=><React.Fragment key={i}>
+                <div className={styles.eachCheckbox}>  
+                    <input type="checkbox" 
+                    id={`${elem}Checkbox`} checked={theDeparture.theCheckList[elem]} onClick={()=>{
+                        if(theDeparture.theCheckList[elem]){
+                            let tempObj = {
+                                    ...theDeparture.theCheckList,
+                                    [elem]:false
+                                }
+                            setTheDeparture({
+                                ...theDeparture,
+                                "theCheckList": tempObj
+                            })
+                        } else {
+                            let tempObj = {
+                                    ...theDeparture.theCheckList,
+                                    [elem]:true
+                                }
+                            setTheDeparture({
+                                ...theDeparture,
+                                "theCheckList": tempObj
+                            })
+                        }
+                    }}  />
+                    <label htmlFor={`${elem}Checkbox`} >{elem} </label>
+                </div>
+            </React.Fragment>)}
+            </>}
+            <div className={styles.spaceBetRow} style={{alignItems:"center" }}> 
+            <input
+                type='text'
+                className={styles.inputUserUI}
+                placeholder="Add to List"
+                onChange={(e)=>{
+                    setTempCheckList(e.target.value)
+                }}
+                id="checkboxInput"
+            /> <br/>
+            <span onClick={()=>{
+                if(theDeparture.theCheckList){
+                    let tempObj = {
+                        ...theDeparture.theCheckList,
+                        [tempChecklist]: false
+                    }
+                    setTheDeparture({
+                        ...theDeparture,
+                        "theCheckList":tempObj
+                    })
+                } else {
+                    setTheDeparture({
+                        ...theDeparture,
+                        "theCheckList": { [tempChecklist]: false }
+                    })
+                }
+                setTempCheckList()
+                document.getElementById("checkboxInput").value=''
+            }} ><AddCircleOutlineIcon/> </span>
+            </div>
+        </>)
+    }
     ///////////////////////////////////////////
     // File funtions
     const aFileDisplayer=(theItin, theDep)=>{
-
-
         const changeTabGenFunct=()=>{
             setAddOPNote(false);
             setEditSwitch(false);
@@ -4509,8 +4570,6 @@ export default function OperationsDashboard(){
                 "dayDescript":false,
             })
         }
-
-
         return(<>
         <div className={styles.aFileContainer}>
         {/* keys */}
@@ -4551,15 +4610,19 @@ export default function OperationsDashboard(){
                     {saveIconDisp(saveDocSwitch, saveFunction, )}
                 </div> 
                 <div className={styles.spaceBetRow}>
-                    <span />
+                    {fileDisplayKey!="checklist"?<> 
+                        <div onClick={()=>setFileKey("checklist")}>
+                        <ChecklistIcon/> </div></>:<><span/> </>}
+
+
                     <div className={styles.keySelectors}>        
-                            {fileDisplayKey!="flights"&&<>
-                                <span onClick={()=>{
-                                    setFileKey("flights"); 
-                                    setFlightObj({"target": "group"})
-                                    setLang("english")
-                                }}> <FlightIcon/> </span>
-                            </>}
+                        {fileDisplayKey!="flights"&&<>
+                            <span onClick={()=>{
+                                setFileKey("flights"); 
+                                setFlightObj({"target": "group"})
+                                setLang("english")
+                            }}> <FlightIcon/> </span>
+                        </>}
 
                             {/* future cruise functionality */}
                             {/* {(fileDisplayKey!="cruises"&& theDep.roomingList.length>0) &&<>
@@ -4584,7 +4647,6 @@ export default function OperationsDashboard(){
                     </div>
                 </div>
             </div>
-
             <div className={styles.spaceBetRow}>
                 <div>
                     <h3>{theDep?.tourCode}</h3>
@@ -4594,6 +4656,9 @@ export default function OperationsDashboard(){
             </div>
             {fileDisplayKey==="intro"&&<>
                 {aFileHome(theItin, theDep)}
+            </>}
+            {fileDisplayKey==="checklist"&&<>
+                {departureChecklistDisp()}
             </>}
             {fileDisplayKey==="rooming"&&<>
                 {roomingListDisp(theDep)}
@@ -4698,16 +4763,11 @@ export default function OperationsDashboard(){
                     </>:<> 
                         {depCreator(theItinerary, theDeparture)}
                     </>}
-
                 </> : plannerTrig ? <>
                 {/* PLANNER */}
-
                     {operationsPlanner(activeDeps, weeklyPlanner)}   
-
                 </> : createdep ? <>
-
                     {departureCreator()}
-
                 </> : <>
                     {/* display itineraries and select a dep for file */}
                     <div className={styles.operPageHome}>
