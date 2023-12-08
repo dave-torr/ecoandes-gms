@@ -200,6 +200,7 @@ export default function OperationsDashboard(){
         "bootSizes":true,
     })
     const [tempChecklist, setTempCheckList]=useState()
+    const [checklistSwitch, setChecklistSwitch]=useState(false)
 
   // providers
     const [providerArr, setProviderArr]=useState([])
@@ -4487,10 +4488,16 @@ export default function OperationsDashboard(){
             {/* next Day */}
         </>)
     }
-    console.log(theDeparture)
     const departureChecklistDisp=()=>{
         return(<>
-        <h2>Checklist</h2>
+        <div className={styles.spaceBetRow} >
+            <h2>Checklist</h2>
+            {checklistSwitch? <>
+                <span onClick={()=>setChecklistSwitch(false)}> <EditOffIcon/> </span>
+            </> : <>
+                <span onClick={()=>setChecklistSwitch(true)}> <EditIcon/> </span>
+            </> }
+        </div>
             {theDeparture.theCheckList&&<>
             {Object.keys(theDeparture.theCheckList).map((elem, i)=><React.Fragment key={i}>
                 <div className={styles.eachCheckbox}>  
@@ -4516,40 +4523,53 @@ export default function OperationsDashboard(){
                             })
                         }
                     }}  />
-                    <label htmlFor={`${elem}Checkbox`} >{elem} </label>
+                    <div className={styles.spaceBetRow} > 
+                        <label htmlFor={`${elem}Checkbox`} >{elem} </label>
+                        {checklistSwitch&&<>
+                            <span onClick={()=>{
+                                let tempObj = delete theDeparture.theCheckList[elem]
+                                setTheDeparture({
+                                    ...theDeparture,
+                                    "theCheckList": theDeparture.theCheckList
+                                })
+                            }} ><RemoveCircleOutlineIcon/> </span>
+                        </>}
+                    </div>
                 </div>
             </React.Fragment>)}
             </>}
-            <div className={styles.spaceBetRow} style={{alignItems:"center" }}> 
-            <input
-                type='text'
-                className={styles.inputUserUI}
-                placeholder="Add to List"
-                onChange={(e)=>{
-                    setTempCheckList(e.target.value)
-                }}
-                id="checkboxInput"
-            /> <br/>
-            <span onClick={()=>{
-                if(theDeparture.theCheckList){
-                    let tempObj = {
-                        ...theDeparture.theCheckList,
-                        [tempChecklist]: false
+            {checklistSwitch&&<> 
+                <div className={styles.spaceBetRow} style={{display:"flex", alignItems:"center", width:"60%" }}> 
+                <input
+                    type='text'
+                    className={styles.inputUserUI}
+                    placeholder="Add to List"
+                    onChange={(e)=>{
+                        setTempCheckList(e.target.value)
+                    }}
+                    id="checkboxInput"
+                /> <br/>
+                <span onClick={()=>{
+                    if(theDeparture.theCheckList){
+                        let tempObj = {
+                            ...theDeparture.theCheckList,
+                            [tempChecklist]: false
+                        }
+                        setTheDeparture({
+                            ...theDeparture,
+                            "theCheckList":tempObj
+                        })
+                    } else {
+                        setTheDeparture({
+                            ...theDeparture,
+                            "theCheckList": { [tempChecklist]: false }
+                        })
                     }
-                    setTheDeparture({
-                        ...theDeparture,
-                        "theCheckList":tempObj
-                    })
-                } else {
-                    setTheDeparture({
-                        ...theDeparture,
-                        "theCheckList": { [tempChecklist]: false }
-                    })
-                }
-                setTempCheckList()
-                document.getElementById("checkboxInput").value=''
-            }} ><AddCircleOutlineIcon/> </span>
-            </div>
+                    setTempCheckList()
+                    document.getElementById("checkboxInput").value=''
+                }} ><AddCircleOutlineIcon/> </span>
+                </div>
+            </>}
         </>)
     }
     ///////////////////////////////////////////
@@ -4562,6 +4582,7 @@ export default function OperationsDashboard(){
             setLang("english");
             setDocumentGenera(false)
             setExpTrig(false);
+            setChecklistSwitch(false)
             setDocTrigs({
                 "logo":true,
                 "roomingList":true,
