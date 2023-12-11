@@ -6,12 +6,8 @@ import { useSession } from "next-auth/react"
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ContactPageIcon from '@mui/icons-material/ContactPage';
-import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import EditIcon from '@mui/icons-material/Edit';
-import EditOffIcon from '@mui/icons-material/EditOff';
 import CancelPresentationIcon from '@mui/icons-material/CancelPresentation';
-import SaveIcon from '@mui/icons-material/Save';
 import CircularProgress from '@mui/material/CircularProgress';
 
 import { anInputDisplayer } from '../../components/forms';
@@ -98,7 +94,7 @@ export default function AdminDash(){
                 </div>
                 <div className={styles.spaceBetRow}> 
                     <div style={{ width:"48%" }}> 
-                        {anInputDisplayer("Profile pic", "profilePic", "text", true, userSignUpObj.profilePic, userSignUpObj, setSignUpObj )}
+                        {anInputDisplayer("Profile pic", "profilePic", "text", false, userSignUpObj.profilePic, userSignUpObj, setSignUpObj )}
                     </div>
                     <div style={{ width:"48%" }}> 
                         {anInputDisplayer("Hierarchy", "hierarchy", "number", true, userSignUpObj.hierarchy, userSignUpObj, setSignUpObj, 0, 4 )}

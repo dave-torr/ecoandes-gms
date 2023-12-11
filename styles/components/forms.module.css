@@ -18,15 +18,19 @@
 .submitBTN{
     border: none;
     margin: 9px;
-    width: 90%;
+    width: 100%;
     padding: 12px;
-    transition: 0.7s;
+    transition: 0.3s;
     font-size: 1.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
     background-color: var(--ltc-teal);
+    cursor: pointer;
 }
 
 .submitBTN:hover{
-    box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.17);
+    box-shadow: var(--frst-box-shadow);
 }
 
 
@@ -400,14 +404,6 @@
     cursor: pointer;
 }
 
-
-
-
-
-
-
-
-
 /* OLDIES */
 
 .eachAddiOpt{
@@ -423,14 +419,12 @@
     box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.17);
 }
 
-
-
-
 /* ////////////// */
 /* AUTH */
 .signInForm{
     text-align: center;
     min-height: 50vh;
+    width: 350px;
     display: flex;
     align-items: center;
     flex-direction: column;

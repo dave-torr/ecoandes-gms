@@ -4,7 +4,7 @@ import { useSession, signIn, signOut } from "next-auth/react"
 
 import Dialog from '@mui/material/Dialog';
 import CircularProgress from '@mui/material/CircularProgress';
-import {aTextInput} from "./forms"
+import {aTextInput, anInputDisplayer} from "./forms"
 
 import styles from "../styles/components/forms.module.css"
 
@@ -34,12 +34,12 @@ export function SignInForm(){
             submitLogIn()
         }}>
             Log In:
-            {aTextInput("Email*", "email", userLogIn, setLogInObj, "email", true)}
-            {aTextInput("Password*", "password", userLogIn, setLogInObj, "password", true)}
+            {anInputDisplayer("email", "email", "email", true, undefined, userLogIn,setLogInObj, undefined, undefined, "Your e-Mail") }
+            {anInputDisplayer("password", "password", "password", true, undefined, userLogIn,setLogInObj, undefined, undefined, "Your Password")}
             {logInTrigger? <>
                 <CircularProgress />
             </>:<>
-                <input type="submit" value="Submit!" className={styles.submitBTN} />
+                <input type="submit" value="Submit" className={styles.submitBTN} />
             </>}
         </form>
     </>)

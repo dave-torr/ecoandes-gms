@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react'
-import { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSession } from "next-auth/react"
-
 
 
 import {GMSNavii} from "./../components/navis"
@@ -344,9 +342,9 @@ export default function PlaygroundPage(){
         }
     },[locObject])
     
-    useEffect(()=>{
-        console.log(autofillOpts)
-    },[autofillOpts])
+    // useEffect(()=>{
+    //     console.log(autofillOpts)
+    // },[autofillOpts])
 
     /////////////////////////////////////////////////////
     /////////////////////////////////////////////////////
@@ -432,7 +430,6 @@ export default function PlaygroundPage(){
             ]
         }
 
-    console.log(autofillOpts)
 
     const getOneDriveBTN=()=>{
 
@@ -520,7 +517,7 @@ export default function PlaygroundPage(){
     }
 
     return(<>
-        {session&&<> 
+        {(session && session.user.name==="David Torres" ) &&<> 
             <GMSNavii  user={session.user} />
             <div className={styles.playgroundPage}>
 

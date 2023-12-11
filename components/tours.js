@@ -51,6 +51,7 @@ import UnigpsLogo from "./../public/assets/logos/unigalapagos.png"
 import Dialog from '@mui/material/Dialog';
 
 import LTCGenData from "./../data/dataAndTemplates.json"
+import { nanoid } from "nanoid"
 // ///////////////////
     // v. ++: 
     // Save Local Likes!!!
@@ -976,6 +977,7 @@ export function ItinDuplicator(props){
                                 ...props.aTour,
                                 "dateCreated":toDate,
                                 "tripName": tripName,
+                                "shortenedURL":nanoid(7),
                                 "version": 0,
                                 "status": 1,
                                 "user": {
