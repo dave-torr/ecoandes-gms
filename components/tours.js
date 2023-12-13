@@ -315,6 +315,14 @@ export function TourDisplayer(props){
 
     const [imgDialogContr, srtImgDialogcontr]=useState(false)
     const [selectedImg, setSelectedImg]=useState(false)
+    const [itinPrices, setItinPrices]=useState()
+
+    useEffect(()=>{
+        if(aTour.price.length>0){
+            let lastPrice = aTour.price.length-1
+            setItinPrices(aTour.price[lastPrice])
+        }
+    },[aTour])
 
     const accordionDisplayer=(accordTitle, accordContent, openContr, numerator)=>{
         return(<>
@@ -360,12 +368,20 @@ export function TourDisplayer(props){
             }
         }
         const dayNotices=(theDayData)=>{
-            if(theDayData.specialNotice){
-                return(<>
-                    <h4>Special Notice:</h4>
-                    {theDayData.specialNotice}
-                </>)
-            }
+            return(<>
+                {theDayData.suppInfo&& <> 
+                    <h4>Supplementary Information:</h4>
+                    <span className={styles.suppDataDet}>
+                        &nbsp;- &nbsp;{theDayData.suppInfo}
+                    </span>
+                </>}
+                {theDayData.drivingDistance && <> 
+                    <h4>Approximate Driving Distance:</h4>
+                    <span className={styles.suppDataDet}>
+                        &nbsp;- &nbsp; {theDayData.drivingDistance} km
+                    </span>
+                </>}
+            </>)
         }
         const trekDataDisp=(theTrekData)=>{
             if(theTrekData){
@@ -579,7 +595,6 @@ export function TourDisplayer(props){
     }
     const aTourIconDisp=()=>{
         const anIconRow=(theIcon, theIconName, theIconContent)=>{
-            // Check if you can add some SEO to this section to be easily indexed and understood by crawlers
             return(<>
                 <div className={styles.iconCont}>
                     <div>{theIcon} &nbsp; &nbsp; </div>
@@ -592,23 +607,11 @@ export function TourDisplayer(props){
         }
 
         let daysContent=<>{aTour.duration} days</>
-        let priceContent=<>${aTour.price} p. person</>
 
         return(<>
             <div className={styles.tourDetails}>
                 {aTour.duration&&<>{anIconRow(<AccessTimeIcon />, "duration:", daysContent)}</>}
                 {aTour.tourType&&<>{anIconRow(<ExploreIcon />, "tour type:", aTour.tourType )}</>}
-
-                {aTour.prices&&<>
-                    {aTour.prices.priceType==="fixedDeparture"&&<>
-                        {anIconRow(<EventIcon />, "departure type:", "Scheduled" )}
-                        {anIconRow(<LocalOfferIcon />, "prices from:", priceContent )}
-                    </>}
-                    {aTour.prices.priceType==="privateDeparture"&&<>
-                        {anIconRow(<EventIcon />, "departure type:", "private" )}
-                    </>}
-                </>}
-
             </div>
         </>)
     }
@@ -776,6 +779,7 @@ export function TourDisplayer(props){
         </footer>
         </>)
     }
+
     return(<>
         <article className={styles.generalTourPage}>
             <div className={styles.tourContainer}>
@@ -801,12 +805,24 @@ export function TourDisplayer(props){
                         {accordionDisplayer("Tour Inclusions / Exclusions", incExcCont, true)}
                         {hotelList(aTour)}</>}
                 </div>
-                {(aTour.tourType || aTour.difficulty ) &&<>
-                    <div className={styles.supportInfoCont}>
-                        {TourTypeCard(aTour.tourType)}
-                        {TourDifficultyCard(aTour.difficulty)}
+                <div className={styles.supportInfoCont}>
+                    <div className={styles.aCard}>
+                        {(aTour.tourType || aTour.difficulty ) &&<>
+                            {TourTypeCard(aTour.tourType)}
+                            {TourDifficultyCard(aTour.difficulty)}
+                        </>}
                     </div>
-                </>}
+                    {/* <br/>
+                    {itinPrices && <>
+                        <div className={styles.aCard} style={{padding:"12px 18px"}}>
+                            <h3>Prices From:</h3>
+                            <div className={styles.spaceBetRow}>
+                            </div>
+                                <h2>USD ${itinPrices.pricePerPax}</h2>
+                            
+                        </div>
+                    </>} */}
+                </div>
             </div>
         {tourFooter()}
         </article>

@@ -21,6 +21,13 @@
     padding-top: 21px;
 }
 
+.spaceBetRow{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
 .tourCardTextCont{
     background-color: white;
     width: 93%;
@@ -79,6 +86,10 @@
     justify-content: center;
 }
 
+.suppDataDet{
+    font-size: 0.9em;
+    font-style: italic;
+}
 
 /* Text only tour card */
 
@@ -505,11 +516,13 @@
 
 .supportInfoCont{
     width: 33%;
-    background-color: rgb(231, 229, 229);
-    box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.37);
     top: 42px;
-    height: fit-content;
     font-size: 0.9em;
+}
+.aCard{
+    height: fit-content;
+    background-color: var(--whitesmoke-background);
+    box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.37);
 }
 
 .sectionTitles{
