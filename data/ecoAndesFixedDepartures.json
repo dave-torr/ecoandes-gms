@@ -194,10 +194,10 @@
 
         ],
         "tourType": "360° itineraries",
-        "price": 5800,
+        "paxMax": 20,
+        "singleSupp": 280,
         "prices": {
             "priceType": "fixedDeparture",
-            "singlesupp": 280,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties"
         },
@@ -413,59 +413,10 @@
 
         ],
         "tourType": "360° itineraries",
-        "price": [
-            {
-                "upperRange": 2,
-                "pricePerPax": 5690
-            },
-            {
-                "upperRange": 3,
-                "pricePerPax": 4235
-            },
-            {
-                "upperRange": 4,
-                "pricePerPax": 3445
-            },
-            {
-                "upperRange": 5,
-                "pricePerPax": 3010
-            },
-            {
-                "upperRange": 6,
-                "pricePerPax": 2710
-            },
-            {
-                "upperRange": 7,
-                "pricePerPax": 2480
-            },
-            {
-                "upperRange": 8,
-                "pricePerPax": 2300
-            },
-            {
-                "upperRange": 9,
-                "pricePerPax": 2170
-            },
-            {
-                "upperRange": 11,
-                "pricePerPax": 2060
-            },
-            {
-                "upperRange": 13,
-                "pricePerPax": 1915
-            },
-            {
-                "upperRange": 15,
-                "pricePerPax": 1870
-            },
-            {
-                "upperRange": 16,
-                "pricePerPax": 1835
-            }
-        ],
+        "paxMax": 20,
+        "singleSupp": 690,
         "prices": {
             "priceType": "fixedDeparture",
-            "singlesupp": 690,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties"
         },
@@ -651,10 +602,10 @@
 
         ],
         "tourType": "360° itineraries",
-        "price": 5800,
+        "paxMax": 20,
+        "singleSupp": 280,
         "prices": {
             "priceType": "fixedDeparture",
-            "singlesupp": 280,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties"
         },
@@ -856,10 +807,10 @@
             }
         ],
         "tourType": "360° itineraries",
-        "price": 5800,
+        "paxMax": 20,
+        "singleSupp": 280,
         "prices": {
             "priceType": "fixedDeparture",
-            "singlesupp": 280,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties"
         },
@@ -1015,10 +966,10 @@
             }
         ],
         "tourType": "360° itineraries",
-        "price": 1,
+        "paxMax": 20,
+        "singleSupp": 280,
         "prices": {
             "priceType": "fixedDeparture",
-            "singlesupp": 280,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties"
         },
@@ -1175,10 +1126,10 @@
             }
         ],
         "tourType": "360° itineraries",
-        "price": 1,
+        "paxMax": 20,
+        "singleSupp": 280,
         "prices": {
             "priceType": "fixedDeparture",
-            "singlesupp": 280,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties"
         },
@@ -1409,9 +1360,10 @@
                 "pricePerPax": 1835
             }
         ],
+        "paxMax": 20,
+        "singleSupp": 690,
         "prices": {
             "priceType": "fixedDeparture",
-            "singlesupp": 690,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties"
         },

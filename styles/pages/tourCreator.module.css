@@ -7,6 +7,13 @@
     padding-bottom: 66px;
 }
 
+.spaceBetRow{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
 .tourCreatorTitle{
     align-items: center;
     display: flex;
@@ -221,6 +228,27 @@
     padding: 9px;
 }
 
+.priceTable{
+    margin-top: 9px;
+    display: flex;
+    flex-direction: column;
+}
+.priceTable td{
+    border: solid 1px black;
+    padding: 3px;
+    width: 65px;
+    text-align: end;
+}
+
+.addRangeBTN{
+    width: 100%;
+    background-color: var(--ltc-teal);
+    cursor: pointer;
+    text-align: center;
+    padding: 9px;
+    text-transform: uppercase;
+    margin-top: 9px;
+}
 
 @media (max-width: 1100px)  {
     .eachTourDispl{

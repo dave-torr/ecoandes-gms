@@ -318,9 +318,11 @@ export function TourDisplayer(props){
     const [itinPrices, setItinPrices]=useState()
 
     useEffect(()=>{
-        if(aTour.price.length>0){
+        if(aTour.price?.length>0){
             let lastPrice = aTour.price.length-1
             setItinPrices(aTour.price[lastPrice])
+        } else if (Number.isInteger(aTour.price)){
+            setItinPrices(aTour.price)
         }
     },[aTour])
 
@@ -779,6 +781,51 @@ export function TourDisplayer(props){
         </footer>
         </>)
     }
+    const priceDisplayer=(thePrices)=>{
+        if(Number.isInteger(thePrices)){
+            return(<>
+                <div className={styles.aCard} style={{padding:"12px 18px"}}>
+                    <h3>Prices From:</h3>
+                    <h2>USD ${itinPrices}</h2>
+                    {aTour?.paxMax && <>
+                        <strong>For a {aTour?.paxMax} passenger group </strong>
+                    </> }
+                    {aTour?.singleSupp &&<>
+                        + ${aTour.singleSupp} Single Supplement
+                    </>} 
+                </div>
+            </>)
+        } else if(thePrices?.length>0){
+            return(<>
+            <div className={styles.aCard} style={{padding:"12px 18px"}}>
+                <h3>Prices From:</h3>
+                <h2>USD ${itinPrices?.pricePerPax}</h2>
+                <strong>For a {itinPrices?.upperRange} passenger group </strong>
+                {aTour.singleSupp &&<>
+                    + ${aTour.singleSupp} Single Supplement
+                </>} 
+                <br/>
+                <span className={styles.orangeSeparator}/>
+                <span className={styles.printDEL}>
+                    Find Rates:
+                    <br/>
+                    <select onChange={(e)=>{
+                        let tempPrice = JSON.parse(e.target.value)
+                        setItinPrices(tempPrice)
+                    }}>
+                        <option disabled defaultSelected>
+                            Guest Numb
+                        </option>
+                        {thePrices.map((elem,i)=><React.Fragment key={i}> <option value={JSON.stringify(elem)}>
+                            {elem.upperRange} Guests
+                            </option>
+                        </React.Fragment> )}
+                    </select> 
+                </span>
+            </div>
+            </>)
+        }
+    }
 
     return(<>
         <article className={styles.generalTourPage}>
@@ -812,16 +859,8 @@ export function TourDisplayer(props){
                             {TourDifficultyCard(aTour.difficulty)}
                         </>}
                     </div>
-                    {/* <br/>
-                    {itinPrices && <>
-                        <div className={styles.aCard} style={{padding:"12px 18px"}}>
-                            <h3>Prices From:</h3>
-                            <div className={styles.spaceBetRow}>
-                            </div>
-                                <h2>USD ${itinPrices.pricePerPax}</h2>
-                            
-                        </div>
-                    </>} */}
+                    <br/>
+                    {priceDisplayer(aTour.price, aTour.prices)}
                 </div>
             </div>
         {tourFooter()}

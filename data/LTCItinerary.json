@@ -137,9 +137,10 @@
         "price": 1220,
         "paymentLink":"01492372",
         "weTravelURL": "https://www.wetravel.com/trips/inca-trail-360-expedition-latin-travel-collection-cusco-01492372",
+        "paxMax": 16,
+        "singleSupp": 280,
         "prices": {
             "priceType": "fixedDeparture",
-            "singlesupp": 280,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties",
             "departureDates":"every thursday and saturday"
@@ -248,9 +249,10 @@
         "price": 745,
         "paymentLink":"24554915",
         "weTravelURL": "https://www.wetravel.com/trips/classic-inca-trail-latin-travel-collection-cusco-24554915",
+        "paxMax": 16,
+        "singleSupp": 50,
         "prices": {
             "priceType": "fixedDeparture",
-            "singlesupp": 50,
             "dblOccupancy": true,
             "priceNotice": "Single Tent Supplement",
             "departureDates":""
@@ -361,9 +363,10 @@
         "price": 580,
         "paymentLink":"81832002",
         "weTravelURL": "https://www.wetravel.com/trips/classic-choquequirao-latin-travel-collection-cusco-81832002",
+        "paxMax": 16,
+        "singleSupp": 50,
         "prices": {
             "priceType": "fixedDeparture",
-            "singlesupp": 50,
             "dblOccupancy": true,
             "departureDates":"Every Monday "
         },
@@ -437,9 +440,10 @@
         "price": 545,
         "paymentLink":"54252684",
         "weTravelURL": "https://www.wetravel.com/trips/inca-trail-spotlight-latin-travel-collection-aguas-calientes-54252684",
+        "paxMax": 16,
+        "singleSupp": 45,
         "prices": {
             "priceType": "fixedDeparture",
-            "singlesupp": 45,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties",
             "departureDates":"Every week on Monday, Wednesday, and Friday"
@@ -522,9 +526,10 @@
         "price": 670,
         "paymentLink":"74044880",
         "weTravelURL": "https://www.wetravel.com/trips/sacred-valley-inca-trail-spotlight-latin-travel-collection-cusco-74044880",
+        "paxMax": 16,
+        "singleSupp": 90,
         "prices": {
             "priceType": "fixedDeparture",
-            "singlesupp": 90,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties",
             "departureDates":""
@@ -645,9 +650,10 @@
         "price": 690,
         "paymentLink":"29016006",
         "weTravelURL": "https://www.wetravel.com/trips/salkantay-to-machu-picchu-trek-latin-travel-collection-cusco-29016006",
+        "paxMax": 16,
+        "singleSupp": 90,
         "prices": {
             "priceType": "fixedDeparture",
-            "singlesupp": 90,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties",
             "departureDates":"Every Monday from May"
@@ -758,9 +764,10 @@
         "price": 600,
         "paymentLink":"53616196",
         "weTravelURL": "https://www.wetravel.com/trips/lares-to-machu-picchu-trek-latin-travel-collection-cusco-53616196",
+        "paxMax": 16,
+        "singleSupp": 80,
         "prices": {
             "priceType": "fixedDeparture",
-            "singlesupp": 80,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties",
             "departureDates":""
@@ -851,9 +858,10 @@
         "tourType": "climbing",
         "startingPlace": "Huaraz",
         "price": 2490,
+        "paxMax": 16,
+        "singleSupp": 900,
         "prices": {
             "priceType": "privateDeparture",
-            "singlesupp": 900,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties",
             "departureDates":""
@@ -986,9 +994,10 @@
         "tourType": "climbing",
         "startingPlace": "Huaraz",
         "price": 2490,
+        "paxMax": 16,
+        "singleSupp": 900,
         "prices": {
             "priceType": "privateDeparture",
-            "singlesupp": 900,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties",
             "departureDates":""
@@ -1156,9 +1165,10 @@
         "startingPlace": "Huaraz",
         "price": 2490,
 
+        "paxMax": 16,
+        "singleSupp": 900,
         "prices": {
             "priceType": "privateDeparture",
-            "singlesupp": 900,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties",
             "departureDates":""
@@ -1307,9 +1317,10 @@
         "tourType": "climbing",
         "startingPlace": "Cusco",
         "price": 2490,
+        "paxMax": 16,
+        "singleSupp": 900,
         "prices": {
             "priceType": "privateDeparture",
-            "singlesupp": 900,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties",
             "departureDates":""
@@ -1423,9 +1434,10 @@
         "price": 1750,
         "paymentLink":"66517880",
         "weTravelURL": "https://www.wetravel.com/trips/peru-spotlight-latin-travel-collection-cusco-66517880",
+        "paxMax": 16,
+        "singleSupp": 650,
         "prices": {
             "priceType": "fixedDeparture",
-            "singlesupp": 650,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties",
             "departureDates":""
@@ -1608,9 +1620,10 @@
         "price": 3990,
         "paymentLink":"",
         "weTravelURL": "https://tri.ps/YYB00",
+        "paxMax": 16,
+        "singleSupp": 1150,
         "prices": {
             "priceType": "fixedDeparture",
-            "singlesupp": 1150,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties",
             "departureDates":"Every other saturday"
@@ -1776,9 +1789,10 @@
         "price": 4880,
         "paymentLink":"73822745",
         "weTravelURL": "https://www.wetravel.com/trips/machu-picchu-the-galapagos-islands-latin-travel-collection-puerto-ayora-73822745",
+        "paxMax": 16,
+        "singleSupp": 1275,
         "prices": {
             "priceType": "fixedDeparture",
-            "singlesupp": 1275,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties",
             "departureDates":"Every other tuesday"
@@ -1946,9 +1960,10 @@
         "price": 3220,
         "paymentLink":"40307514",
         "weTravelURL": "https://www.wetravel.com/trips/ecuador-galapagos-island-hopping-latin-travel-collection-puerto-ayora-40307514",
+        "paxMax": 16,
+        "singleSupp": 1055,
         "prices": {
             "priceType": "fixedDeparture",
-            "singlesupp": 1055,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties",
             "departureDates":"Year-round, every week on Thursday"
@@ -2084,9 +2099,10 @@
         "price": 6460,
         "paymentLink":"33424831",
         "weTravelURL": "https://www.wetravel.com/trips/galapagos-islands-cruise-otavalo-quito-latin-travel-collection-cusco-33424831",
+        "paxMax": 16,
+        "singleSupp": 3850,
         "prices": {
             "priceType": "fixedDeparture",
-            "singlesupp": 3850,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties",
             "departureDates":"Every Thursday"
@@ -2247,9 +2263,10 @@
         "price": 2215,
         "paymentLink":"73322059",
         "weTravelURL": "https://www.wetravel.com/trips/best-of-peru-latin-travel-collection-lima-73322059",
+        "paxMax": 16,
+        "singleSupp": 770,
         "prices": {
             "priceType": "fixedDeparture",
-            "singlesupp": 770,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties",
             "departureDates":"April to December"
@@ -2402,9 +2419,10 @@
         "price": 2900,
         "paymentLink":"17189501",
         "weTravelURL": "https://www.wetravel.com/trips/best-of-chile-latin-travel-collection-santiago-17189501",
+        "paxMax": 16,
+        "singleSupp": 950,
         "prices": {
             "priceType": "fixedDeparture",
-            "singlesupp": 950,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties",
             "departureDates":"October to March"
@@ -2555,9 +2573,10 @@
         "price": 1900,
         "paymentLink":"28451499",
         "weTravelURL": "https://www.wetravel.com/trips/best-of-argentina-latin-travel-collection-buenos-aires-28451499",
+        "paxMax": 16,
+        "singleSupp": 750,
         "prices": {
             "priceType": "fixedDeparture",
-            "singlesupp": 750,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties",
             "departureDates":"October to March"

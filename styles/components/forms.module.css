@@ -6,6 +6,12 @@
     margin: 6px 0;
     align-items: center;
 }
+.spaceBetRow{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
 .aFormLabel{
     font-weight: 600;
 }

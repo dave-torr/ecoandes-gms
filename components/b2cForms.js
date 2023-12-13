@@ -286,12 +286,12 @@ export function ClientPriceAndRooming(props){
             <div className={styles.singleSuppAdderCont}>
                 <h4> with </h4> &nbsp;&nbsp;&nbsp;&nbsp;
                 {singleSupplements}
-                {singlesuppChanger()}
+                {singleSuppChanger()}
                 <h4>additional single Supplement</h4>
             </div>
         </>)
     }
-    const singlesuppChanger=()=>{
+    const singleSuppChanger=()=>{
         // let singleSupTotal=singleSupplements*singleSupp
         return(<>
             <div className={styles.singleSupNumSwitcher}>

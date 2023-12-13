@@ -308,16 +308,8 @@ export default function HotelPage(props){
                 <div className={styles.dataContOne}>
                     <div className={styles.dataColumn}>
                         <h3>Name & Location</h3>
-
-                        {/* {aTextInput("Hotel Name *", "hotelName", hotelSchema, setHotelSchema, "text", true )} */}
-
                         {locationPickers(GenDataTemplates.ecuadorProvinces, "province")}
                         {locationPickers(GenDataTemplates.ecuadorCities, "city")}
-
-                        {/* {aTextInput("Address *", "address", hotelSchema, setHotelSchema, "text", true )} */}
-                        {/* {aTextInput("Location Notes", "locationNotes", hotelSchema, setHotelSchema, "text", false )} */}
-
-
                     </div>
                     <div className={styles.dataColumn}>
                         <h3>Contact</h3>

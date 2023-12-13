@@ -143,7 +143,7 @@ let AmazonJungleSpotlight =     {
         "weTravelURL": "https://www.wetravel.com/trips/amazon-jungle-spotlight-latin-travel-collection-tena-59021713",
         "prices": {
             "priceType": "fixedDeparture",
-            "singlesupp": 310,
+            "singleSupp": 310,
             "dblOccupancy": true,
             "priceNotice": "hotel categories will depend on locally available properties",
             "departureDates":"Every Saturday"

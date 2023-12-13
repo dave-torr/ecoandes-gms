@@ -12,7 +12,7 @@ import {
 import { SignInForm } from "../../components/authForms";
 import {TourDisplayer } from "../../components/tours"
 import { GMSNavii } from "../../components/navis";
-import { Select } from '@mantine/core';
+import { Select, Switch } from '@mantine/core';
 import {anImageDisp} from "../gms/pix"
 
 
@@ -36,7 +36,7 @@ export default function tourCreatorPage(props){
 const router = useRouter()
 
 // Import from Gen Tour Data
-let ecoAndesDestinations= LTCGenDAta.countryList
+let ecoAndesDestinations= [...LTCGenDAta.countryList, "galapagos" ]
 let tourType=["historic", "nature", "360° itineraries", "climbing", "trekking"]
 let tourDiff =[1,2,3,4,5]
 
@@ -80,6 +80,8 @@ let tourDiff =[1,2,3,4,5]
     const [destinationList, setDestList] = useState([...ecoAndesDestinations])
     const [tourCreatorStep, settourCreatorStep]=useState(0)
     const [editDayTrigger, setEditDayTrig]=useState(false)
+    const [priceFixedDep, setPriceFDTrig]=useState(true)
+    const [priceRangeObj, setPriceObj]=useState({})
 
     // img state mngmt
     // Bring in pics from Colombia
@@ -135,9 +137,9 @@ let tourDiff =[1,2,3,4,5]
     ///////////////////////////////////////////
     ///////////////////////////////////////////
     // GEN UTILS
-    const autofillFetcher=async()=>{
+    // const autofillFetcher=async()=>{
 
-    }
+    // }
     const imgFetcher=async()=>{
         setLoadingState(true)
         const res = await fetch("/api/genToolkit/pixApi",{
@@ -336,7 +338,6 @@ let tourDiff =[1,2,3,4,5]
                         ...aTourModel,
                     })
                     imgFetcher()
-                    autofillFetcher()
                     window.scrollTo({ top: 0, behavior: "smooth"})
                 }}>
 
@@ -408,11 +409,70 @@ let tourDiff =[1,2,3,4,5]
             </>}
         </>)
     }
-    const incluExluAdder=()=>{
+    const priceAndInclusionsAdder=()=>{
         return(<>
             {tourCreatorStep===3&&<> 
-                    {inputToList("Included In Tour", "included", aTourModel, setTourModel, aTourModel.included, textPlaceholder, setTxtPlaceholder)}
-                    {inputToList("Not Included In Tour", "notIncluded", aTourModel, setTourModel, aTourModel.notIncluded, textPlaceholder2, setTxtPlaceholder2)}
+                {inputToList("Included In Tour", "included", aTourModel, setTourModel, aTourModel.included, textPlaceholder, setTxtPlaceholder)}
+                {inputToList("Not Included In Tour", "notIncluded", aTourModel, setTourModel, aTourModel.notIncluded, textPlaceholder2, setTxtPlaceholder2)}
+
+                <br/>
+                <h3>Prices:</h3>
+                <Switch checked={priceFixedDep} onChange={(e)=>{priceFixedDep? setPriceFDTrig(false):setPriceFDTrig(true) }} label="Single Price" />
+                {priceFixedDep? <>
+                    <div className={styles.spaceBetRow}>
+                        {anInputDisplayer("F.D. Price", "price", "number", false, undefined, aTourModel, setTourModel, 0, undefined, "price per person")} &nbsp;&nbsp;
+                        {anInputDisplayer("S. Supp", "singleSupp", "number", false, undefined, aTourModel, setTourModel, 0, undefined, "Single Supplement" )}
+                    </div>
+                    <div className={styles.spaceBetRow}>
+                        {anInputDisplayer("Pax Min", "paxMin", "number", false, undefined, aTourModel, setTourModel, 0, undefined, "Pax Nimimum")} &nbsp;&nbsp;
+                        {anInputDisplayer("Pax Max", "paxMax", "number", false, undefined, aTourModel, setTourModel, 0, undefined, "Pax Number")}
+                    </div>
+                </>:<>
+                    <h4>ADD TO RANGE: </h4>
+                        {anInputDisplayer("Price", "pricePerPax", "number", false, undefined, priceRangeObj, setPriceObj, 0, undefined, "price per person")}
+                        {anInputDisplayer("Pax Max", "upperRange", "number", false, undefined, priceRangeObj, setPriceObj, 0, undefined, "Pax Number")}
+                        <div className={styles.addRangeBTN} onClick={()=>{
+                            if((priceRangeObj.upperRange && priceRangeObj.pricePerPax)){
+                                let tempArr = []
+                                if(aTourModel.price?.length>0){
+                                    tempArr= [...aTourModel.price]
+                                    tempArr.push(priceRangeObj)
+                                    setTourModel({
+                                        ...aTourModel,
+                                        "price": tempArr
+                                    })
+                                    let priceVal = document.getElementById("pricePerPax")
+                                    priceVal.value=undefined
+                                    let guestLimitVal = document.getElementById("upperRange")
+                                    guestLimitVal.value=undefined
+                                } else {
+                                    tempArr.push(priceRangeObj)
+                                    setTourModel({
+                                        ...aTourModel,
+                                        "price": tempArr
+                                    })
+                                    let priceVal = document.getElementById("pricePerPax")
+                                    priceVal.value=undefined
+                                    let guestLimitVal = document.getElementById("upperRange")
+                                    guestLimitVal.value=undefined
+                                }
+                            } else {
+                                window.alert("Please fill in Price and guest upper limit")
+                            }
+                        }}> Add to Price Range </div>
+                        <br/>
+                        {anInputDisplayer("S. Supp", "singleSupp", "number", false, undefined, aTourModel, setTourModel, 0, undefined, "Single Supplement" )}
+                        {aTourModel.price?.length>0 && <>
+                            <table className={styles.priceTable} >
+                                {aTourModel.price.map((elem,i)=><React.Fragment key={i} >
+                                <tr>
+                                    <td>{elem.upperRange} Pax </td>
+                                    <td>${elem.pricePerPax}</td>
+                                </tr>
+                                </React.Fragment> )}
+                            </table>
+                        </>}
+                </> }
             </>}
         </>)
     }
@@ -438,7 +498,7 @@ let tourDiff =[1,2,3,4,5]
 
                         {dayByDayFormDispl()}
 
-                        {incluExluAdder()}
+                        {priceAndInclusionsAdder()}
 
                         {(tourCreatorStep>0 && tourCreatorStep<=2 ) && <>
                             {stepBTNs("next")}

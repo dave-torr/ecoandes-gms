@@ -46,6 +46,11 @@
     margin: 12px 0;
 }
 
+.orangeSeparator{
+    border: solid 2px var(--pop-orange);
+    width: 100%;
+    margin: 9px 0;
+}
 
 .difficultyDispCont{
     width: 100%;
@@ -523,6 +528,11 @@
     height: fit-content;
     background-color: var(--whitesmoke-background);
     box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.37);
+    display: flex;
+    flex-direction: column;
+}
+.aCard strong{
+    padding-bottom: 9px;    
 }
 
 .sectionTitles{
@@ -1303,13 +1313,15 @@
         align-items: center;
     }
     .supportInfoCont{
-        width: 94%;
+        width: 100%;
         margin: 15px 0;
         padding: 0;
         display: flex;
+        justify-content: space-between;
     }
-    .supportInfoCont span{
-        width: 50%;
+
+    .aCard {
+        width: 49%;
     }
     .iconDiffDisp span{
         width: fit-content;
@@ -1414,12 +1426,6 @@
     .tourCardTextCont{
         height: fit-content;
     }
-    .supportInfoCont {
-        flex-direction: column;
-    }     
-    .supportInfoCont span{
-        width: 100%;
-    }    
     .iconDiffDisp span{
         width: fit-content;
     }
@@ -1439,6 +1445,12 @@
 
 
 @media print{
+    .aCard{
+        box-shadow: none;
+    }
+    .printDEL{
+        display: none;
+    }
     .itinLinkFooter{
         display: none;
     }
@@ -1453,7 +1465,9 @@
     .pageBreak{
         break-after: page;
     }
-
+    .supportInfoCont{
+        align-items: center;
+    }
     .breadcrumbNaviCont{
         display: none;
     }
@@ -1479,13 +1493,5 @@
         flex-direction: column;
         align-items: center;
     }
-    .supportInfoCont{
-        width: 94%;
-        margin: 15px 0;
-        padding: 0;
-        display: flex;
-    }
-    .supportInfoCont span{
-        width: 50%;
-    }
+
 }

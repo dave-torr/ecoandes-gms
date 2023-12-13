@@ -597,9 +597,9 @@ export function DayByDayAdder(props){
                 </div>
             </Dialog>
         </>)
-
     }
-    let aPickerImg= props.filteredImgArr.map((elem, i)=>
+
+    let aPickerImg= props.filteredImgArr?.map((elem, i)=>
         <React.Fragment key={i}>
             <div className={styles.eachImgDisp}>
                 {anImageDisp(elem.src, 150, "LTCWide", elem.imgAlt)}
