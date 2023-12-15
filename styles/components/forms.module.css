@@ -132,11 +132,12 @@
 .addFromRecordBTN{
     display: flex;
     width: 100%;
+    align-items: center;
     justify-content: flex-end;
-    border-bottom: solid 1px;
-    border-right: solid 1px;
+    border: solid 1px;
     padding:  3px 10px;
     transition: all ease-in 0.2s;
+    margin: 6px 0;
 }
 
 .addFromRecordBTN:hover{

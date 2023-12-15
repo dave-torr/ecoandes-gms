@@ -40,6 +40,7 @@ import Filter4Icon from '@mui/icons-material/Filter4';
 import Filter5Icon from '@mui/icons-material/Filter5';
 
 import CircularProgress from '@mui/material/CircularProgress';
+import PhoneIcon from '@mui/icons-material/Phone';
 
 
 import LTCTypeface from "./../public/assets/logos/LTCTypeface.png"
@@ -351,7 +352,7 @@ export function TourDisplayer(props){
         {aTour.notIncluded.length>0&&<>
             {incExcDisplayer(aTour.notIncluded, "Not included in Tour")} </>}
             </div>
-    const dayByDaydisp=(tourDayByDay, openContr)=>{
+    const dayByDaydisp=(tourDayByDay, openContr, aTravelDay)=>{
         const dayInclDisp=(dayIncl)=>{
             if(dayIncl?.length>0){
                 let theInclusions = dayIncl.map((elem, i)=><React.Fragment key={i}><li>{elem}</li></React.Fragment>)
@@ -365,7 +366,7 @@ export function TourDisplayer(props){
             if(overnightProperty){
                 return(<><div className={styles.dayInclusionCont}> 
                     <h4>Overnight property:</h4>
-                    <ul>{overnightProperty}</ul>
+                    <span className={styles.suppDataDet}>&nbsp;- &nbsp; {overnightProperty}</span>
                 </div></>)
             }
         }
@@ -406,7 +407,6 @@ export function TourDisplayer(props){
                 </>)
             }
         }
-
         const flightDataDisp=(flightData)=>{
             // let flightData=[
             //     {
@@ -469,7 +469,6 @@ export function TourDisplayer(props){
             </>)
             }
         }
-
         const guideDataDisp=(guideData)=>{
 
             // let guideData={
@@ -492,14 +491,15 @@ export function TourDisplayer(props){
                 </>)
             }
         }
-
         const textHTMLParser=(theText)=>{
-            let markUpText = {__html: `${theText}`}
-            return(<>
-                <div dangerouslySetInnerHTML={markUpText} />
-            </>)
-        }
+            if(theText){
 
+                let markUpText = {__html: `${theText}`}
+                return(<>
+                    <div dangerouslySetInnerHTML={markUpText} />
+                </>)
+            }
+        }
         const dailyImageDisp=(dailyImgArr, imgAlt)=>{
             if(dailyImgArr?.length>0){
                 return(<>
@@ -513,8 +513,7 @@ export function TourDisplayer(props){
                 </>)
             }
         }
-
-        let theDays = tourDayByDay.map((elem,i)=> 
+        let theDays = tourDayByDay?.map((elem,i)=> 
         <React.Fragment key={i}>
             <Accordion sx={{ boxShadow:0 }} defaultExpanded={openContr}>
                 <AccordionSummary  expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" > 
@@ -531,15 +530,45 @@ export function TourDisplayer(props){
                     {trekDataDisp(elem.trekData)}
                     <br/>
                     {dailyImageDisp(elem.imgArr, elem.dayTitle )}
+                    <div className={styles.orangeSeparator}/>
                 </AccordionDetails>
             </Accordion>
         </React.Fragment>)
 
-        return(<>
-            {accordionDisplayer("Day by Day", theDays, true)}
-            <br/>
-        </>)
+        // as modal? 
+        let activeDay
+        if(aTravelDay?.dayTitle){
+            activeDay=<>
+                EDITING DAY:
+                <h3>{aTravelDay.dayTitle} </h3>
+                <div className={styles.eachDayDescription}>
+                    {textHTMLParser(aTravelDay.dayDescription)}
+                </div>
+                {dayInclDisp(aTravelDay.dayInclusions)}
+                {hotelDetailDisp(aTravelDay.overnightProperty)}
+                {aTravelDay.guideData&&<>{guideDataDisp(aTravelDay.guideData)}</>}
+                {aTravelDay.flightData&&<>{flightDataDisp(aTravelDay.flightData)}</>}
+                {dayNotices(aTravelDay)} 
+                {trekDataDisp(aTravelDay.trekData)}
+                <br/>
+                {dailyImageDisp(aTravelDay.imgArr, aTravelDay.dayTitle )}
+                <div className={styles.orangeSeparator}/>
+            </>
+            return(<>
+            <div style={{padding:"9px 25px"}}>
+                {activeDay}
+            </div>
+            </>)
+        } else if(aTour.dayByDay.length>0) {
+            return(<>
+                <div className={styles.sectionTitles}> &nbsp;Overview</div>
+                {accordionDisplayer("Day by Day", theDays, true)}
+                <br/>
+            </>)
+        }
     }
+
+    
     function Imagedisp(props){
         return(<>        
         <div className={styles.aTourImage} onClick={()=>{
@@ -741,6 +770,8 @@ export function TourDisplayer(props){
         }
     }
     const hotelList=(theTour)=>{
+
+        // for each day, push to arr, display as total list at end
         if(theTour.hotelList){
             let theHotels=theTour.hotelList.map((elem, i)=>
                 <div className={styles.hotelLink} key={i}>
@@ -771,6 +802,23 @@ export function TourDisplayer(props){
     }
     const tourFooter=()=>{
         return(<>
+        {(props.contactNavi && aTour?.user ) && <> 
+            <div className={styles.itinLinkFooter}>
+                <div> 
+                    <span style={{fontSize: "0.8em", fontWeight:"600"}}>CONTACT YOUR AGENT:  </span><br/> 
+                    {aTour?.user?.name}
+                </div>
+                <div style={{display:"flex"}} > 
+                    {aTour?.user?.email && <> <a href={`mailto:${aTour?.user?.email}?cc=planificacion@ecoandestravel.com&subject=${aTour.tripName} Request&body=Hi! I need some assistance with my trip:`}>
+                        <MailOutlineIcon/> </a> 
+                    </>}
+                    {aTour?.user?.phono && <> <a href={`tel:+593${aTour?.user?.phono}`} target="_blank"> &nbsp; &nbsp; &nbsp;
+                        <PhoneIcon/> </a> </>} &nbsp;&nbsp;
+                    {aTour?.user?.phono && <> <a href={`https://wa.me/593${aTour?.user?.phono}`} target="_blank"> &nbsp; &nbsp; &nbsp;
+                        <WhatsAppIcon/> </a> </>}
+                </div>
+            </div>
+        </>}
         <footer  style={{width: "100%"}} >
             <div className={styles.footerBar} >
             <Link href="/tours"><a>
@@ -779,6 +827,10 @@ export function TourDisplayer(props){
             </a></Link>
             </div>
         </footer>
+        {(props.contactNavi && aTour?.user ) && <> 
+            <br/>
+            <br/>
+        </>}
         </>)
     }
     const priceDisplayer=(thePrices)=>{
@@ -839,18 +891,15 @@ export function TourDisplayer(props){
             </div>
             <div className={styles.tourDataCont}>
                 <div className={styles.tourData}>
-                    {aTour.dayByDay.length>0&&<>
-
                     <div className={styles.pageBreak}></div>
-
-                    <div className={styles.sectionTitles}> &nbsp;Overview</div>
-                        {dayByDaydisp(aTour.dayByDay, true)}</>}
-
+                    {dayByDaydisp(aTour.dayByDay, true)}
+                    {dayByDaydisp(undefined, undefined, props.aTravelDay)}
                     {aTour.included.length>0&&<>
                     <div className={styles.pageBreak}></div>
                     <div className={styles.sectionTitles}>&nbsp;additional information</div>
                         {accordionDisplayer("Tour Inclusions / Exclusions", incExcCont, true)}
-                        {hotelList(aTour)}</>}
+                    </>}
+                    {hotelList(aTour)}
                 </div>
                 <div className={styles.supportInfoCont}>
                     <div className={styles.aCard}>

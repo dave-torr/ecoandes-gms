@@ -47,7 +47,7 @@
 }
 
 .orangeSeparator{
-    border: solid 2px var(--pop-orange);
+    border: solid 1px var(--pop-orange);
     width: 100%;
     margin: 9px 0;
 }
@@ -489,6 +489,9 @@
     transition: all ease-in 0.3s;
 }
 
+.eachDayDescription{
+    text-align: justify;
+}
 .eachDayDescription::first-letter{
     text-transform: capitalize;
 }
@@ -599,7 +602,6 @@
     text-transform: capitalize;
     font-size: 0.9em;
 }
-
 .trekDataCont{
     font-size: 0.9em;
     display: flex;
@@ -611,14 +613,12 @@
     font-weight: 550;
     text-transform: capitalize;
 }
-
 .hotelLink{
     display: flex;
     width: 100%;
     justify-content: space-between;
     padding: 9px;
 }
-
 .bookingProcessTourData{
     width: 1080px;
     display: flex;
@@ -626,7 +626,6 @@
     align-items: center;
     padding: 33px;
 }
-
 .bookingSteps{
     text-align: end;
     width: 100%;

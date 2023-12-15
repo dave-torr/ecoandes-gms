@@ -75,6 +75,15 @@ let tourDiff =[1,2,3,4,5]
         "notes":[],
         "shortenedURL":nanoid(7)
     })
+    const [aTravelDay, setTravelDay] = useState({
+        "dayInclusions":[
+            "private Transfers",
+            "guide Services",
+        ],
+        "flightData":[],
+        "guideData":[],
+        "imgArr":[]
+    })
     const [textPlaceholder, setTxtPlaceholder]=useState("")
     const [textPlaceholder2, setTxtPlaceholder2]=useState("")
     const [destinationList, setDestList] = useState([...ecoAndesDestinations])
@@ -403,6 +412,8 @@ let tourDiff =[1,2,3,4,5]
                         setTourModel={setTourModel}
                         editDayTrigger={editDayTrigger}
                         setEditDayTrig={setEditDayTrig}
+                        aTravelDay={aTravelDay}
+                        setTravelDay={setTravelDay}
                         filteredImgArr={filteredImgArr}
                         setFilteredImgs={setFilteredImgs}
                     />
@@ -476,7 +487,6 @@ let tourDiff =[1,2,3,4,5]
             </>}
         </>)
     }
-
     return(<>
         <div className={styles.generalPageCont}>
             {session?<>
@@ -510,7 +520,8 @@ let tourDiff =[1,2,3,4,5]
                         {aTourModel.imgArr.length>0 && <>
                             {imgPickerUIUitls(aTourModel.imgArr)}</>}
                         <TourDisplayer  
-                            aTour={aTourModel} 
+                            aTour={aTourModel}
+                            aTravelDay={aTravelDay}
                             />
                         {tourCreatorStep===3 &&<>
                         {sendToBackEnd(aTourModel, session.user, 1)}</>}
