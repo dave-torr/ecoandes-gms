@@ -483,7 +483,320 @@ export function TourDateAdder(props){
     )
 }
 
+export function EditDayByDay(props){
+    let editingTour = {...props.aTour}
+    const [aTravelDay, setTravelDay] = useState({
+        "dayInclusions":[
+            "private Transfers",
+            "guide Services",
+        ],
+        "flightData":[],
+        "guideData":[],
+        "imgArr":[]
+    })
+    const [incluPlaceholder, setPlaceholder]=useState("")
+    const [dayIndex, setDayIndex]=useState(false)
+    const [addDayTrig, setAddDayTrig] = useState(false)
 
+    const [autofillTrig, setAutoFillTrig]=useState(false)
+    const [addImgTrig, setImgTrig]=useState(false)
+    const [autoFillData, setAutoFillData]=useState(false)
+    const [locSelection, setLocSelection]=useState(false)
+    const [autofillOpts, setAutofillOps]=useState(false)
+    const [fetchedImgs, setFetchedIMGs]=useState(false)
+
+    useEffect(async()=>{
+        const res = await fetch("/api/genToolkit/pixApi",{
+            method: "GET"
+        })
+        const imageFetcher = await res.json()
+        if(res.status===200){
+            setFetchedIMGs(imageFetcher)
+        }
+        const res2 = await fetch("/api/gms/dayByDayDB", {
+            method: "GET"
+        })
+        const docData = await res2.json()
+        if(res2.status===200){
+            setAutoFillData(docData)
+        }
+    },[])
+    useEffect(()=>{
+        if(locSelection){
+            let filteringArr = autoFillData.filter((elem=> elem.location === locSelection))
+            let sortedArr = filteringArr.sort((a,b)=>{
+                const titleA = a.title.toUpperCase()
+                const titleB = b.title.toUpperCase()
+                if(titleA < titleB){
+                    return -1;
+                } 
+                if(titleA > titleB){
+                    return 1;
+                } 
+                return 0
+            })
+            console.log(sortedArr, "sortedArr")
+            setAutofillOps(sortedArr)
+        }
+    },[locSelection])
+    useEffect(()=>{
+        setTravelDay({
+            ...aTravelDay,
+            ...editingTour.dayByDay[dayIndex]
+        })
+    },[dayIndex])
+
+
+    const autofillSelector=(theGeneralLocat)=>{
+        let locArr = []
+        if(theGeneralLocat){
+            theGeneralLocat?.forEach(element => {
+                const findContact = locArr.find(elemental=> elemental === element.location)
+                if(!findContact){
+                    locArr.push(element.location)
+                }
+            })
+        }
+        return(<>
+            <div className={styles.autofillCont}>
+            <div style={{display:"flex", justifyContent:"space-between", width:"100%" }}> 
+                <h2>Autofill Day</h2>
+                <div onClick={()=>setAutoFillTrig(false)} > <HighlightOffIcon/> </div>
+            </div>
+                {theGeneralLocat ? <>
+                    <label htmlFor="LocationDropdown" className={styles.inputLabel}>
+                        Select General Location
+                    </label>
+                    <select id="LocationDropdown" onChange={(e)=>{
+                        setLocSelection(`${e.target.value}`)
+                    }} >
+                        <option selected disabled >Select a location </option>
+                        {locArr.map((elem,i)=><React.Fragment key={i}>
+                        <option value={elem} > {elem} </option>
+                    </React.Fragment> )}
+                    </select>
+
+                    {autofillOpts && <>
+                    <div className={styles.autofillGrid}> 
+                    <label className={styles.inputLabel}> Pick a description to add to day </label> <br/>
+                        {autofillOpts.map((elem,i)=><React.Fragment key={i}>
+                            <div className={styles.eachAutoFill} >
+                                <div style={{width: "25%"}}> 
+                                    {elem.title} 
+                                    <br/>
+                                    <div className={styles.addFromRecordBTN} onClick={()=>{
+                                        setTravelDay({
+                                            ...aTravelDay,
+                                            "dayTitle": elem.title,
+                                            "dayDescription": elem.description
+                                        })
+                                        setAutoFillTrig(false)
+                                        setLocSelection(false)
+                                    }}> 
+                                        + add to day
+                                    </div>
+                                </div>
+                                <div style={{width: "75%", textTransform:"capitalize" }}> 
+                                    {elem.description} 
+                                </div>
+                            </div>
+                        </React.Fragment> )}
+                    </div>
+                    </> }
+                </>:<>
+                    <CircularProgress />
+                </> }
+            </div>
+        </>)
+    }
+    const imgSelector=(fetchedImgs)=>{
+        let aPickerImg= fetchedImgs.map((elem, i)=>
+        <React.Fragment key={i}>
+            <div className={styles.eachImgDisp}>
+                {anImageDisp(elem.src, 150, "LTCWide", elem.imgAlt)}
+                <div className={styles.imgSelectorBTN} onClick={()=>{
+                    // addToItinImgArr
+                    let tempImgArr = aTravelDay.imgArr.concat(elem.src)
+                    setTravelDay({
+                        ...aTravelDay,
+                        "imgArr": tempImgArr
+                    })
+
+                    let tempList = [...fetchedImgs]
+                    tempList.splice(i, 1)
+                    setFetchedIMGs(tempList)
+                }} >  +  </div>
+                <div className={styles.imgRefData}>
+                    <div>{elem.imgCountry}</div>
+                    <div>{elem.imgRegion}</div>
+                    <div>{elem.imgName}</div>
+                    <div>{elem.locationDetails}</div>
+                </div>
+            </div>
+        </React.Fragment>)
+        return(<>
+            <div style={{display:"flex", justifyContent:"space-between", width:"100%" }}> 
+                <h2>Add Images</h2>
+                <div onClick={()=>setImgTrig(false)} > <HighlightOffIcon/> </div>
+            </div>
+            {aTravelDay.imgArr.length>0 && <>
+            <strong> SELECTED IMAGES: </strong>
+            <div className={styles.selectedImgCont}>
+                {aTravelDay.imgArr.map((elem,i)=><React.Fragment key={i}>
+                <div className={styles.eachSelectedImg}>
+                    <div className={styles.cancelImg} onClick={()=>{
+                        let tempImgArr = aTravelDay.imgArr.splice(i, 1)
+                        setTravelDay({
+                            ...aTravelDay,
+                            "imgArr": aTravelDay.imgArr
+                        })
+
+                    }}>
+                    <HighlightOffIcon/></div>
+                    {anImageDisp(elem, 150, "LTCWide", elem)}
+                </div>
+                </React.Fragment>)}
+            </div></>}
+
+            <strong> ADD IMAGES: </strong>
+            <div className={styles.imgPickerCont} >
+                {aPickerImg}
+            </div>
+        </>)
+    }
+    let selectDayBTNS = editingTour.dayByDay.map((elem, i)=>
+        <React.Fragment key={i}>
+            <span onClick={()=>setDayIndex(i)}> D{i+1} </span>
+    </React.Fragment>)
+    let deleteDayBTNS = editingTour.dayByDay.map((elem, i)=><React.Fragment key={i}>
+            <span onClick={()=>{
+                let tempDayArr =[...editingTour.dayByDay]
+                tempDayArr.splice(i, 1)
+                props.setEditTemplate({
+                    ...props.editTemplate,
+                    "editKey": "dayByDay",
+                    "editValue": tempDayArr
+                })
+
+            }}> D{i+1}</span>
+    </React.Fragment> )
+
+    return(<>
+        {(dayIndex===false && addDayTrig===false) && <>
+            <div className={styles.editDaysCont}> 
+                <div className={styles.editDayOpts} ><div style={{width: "100px", textAlign:"start" }}>Edit Day(s):</div>{selectDayBTNS}</div>
+                <div className={styles.editDayOpts} ><div style={{width: "100px", textAlign:"start" }}> Delete Day(s):</div>{deleteDayBTNS}</div>
+                <div className={styles.editDayOpts} ><div style={{width: "100px", textAlign:"start" }}> Add Day:</div> <span onClick={()=>setAddDayTrig(true)}> &nbsp;+&nbsp; </span></div>
+            </div>
+        </>}
+
+        
+        {/* Edit Days */}
+        {(dayIndex || dayIndex===0)&&<>
+            <div style={{display:"flex", justifyContent:"space-between", width:"100%" }}> 
+                <strong>Edit Day {dayIndex+1}:</strong>
+                <CancelPresentationIcon />
+            </div> 
+        
+            {anInputDisplayer("Day Title", "dayTitle", "text", true, editingTour.dayByDay[dayIndex].dayTitle, aTravelDay, setTravelDay )}
+
+            {aTextArea("Day detail", "dayDescription", true, editingTour.dayByDay[dayIndex].dayDescription, aTravelDay, setTravelDay)}
+
+            {inputToList("add to day", "dayInclusions", aTravelDay, setTravelDay, aTravelDay.dayInclusions, incluPlaceholder, setPlaceholder)}
+
+            {anInputDisplayer("Overnight Property", "overnightProperty", "text", true, editingTour.dayByDay[dayIndex].overnightProperty, aTravelDay, setTravelDay )}
+
+
+            <div className={styles.editDayBTN} 
+                onClick={()=>{
+                    let tempDayArr =[...editingTour.dayByDay]
+                    tempDayArr.splice(dayIndex, 1, aTravelDay)
+                    props.setEditTemplate({
+                        ...props.editTemplate,
+                        "editKey": "dayByDay",
+                        "editValue": tempDayArr
+                    })
+                    setDayIndex(false)
+                    setTravelDay({
+                        "dayInclusions":[
+                            "private Transfers",
+                            "guide Services",
+                        ],
+                        "flightData":[],
+                        "guideData":[],
+                        "imgArr":[]
+                    })
+                }} > Save Day </div>
+        </>}
+
+        {/* Add Day */}
+        {addDayTrig&& <> 
+
+            {autofillTrig? <>
+                {autofillSelector(autoFillData)}
+            </>: addImgTrig? <>
+                {imgSelector(fetchedImgs)}
+            </>: <> 
+                <div style={{display:"flex", justifyContent:"space-between", width:"100%" }}> 
+                    <strong>Add Day:</strong>
+                    <div onClick={()=>{
+                        setAddDayTrig(false)
+                        setImgTrig(false)
+                        setAutoFillTrig(false)
+                        }} > <HighlightOffIcon/> </div>
+                </div>
+                <div className={styles.addFromRecordBTN} onClick={async()=>{
+                    setAutoFillTrig(true)
+                }}> <PlaylistAddIcon/> &nbsp; Autofill </div>
+
+                {anInputDisplayer("Day Title", "dayTitle", "text", true, aTravelDay.dayTitle, aTravelDay, setTravelDay, undefined, undefined, "Day Title" )}
+
+                {aTextArea("Day detail", "dayDescription", true, aTravelDay.dayDescription, aTravelDay, setTravelDay, undefined, undefined, "Day Description")}
+
+                {inputToList("add to day", "dayInclusions", aTravelDay, setTravelDay, aTravelDay.dayInclusions, incluPlaceholder, setPlaceholder)}
+
+                {anInputDisplayer("Overnight Property", "overnightProperty", "text", true, 'Overnight Property', aTravelDay, setTravelDay )}
+
+                <br/>
+
+                <div className={styles.addFromRecordBTN} onClick={async()=>{
+                    setImgTrig(true)
+                }}> <AddPhotoAlternateIcon/> &nbsp; Image Adder </div>
+            <br/>
+            <h2> Add day as:</h2>
+            <div className={styles.addDayBTNCont}>
+                {editingTour.dayByDay.map((elem,i)=> <React.Fragment key={i} >
+                <span className={styles.editDayBTN} onClick={()=>{
+                    let tempDayArr = editingTour.dayByDay.splice(i, 0, aTravelDay)
+                    props.setEditTemplate({
+                        ...props.editTemplate,
+                        "editKey": "dayByDay",
+                        "editValue": editingTour.dayByDay
+                    })
+                }}> 
+                    {i===0 ?<> 
+                        Starting Day
+                    </>:<>
+                        Between Day {i} & {i+1}
+                    </> }
+                </span>
+                </React.Fragment>)}
+
+                <div className={styles.editDayBTN} onClick={()=>{
+                    let tempDayArr = editingTour.dayByDay.concat(aTravelDay)
+                    props.setEditTemplate({
+                        ...props.editTemplate,
+                        "editKey": "dayByDay",
+                        "editValue": tempDayArr
+                    })
+                }}>
+                    Add Day as last day
+                </div>
+            </div>  
+            </>}
+        </>}
+    </>)
+}
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
 // used in Tour Creator
