@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import Head from 'next/head'
 
 import {TourDisplayer} from "../../components/tours"
 import {connectToDatabase} from "../../middleware/dbMiddleware"
@@ -7,6 +6,7 @@ import {connectToDatabase} from "../../middleware/dbMiddleware"
 import styles from "../../styles/components/tourCmpnts.module.css"
 
 import { useRouter } from "next/router"
+import { LinearProgress } from "@mui/material"
 
 
 function TourPage({ aTour }){
