@@ -4,6 +4,25 @@
     min-height: 100vh;
     align-items: center;
     background-color: var(--whitesmoke-background);
+    padding-bottom: 66px;
+}
+
+.yacumaMain{
+    display: flex;
+    width: 760px;
+}
+
+.mainWelcome{
+    width: 60%;
+    padding: 9px;
+}
+
+.mainBTNS{
+    border-left: solid 1px black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
 }
 
 .aPaper{
@@ -11,5 +30,76 @@
     min-height: 150px;
     padding: 15px 21px;
     width: 650px;
-    
+}
+
+.spaceBetRow{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.saveBTN{
+    width: 100%;
+    border: unset;
+    margin-top: 21px;
+    font-size: 1.2em;
+    border-bottom: solid 1px black;
+    border-right: solid 1px black;
+    transition:all ease-in 0.3s;
+    text-align: end;
+    padding: 12px 18px;
+    background-color: unset;
+}
+
+.saveBTN:hover{
+    background-color: var(--ltc-teal);
+    cursor: pointer;
+    color: white;
+}
+
+.aMainBTN{
+    width: 240px;
+    box-shadow: var(--frst-box-shadow);
+    padding: 12px 18px;
+    background-color: white;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    transition: all ease-in 0.1s;
+    margin-bottom: 15px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.closeBTN{
+    border: solid 1px black;
+    width: fit-content;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 6px 9px;
+    transition: all ease-in 0.1s;
+}
+
+.closeBTN:hover{
+    box-shadow: var(--frst-box-shadow);
+}
+
+.recordCont{
+    border: solid 1px black;
+    padding: 6px 9px;
+    font-size: 0.9em;
+    margin: 9px 0;
+}
+.recordCont div{
+    text-transform: uppercase;
+    margin-top: 9px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 1.1em;
+}
+
+@media (max-width: 780px) {
+    .yacumaMain{
+        width: 100%;
+    }
 }

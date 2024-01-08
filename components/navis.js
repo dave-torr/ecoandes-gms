@@ -115,6 +115,46 @@ export function GMSNavii(props){
     const [drawerToggle, setDrawerToggle] = useState(false)
     const router = useRouter()
 
+    const menuOptArr = [
+        {
+            "restriction": "David Torres",
+            "pathname": "/playground",
+            "label": "Playground"
+        },
+        {
+            "restriction": "David Torres",
+            "pathname": "/gms/adminDash",
+            "label": "Admin Dash"
+        },
+        {
+            "restriction": "David Torres",
+            "pathname": "/gms/pix",
+            "label": "pix"
+        },
+        {
+            "restriction": "David Torres",
+            "pathname": "/gms/library",
+            "label": "library"
+        },
+        {
+            "pathname": "/gms/operations",
+            "label": "operations"
+        },
+        {
+            "pathname": "/yacuma",
+            "label": "yacuma"
+        },
+        {
+            "pathname": "/gms/tourExplorer",
+            "label": "tour Explorer"
+        },
+        {
+            "pathname": "/gms/tourCreator",
+            "label": "Tour Creator",
+            "printDel": true
+        },
+    ]
+
     if (props.user){
     return(<>
         <div className={styles.GMSNaviCont} onClick={()=>setDrawerToggle(true)}> 
@@ -145,48 +185,27 @@ export function GMSNavii(props){
             </div>
         </div>
         <Drawer anchor={"right"} open={drawerToggle} onClose={()=>setDrawerToggle(false)} >
-
-            {/* Change Spans to Link when operational */}
-
             <div className={styles.userNaviDrawer}>
                 <h3> Hi {props.user.name} </h3>
                 <div className={styles.userNaviDrawerBTNs}>
-
-                {/* Dave's Routes */}
-                    {props.user.name==="David Torres"&&<>
-                    {router.pathname!="/playground"&&<><Link href="/playground">  
-                    <a>Playground</a>
-                    </Link></>}
-                    </>}
-
-                    {props.user.name==="David Torres"&&<>
-                    {router.pathname!="/pix"&&<><Link href="/gms/pix">  
-                    <a>Pix</a>
-                    </Link></>}
-                    </>}
-                    {props.user.name==="David Torres"&&<>
-                    {router.pathname!="/adminDash"&&<><Link href="/gms/adminDash">  
-                    <a>Admin Dash</a>
-                    </Link></>}
-                    </>}
-                    {props.user.name==="David Torres"&&<>
-                    {router.pathname!="/library"&&<><Link href="/gms/library">  
-                    <a>Library</a>
-                    </Link></>}
-                    </>}
-                    <br/>
-                {/* Non admin Toutes */}
-                    {router.pathname!="/gms/operations"&&<><Link href="/gms/operations">  
-                    <a>Operations</a>
-                    </Link></>}
-                    <div className={styles.mobileDEL}> 
-                        {router.pathname!="/gms/tourCreator"&&<><Link href="/gms/tourCreator">  
-                        <a>Tour Creator</a>
-                    </Link></>}</div>
-                    {router.pathname!="/gms/tourExplorer"&&<><Link href="/gms/tourExplorer">  
-                    <a>Tour Explorer</a>
-                    </Link></>}
-                    
+                    {menuOptArr.map((elem, i)=><React.Fragment key={i}>
+                        {elem.printDel? <>
+                            <div className={styles.mobileDEL}> 
+                                {router.pathname!= elem.pathname &&<><Link href="/gms/tourCreator">  
+                                <a>Tour Creator</a>
+                            </Link></>}</div>
+                        </>:<>
+                            {props.user.name === elem.restriction ?<>
+                                {router.pathname!=elem.pathname&&<><Link href={elem.pathname}>  
+                                <a>{elem.label}</a>
+                                </Link></>}
+                            </>:<>
+                                {router.pathname!=elem.pathname&&<><Link href={elem.pathname}>  
+                                <a>{elem.label}</a>
+                                </Link></>}
+                            </>}
+                        </>}
+                    </React.Fragment>)}                    
                 </div>
                 <SignOutBtn />
             </div>

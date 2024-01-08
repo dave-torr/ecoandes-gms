@@ -400,7 +400,6 @@ export default function OperationsDashboard(){
             upperLimitDate = addDays(firstDate, theDuration)
             if(isShort){
                 theDateFormatter = upperLimitDate.toDateString
-                
             } else {
                 theDateFormatter = upperLimitDate.toLocaleDateString('en-GB', dateOptions)
             }

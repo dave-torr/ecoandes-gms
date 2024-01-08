@@ -101,6 +101,7 @@ let tourDiff =[1,2,3,4,5]
 
     const [submitionTrig, setSubmitTrig]=useState(false)
     const [incluPlaceholder, setPlaceholder]=useState("")
+    
 
 
     // utils
@@ -350,7 +351,7 @@ let tourDiff =[1,2,3,4,5]
                     window.scrollTo({ top: 0, behavior: "smooth"})
                 }}>
 
-                    {aSwitcher(aTourModel.LTCLogo, aTourModel, setTourModel, "LTCLogo", "ecoAndes")}
+                    {aSwitcher(aTourModel.LTCLogo, aTourModel, setTourModel, "LTCLogo", "ecoAndes", "Logo?")}
                     {aTourModel.LTCLogo&&<>
                         {radioSelectors(logoSwitcherArr, "logoRadios", aTourModel, setTourModel, "LTCLogo")}
                     </>}
@@ -373,17 +374,17 @@ let tourDiff =[1,2,3,4,5]
         // day description
         // inclusions
         // overnight hotel
-
-        // ver 2
         // supplementary information
+        // driving distance
 
+        // Meals
 
         let eachDayEditDisp = aTourModel.dayByDay.map((elem, i)=><React.Fragment key={i}> 
             <div className={styles.editDayBTN} onClick={()=>{
                 setEditDayTrig({...elem, "dayIndex": i })
             }} > D {i+1}</div>
         </React.Fragment>)
-        
+
         return(<>
         <Dialog open={editDayTrigger? true : false } onClose={()=>{setEditDayTrig(false)}} >
             <div className={styles.editDayDialog}>

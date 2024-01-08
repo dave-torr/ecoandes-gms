@@ -219,7 +219,7 @@ export function multiLineTextInput(theLabel, inputId, isReq, inputValue, anObjec
     </>)
 }
 
-export function aSwitcher(switcherController, anObject, setAnObject, objectElemKey, switchTrigger ){
+export function aSwitcher(switcherController, anObject, setAnObject, objectElemKey, switchTrigger, switchLabel ){
     const handleChange=()=>{
         if(switcherController){
             setAnObject({
@@ -236,7 +236,7 @@ export function aSwitcher(switcherController, anObject, setAnObject, objectElemK
             <FormControlLabel 
                 control={
                     <Switch checked={switcherController}
-                    onChange={handleChange} />} label="Logo?" 
+                    onChange={handleChange} />} label={switchLabel} 
                 />            
         </div>
     </>)
@@ -811,6 +811,7 @@ export function DayByDayAdder(props){
     const [locSelection, setLocSelection]=useState(false)
     const [autofillOpts, setAutofillOps]=useState()
     const [imageAddTrig, setImgTrig]=useState(false)
+    const [mealPlaceholder, setMealPlaceholder]=useState("")
 
     useEffect(async()=>{
         if(!autoFillData){
@@ -957,6 +958,85 @@ export function DayByDayAdder(props){
             </div>
         </React.Fragment>)
 
+    const mealsIncludedTool=()=>{
+        
+        let mealOpts=[
+            "breakfast",
+            "breakfastBox",
+            "brunch",
+            "lunch",
+            "snack",
+            "dinner",
+            "other"
+        ]
+
+        return(<>
+            <label className={styles.inputLabel} htmlFor="mealInput" > Add Meals </label>
+            <select className={styles.inputUserUI} id="mealInput" onChange={(e)=>{
+                setMealPlaceholder({
+                    ...mealPlaceholder,
+                    "meal": e.target.value
+                })
+            }}>
+                <option selected disabled >Choose a meal </option>
+                {mealOpts.map((elem, i)=><React.Fragment key={i}>
+                    <option value={elem}>{elem} </option>
+                </React.Fragment> )}
+            </select>
+            {mealPlaceholder?.meal && <>
+                <label className={styles.inputLabel} htmlFor="mealInput" > add {mealPlaceholder?.meal} at: </label>
+                <input className={styles.inputUserUI} type="text" placeholder="Location of Meal" onChange={(e)=>{
+                    setMealPlaceholder({
+                        ...mealPlaceholder,
+                        "location": e.target.value
+                    })
+                }}/>
+                <div className={styles.addFromRecordBTN} onClick={()=>{
+                    let tempArr
+                    if(props.aTravelDay.meals?.length>0){
+                        tempArr = props.aTravelDay.meals.concat(mealPlaceholder)
+                    } else {
+                        tempArr=[mealPlaceholder]
+                    }
+                    props.setTravelDay({
+                        ...props.aTravelDay,
+                        "meals": tempArr
+                    })
+                    setMealPlaceholder()
+                    let tempDoc = document.getElementById("mealInput")
+                    tempDoc.value=""
+                }}> Add Meal +</div>
+                <br/>
+            </>}
+            <br/>
+            {props.aTravelDay.meals?.length>0 &&
+            <>
+                {props.aTravelDay.meals.map((elem,i)=><React.Fragment key={i}>
+                <div className={styles.spaceBetRow} style={{textTransform:"capitalize", padding:"6px 0" }}> 
+                    <span >
+                    {elem.meal} @ {elem.location}
+                    </span>
+                    <span onClick={()=>{
+                        if(props.aTravelDay.meals.length===1){
+                            props.setTravelDay({
+                                ...props.aTravelDay,
+                                "meals": []
+                            })
+                        } else {
+                            let tempArr = props.aTravelDay.meals.splice(i, 1)
+                            props.setTravelDay({
+                                ...props.aTravelDay,
+                                "meals": tempArr
+                            })
+                        }
+                    }}><CancelIcon/> </span>
+                </div>
+                </React.Fragment> )}
+            </>}
+        </>)
+    } 
+
+
     return(<>
         {autofillSelector(autoFillData)}
         {imageSelector()}
@@ -982,10 +1062,12 @@ export function DayByDayAdder(props){
             {anInputDisplayer("Day Title", "dayTitle", "text", true, props.aTravelDay.dayTitle, props.aTravelDay, props.setTravelDay, undefined, undefined, "Main daily activity" )}
             {multiLineTextInput("Day Detail", "dayDescription", false, props.aTravelDay.dayDescription, props.aTravelDay, props.setTravelDay )}
             {inputToList("add to day", "dayInclusions", props.aTravelDay, props.setTravelDay, props.aTravelDay.dayInclusions, incluPlaceholder, setPlaceholder)}
+            {mealsIncludedTool()}
             {anInputDisplayer("Overnight Property", "overnightProperty", "text", false, undefined, props.aTravelDay, props.setTravelDay, undefined, undefined, "Hotel / Lodge Name")}
             {anInputDisplayer("Supplementary Information", "suppInfo", "text", false, undefined, props.aTravelDay, props.setTravelDay, undefined, undefined, "Ex: Quito is at 2,800 meters")}
             {anInputDisplayer("Driving Distance", "drivingDistance", "number", false, undefined, props.aTravelDay, props.setTravelDay, 0, undefined, "Ex: 150 km")}
-            <div type="submit" className={styles.submitDayBTN} 
+
+            <div className={styles.submitDayBTN} 
                 onClick={()=>{
                     let tempList=props.aTour.dayByDay.concat(props.aTravelDay)
                         props.setTourModel({

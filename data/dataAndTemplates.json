@@ -1663,5 +1663,28 @@
             "Linterna frontal",
             "Batería externa"
         ]
+    },
+    "packingLists":{
+        "galapagos":[
+            "Personal Travel Insurance",
+            "Comfortable hiking or walking shoes",
+            "Sandals with lace or brooch for wet landings",
+            "Light cotton socks",
+            "Long-sleeved cotton Shirts and T-shirts with UV protection",
+            "Lightweight cotton scarf to protect your neck",
+            "Shorts",
+            "Lightweight pants or skirts",
+            "Lightweight rain and/or wind jacket",
+            "Vest, sweater and/or light jacket (for morning and afternoon sea breeze)",
+            "Wide brimmed Hat or Cap",
+            "Swimwear",
+            "Original Passport",
+            "Sunglasses (polarized lenses with UV protection)",
+            "Mosquito Repellent",
+            "Reef Safe Suncream",
+            "reusable waterproof bags (for wet clothes and to protect electronic devices, binoculars, and other devices)",
+            "photo/video Camera with spare batteries",
+            "preferred medication for seasickness"
+        ]
     }
 }

@@ -13,8 +13,6 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ExploreIcon from '@mui/icons-material/Explore';
-import EventIcon from '@mui/icons-material/Event';
-import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import DirectionsWalkIcon from '@mui/icons-material/DirectionsWalk';
 import InsertLinkIcon from '@mui/icons-material/InsertLink';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
@@ -147,8 +145,10 @@ export function TextTourCard(props){
     </>)
     } else if(props.type===2) {
         return(<>
-        {theTour.user?.name&&<> 
-        <div className={styles.userNameTag}> {theTour.user?.name.substring(0, theTour.user?.name.indexOf(' '))}</div>
+        {theTour.user?.name?<> 
+            <div className={styles.userNameTag}> {theTour.user?.name.substring(0, theTour.user?.name.indexOf(' '))}</div>
+        </>: <> 
+            <br/>
         </>}
         <div className={styles.textTourCard} onClick={()=>{
             props.setItin(theTour)
@@ -355,10 +355,23 @@ export function TourDisplayer(props){
     const dayByDaydisp=(tourDayByDay, openContr, aTravelDay)=>{
         const dayInclDisp=(dayIncl)=>{
             if(dayIncl?.length>0){
-                let theInclusions = dayIncl.map((elem, i)=><React.Fragment key={i}><li>{elem}</li></React.Fragment>)
+                let theInclusions = dayIncl.map((elem, i)=><React.Fragment key={i}>{i>0&&<>, </>}{elem}</React.Fragment>)
                 return(<><div className={styles.dayInclusionCont}> 
                     <h4>Includes:</h4>
-                    <ul>{theInclusions}</ul>
+                    &nbsp; {theInclusions}
+                </div></>)
+            }
+        }
+        const mealsInclDisp=(theMeals)=>{
+            if(theMeals?.length>0){
+                let theInclusions = theMeals.map((elem, i)=><React.Fragment key={i}> 
+                <div className={styles.eachMealDisp}>
+                    - {elem.meal} @ {elem.location} 
+                </div>
+                </React.Fragment>)
+                return(<><div> 
+                    <h4>Meals:</h4>
+                    {theInclusions}
                 </div></>)
             }
         }
@@ -523,6 +536,7 @@ export function TourDisplayer(props){
                         {textHTMLParser(elem.dayDescription)}
                     </div>
                     {dayInclDisp(elem.dayInclusions)}
+                    {mealsInclDisp(elem)}
                     {hotelDetailDisp(elem.overnightProperty)}
                     {elem.guideData&&<>{guideDataDisp(elem.guideData)}</>}
                     {elem.flightData&&<>{flightDataDisp(elem.flightData)}</>}
@@ -545,6 +559,7 @@ export function TourDisplayer(props){
                     {textHTMLParser(aTravelDay.dayDescription)}
                 </div>
                 {dayInclDisp(aTravelDay.dayInclusions)}
+                {mealsInclDisp(aTravelDay.meals)}
                 {hotelDetailDisp(aTravelDay.overnightProperty)}
                 {aTravelDay.guideData&&<>{guideDataDisp(aTravelDay.guideData)}</>}
                 {aTravelDay.flightData&&<>{flightDataDisp(aTravelDay.flightData)}</>}
@@ -561,14 +576,12 @@ export function TourDisplayer(props){
             </>)
         } else if(aTour.dayByDay.length>0) {
             return(<>
-                <div className={styles.sectionTitles}> &nbsp;Overview</div>
                 {accordionDisplayer("Day by Day", theDays, true)}
                 <br/>
             </>)
         }
     }
 
-    
     function Imagedisp(props){
         return(<>        
         <div className={styles.aTourImage} onClick={()=>{
@@ -892,8 +905,13 @@ export function TourDisplayer(props){
             <div className={styles.tourDataCont}>
                 <div className={styles.tourData}>
                     <div className={styles.pageBreak}></div>
+                    {aTour.dayByDay?.length>0&&<>
+                        <div className={styles.sectionTitles}> &nbsp;Overview</div>
+                    </>}
                     {dayByDaydisp(aTour.dayByDay, true)}
-                    {dayByDaydisp(undefined, undefined, props.aTravelDay)}
+                    {props.aTravelDay&& <>
+                        {dayByDaydisp(undefined, undefined, props.aTravelDay)}
+                    </>}
                     {aTour.included.length>0&&<>
                     <div className={styles.pageBreak}></div>
                     <div className={styles.sectionTitles}>&nbsp;additional information</div>
@@ -902,14 +920,14 @@ export function TourDisplayer(props){
                     {hotelList(aTour)}
                 </div>
                 <div className={styles.supportInfoCont}>
+                    {priceDisplayer(aTour.price, aTour.prices)}
+                    <br/>
                     <div className={styles.aCard}>
                         {(aTour.tourType || aTour.difficulty ) &&<>
                             {TourTypeCard(aTour.tourType)}
                             {TourDifficultyCard(aTour.difficulty)}
                         </>}
                     </div>
-                    <br/>
-                    {priceDisplayer(aTour.price, aTour.prices)}
                 </div>
             </div>
         {tourFooter()}
@@ -968,7 +986,6 @@ export function RectangularTourCard(props){
     </>)
     } else return(<> cu cu </>)
 }
-
 // tour displayer LTC NON OP, need to isolate state for each ver
 export function SortingItinUI(props){
     // const [sortContr, setSortContr]=useState("duration")
@@ -1049,7 +1066,6 @@ export function SortingItinUI(props){
         </div>
     </>)    
 }
-
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 // Tour editing Functionality: Duplication

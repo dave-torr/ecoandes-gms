@@ -1,5 +1,6 @@
 
 
+
 /* Basic Tour Card */
 
 .tourCardCont{
@@ -592,16 +593,11 @@
     padding: 12px 12px;
 }
 
-.dayInclusionCont > h4{
+.dayInclusionCont{
     border-top: solid 1px var(--pop-orange);
-}
-.dayInclusionCont > ul{
-    margin: unset;
-}
-.dayInclusionCont li{
     text-transform: capitalize;
-    font-size: 0.9em;
 }
+
 .trekDataCont{
     font-size: 0.9em;
     display: flex;
@@ -1241,6 +1237,10 @@
     margin-left: calc( 50vw - 400px);
 }
 
+.eachMealDisp{
+    text-transform: capitalize;
+    font-size: 0.9em;
+}
 
 
 
@@ -1271,6 +1271,10 @@
     .iconCont{
         width: 200px;
         font-size: 1em;
+    }
+
+    .tourInfoDescriptor{
+        padding: 33px;
     }
 
 /* Booking Steps */
@@ -1314,13 +1318,17 @@
     .supportInfoCont{
         width: 100%;
         margin: 15px 0;
-        padding: 0;
+        padding: 0 12px;
         display: flex;
-        justify-content: space-between;
+        /* flex-direction: column; */
+        /* align-items: center; */
     }
 
     .aCard {
-        width: 49%;
+        width: 50%;
+        display: flex;
+        margin: 0 9px;
+        /* flex-direction: row; */
     }
     .iconDiffDisp span{
         width: fit-content;
@@ -1473,8 +1481,6 @@
     .aTourCTACont{
         display: none;
     }
-
-
     .inclusionsExclusionsSec{
         flex-direction: row;
     }
@@ -1491,6 +1497,9 @@
     .tourDataCont{
         flex-direction: column;
         align-items: center;
+    }
+    .tourInfoDescriptor{
+        padding: 9px 33px;
     }
 
 }
