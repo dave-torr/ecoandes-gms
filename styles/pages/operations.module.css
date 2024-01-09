@@ -305,7 +305,7 @@
     font-weight: 600;
     margin: 15px;
     border: solid 1px black;
-
+    cursor: pointer;
 }
 
 /* General */

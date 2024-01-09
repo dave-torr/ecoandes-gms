@@ -504,6 +504,7 @@ export function EditDayByDay(props){
     const [locSelection, setLocSelection]=useState(false)
     const [autofillOpts, setAutofillOps]=useState(false)
     const [fetchedImgs, setFetchedIMGs]=useState(false)
+    const [mealPlaceholder, setMealPlaceholder]=useState()
 
     useEffect(async()=>{
         const res = await fetch("/api/genToolkit/pixApi",{
@@ -546,7 +547,83 @@ export function EditDayByDay(props){
         })
     },[dayIndex])
 
+    const mealsIncludedTool=()=>{
+        
+        let mealOpts=[
+            "breakfast",
+            "breakfastBox",
+            "brunch",
+            "lunch",
+            "snack",
+            "dinner",
+            "other"
+        ]
 
+        return(<>
+            <label className={styles.inputLabel} htmlFor="mealInput" > Add Meals </label>
+            <select className={styles.inputUserUI} id="mealInput" onChange={(e)=>{
+                setMealPlaceholder({
+                    ...mealPlaceholder,
+                    "meal": e.target.value
+                })
+            }}>
+                <option selected disabled >Choose a meal </option>
+                {mealOpts.map((elem, i)=><React.Fragment key={i}>
+                    <option value={elem}>{elem} </option>
+                </React.Fragment> )}
+            </select>
+            {mealPlaceholder?.meal && <>
+                <label className={styles.inputLabel} htmlFor="mealInput" > add {mealPlaceholder?.meal} at: </label>
+                <input className={styles.inputUserUI} type="text" placeholder="Location of Meal" onChange={(e)=>{
+                    setMealPlaceholder({
+                        ...mealPlaceholder,
+                        "location": e.target.value
+                    })
+                }}/>
+                <div className={styles.addFromRecordBTN} onClick={()=>{
+                    let tempArr
+                    if(aTravelDay.meals?.length>0){
+                        tempArr = aTravelDay.meals.concat(mealPlaceholder)
+                    } else {
+                        tempArr=[mealPlaceholder]
+                    }
+                    setTravelDay({
+                        ...aTravelDay,
+                        "meals": tempArr
+                    })
+                    setMealPlaceholder()
+                    let tempDoc = document.getElementById("mealInput")
+                    tempDoc.value=""
+                }}> Add Meal +</div>
+                <br/>
+            </>}
+            <br/>
+            {aTravelDay.meals?.length>0 &&
+            <>
+                {aTravelDay.meals.map((elem,i)=><React.Fragment key={i}>
+                <div className={styles.spaceBetRow} style={{textTransform:"capitalize", padding:"6px 0" }}> 
+                    <span >
+                    {elem.meal} @ {elem.location}
+                    </span>
+                    <span onClick={()=>{
+                        if(aTravelDay.meals.length===1){
+                            setTravelDay({
+                                ...aTravelDay,
+                                "meals": []
+                            })
+                        } else {
+                            let tempArr = aTravelDay.meals.splice(i, 1)
+                            setTravelDay({
+                                ...editingTour.dayByDay[dayIndex],
+                                "meals": tempArr
+                            })
+                        }
+                    }}><CancelIcon/> </span>
+                </div>
+                </React.Fragment> )}
+            </>}
+        </>)
+    } 
     const autofillSelector=(theGeneralLocat)=>{
         let locArr = []
         if(theGeneralLocat){
@@ -668,6 +745,8 @@ export function EditDayByDay(props){
         <React.Fragment key={i}>
             <span onClick={()=>setDayIndex(i)}> D{i+1} </span>
     </React.Fragment>)
+
+
     let deleteDayBTNS = editingTour.dayByDay.map((elem, i)=><React.Fragment key={i}>
             <span onClick={()=>{
                 let tempDayArr =[...editingTour.dayByDay]
@@ -677,7 +756,6 @@ export function EditDayByDay(props){
                     "editKey": "dayByDay",
                     "editValue": tempDayArr
                 })
-
             }}> D{i+1}</span>
     </React.Fragment> )
 
@@ -693,45 +771,61 @@ export function EditDayByDay(props){
         
         {/* Edit Days */}
         {(dayIndex || dayIndex===0)&&<>
-            <div style={{display:"flex", justifyContent:"space-between", width:"100%" }}> 
-                <strong>Edit Day {dayIndex+1}:</strong>
-                <CancelPresentationIcon />
-            </div> 
+            {addImgTrig? <>
+                {imgSelector(fetchedImgs)}
+
+            </>:<> 
+                <div style={{display:"flex", justifyContent:"space-between", width:"100%" }}> 
+                    <strong>Edit Day {dayIndex+1}:</strong>
+                    <span onClick={()=>{
+                        setDayIndex(false)
+                    }} > <HighlightOffIcon/>
+                    </span>
+                </div>
+                <div className={styles.addFromRecordBTN} onClick={()=>{
+                    setImgTrig(true)
+                }}> <AddPhotoAlternateIcon/> &nbsp; Add Image </div>
+                {anInputDisplayer("Day Title", "dayTitle", "text", true, editingTour.dayByDay[dayIndex].dayTitle, aTravelDay, setTravelDay )}
+
+                {aTextArea("Day detail", "dayDescription", true, editingTour.dayByDay[dayIndex].dayDescription, aTravelDay, setTravelDay)}
+
+                {inputToList("add to day", "dayInclusions", aTravelDay, setTravelDay, aTravelDay.dayInclusions, incluPlaceholder, setPlaceholder)}
+
+                {anInputDisplayer("Overnight Property", "overnightProperty", "text", true, editingTour.dayByDay[dayIndex].overnightProperty, aTravelDay, setTravelDay)}
+                
+                {anInputDisplayer("Supplementary Information", "suppInfo", "text", true, editingTour.dayByDay[dayIndex].suppInfo, aTravelDay, setTravelDay)}
+
+                {anInputDisplayer("Driving distance", "drivingDistance", "text", true, editingTour.dayByDay[dayIndex].drivingDistance, aTravelDay, setTravelDay)}
+
+                {mealsIncludedTool()}
+            
+                <div className={styles.editDayBTN} 
+                    onClick={()=>{
+                        let tempDayArr =[...editingTour.dayByDay]
+                        tempDayArr.splice(dayIndex, 1, aTravelDay)
+                        props.setEditTemplate({
+                            ...props.editTemplate,
+                            "editKey": "dayByDay",
+                            "editValue": tempDayArr
+                        })
+                        setDayIndex(false)
+                        setTravelDay({
+                            "dayInclusions":[
+                                "private Transfers",
+                                "guide Services",
+                            ],
+                            "flightData":[],
+                            "guideData":[],
+                            "imgArr":[]
+                        })
+                    }} >
+                    Save Day </div>
+            </>}
         
-            {anInputDisplayer("Day Title", "dayTitle", "text", true, editingTour.dayByDay[dayIndex].dayTitle, aTravelDay, setTravelDay )}
-
-            {aTextArea("Day detail", "dayDescription", true, editingTour.dayByDay[dayIndex].dayDescription, aTravelDay, setTravelDay)}
-
-            {inputToList("add to day", "dayInclusions", aTravelDay, setTravelDay, aTravelDay.dayInclusions, incluPlaceholder, setPlaceholder)}
-
-            {anInputDisplayer("Overnight Property", "overnightProperty", "text", true, editingTour.dayByDay[dayIndex].overnightProperty, aTravelDay, setTravelDay )}
-
-
-            <div className={styles.editDayBTN} 
-                onClick={()=>{
-                    let tempDayArr =[...editingTour.dayByDay]
-                    tempDayArr.splice(dayIndex, 1, aTravelDay)
-                    props.setEditTemplate({
-                        ...props.editTemplate,
-                        "editKey": "dayByDay",
-                        "editValue": tempDayArr
-                    })
-                    setDayIndex(false)
-                    setTravelDay({
-                        "dayInclusions":[
-                            "private Transfers",
-                            "guide Services",
-                        ],
-                        "flightData":[],
-                        "guideData":[],
-                        "imgArr":[]
-                    })
-                }} > Save Day </div>
         </>}
 
         {/* Add Day */}
         {addDayTrig&& <> 
-
             {autofillTrig? <>
                 {autofillSelector(autoFillData)}
             </>: addImgTrig? <>
@@ -745,9 +839,14 @@ export function EditDayByDay(props){
                         setAutoFillTrig(false)
                         }} > <HighlightOffIcon/> </div>
                 </div>
-                <div className={styles.addFromRecordBTN} onClick={async()=>{
-                    setAutoFillTrig(true)
-                }}> <PlaylistAddIcon/> &nbsp; Autofill </div>
+                <div className={styles.spaceBetRow}>
+                    <div className={styles.addFromRecordBTN} onClick={async()=>{
+                            setImgTrig(true)
+                        }}> <AddPhotoAlternateIcon/> &nbsp; Add Image </div>
+                    <div className={styles.addFromRecordBTN} onClick={async()=>{
+                            setAutoFillTrig(true)
+                        }}> <PlaylistAddIcon/> &nbsp; Autofill </div>
+                </div>
 
                 {anInputDisplayer("Day Title", "dayTitle", "text", true, aTravelDay.dayTitle, aTravelDay, setTravelDay, undefined, undefined, "Day Title" )}
 
@@ -757,11 +856,12 @@ export function EditDayByDay(props){
 
                 {anInputDisplayer("Overnight Property", "overnightProperty", "text", true, 'Overnight Property', aTravelDay, setTravelDay )}
 
+                {anInputDisplayer("Supplementary Information", "suppInfo", "text", true, aTravelDay.suppInfo, aTravelDay, setTravelDay)}
+
+                {anInputDisplayer("Driving distance", "drivingDistance", "text", true, aTravelDay.drivingDistance, aTravelDay, setTravelDay)}
+
                 <br/>
 
-                <div className={styles.addFromRecordBTN} onClick={async()=>{
-                    setImgTrig(true)
-                }}> <AddPhotoAlternateIcon/> &nbsp; Image Adder </div>
             <br/>
             <h2> Add day as:</h2>
             <div className={styles.addDayBTNCont}>

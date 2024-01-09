@@ -164,7 +164,7 @@ export function GMSNavii(props){
             </div>
 
             {/* User icon and Burger */}
-            <div style={{display: "flex", alignItems:"center"}}> 
+            <div style={{display: "flex", alignItems:"center", backgroundColor:"white"}}> 
                 <div className={styles.GMSNaviBurger}>
                     <span />
                     <span />
@@ -195,11 +195,12 @@ export function GMSNavii(props){
                                 <a>Tour Creator</a>
                             </Link></>}</div>
                         </>:<>
-                            {props.user.name === elem.restriction ?<>
+                            {props.user.name === elem.restriction && <>
                                 {router.pathname!=elem.pathname&&<><Link href={elem.pathname}>  
                                 <a>{elem.label}</a>
                                 </Link></>}
-                            </>:<>
+                            </>}
+                            {elem.restriction===undefined&&<>
                                 {router.pathname!=elem.pathname&&<><Link href={elem.pathname}>  
                                 <a>{elem.label}</a>
                                 </Link></>}

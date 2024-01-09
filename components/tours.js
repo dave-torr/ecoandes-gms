@@ -394,7 +394,7 @@ export function TourDisplayer(props){
                 {theDayData.drivingDistance && <> 
                     <h4>Approximate Driving Distance:</h4>
                     <span className={styles.suppDataDet}>
-                        &nbsp;- &nbsp; {theDayData.drivingDistance} km
+                        &nbsp;- &nbsp; {theDayData.drivingDistance} km &nbsp; || &nbsp; {theDayData.drivingDistance * 0.62} mi
                     </span>
                 </>}
             </>)
@@ -506,7 +506,6 @@ export function TourDisplayer(props){
         }
         const textHTMLParser=(theText)=>{
             if(theText){
-
                 let markUpText = {__html: `${theText}`}
                 return(<>
                     <div dangerouslySetInnerHTML={markUpText} />
@@ -529,14 +528,17 @@ export function TourDisplayer(props){
         let theDays = tourDayByDay?.map((elem,i)=> 
         <React.Fragment key={i}>
             <Accordion sx={{ boxShadow:0 }} defaultExpanded={openContr}>
-                <AccordionSummary  expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" > 
-                    <h3>D {i+1&&<>{i+1}: </>}  {elem.dayTitle} </h3></AccordionSummary>
+                <AccordionSummary  expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" >
+                    <div className={styles.eachDayTitle} >
+                        <h3>D {i+1&&<>{i+1}: </>}  {elem.dayTitle}</h3>
+                    </div> 
+                </AccordionSummary>
                 <AccordionDetails sx={{ pb: 0 }} > 
                     <div className={styles.eachDayDescription}>
                         {textHTMLParser(elem.dayDescription)}
                     </div>
                     {dayInclDisp(elem.dayInclusions)}
-                    {mealsInclDisp(elem)}
+                    {mealsInclDisp(elem.meals)}
                     {hotelDetailDisp(elem.overnightProperty)}
                     {elem.guideData&&<>{guideDataDisp(elem.guideData)}</>}
                     {elem.flightData&&<>{flightDataDisp(elem.flightData)}</>}

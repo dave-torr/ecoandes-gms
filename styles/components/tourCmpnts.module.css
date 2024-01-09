@@ -223,7 +223,9 @@
     transform: translateY(-84px);
 }
 
-
+.eachDayTitle h3{
+    text-transform: uppercase;
+}
 
 /* rec tour disp highlights */
 
@@ -492,6 +494,8 @@
 
 .eachDayDescription{
     text-align: justify;
+    padding: 0 15px;
+    margin-bottom: 21px;
 }
 .eachDayDescription::first-letter{
     text-transform: capitalize;
@@ -596,6 +600,7 @@
 .dayInclusionCont{
     border-top: solid 1px var(--pop-orange);
     text-transform: capitalize;
+    margin-bottom: 9px;
 }
 
 .trekDataCont{
