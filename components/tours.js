@@ -251,12 +251,15 @@ export function TourDifficultyCard(props){
         }
     }
     let prsdInt = parseInt(props)
+    if(props){
+
     return(<>
         <span>
             <div className={styles.sectionTitles}> Difficulty</div>
             {tourDiffSwitcher(prsdInt)}
         </span>
     </>)
+    }
 }
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
@@ -745,8 +748,6 @@ export function TourDisplayer(props){
                     </a>
                 </div>
                 </>}
-
-
 
             </div>
             {aTour.adventureType&& <> 

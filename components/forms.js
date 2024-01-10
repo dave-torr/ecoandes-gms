@@ -1025,7 +1025,6 @@ export function EditPrices(props){
             <div className={styles.editPriceBTN} onClick={async()=>{
                 if(!props.loadingTrig){
                     props.setLoadingTrig(false)
-
                     let bePackage={
                         "_id":editingTour._id,
                         "editingObj":editingPackage

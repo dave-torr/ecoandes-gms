@@ -12,6 +12,9 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import CancelPresentationIcon from '@mui/icons-material/CancelPresentation';
 import LinearProgress from '@mui/material/LinearProgress';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import LocalOfferIcon from '@mui/icons-material/LocalOffer';
+import RoomServiceIcon from '@mui/icons-material/RoomService';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
@@ -21,7 +24,7 @@ import { Dialog, } from '@mui/material';
 import GenDataTemplates from "./../../data/dataAndTemplates"
 
 import styles from "../../styles/pages/library.module.css";
-import { aDropdownPicker, anInputDisplayer } from '../../components/forms';
+import { aDropdownPicker, anInputDisplayer, inputToList } from '../../components/forms';
 import { aHotelDisplayer } from '../../components/operations/providers';
 
 let toDate = new Date()
@@ -39,6 +42,13 @@ function LibraryPage(){
 // Templates
 // activities, itin descriptions, 
 
+    const additionalExpenseSchema={
+        "ivaInc":true,
+        "serviceChargeInc":true,
+        "perPerson":true,
+        "priceKey":"additionalServices",
+    }
+
     const [library, setLibrary] = useState([])
     const [libraryTab, setLibraryTab]=useState("main")
 
@@ -51,10 +61,13 @@ function LibraryPage(){
     const [contactSchema, setContactSchema]=useState({})
     const [hotelAdderTrig, setHotelAddTrig]= useState(false)
     const [roomPriceObj, setRoomPriceObj]=useState({
-        "breakfastInc":true
+        "breakfastInc":true,
+        "ivaInc": true,
+        "serviceChargeInc": true,
     })
-    const [tempObj, setTempObj]=useState({})
+    const [editingServiceObj, setEditingService]=useState(additionalExpenseSchema)
     const [hotelSubmition, setHotelSub]=useState(false)
+    const [inputPlaceholder, setInputPlaceholder] = useState("")
 
     const marks = [
         {
@@ -203,11 +216,50 @@ function LibraryPage(){
         </>)
     }
     const anAdditServiceDis=(theService, indx)=>{
-        return(<>
-            <div className={styles.hotelRoomDisp}>
-                cucuu
-            </div>
-        </>)
+        if(theService.serviceName){
+            return(<>
+                <div className={styles.serviceDetDisp}>
+                    <div className={styles.rmvExpenseBTN}> 
+                        <CancelPresentationIcon /> 
+                    </div>
+                    <div className={styles.spaceBetRow}>
+                        <div className={styles.serviceColumn}>
+                            <strong> {theService.serviceName} </strong>
+                            <i> {theService.serviceDescription} </i>
+                            <br/>
+                            {theService.paxMin&&<>
+                                <div className={styles.priceDetIncl}>
+                                    {theService.paxMin} &nbsp; - &nbsp; Guest Minimum
+                                </div>
+                            </>}
+                            {theService.paxMax&&<>
+                                <div className={styles.priceDetIncl}>
+                                    {theService.paxMax} &nbsp; - &nbsp; Guest Maximum
+                                </div>
+                            </>}
+                        </div>
+                        <div className={styles.aColumn}>
+                            <div className={styles.priceDisp} > USD $ {theService.price}  </div>
+                            {theService.perPerson&&<>
+                                <div className={styles.priceDetIncl}>
+                                <PersonAddIcon fontSize="small" /> &nbsp; - &nbsp; price per person
+                                </div>
+                            </> }
+                            {theService.ivaInc&&<> 
+                                <div className={styles.priceDetIncl}>
+                                    <LocalOfferIcon fontSize="small" /> &nbsp; - &nbsp; 12% Iva Included
+                                </div>
+                            </>}
+                            {theService.serviceChargeInc&&<> 
+                                <div className={styles.priceDetIncl}>
+                                    <RoomServiceIcon fontSize="small" />&nbsp; - &nbsp; 10% service included
+                                </div>
+                            </>}
+                        </div>
+                    </div>
+                </div>
+            </>)
+        }
     }
     const contactAdder=()=>{
         return(<>
@@ -278,10 +330,12 @@ function LibraryPage(){
                     let submitHotel = await res.json()
                     if(res.status===200){
                         window.alert("Hotel Added to Library!")
+                        let tempLibArr = [...library]
+                        tempLibArr.push(backEndHotelObj)
+                        setLibrary(tempLibArr)
                         setHotelAddTrig(false)
                         setHotelSub(false)
                     }
-
                 }}>
                 <h1>Add hotel to Database</h1>
                 <div className={styles.spaceBetRow}>
@@ -309,6 +363,9 @@ function LibraryPage(){
                         {anInputDisplayer("website", "hotelWebsite", "text", false, hotelSchema.hotelWebsite, hotelSchema, setHotelSchema, undefined, undefined, "Hotel Website" )}
                     </div>
                 </div>
+
+                {console.log(hotelSchema, "hotelSchema")}
+
                 <div className={styles.sectionDivider}> 
                     Contacts
                 </div>
@@ -325,6 +382,7 @@ function LibraryPage(){
                         </>}
                     </div>
                 </div>
+
                 <div className={styles.sectionDivider}> 
                     Rates
                 </div>
@@ -359,19 +417,6 @@ function LibraryPage(){
                         </div>
                         <br/>
                         <div className={styles.spaceBetRow}>
-                            <FormControlLabel control={<Switch defaultChecked 
-                                onChange={(e)=>{
-                                    if(!e.target.checked){
-                                        setRoomPriceObj({...roomPriceObj, "breakfastInc":false })
-                                    } else {
-                                        setRoomPriceObj({...roomPriceObj, "breakfastInc":true })
-                                    }
-                                }} />} label="Breakfast Included" />
-                            {!roomPriceObj.breakfastInc&&<>
-                                {aNumInput("Breakfast Price", "breakfastPrice", "price" )}
-                            </>}
-                        </div>
-                        <div className={styles.spaceBetRow}>
                             <FormControlLabel control={<Switch 
                                 onChange={(e)=>{
                                     if(!e.target.checked){
@@ -384,6 +429,42 @@ function LibraryPage(){
                                 {aNumInput("Extra Bed", "additionalBed", "price" )}
                             </>}
                         </div>
+
+                        <div className={styles.spaceBetRow}>
+                            <FormControlLabel control={<Switch defaultChecked 
+                                onChange={(e)=>{
+                                    if(!e.target.checked){
+                                        setRoomPriceObj({...roomPriceObj, "breakfastInc":false })
+                                    } else {
+                                        setRoomPriceObj({...roomPriceObj, "breakfastInc":true })
+                                    }
+                                }} />} label="Breakfast Included" />
+                            {!roomPriceObj.breakfastInc&&<>
+                                {aNumInput("Breakfast Price", "breakfastPrice", "price" )}
+                            </>}
+                        </div>
+
+                        <div className={styles.spaceBetRow}>
+                            <FormControlLabel control={<Switch defaultChecked 
+                                onChange={(e)=>{
+                                    if(!e.target.checked){
+                                        setRoomPriceObj({...roomPriceObj, "serviceChargeInc":false })
+                                    } else {
+                                        setRoomPriceObj({...roomPriceObj, "serviceChargeInc":true })
+                                    }
+                                }} />} label="10% Service Charge Included" />
+                        </div>
+                        <div className={styles.spaceBetRow}>
+                            <FormControlLabel control={<Switch defaultChecked 
+                                onChange={(e)=>{
+                                    if(!e.target.checked){
+                                        setRoomPriceObj({...roomPriceObj, "ivaInc":false })
+                                    } else {
+                                        setRoomPriceObj({...roomPriceObj, "ivaInc":true })
+                                    }
+                                }} />} label="12% Iva Tax Included" />
+                        </div>
+
                         <div className={styles.addRecordBTN} onClick={()=>{
                             let tempArr = hotelSchema.roomPriceArr.concat(roomPriceObj)
                             setHotelSchema({
@@ -422,50 +503,95 @@ function LibraryPage(){
                         </>}
                     </div>
                 </div>
+                <div className={styles.spaceBetRow}>
+                    <div className={styles.dataColumn}>
+                        {inputToList("Add price Conditions", "priceConditions", hotelSchema, setHotelSchema, hotelSchema.priceConditions, inputPlaceholder, setInputPlaceholder  )}
+                    </div>
+                </div>
 
-
-
-                {/* <div className={styles.sectionDivider}> 
+                <div className={styles.sectionDivider}> 
                     Additional Services
                 </div>
                 <div className={styles.spaceBetRow}>
                     <div className={styles.dataColumn}>
+                        <span style={{width:"100%" }}>
+                            {anInputDisplayer("Service Name", "serviceName", "text", false, undefined, editingServiceObj, setEditingService, undefined, undefined, "Ex: Standard Dinner Service" )}
+                        </span>
+                        <span style={{width:"100%" }}>
+                            {anInputDisplayer("Service Description", "serviceDescription", "text", false, undefined, editingServiceObj, setEditingService, undefined, undefined, "Ex: Menú almuerzo o cena incluyendo: ... " )}
+                        </span>
                         <div className={styles.spaceBetRow}>
-                            <span style={{width:"100%" }}>
-                                {anInputDisplayer("Service Description", "serviceDescription", "text", false, undefined, tempObj, setTempObj, undefined, undefined, "Ex: Standard Dinner Service" )}
+                            <span style={{width:"48%" }}>
+                                {anInputDisplayer("Pax Min", "paxMin", "number", false, undefined, editingServiceObj, setEditingService, 0, undefined, "Guest Minimum" )}
+                            </span>
+                            <span style={{width:"48%" }}>
+                                {anInputDisplayer("Pax Max", "paxMax", "number", false, undefined, editingServiceObj, setEditingService, 0, undefined, "Guest Maximum" )}
                             </span>
                         </div>
+                        <span style={{width:"65" }}>
+                            {anInputDisplayer("Price", "price", "number", false, undefined, editingServiceObj, setEditingService, 0, undefined, "Ex: 250" )}
+                        </span>
+
                         <div className={styles.spaceBetRow}>
-                            {aNumInput("Pax min", "guestMin" )}
-                            {aNumInput("Pax max", "guestMax" )}
+                            <FormControlLabel control={<Switch checked={editingServiceObj.perPerson} 
+                                onChange={(e)=>{
+                                    if(!e.target.checked){
+                                        setEditingService({...editingServiceObj, "perPerson":false })
+                                    } else {
+                                        setEditingService({...editingServiceObj, "perPerson":true })
+                                    }
+                                }} />} label="Price is Per Person" />
                         </div>
-
-
+                        <div className={styles.spaceBetRow}>
+                            <FormControlLabel control={<Switch checked={editingServiceObj.serviceChargeInc} 
+                                onChange={(e)=>{
+                                    if(!e.target.checked){
+                                        setEditingService({...editingServiceObj, "serviceChargeInc":false })
+                                    } else {
+                                        setEditingService({...editingServiceObj, "serviceChargeInc":true })
+                                    }
+                                }} />} label="10% Service Charge Included" />
+                        </div>
+                        <div className={styles.spaceBetRow}>
+                            <FormControlLabel control={<Switch checked={editingServiceObj.ivaInc} 
+                                onChange={(e)=>{
+                                    if(!e.target.checked){
+                                        setEditingService({...editingServiceObj, "ivaInc":false })
+                                    } else {
+                                        setEditingService({...editingServiceObj, "ivaInc":true })
+                                    }
+                                }} />} label="12% Iva Tax Included" />
+                        </div>
 
                         <div className={styles.addRecordBTN} onClick={()=>{
                             let tempArr 
                             if(hotelSchema.serviceArr){
-                                tempArr = hotelSchema.serviceArr?.concat(tempObj)
+                                tempArr = hotelSchema.serviceArr?.concat(editingServiceObj)
                             } else {
-                                tempArr=[tempObj]
+                                tempArr=[editingServiceObj]
                             }
                             setHotelSchema({
                                 ...hotelSchema,
                                 "serviceArr": tempArr
                             })
-                            setTempObj({})
+                            setEditingService(additionalExpenseSchema)
+                            let serviceNameVal = document.getElementById("serviceName")
+                            serviceNameVal.value=''
                             let serviceDescriptionVal = document.getElementById("serviceDescription")
                             serviceDescriptionVal.value=''
-                            let guestMinVal = document.getElementById("guestMin")
-                            guestMinVal.value=''
-                            let guestMaxVal = document.getElementById("guestMax")
-                            guestMaxVal.value=''
+                            let paxMinVal = document.getElementById("paxMin")
+                            paxMinVal.value=''
+                            let paxMaxVal = document.getElementById("paxMax")
+                            paxMaxVal.value=''
+                            let priceVal = document.getElementById("price")
+                            priceVal.value=''
 
                             // per pax, per group
 
                         }} > Add Additional Service </div>
                     </div>
                     <div className={styles.dataColumn}>
+                        {anAdditServiceDis(editingServiceObj)}
                         {hotelSchema.serviceArr?.length>0 && <>
                             <h3>Additional Services</h3>
                             {hotelSchema.serviceArr.map((elem, i)=><React.Fragment key={i}>
@@ -473,7 +599,7 @@ function LibraryPage(){
                             </React.Fragment>)}
                         </>}
                     </div>
-                </div> */}
+                </div>
 
 
 
@@ -486,7 +612,6 @@ function LibraryPage(){
             </Dialog>
         </>)
     }
-
 
     const libraryDisplayer=()=>{
 
@@ -503,21 +628,6 @@ function LibraryPage(){
 
     }
 
-
-                // {
-                //     "priceKey":"additionalServices",
-                //     "priceDescription":"standard dinner",
-                //     "priceType":"per person",
-                //     "price":20
-                // },  
-
-
-
-
-
-
-    // console.log(hotelSchema)
-
     return(<>
     {session && <>
         <GMSNavii user={session.user} /> 
@@ -529,7 +639,6 @@ function LibraryPage(){
             {libraryTab==="main"? <>
             <div className={styles.libraryMain}> 
                 <div className={styles.libWelcome} > 
-
                     {/* Quick Links  */}
                     {/* yacht Anahi  */}
                     {/* Ikala UIO - GPS  */}
