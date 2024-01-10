@@ -300,6 +300,7 @@ const { data: session } = useSession()
                     itinIndex={itinIndex}
                     itinArr={fetchedItinArr}
                     setItinArr={setFetchedItArr}
+                    
                 />
             
                 <ItinDataDisp

@@ -20,6 +20,8 @@ import {anImageDisp} from "../gms/pix"
 import CircularProgress from '@mui/material/CircularProgress';
 import DesignServicesIcon from '@mui/icons-material/DesignServices';
 import SaveIcon from '@mui/icons-material/Save';
+import CancelIcon from '@mui/icons-material/Cancel';
+
 
 // Data
 import LTCGenDAta from "../../data/dataAndTemplates.json"
@@ -102,8 +104,6 @@ let tourDiff =[1,2,3,4,5]
     const [submitionTrig, setSubmitTrig]=useState(false)
     const [incluPlaceholder, setPlaceholder]=useState("")
     
-
-
     // utils
     const stepBTNs=(nextOrPrev)=>{
         if(nextOrPrev==="next"){
@@ -426,7 +426,6 @@ let tourDiff =[1,2,3,4,5]
             {tourCreatorStep===3&&<> 
                 {inputToList("Included In Tour", "included", aTourModel, setTourModel, aTourModel.included, textPlaceholder, setTxtPlaceholder)}
                 {inputToList("Not Included In Tour", "notIncluded", aTourModel, setTourModel, aTourModel.notIncluded, textPlaceholder2, setTxtPlaceholder2)}
-
                 <br/>
                 <h3>Prices:</h3>
                 <Switch checked={priceFixedDep} onChange={(e)=>{priceFixedDep? setPriceFDTrig(false):setPriceFDTrig(true) }} label="Single Price" />
@@ -474,13 +473,30 @@ let tourDiff =[1,2,3,4,5]
                         }}> Add to Price Range </div>
                         <br/>
                         {anInputDisplayer("S. Supp", "singleSupp", "number", false, undefined, aTourModel, setTourModel, 0, undefined, "Single Supplement" )}
+
                         {aTourModel.price?.length>0 && <>
                             <table className={styles.priceTable} >
                                 {aTourModel.price.map((elem,i)=><React.Fragment key={i} >
-                                <tr>
-                                    <td>{elem.upperRange} Pax </td>
-                                    <td>${elem.pricePerPax}</td>
-                                </tr>
+                                <div className={styles.spaceBetRow}>
+                                    <tr>
+                                        <td>{elem.upperRange} Pax </td>
+                                        <td>${elem.pricePerPax}</td>
+                                    </tr>
+                                    <div onClick={()=>{
+                                        if(aTourModel.price.length>1){
+                                            let splicer = aTourModel.price.splice(i, 1)
+                                            setTourModel({
+                                                ...aTourModel,
+                                                "price": aTourModel.price
+                                            })
+                                        } else {
+                                            setTourModel({
+                                                ...aTourModel,
+                                                "price": undefined
+                                            })
+                                        }
+                                    }} ><CancelIcon/> </div>
+                                </div>
                                 </React.Fragment> )}
                             </table>
                         </>}

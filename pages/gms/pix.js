@@ -108,7 +108,6 @@ export const ImageEditor=(props)=>{
     }
 
     const submitImgArrChanges=()=>{
-        // console.log(props.editTemplate)
         if (props.editTemplate.editKey===0){
         return(<>
             <div className={styles.editImgsTrig} onClick={()=>{

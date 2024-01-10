@@ -100,7 +100,31 @@ async function handler(req, res){
             }
         }
     }
-    // "PUT Method not in use"
+    else if(req.method==='PUT'){
+        const client = await connectToDatabase();
+        const reqBody= JSON.parse(req.body)
+        const updatePrices = client
+            .db('EcoAndesGMS')
+            .collection("LTCItineraries")
+            .findOneAndUpdate(
+                {"_id": ObjectId(reqBody._id)},
+                {
+                    $set: reqBody.editingObj
+                },
+                {
+                    returnNewDocument: true,
+                }
+            )
+
+        const updatedItin = await updatePrices
+            if(updatedItin?.lastErrorObject.updatedExisting){
+                res.status(200).json(updatedItin)
+                client.close();
+            } else {
+                res.status(501)
+                client.close();
+            }
+    }
 }
 
 export default handler;

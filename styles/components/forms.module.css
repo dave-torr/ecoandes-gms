@@ -37,6 +37,7 @@
 
 .submitBTN:hover{
     box-shadow: var(--frst-box-shadow);
+    color: white;
 }
 
 
@@ -286,7 +287,6 @@
 }
 .anInputLabel{
     margin: 6px 0;
-
 }
 
 
@@ -412,7 +412,53 @@
     margin-top: 33px;
 }
 
+/* Edit Prices */
 
+.editPricesCont{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.editPriceBTN{
+    padding: 21px 33px;
+    border: solid 1px black;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: all ease-in 0.3s;
+}
+
+.editPriceBTN:hover{
+    background-color: teal;
+    color: white;
+}
+
+.priceTable{
+    margin-top: 21px;
+    border: solid 1px black;
+    padding: 9px 15px;
+}
+
+.priceTable .inputLabel{
+    margin-bottom: 12px;
+}
+.priceTable .spaceBetRow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.priceTable td{
+    border: solid 1px black;
+    width: 120px;
+}
+
+.priceTable tr{
+    margin-right: 44px;
+    margin-top: 6px;
+}
 
 /* OLDIES */
 

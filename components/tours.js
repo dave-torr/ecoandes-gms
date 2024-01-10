@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 
-import {aSwitcher, radioSelectors, anInputDisplayer, multiOptPicker, aDropdownPicker, EditDayByDay, inputToList } from "./../components/forms"
+import {aSwitcher, radioSelectors, anInputDisplayer, multiOptPicker, aDropdownPicker, EditDayByDay, inputToList, EditPrices } from "./../components/forms"
 import {ImageEditor, anImageDisp} from "./../pages/gms/pix"
 
 import styles from "./../styles/components/tourCmpnts.module.css"
@@ -854,6 +854,7 @@ export function TourDisplayer(props){
                 <div className={styles.aCard} style={{padding:"12px 18px"}}>
                     <h3>Prices From:</h3>
                     <h2>USD ${itinPrices}</h2>
+                    <strong>Per Person</strong>
                     {aTour?.paxMax && <>
                         <strong>For a {aTour?.paxMax} passenger group </strong>
                     </> }
@@ -867,6 +868,7 @@ export function TourDisplayer(props){
             <div className={styles.aCard} style={{padding:"12px 18px"}}>
                 <h3>Prices From:</h3>
                 <h2>USD ${itinPrices?.pricePerPax}</h2>
+                <strong>Per Person</strong>
                 <strong>For a {itinPrices?.upperRange} passenger group </strong>
                 {aTour.singleSupp &&<>
                     + ${aTour.singleSupp} Single Supplement
@@ -1287,7 +1289,7 @@ export function ItinEditor(props){
     const editInputMatrix = {
         // translates to editItinStep index base 1 ++
         "firstCatObj": 
-            [ "genAndSuppTourData", "dayByDay", "images"],
+            [ "genAndSuppTourData", "dayByDay", "images", "price"],
         "genAndSuppStruct": 
             ["LTCLogo", "tripName", "duration", "countryList", "startingPlace", "tourOverview", "tourType", "difficulty", "tripRef", "tripLang", "tourCode", "aComp", "compContact", "included", "notIncluded" ]
     }
@@ -1299,6 +1301,8 @@ export function ItinEditor(props){
                 return(<> Day by Day </>)
             case "images":
                 return(<> Images </>)
+            case "price":
+                return(<> price </>)
             case "LTCLogo":
                 return(<> Logo </>)
             case "tripName":
@@ -1479,6 +1483,20 @@ export function ItinEditor(props){
                     aTour={props.aTour}
                     editTemplate={editObjTemplate}
                     setEditTemplate={setEditTemplate}
+                />
+            </>
+        } else if(editItinStep===4){
+            theOpsDisplayed = <>
+                <EditPrices
+                    aTour={props.aTour}
+                    editTour={props.editTour}
+                    loadingTrig={loadingTrig}
+                    setLoadingTrig={setLoadingTrig}
+                    itinArr={props.itinArr}
+                    itinIndex={props.itinIndex}
+                    setItinArr={props.setItinArr}
+                    setDialogTrig={props.setDialogTrig}
+                    setEditStep={setEditStep}
                 />
             </>
         }

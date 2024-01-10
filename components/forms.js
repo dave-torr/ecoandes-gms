@@ -536,7 +536,6 @@ export function EditDayByDay(props){
                 } 
                 return 0
             })
-            console.log(sortedArr, "sortedArr")
             setAutofillOps(sortedArr)
         }
     },[locSelection])
@@ -773,7 +772,6 @@ export function EditDayByDay(props){
         {(dayIndex || dayIndex===0)&&<>
             {addImgTrig? <>
                 {imgSelector(fetchedImgs)}
-
             </>:<> 
                 <div style={{display:"flex", justifyContent:"space-between", width:"100%" }}> 
                     <strong>Edit Day {dayIndex+1}:</strong>
@@ -897,6 +895,173 @@ export function EditDayByDay(props){
         </>}
     </>)
 }
+
+export function EditPrices(props){
+    let editingTour = {...props.aTour}
+    const [editIndex, setEditIndex]=useState(0)
+    const [editingPackage, setEditingPackage] = useState({})
+    const [priceRangeObj, setPriceObj]=useState({})
+
+    useEffect(()=>{
+        if(editingTour){
+            setEditingPackage({
+                ...editingPackage,
+                "price": editingTour.price
+            })
+        }
+    },[])
+
+    const eachPriceDispEdit=(priceArr)=>{
+        if(priceArr?.length>0){return(<>
+            <div className={styles.spaceBetRow}> 
+                <div style={{ width:"45%" }}>
+                    {anInputDisplayer("Price", "pricePerPax", "number", false, undefined, priceRangeObj, setPriceObj, 0, undefined, "price per person")}
+                </div>
+                <div style={{ width:"45%" }}>
+                    {anInputDisplayer("Pax Max", "upperRange", "number", false, undefined, priceRangeObj, setPriceObj, 0, undefined, "Pax Number")}
+                </div>
+            </div>
+            <div className={styles.editPriceBTN} onClick={()=>{
+                if((priceRangeObj.upperRange && priceRangeObj.pricePerPax)){
+                    let tempArr = []
+                    if(editingTour.price?.length>0){
+                        tempArr= [...editingTour.price]
+                        tempArr.push(priceRangeObj)
+                        setEditingPackage({
+                            ...editingPackage,
+                            "price": tempArr
+                        })
+                        let priceVal = document.getElementById("pricePerPax")
+                        priceVal.value=undefined
+                        let guestLimitVal = document.getElementById("upperRange")
+                        guestLimitVal.value=undefined
+                    } else {
+                        tempArr.push(priceRangeObj)
+                        setEditingPackage({
+                            ...editingPackage,
+                            "price": tempArr
+                        })
+                        let priceVal = document.getElementById("pricePerPax")
+                        priceVal.value=undefined
+                        let guestLimitVal = document.getElementById("upperRange")
+                        guestLimitVal.value=undefined
+                    }
+                } else {
+                    window.alert("Please fill in Price and guest upper limit")
+                }
+            }}> Add to Price Range </div>
+            <br/>
+
+            <div className={styles.spaceBetRow }> 
+                <table className={styles.priceTable} >
+                    <div className={styles.inputLabel}>Current Prices </div>
+                    {editingPackage?.price?.map((elem,i)=><React.Fragment key={i} >
+                    <div className={styles.spaceBetRow}>
+                        <tr>
+                            <td>{elem.upperRange} Pax </td>
+                            <td>${elem.pricePerPax}</td>
+                        </tr>
+                        <div onClick={()=>{
+                            if(priceArr.length>1){
+                                let splicer = priceArr.splice(i, 1)
+                                setEditingPackage({
+                                    ...editingPackage,
+                                    "price": priceArr
+                                })
+                            } else {
+                                setEditingPackage({
+                                    ...editingPackage,
+                                    "price": undefined
+                                })
+                            }
+                        }} ><CancelIcon/> </div>
+                    </div>
+                    </React.Fragment> )}
+
+
+                </table>
+                <span style={{width:"200px"}}> 
+                    {anInputDisplayer("Single Supp", "singleSupp", "number", false, editingTour.singleSupp, editingPackage, setEditingPackage )}
+                </span>
+            </div>
+        <div className={styles.submitBTN} onClick={()=>{
+            setEditIndex(1)
+        }}> Edit Prices </div>
+        </>)}
+    }
+    // display current pricing table or FD price
+    return(<>
+        {editIndex===0&&<>
+            <div className={styles.editPricesCont}>
+                {Number.isInteger(editingTour.price)? <>
+                    <h2>Edit Fixed Departure Single Price:</h2>
+                    <div className={styles.spaceBetRow}>
+                        <span style={{width:"250px"}}> 
+                            {anInputDisplayer("price", "price", "number", false, editingTour.price, editingPackage, setEditingPackage )}
+                        </span>
+                        <span style={{width:"200px"}}> 
+                            {anInputDisplayer("Single Supp", "singleSupp", "number", false, editingTour.singleSupp, editingPackage, setEditingPackage )}
+                        </span>
+
+                    </div>
+                    <div className={styles.spaceBetRow}>
+                        <span style={{width:"150px"}}> 
+                            {anInputDisplayer("Pax Min", "paxMin", "number", false, editingTour.paxMin, editingPackage, setEditingPackage )}
+                        </span>
+                        <span style={{width:"150px"}}> 
+                            {anInputDisplayer("Pax Max", "paxMax", "number", false, editingTour.paxMax, editingPackage, setEditingPackage )}
+                        </span>
+                    </div>
+                    <div className={styles.editPriceBTN} onClick={()=>{
+                        setEditIndex(1)
+                    }}> Edit Prices </div>
+                </>:<>
+                    {eachPriceDispEdit(editingTour.price)}
+                </>}
+            </div>
+        </>}
+
+        {editIndex===1&&<>
+            <div className={styles.editPriceBTN} onClick={async()=>{
+                if(!props.loadingTrig){
+                    props.setLoadingTrig(false)
+
+                    let bePackage={
+                        "_id":editingTour._id,
+                        "editingObj":editingPackage
+                    }
+                    const res = await fetch("/api/gms/itineraries", {
+                        method: "PUT",
+                        body:JSON.stringify(bePackage)
+                    })
+                    const docData = await res.json()
+                    if(res.status===200){
+                        let tempTour ={
+                            ...props.aTour,
+                            ...editingPackage
+                        }
+                        props.editTour({
+                            ...tempTour
+                        })
+                        let splicer = props.itinArr.splice(props.itinIndex,1,tempTour)
+                        window.alert("Price Edited")
+                        props.setItinArr(props.itinArr)
+                        props.setDialogTrig(false)
+                        props.setLoadingTrig(false)
+                        props.setEditStep(0)
+                    }
+                }
+            }}> 
+                {props.loadingTrig?<>
+                    <CircularProgress/>
+                </>:<>
+                    Update itinerary prices? 
+                </> }
+            </div>
+        </>}
+
+    </>)
+}
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
 // used in Tour Creator
@@ -938,7 +1103,6 @@ export function DayByDayAdder(props){
                 } 
                 return 0
             })
-            console.log(sortedArr, "sortedArr")
             setAutofillOps(sortedArr)
         }
     },[locSelection])
@@ -1188,6 +1352,10 @@ export function DayByDayAdder(props){
                     const theTextArea = document.getElementById("dayDescriptionInput")
                     theTextArea.value=""
                     document.getElementById("theDayFormID").reset()
+                    window.scrollTo({
+                        top: "30",
+                        behavior: "smooth",
+                    });
                 }}>
                     Add Day to Itinerary
             </div>
