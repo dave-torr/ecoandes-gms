@@ -61,14 +61,16 @@ export default function YacumaPage(){
         }, 5000);
         return () => clearInterval(interval);
     },[])
-    useEffect(async()=>{
-        const res = await fetch("/api/yacuma",{
-            method: "GET"
-        })
-        const theRecords = await res.json()
-        if(theRecords){
-            setFetchedRecs(theRecords)
-        }
+    useEffect(()=>{
+        (async ()=>{
+            const res = await fetch("/api/yacuma",{
+                method: "GET"
+            })
+            const theRecords = await res.json()
+            if(theRecords){
+                setFetchedRecs(theRecords)
+            }
+        })()
     },[])
     useEffect(()=>{
         if(fetchedRecords?.length>0){

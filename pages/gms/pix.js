@@ -34,15 +34,17 @@ export const ImageEditor=(props)=>{
     const [imgDestFilter, setImgFilter]=useState('all countries')
     const [filteredImgs, setFilteredImgs]=useState()
 
-    useEffect(async()=>{
-        const res = await fetch("/api/genToolkit/pixApi",{
-            method: "GET"
-        })
-        let imageFetcher = await res.json()
-        if(imageFetcher){
-            setFetchedImgs(imageFetcher)
-            setFilteredImgs(imageFetcher)
-        }
+    useEffect(()=>{
+        (async ()=>{
+            const res = await fetch("/api/genToolkit/pixApi",{
+                method: "GET"
+            })
+            let imageFetcher = await res.json()
+            if(imageFetcher){
+                setFetchedImgs(imageFetcher)
+                setFilteredImgs(imageFetcher)
+            }
+        })()
     },[])
 
     let imgCountryArr= ['all countries', "ecuador", 'peru', "chile", "argentina",]

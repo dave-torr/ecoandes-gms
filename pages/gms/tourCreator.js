@@ -355,8 +355,8 @@ let TourModel = {
                     {aTourModel.LTCLogo&&<>
                         {radioSelectors(logoSwitcherArr, "logoRadios", aTourModel, setTourModel, "LTCLogo")}
                     </>}
-                    {anInputDisplayer("Tour Name *", "tripName", "text", true, undefined, aTourModel, setTourModel, undefined, undefined, "Tour Name" )}
-                    {anInputDisplayer("Duration *", "duration", "number", true, undefined, aTourModel, setTourModel, 1, undefined, "Tour Duration")}
+                    {anInputDisplayer("Tour Name", "tripName", "text", true, undefined, aTourModel, setTourModel, undefined, undefined, "Tour Name" )}
+                    {anInputDisplayer("Duration", "duration", "number", true, undefined, aTourModel, setTourModel, 1, undefined, "Tour Duration")}
                     {multiOptPicker(destinationList, "Destinations", "countryList", aTourModel.countryList, aTourModel, setTourModel, setDestList )}
                     {anInputDisplayer("Starting City", "startingPlace", "text", false, undefined, aTourModel, setTourModel, undefined, undefined, "Starting From")}
                     {multiLineTextInput("Overview", "tourOverview", false, undefined, aTourModel, setTourModel )}

@@ -127,15 +127,18 @@ function LibraryPage(){
             "label": '5 Star',
         }
     ]
-    useEffect(async()=>{
-        // fetches itin autofill
-        const res = await fetch("http://localhost:3000/api/gms/library", {
-            method: "GET"
-        })
-        const posts = await res.json()
-        if (res.status === 200){
-            setLibrary(posts)
+    useEffect(()=>{
+        const getAutofill=async()=>{
+            const res = await fetch("http://localhost:3000/api/gms/library", {
+                method: "GET"
+            })
+            const posts = await res.json()
+            if (res.status === 200){
+                setLibrary(posts)
+            }
         }
+        // fetches itin autofill
+        getAutofill()
     },[])
 
     let providerType=["hotel", "transportCompany", "guide", "restaurant", "services", "yacht", "flotel", "ariline"]

@@ -243,62 +243,64 @@ export default function OperationsDashboard(){
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // Fetch Deps & Itins on mount. 
-    useEffect(async()=>{
-        const res = await fetch("/api/gms/departures",{
-        method: "GET"
-        })
-        let fetchedData = await res.json()
-        if(fetchedData){
-        // filter for deps active today. upper limit defined by midnight end of day
-            let theTempArr=[]
-            let anotherTempArr= []
-
-            let sndDayItins=[]
-            let trdDayItins=[]
-            let frthDayItins=[]
-            let fifthDayItins=[]
-
-            fetchedData.forEach(element => {
-                
-                let lowerLimitDaterr = new Date(element.startingDate)
-                let loweLimitDate=addDays(lowerLimitDaterr, 1)
-                let theDur = parseInt(element.duration)
-                let upperLimitDate = addDays(element.startingDate, theDur+1)
-                //  filters out currently active voyages. 
-
-                if((toDate > loweLimitDate) && (upperLimitDate > toDate) ){
-                    theTempArr.push(element)
-                }
-                if((addDays(toDate,2) > loweLimitDate) && (upperLimitDate >= addDays(toDate,2)) ){
-                    sndDayItins.push(element)
-                }
-                if((addDays(toDate,3) > loweLimitDate) && (upperLimitDate >= addDays(toDate,3)) ){
-                    trdDayItins.push(element)
-                }
-                if((addDays(toDate,4) > loweLimitDate) && (upperLimitDate >= addDays(toDate,4)) ){
-                    frthDayItins.push(element)
-                }
-                if((addDays(toDate,5) > loweLimitDate) && (upperLimitDate >= addDays(toDate,5)) ){
-                    fifthDayItins.push(element)
-                }
-                if (loweLimitDate >= toDate ){
-                    anotherTempArr.push(element)
-                }
-            })
-            setActiveDeps(theTempArr)
-            setUpcomingDeps(anotherTempArr)
-            setWeeklyPlanner([sndDayItins, trdDayItins, frthDayItins, fifthDayItins])
-            setLoadingTrig(false)
-
-        }
-        const res2 = await fetch("/api/gms/itineraries",{
+    useEffect(()=>{
+        (async ()=>{
+            const res = await fetch("/api/gms/departures",{
             method: "GET"
-        })
-        let fetchedData2 = await res2.json()
-        if(fetchedData2){
-            // filter / sort functions
-            setFetchedItins(fetchedData2)
-        }
+            })
+            let fetchedData = await res.json()
+            if(fetchedData){
+            // filter for deps active today. upper limit defined by midnight end of day
+                let theTempArr=[]
+                let anotherTempArr= []
+
+                let sndDayItins=[]
+                let trdDayItins=[]
+                let frthDayItins=[]
+                let fifthDayItins=[]
+
+                fetchedData.forEach(element => {
+                    
+                    let lowerLimitDaterr = new Date(element.startingDate)
+                    let loweLimitDate=addDays(lowerLimitDaterr, 1)
+                    let theDur = parseInt(element.duration)
+                    let upperLimitDate = addDays(element.startingDate, theDur+1)
+                    //  filters out currently active voyages. 
+
+                    if((toDate > loweLimitDate) && (upperLimitDate > toDate) ){
+                        theTempArr.push(element)
+                    }
+                    if((addDays(toDate,2) > loweLimitDate) && (upperLimitDate >= addDays(toDate,2)) ){
+                        sndDayItins.push(element)
+                    }
+                    if((addDays(toDate,3) > loweLimitDate) && (upperLimitDate >= addDays(toDate,3)) ){
+                        trdDayItins.push(element)
+                    }
+                    if((addDays(toDate,4) > loweLimitDate) && (upperLimitDate >= addDays(toDate,4)) ){
+                        frthDayItins.push(element)
+                    }
+                    if((addDays(toDate,5) > loweLimitDate) && (upperLimitDate >= addDays(toDate,5)) ){
+                        fifthDayItins.push(element)
+                    }
+                    if (loweLimitDate >= toDate ){
+                        anotherTempArr.push(element)
+                    }
+                })
+                setActiveDeps(theTempArr)
+                setUpcomingDeps(anotherTempArr)
+                setWeeklyPlanner([sndDayItins, trdDayItins, frthDayItins, fifthDayItins])
+                setLoadingTrig(false)
+
+            }
+            const res2 = await fetch("/api/gms/itineraries",{
+                method: "GET"
+            })
+            let fetchedData2 = await res2.json()
+            if(fetchedData2){
+                // filter / sort functions
+                setFetchedItins(fetchedData2)
+            }
+        })()
     },[])  
 
   ///////////////////////////////////////////

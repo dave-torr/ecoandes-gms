@@ -506,21 +506,23 @@ export function EditDayByDay(props){
     const [fetchedImgs, setFetchedIMGs]=useState(false)
     const [mealPlaceholder, setMealPlaceholder]=useState()
 
-    useEffect(async()=>{
-        const res = await fetch("/api/genToolkit/pixApi",{
-            method: "GET"
-        })
-        const imageFetcher = await res.json()
-        if(res.status===200){
-            setFetchedIMGs(imageFetcher)
-        }
-        const res2 = await fetch("/api/gms/dayByDayDB", {
-            method: "GET"
-        })
-        const docData = await res2.json()
-        if(res2.status===200){
-            setAutoFillData(docData)
-        }
+    useEffect(()=>{
+        (async ()=>{
+            const res = await fetch("/api/genToolkit/pixApi",{
+                method: "GET"
+            })
+            const imageFetcher = await res.json()
+            if(res.status===200){
+                setFetchedIMGs(imageFetcher)
+            }
+            const res2 = await fetch("/api/gms/dayByDayDB", {
+                method: "GET"
+            })
+            const docData = await res2.json()
+            if(res2.status===200){
+                setAutoFillData(docData)
+            }
+        })()
     },[])
     useEffect(()=>{
         if(locSelection){
@@ -1077,7 +1079,8 @@ export function DayByDayAdder(props){
     const [imageAddTrig, setImgTrig]=useState(false)
     const [mealPlaceholder, setMealPlaceholder]=useState("")
 
-    useEffect(async()=>{
+    useEffect(()=>{
+    (async ()=>{
         if(!autoFillData){
             const res = await fetch("/api/gms/dayByDayDB", {
                 method: "GET"
@@ -1087,6 +1090,7 @@ export function DayByDayAdder(props){
                 setAutoFillData(docData)
             }
         }
+        })()
     },[])
     useEffect(()=>{
         if(locSelection){

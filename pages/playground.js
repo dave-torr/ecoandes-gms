@@ -362,19 +362,22 @@ export default function PlaygroundPage(){
         "imgArr":[]
     })
 
-    useEffect(async()=>{
+    useEffect(()=>{
         setAutofillOps()
-        if(locObject){
-            const res = await fetch("/api/googleApi",{
-                method: "POST",
-                body: locObject
-            })
-            const locData = await res.json()
-            if(res.status===200){
-                setAutofillOps(locData)
-                console.log(locData)
+        const getDataz = async ()=>{
+            if(locObject){
+                const res = await fetch("/api/googleApi",{
+                    method: "POST",
+                    body: locObject
+                })
+                const locData = await res.json()
+                if(res.status===200){
+                    setAutofillOps(locData)
+                    return () => {};
+                }
             }
         }
+        getDataz()
     },[locObject])
     
     // useEffect(()=>{

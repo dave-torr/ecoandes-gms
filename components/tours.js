@@ -1001,7 +1001,6 @@ export function RectangularTourCard(props){
 export function SortingItinUI(props){
     // const [sortContr, setSortContr]=useState("duration")
     // const [props.sortOrder, setSortOrder]=useState("ascending")
-    console.log("cucu", props.sortContr)
     return(<>
         <div className={styles.sortingUICont}>
             <div className={styles.sortBTNCont}>
@@ -1056,7 +1055,6 @@ export function SortingItinUI(props){
                         <ArrowUpwardIcon/>
                     </div>
                     <div className={styles.unselectedOrderDisp} onClick={()=>{
-                        console.log("hey")
                         props.sortOrder==="descending"? props.setSortOrder("ascending"): props.setSortOrder("descending")
                     }}>
                         <ArrowDownwardIcon/>
@@ -1065,7 +1063,6 @@ export function SortingItinUI(props){
                 </>:<>
                 <span>
                     <div className={styles.unselectedOrderDisp} onClick={()=>{
-                        console.log("hey")
                         props.sortOrder==="descending"? props.setSortOrder("ascending"): props.setSortOrder("descending")
 
                     }}>

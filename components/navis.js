@@ -137,12 +137,13 @@ export function GMSNavii(props){
             "label": "library"
         },
         {
-            "pathname": "/gms/operations",
-            "label": "operations"
-        },
-        {
+            "restriction": "David Torres",
             "pathname": "/yacuma",
             "label": "yacuma"
+        },
+        {
+            "pathname": "/gms/operations",
+            "label": "operations"
         },
         {
             "pathname": "/gms/tourExplorer",
