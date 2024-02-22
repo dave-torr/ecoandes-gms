@@ -347,6 +347,8 @@ export default function TourPage(){
             setFilteredTourArr([...filteredTourArr].sort(((a,b)=> b[sortContr] - a[sortContr])))
     },[sortOrder])
 
+    console.log(sortContr, "sortContr")
+
     let randomPic 
     const tourPageImgDisplayer=()=>{
         randomPic= homeImgArr[Math.floor(Math.random() * homeImgArr.length )]
@@ -439,13 +441,9 @@ export default function TourPage(){
             <Image
                 src={LTCTypeface}
                 alt="EcoAndes Condor Logo"
-                // blurDataURL={LTCTypeface}
-                placeholder="blur"
                 width={200}
                 height={100}
             /></div>
-
-
 
             {tourPageImgDisplayer()}
 
