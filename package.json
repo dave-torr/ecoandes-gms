@@ -8,6 +8,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
     "@lexical/react": "^0.13.1",
     "@mantine/core": "^4.2.12",
     "@mantine/dropzone": "^4.2.11",
@@ -18,8 +20,8 @@
     "@material-ui/core": "^4.12.4",
     "@microsoft/microsoft-graph-client": "^3.0.7",
     "@mui/icons-material": "^5.11.16",
-    "@mui/material": "^5.12.1",
-    "@mui/styles": "^5.12.0",
+    "@mui/material": "^5.15.10",
+    "@mui/styles": "^5.15.10",
     "@sendgrid/mail": "^8.1.1",
     "@stripe/react-stripe-js": "^1.9.0",
     "@stripe/stripe-js": "^1.32.0",
