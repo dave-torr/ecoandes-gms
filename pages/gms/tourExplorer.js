@@ -329,10 +329,10 @@ const { data: session } = useSession()
             <span style={{width: "99vw", marginTop: "30vw", display: "flex", justifyContent: "center", alignItems: "center" }} >
                 <div className={styles.GMSGeneralBTN}> 
                     <Link href="/gms" >
-                        <a > GMS Home Page </a>
+                        GMS Home Page
                     </Link>
                     <Link href="/gms" >
-                        <a > LTC Published Itineraries </a>
+                        LTC Published Itineraries
                     </Link>
                 </div>
             </span>

@@ -1,11 +1,26 @@
 import React, { useState, useEffect } from 'react'
 import { useSession } from "next-auth/react"
-
+import { nanoid } from 'nanoid'
 
 import {GMSNavii} from "./../components/navis"
-import LTCPriceTables from "../data/LTCPriceTables2023.json"
-import { aHotelDisplayer, hotelAdderForm } from '../components/operations/providers'
 import styles from "./../styles/pages/playground.module.css"
+import { TourDisplayer } from '../components/tours'
+
+
+import AddCommentIcon from '@mui/icons-material/AddComment';
+import CancelIcon from '@mui/icons-material/Cancel';
+import TextField from '@mui/material/TextField';
+import { Autocomplete } from '@mantine/core'
+
+import {$getRoot, $getSelection} from 'lexical';
+
+import {LexicalComposer} from '@lexical/react/LexicalComposer';
+import {PlainTextPlugin} from '@lexical/react/LexicalPlainTextPlugin';
+import {ContentEditable} from '@lexical/react/LexicalContentEditable';
+import {HistoryPlugin} from '@lexical/react/LexicalHistoryPlugin';
+import {OnChangePlugin} from '@lexical/react/LexicalOnChangePlugin';
+import {useLexicalComposerContext} from '@lexical/react/LexicalComposerContext';
+import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary';
 
 // Bitacora logo:
 // import TrackChangesIcon from '@mui/icons-material/TrackChanges';
@@ -314,6 +329,18 @@ let tempGenData={
     "changedBy": ["David Torres"]
 }
 
+let TourModel = {
+        "LTCLogo": "ecoAndes",
+        "highlights":[],
+        "dayByDay":[],
+        "countryList":[],
+        "imgArr":[],
+        "included":[],
+        "notIncluded":[],
+        "notes":[],
+        "shortenedURL":nanoid(7)
+    }
+
 // MS graph api to get files from IMG folder
 // Hotel Database
 // provider Database
@@ -324,8 +351,16 @@ export default function PlaygroundPage(){
 
     const [locObject, setTempObj]=useState(false)
     const [autofillOpts, setAutofillOps]=useState()
-
-
+    const [aTour, setTour]=useState(TourModel)
+    const [aTravelDay, setTravelDay] = useState({
+        "dayInclusions":[
+            "private Transfers",
+            "guide Services",
+        ],
+        "flightData":[],
+        "guideData":[],
+        "imgArr":[]
+    })
 
     useEffect(async()=>{
         setAutofillOps()
@@ -430,6 +465,49 @@ export default function PlaygroundPage(){
             ]
         }
 
+    let toDate = new Date()
+
+    const expenseModel ={
+        "date": toDate,
+        "event": String,
+        "madeBy": ["David Torres", ],
+        "expenseName": String,
+        "expenseDetail": String,
+        "expenseType":String,
+        "method":String,
+        "madeFor":[],
+        "currency": "usd",
+        "amount": Number,
+        "cardNum": String,
+    }
+    const sampExpense ={
+        "date": toDate,
+        "event": "fitur",
+        "method":"card",
+        "cardNum": "0920",
+        "madeBy": ["David Torres", ],
+        "expenseName": "Lunch Snack",
+        "expenseDetail": "Mid day snack",
+        "expenseType":"meal",
+        "madeFor":["everyone"],
+        "currency": "usd",
+        "amount": 33.1
+    }
+    const fairArray =[
+        "FITUR",
+        "ITB",
+        "ATWS",
+        "TAS"
+    ]
+    const paymentMethods=[
+        "Cash",
+        "Debit Card",
+        "Credit Card",
+        "Transfer",
+    ]
+    const cardEndings=[
+        "0920"
+    ]
 
     const getOneDriveBTN=()=>{
 
@@ -516,6 +594,180 @@ export default function PlaygroundPage(){
         </>)
     }
 
+    const newitineraryBuilder=(theNewItin, setNewItin,)=>{
+
+
+        const eachStepTemplate=()=>{
+            return(<>
+
+            </>)
+        }
+
+        const anItinDisp=()=>{
+            return(<>
+                <TourDisplayer 
+                    aTour={aTour}
+                />
+            </>)
+        }
+
+        return(<>
+            <dov className={styles.itinBuilderCont} >
+                <div className={styles.spaceBetRow} > 
+                    <h1>Itinerary Creator:</h1>
+                    Ccu
+                </div>
+                <br/>
+                {anItinDisp()}
+
+                {eachStepTemplate()}
+            
+            </dov>
+        </>)
+    }
+
+    const [expenseArr, setExpArr]=useState([sampExpense])
+    const [expenseBuild, setExpenseBuild]=useState({})
+    const [expenseTrig, setExpTrig]= useState(false)
+    const eachExpDisp=(theExp)=>{
+        return(<>
+            <div className={styles.eachExpCont}> 
+                <div className={styles.spaceBetRow}>
+                        {theExp.event&&<>
+                            <div style={{ textTransform:"uppercase", fontSize:"0.9em", letterSpacing:"1px" }}>
+                                {theExp.event}  </div>
+                        </>}
+                    <span style={{display:"flex", fontSize:"1.2em"}} >
+                        {theExp.method&&<>{theExp.method}
+                        &nbsp; &nbsp;</>}
+                        {theExp.cardNum&&<>#{theExp.cardNum} &nbsp; - &nbsp; </>}
+                        {theExp.amount&&<>
+                            ${theExp.amount}</>}
+                    </span>
+                </div>
+                <div className={styles.spaceBetRow}>
+                    <span style={{display:"flex"}} >
+                        {theExp.expenseName&&<><strong style={{fontSize:"1.2em"}}>
+                            {theExp.expenseName}</strong></>}
+                        {theExp.expenseType&&<>&nbsp; &nbsp; - &nbsp; {theExp.expenseType}</>}
+                    </span>
+                    {theExp.expenseDetail&&<>
+                        <i>{theExp.expenseDetail}</i></>}
+                </div>
+                <div className={styles.spaceBetRow}>
+                    {theExp.madeBy.length>0&&<>
+                        <div style={{display:"flex"}} >
+                            <strong>By: </strong> &nbsp;
+                            {theExp.madeBy.map((elem,i)=><React.Fragment key={i}>
+                                <div style={{textTransform:"capitalize"}}> 
+                                {elem}
+                                </div>
+                            </React.Fragment>)}
+                        </div>
+                    </>}
+                    {theExp.madeFor.length>0&&<>
+                        <div style={{display:"flex"}} >
+                            <strong>For: </strong> &nbsp;
+                            {theExp.madeFor.map((elem,i)=><React.Fragment key={i}>
+                                <div style={{textTransform:"capitalize"}}> 
+                                {elem}
+                                </div>
+                            </React.Fragment>)}
+                        </div>
+                    </>}
+                </div>
+            </div>
+        </>)
+    }
+    const expenseAdder=()=>{
+        const anInput=(placeholder, inputID, anObject, setAnObject, inptType, styleObj, optArr)=>{
+            if(inptType===1){
+            return(<>
+                <span style={{ width:"160px" }} > 
+                    <TextField id="outlined-basic" label={placeholder} variant="outlined" onChange={(e)=>{
+                        setAnObject({
+                            ...anObject,
+                            [inputID]: e.target.value
+                        })
+                    }}  />
+                </span>
+            </>)
+            } else if (inptType===2){
+                return(<>
+                    <div style={styleObj} >
+                    <Autocomplete
+                        data={optArr}
+                        placeholder={placeholder}
+                        onSelect={(e)=>{
+                            setAnObject({
+                                ...anObject,
+                                [inputID]: e.target.value
+                            })
+                        }}
+                    /></div> 
+                </>)
+            }
+        }
+
+        console.log(expenseBuild)
+
+        return(<>
+            {expenseTrig? <>
+                <div className={styles.closeBTN} 
+                    onClick={()=>setExpTrig(false)}>
+                    Close
+                    <CancelIcon/>
+                </div>
+                <form className={styles.expenseForm}
+                    onSubmit={(e)=>{
+                    e.preventDefault();
+                    
+                }}>
+                    <h2>Add Expense:</h2>
+                    <div className={styles.spaceBetRow} style={{textTransform:"capitalize" }}> 
+                        {anInput("Event", "event", expenseBuild, setExpenseBuild,2, { width:"210px" }, fairArray )}
+                        <span style={{display:"flex"}}>
+                            {anInput("Payment Methods", "method", expenseBuild, setExpenseBuild,2, { width:"150px" }, paymentMethods )}
+                            {(expenseBuild?.method==="Credit Card"||expenseBuild?.method==="Debit Card")&& <>
+                                &nbsp;
+                                {anInput("Card Num", "cardNum", expenseBuild, setExpenseBuild,2, { width:"130px" }, cardEndings )}
+                            </>}
+                            &nbsp;
+                            {anInput("Amount $", "amount", expenseBuild, setExpenseBuild,2, { width:"130px" }, [] )}
+                        </span>
+                    </div>
+                </form>
+            </>:<>
+                <div className={styles.addFromRecordBTN} 
+                    onClick={()=>setExpTrig(true)}
+                    style={{width:"240px", marginBottom:"21px"}}>
+                    Add Expense: &nbsp;
+                    <AddCommentIcon />
+                </div>
+            </> }
+        </>)
+    }
+    const expenseTable =(expensesArr)=>{
+        let theKeys = Object.keys(expenseModel)
+
+
+
+        return(<>
+            <div className={styles.expensesContainer}>
+
+                <h2>Expenses:</h2>
+
+                    {expenseAdder()}
+
+                    {expensesArr.map((elem,i)=><React.Fragment key={i}>
+                        {eachExpDisp(elem)}
+                    </React.Fragment>)}
+            </div>
+        </>)
+    }
+
+
+
     return(<>
         {(session && session.user.name==="David Torres" ) &&<> 
             <GMSNavii  user={session.user} />
@@ -524,12 +776,21 @@ export default function PlaygroundPage(){
                 {/* {aHotelDisplayer(sampleHotel)}
                 {aHotelDisplayer(testerObj)}
                 {hotelAdderForm(testerObj, setTester, locObject, setTempObj)} */}
-                {aHotelDisplayer(sampleHotel)}
+                {/* {aHotelDisplayer(sampleHotel)} */}
                 {/* {getOneDriveBTN()} */}
 
-                <div contentEditable plaintext-only onInput={(e)=>{
+                {/* <div contentEditable plaintext-only onInput={(e)=>{
                     console.log(e.target.innerHTML)
-                }} > TESTER </div>
+                }} > TESTER 
+                
+                </div> */}
+
+
+                {expenseTable(expenseArr)}
+
+
+
+                {/* {newitineraryBuilder( )} */}
 
             </div> 
         </>}

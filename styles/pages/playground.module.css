@@ -16,6 +16,14 @@
     padding: 21px;
 
 }
+
+
+
+
+
+
+
+
 .cucu:hover{
     font-size: 2em;
     background-color: rgb(42, 151, 181);
@@ -69,6 +77,27 @@
     cursor: pointer;
 }
 
+
+.closeBTN{
+    transition: all ease-in 0.2s;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 9px;
+}
+
+.closeBTN:hover{
+    color: white;
+    background-color: rgb(55, 62, 69);
+    cursor: pointer;
+}
+
+.expenseForm{
+    border: solid 1px black;
+    margin: 9px 0;
+    padding: 15px ;
+}
+
 .autofillCont select{
     padding: 9px 12px;
     font-size: 1.1em;
@@ -101,9 +130,43 @@
     padding: 3px 6px;
 }
 
+
+.itinBuilderCont{
+    width: 90%;
+    background-color: white;
+    min-height: 55px;
+    padding: 15px 21px;
+
+
+}
+
+
+.spaceBetRow{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.expensesContainer{
+    background-color: white;
+    padding: 9px 12px;
+    width: 700px;
+}
+
+.eachExpCont{
+    width: 100%;
+    border: solid 1px black;
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+}
+
 /*  // // // //  */
 @media (max-width: 740px) {
-
+    .expensesContainer{
+        width: 96%;
+    }
 }
 
 @media print {

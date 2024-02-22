@@ -41,7 +41,17 @@ const router = useRouter()
 let ecoAndesDestinations= [...LTCGenDAta.countryList, "galapagos" ]
 let tourType=["historic", "nature", "360° itineraries", "climbing", "trekking"]
 let tourDiff =[1,2,3,4,5]
-
+let TourModel = {
+        "LTCLogo": "ecoAndes",
+        "highlights":[],
+        "dayByDay":[],
+        "countryList":[],
+        "imgArr":[],
+        "included":[],
+        "notIncluded":[],
+        "notes":[],
+        "shortenedURL":nanoid(7)
+    }
 
 // ver 2 add cruises
 
@@ -66,17 +76,7 @@ let tourDiff =[1,2,3,4,5]
     const { data: session } = useSession()
 
     // tour model
-    const [aTourModel, setTourModel]=useState({
-        "LTCLogo": "ecoAndes",
-        "highlights":[],
-        "dayByDay":[],
-        "countryList":[],
-        "imgArr":[],
-        "included":[],
-        "notIncluded":[],
-        "notes":[],
-        "shortenedURL":nanoid(7)
-    })
+    const [aTourModel, setTourModel]=useState(TourModel)
     const [aTravelDay, setTravelDay] = useState({
         "dayInclusions":[
             "private Transfers",

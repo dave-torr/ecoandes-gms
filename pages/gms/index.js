@@ -29,34 +29,34 @@ export default function GMS(){
             {/* Dave's Routes */}
             {session.user.name==="David Torres"&&<>
             <Link href="/playground">  
-            <a>Playground</a>
+            Playground
             </Link></>}
 
             {session.user.name==="David Torres"&&<>
             <Link href="/gms/pix">  
-            <a>Pix</a>
+            Pix
             </Link></>}
 
             {session.user.name==="David Torres"&&<>
             <Link href="/gms/adminDash">  
-            <a>Admin</a>
+            Admin
             </Link></>}
             {session.user.name==="David Torres"&&<>
             <Link href="/gms/library">
-            <a>Library</a>
+            Library
             </Link></>}
             
         {/* Non admin Toutes */}
             <Link href="/gms/operations">  
-            <a>Operations</a>
+            Operations
             </Link>
 
             <Link href="/gms/tourCreator">  
-            <a>Tour Creator</a>
+            Tour Creator
             </Link>
             
             <Link href="/gms/tourExplorer">  
-            <a>Tour Explorer</a>
+            Tour Explorer
             </Link>
 
           </>:<>

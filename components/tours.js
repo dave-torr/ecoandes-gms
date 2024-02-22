@@ -87,7 +87,7 @@ export function ATourCard(props){
 
     return(<>
     <Link href={`/tours/${theTour.id}`}>
-        <a className={styles.tourCardCont} >
+        <div className={styles.tourCardCont} >
             
             <div className={styles.tourCardImageMobile}>
                 <Image 
@@ -115,7 +115,7 @@ export function ATourCard(props){
                 </span>
                 <div className={styles.tourCardCTA}> see experience </div>
             </div>
-        </a>
+        </div>
     </Link>
     </>)
 }
@@ -127,7 +127,7 @@ export function TextTourCard(props){
     if(props.type===1) {
         return(<>
         <Link href={`/tours/${theTour.id}`}>
-            <a className={styles.textTourCard} >
+            <div className={styles.textTourCard} >
                 <div style={{width: "100%", display:"flex", justifyContent:"space-between", alignContent: "center"}}>
                     <div style={{textTransform:"capitalize", display:"flex", justifyContent:"center"}}> 
                     <PlaceIcon/> {theTour.countryList[0]}
@@ -140,7 +140,7 @@ export function TextTourCard(props){
                 </div>
                     <div className={styles.tourCardTripName}> {theTour.tripName} </div>
                     <div> {theTour.duration}D | {theTour.tourType} </div>
-            </a>
+            </div>
         </Link>
     </>)
     } else if(props.type===2) {
@@ -315,18 +315,23 @@ export function TourTypeCard(props){
 ////////////////////////////////////////////////
 export function TourDisplayer(props){
 
-    let aTour = props.aTour
+
+    let aTour 
+    if(props.aTour){
+        aTour = props.aTour
+    }
+
 
     const [imgDialogContr, srtImgDialogcontr]=useState(false)
     const [selectedImg, setSelectedImg]=useState(false)
     const [itinPrices, setItinPrices]=useState()
 
     useEffect(()=>{
-        if(aTour.price?.length>0){
-            let lastPrice = aTour.price.length-1
-            setItinPrices(aTour.price[lastPrice])
-        } else if (Number.isInteger(aTour.price)){
-            setItinPrices(aTour.price)
+        if(aTour?.price?.length>0){
+            let lastPrice = aTour?.price.length-1
+            setItinPrices(aTour?.price[lastPrice])
+        } else if (Number.isInteger(aTour?.price)){
+            setItinPrices(aTour?.price)
         }
     },[aTour])
 
@@ -350,10 +355,10 @@ export function TourDisplayer(props){
         </>)
     }
     const incExcCont = <div className={styles.inclusionsExclusionsSec}> 
-        {aTour.included.length>0&&<> 
-            {incExcDisplayer(aTour.included, "Included in Tour")} </>}
-        {aTour.notIncluded.length>0&&<>
-            {incExcDisplayer(aTour.notIncluded, "Not included in Tour")} </>}
+        {aTour?.included.length>0&&<> 
+            {incExcDisplayer(aTour?.included, "Included in Tour")} </>}
+        {aTour?.notIncluded.length>0&&<>
+            {incExcDisplayer(aTour?.notIncluded, "Not included in Tour")} </>}
             </div>
     const dayByDaydisp=(tourDayByDay, openContr, aTravelDay)=>{
         const dayInclDisp=(dayIncl)=>{
@@ -579,7 +584,7 @@ export function TourDisplayer(props){
                 {activeDay}
             </div>
             </>)
-        } else if(aTour.dayByDay.length>0) {
+        } else if(aTour?.dayByDay.length>0) {
             return(<>
                 {accordionDisplayer("Day by Day", theDays, true)}
                 <br/>
@@ -592,7 +597,7 @@ export function TourDisplayer(props){
         <div className={styles.aTourImage} onClick={()=>{
             setSelectedImg({
                 "src": props.imgData,
-                "alt": aTour.tripName  
+                "alt": aTour?.tripName  
             })
             srtImgDialogcontr(true)
         }}>
@@ -629,12 +634,10 @@ export function TourDisplayer(props){
                         <><Image
                             src={selectedImg.src}
                             alt={selectedImg.alt}      
-                            width={1800}
-                            height={1125}
                             blurDataURL={selectedImg.src}
                             placeholder="blur" 
+                            layout="responsive"
                         />
-
                         <h3>{selectedImg.alt}</h3>
                     </>}
                 </div>
@@ -701,7 +704,6 @@ export function TourDisplayer(props){
     const tourIntroDetails=()=>{
         return(<>
             <div className={styles.tourIntroCont}>
-
                 {aTour.startingPlace&& <>
                 <div className={styles.startingplace}>
                     Starting from {aTour.startingPlace}</div>
@@ -768,6 +770,7 @@ export function TourDisplayer(props){
                     alt="a Tour Image"
                     blurDataURL={aTour.imgArr[0]}
                     placeholder="blur" 
+                    layout="responsive"
                 />
             </div>
         </>)
@@ -776,9 +779,11 @@ export function TourDisplayer(props){
         if(props.breadcrumb){
         return(<>
             <div className={styles.breadcrumbNaviCont}>
-                <Image src={LTCTypeface} alt="LTC Travel Logo" width={55} height={30} />
                 <Link href="/tours" >
-                    <a>{"->"} &nbsp; itineraries </a>
+                    <Image src={LTCTypeface} alt="LTC Travel Logo" width={55} height={30} />
+                </Link>
+                <Link href="/tours" >
+                    {"->"} &nbsp; itineraries
                 </Link>
                     <span>{"->"} &nbsp; {aTour.tripName}</span>
             </div>
@@ -837,10 +842,10 @@ export function TourDisplayer(props){
         </>}
         <footer  style={{width: "100%"}} >
             <div className={styles.footerBar} >
-            <Link href="/tours"><a>
+            <Link href="/tours">
                     <Image src={LTCTypeface} alt="LTC Travel Logo" width={55} height={30} />
                     <span>{aTour.tripName}</span> 
-            </a></Link>
+            </Link>
             </div>
         </footer>
         {(props.contactNavi && aTour?.user ) && <> 
@@ -946,15 +951,15 @@ export function SquaredTourCard(props){
     return(<>
 
         <Link href={`/tours/${props.id}`}>  
-        
-        <div className={styles.aSquaredCont} style={{ cursor:"pointer" }}> 
+        <div className={styles.aSquaredCont}> 
             <Image 
                 src={props.imgSrc}
                 width={500}
                 height={500}
                 alt={`${props.tripName}, by L.T.C.`}
                 blurDataURL={props.imgSrc}
-                placeholder="blur"                
+                placeholder="blur"
+                layout="responsive"
             />
             <div className={styles.highlightTourTitle}>
                 {props.tripName} 
@@ -980,7 +985,8 @@ export function RectangularTourCard(props){
                 width={2000}
                 alt={`${props.tripName}, by L.T.C.`}
                 blurDataURL={props.imgSrc}
-                placeholder="blur"                
+                placeholder="blur"
+                layout="responsive"
             />
             <div className={styles.highlightTourTitle}>
                 {props.tripName} 

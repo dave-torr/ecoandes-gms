@@ -24,7 +24,7 @@ import { Dialog, } from '@mui/material';
 import GenDataTemplates from "./../../data/dataAndTemplates"
 
 import styles from "../../styles/pages/library.module.css";
-import { aDropdownPicker, anInputDisplayer, inputToList } from '../../components/forms';
+import { aDropdownPicker, anInputDisplayer, inputToList, multiOptPicker } from '../../components/forms';
 import { aHotelDisplayer } from '../../components/operations/providers';
 
 let toDate = new Date()
@@ -41,23 +41,53 @@ function LibraryPage(){
 
 // Templates
 // activities, itin descriptions, 
-
+    let interestOptArr =[
+        "Ecuador",  
+        "Galapagos",  
+        "Peru",  
+        "Machu Picchu",  
+        "Bolivia",  
+        "Chile",  
+        "Argentina",
+        "Patagonia",
+        "Colombia",
+        "Antartica",
+        ]
+    let clientTypes=[
+        "fit",
+        "agency",
+        "media",
+        "gov",
+    ]
     const additionalExpenseSchema={
         "ivaInc":true,
         "serviceChargeInc":true,
         "perPerson":true,
         "priceKey":"additionalServices",
     }
-
-    const [library, setLibrary] = useState([])
-    const [libraryTab, setLibraryTab]=useState("main")
-
-    const [hotelSchema, setHotelSchema]=useState({
+    const aHotelSchema={
         "submitionDate": toDate,
         "createdBy":{},
         "contactArr": [],
         "roomPriceArr":[]
-    })
+    }
+    const aClientSchema = {
+        "clientType": "fit",
+        "createdBy":{},
+        "submitionDate": toDate,
+        "clientName": String,
+        "city": String,
+        "phono": Number,
+        "email": String,
+        "interestArr": [],
+        "notes":[],
+    }
+
+    const [library, setLibrary] = useState([])
+    const [libraryTab, setLibraryTab]=useState("main")
+
+    const [clientSchema, setClientSchema] = useState(aClientSchema)
+    const [hotelSchema, setHotelSchema]=useState(aHotelSchema)
     const [contactSchema, setContactSchema]=useState({})
     const [hotelAdderTrig, setHotelAddTrig]= useState(false)
     const [roomPriceObj, setRoomPriceObj]=useState({
@@ -65,9 +95,15 @@ function LibraryPage(){
         "ivaInc": true,
         "serviceChargeInc": true,
     })
+    const[interestTempArr, setInterestTempArr]=useState(interestOptArr)
+    const [addClientTrig, setAddClientTrig] = useState(false)
     const [editingServiceObj, setEditingService]=useState(additionalExpenseSchema)
     const [hotelSubmition, setHotelSub]=useState(false)
     const [inputPlaceholder, setInputPlaceholder] = useState("")
+    const [inputPlaceholder2, setInputPlaceholder2] = useState("")
+    const [inputPlaceholder3, setInputPlaceholder3] = useState("")
+    const [inputPlaceholder4, setInputPlaceholder4] = useState("")
+    const [inputPlaceholder5, setInputPlaceholder5] = useState("")
 
     const marks = [
         {
@@ -184,7 +220,7 @@ function LibraryPage(){
                            ${aRoomData.additionalBed}</span>
                     </>} 
                 </div>
-            <div className={styles.rmvHotelBTN} onClick={()=>{
+            <div className={styles.rmvEntryBTN} onClick={()=>{
                 let tempSplicer = hotelSchema.roomPriceArr.splice(indx, 1)
                 setHotelSchema({...hotelSchema })
             }} ><CancelPresentationIcon/></div>
@@ -219,9 +255,13 @@ function LibraryPage(){
         if(theService.serviceName){
             return(<>
                 <div className={styles.serviceDetDisp}>
+
+
                     <div className={styles.rmvExpenseBTN}> 
                         <CancelPresentationIcon /> 
                     </div>
+
+
                     <div className={styles.spaceBetRow}>
                         <div className={styles.serviceColumn}>
                             <strong> {theService.serviceName} </strong>
@@ -308,7 +348,10 @@ function LibraryPage(){
     }
     const hotelAdderForm=()=>{
         return(<>
-            <Dialog open={hotelAdderTrig} fullWidth maxWidth={"xl"} onClose={()=>setHotelAddTrig(false)} >
+            <Dialog open={hotelAdderTrig} fullWidth maxWidth={"xl"} onClose={()=>{
+                setHotelAddTrig(false)
+                setHotelSchema(aHotelSchema)
+                }}>
             <form className={styles.hotelAdderForm} 
             onSubmit={async(e)=>{
                     e.preventDefault()
@@ -363,8 +406,6 @@ function LibraryPage(){
                         {anInputDisplayer("website", "hotelWebsite", "text", false, hotelSchema.hotelWebsite, hotelSchema, setHotelSchema, undefined, undefined, "Hotel Website" )}
                     </div>
                 </div>
-
-                {console.log(hotelSchema, "hotelSchema")}
 
                 <div className={styles.sectionDivider}> 
                     Contacts
@@ -505,8 +546,21 @@ function LibraryPage(){
                 </div>
                 <div className={styles.spaceBetRow}>
                     <div className={styles.dataColumn}>
-                        {inputToList("Add price Conditions", "priceConditions", hotelSchema, setHotelSchema, hotelSchema.priceConditions, inputPlaceholder, setInputPlaceholder  )}
+                        {inputToList("Add price Conditions", "priceConditions", hotelSchema, setHotelSchema, hotelSchema.priceConditions, inputPlaceholder, setInputPlaceholder)}
                     </div>
+                    <div className={styles.dataColumn}>
+                        {inputToList("Add gratuities or discounts", "gratuitiesAndCond", hotelSchema, setHotelSchema, hotelSchema.gratuitiesAndCond, inputPlaceholder2, setInputPlaceholder2)}
+                    </div>
+                </div>
+                <div className={styles.spaceBetRow}>
+                    <div className={styles.dataColumn}>
+                        {inputToList("Credit or Payment Policies", "creditConditions", hotelSchema, setHotelSchema, hotelSchema.creditConditions, inputPlaceholder3, setInputPlaceholder3)}
+                    </div>
+                    <div className={styles.dataColumn}>
+                        {inputToList("Observations", "observations", hotelSchema, setHotelSchema, hotelSchema.observations, inputPlaceholder4, setInputPlaceholder4)}
+                    </div>
+                </div>
+                <div className={styles.spaceBetRow}>
                 </div>
 
                 <div className={styles.sectionDivider}> 
@@ -600,9 +654,6 @@ function LibraryPage(){
                         </>}
                     </div>
                 </div>
-
-
-
                 {hotelSubmition? <>
                     <LinearProgress color="secondary" />
                 </>:<>
@@ -613,6 +664,79 @@ function LibraryPage(){
         </>)
     }
 
+    ///////////////////////////////////////////
+    ///////////////////////////////////////////
+    // CLIENTS
+    const aClientDisplayer=(aClient)=>{
+        return(<>
+            <div className={styles.aClientDisp}> 
+                <div className={styles.spaceBetRow}> 
+                    <h2>{aClient.name}</h2>
+                    <h2>{aClient.clientType}</h2>
+                </div>
+                {aClient?.event&& <>{aClient.event} </>} 
+                {aClient?.city&& <> | {aClient.city} </>}
+                <br/>
+                <br/>
+                {aClient?.phono&& <><strong> {aClient.phono} </strong> </>}
+                {aClient?.email&& <> <a  href={`mailto:${aClient.email}?subject=${aClient.city} contact`}> {aClient.email} </a></>}
+
+                {aClient?.interestArr.length>0&& <>
+                    <br/>
+                    <strong>Interests:</strong> {aClient?.interestArr.map((elem,i)=><React.Fragment key={i}>
+                        {i>0&&<>, </>} {elem}
+                    </React.Fragment> )}
+                </>}
+
+                {aClient?.notes.length>0&& <>
+                    <br/>
+                    <br/>
+                    <strong>NOTES:</strong> {aClient?.notes.map((elem,i)=><React.Fragment key={i}>
+                        {i>0&&<>, </>} {elem}
+                    </React.Fragment> )}
+                </>}
+            </div>
+        </>)
+    }
+    const clientAdderForm=()=>{
+        return(<>
+        <Dialog open={addClientTrig} onClose={()=>setAddClientTrig(false)} fullWidth maxWidth={"xl"} >
+            <form className={styles.hotelAdderForm} onSubmit={(e)=>{
+                e.preventDefault()
+                // Send package to Back end
+
+                // if package is sucessfully written, alert, erase ClientSchema
+                let tempObj = {
+                    "name": session.user.name,
+                    "email": session.user.email,
+                }
+
+            }} >
+                <h1>Add client to Database</h1>
+                <div style={{display:"flex", justifyContent:"space-between"}}>
+                    <div className={styles.dataColumn}>
+                        {anInputDisplayer("client name", "name", "text", true, clientSchema.clientName, clientSchema, setClientSchema, undefined, undefined, "Client Name" )}
+                        {anInputDisplayer("City", "city", "text", true, clientSchema.city, clientSchema, setClientSchema, undefined, undefined, "Client city" )}
+                        {anInputDisplayer("event", "event", "text", false, clientSchema.event, clientSchema, setClientSchema, undefined, undefined, "Client event" )}
+                        {aDropdownPicker(clientTypes, "Client Type", "clientType", clientSchema, setClientSchema, )}
+                        {anInputDisplayer("Email", "email", "email", true, clientSchema.email, clientSchema, setClientSchema, undefined, undefined, " Client email" )}
+                        {anInputDisplayer("Phone", "phono", "number", false, clientSchema.phono, clientSchema, setClientSchema, undefined, undefined, " Client phone number" )}
+                        {multiOptPicker(interestTempArr, "interests", "interestArr", clientSchema.interestArr, clientSchema, setClientSchema, setInterestTempArr )}
+                        {inputToList("Notes:", "notes", clientSchema, setClientSchema, clientSchema.notes, inputPlaceholder5, setInputPlaceholder5 )}
+                    </div>
+                    <div className={styles.clientColumn}>
+                        <input type="submit" className={styles.addRecordBTN} value="add client to Database +" style={{position:"sticky", top:"33px"}} />
+                        <br/>
+                        {aClientDisplayer(clientSchema)}
+                    </div>
+                </div>
+            </form>
+        </Dialog>
+        </>)
+    }
+
+
+    // 
     const libraryDisplayer=()=>{
 
         return(<>
@@ -660,6 +784,11 @@ function LibraryPage(){
                     <div className={styles.aQuickLink} onClick={()=>setHotelAddTrig(true)}>
                         Add Hotel to Library
                     </div>
+                    {(session?.user?.name==="David Torres" || session?.user?.name==="Anahi Torres" )&&<>
+                        <div className={styles.aQuickLink} onClick={()=>setAddClientTrig(true)}>
+                            Add Client to Library
+                        </div>
+                    </> }
                     <div className={styles.aQuickLinkDES} >
                         add provider to Library
                     </div>
@@ -672,6 +801,7 @@ function LibraryPage(){
             </>}
             
             {hotelAdderForm()}
+            {clientAdderForm()}
         </div>
     </>}
     {/* log in form */}

@@ -52,7 +52,7 @@ export function anInputDisplayer(inputLabel, inputId, inputType, isReq, inputVal
         <div className={styles.theInputContainer}>
             <div className={styles.anInputRow}>
                 <label htmlFor={inputId} className={styles.inputLabel}>   
-                    {inputLabel}</label>
+                    {inputLabel} {isReq&&<>*</>} </label>
                 <i> &nbsp; - &nbsp; {inputType} </i>
             </div>
             <input

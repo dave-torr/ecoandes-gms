@@ -63,7 +63,7 @@ function TourPage({ aTour }){
 // Dynamic rendering shtuff:
 ///////////////////////////////////////////////////////////////////////
 
-// Static url pats\hs from dynamic info
+// Static url paths from dynamic info
 export async function getStaticPaths(){
 
     const paths = TourData.map((elem, i)=>({

@@ -13,6 +13,9 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import RoomServiceIcon from '@mui/icons-material/RoomService';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 
 
 import { aDropdownPicker, anInputDisplayer } from "../forms";
@@ -20,9 +23,6 @@ import CountryData from "../../data/dataAndTemplates.json"
 
 
 export function aHotelDisplayer(aHotel){
-    // console.log(aHotel)
-
-// target='_blank' href="https://wa.me/593979469989"
 
     const starDisp=(starz)=>{
         let starArr=[]
@@ -42,16 +42,43 @@ export function aHotelDisplayer(aHotel){
                 </AccordionSummary>
                 <AccordionDetails>
                     {servArr.map((elem, i)=><React.Fragment key={i}>
-                    <div className={styles.hotelRoomDisp}>
-                        <div style={{ display:"flex", flexDirection:"column", width:"50%", textTransform:"capitalize" }}> 
-                            {elem.priceDescription}
-                            <strong> {elem.priceType} </strong>
-                        </div>              
-                        <div style={{ display:"flex", flexDirection:"column", width:"40%", textTransform:"capitalize" }}> 
-                            <span> <strong> PRICE: </strong> USD $ {elem.price}</span>
-                            {elem.guestMax &&<> <span><strong>MAXIMUM GUESTS: </strong>  {elem.guestMax} Pax  </span>  </> }
-                        </div>              
-                    </div>
+                        <div className={styles.serviceDetDisp}>                    
+                            <div className={styles.spaceBetRow}>
+                                <div className={styles.serviceColumn}>
+                                    <strong> {elem.serviceName} </strong>
+                                    <i> {elem.serviceDescription} </i>
+                                    <br/>
+                                    {elem.paxMin&&<>
+                                        <div className={styles.priceDetIncl}>
+                                            {elem.paxMin} &nbsp; - &nbsp; Guest Minimum
+                                        </div>
+                                    </>}
+                                    {elem.paxMax&&<>
+                                        <div className={styles.priceDetIncl}>
+                                            {elem.paxMax} &nbsp; - &nbsp; Guest Maximum
+                                        </div>
+                                    </>}
+                                </div>
+                                <div className={styles.aColumn}>
+                                    <div className={styles.priceDisp} > USD $ {elem.price}  </div>
+                                    {elem.perPerson&&<>
+                                        <div className={styles.priceDetIncl}>
+                                        <PersonAddIcon fontSize="small" /> &nbsp; - &nbsp; price per person
+                                        </div>
+                                    </> }
+                                    {elem.ivaInc&&<> 
+                                        <div className={styles.priceDetIncl}>
+                                            <LocalOfferIcon fontSize="small" /> &nbsp; - &nbsp; 12% Iva Included
+                                        </div>
+                                    </>}
+                                    {elem.serviceChargeInc&&<> 
+                                        <div className={styles.priceDetIncl}>
+                                            <RoomServiceIcon fontSize="small" />&nbsp; - &nbsp; 10% service included
+                                        </div>
+                                    </>}
+                                </div>
+                            </div>
+                        </div>
                     </React.Fragment> )}
                 </AccordionDetails>
             </Accordion>
@@ -171,7 +198,7 @@ export function aHotelDisplayer(aHotel){
                         </AccordionDetails>
                     </Accordion>
                     </>}
-                    {additionalServicesDisp(aHotel.additionalServices)}
+                    {additionalServicesDisp(aHotel.serviceArr)}
                 </AccordionDetails>
             </Accordion>
         </div>

@@ -4,7 +4,11 @@ import Image from "next/image"
 import TourData from "../../data/LTCItinerary"
 import styles from "./../../styles/pages/tours.module.css"
 
-import tourPageIMGLadning from "./../../public/assets/images/bookingLanding1.png"
+import tourPageIMGLanding from "./../../public/assets/images/bookingLanding1.png"
+import landingImg from "./../../public/assets/images/bookingLanding1.png"
+import landingImg2 from "../../public/assets/images/bookingLanding2.png"
+import landingImg4 from "../../public/assets/images/bookingLanding4.png"
+
 import LTCTypeface from "./../../public/assets/logos/LTCTypeface.png"
 
 import {LTCNaviBar} from "./../../components/navis"
@@ -214,6 +218,20 @@ let tourTypes = ["all types", "historic", "nature", "360° itineraries", "climbi
 
 let operationRegions= ['galapagos', "patagonia", 'amazon', 'peru', "chile", "argentina", 'ecuador', ]
 
+let homeImgArr=[
+    {
+        "src": landingImg,
+        "alt": "Huayhuash: A Trek Through the Peruvian Andes"
+    },
+    {
+        "src": landingImg2,
+        "alt": "Galapagos: Explore Nature"
+    },
+    {
+        "src": landingImg4,
+        "alt": "Tiwanaku, birthplace of the Inca Empire"
+    },
+]
 
 export default function TourPage(){
 
@@ -329,23 +347,24 @@ export default function TourPage(){
             setFilteredTourArr([...filteredTourArr].sort(((a,b)=> b[sortContr] - a[sortContr])))
     },[sortOrder])
 
+    let randomPic 
     const tourPageImgDisplayer=()=>{
+        randomPic= homeImgArr[Math.floor(Math.random() * homeImgArr.length )]
         return(<>
         <div className={styles.tourPageIMGSection}>
             <div className={styles.introTextIcon}> Adventure <br/>Awaits</div>
             <div className={styles.introArrowIcon}> <ArrowDownwardIcon fontSize="large"/> </div>
             <div className={styles.tourPageImageCont}>
                 <Image 
-                    src={tourPageIMGLadning}
-                    alt="Huayhuash: A Trek Through the Peruvian Andes"
+                    src={randomPic.src}
+                    alt={randomPic.alt}
                     priority
+                    layout="responsive"
                 />
             </div>
         </div>
         </>)
     }
-
-
 
     const tourHighlightDisp=(aTrip)=>{
         if(TourData){
@@ -420,7 +439,7 @@ export default function TourPage(){
             <Image
                 src={LTCTypeface}
                 alt="EcoAndes Condor Logo"
-                blurDataURL={LTCTypeface}
+                // blurDataURL={LTCTypeface}
                 placeholder="blur"
                 width={200}
                 height={100}

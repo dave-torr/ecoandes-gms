@@ -49,7 +49,7 @@
 
 .highlightCont{
     display: flex;
-    width: 100%;
+    width: 1080px;
     justify-content: center;
     margin-top: 30px;
     padding: 0 9px;
@@ -359,6 +359,9 @@
         width: 100%;
         padding: 18px 18px;
         padding-bottom: 0px;
+    }
+    .highlightCont{
+        width: 100%;
     }
     
 }

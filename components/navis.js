@@ -96,7 +96,7 @@ export function LTCNaviBar(props){
     <div className={styles.LTCNaviGenCont}> 
         {props.inTrip?<>
         <Link href="/tours">
-        <a><ArrowBackIosIcon />itineraries</a>
+            <ArrowBackIosIcon />itineraries
         </Link>
         </>:<> <div /> </>}
         <div className={styles.LTCNaviLinks}> 
@@ -192,17 +192,17 @@ export function GMSNavii(props){
                         {elem.printDel? <>
                             <div className={styles.mobileDEL}> 
                                 {router.pathname!= elem.pathname &&<><Link href="/gms/tourCreator">  
-                                <a>Tour Creator</a>
+                                Tour Creator
                             </Link></>}</div>
                         </>:<>
                             {props.user.name === elem.restriction && <>
                                 {router.pathname!=elem.pathname&&<><Link href={elem.pathname}>  
-                                <a>{elem.label}</a>
+                                {elem.label}
                                 </Link></>}
                             </>}
                             {elem.restriction===undefined&&<>
                                 {router.pathname!=elem.pathname&&<><Link href={elem.pathname}>  
-                                <a>{elem.label}</a>
+                                {elem.label}
                                 </Link></>}
                             </>}
                         </>}

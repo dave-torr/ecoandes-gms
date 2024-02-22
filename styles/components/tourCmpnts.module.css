@@ -204,9 +204,8 @@
 /* Squared Tour Highlight Disp */
 
 .aSquaredCont{
-    width: 500px;
+    width: 100%;
     padding: 9px;
-    
 }
 
 .highlightTourTitle{
@@ -232,7 +231,7 @@
 .aRectangCont{
     margin: 6 21px;
     position: inherit;
-    width: 1000px;
+    width: 1060px;
     padding: 9px;
 }
 
@@ -247,7 +246,7 @@
 }
 
 .tourContainer{
-    width: 100%;
+    width: 960px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -368,8 +367,9 @@
 
 .tourTitleCard{
     width: 100%;
-    padding: 21px;
+    padding: 33px 44px;
     z-index: 1;
+    width: 1080px;
 }
 
 .mainImgDisplayer{
@@ -377,9 +377,8 @@
     padding: 4px;
     padding-bottom: 1px;
     background-color: var(--pop-orange);
+    width: 1060px;
 }
-
-
 
 .imgDialogCont{
     width: 100%;
@@ -518,7 +517,7 @@
 
 .tourDataCont{
     display: flex;
-    width: 100%;
+    width: 960px;
     padding: 21px 0;
     justify-content: space-between;
 }
@@ -1247,12 +1246,13 @@
     font-size: 0.9em;
 }
 
-
-
-@media (max-width: 790px) {
+@media (max-width: 1080px) {
     .theTourDisp{
         width: 100%;
         margin-left: 0%;
+    }
+    .tourContainer{
+        width: 100%;
     }
     .aRectangCont{
         width: 100%;
@@ -1262,13 +1262,12 @@
     }
 
     .tourTitleCard{
-        box-shadow: none;
-        margin-bottom: 0;
-        padding-bottom: 6px;
+        width: 100%;
     }
 
     .mainImgDisplayer{
         box-shadow: none;
+        width: calc(100% - 18px);
     }
 
 
@@ -1297,6 +1296,7 @@
         padding-top: 15px;
         top: 32px;
     }
+
     .tourCardTextCont{
         height: 190px;
     }
@@ -1312,14 +1312,13 @@
 
     .tourDataCont{
         flex-direction: column;
+        align-items: center;
+        width: 100%;
     }
     .tourData{
         width: 100%;
     }
-    .tourDataCont{
-        flex-direction: column;
-        align-items: center;
-    }
+
     .supportInfoCont{
         width: 100%;
         margin: 15px 0;
@@ -1375,6 +1374,10 @@
         justify-content: flex-end;
     }
 
+    .tourTitleCard{
+        font-size: 0.9em;
+        padding: 15px 21px;
+    }
 
     .tourDetails{
         padding-bottom: 0;
@@ -1395,12 +1398,10 @@
 
     .breadcrumbNaviCont{
         word-wrap: break-word;
-        flex-direction: column;
         font-size: 0.7em;
-        align-items: flex-start;
     }
 
-    .eachDateOpt{margin: 12px;}
+    .eachDateOpt{margin: 12px}
     .theDatePicker{
         flex-direction: column;
         text-align: center;
@@ -1493,15 +1494,8 @@
         width: 50%;
         margin-bottom: 6px;
     }
-    .tourDataCont{
-        flex-direction: column;
-    }
     .tourData{
         width: 100%;
-    }
-    .tourDataCont{
-        flex-direction: column;
-        align-items: center;
     }
     .tourInfoDescriptor{
         padding: 9px 33px;

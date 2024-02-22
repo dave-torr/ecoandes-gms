@@ -66,6 +66,43 @@
 
 }
 
+.serviceDetDisp{
+    display: flex;
+    flex-direction: column;
+    border: solid 1px black;
+    padding: 12px 15px;
+    margin: 12px 0;
+}
+
+.rmvExpenseBTN{
+    position: absolute;
+    transform: translate(-25px, -25px);
+    background-color: white;
+    cursor: pointer;
+    color: red;
+}
+
+.serviceColumn{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.priceDetIncl{
+    color: rgb(79, 78, 78);
+    text-align: end;
+    font-size: 0.7em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    margin-top: 6px;
+}
+
+.priceDisp{
+    padding: 12px 0;
+    font-size: 1.3em;
+}
+
 @media (max-width: 650px) {
     .aProviderCont{
         width: 96%;
