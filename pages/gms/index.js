@@ -74,8 +74,6 @@ export default function GMS(){
 
         {session&& <h3> Hi there {session?.user.name}! </h3>}
 
-        {console.log(session?.user)}
-
         <div className={styles.gmsBTNCont}>
          {gmsOptionsBTN()}
         </div>

@@ -51,7 +51,6 @@ export default function YacumaPage(){
 
     useEffect(()=>{
           const interval = setInterval(() => {
-            // console.log(navigator.onLine)
             // if Set interval is false, 
             if(navigator.onLine){
                 setNetworkCon(false)

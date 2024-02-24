@@ -347,7 +347,6 @@ export default function TourPage(){
             setFilteredTourArr([...filteredTourArr].sort(((a,b)=> b[sortContr] - a[sortContr])))
     },[sortOrder])
 
-    console.log(sortContr, "sortContr")
 
     let randomPic 
     const tourPageImgDisplayer=()=>{

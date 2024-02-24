@@ -1,76 +1,119 @@
-import {$getRoot, $getSelection} from 'lexical';
+"use client";
 
+import React, { useState, useEffect, useRef } from 'react'
 import {LexicalComposer} from '@lexical/react/LexicalComposer';
-import {PlainTextPlugin} from '@lexical/react/LexicalPlainTextPlugin';
+
+import {OnChangePlugin} from '@lexical/react/LexicalOnChangePlugin';
+import {RichTextPlugin} from '@lexical/react/LexicalRichTextPlugin';
 import {ContentEditable} from '@lexical/react/LexicalContentEditable';
 import {HistoryPlugin} from '@lexical/react/LexicalHistoryPlugin';
-import {OnChangePlugin} from '@lexical/react/LexicalOnChangePlugin';
 import {useLexicalComposerContext} from '@lexical/react/LexicalComposerContext';
 import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary';
 
+import styles from "../styles/components/textEditor.module.css"
 
-
-
-
-export function GMSTextEditor(props){
-
-    const theme = {
-    // Theme styling goes here
-    }
-
-    function MyCustomAutoFocusPlugin() {
-        const [editor] = useLexicalComposerContext();
-        useEffect(() => {
-            editor.focus();
-        }, [editor]);
-
-        return null;
-    }
-
-    function onError(error) {
-        console.error(error);
-    }
-
-    function onChange(editorState){
-        const editorStateJSON=editorState.toJSON()
+export function GMSTextEditor(props) {
+    const [editorState, setEditorState]=useState();
+    useEffect(()=>{
         props.setTempObj({
-            ...tempObj,
-            [inputIndex]:(JSON.stringify(editorStateJSON))
+            ...props.tempObj,
+            [props.inputIndex]: editorState
         })
+    },[editorState])
+    function onChange(editorState) {
+        const editorStateJSON = editorState.toJSON();
+        let stringifiedState=JSON.stringify(editorStateJSON)
+        if(stringifiedState){
+            setEditorState(stringifiedState);    
+        }
     }
 
     function MyOnChangePlugin({ onChange }) {
         const [editor] = useLexicalComposerContext();
         useEffect(() => {
             return editor.registerUpdateListener(({editorState}) => {
-            onChange(editorState);
+                onChange(editorState);
             });
         }, [editor, onChange]);
         return null;
-    }    
-
-    function Editor() {
-    const initialConfig = {
-        namespace: 'MyEditor',
-        theme,
-        onError,
-    };
-
-    return (
-        <LexicalComposer initialConfig={initialConfig}>
-        <PlainTextPlugin
-            contentEditable={<ContentEditable />}
-            placeholder={<div>Enter some text...</div>}
-            ErrorBoundary={LexicalErrorBoundary}
-        />
-        <HistoryPlugin />
-        <MyCustomAutoFocusPlugin />
-        <MyOnChangePlugin onChange={onChange}/>
-        </LexicalComposer>
-    );
     }
 
+    function MyCustomAutoFocusPlugin() {
+        const [editor] = useLexicalComposerContext();
+        useEffect(() => {
+                editor.focus();
+            }, [editor]);
+            return null;
+    }
+
+    return (<>
+        <div >
+        <LexicalComposer initialConfig={{readOnly: true}}>
+            <RichTextPlugin
+                contentEditable={<ContentEditable className={styles.inputBox} />}
+                placeholder={<i className={styles.inputPlaceholder}>- text</i>}
+                ErrorBoundary={LexicalErrorBoundary}
+            />
+            <HistoryPlugin />
+            <MyOnChangePlugin onChange={onChange}/>
+            <MyCustomAutoFocusPlugin />
+        </LexicalComposer>
+        </div>
+    </>);
+}
+
+
+export function GenTextDisplayer(props){
+
+
+    // working off of Lexical, output wasn';t easy to digest. Needed to create a parallel "digestor func, to take in data and displayit according to formats. each format pretty easy to read and display once traversed."
+
+
+
+    const [theText,setTheText]=useState()
+    useEffect(()=>{
+        if(props.theValue){
+            setTheText(JSON.parse(props.theValue))
+        }
+    },[props.theValue])
+
+    const formatSwitcher=(eachChild)=>{
+        console.log(eachChild, "Each Child")
+        switch (eachChild.format){
+            case 0:
+            return(<>
+                {eachChild.text}{" "}&nbsp;
+                </>)
+            case 1:
+            return(<>
+                <strong>{eachChild.text}</strong>&nbsp;
+                </>)
+            case 2:
+            return(<>
+                <i>{eachChild.text}</i>&nbsp;
+                </>)
+        }
+
+    }
+
+    const lexicalDigestor=(rootMaterial)=>{
+        if(rootMaterial?.root?.children[0]?.children[0]?.text){
+        return(<>
+            {rootMaterial?.root?.children?.map((elem, i)=><React.Fragment key={i}>
+                <div className={styles.eachTextLine}>
+                    {elem?.children.map((elemzz,it)=><React.Fragment key={it}>
+                        {formatSwitcher(elemzz)}
+                    </React.Fragment>)}
+                </div>
+            </React.Fragment> )}
+        </>)
+        }
+    }
+
+
     return(<>
-        {Editor()}
+        <div className={styles.genTextCont}>
+            {lexicalDigestor(theText)}
+        </div>
     </>)
 }

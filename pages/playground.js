@@ -12,15 +12,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import TextField from '@mui/material/TextField';
 import { Autocomplete } from '@mantine/core'
 
-import {$getRoot, $getSelection} from 'lexical';
-
-import {LexicalComposer} from '@lexical/react/LexicalComposer';
-import {PlainTextPlugin} from '@lexical/react/LexicalPlainTextPlugin';
-import {ContentEditable} from '@lexical/react/LexicalContentEditable';
-import {HistoryPlugin} from '@lexical/react/LexicalHistoryPlugin';
-import {OnChangePlugin} from '@lexical/react/LexicalOnChangePlugin';
-import {useLexicalComposerContext} from '@lexical/react/LexicalComposerContext';
-import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary';
+import { GMSTextEditor, GenTextDisplayer } from '../components/textEditor'
 
 // Bitacora logo:
 // import TrackChangesIcon from '@mui/icons-material/TrackChanges';
@@ -769,8 +761,6 @@ export default function PlaygroundPage(){
         </>)
     }
 
-
-
     return(<>
         {(session && session.user.name==="David Torres" ) &&<> 
             <GMSNavii  user={session.user} />
@@ -782,14 +772,33 @@ export default function PlaygroundPage(){
                 {/* {aHotelDisplayer(sampleHotel)} */}
                 {/* {getOneDriveBTN()} */}
 
-                {/* <div contentEditable plaintext-only onInput={(e)=>{
-                    console.log(e.target.innerHTML)
-                }} > TESTER 
-                
-                </div> */}
+
+                {/* ///////////////////////////// */}
+                {/* ///////////////////////////// */}
+                    {/* {expenseTable(expenseArr)} */}
+                {/* ///////////////////////////// */}
+                {/* ///////////////////////////// */}
 
 
-                {expenseTable(expenseArr)}
+
+                <div style={{width: "340px"}}>
+                <GMSTextEditor 
+                    tempObj={aTour}
+                    setTempObj={setTour}
+                    inputIndex={"dayDescription"}
+                />
+                </div>
+
+
+                <br/>
+                <br/>
+                <br/>
+
+                <div style={{width: "340px"}}>
+                <GenTextDisplayer 
+                    theValue={aTour.dayDescription}
+                />
+                </div>
 
 
 
