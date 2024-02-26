@@ -51,6 +51,7 @@ import Dialog from '@mui/material/Dialog';
 
 import LTCGenData from "./../data/dataAndTemplates.json"
 import { nanoid } from "nanoid"
+import { RichTextDisp } from "./textEditor"
 // ///////////////////
     // v. ++: 
     // Save Local Likes!!!
@@ -86,37 +87,37 @@ export function ATourCard(props){
     let theTour = props.aTour
 
     return(<>
-    <Link href={`/tours/${theTour.id}`}>
-        <div className={styles.tourCardCont} >
-            
-            <div className={styles.tourCardImageMobile}>
-                <Image 
-                    src={theTour.imgArr[0]}
-                    width={430}
-                    height={240}
-                    alt={`A tour image: ${theTour.tripName}`}
-                    blurDataURL={theTour.imgArr[0]}
-                    placeholder="blur"
-                />
-            </div>
+        <Link href={`/tours/${theTour.id}`}>
+            <div className={styles.tourCardCont} >
+                
+                <div className={styles.tourCardImageMobile}>
+                    <Image 
+                        src={theTour.imgArr[0]}
+                        width={430}
+                        height={240}
+                        alt={`A tour image: ${theTour.tripName}`}
+                        blurDataURL={theTour.imgArr[0]}
+                        placeholder="blur"
+                    />
+                </div>
 
-            <div className={styles.tourCardTextCont}>
-                <div className={styles.difficultyDispCont}> 
-                    Difficulty: {theTour.difficulty}/5 </div>
-                <span>
-                    {theTour.startingPlace? <>
-                    <div className={styles.tourStartingPlace} > 
-                         from {theTour.startingPlace} </div>
-                    </>: <>
-                        <div className={styles.tourStartingPlace}/>
-                    </>}
-                    <div className={styles.tourCardTripName}> {theTour.tripName} </div>
-                    <div> {theTour.duration} day itinerary &nbsp;  | &nbsp; {theTour.tourType} </div>
-                </span>
-                <div className={styles.tourCardCTA}> see experience </div>
+                <div className={styles.tourCardTextCont}>
+                    <div className={styles.difficultyDispCont}> 
+                        Difficulty: {theTour.difficulty}/5 </div>
+                    <span>
+                        {theTour.startingPlace? <>
+                        <div className={styles.tourStartingPlace} > 
+                            from {theTour.startingPlace} </div>
+                        </>: <>
+                            <div className={styles.tourStartingPlace}/>
+                        </>}
+                        <div className={styles.tourCardTripName}> {theTour.tripName} </div>
+                        <div> {theTour.duration} day itinerary &nbsp;  | &nbsp; {theTour.tourType} </div>
+                    </span>
+                    <div className={styles.tourCardCTA}> see experience </div>
+                </div>
             </div>
-        </div>
-    </Link>
+        </Link>
     </>)
 }
 //////////////////////////////////////////////////////////////
@@ -633,7 +634,9 @@ export function TourDisplayer(props){
                     {selectedImg.src &&
                         <><Image
                             src={selectedImg.src}
-                            alt={selectedImg.alt}      
+                            alt={selectedImg.alt}
+                            width={2080}
+                            height={1125}
                             blurDataURL={selectedImg.src}
                             placeholder="blur" 
                             layout="responsive"
@@ -708,10 +711,12 @@ export function TourDisplayer(props){
                 <div className={styles.startingplace}>
                     Starting from {aTour.startingPlace}</div>
                 </>}
-                <p className={styles.tourOverview}> 
-                    {aTour.tourOverview} </p>
+                
+                <RichTextDisp
+                    theValue={aTour.tourOverview}
+                />
 
-{/* Include We Travel Widget BTN || CONTACT US BTN for Private Departures */}
+                {/* Include We Travel Widget BTN || CONTACT US BTN for Private Departures */}
                 {!aTour.LTCLogo&&<>
                 
                 {aTour.tourType==="climbing"&&<>
@@ -865,7 +870,7 @@ export function TourDisplayer(props){
                         <strong>For a {aTour?.paxMax} passenger group </strong>
                     </> }
                     {aTour?.singleSupp &&<>
-                        + ${aTour.singleSupp} Single Supplement
+                        &nbsp;&nbsp; + &nbsp; ${aTour.singleSupp} Single Supplement
                     </>} 
                 </div>
             </>)
@@ -949,24 +954,24 @@ export function TourDisplayer(props){
 export function SquaredTourCard(props){
     if(props.tripName){
     return(<>
-
-        <Link href={`/tours/${props.id}`}>  
-        <div className={styles.aSquaredCont}> 
-            <Image 
-                src={props.imgSrc}
-                width={500}
-                height={500}
-                alt={`${props.tripName}, by L.T.C.`}
-                blurDataURL={props.imgSrc}
-                placeholder="blur"
-                layout="responsive"
-            />
-            <div className={styles.highlightTourTitle}>
-                {props.tripName} 
+        <div style={{width: "50%"}}>
+            <Link href={`/tours/${props.id}`}>  
+            <div className={styles.aSquaredCont}> 
+                <Image 
+                    src={props.imgSrc}
+                    width={500}
+                    height={500}
+                    alt={`${props.tripName}, by L.T.C.`}
+                    blurDataURL={props.imgSrc}
+                    placeholder="blur"
+                    layout="responsive"
+                />
+                <div className={styles.highlightTourTitle}>
+                    {props.tripName} 
                 </div>
+            </div>
+            </Link>
         </div>
-        
-        </Link>
     </>)
     }
 }

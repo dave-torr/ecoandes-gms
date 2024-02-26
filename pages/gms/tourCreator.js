@@ -29,6 +29,7 @@ import LTCGenDAta from "../../data/dataAndTemplates.json"
 // styles
 import styles from "../../styles/pages/tourCreator.module.css"
 import { Dialog } from "@mui/material";
+import { TextEditor } from "../../components/textEditor";
 
 
 ///////////////////////////////////////////////////////////////
@@ -38,7 +39,7 @@ export default function tourCreatorPage(props){
 const router = useRouter()
 
 // Import from Gen Tour Data
-let ecoAndesDestinations= [...LTCGenDAta.countryList, "galapagos" ]
+let ecoAndesDestinations= [...LTCGenDAta.countryList, "galapagos", "atacama", "easter island", "patagonia", "amazon" ].sort()
 let tourType=["historic", "nature", "360° itineraries", "climbing", "trekking"]
 let tourDiff =[1,2,3,4,5]
 let TourModel = {
@@ -359,7 +360,11 @@ let TourModel = {
                     {anInputDisplayer("Duration", "duration", "number", true, undefined, aTourModel, setTourModel, 1, undefined, "Tour Duration")}
                     {multiOptPicker(destinationList, "Destinations", "countryList", aTourModel.countryList, aTourModel, setTourModel, setDestList )}
                     {anInputDisplayer("Starting City", "startingPlace", "text", false, undefined, aTourModel, setTourModel, undefined, undefined, "Starting From")}
-                    {multiLineTextInput("Overview", "tourOverview", false, undefined, aTourModel, setTourModel )}
+                    <TextEditor
+                        tempObj={aTourModel}
+                        setTempObj={setTourModel}
+                        inputIndex={"tourOverview"}
+                    />
                     {aDropdownPicker(tourType, "tour type", "tourType", aTourModel, setTourModel)}
                     {aDropdownPicker(tourDiff, "Difficulty", "difficulty", aTourModel, setTourModel)}
                     {anInputDisplayer("Language", "tripLang", "text", false, undefined, aTourModel, setTourModel, undefined, undefined, "Tour Language" )}

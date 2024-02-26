@@ -168,9 +168,6 @@ let AmazonJungleSpotlight =     {
         ]
     }
 
-
-
-    
 ///////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////
@@ -440,8 +437,8 @@ export default function TourPage(){
             <Image
                 src={LTCTypeface}
                 alt="EcoAndes Condor Logo"
-                width={200}
-                height={100}
+                width={120}
+                height={60}
             /></div>
 
             {tourPageImgDisplayer()}
@@ -451,7 +448,7 @@ export default function TourPage(){
             {filtersUI()}
 
             <div className={styles.sortingUICont}>
-            <SortingItinUI 
+                <SortingItinUI 
                     sortContr={sortContr} 
                     setSortContr={setSortContr}
                     sortOrder={sortOrder}

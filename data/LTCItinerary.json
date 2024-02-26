@@ -1459,7 +1459,7 @@
         ]
     },
     {
-        "tripName": "Machu Picchu & the Galapagos Islands Hopping",
+        "tripName": "Machu Picchu & Galapagos Islands Hopping",
         "id": "machu-picchu-galapagos-hopping-13D",
         "shortenedURL": "machu-picchu-galapagos-hopping-13D",
         "duration": 13,
@@ -1649,7 +1649,7 @@
         ]
     },
     {
-        "tripName": "Machu Picchu & the Galapagos Islands Cruise",
+        "tripName": "Machu Picchu & Galapagos Cruise",
         "id": "machu-picchu-galapagos-12D",
         "shortenedURL": "machu-picchu-galapagos-12D",
         "duration": 12,
@@ -2260,10 +2260,9 @@
             }
         ],
         "tourType": "360° itineraries",
-        "price": 2215,
+        "price": 2600,
         "paymentLink":"73322059",
         "weTravelURL": "https://www.wetravel.com/trips/best-of-peru-latin-travel-collection-lima-73322059",
-        "paxMax": 16,
         "singleSupp": 770,
         "prices": {
             "priceType": "fixedDeparture",

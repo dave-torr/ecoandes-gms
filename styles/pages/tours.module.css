@@ -16,8 +16,6 @@
 
 .logoCont{
     width: 100%;
-    display: flex;
-    align-items: center;
     margin-top:21px;
     margin-left: 12px;
 }
@@ -57,6 +55,7 @@
 
 .highlightCont2{
     padding: 0 9px;
+    margin-top: 12px;
 }
 
 .UIBTNCont{
@@ -435,5 +434,8 @@
     }
     .tourHighlightBar{
         font-size: 1.1em;
+    }
+    .logoCont{
+
     }
 }

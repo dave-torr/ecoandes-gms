@@ -6,13 +6,12 @@ import {GMSNavii} from "./../components/navis"
 import styles from "./../styles/pages/playground.module.css"
 import { TourDisplayer } from '../components/tours'
 
-
 import AddCommentIcon from '@mui/icons-material/AddComment';
 import CancelIcon from '@mui/icons-material/Cancel';
 import TextField from '@mui/material/TextField';
 import { Autocomplete } from '@mantine/core'
 
-import { GMSTextEditor, GenTextDisplayer } from '../components/textEditor'
+import { TextEditor, RichTextDisp } from '../components/textEditor'
 
 // Bitacora logo:
 // import TrackChangesIcon from '@mui/icons-material/TrackChanges';
@@ -761,6 +760,9 @@ export default function PlaygroundPage(){
         </>)
     }
 
+
+
+
     return(<>
         {(session && session.user.name==="David Torres" ) &&<> 
             <GMSNavii  user={session.user} />
@@ -782,10 +784,11 @@ export default function PlaygroundPage(){
 
 
                 <div style={{width: "340px"}}>
-                <GMSTextEditor 
+                <TextEditor 
                     tempObj={aTour}
                     setTempObj={setTour}
                     inputIndex={"dayDescription"}
+                    // prevData={}
                 />
                 </div>
 
@@ -795,7 +798,7 @@ export default function PlaygroundPage(){
                 <br/>
 
                 <div style={{width: "340px"}}>
-                <GenTextDisplayer 
+                <RichTextDisp 
                     theValue={aTour.dayDescription}
                 />
                 </div>

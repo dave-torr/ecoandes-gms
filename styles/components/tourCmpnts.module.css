@@ -5,7 +5,6 @@
 
 .tourCardCont{
     width: 430px;    
-    margin: 12px;   
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -170,15 +169,14 @@
 .sortContrDispl{
     font-weight: 600;
     text-transform: capitalize;
-    margin-right: 15px;
 }
 
 .selectedOrderDisp{
     cursor: default;
     display: flex;
     align-items: center;
-    margin: 9px 9px;
     padding: 6px 9px;
+    margin: 6px;
     border: solid 1px black;
     border-radius: 8px;
     text-align: center;
@@ -188,8 +186,8 @@
     display: flex;
     text-align: center;
     align-items: center;
-    margin: 9px 9px;
     padding: 6px 9px;
+    margin: 6px;
     border: solid 1px transparent;
     border-radius: 8px;
     transition: all ease 0.5s;
@@ -209,17 +207,13 @@
 }
 
 .highlightTourTitle{
-    font-size: 1.5em;
-    position: absolute;
-    width: 500px;
+    font-size: 1.3em;
+    width: 100%;
     padding: 6px 15px;
-    color: white;
     text-transform: uppercase;
     letter-spacing: 1px;
     display: flex;
     align-items: flex-end;
-    text-shadow: 2px 2px black;
-    transform: translateY(-84px);
 }
 
 .eachDayTitle h3{
@@ -253,7 +247,7 @@
 }
 .tourIntroCont{
     width: 100%;
-    padding: 9px 45px;
+    padding: 9px 39px;
 }
 
 .partnerLogo{
@@ -382,6 +376,7 @@
 
 .imgDialogCont{
     width: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1324,15 +1319,12 @@
         margin: 15px 0;
         padding: 0 12px;
         display: flex;
-        /* flex-direction: column; */
-        /* align-items: center; */
     }
 
     .aCard {
         width: 50%;
         display: flex;
         margin: 0 9px;
-        /* flex-direction: row; */
     }
     .iconDiffDisp span{
         width: fit-content;
@@ -1341,20 +1333,12 @@
         width: 100%;
     }
     .highlightTourTitle{
-        width: 41vw;
-        padding: 6px 15px;
-        color: white;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        display: flex;
-        text-shadow: 2px 2px black;
-        font-size: 1.2em;
+        padding: 6px 9px;
     }
 
     .eachDayImg{
         width: 45%;
     }
-
 }
 
 @media (max-width: 600px) {
@@ -1445,14 +1429,22 @@
 
     .highlightTourTitle{
         font-size: 1em;
-        padding: 0 15px;
+    }
+    .sortingUICont{
+        font-size: 0.9em;
+    }
+    .tourCardTextCont{
+        width: 90vw;
+    }
+    .supportInfoCont{
+        flex-direction: column;
+    }
+    .aCard{
         width: 100%;
-        color: black;
-        text-shadow: none;
-        justify-content: baseline;
-        height: auto;
-        position: relative;
-        transform: unset;
+    }
+    .tourInfoDescriptor{
+        padding: 21px;
+        padding-top: 0;
     }
 }
 

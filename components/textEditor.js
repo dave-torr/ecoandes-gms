@@ -12,7 +12,7 @@ import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary';
 
 import styles from "../styles/components/textEditor.module.css"
 
-export function GMSTextEditor(props) {
+export function TextEditor(props) {
     const [editorState, setEditorState]=useState();
     useEffect(()=>{
         props.setTempObj({
@@ -46,12 +46,26 @@ export function GMSTextEditor(props) {
             return null;
     }
 
+    let theState;
+    if(props.prevState){
+        theState= props.prevState
+    } else {
+        theState= false
+    }
+
     return (<>
         <div >
-        <LexicalComposer initialConfig={{readOnly: true}}>
+        <div className={styles.spaceBetRow}> 
+            <div className={styles.inputLabel}>
+            {props.inputIndex}
+            </div>
+            <i> - text </i>
+        </div>
+        <LexicalComposer initialConfig={{
+            editorState: theState
+            }}>
             <RichTextPlugin
                 contentEditable={<ContentEditable className={styles.inputBox} />}
-                placeholder={<i className={styles.inputPlaceholder}>- text</i>}
                 ErrorBoundary={LexicalErrorBoundary}
             />
             <HistoryPlugin />
@@ -62,23 +76,18 @@ export function GMSTextEditor(props) {
     </>);
 }
 
-
-export function GenTextDisplayer(props){
-
-
-    // working off of Lexical, output wasn';t easy to digest. Needed to create a parallel "digestor func, to take in data and displayit according to formats. each format pretty easy to read and display once traversed."
-
-
+export function RichTextDisp(props){
+    // working off of Lexical, display data according to outputted format, listed by switch func below.
 
     const [theText,setTheText]=useState()
     useEffect(()=>{
         if(props.theValue){
-            setTheText(JSON.parse(props.theValue))
+            // setTheText(JSON.parse(props.theValue))
+            setTheText(props.theValue)
         }
     },[props.theValue])
 
     const formatSwitcher=(eachChild)=>{
-        console.log(eachChild, "Each Child")
         switch (eachChild.format){
             case 0:
             return(<>
@@ -93,7 +102,6 @@ export function GenTextDisplayer(props){
                 <i>{eachChild.text}</i>&nbsp;
                 </>)
         }
-
     }
 
     const lexicalDigestor=(rootMaterial)=>{
@@ -110,10 +118,23 @@ export function GenTextDisplayer(props){
         }
     }
 
+            // {(typeof props.theValue === "string")? <> 
+            //     {/* {theText} */}
+            // </>:(typeof props.theValue === "object")&& <>
+            //     {lexicalDigestor(theText)}
+            // </> }
+
+
+// ```WTF with this display. String come in and prev is also string.
+
 
     return(<>
         <div className={styles.genTextCont}>
-            {lexicalDigestor(theText)}
+                {theText}
+
+                
+
+
         </div>
     </>)
 }
