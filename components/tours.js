@@ -316,12 +316,10 @@ export function TourTypeCard(props){
 ////////////////////////////////////////////////
 export function TourDisplayer(props){
 
-
     let aTour 
     if(props.aTour){
         aTour = props.aTour
     }
-
 
     const [imgDialogContr, srtImgDialogcontr]=useState(false)
     const [selectedImg, setSelectedImg]=useState(false)
@@ -910,17 +908,15 @@ export function TourDisplayer(props){
 
     return(<>
         <article className={styles.generalTourPage}>
-            <div className={styles.tourContainer}>
-                {tourTitle()}
-                {mainImagedisp()}
-                {aTourIconDisp()}
-                {breadcrumbNavigation()}
-                {tourIntroDetails()}
-                {carouselDisp(aTour.imgArr)} 
-            </div>
+            {tourTitle()}
+            {mainImagedisp()}
+            {aTourIconDisp()}
+            {breadcrumbNavigation()}
+            {tourIntroDetails()}
+            {carouselDisp(aTour.imgArr)} 
+            <div className={styles.pageBreak}></div>
             <div className={styles.tourDataCont}>
                 <div className={styles.tourData}>
-                    <div className={styles.pageBreak}></div>
                     {aTour.dayByDay?.length>0&&<>
                         <div className={styles.sectionTitles}> &nbsp;Overview</div>
                     </>}

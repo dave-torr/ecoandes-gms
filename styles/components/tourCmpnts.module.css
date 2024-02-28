@@ -235,16 +235,9 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    min-height: 100vh;
     align-items: center;
 }
 
-.tourContainer{
-    width: 960px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 .tourIntroCont{
     width: 100%;
     padding: 9px 39px;
@@ -256,7 +249,6 @@
     align-items: center;
     justify-content: center;
 }
-
 
 .startingplace{
     padding-bottom: 21px;
@@ -363,7 +355,7 @@
     width: 100%;
     padding: 33px 44px;
     z-index: 1;
-    width: 1080px;
+    width: 100%;
 }
 
 .mainImgDisplayer{
@@ -371,7 +363,7 @@
     padding: 4px;
     padding-bottom: 1px;
     background-color: var(--pop-orange);
-    width: 1060px;
+    width: 100%;
 }
 
 .imgDialogCont{
@@ -512,7 +504,6 @@
 
 .tourDataCont{
     display: flex;
-    width: 960px;
     padding: 21px 0;
     justify-content: space-between;
 }
@@ -1245,9 +1236,6 @@
     .theTourDisp{
         width: 100%;
         margin-left: 0%;
-    }
-    .tourContainer{
-        width: 100%;
     }
     .aRectangCont{
         width: 100%;
