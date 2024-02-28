@@ -711,8 +711,9 @@ export function TourDisplayer(props){
                 <div className={styles.startingplace}>
                     Starting from {aTour.startingPlace}</div>
                 </>}
-                
+
                 <RichTextDisp
+                    richText={aTour.richText}
                     theValue={aTour.tourOverview}
                 />
 

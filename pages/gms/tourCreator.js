@@ -51,7 +51,8 @@ let TourModel = {
         "included":[],
         "notIncluded":[],
         "notes":[],
-        "shortenedURL":nanoid(7)
+        "shortenedURL":nanoid(7),
+        "richText": true
     }
 
 // ver 2 add cruises

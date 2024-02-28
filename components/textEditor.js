@@ -81,8 +81,9 @@ export function RichTextDisp(props){
 
     const [theText,setTheText]=useState()
     useEffect(()=>{
-        if(props.theValue){
-            // setTheText(JSON.parse(props.theValue))
+        if(props.richText && props.theValue){
+            setTheText(JSON.parse(props.theValue))
+        } else {
             setTheText(props.theValue)
         }
     },[props.theValue])
@@ -118,23 +119,13 @@ export function RichTextDisp(props){
         }
     }
 
-            // {(typeof props.theValue === "string")? <> 
-            //     {/* {theText} */}
-            // </>:(typeof props.theValue === "object")&& <>
-            //     {lexicalDigestor(theText)}
-            // </> }
-
-
-// ```WTF with this display. String come in and prev is also string.
-
-
     return(<>
         <div className={styles.genTextCont}>
+            {props.richText? <> 
+                {lexicalDigestor(theText)}
+            </>:<>
                 {theText}
-
-                
-
-
+            </> }
         </div>
     </>)
 }
