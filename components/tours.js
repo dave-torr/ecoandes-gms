@@ -334,6 +334,8 @@ export function TourDisplayer(props){
         }
     },[aTour])
 
+    console.log(aTour)
+
     const accordionDisplayer=(accordTitle, accordContent, openContr, numerator)=>{
         return(<>
         <Accordion defaultExpanded={openContr} >
@@ -519,6 +521,20 @@ export function TourDisplayer(props){
                 </>)
             }
         }
+        const textFilter=(dayDescription, richTextCont)=>{
+            if(richTextCont){
+                return(<> 
+                <RichTextDisp
+                    richTextCont={true}
+                    theValue={dayDescription}
+                />
+                </>)
+            } else {
+                return(<> 
+                    {textHTMLParser(dayDescription)}
+                </>)
+            }
+        }
         const dailyImageDisp=(dailyImgArr, imgAlt)=>{
             if(dailyImgArr?.length>0){
                 return(<>
@@ -542,7 +558,7 @@ export function TourDisplayer(props){
                 </AccordionSummary>
                 <AccordionDetails sx={{ pb: 0 }} > 
                     <div className={styles.eachDayDescription}>
-                        {textHTMLParser(elem.dayDescription)}
+                        {textFilter(elem.dayDescription, aTour.richText)}
                     </div>
                     {dayInclDisp(elem.dayInclusions)}
                     {mealsInclDisp(elem.meals)}
@@ -565,7 +581,7 @@ export function TourDisplayer(props){
                 EDITING DAY:
                 <h3>{aTravelDay.dayTitle} </h3>
                 <div className={styles.eachDayDescription}>
-                    {textHTMLParser(aTravelDay.dayDescription)}
+                    {textFilter(aTravelDay.dayDescription, aTour.richText)}
                 </div>
                 {dayInclDisp(aTravelDay.dayInclusions)}
                 {mealsInclDisp(aTravelDay.meals)}
@@ -711,7 +727,7 @@ export function TourDisplayer(props){
                 </>}
 
                 <RichTextDisp
-                    richText={aTour.richText}
+                    richTextCont={aTour.richText}
                     theValue={aTour.tourOverview}
                 />
 

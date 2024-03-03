@@ -38,14 +38,6 @@ export function TextEditor(props) {
         return null;
     }
 
-    function MyCustomAutoFocusPlugin() {
-        const [editor] = useLexicalComposerContext();
-        useEffect(() => {
-                editor.focus();
-            }, [editor]);
-            return null;
-    }
-
     let theState;
     if(props.prevState){
         theState= props.prevState
@@ -57,9 +49,9 @@ export function TextEditor(props) {
         <div >
         <div className={styles.spaceBetRow}> 
             <div className={styles.inputLabel}>
-            {props.inputIndex}
+            {props.inputLabel}
             </div>
-            <i> - text </i>
+            <i> - rich text </i>
         </div>
         <LexicalComposer initialConfig={{
             editorState: theState
@@ -70,7 +62,6 @@ export function TextEditor(props) {
             />
             <HistoryPlugin />
             <MyOnChangePlugin onChange={onChange}/>
-            <MyCustomAutoFocusPlugin />
         </LexicalComposer>
         </div>
     </>);
@@ -81,7 +72,7 @@ export function RichTextDisp(props){
 
     const [theText,setTheText]=useState()
     useEffect(()=>{
-        if(props.richText && props.theValue){
+        if(props.richTextCont && props.theValue){
             setTheText(JSON.parse(props.theValue))
         } else {
             setTheText(props.theValue)
@@ -121,11 +112,11 @@ export function RichTextDisp(props){
 
     return(<>
         <div className={styles.genTextCont}>
-            {props.richText? <> 
+            {props.richTextCont? <> 
                 {lexicalDigestor(theText)}
             </>:<>
                 {theText}
-            </> }
+            </>}
         </div>
     </>)
 }

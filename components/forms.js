@@ -19,6 +19,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 //////////////////////////////////////////////////////////
 import styles from "../styles/components/forms.module.css"
 import { CircularProgress, Dialog } from "@mui/material";
+import { TextEditor } from "./textEditor";
 
 // Flag for Deletion
 export function aTextInput(aPlaceholder, inputId, anObject, setAnObject, inputType, reqBoolean){
@@ -1327,7 +1328,16 @@ export function DayByDayAdder(props){
             </div>
             
             {anInputDisplayer("Day Title", "dayTitle", "text", true, props.aTravelDay.dayTitle, props.aTravelDay, props.setTravelDay, undefined, undefined, "Main daily activity" )}
-            {multiLineTextInput("Day Detail", "dayDescription", false, props.aTravelDay.dayDescription, props.aTravelDay, props.setTravelDay )}
+            <TextEditor
+                tempObj={props.aTravelDay}
+                setTempObj={props.setTravelDay}
+                inputIndex={"dayDescription"}
+                inputLabel={"Day Description"}
+            />
+
+            {/* {multiLineTextInput("Day Detail", "dayDescription", false, props.aTravelDay.dayDescription, props.aTravelDay, props.setTravelDay )} */}
+
+            
             {inputToList("add to day", "dayInclusions", props.aTravelDay, props.setTravelDay, props.aTravelDay.dayInclusions, incluPlaceholder, setPlaceholder)}
             {mealsIncludedTool()}
             {anInputDisplayer("Overnight Property", "overnightProperty", "text", false, undefined, props.aTravelDay, props.setTravelDay, undefined, undefined, "Hotel / Lodge Name")}

@@ -41,6 +41,7 @@ const router = useRouter()
 // Import from Gen Tour Data
 let ecoAndesDestinations= [...LTCGenDAta.countryList, "galapagos", "atacama", "easter island", "patagonia", "amazon" ].sort()
 let tourType=["historic", "nature", "360° itineraries", "climbing", "trekking"]
+let tourLanguages = ["english", "español", "deusch", "francais", "portuges"]
 let tourDiff =[1,2,3,4,5]
 let TourModel = {
         "LTCLogo": "ecoAndes",
@@ -365,10 +366,11 @@ let TourModel = {
                         tempObj={aTourModel}
                         setTempObj={setTourModel}
                         inputIndex={"tourOverview"}
+                        inputLabel={"tour Overview"}
                     />
                     {aDropdownPicker(tourType, "tour type", "tourType", aTourModel, setTourModel)}
                     {aDropdownPicker(tourDiff, "Difficulty", "difficulty", aTourModel, setTourModel)}
-                    {anInputDisplayer("Language", "tripLang", "text", false, undefined, aTourModel, setTourModel, undefined, undefined, "Tour Language" )}
+                    {aDropdownPicker(tourLanguages, "Language", "tripLang", aTourModel, setTourModel)}
                     <input type="submit" value="Next" className={styles.nextStepBTN}/>
                 </form>
             </>}
