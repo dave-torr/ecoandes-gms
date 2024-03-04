@@ -41,7 +41,6 @@ const router = useRouter()
 // Import from Gen Tour Data
 let ecoAndesDestinations= [...LTCGenDAta.countryList, "galapagos", "atacama", "easter island", "patagonia", "amazon" ].sort()
 let tourType=["historic", "nature", "360° itineraries", "climbing", "trekking"]
-let tourLanguages = ["english", "español", "deusch", "francais", "portuges"]
 let tourDiff =[1,2,3,4,5]
 let TourModel = {
         "LTCLogo": "ecoAndes",
@@ -91,6 +90,7 @@ let TourModel = {
     })
     const [textPlaceholder, setTxtPlaceholder]=useState("")
     const [textPlaceholder2, setTxtPlaceholder2]=useState("")
+    const [textPlaceholder3, setTxtPlaceholder3]=useState("")
     const [destinationList, setDestList] = useState([...ecoAndesDestinations])
     const [tourCreatorStep, settourCreatorStep]=useState(0)
     const [editDayTrigger, setEditDayTrig]=useState(false)
@@ -129,6 +129,10 @@ let TourModel = {
     }
 
     const logoSwitcherArr=[
+        {
+            "radioKey": "LTC",
+            "radioVal": "ltc"
+        },
         {
             "radioKey": "EcoAndes Travel",
             "radioVal": "ecoAndes"
@@ -370,7 +374,7 @@ let TourModel = {
                     />
                     {aDropdownPicker(tourType, "tour type", "tourType", aTourModel, setTourModel)}
                     {aDropdownPicker(tourDiff, "Difficulty", "difficulty", aTourModel, setTourModel)}
-                    {aDropdownPicker(tourLanguages, "Language", "tripLang", aTourModel, setTourModel)}
+                    {aDropdownPicker(LTCGenDAta.tourLanguages, "Language", "tripLang", aTourModel, setTourModel)}
                     <input type="submit" value="Next" className={styles.nextStepBTN}/>
                 </form>
             </>}
@@ -508,7 +512,9 @@ let TourModel = {
                                 </React.Fragment> )}
                             </table>
                         </>}
-                </> }
+                </>}
+                {/* Vendor notes here!!!! */}
+                {inputToList("Operational Notes", "notes", aTourModel, setTourModel, aTourModel.notes, textPlaceholder3, setTxtPlaceholder3)}
             </>}
         </>)
     }

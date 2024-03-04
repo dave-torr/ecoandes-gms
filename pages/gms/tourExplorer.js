@@ -6,7 +6,6 @@ import { GMSNavii } from "../../components/navis";
 
 import {TextTourCard, SortingItinUI, TourDisplayer, ItinDuplicator, ItinDeletor, ItinEditor, ItinDataDisp} from "../../components/tours"
 
-
 import LTCItineraries from "../../data/LTCItinerary.json"
 import EcoAndesFD from "../../data/ecoAndesFixedDepartures.json"
 import LTCGenData from "../../data/dataAndTemplates.json"
@@ -23,12 +22,8 @@ import LaunchIcon from '@mui/icons-material/Launch';
 
 import Dialog from '@mui/material/Dialog';
 
-
 import styles from "../../styles/pages/tourExplorar.module.css"
 import { inputToList } from "../../components/forms";
-
-
-
 
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
@@ -41,11 +36,7 @@ export default function TourExplorerPage(props){
 const { data: session } = useSession()
 
     // for itin filter
-    let tourType = ["active", "family", "cruise", "expedition", "private", "voyage"]
-
     let tourTypes = ["all types", "historic", "nature", "360° itineraries", "climbing", "trekking" ]
-
-    let operationRegions= ['galapagos', "patagonia", 'amazon', 'peru', "chile", "argentina", 'ecuador' ]    
 
     let theDestinations= LTCGenData.countryList
 
@@ -250,16 +241,15 @@ const { data: session } = useSession()
         <Dialog open={noteDispTrig} onClose={()=>{ setNoteTrigger(false)}} className={styles.aDial} >
         <div className={styles.aDial} >
             <h2> Itinerary Notes </h2> <br/>
-            {pickedItin?.notes ?<>
+            {pickedItin?.notes &&<>
                 <ul>
                 {pickedItin?.notes.map((elem, i)=><React.Fragment key={i} >
-                    <li> {elem}  </li>
+                    <li> {elem} </li>
                 </React.Fragment>  ) }
                 </ul>
-            </> : <>   
-                {inputToList("Add Note to Day", "itinNotes", pickedItin, setPickedItin, pickedItin.notes,incluPlaceholder, setPlaceholder ) }
-
-            </>  }
+            </>}
+            {/* check function or use edit trigger */}
+            {inputToList("Add Note to Day", "itinNotes", pickedItin, setPickedItin, pickedItin.notes,incluPlaceholder, setPlaceholder ) }
         </div>
         </Dialog>
         </>)

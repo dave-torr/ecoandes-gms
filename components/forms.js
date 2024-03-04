@@ -642,49 +642,48 @@ export function EditDayByDay(props){
                 <h2>Autofill Day</h2>
                 <div onClick={()=>setAutoFillTrig(false)} > <HighlightOffIcon/> </div>
             </div>
-                {theGeneralLocat ? <>
-                    <label htmlFor="LocationDropdown" className={styles.inputLabel}>
-                        Select General Location
-                    </label>
-                    <select id="LocationDropdown" onChange={(e)=>{
-                        setLocSelection(`${e.target.value}`)
-                    }} >
-                        <option selected disabled >Select a location </option>
-                        {locArr.map((elem,i)=><React.Fragment key={i}>
-                        <option value={elem} > {elem} </option>
-                    </React.Fragment> )}
-                    </select>
-
-                    {autofillOpts && <>
-                    <div className={styles.autofillGrid}> 
-                    <label className={styles.inputLabel}> Pick a description to add to day </label> <br/>
-                        {autofillOpts.map((elem,i)=><React.Fragment key={i}>
-                            <div className={styles.eachAutoFill} >
-                                <div style={{width: "25%"}}> 
-                                    {elem.title} 
-                                    <br/>
-                                    <div className={styles.addFromRecordBTN} onClick={()=>{
-                                        setTravelDay({
-                                            ...aTravelDay,
-                                            "dayTitle": elem.title,
-                                            "dayDescription": elem.description
-                                        })
-                                        setAutoFillTrig(false)
-                                        setLocSelection(false)
-                                    }}> 
-                                        + add to day
-                                    </div>
-                                </div>
-                                <div style={{width: "75%", textTransform:"capitalize" }}> 
-                                    {elem.description} 
+            {theGeneralLocat ? <>
+                <label htmlFor="LocationDropdown" className={styles.inputLabel}>
+                    Select General Location
+                </label>
+                <select id="LocationDropdown" onChange={(e)=>{
+                    setLocSelection(`${e.target.value}`)
+                }} >
+                    <option selected disabled >Select a location </option>
+                    {locArr.map((elem,i)=><React.Fragment key={i}>
+                    <option value={elem} > {elem} </option>
+                </React.Fragment> )}
+                </select>
+                {autofillOpts && <>
+                <div className={styles.autofillGrid}> 
+                <label className={styles.inputLabel}> Pick a description to add to day </label> <br/>
+                    {autofillOpts.map((elem,i)=><React.Fragment key={i}>
+                        <div className={styles.eachAutoFill} >
+                            <div style={{width: "25%"}}> 
+                                {elem.title} 
+                                <br/>
+                                <div className={styles.addFromRecordBTN} onClick={()=>{
+                                    setTravelDay({
+                                        ...aTravelDay,
+                                        "dayTitle": elem.title,
+                                        "dayDescription": elem.description
+                                    })
+                                    setAutoFillTrig(false)
+                                    setLocSelection(false)
+                                }}> 
+                                    + add to day
                                 </div>
                             </div>
-                        </React.Fragment> )}
-                    </div>
-                    </> }
-                </>:<>
-                    <CircularProgress />
+                            <div style={{width: "75%", textTransform:"capitalize" }}> 
+                                {elem.description} 
+                            </div>
+                        </div>
+                    </React.Fragment> )}
+                </div>
                 </> }
+            </>:<>
+                <CircularProgress />
+            </> }
             </div>
         </>)
     }
@@ -748,17 +747,16 @@ export function EditDayByDay(props){
             <span onClick={()=>setDayIndex(i)}> D{i+1} </span>
     </React.Fragment>)
 
-
     let deleteDayBTNS = editingTour.dayByDay.map((elem, i)=><React.Fragment key={i}>
-            <span onClick={()=>{
-                let tempDayArr =[...editingTour.dayByDay]
-                tempDayArr.splice(i, 1)
-                props.setEditTemplate({
-                    ...props.editTemplate,
-                    "editKey": "dayByDay",
-                    "editValue": tempDayArr
-                })
-            }}> D{i+1}</span>
+        <span onClick={()=>{
+            let tempDayArr =[...editingTour.dayByDay]
+            tempDayArr.splice(i, 1)
+            props.setEditTemplate({
+                ...props.editTemplate,
+                "editKey": "dayByDay",
+                "editValue": tempDayArr
+            })
+        }}> D{i+1}</span>
     </React.Fragment> )
 
     return(<>
@@ -788,7 +786,19 @@ export function EditDayByDay(props){
                 }}> <AddPhotoAlternateIcon/> &nbsp; Add Image </div>
                 {anInputDisplayer("Day Title", "dayTitle", "text", true, editingTour.dayByDay[dayIndex].dayTitle, aTravelDay, setTravelDay )}
 
-                {aTextArea("Day detail", "dayDescription", true, editingTour.dayByDay[dayIndex].dayDescription, aTravelDay, setTravelDay)}
+                {editingTour.richText? <> 
+                    <TextEditor
+                        tempObj={aTravelDay}
+                        setTempObj={setTravelDay}
+                        inputIndex={"dayDescription"}
+                        inputLabel={"Day Detail"}
+                        prevState={editingTour.dayByDay[dayIndex].dayDescription}
+                    />
+                </>:<> 
+                    {aTextArea("Day detail", "dayDescription", true, editingTour.dayByDay[dayIndex].dayDescription, aTravelDay, setTravelDay)}
+                </>}
+
+
 
                 {inputToList("add to day", "dayInclusions", aTravelDay, setTravelDay, aTravelDay.dayInclusions, incluPlaceholder, setPlaceholder)}
 
@@ -914,6 +924,8 @@ export function EditPrices(props){
         }
     },[])
 
+
+    // Concat and splicer function with bugz
     const eachPriceDispEdit=(priceArr)=>{
         if(priceArr?.length>0){return(<>
             <div className={styles.spaceBetRow}> 

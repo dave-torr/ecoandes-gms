@@ -187,7 +187,11 @@ export default function OperationsDashboard(){
     const [docsSwitch, setDocSwitch]=useState(false)
     const [dayIndex, setDayIndex]=useState()
     const [temporaryRoomObj, setTempRoomObj]=useState({})
-    const [loadingTrigger, setLoadingTrig]=useState(true)
+
+
+    const [loadingTrigger, setLoadingTrig]=useState(false)
+
+
     const [addDepartureNote, setAddDepartureNote]=useState(false)
     const [documentGenerator, setDocumentGenera]=useState(false)
     const [addOperationalNote, setAddOPNote]=useState(false)
@@ -475,6 +479,8 @@ export default function OperationsDashboard(){
     const logoDisplayer=(theItin, dispSwitch)=>{
         if(dispSwitch==="text"){
             switch (theItin.LTCLogo) {
+                case "ltc":
+                    return(<><h3>Latin Travel Collection</h3></>);
                 case "galapagosElements":
                     return(<><h3>Galapagos Elements</h3></>);
                 case "ecoAndes":
@@ -512,6 +518,10 @@ export default function OperationsDashboard(){
     }
     const logoSwitcher=()=>{
         const logoSwitcherArr=[
+            {
+                "radioKey": "LTC",
+                "radioVal": "ltc"
+            },
             {
                 "radioKey": "EcoAndes Travel",
                 "radioVal": "ecoAndes"
@@ -668,7 +678,6 @@ export default function OperationsDashboard(){
                     "assignment": session.user.name
                     }
                 }
-
                 const res = await fetch("/api/gms/departures", {
                     method: "POST",
                     body: JSON.stringify(reqData)
@@ -677,6 +686,8 @@ export default function OperationsDashboard(){
                 if(res.status===200){
                     window.alert("Departure Created! Add aditional information below, and do not forget to save your work!")
                     setSavedoc(true)
+
+                    // add to departures array immediatly, compare with bd fetched deps after. 
                 }
 
             }}>
@@ -749,7 +760,7 @@ export default function OperationsDashboard(){
             </div>
             <div className={styles.spaceBetRow}>
                 <div style={{width:"49%"}}>
-                    {anInputDisplayer("Tour Code*", "tourCode", "text", true, undefined, theDep, setTheDeparture, undefined, undefined, "Ex: USA AZ 01 22" )}
+                    {anInputDisplayer("Tour Code", "tourCode", "text", true, undefined, theDep, setTheDeparture, undefined, undefined, "Ex: USA AZ 01 22" )}
                 </div>
                 <div style={{width:"49%"}}>
                     {anInputDisplayer("reference", "tripRef", "text", false, undefined, theDep, setTheDeparture, undefined, undefined, "Ex: Lincoln x 5" )}
@@ -765,7 +776,7 @@ export default function OperationsDashboard(){
             </div>
             <div className={styles.spaceBetRow}>
                 <div style={{width:"49%"}}>
-                    {anInputDisplayer("Guest Maximum*", "maxPaxNumb", "number", true, undefined, theDep, setTheDeparture, 0, undefined )}
+                    {anInputDisplayer("Guest Maximum", "maxPaxNumb", "number", true, undefined, theDep, setTheDeparture, 0, undefined )}
                 </div>
                 <div style={{width:"49%"}}>
                 <input type="submit" className={styles.submitDepBTN}  />
@@ -1382,32 +1393,31 @@ export default function OperationsDashboard(){
 
         const eachGuestData=(guestData)=>{
             if(guestData.guestNotes.length>0){
-                if(guestData.guestName){
+                if(guestData.guestFName || guestData.guestLName  ){
+                    let guestName = `${guestData.guestFName} ${guestData.guestLName} `
                     eachNote.push({
-                        "name":guestData.guestName,
+                        "name":guestName,
                         "notes":guestData.guestNotes
                     })
                     
                 } else {
-                    let guestName = `${guestData.guestFName} ${guestData.guestLName} `
                     eachNote.push({
-                        "name":guestName,
+                        "name":guestData.guestFName,
                         "notes":guestData.guestNotes
                     })
                 }
             }
 
             if(guestData.bootSize){
-                if(guestData.guestName){
-                    bootArr.push({
-                        "name":guestData.guestName,
-                        "bootSize":guestData.bootSize
-                    })
-
-                } else {
+                if(guestData.guestFName || guestData.guestLName ){
                     let guestName = `${guestData.guestFName} ${guestData.guestLName} `
                     bootArr.push({
                         "name":guestName,
+                        "bootSize":guestData.bootSize
+                    })
+                } else {
+                    bootArr.push({
+                        "name":guestData.guestName,
                         "bootSize":guestData.bootSize
                     })
                 }
@@ -1702,14 +1712,14 @@ export default function OperationsDashboard(){
                 </h2>
                 <div className={styles.roomingListGrid}>
                 <div className={styles.roomingListKEYS}>
-                    <div style={{width:"180px", textAlign:"start" }}>&nbsp; 
+                    <div style={{width:"180px", textAlign:"start" }}>&nbsp; &nbsp;
                         {theLang==="english"? <>
                         GUEST NAME 
                     </>: theLang==="espanol" && <>
                         Nombre huesped
                     </>}
                     </div>
-                    <div style={{borderLeft:"solid 1px black" }}>&nbsp; 
+                    <div style={{borderLeft:"solid 1px black" }}>&nbsp; &nbsp;
                         {theLang==="english"? <>
                         SPECIAL INDICATIONS 
                     </>: theLang==="espanol" && <>
@@ -1733,14 +1743,14 @@ export default function OperationsDashboard(){
                 </h2>
                 <div className={styles.roomingListGrid}>
                 <div className={styles.roomingListKEYS}>
-                    <div style={{width:"180px", textAlign:"start" }}>&nbsp; 
+                    <div style={{width:"180px", textAlign:"start" }}>&nbsp; &nbsp;
                     {theLang==="english"? <>
                         GUEST NAME 
                     </>: theLang==="espanol" && <>
                         Nombre huesped
                     </>}
                     </div>
-                    <div style={{borderLeft:"solid 1px black" }}>&nbsp; 
+                    <div style={{borderLeft:"solid 1px black" }}>&nbsp; &nbsp;
                     {theLang==="english"? <>
                         Boot Size 
                     </>: theLang==="espanol" && <>

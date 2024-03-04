@@ -42,7 +42,7 @@ import PhoneIcon from '@mui/icons-material/Phone';
 
 
 import LTCTypeface from "./../public/assets/logos/LTCTypeface.png"
-import LTCLogoBLK from "./../public/assets/logos/ecoAndesBLK.png"
+import EcoAndesLogoBLK from "./../public/assets/logos/ecoAndesBLK.png"
 import GalapagosElementsLogo from "./../public/assets/logos/galapagosElementsLogo.png"
 import YacumaLogo from "./../public/assets/logos/yacuma.png"
 import UnigpsLogo from "./../public/assets/logos/unigalapagos.png"
@@ -51,7 +51,7 @@ import Dialog from '@mui/material/Dialog';
 
 import LTCGenData from "./../data/dataAndTemplates.json"
 import { nanoid } from "nanoid"
-import { RichTextDisp } from "./textEditor"
+import { RichTextDisp, TextEditor } from "./textEditor"
 // ///////////////////
     // v. ++: 
     // Save Local Likes!!!
@@ -333,8 +333,6 @@ export function TourDisplayer(props){
             setItinPrices(aTour?.price)
         }
     },[aTour])
-
-    console.log(aTour)
 
     const accordionDisplayer=(accordTitle, accordContent, openContr, numerator)=>{
         return(<>
@@ -688,7 +686,10 @@ export function TourDisplayer(props){
         let partnerLogo;
         if(aTour.LTCLogo==="ecoAndes"){
             partnerLogo=<div className={styles.partnerLogoCont}>
-                <Image height={45} width={180} src={LTCLogoBLK} alt="EcoAndes Travel Logo" /></div>
+                <Image height={45} width={180} src={EcoAndesLogoBLK} alt="EcoAndes Travel Logo" /></div>
+        } else if(aTour.LTCLogo==="ltc"){
+            partnerLogo=<div style={{display: "flex", justifyContent:"flex-end", paddingTop: "27px"}} >
+                <Image height={50} width={100} src={LTCTypeface} alt="LTC Logo" /></div>
         } else if(aTour.LTCLogo==="galapagosElements"){
             partnerLogo=<div style={{display: "flex", justifyContent:"center", paddingTop: "27px"}} >
                 <Image height={80} width={210} src={GalapagosElementsLogo} alt="Galapagos Elements Logo" /></div>
@@ -703,7 +704,6 @@ export function TourDisplayer(props){
         }        
 
         let countryList = aTour.countryList.map((elem, i)=><React.Fragment key={i}> { i >0 &&<> / </>}{elem} </React.Fragment>)
-
         return(<>
             {aTour.LTCLogo?<>
                 <div className={styles.partnerLogo}>
@@ -1381,6 +1381,10 @@ export function ItinEditor(props){
         let theOpsDisplayed
         const logoSwitcherArr=[
             {
+                "radioKey": "LTC",
+                "radioVal": "ltc"
+            },
+            {
                 "radioKey": "EcoAndes Travel",
                 "radioVal": "ecoAndes"
             },
@@ -1432,7 +1436,19 @@ export function ItinEditor(props){
             case "tourOverview":
                 return(<> 
                 {/* Overview  */}
-                {anInputDisplayer("Overview", "editValue", "text", false, "Trip Overview", editObjTemplate, setEditTemplate, 0)}
+                {props.aTour.richText? <>
+                    <div style={{width:"90vw"}}>
+                    <TextEditor
+                        tempObj={editObjTemplate}
+                        setTempObj={setEditTemplate}
+                        inputIndex={"editValue"}
+                        inputLabel="Tour Overview"
+                        prevState={props.aTour.tourOverview}
+                    />
+                    </div>
+                </>:<>
+                    {anInputDisplayer("Overview", "editValue", "text", false, props.aTour.tourOverview, editObjTemplate, setEditTemplate, 0)}
+                </>}
                 </>)
             case "tourType":
                 return(<> 
@@ -1455,7 +1471,7 @@ export function ItinEditor(props){
             case "tripLang":
                 return(<> 
                 {/* Trip Language */}
-                {anInputDisplayer("Trip Language", "editValue", "text", false, "Trip Language", editObjTemplate, setEditTemplate, 0)}
+                {aDropdownPicker(LTCGenData.tourLanguages, "Tour Language", "editValue", editObjTemplate, setEditTemplate)}
                 </>)
             case "tourCode":
                 return(<> 
@@ -1533,7 +1549,7 @@ export function ItinEditor(props){
                     {inputDisplaySwitcher(editObjTemplate.editKey)}
                 </> : <>
                     {theOpsDisplayed}
-                </> }
+                </>}
             </div>
         </>)
     }

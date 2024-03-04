@@ -1,7 +1,9 @@
 {
     "countryList":["argentina", "bolivia", "chile", "colombia", "costa rica", "ecuador" , "peru" ],
-    "regionList":["galapagos", "patagonia", "amazon", "cusco", "uyuni", "andes", "coast" ], 
+    "regionList":["galapagos", "patagonia", "amazon", "cusco", "uyuni", "andes", "easter island" ],
+    "tourCategories": ["active", "family", "cruise", "expedition", "private", "voyage"],
     "phoneNumberTypes": ["office", "mobile" ],
+    "tourLanguages": ["english", "español", "deusch", "francais", "portuges"],
     "aPartnerType": ["board member", "operations", "sales"],
     "ecuadorCities": [
         "Ambato",
