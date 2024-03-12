@@ -32,56 +32,13 @@ import { inputToList } from "../../components/forms";
 
 export default function TourExplorerPage(props){
 
-// sesh
-const { data: session } = useSession()
+    // sesh
+    const { data: session } = useSession()
 
-    // for itin filter
-    let tourTypes = ["all types", "historic", "nature", "360° itineraries", "climbing", "trekking" ]
-
-    let theDestinations= LTCGenData.countryList
-
-    // Filters
-    const [userUIFilters, setUserFilters]=useState(theDestinations)
-    const [selectedFilter, setFilter]=useState("all countries")
-    const [theFilterLabel, setFilterLabel]=useState("destinations")
-    const [filteredItineraries,setFilteredItins]=useState(LTCItineraries)
-    useEffect(()=>{
-        if(theFilterLabel==="destinations"){
-            if(selectedFilter==="all countries"){
-                setFilteredItins(LTCItineraries)
-            } else {
-                let tempArr =LTCItineraries.filter(elem=>elem.countryList[0]===selectedFilter)
-                setFilteredItins(tempArr)
-            }
-        }
-    },[selectedFilter])
-
-    // sorting
-    const [sortContr, setSortContr]=useState("duration")
-    const [sortOrder, setSortOrder]=useState("ascending")
-    useEffect(()=>{
-        // add conditional if selectedDestination => sort by all tourData, else by filtered tour data.
-        sortOrder==="descending"?
-            setFilteredItins([...filteredItineraries].sort((a,b)=> a[sortContr] - b[sortContr])) 
-        :
-            setFilteredItins([...filteredItineraries].sort(((a,b)=> b[sortContr] - a[sortContr])))
-    },[sortContr])
-    useEffect(()=>{
-        sortOrder==="descending"?
-            setFilteredItins([...filteredItineraries].sort((a,b)=> a[sortContr] - b[sortContr])) 
-        :
-            setFilteredItins([...filteredItineraries].sort(((a,b)=> b[sortContr] - a[sortContr])))
-    },[sortOrder])
-
+    // Tour Explorer Toolkit
     const [itinIndex, setItinIndex]=useState()
     const [pickedItin, setPickedItin] =useState()
     const [itinDispTrigger, setItinDispTrigger]=useState(false)
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
-    const [itineraryFetcherTrig, setFetchTrig]= useState(false)
-    const [fetchedItinArr, setFetchedItArr]=useState()
-
-    // itin user UI
     const [copyItinTrig, setCopyTrig]=useState(false)
     const [deleteItinTrig, setDelItinTrig]=useState(false)
     const [editItinTrig, setEditItinTrig]=useState(false)
@@ -89,62 +46,84 @@ const { data: session } = useSession()
     const [noteDispTrig, setNoteTrigger]=useState(false)
     const [incluPlaceholder, setPlaceholder]=useState("")
 
+    // GMS fetchers
+    const [itineraryFetcherTrig, setFetchTrig]= useState(false)
+    const [fetchedItinArr, setFetchedItArr]=useState([])
+
+    // Sorting
+    const [filteredItineraries, setFilteredItins]=useState([])
+    const [sortContr, setSortContr]=useState("calendar")
+    const [sortOrder, setSortOrder]=useState("descending")
+    
+    // Filter Toolkit
+    // const [theFilterLabel, setFilterLabel]=useState("destinations")
+    // const [selectedFilter, setFilter]=useState("all countries")
+    // useEffect(()=>{
+    //     if(theFilterLabel==="destinations"){
+    //         if(selectedFilter==="all countries"){
+    //             setFilteredItins(LTCItineraries)
+    //         } else {
+    //             let tempArr =LTCItineraries.filter(elem=>elem.countryList[0]===selectedFilter)
+    //             setFilteredItins(tempArr)
+    //         }
+    //     }
+    // },[selectedFilter])
+
+    useEffect(()=>{
+        if(fetchedItinArr.length>0){
+            setFilteredItins([...fetchedItinArr].sort((a,b)=> a.dateCreated - b.dateCreated).reverse())
+        }
+    },[fetchedItinArr])
+    
+    useEffect(()=>{
+        if(sortContr==="calendar"){
+            
+        sortOrder==="descending"?
+            setFilteredItins([...fetchedItinArr].sort((a,b)=> a.dateCreated - b.dateCreated).reverse())
+            :
+            setFilteredItins([...fetchedItinArr].sort((a,b)=> a.dateCreated - b.dateCreated))
+        } else {
+        sortOrder==="descending"?
+            setFilteredItins([...fetchedItinArr].sort((a,b)=> a[sortContr] - b[sortContr])) 
+            :
+            setFilteredItins([...fetchedItinArr].sort(((a,b)=> b[sortContr] - a[sortContr])))
+        }
+    },[sortContr])
+
+    useEffect(()=>{
+
+        sortOrder==="descending"?
+            setFilteredItins([...fetchedItinArr].sort((a,b)=> a[sortContr] - b[sortContr])) 
+        :
+            setFilteredItins([...fetchedItinArr].sort(((a,b)=> b[sortContr] - a[sortContr])))
+
+    },[sortOrder])
+
     useEffect(()=>{
         window.scrollTo({top: 0})
     },[itinDispTrigger])
 
-    const LTCTourExplorar=(theItins, filterArr, filterLabel, localOrFetched, priceSortTrigger, cardType, setItin, setItinDispTrigger)=>{
+    const LTCTourExplorar=(theItins, sortTrigger, itinSource, priceSortTrigger, cardType, setItin, setItinDispTrigger)=>{
 
         let eachTourCard = theItins.map((elem, i)=><React.Fragment key={i}>
             <div onClick={()=>{setItinIndex(i)}}>
                 <TextTourCard aTour={elem} type={cardType} setItin={setItin} setDialogTrigger={setItinDispTrigger} /></div>
         </React.Fragment> )
 
-        let eachSelectOpt
-        if(filterArr!=false){
-            eachSelectOpt=filterArr.map((elem, i)=><React.Fragment key={i}>
-                <option value={elem} > {elem} </option>
-            </React.Fragment>)
-        }
-
         return<>
             <div className={styles.itinCardDisp}>
-                <h2> {localOrFetched} Itineraries</h2>
+                <h2> {itinSource} Itineraries</h2>
                 Tours: {theItins.length}
-
-                {priceSortTrigger&&<>
-                    <div className={styles.filterUICont}> 
-                        <label htmlFor="filterDropdownUI">{filterLabel}: &nbsp;</label>
-                        <select id="filterDropdownUI" onChange={(e)=>{
-                            setFilter(e.target.value)
-                        }} >
-                            {theFilterLabel==="destinations"&& <>
-                            <option value="all countries">All Countries </option></>}
-                            {eachSelectOpt}
-                        </select>
-                    </div>
-                </>}
-
-                {theItins.length>0 ? <>
-
                 {/* update sorting function to filter out each user, sort by duration. */}
-                    {filterArr!=false&&<> 
+                {sortTrigger&&<> 
                     <SortingItinUI 
                         sortContr={sortContr} 
                         setSortContr={setSortContr}
                         sortOrder={sortOrder}
                         setSortOrder={setSortOrder}
-                        priceSortTrigger={priceSortTrigger}
-                    /></>}
-
-                <div className={styles.tourCardDisp } > {eachTourCard} </div>
-                </>:<>
-                    <div className={styles.nonToursPlaceholder}> 
-                        You haven't created any itineraries yet! <br/>
-                        Start Here! <br/><br/>
-                        <Link href="/gms/tourCreator" >Tour Creator</Link>
-                    </div>
+                    />
                 </>}
+                <div className={styles.tourCardDisp } > {eachTourCard} </div>
             </div>
         </>
     }
@@ -152,9 +131,7 @@ const { data: session } = useSession()
     const selectedItinDips=()=>{
         return(<>
             {pickedItin&&<>
-
             {/* each itin UI BTNS */}
-
             <div className={styles.iconDialogCont}>
                 <div className={styles.tourDialogBTN} style={{left:"3px"}} onClick={()=>setItinDispTrigger(false)}> 
                     X </div>
@@ -205,12 +182,10 @@ const { data: session } = useSession()
             </>}
         </>)
     }
-    const allItinsDisp=()=>{
+    const GMSItinFetcher=()=>{
         return(<>
-            {fetchedItinArr?<>
-
-            {/* filter by creator, duration, sort and more! */}
-                {LTCTourExplorar(fetchedItinArr, false, theFilterLabel, "GMS ", false, 2, setPickedItin, setItinDispTrigger )}
+            {filteredItineraries.length>0?<>
+                {LTCTourExplorar(filteredItineraries, true, "GMS ", true, 2, setPickedItin, setItinDispTrigger )}
             </>: <>
                 <div className={styles.userBTNCont}>
                     <div className={styles.aGenBTN} 
@@ -254,8 +229,6 @@ const { data: session } = useSession()
         </Dialog>
         </>)
     }
-
-
 
     return(<>
         {session?<> 
@@ -307,10 +280,9 @@ const { data: session } = useSession()
                 <h2>Latin Travel Collection</h2>
                 <h1>Tour Explorer</h1>
             
-
-                {allItinsDisp()}
-                {LTCTourExplorar(filteredItineraries, userUIFilters, theFilterLabel, "LTC Published", true, 1 )}
-                {LTCTourExplorar(EcoAndesFD, false, false, "EcoAndes Fixed Departure", false, 2, setPickedItin, setItinDispTrigger )}
+                {GMSItinFetcher()}
+                {LTCTourExplorar(LTCItineraries, false, "LTC Published", false, 1 )}
+                {LTCTourExplorar(EcoAndesFD, false, "EcoAndes Fixed Departure", false, 2, setPickedItin, setItinDispTrigger)}
 
             </>}
             </div>

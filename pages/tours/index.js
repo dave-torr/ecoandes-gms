@@ -11,6 +11,9 @@ import landingImg4 from "../../public/assets/images/bookingLanding4.png"
 
 import LTCTypeface from "./../../public/assets/logos/LTCTypeface.png"
 
+import sunIcon from "./../../public/assets/icons/sunBW.png"
+import orangeSunIcon from "../../public/assets/icons/sunPopOrange.png"
+
 import {LTCNaviBar} from "./../../components/navis"
 import {ATourCard, SquaredTourCard, RectangularTourCard, SortingItinUI } from "./../../components/tours"
 
@@ -350,6 +353,16 @@ export default function TourPage(){
         randomPic= homeImgArr[Math.floor(Math.random() * homeImgArr.length )]
         return(<>
         <div className={styles.tourPageIMGSection}>
+            
+            {/* Rotating Logo */}
+            <div className={styles.rotatingLogo}> 
+                <Image
+                    src={orangeSunIcon}
+                    width={60}
+                    height={60}
+                    alt="Sun Icon Home"
+                />
+            </div>
             <div className={styles.introTextIcon}> Adventure <br/>Awaits</div>
             <div className={styles.introArrowIcon}> <ArrowDownwardIcon fontSize="large"/> </div>
             <div className={styles.tourPageImageCont}>

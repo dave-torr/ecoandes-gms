@@ -29,6 +29,322 @@ import { aHotelDisplayer } from '../../components/operations/providers';
 
 let toDate = new Date()
 
+let sampleHotelSubmition=
+[
+    {
+        "submitionDate": "2024-03-10T00:25:39.889Z",
+        "accomodationCategory": 3,
+        "createdBy": {
+            "name": "David Torres",
+            "email": "david@latintravelcollection.com",
+            "phono": "986222700"
+        },
+        "contactArr": [
+            {
+                "firstName": "Mijito",
+                "lastName": "Frito",
+                "role": "Management",
+                "email": "david.torres@ecoandestravel.com",
+                "phono": "974967900",
+                "wapp": "0987976"
+            }
+        ],
+        "roomPriceArr": [
+            {
+                "breakfastInc": true,
+                "roomDescription": "Description",
+                "roomAmount": 5,
+                "rackRates": "150",
+                "ltcRates": "355"
+            }
+        ],
+        "hotelName": "Sampler Mamplexx",
+        "hotelAddress": "Cucu",
+        "hotelCity": "Durán",
+        "hotelCategory": "Boutique Hotel",
+        "hotelProvince": "El Oro",
+        "locNotes": "By Car and plane",
+        "hotelWebsite": "Cucu.mu",
+        "priceConditions": [
+            "Specialized in ornithology "
+        ],
+        "gratuitiesAndCond": [
+            "Transportation Services"
+        ],
+        "observations": [
+            "Notezzz"
+        ],
+        "creditConditions": [
+            "Winter Prices valid from May - Aug"
+        ],
+        "serviceArr": [
+            {
+                "ivaInc": true,
+                "serviceChargeInc": true,
+                "perPerson": true,
+                "priceKey": "additionalServices",
+                "serviceName": "Wired",
+                "serviceDescription": "HEadphone JAck",
+                "paxMin": 2,
+                "paxMax": 14,
+                "price": 150
+            }
+        ],
+        "status": 1
+    },
+    {
+        "submitionDate": "2024-03-10T12:35:06.193Z",
+        "createdBy": {
+            "name": "David Torres",
+            "email": "david@latintravelcollection.com",
+            "phono": "986222700"
+        },
+        "contactArr": [
+            {
+                "firstName": "Mijito",
+                "lastName": "Frito",
+                "role": "Management",
+                "email": "david.torres@ecoandestravel.com",
+                "phono": "25871986523",
+                "wapp": "2896421+8"
+            }
+        ],
+        "roomPriceArr": [
+            {
+                "breakfastInc": true,
+                "roomDescription": "Description",
+                "roomAmount": 10,
+                "rackRates": "120",
+                "ltcRates": "100",
+                "additionalBed": "54.97",
+                "includedInPrice": [
+                    "Notezzz"
+                ]
+            }
+        ],
+        "hotelName": "Tester Two",
+        "hotelAddress": "Cucu",
+        "hotelCountry": "chile",
+        "hotelCategory": "Boutique Hotel",
+        "accomodationCategory": 5,
+        "hotelWebsite": "Cucu.mu",
+        "hotelCity": "LA Paz",
+        "hotelProvince": "Pichincha",
+        "locNotes": "Miauu",
+        "priceConditions": [
+            "Paymnet by card"
+        ],
+        "gratuitiesAndCond": [
+            "free room after 12 booked rooms"
+        ],
+        "observations": [
+            "Specialized in ornithology "
+        ],
+        "creditConditions": [
+            "50% cancellaion fee if cancelled up to 3 days before reservation"
+        ],
+        "serviceArr": [
+            {
+                "ivaInc": true,
+                "serviceChargeInc": true,
+                "perPerson": true,
+                "priceKey": "additionalServices",
+                "serviceName": "Sample DinnerDinner",
+                "serviceDescription": "4 courses, and wine/beer",
+                "paxMin": 2,
+                "price": 25
+            }
+        ],
+        "status": 1
+    }
+]
+
+////////////////////////////
+// FFE
+export const anAdditServiceDis=(theService, indx, editingTrig, theHotelObj, setTheHotelObj)=>{
+    if(theService.serviceName){
+        return(<>
+            <div className={styles.serviceDetDisp}>
+                {editingTrig&&<>
+                    <div className={styles.rmvExpenseBTN} onClick={()=>{
+                        let tempSplicer = theHotelObj.serviceArr.splice(indx, 1)
+                        setTheHotelObj({...theHotelObj })   
+                    }}> 
+                        <CancelPresentationIcon /> 
+                    </div>
+                </>}
+                <div className={styles.spaceBetRow}>
+                    <div className={styles.serviceColumn} >
+                        <strong> {theService.serviceName} </strong>
+                        <i> {theService.serviceDescription} </i>
+                        <br/>
+                        {theService.paxMin&&<>
+                            <div className={styles.priceDetIncl}>
+                                {theService.paxMin} &nbsp; - &nbsp; Guest Minimum
+                            </div>
+                        </>}
+                        {theService.paxMax&&<>
+                            <div className={styles.priceDetIncl}>
+                                {theService.paxMax} &nbsp; - &nbsp; Guest Maximum
+                            </div>
+                        </>}
+                    </div>
+                    <div className={styles.aColumn}>
+                        <div className={styles.priceDisp} > USD $ {theService.price}  </div>
+                        {theService.perPerson&&<>
+                            <div className={styles.priceDetIncl}>
+                            <PersonAddIcon fontSize="small" /> &nbsp; - &nbsp; price per person
+                            </div>
+                        </> }
+                        {theService.ivaInc&&<> 
+                            <div className={styles.priceDetIncl}>
+                                <LocalOfferIcon fontSize="small" /> &nbsp; - &nbsp; 12% Iva Included
+                            </div>
+                        </>}
+                        {theService.serviceChargeInc&&<> 
+                            <div className={styles.priceDetIncl}>
+                                <RoomServiceIcon fontSize="small" />&nbsp; - &nbsp; 10% service included
+                            </div>
+                        </>}
+                    </div>
+                </div>
+            </div>
+        </>)
+    }
+}
+
+export const aContactDisplayer=(aContact, indx, editingTrig, theHotelObj, setTheHotelObj)=>{
+    return(<>
+        <div className={styles.aContactDisp}>
+            {editingTrig&& <>
+                <div className={styles.removeContactBTN} onClick={()=>{
+                    let tempSplicer = theHotelObj.contactArr.splice(indx, 1)
+                    setTheHotelObj({...theHotelObj })
+                }} ><CancelPresentationIcon/></div>
+            </>}
+            <div style={{display:"flex", alignItems:"center"}}>
+                <h4>{aContact.firstName&& <>{aContact.firstName}</>}</h4>&nbsp;
+                <h4>{aContact.lastName&& <>{aContact.lastName}</>}</h4>
+                {aContact.role&& <>&nbsp; &nbsp; &nbsp; &nbsp;{aContact.role}</>}
+            </div>
+            {editingTrig? <>
+                {aContact.email&& <>
+                    <div className={styles.spaceBetRow}>
+                        {aContact.email}
+                        <MailOutlineIcon/> 
+                    </div>
+                </>}
+                {aContact.phono&& <>
+                    <div className={styles.spaceBetRow}>
+                        {aContact.phono}
+                        <PhoneForwardedIcon/>
+                    </div>
+                </>}
+                {aContact.wapp&& <>
+                    <div className={styles.spaceBetRow}>
+                        {aContact.wapp}
+                        <WhatsAppIcon/>
+                    </div>
+                </>}
+            </>:<>
+                {aContact.email&& <>
+                    <div className={styles.spaceBetRow}>
+                        {aContact.email}
+                        <a target='_blank' href={`mailto:${aContact.email}`}>
+                        <MailOutlineIcon /></a>
+                    </div>
+                </>}
+                {aContact.phono&& <>
+                    <div className={styles.spaceBetRow}>
+                        {aContact.phono}
+                        <a target='_blank' href={`tel:+593${aContact.phono}`}>
+                        <PhoneForwardedIcon/></a>
+                    </div>
+                </>}
+                {aContact.wapp&& <>
+                    <div className={styles.spaceBetRow}>
+                        {aContact.wapp}
+                        <a target='_blank' href={`https://wa.me/593${aContact.phono}`}>
+                        <WhatsAppIcon/></a>
+                    </div>
+                </>}
+            </>}
+        </div>
+    </>)
+}
+
+export const aRoomRateDisp=(aRoomData, indx, editingTrig, theHotelObj, setTheHotelObj)=>{
+    return(<>
+        <div className={styles.spaceBetRow}>
+        <span>
+            {aRoomData.roomDescription &&<>
+                <strong> 
+                    {aRoomData.roomDescription} &nbsp; &nbsp;
+                </strong>
+            </>}
+            {aRoomData.roomAlias &&<>
+                <i>{aRoomData.roomAlias}</i>
+            </>}
+            {(!aRoomData.roomAlias && !aRoomData.roomDescription ) && <>
+                <strong> ROOM CATEGORY {indx+1} </strong>
+            </>}
+        </span>
+        {aRoomData.roomAmount && <>
+            x &nbsp;{aRoomData.roomAmount} 
+        </>}
+        </div>
+        <div className={styles.hotelRoomDisp}>
+            <div style={{ display:"flex", flexDirection:"column", width:"50%" }}> 
+                <strong>Breakfast 
+                {aRoomData.breakfastInc &&<> Included </>}
+                {aRoomData.breakfastPrice &&<> ${aRoomData.breakfastPrice}</>}
+                </strong>
+                {aRoomData.serviceChargeInc &&<>
+                    <div style={{color:"green"}}> 10% Service Included </div>
+                </> }
+                {aRoomData.ivaInc &&<>
+                    <div style={{color:"green"}}> 12% IVA Tax Included </div>
+                </> }
+                {aRoomData.includedInPrice?.length>0 &&<>
+                <strong>Included:</strong>
+                    {aRoomData.includedInPrice.map((elem,i)=><React.Fragment key={i}>
+                        {elem}
+                    </React.Fragment> )}
+                </>}
+            </div>
+            <div style={{ display:"flex", flexDirection:"column", width:"18%" }}>
+                {aRoomData.rackRates &&<>
+                    <strong> RACK $</strong>
+                    <span style={{ textTransform:"uppercase"}}>
+                       ${aRoomData.rackRates}</span>
+                </>} 
+            </div>
+            <div style={{ display:"flex", flexDirection:"column", width:"18%" }}>
+                {aRoomData.ltcRates &&<>
+                    <strong> LTC $</strong>
+                    <span style={{ textTransform:"uppercase"}}>
+                       ${aRoomData.ltcRates}</span>
+                </>} 
+            </div>
+            <div style={{ display:"flex", flexDirection:"column", width:"18%" }}>
+                {aRoomData.additionalBed &&<>
+                    <strong> ADD. BED </strong>
+                    <span style={{ textTransform:"uppercase"}}>
+                       ${aRoomData.additionalBed}</span>
+                </>} 
+            </div>
+            {editingTrig&&<>
+                <div className={styles.rmvEntryBTN} onClick={()=>{
+                    let tempSplicer = theHotelObj.roomPriceArr.splice(indx, 1)
+                    setTheHotelObj({...theHotelObj })
+                }} ><CancelPresentationIcon/></div>
+            </>}
+        </div>
+    </>)
+}
+
+///////////////////////////
+
 function LibraryPage(){
     const { data: session } = useSession()
 // library page will list elements of DB that should be accesible for Operations, Sales, Finance, etc.
@@ -69,7 +385,8 @@ function LibraryPage(){
         "submitionDate": toDate,
         "createdBy":{},
         "contactArr": [],
-        "roomPriceArr":[]
+        "roomPriceArr":[],
+        "accommodationCAtegory":3
     }
     const aClientSchema = {
         "clientType": "fit",
@@ -83,7 +400,7 @@ function LibraryPage(){
         "notes":[],
     }
 
-    const [library, setLibrary] = useState([])
+    const [library, setLibrary] = useState(sampleHotelSubmition)
     const [libraryTab, setLibraryTab]=useState("main")
 
     const [clientSchema, setClientSchema] = useState(aClientSchema)
@@ -94,6 +411,7 @@ function LibraryPage(){
         "breakfastInc":true,
         "ivaInc": true,
         "serviceChargeInc": true,
+        "includedInPrice": [],
     })
     const[interestTempArr, setInterestTempArr]=useState(interestOptArr)
     const [addClientTrig, setAddClientTrig] = useState(false)
@@ -106,20 +424,20 @@ function LibraryPage(){
     const [inputPlaceholder5, setInputPlaceholder5] = useState("")
 
     const marks = [
+        // {
+        //     "value": 0,
+        //     "label": `1 Star`,
+        // },
+        // {
+        //     "value": 25,
+        //     "label": '2 Star',
+        // },
         {
             "value": 0,
-            "label": `1 Star`,
-        },
-        {
-            "value": 25,
-            "label": '2 Star',
-        },
-        {
-            "value": 50,
             "label": '3 Star',
         },
         {
-            "value": 75,
+            "value": 50,
             "label": '4 Star',
         },
         {
@@ -146,90 +464,15 @@ function LibraryPage(){
     function Categoryswitcher(categoryz){
         switch (categoryz){
             case 0:
-            return 1 
-            break;
-            case 25:
-            return 2 
-            break;
+            return 3;
             case 50:
-            return 3 
-            break;
-            case 75:
-            return 4
-            break;
+            return 4;
             case 100:
-            return 5 
-            break;
+            return 5;
         }
     }
-    const aContactDisplayer=(aContact, indx)=>{
-        return(<>
-            <div className={styles.spaceBetRow}>
-                <div className={styles.aContactRow}>
-                    <h4>{aContact.name&& <>{aContact.name}</>}</h4>
-                    {aContact.role&& <>&nbsp; &nbsp;{aContact.role}</>}
-                </div>
-                <div className={styles.aContactRow}>
-                    {aContact.email&& <>
-                        <span><a target='_blank' href={`mailto:${aContact.email}`}> <MailOutlineIcon/> </a></span></>}
-                    {aContact.phono&& <>
-                        <span><a target='_blank' href={`tel:+593${aContact.phono}`}> <PhoneForwardedIcon/></a></span></>}
-                    {aContact.wapp&& <>
-                        <span><a target='_blank' href={`https://wa.me/593${aContact.wapp}`}> 
-                        <WhatsAppIcon/></a></span></>}
-                </div>
-            <div className={styles.removeContactBTN} onClick={()=>{
-                let tempSplicer = hotelSchema.contactArr.splice(indx, 1)
-                setHotelSchema({...hotelSchema })
-            }} ><CancelPresentationIcon/></div>
-            </div>
-        </>)
-    }
-    const aRoomRateDisp=(aRoomData, indx)=>{
-        return(<>
-            <div className={styles.hotelRoomDisp}>
-                <div style={{ display:"flex", flexDirection:"column", width:"50%" }}> 
-                    {aRoomData.roomDescription &&<>
-                        <strong> ROOM TYPE </strong>
-                        {aRoomData.roomDescription}
-                    </>}
-                    {aRoomData.roomAlias &&<>
-                        <i>{aRoomData.roomAlias}</i>
-                    </>}
-                    <strong>Breakfast 
-                    {aRoomData.breakfastInc &&<> Included </>}
-                    {aRoomData.breakfastPrice &&<> ${aRoomData.breakfastPrice}</>}
-                    </strong>
 
-                </div>
-                <div style={{ display:"flex", flexDirection:"column", width:"18%" }}>
-                    {aRoomData.rackRates &&<>
-                        <strong> RACK $</strong>
-                        <span style={{ textTransform:"uppercase"}}>
-                           ${aRoomData.rackRates}</span>
-                    </>} 
-                </div>
-                <div style={{ display:"flex", flexDirection:"column", width:"18%" }}>
-                    {aRoomData.ltcRates &&<>
-                        <strong> LTC $</strong>
-                        <span style={{ textTransform:"uppercase"}}>
-                           ${aRoomData.ltcRates}</span>
-                    </>} 
-                </div>
-                <div style={{ display:"flex", flexDirection:"column", width:"18%" }}>
-                    {aRoomData.additionalBed &&<>
-                        <strong> ADD. BED </strong>
-                        <span style={{ textTransform:"uppercase"}}>
-                           ${aRoomData.additionalBed}</span>
-                    </>} 
-                </div>
-            <div className={styles.rmvEntryBTN} onClick={()=>{
-                let tempSplicer = hotelSchema.roomPriceArr.splice(indx, 1)
-                setHotelSchema({...hotelSchema })
-            }} ><CancelPresentationIcon/></div>
-            </div>
-        </>)
-    }
+
     const aNumInput=(InputLabel, inputId, numberType)=>{
         return(<>
         <div className={styles.aPriceInputcont}>
@@ -254,101 +497,57 @@ function LibraryPage(){
             </div>
         </>)
     }
-    const anAdditServiceDis=(theService, indx)=>{
-        if(theService.serviceName){
-            return(<>
-                <div className={styles.serviceDetDisp}>
 
-
-                    <div className={styles.rmvExpenseBTN}> 
-                        <CancelPresentationIcon /> 
-                    </div>
-
-
-                    <div className={styles.spaceBetRow}>
-                        <div className={styles.serviceColumn}>
-                            <strong> {theService.serviceName} </strong>
-                            <i> {theService.serviceDescription} </i>
-                            <br/>
-                            {theService.paxMin&&<>
-                                <div className={styles.priceDetIncl}>
-                                    {theService.paxMin} &nbsp; - &nbsp; Guest Minimum
-                                </div>
-                            </>}
-                            {theService.paxMax&&<>
-                                <div className={styles.priceDetIncl}>
-                                    {theService.paxMax} &nbsp; - &nbsp; Guest Maximum
-                                </div>
-                            </>}
-                        </div>
-                        <div className={styles.aColumn}>
-                            <div className={styles.priceDisp} > USD $ {theService.price}  </div>
-                            {theService.perPerson&&<>
-                                <div className={styles.priceDetIncl}>
-                                <PersonAddIcon fontSize="small" /> &nbsp; - &nbsp; price per person
-                                </div>
-                            </> }
-                            {theService.ivaInc&&<> 
-                                <div className={styles.priceDetIncl}>
-                                    <LocalOfferIcon fontSize="small" /> &nbsp; - &nbsp; 12% Iva Included
-                                </div>
-                            </>}
-                            {theService.serviceChargeInc&&<> 
-                                <div className={styles.priceDetIncl}>
-                                    <RoomServiceIcon fontSize="small" />&nbsp; - &nbsp; 10% service included
-                                </div>
-                            </>}
-                        </div>
-                    </div>
-                </div>
-            </>)
-        }
-    }
     const contactAdder=()=>{
         return(<>
             <div className={styles.spaceBetRow}>
-                <span style={{width:"60%" }}>
-                    {anInputDisplayer("Contact Name", "name", "text", false, contactSchema.name, contactSchema, setContactSchema, undefined, undefined, "Name of team member" )}
+                <span style={{width:"45%" }}>
+                    {anInputDisplayer("Contact First Name", "firstName", "text", false, contactSchema.firstName, contactSchema, setContactSchema, undefined, undefined, "Name of team member" )}
                 </span>
-                <span style={{width:"35%" }}>
-                    {anInputDisplayer("role", "role", "text", false, contactSchema.role, contactSchema, setContactSchema, undefined, undefined, "ex: reservations" ) }
+                <span style={{width:"45%" }}>
+                    {anInputDisplayer("Contact last Name", "lastName", "text", false, contactSchema.lastName, contactSchema, setContactSchema, undefined, undefined, "Name of team member" )}
                 </span>
             </div>
+            <span style={{width:"100%" }}>
+                {anInputDisplayer("role", "role", "text", false, contactSchema.role, contactSchema, setContactSchema, undefined, undefined, "ex: reservations" ) }
+            </span>
+            <span style={{width:"100%" }}>
+                {anInputDisplayer("email", "email", "text", false, contactSchema.email, contactSchema, setContactSchema, undefined, undefined, "ex: info@hotel.com" )}
+            </span>
             <div className={styles.spaceBetRow}>
-                <span style={{width:"52%" }}>
-                    {anInputDisplayer("email", "email", "text", false, contactSchema.email, contactSchema, setContactSchema, undefined, undefined, "ex: info@ikalagalapagos.com" )}
-                </span>
-                <span style={{width:"43%" }}>
+                <span style={{width:"48%" }}>
                     {anInputDisplayer("phono", "phono", "tel", false, contactSchema.phono, contactSchema, setContactSchema, undefined, undefined, "ex: 0986775422" ) }
                 </span>
-            </div>
-            <div className={styles.spaceBetRow}>
-                <span style={{width:"43%" }}>
+                <span style={{width:"48%" }}>
                     {anInputDisplayer("whatsapp", "wapp", "tel", false, contactSchema.wapp, contactSchema, setContactSchema, undefined, undefined, "ex: 0986775422" ) }
                 </span>
-                <span style={{width:"50%", alignItems:"center" }} onClick={()=>{
-                    let tempArr = hotelSchema.contactArr.concat(contactSchema)
-                    setHotelSchema({
-                        ...hotelSchema,
-                        "contactArr": tempArr
-                    })
-                    setContactSchema({})
-                    let wappVal = document.getElementById("wapp")
-                    wappVal.value=''
-                    let nameVal = document.getElementById("name")
-                    nameVal.value=''
-                    let emailVal = document.getElementById("email")
-                    emailVal.value=''
-                    let phonoVal = document.getElementById("phono")
-                    phonoVal.value=''
-                    let roleVal = document.getElementById("role")
-                    roleVal.value=''
-                }}>
-                    <div className={styles.addRecordBTN} > Add to Contacts </div>
-                </span>
             </div>
+            <span style={{width:"100%", alignItems:"center" }} onClick={()=>{
+                let tempArr = hotelSchema.contactArr.concat(contactSchema)
+                setHotelSchema({
+                    ...hotelSchema,
+                    "contactArr": tempArr
+                })
+                setContactSchema({})
+                let wappVal = document.getElementById("wapp")
+                wappVal.value=''
+                let lNameVal = document.getElementById("lastName")
+                lNameVal.value=''
+                let fNameVal = document.getElementById("firstName")
+                fNameVal.value=''
+                let emailVal = document.getElementById("email")
+                emailVal.value=''
+                let phonoVal = document.getElementById("phono")
+                phonoVal.value=''
+                let roleVal = document.getElementById("role")
+                roleVal.value=''
+            }}>
+                <div className={styles.addRecordBTN} > Add to Contacts </div>
+            </span>
         </>)
     }
+
+    // FFE
     const hotelAdderForm=()=>{
         return(<>
             <Dialog open={hotelAdderTrig} fullWidth maxWidth={"xl"} onClose={()=>{
@@ -369,35 +568,45 @@ function LibraryPage(){
                         "status": 1,
 
                         }
-                    let res = await fetch("/api/gms/library",{
-                        method: "POST",
-                        body: JSON.stringify(backEndHotelObj)
-                    })
-                    let submitHotel = await res.json()
-                    if(res.status===200){
-                        window.alert("Hotel Added to Library!")
-                        let tempLibArr = [...library]
-                        tempLibArr.push(backEndHotelObj)
-                        setLibrary(tempLibArr)
-                        setHotelAddTrig(false)
-                        setHotelSub(false)
-                    }
+
+                    // IS OP, Tunr on for submition
+                    // let res = await fetch("/api/gms/library",{
+                    //     method: "POST",
+                    //     body: JSON.stringify(backEndHotelObj)
+                    // })
+                    // let submitHotel = await res.json()
+                    // if(res.status===200){
+                    //     window.alert("Hotel Added to Library!")
+                    //     let tempLibArr = [...library]
+                    //     tempLibArr.push(backEndHotelObj)
+                    //     setLibrary(tempLibArr)
+                    //     setHotelAddTrig(false)
+                    //     setHotelSub(false)
+                    // }
+
+                    // TESTING
+                    window.alert("Hotel Added to Library!")
+                    let tempLibArr = [...library]
+                    tempLibArr.push(backEndHotelObj)
+                    setLibrary(tempLibArr)
+                    setHotelAddTrig(false)
+                    setHotelSub(false)
+
+
+                    //////////////////////////////////////
+                    //////////////////////////////////////
+
+
                 }}>
                 <h1>Add hotel to Database</h1>
                 <div className={styles.spaceBetRow}>
                     <div className={styles.dataColumn}>
                         {anInputDisplayer("hotel name", "hotelName", "text", true, hotelSchema.hotelName, hotelSchema, setHotelSchema, undefined, undefined, "Hotel Name" )}
-                        {anInputDisplayer("Address", "hotelAddress", "text", true, hotelSchema.hotelAddress, hotelSchema, setHotelSchema, undefined, undefined, "Street Address" )}
-                        {aDropdownPicker(GenDataTemplates.ecuadorCities, "City", "hotelCity", hotelSchema, setHotelSchema, )}
-                        {aDropdownPicker(GenDataTemplates.ecuadorProvinces, "province", "hotelProvince", hotelSchema, setHotelSchema,)}
-                        {anInputDisplayer("Location notes", "locNotes", "text", false, hotelSchema.locNotes, hotelSchema, setHotelSchema, undefined, undefined, "Notes, like how to get there" )}
-                    </div>
-                    <div className={styles.dataColumn}>
                         {aDropdownPicker(GenDataTemplates.hotelCategories, "category", "hotelCategory", hotelSchema, setHotelSchema )}
-                        <span style={{ width:"97%"}}>
+                        <span style={{ width:"80%", marginLeft:"10%" }}>
                         <Slider
                             aria-label="Always visible"
-                            step={25}
+                            step={50}
                             marks={marks}
                             onChange={(e)=>{
                                 setHotelSchema({
@@ -407,9 +616,20 @@ function LibraryPage(){
                             }}
                         /></span>
                         {anInputDisplayer("website", "hotelWebsite", "text", false, hotelSchema.hotelWebsite, hotelSchema, setHotelSchema, undefined, undefined, "Hotel Website" )}
+                        {aDropdownPicker(GenDataTemplates.countryList, "Country", "hotelCountry", hotelSchema, setHotelSchema)}
+                    </div>
+                    <div className={styles.dataColumn}>
+                        {anInputDisplayer("Address", "hotelAddress", "text", true, hotelSchema.hotelAddress, hotelSchema, setHotelSchema, undefined, undefined, "Street Address" )}
+                        {hotelSchema.hotelCountry==="ecuador" ? <>
+                            {aDropdownPicker(GenDataTemplates.ecuadorCities, "City", "hotelCity", hotelSchema, setHotelSchema, )}
+                            {aDropdownPicker(GenDataTemplates.ecuadorProvinces, "province", "hotelProvince", hotelSchema, setHotelSchema,)}
+                        </>:<>
+                            {anInputDisplayer("City", "hotelCity", "text", true, hotelSchema.city, hotelSchema, setHotelSchema, undefined, undefined, "Or closest major inhabited place" )}
+                            {anInputDisplayer("province || state", "hotelProvince", "text", false, hotelSchema.hotelProvince, hotelSchema, setHotelSchema, undefined, undefined, "Ex: Pichincha" )}
+                        </> }
+                        {anInputDisplayer("Location notes", "locNotes", "text", false, hotelSchema.locNotes, hotelSchema, setHotelSchema, undefined, undefined, "Ex: 'How to get there'" )}
                     </div>
                 </div>
-
                 <div className={styles.sectionDivider}> 
                     Contacts
                 </div>
@@ -418,15 +638,16 @@ function LibraryPage(){
                         {contactAdder()}
                     </div>
                     <div className={styles.dataColumn}>
-                        {hotelSchema.contactArr.length>0 && <>
+                        {hotelSchema.contactArr.length>0 ? <>
                             <h3>Registered Contacts</h3>
                             {hotelSchema.contactArr.map((elem, i)=><React.Fragment key={i}>
-                                {aContactDisplayer(elem, i)}
+                                {aContactDisplayer(elem, i, true, hotelSchema, setHotelSchema)}
                             </React.Fragment> )}
+                        </>:<>
+                            <h3> Please Add at least ONE Contact  </h3>
                         </>}
                     </div>
                 </div>
-
                 <div className={styles.sectionDivider}> 
                     Rates
                 </div>
@@ -436,8 +657,8 @@ function LibraryPage(){
                             <span style={{width:"60%" }}>
                                 {anInputDisplayer("Room Description", "roomDescription", "text", false, undefined, roomPriceObj, setRoomPriceObj, undefined, undefined, "Ex: Single Room Standard" )}
                             </span>
-                            <span style={{width:"33%" }}>
-                                {anInputDisplayer("# rooms", "roomAmount", "number", false, undefined, roomPriceObj, setRoomPriceObj, undefined, undefined, "Ex: 5" ) }
+                            <span style={{width:"38%" }}>
+                                {anInputDisplayer("#rooms", "roomAmount", "number", false, undefined, roomPriceObj, setRoomPriceObj, undefined, undefined, "Ex: 5" ) }
                             </span>
                         </div>
                         <div className={styles.spaceBetRow}>
@@ -508,6 +729,7 @@ function LibraryPage(){
                                     }
                                 }} />} label="12% Iva Tax Included" />
                         </div>
+                        {inputToList("Price Inclusions", "includedInPrice", roomPriceObj, setRoomPriceObj, roomPriceObj.includedInPrice, inputPlaceholder, setInputPlaceholder)}
 
                         <div className={styles.addRecordBTN} onClick={()=>{
                             let tempArr = hotelSchema.roomPriceArr.concat(roomPriceObj)
@@ -542,7 +764,7 @@ function LibraryPage(){
                         {hotelSchema.roomPriceArr?.length>0 && <>
                             <h3>Registered Rooms</h3>
                             {hotelSchema.roomPriceArr.map((elem, i)=><React.Fragment key={i}>
-                                {aRoomRateDisp(elem, i)}
+                                {aRoomRateDisp(elem, i, true, hotelSchema, setHotelSchema)}
                             </React.Fragment>)}
                         </>}
                     </div>
@@ -565,6 +787,7 @@ function LibraryPage(){
                 </div>
                 <div className={styles.spaceBetRow}>
                 </div>
+                {/* add aditional services toggle */}
 
                 <div className={styles.sectionDivider}> 
                     Additional Services
@@ -648,11 +871,10 @@ function LibraryPage(){
                         }} > Add Additional Service </div>
                     </div>
                     <div className={styles.dataColumn}>
-                        {anAdditServiceDis(editingServiceObj)}
                         {hotelSchema.serviceArr?.length>0 && <>
                             <h3>Additional Services</h3>
                             {hotelSchema.serviceArr.map((elem, i)=><React.Fragment key={i}>
-                                {anAdditServiceDis(elem, i)}
+                                {anAdditServiceDis(elem, i, true, hotelSchema, setHotelSchema)}
                             </React.Fragment>)}
                         </>}
                     </div>
@@ -662,6 +884,7 @@ function LibraryPage(){
                 </>:<>
                     <input className={styles.submitHotelBTN} type="submit" value="Add to Library"/>
                 </> }
+                {/* <input className={styles.submitHotelBTN} type="submit" value="Add to Library"/> */}
             </form>
             </Dialog>
         </>)
@@ -737,15 +960,16 @@ function LibraryPage(){
         </Dialog>
         </>)
     }
-
-
-    // 
     const libraryDisplayer=()=>{
-
         return(<>
         <div className={styles.backBTN} onClick={()=>{
             setLibraryTab("main")
         }} ><ArrowBackIosNewIcon/> BACK </div>
+
+            <div className={styles.libraryFilterUI}> 
+                Filter by:
+                
+            </div>
             {library.length>0 &&<>
                 {library.map((elem, i)=><React.Fragment key={i}> 
                     {aHotelDisplayer(elem)}
@@ -754,6 +978,7 @@ function LibraryPage(){
         </>)
 
     }
+
 
     return(<>
     {session && <>
@@ -787,22 +1012,23 @@ function LibraryPage(){
                     <div className={styles.aQuickLink} onClick={()=>setHotelAddTrig(true)}>
                         Add Hotel to Library
                     </div>
-                    {(session?.user?.name==="David Torres" || session?.user?.name==="Anahi Torres" )&&<>
+
+                    {/* client form, non OP */}
+                    {/* {(session?.user?.name==="David Torres" || session?.user?.name==="Anahi Torres" )&&<>
                         <div className={styles.aQuickLink} onClick={()=>setAddClientTrig(true)}>
                             Add Client to Library
                         </div>
-                    </> }
-                    <div className={styles.aQuickLinkDES} >
+                    </> } */}
+
+
+                    {/* <div className={styles.aQuickLinkDES} >
                         add provider to Library
-                    </div>
+                    </div> */}
                 </div>
             </div>
             </> : libraryTab==="library"&& <> 
-            
                 {libraryDisplayer()}
-            
             </>}
-            
             {hotelAdderForm()}
             {clientAdderForm()}
         </div>

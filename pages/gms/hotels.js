@@ -13,32 +13,7 @@ import { HotelDataDisplayer } from "../../components/hotelDB";
 let toDate = new Date()
 
 
-
-
-// export hotel adder form, delete everything else
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// FFD
 
 export default function HotelPage(props){
 
@@ -66,30 +41,6 @@ export default function HotelPage(props){
     //         console.log(orderedHotels)
     //     }
     // },[HotelEntries])
-
-    /////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////
-    // FFD
-    const aTextInput=(aPlaceholder, inputId, anObject, setAnObject, inputType, reqBoolean)=>{
-        return(<>
-        <div className={styles.anInputcont}>
-            <label htmlFor={inputId} className={styles.anInputLabel}>{aPlaceholder}:</label> 
-            <input
-                placeholder={aPlaceholder}
-                type={inputType}
-                id={inputId}
-                required={reqBoolean}
-                onChange={(e)=>{
-                    e.preventDefault()
-                    setAnObject({
-                        ...anObject,
-                        [inputId]: e.target.value
-                    })
-                }}
-                />
-            </div>
-        </>)
-    }
 
     const aPriceInput=(aPlaceholder, inputId, priceCategory, inputType, reqBoolean)=>{
         return(<>

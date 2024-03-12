@@ -5,7 +5,6 @@
     min-height: 99px;
     background-color: white;
     box-shadow: var(--frst-box-shadow);
-    padding: 21px;
     transition: all ease-in 0.3s;
     margin-bottom: 21px;
 }
@@ -26,18 +25,6 @@
     align-items: center;
 }
 
-.aContactRow{
-    display: flex;
-    font-size: 0.9em;
-    font-weight: 600;
-    align-items: center;
-}
-
-.aContactRow span{
-    margin-left: 12px;
-    cursor: pointer;
-}
-
 .hotelLinksDisp{
     display: flex;
     margin-bottom: 12px;
@@ -46,56 +33,6 @@
 .hotelLinksDisp a{
     margin-left: 15px;
     cursor: pointer;
-}
-
-.hotelRoomDisp{
-    display: flex;
-    justify-content: space-between;
-    border: solid 1px black;
-    padding: 9px;
-    margin-bottom: 12px;
-    font-size: 0.8em;
-}
-
-.addCntctBTN{
-    margin-top: 15px;
-    border: solid 2px black;
-    cursor: pointer;
-    padding: 9px 12px;
-    border-radius: 5px;
-
-}
-
-.serviceDetDisp{
-    display: flex;
-    flex-direction: column;
-    border: solid 1px black;
-    padding: 12px 15px;
-    margin: 12px 0;
-}
-
-.rmvExpenseBTN{
-    position: absolute;
-    transform: translate(-25px, -25px);
-    background-color: white;
-    cursor: pointer;
-    color: red;
-}
-
-.serviceColumn{
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-}
-
-.priceDetIncl{
-    color: rgb(79, 78, 78);
-    text-align: end;
-    font-size: 0.7em;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    margin-top: 6px;
 }
 
 .priceDisp{

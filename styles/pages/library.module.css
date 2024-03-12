@@ -59,16 +59,16 @@
     flex-direction: column;
 }
 
-.aContactRow{
-    display: flex;
-    font-size: 0.9em;
-    font-weight: 600;
-    align-items: center;
+.aContactDisp{
+    padding-bottom: 12px;
+    border-bottom: solid 1px black;
 }
 
-.aContactRow span{
-    margin-left: 12px;
+.removeContactBTN{
+    position: absolute;
+    transform: translate(-30px, 10px);
     cursor: pointer;
+    color: red;
 }
 
 .sectionDivider{
@@ -100,11 +100,7 @@
     color: white;
 }
 
-.removeContactBTN{
-    position: absolute;
-    transform: translateX(-30px);
-    cursor: pointer;
-}
+
 
 .submitHotelBTN{
     margin: 21px 0;
@@ -164,7 +160,7 @@
     display: flex;
     flex-direction: column;
     border: solid 1px black;
-    padding: 12px 15px;
+    padding: 9px;
     margin: 12px 0;
 }
 
@@ -187,14 +183,16 @@
 .priceDisp{
     padding: 12px 0;
     font-size: 1.3em;
+    text-align: end;
 }
 
 
 
 .rmvEntryBTN{
     position: absolute;
-    transform: translateX(-41px);
+    transform: translate(-41px, -30px);
     cursor: pointer;
+    color: red;
 }
 
 
@@ -238,6 +236,15 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.libraryFilterUI{
+    box-shadow: var(--frst-box-shadow);
+    background-color: white;
+    width: 600px;
+    min-height: 33px;
+    margin-bottom: 30px;
+    padding: 15px;
 }
 
 @media (max-width: 700px) {

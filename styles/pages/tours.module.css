@@ -230,12 +230,41 @@
     position: relative;
 }
 
+.rotatingLogo{
+    position: fixed;
+    top: 16vh;
+    animation: rotation 20s normal linear infinite;
+    z-index: -1;
+}
+
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    
+    25%{
+        transform: rotate(180deg);  
+    }
+
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(-180deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
 .introTextIcon{
+    position: fixed;
+    top: 25vh;
+    z-index: -2;
     font-size: 3.5em;
     text-transform: uppercase;
     font-family: var(--serif-Font);
-    position: fixed;
-    top: 25vh;
     letter-spacing: 2px;
     font-weight: 700;
     color: var(--pop-orange);
@@ -285,7 +314,7 @@
 
 .tourPageImageCont{
     width: 100%;
-    margin-top: 15vh;
+    margin-top: 25vh;
     display: flex;
     justify-content: center;
 }
@@ -298,10 +327,6 @@
     animation-duration: 3s;
     animation-iteration-count: infinite;
     z-index: 20;
-}
-
-.tourPageImageCont{
-    transform: translateY(3px);
 }
 
 
@@ -435,7 +460,5 @@
     .tourHighlightBar{
         font-size: 1.1em;
     }
-    .logoCont{
 
-    }
 }

@@ -8,7 +8,7 @@ import HomeIcon from '@mui/icons-material/Home';
 
 import React, { useEffect, useState } from "react";
 
-let tempSchema={
+let sampleSchema={
     "accomodationType":"Hotel",
     "province": "Pichincha",
     "accomodationType": "Hotel",
@@ -61,7 +61,7 @@ export function HotelDataDisplayer(props){
     },[])
 
     let hotelSchema= props.hotelSchema
-    // let hotelSchema= tempSchema
+    // let hotelSchema= sampleSchema
  
     let starArrDisp = [...Array(hotelSchema.accomodationCategory)].map((elem, i)=><span key={i}> <StarIcon/> </span>)
 

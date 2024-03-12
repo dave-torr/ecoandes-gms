@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid'
 
 
 // components
-import { useSession, signIn, signOut } from "next-auth/react"
+import { useSession } from "next-auth/react"
 import {
     DayByDayAdder, 
     anInputDisplayer, multiOptPicker, aDropdownPicker, inputToList, aSwitcher, radioSelectors, multiLineTextInput
