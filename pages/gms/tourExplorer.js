@@ -77,12 +77,12 @@ export default function TourExplorerPage(props){
     
     useEffect(()=>{
         if(sortContr==="calendar"){
-            
         sortOrder==="descending"?
             setFilteredItins([...fetchedItinArr].sort((a,b)=> a.dateCreated - b.dateCreated).reverse())
             :
             setFilteredItins([...fetchedItinArr].sort((a,b)=> a.dateCreated - b.dateCreated))
         } else {
+
         sortOrder==="descending"?
             setFilteredItins([...fetchedItinArr].sort((a,b)=> a[sortContr] - b[sortContr])) 
             :
@@ -91,11 +91,18 @@ export default function TourExplorerPage(props){
     },[sortContr])
 
     useEffect(()=>{
-
-        sortOrder==="descending"?
-            setFilteredItins([...fetchedItinArr].sort((a,b)=> a[sortContr] - b[sortContr])) 
-        :
-            setFilteredItins([...fetchedItinArr].sort(((a,b)=> b[sortContr] - a[sortContr])))
+        console.log("Mauw wo")
+        if(sortContr==="calendar"){ 
+            sortOrder==="descending"?
+                setFilteredItins([...fetchedItinArr].sort((a,b)=> a.dateCreated - b.dateCreated).reverse())
+            :
+                setFilteredItins([...fetchedItinArr].sort((a,b)=> a.dateCreated - b.dateCreated))
+        } else {
+            sortOrder==="descending"?
+                setFilteredItins([...fetchedItinArr].sort((a,b)=> a[sortContr] - b[sortContr])) 
+            :
+                setFilteredItins([...fetchedItinArr].sort(((a,b)=> b[sortContr] - a[sortContr])))
+        }
 
     },[sortOrder])
 

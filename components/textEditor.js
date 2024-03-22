@@ -13,13 +13,27 @@ import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary';
 import styles from "../styles/components/textEditor.module.css"
 
 export function TextEditor(props) {
+
+
+    // check why stuff is erased for a bit. Editor state is being changed once per component load.
     const [editorState, setEditorState]=useState();
+    useEffect(()=>{
+        if(props.prevState){
+            setEditorState(props.prevState)
+            props.setTempObj({
+                ...props.tempObj,
+                [props.inputIndex]: props.prevState
+            })
+        }
+    },[])
+    
     useEffect(()=>{
         props.setTempObj({
             ...props.tempObj,
             [props.inputIndex]: editorState
         })
     },[editorState])
+
     function onChange(editorState) {
         const editorStateJSON = editorState.toJSON();
         let stringifiedState=JSON.stringify(editorStateJSON)
@@ -38,13 +52,6 @@ export function TextEditor(props) {
         return null;
     }
 
-    let theState;
-    if(props.prevState){
-        theState= props.prevState
-    } else {
-        theState= false
-    }
-
     return (<>
         <div >
         <div className={styles.spaceBetRow}> 
@@ -54,7 +61,7 @@ export function TextEditor(props) {
             <i> - rich text </i>
         </div>
         <LexicalComposer initialConfig={{
-            editorState: theState
+            editorState: props.prevState
             }}>
             <RichTextPlugin
                 contentEditable={<ContentEditable className={styles.inputBox} />}
@@ -71,6 +78,7 @@ export function RichTextDisp(props){
     // working off of Lexical, display data according to outputted format, listed by switch func below.
 
     const [theText,setTheText]=useState()
+    
     useEffect(()=>{
         if(props.richTextCont && props.theValue){
             setTheText(JSON.parse(props.theValue))

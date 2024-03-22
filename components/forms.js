@@ -335,7 +335,7 @@ export function inputToList( inputLabel, inputId, anObject, setAnObject, theList
 
 export function radioSelectors(radioKeyValueArr, radioNames, anObject, setAnObject, radioTrigger){
     let theRadios = radioKeyValueArr.map((elem, i)=><React.Fragment key={i}>
-        <div style={{display:"flex", width:"300px"}}> 
+        <div style={{display:"flex", width:"200px"}}> 
             <input type="radio" id={elem.radioKey} name={radioNames} onClick={()=>setAnObject({
                 ...anObject,
                 [radioTrigger]: elem.radioVal
@@ -1086,25 +1086,28 @@ export function DayByDayAdder(props){
 
     const [incluPlaceholder, setPlaceholder]=useState("")
     const [autofillTrig, setAutoFillTrig]=useState(false)
-    const [autoFillData, setAutoFillData]=useState(false)
+    // const [autoFillData, setAutoFillData]=useState(false)
     const [locSelection, setLocSelection]=useState(false)
     const [autofillOpts, setAutofillOps]=useState()
     const [imageAddTrig, setImgTrig]=useState(false)
     const [mealPlaceholder, setMealPlaceholder]=useState("")
 
-    useEffect(()=>{
-    (async ()=>{
-        if(!autoFillData){
-            const res = await fetch("/api/gms/dayByDayDB", {
-                method: "GET"
-            })
-            const docData = await res.json()
-            if(res.status===200){
-                setAutoFillData(docData)
-            }
-        }
-        })()
-    },[])
+    // FFD, Autofill will be pulled in Tour Creator home
+    // useEffect(()=>{
+    // (async ()=>{
+    //     if(!autoFillData){
+    //         const res = await fetch("/api/gms/dayByDayDB", {
+    //             method: "GET"
+    //         })
+    //         const docData = await res.json()
+    //         if(res.status===200){
+    //             setAutoFillData(docData)
+    //         }
+    //     }
+    //     })()
+    // },[])
+
+
     useEffect(()=>{
         if(locSelection){
             let filteringArr = autoFillData.filter((elem=> elem.location === locSelection))
@@ -1135,7 +1138,7 @@ export function DayByDayAdder(props){
         return(<>
             <Dialog open={autofillTrig} maxWidth="xl" onClose={()=>setAutoFillTrig(false)}>
                 <div className={styles.autofillCont} style={{ minWidth: "550px", padding:"21px" }}> 
-                    <h2>Autofill Day {props.aTour.dayByDay.length + 1} </h2>
+                    <h2>Autofill Day {props.aTour.dayByDay?.length + 1} </h2>
                     {theGeneralLocat ? <>
                         <label htmlFor="LocationDropdown" className={styles.inputLabel}>
                             Select General Location
@@ -1245,6 +1248,7 @@ export function DayByDayAdder(props){
             "breakfastBox",
             "brunch",
             "lunch",
+            "lunchBox",
             "snack",
             "dinner",
             "other"
@@ -1294,7 +1298,7 @@ export function DayByDayAdder(props){
                 {props.aTravelDay.meals.map((elem,i)=><React.Fragment key={i}>
                 <div className={styles.spaceBetRow} style={{textTransform:"capitalize", padding:"6px 0" }}> 
                     <span >
-                    {elem.meal} @ {elem.location}
+                    {elem.meal} {elem.location&&<> @ -{elem.location} </>}
                     </span>
                     <span onClick={()=>{
                         if(props.aTravelDay.meals.length===1){
@@ -1314,24 +1318,32 @@ export function DayByDayAdder(props){
                 </React.Fragment> )}
             </>}
         </>)
-    } 
+    }
 
 
     return(<>
-        {autofillSelector(autoFillData)}
+        {autofillSelector(props.autoFillData)}
         {imageSelector()}
         <form style={{width:"100%"}} id="theDayFormID">
             <div className={styles.spaceBetRow}>
-                <div className={styles.addFromRecordBTN} onClick={async()=>{
-                        setImgTrig(true)
-                    }}> <AddPhotoAlternateIcon/> &nbsp; Add Image </div>
-                <div className={styles.addFromRecordBTN} onClick={async()=>{
-                        setAutoFillTrig(true)
-                    }}> <PlaylistAddIcon/> &nbsp; Autofill </div>
-            </div>
+                {props.filteredImgArr.length>0&&<>
+                    <div className={styles.addFromRecordBTN} onClick={async()=>{
+                            setImgTrig(true)
+                        }}> <AddPhotoAlternateIcon/> &nbsp; Add Image </div>
+                </>}
 
+
+            {/* Autofill trigger */}
+                {/* {props.autoFillData?.length>0&&<>
+                    <div className={styles.addFromRecordBTN} onClick={async()=>{
+                            setAutoFillTrig(true)
+                        }}> <PlaylistAddIcon/> &nbsp; Autofill </div>
+                </>} */}
+
+
+            </div>
             <div style={{ display: "flex", width:"100%", justifyContent:"space-between" }}> 
-                <h3>Day {props.aTour.dayByDay.length + 1}:</h3> 
+                <h3>Day {props.aTour.dayByDay?.length + 1}:</h3> 
                 <div  className={styles.clearFormBTN} onClick={()=>{
                     const theTextArea = document.getElementById("dayDescriptionInput")
                     theTextArea.value=""
@@ -1347,9 +1359,6 @@ export function DayByDayAdder(props){
                 inputLabel={"Day Description"}
             />
 
-            {/* {multiLineTextInput("Day Detail", "dayDescription", false, props.aTravelDay.dayDescription, props.aTravelDay, props.setTravelDay )} */}
-
-            
             {inputToList("add to day", "dayInclusions", props.aTravelDay, props.setTravelDay, props.aTravelDay.dayInclusions, incluPlaceholder, setPlaceholder)}
             {mealsIncludedTool()}
             {anInputDisplayer("Overnight Property", "overnightProperty", "text", false, undefined, props.aTravelDay, props.setTravelDay, undefined, undefined, "Hotel / Lodge Name")}
@@ -1374,8 +1383,6 @@ export function DayByDayAdder(props){
                         "guideData":[],
                         "imgArr":[]
                     })
-                    const theTextArea = document.getElementById("dayDescriptionInput")
-                    theTextArea.value=""
                     document.getElementById("theDayFormID").reset()
                     window.scrollTo({
                         top: "30",

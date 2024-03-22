@@ -47,6 +47,7 @@ import EcoAndesLogoBLK from "./../public/assets/logos/ecoAndesBLK.png"
 import GalapagosElementsLogo from "./../public/assets/logos/galapagosElementsLogo.png"
 import YacumaLogo from "./../public/assets/logos/yacuma.png"
 import UnigpsLogo from "./../public/assets/logos/unigalapagos.png"
+import AndesAdventuresLogo from "./../public/assets/logos/andesAdventuresFull.png"
 
 import Dialog from '@mui/material/Dialog';
 
@@ -374,7 +375,7 @@ export function TourDisplayer(props){
             if(theMeals?.length>0){
                 let theInclusions = theMeals.map((elem, i)=><React.Fragment key={i}> 
                 <div className={styles.eachMealDisp}>
-                    - {elem.meal} @ {elem.location} 
+                    - {elem.meal} {elem.location&&<>@ {elem.location}</>} 
                 </div>
                 </React.Fragment>)
                 return(<><div> 
@@ -700,6 +701,9 @@ export function TourDisplayer(props){
         } else if(aTour.LTCLogo=="unigalapagos"){
             partnerLogo=<div className={styles.partnerLogoCont}>
                 <Image height={75} width={110} src={UnigpsLogo} alt="Unigalapagos Logo" /></div>
+        } else if(aTour.LTCLogo=="andesAdventures"){
+            partnerLogo=<div className={styles.partnerLogoCont}>
+                <Image height={75} width={155} src={AndesAdventuresLogo} alt="Andes Adventures Logo" /></div>
         } else if(!aTour.LTCLogo){
             partnerLogo=false 
         }        

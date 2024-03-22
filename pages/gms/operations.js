@@ -489,6 +489,8 @@ export default function OperationsDashboard(){
                     return(<><h3>Yacuma EcoLodge</h3></>);
                 case "unigalapagos":
                     return(<><h3>Unigalapagos</h3></>);
+                case "andesAdventures":
+                    return(<><h3>Andes Adventures</h3></>);
                 case "maexgal":
                     return(<><h3>Maexgal</h3></>);
                 default:
@@ -508,6 +510,9 @@ export default function OperationsDashboard(){
                 case "unigalapagos":
                     return(<><div className={styles.partnerLogoCont}>
                 <Image height={75} width={110} src={UnigpsLogo} alt="Unigalapagos Logo" /></div></>);
+                case "andesAdventures":
+                    return(<><div className={styles.partnerLogoCont}>
+                <Image height={75} width={155} src={AndesAdventuresLogo} alt="Andes Adventures Logo" /></div></>);
                 case "maexgal":
                     return(<><div className={styles.partnerLogoCont}>
                 <Image height={120} width={210} src={MaexgalLogo} alt="Maexgal Logo" /></div></>);

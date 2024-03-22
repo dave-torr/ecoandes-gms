@@ -347,7 +347,6 @@ export default function TourPage(){
             setFilteredTourArr([...filteredTourArr].sort(((a,b)=> b[sortContr] - a[sortContr])))
     },[sortOrder])
 
-
     let randomPic 
     const tourPageImgDisplayer=()=>{
         randomPic= homeImgArr[Math.floor(Math.random() * homeImgArr.length )]
@@ -376,7 +375,6 @@ export default function TourPage(){
         </div>
         </>)
     }
-
     const tourHighlightDisp=(aTrip)=>{
         if(TourData){
         return(<>
@@ -402,8 +400,6 @@ export default function TourPage(){
         </>)
         }
     }
-
-
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
@@ -438,8 +434,6 @@ export default function TourPage(){
     </Head>
     </>)
   }
-
-
     return(<>
     {pageHead()}
         <div className={styles.generalTourPage}>  

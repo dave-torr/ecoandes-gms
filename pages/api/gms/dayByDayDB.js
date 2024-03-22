@@ -34,7 +34,33 @@ async function handler(req, res){
             client.close();
         }
     }
+    else if (req.method==="PUT"){
+        const reqData= JSON.parse(req.body)
+        let tempObj = {...reqData}
+        delete tempObj._id
 
+        const editAutofill = client
+            .db('EcoAndesGMS')
+            .collection("Templates")
+            .findOneAndUpdate(
+                {"_id": ObjectId(reqData._id)},
+                {
+                    $set: tempObj 
+                },
+                {
+                    returnDocument: "after",
+                }
+            )
+        const updatedEntry = await editAutofill
+        if(updatedEntry?.lastErrorObject.updatedExisting){
+            res.status(200).json(updatedEntry)
+            client.close();
+        } else {
+            res.status(501)
+            client.close();
+        }
+
+    }
 }
 
 export default handler;

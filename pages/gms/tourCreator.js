@@ -21,7 +21,12 @@ import CircularProgress from '@mui/material/CircularProgress';
 import DesignServicesIcon from '@mui/icons-material/DesignServices';
 import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Cancel';
-
+import LuggageIcon from '@mui/icons-material/Luggage';
+import RateReviewIcon from '@mui/icons-material/RateReview';
+import HomeIcon from '@mui/icons-material/Home';
+import EditIcon from '@mui/icons-material/Edit';
+import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
+import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 
 // Data
 import LTCGenDAta from "../../data/dataAndTemplates.json"
@@ -29,7 +34,9 @@ import LTCGenDAta from "../../data/dataAndTemplates.json"
 // styles
 import styles from "../../styles/pages/tourCreator.module.css"
 import { Dialog } from "@mui/material";
-import { TextEditor } from "../../components/textEditor";
+import { RichTextDisp, TextEditor } from "../../components/textEditor";
+
+
 
 
 ///////////////////////////////////////////////////////////////
@@ -73,9 +80,11 @@ let TourModel = {
     // quote automaticallly from DB prices
 
 
-    //////////////////////////////////////////////
-    // sesh
+//////////////////////////////////////////////
+// sesh
     const { data: session } = useSession()
+
+    const [pageNavigator, setPageNavi]=useState('home')
 
     // tour model
     const [aTourModel, setTourModel]=useState(TourModel)
@@ -99,14 +108,43 @@ let TourModel = {
 
     // img state mngmt
     // Bring in pics from Colombia
-    const [fetchedImgArrs, setFetchedImgs]=useState()
-    const [filteredImgArr, setFilteredImgs]=useState()
-    const [loadingState, setLoadingState]=useState(false)
+    const [fetchedImgArrs, setFetchedImgs]=useState([])
+    const [filteredImgArr, setFilteredImgs]=useState([])
+
     const [imgDestFilter, setImgFilter]=useState(0)
 
     const [submitionTrig, setSubmitTrig]=useState(false)
     const [incluPlaceholder, setPlaceholder]=useState("")
     
+    // autofill
+    const [autoFillData, setAutoFillData]=useState([])
+
+    const [editEntryTrig, setEntryTrig]=useState(false)
+    const [editEntryObj, setEntryObj] =useState()
+    const [listPlaceholder, setListPlaceholder]=useState("Inclusions")
+    const [loadingState, setLoading]=useState(false)
+
+    // Image and Autofill fetchers
+    useEffect(()=>{
+        (async ()=>{
+            const res = await fetch("/api/gms/dayByDayDB", {
+                method: "GET"
+            })
+            const res2 = await fetch("/api/genToolkit/pixApi",{
+                method: "GET"
+            })
+            const docData = await res.json()
+            const fetchedImages = await res2.json()
+            if(res.status===200){
+                setAutoFillData(docData)
+            }
+            if(res2.status===200){
+                setFetchedImgs(fetchedImages)
+                setFilteredImgs(fetchedImages)
+            }
+        })()
+    },[])
+
     // utils
     const stepBTNs=(nextOrPrev)=>{
         if(nextOrPrev==="next"){
@@ -149,26 +187,11 @@ let TourModel = {
             "radioKey": "Unigalapagos",
             "radioVal": "unigalapagos"
         },
+        {
+            "radioKey": "Andes Adventures",
+            "radioVal": "andesAdventures"
+        },
     ]
-
-    ///////////////////////////////////////////
-    ///////////////////////////////////////////
-    // GEN UTILS
-    // const autofillFetcher=async()=>{
-
-    // }
-    const imgFetcher=async()=>{
-        setLoadingState(true)
-        const res = await fetch("/api/genToolkit/pixApi",{
-            method: "GET"
-        })
-        const fetchedImages = await res.json()
-        if(res.status===200){
-            setFetchedImgs(fetchedImages)
-            setFilteredImgs(fetchedImages)
-            setLoadingState(false)
-        }
-    }
 
     // Img picker utils
     let imgCountry= ['all countries', "ecuador", 'peru', "chile", "argentina",]
@@ -195,20 +218,7 @@ let TourModel = {
         // Filter imgaes
 
         if(tourCreatorStep===1){ 
-        if(!fetchedImgArrs){
-            return(<>
-            <div onClick={async()=>{
-                imgFetcher()
-            }}>
-                {loadingState? <>
-                    <CircularProgress />
-                </>:<>
-                    <div className={styles.nextStepBTN}>
-                        Fetch Itinerary Pix 
-                    </div>
-                </>}        
-            </div>
-        </>) } else if (filteredImgArr) {
+        if (filteredImgArr) {
         let aPickerImg= filteredImgArr.map((elem, i)=>
         <React.Fragment key={i}>
             <div className={styles.eachImgDisp}>
@@ -328,7 +338,6 @@ let TourModel = {
             </>}
         </>)
     }
-
     ////////////////////////////////////////////
     ////////////////////////////////////////////
     // Tour Creator Steps
@@ -354,7 +363,6 @@ let TourModel = {
                     setTourModel({
                         ...aTourModel,
                     })
-                    imgFetcher()
                     window.scrollTo({ top: 0, behavior: "smooth"})
                 }}>
 
@@ -391,17 +399,28 @@ let TourModel = {
 
         // Meals
 
-        let eachDayEditDisp = aTourModel.dayByDay.map((elem, i)=><React.Fragment key={i}> 
+        let eachDayEditDisp = aTourModel.dayByDay?.map((elem, i)=><React.Fragment key={i}> 
             <div className={styles.editDayBTN} onClick={()=>{
                 setEditDayTrig({...elem, "dayIndex": i })
             }} > D {i+1}</div>
         </React.Fragment>)
 
+            // console.log(editDayTrigger)
+
         return(<>
+
         <Dialog open={editDayTrigger? true : false } onClose={()=>{setEditDayTrig(false)}} >
             <div className={styles.editDayDialog}>
                 {anInputDisplayer("Day Title", "dayTitle", "text", true, editDayTrigger.dayTitle, editDayTrigger, setEditDayTrig, undefined, undefined, "Main daily activity" )}
-                {multiLineTextInput("Day Detail", "dayDescription", false, editDayTrigger.dayDescription, editDayTrigger, setEditDayTrig )}
+
+                <TextEditor 
+                    tempObj={editDayTrigger}
+                    setTempObj={setEditDayTrig}
+                    inputIndex={"dayDescription"}
+                    inputLabel={"Day Description"}
+                    prevData={editDayTrigger.dayDescription}
+                />
+
                 {inputToList("add to day", "dayInclusions", editDayTrigger, setEditDayTrig, editDayTrigger.dayInclusions, incluPlaceholder, setPlaceholder)}
                 {anInputDisplayer("Overnight Property", "overnightProperty", "text", false, undefined, editDayTrigger, setEditDayTrig, undefined, undefined, "Hotel / Lodge Name")}
                 <div className={styles.nextStepBTN} onClick={()=>{
@@ -409,27 +428,29 @@ let TourModel = {
                     setEditDayTrig(false)
                 }} > Submit Day Changes </div>
             </div>
+
         </Dialog>
 
         {tourCreatorStep===2&&<>
-                <div className={styles.upcomingTitleBar}>
-                    Day By Day
-                </div>
+            <div className={styles.upcomingTitleBar}>
+                Day By Day
+            </div>
 
-                {aTourModel.dayByDay.length>0&& <>
-                <div className={styles.editDayCont} >
-                    <strong>Edit:</strong> {eachDayEditDisp}
-                </div></>}
-                    <DayByDayAdder
-                        aTour={aTourModel}
-                        setTourModel={setTourModel}
-                        editDayTrigger={editDayTrigger}
-                        setEditDayTrig={setEditDayTrig}
-                        aTravelDay={aTravelDay}
-                        setTravelDay={setTravelDay}
-                        filteredImgArr={filteredImgArr}
-                        setFilteredImgs={setFilteredImgs}
-                    />
+            {aTourModel.dayByDay?.length>0&& <>
+            <div className={styles.editDayCont} >
+                <strong>Edit:</strong> {eachDayEditDisp}
+            </div></>}
+                <DayByDayAdder
+                    aTour={aTourModel}
+                    setTourModel={setTourModel}
+                    editDayTrigger={editDayTrigger}
+                    setEditDayTrig={setEditDayTrig}
+                    aTravelDay={aTravelDay}
+                    setTravelDay={setTravelDay}
+                    filteredImgArr={filteredImgArr}
+                    setFilteredImgs={setFilteredImgs}
+                    autoFillData={autoFillData}
+                />
             </>}
         </>)
     }
@@ -518,6 +539,126 @@ let TourModel = {
             </>}
         </>)
     }
+
+    ///////////////////////////////////////////////
+    // homeBTNS
+    const tourCreatorHome=()=>{
+        return(<>
+            <div className={styles.spaceBetRow} style={{width:"500px", marginTop:"39px"}}>
+                <div className={styles.homeBTN} onClick={()=>setPageNavi("creator")}>
+                    <LuggageIcon/> <br/>
+                    <span>
+                        CREATE <br/> ITINERARY
+                    </span>
+                </div>
+                <div className={styles.homeBTN} onClick={()=>setPageNavi("autofill")}>
+                    <RateReviewIcon/> <br/>
+                    <span>
+                        AUTOFILL <br/> TOOLKIT
+                    </span>
+                </div>
+            </div>
+        </>)
+    }
+
+    // Autofill tools
+    const autofillTools=(theEntries)=>{
+        const anAutofillEntry=(anEntry)=>{
+            return(<>
+                <div className={styles.autofillEntryCont}>
+                    <div className={styles.spaceBetRow}>
+                        <span/>
+                        <span onClick={()=>{
+                            let dayInc;
+                            if(anEntry.dayInclusions){
+                                dayInc=anEntry.dayInclusions
+                            } else{
+                                dayInc = []
+                            }
+                            setEntryTrig(anEntry)
+                            setEntryObj({
+                                "_id": anEntry._id,
+                                "dayInclusions":dayInc
+                            })
+                        }}> <EditIcon/></span>
+                    </div>
+                    <div className={styles.spaceBetRow}>
+                        <strong> {anEntry.title}</strong> 
+                        <i> {anEntry.location}</i> 
+                    </div>
+                    {anEntry.dayDescription?<>
+                        <div style={{padding:"15px"}}>
+                            <RichTextDisp
+                                richTextCont={true}
+                                theValue={anEntry.dayDescription}
+                            />
+                        </div>
+
+                    </>: <> 
+                        <div style={{padding:"6px", marginBottom:"21px"}}>{anEntry.description} </div>
+                    </>}
+                </div>
+            </>) 
+        }
+        const editEntryDialog=()=>{
+            return(
+            <Dialog open={editEntryTrig? true : false} onClose={()=>{
+                setEntryTrig(false)
+                setEntryObj()
+                }}>
+                <div className={styles.eachEntryEdit}>
+                    <div className={styles.spaceBetRow}>
+                        <span/>
+                        <span onClick={async()=>{
+                            const res = await fetch("/api/gms/dayByDayDB",{
+                                method:"PUT",
+                                body: JSON.stringify(editEntryObj)
+                            })
+                            const updatedEntry = await res.json()
+                            if(res.status===200){
+                                setEntryTrig(false)
+                                setEntryObj()
+                                // get obj index, and update current array
+                            }
+                        }}>
+                             {/*display loading circle, when updating is happening  */}
+                            <SaveIcon/>
+                        </span>
+                    </div>
+                    {anInputDisplayer("Title", "title", "text", false, editEntryTrig.title, editEntryObj, setEntryObj, undefined, undefined, editEntryTrig.title)}
+
+                    {/* non op for prev existing text */}
+
+                    <TextEditor
+                        tempObj={editEntryObj}
+                        setTempObj={setEntryObj}
+                        inputIndex="dayDescription"
+                        inputLabel="Day Description"
+                        prevState={editEntryTrig.dayDescription}
+                    />
+                    {inputToList("inclusions", "dayInclusions", editEntryObj, setEntryObj, editEntryObj?.dayInclusions, listPlaceholder, setListPlaceholder)}
+                    
+                    {/* non MVP Rates */}
+                    {/* driving distance */}
+                    {/* meal detail */}
+                    {/* images */}
+                </div>
+            </Dialog>
+            )
+        }
+
+        if(theEntries.length>0){
+        return(<>
+            {theEntries.map((elem,i)=><React.Fragment key={i}>
+                {anAutofillEntry(elem)}
+            </React.Fragment> )}
+
+            {editEntryDialog()}
+            
+        </>)
+        }
+    }
+
     return(<>
         <div className={styles.generalPageCont}>
             {session?<>
@@ -527,37 +668,52 @@ let TourModel = {
                     <h2>Latin Travel Collection</h2>
                     <h1>Tour Creator</h1>
                 </div>
-                <div className={styles.tourCreatorLayout}>
-                    <div className={styles.tMSteps}>
-                        {tourCreatorStep>0 && <>
-                            {stepBTNs("prev")}
-                        </>}
 
-                        {tourDetailsIntro()}
-
-                        {imagePickers()}
-
-                        {dayByDayFormDispl()}
-
-                        {priceAndInclusionsAdder()}
-
-                        {(tourCreatorStep>0 && tourCreatorStep<=2 ) && <>
-                            {stepBTNs("next")}
-                            {sendToBackEnd(aTourModel, session.user, 2)}
-                        </>}
-
+                {pageNavigator!="home"&&<>
+                    <div className={styles.localNav}>
+                        <div className={styles.returnHomeBTN} onClick={()=>setPageNavi("home")}><HomeIcon/> Tour Creator Home</div>
                     </div>
-                    <div className={styles.tourDispCont}>
-                        {aTourModel.imgArr.length>0 && <>
-                            {imgPickerUIUitls(aTourModel.imgArr)}</>}
-                        <TourDisplayer  
-                            aTour={aTourModel}
-                            aTravelDay={aTravelDay}
-                            />
-                        {tourCreatorStep===3 &&<>
-                        {sendToBackEnd(aTourModel, session.user, 1)}</>}
+                </>}
+
+                {pageNavigator==="home"? <> 
+                    {tourCreatorHome()}
+                </>: pageNavigator==="creator"?<>
+                    <div className={styles.tourCreatorLayout}>
+                        <div className={styles.tMSteps}>
+                            {tourCreatorStep>0 && <>
+                                {stepBTNs("prev")}
+                            </>}
+
+                            {tourDetailsIntro()}
+
+                            {imagePickers()}
+
+                            {dayByDayFormDispl()}
+
+                            {priceAndInclusionsAdder()}
+
+                            {(tourCreatorStep>0 && tourCreatorStep<=2 ) && <>
+                                {stepBTNs("next")}
+                                {sendToBackEnd(aTourModel, session.user, 2)}
+                            </>}
+
+                        </div>
+                        <div className={styles.tourDispCont}>
+                            {aTourModel.imgArr.length>0 && <>
+                                {imgPickerUIUitls(aTourModel.imgArr)}</>}
+                            <TourDisplayer  
+                                aTour={aTourModel}
+                                aTravelDay={aTravelDay}
+                                />
+                            {tourCreatorStep===3 &&<>
+                            {sendToBackEnd(aTourModel, session.user, 1)}</>}
+                        </div>
                     </div>
-                </div>
+                </>: pageNavigator==="autofill"&&<>
+
+                    {autofillTools(autoFillData)}
+
+                </>}
             </>:<> 
                 <SignInForm />
             </>}

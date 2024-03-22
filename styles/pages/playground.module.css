@@ -162,6 +162,71 @@
     flex-direction: column;
 }
 
+
+
+
+/* new itin builder */
+.itinToolkitContainer{
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+.creatorIndexBTNONLINE{
+    padding: 21px;
+    border-radius: 6px;
+    background-color: rgb(8, 92, 134);
+    color: white;
+    margin-top: 18px;
+    transition: all ease-in 0.3s;
+    cursor: pointer;
+}
+
+.creatorIndexBTNOFFLINE{
+    padding: 21px;
+    border-radius: 6px;
+    background-color: rgb(146, 180, 196);
+    color: white;
+    margin-top: 18px;
+    transition: all ease-in 0.3s;
+}
+
+.eachDayTab{
+    border: solid 1px black;
+    margin: 2px;
+    padding: 3px 6px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    max-width: 130px;
+    cursor: pointer;
+    transition: all ease 0.2s;
+}
+
+.eachDayTab:hover{
+    background-color: teal;
+    color: white;
+
+}
+
+.inputLabel{
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.inputUserUI{
+    border: none;
+    border-left: solid 2px black;
+    border-bottom: solid 2px black;
+    padding: 6px 9px;
+    background-color: rgba(128, 254, 143, 0.273);
+    margin-top: 3px;
+    width: 100%;
+}
+
+.inputUserUI:focus{
+    background-color: unset;
+}
+
+
 /*  // // // //  */
 @media (max-width: 740px) {
     .expensesContainer{
