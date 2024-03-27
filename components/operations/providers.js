@@ -68,13 +68,13 @@ export function aHotelDisplayer(aHotel){
                 <AccordionDetails>
                     <div className={styles.spaceBetRow}>
                         <div>   
-                            <strong>Adress:</strong><br/>
+                            <strong>Address:</strong><br/>
                             {aHotel.hotelAddress && <> {aHotel.hotelAddress}</> } 
                             {aHotel.locNotes&&<>&nbsp; &nbsp; <i>{aHotel.locNotes}</i></>}
                         </div>
                         <span className={styles.hotelLinksDisp} >
                             {aHotel.hotelWebsite && <>
-                            <a target='_blank' href={aHotel.website}><LanguageIcon/></a></>}
+                            <a target='_blank' href={`${aHotel.hotelWebsite}`}><LanguageIcon/></a></>}
                             {aHotel.gmapsLink && <>
                             <a target='_blank' href={aHotel.gmapsLink}><LocationOnIcon/></a></>}
                         </span>

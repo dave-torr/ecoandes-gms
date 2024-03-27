@@ -16,6 +16,8 @@ import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import RoomServiceIcon from '@mui/icons-material/RoomService';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
+import CircularProgress from '@mui/material/CircularProgress';
+
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 
@@ -386,7 +388,7 @@ function LibraryPage(){
         "createdBy":{},
         "contactArr": [],
         "roomPriceArr":[],
-        "accommodationCAtegory":3
+        "accomodationCategory":3
     }
     const aClientSchema = {
         "clientType": "fit",
@@ -465,8 +467,19 @@ function LibraryPage(){
             })
             const posts = await res.json()
             if (res.status === 200){
-                setLibrary(posts)
-                setFetLib(posts)
+                let sortedArr = posts.sort((a,b)=>{
+                    const titleA = a.hotelName.toUpperCase()
+                    const titleB = b.hotelName.toUpperCase()
+                    if(titleA < titleB){
+                        return -1;
+                    } 
+                    if(titleA > titleB){
+                        return 1;
+                    } 
+                    return 0
+                })
+                setLibrary(sortedArr)
+                setFetLib(sortedArr)
             }
         }
         getAutofill()
@@ -586,8 +599,8 @@ function LibraryPage(){
                 setHotelAddTrig(false)
                 setHotelSchema(aHotelSchema)
                 }}>
-            <form className={styles.hotelAdderForm} 
-            onSubmit={async(e)=>{
+            <form id="hotelAdderForm" className={styles.hotelAdderForm} 
+                onSubmit={async(e)=>{
                     e.preventDefault()
                     setHotelSub(true)
                     let backEndHotelObj={
@@ -609,13 +622,15 @@ function LibraryPage(){
                     let submitHotel = await res.json()
                     if(res.status===200){
                         window.alert("Hotel Added to Library!")
-                        let tempLibArr = [...library]
+                        let tempLibArr = [...fetchedLibrary]
                         tempLibArr.push(backEndHotelObj)
                         setLibrary(tempLibArr)
+                        setFetLib(tempLibArr)
                         setHotelAddTrig(false)
                         setHotelSub(false)
+                        setHotelSchema(aHotelSchema)
                     }
-                    ///////////////////////////////////////////
+                    ////////////////////////////////////////
 
                     // TESTING
                     // window.alert("Hotel Added to Library!")
@@ -625,12 +640,14 @@ function LibraryPage(){
                     // setHotelAddTrig(false)
                     // setHotelSub(false)
 
-
                     //////////////////////////////////////
                     //////////////////////////////////////
-
                 }}>
+
+                {/* if editing triger, change label */}
                 <h1>Add hotel to Database</h1>
+
+
                 <div className={styles.spaceBetRow}>
                     <div className={styles.dataColumn}>
                         {anInputDisplayer("hotel name", "hotelName", "text", true, hotelSchema.hotelName, hotelSchema, setHotelSchema, undefined, undefined, "Hotel Name" )}
@@ -771,7 +788,7 @@ function LibraryPage(){
                             })
                             setRoomPriceObj(roomSchema)
                             let roomDescriptionVal = document.getElementById("roomDescription")
-                            roomDescriptionVal.value=undefined
+                            roomDescriptionVal.value=''
                             let roomAmountVal = document.getElementById("roomAmount")
                             roomAmountVal.value=undefined
                             if(roomPriceObj.roomAlias){
@@ -915,7 +932,9 @@ function LibraryPage(){
                     </div>
                 </div>
                 {hotelSubmition? <>
-                    <LinearProgress color="secondary" />
+                    <br/>
+                    <CircularProgress color="secondary" />
+                    <br/>
                 </>:<>
                     <input className={styles.submitHotelBTN} type="submit" value="Add to Library"/>
                 </> }
@@ -997,7 +1016,7 @@ function LibraryPage(){
     }
 
 
-    // library / filters
+    // library 
     const libraryDisplayer=()=>{
 
         const optonSelectorFilter=(libraryEntries)=>{
@@ -1016,7 +1035,6 @@ function LibraryPage(){
                 </>)
             }
         }
-
 
         return(<>
         <div className={styles.backBTN} onClick={()=>{

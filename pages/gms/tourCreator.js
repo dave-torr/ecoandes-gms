@@ -20,7 +20,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 
 // icons and imgs
-import CircularProgress from '@mui/material/CircularProgress';
+
 import DesignServicesIcon from '@mui/icons-material/DesignServices';
 import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Cancel';
