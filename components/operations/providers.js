@@ -67,7 +67,8 @@ export function aHotelDisplayer(aHotel){
                 </AccordionSummary>
                 <AccordionDetails>
                     <div className={styles.spaceBetRow}>
-                        <div> 
+                        <div>   
+                            <strong>Adress:</strong><br/>
                             {aHotel.hotelAddress && <> {aHotel.hotelAddress}</> } 
                             {aHotel.locNotes&&<>&nbsp; &nbsp; <i>{aHotel.locNotes}</i></>}
                         </div>
@@ -104,45 +105,47 @@ export function aHotelDisplayer(aHotel){
                     </Accordion>
                     </>}
                     {additionalServicesDisp(aHotel.serviceArr)}
-                    <Accordion defaultExpanded={false}>
-                        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" >
-                            <h2> Conditions, Gratuities and more </h2>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            {aHotel.creditConditions?.length>0 &&<>
-                                <strong>Credit || Payment Policies </strong>
-                                <br/>
-                                {aHotel.creditConditions.map((elem, i)=><React.Fragment key={i}>
-                                    <li>{elem}</li>
-                                </React.Fragment>)}
-                                <br/>
-                            </>}
-                            {aHotel.priceConditions?.length>0 &&<>
-                                <strong>Price Conditions</strong>
-                                <br/>
-                                {aHotel.priceConditions.map((elem, i)=><React.Fragment key={i}>
-                                    <li>{elem}</li>
-                                </React.Fragment>)}
-                                <br/>
-                            </>}
-                            {aHotel.observations?.length>0 &&<>
-                                <strong>Observations </strong>
-                                <br/>
-                                {aHotel.observations.map((elem, i)=><React.Fragment key={i}>
-                                    <li>{elem}</li>
-                                </React.Fragment>)}
-                                <br/>
-                            </>}
-                            {aHotel.gratuitiesAndCond?.length>0 &&<>
-                                <strong>Gratuities || Discounts </strong>
-                                <br/>
-                                {aHotel.gratuitiesAndCond.map((elem, i)=><React.Fragment key={i}>
-                                    <li>{elem}</li>
-                                </React.Fragment>)}
-                                <br/>
-                            </>}
-                        </AccordionDetails>
-                    </Accordion>
+                    {(aHotel.creditConditions?.length>0 || aHotel.priceConditions?.length>0 || aHotel.observations?.length>0 || aHotel.gratuitiesAndCond?.length>0  )&&<> 
+                        <Accordion defaultExpanded={false}>
+                            <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" >
+                                <h2> Conditions, Gratuities and more </h2>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                {aHotel.creditConditions?.length>0 &&<>
+                                    <strong>Credit || Payment Policies </strong>
+                                    <br/>
+                                    {aHotel.creditConditions.map((elem, i)=><React.Fragment key={i}>
+                                        <li>{elem}</li>
+                                    </React.Fragment>)}
+                                    <br/>
+                                </>}
+                                {aHotel.priceConditions?.length>0 &&<>
+                                    <strong>Price Conditions</strong>
+                                    <br/>
+                                    {aHotel.priceConditions.map((elem, i)=><React.Fragment key={i}>
+                                        <li>{elem}</li>
+                                    </React.Fragment>)}
+                                    <br/>
+                                </>}
+                                {aHotel.observations?.length>0 &&<>
+                                    <strong>Observations </strong>
+                                    <br/>
+                                    {aHotel.observations.map((elem, i)=><React.Fragment key={i}>
+                                        <li>{elem}</li>
+                                    </React.Fragment>)}
+                                    <br/>
+                                </>}
+                                {aHotel.gratuitiesAndCond?.length>0 &&<>
+                                    <strong>Gratuities || Discounts </strong>
+                                    <br/>
+                                    {aHotel.gratuitiesAndCond.map((elem, i)=><React.Fragment key={i}>
+                                        <li>{elem}</li>
+                                    </React.Fragment>)}
+                                    <br/>
+                                </>}
+                            </AccordionDetails>
+                        </Accordion>
+                    </>}
                 </AccordionDetails>
             </Accordion>
         </div>

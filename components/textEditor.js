@@ -15,24 +15,15 @@ import styles from "../styles/components/textEditor.module.css"
 export function TextEditor(props) {
 
 
-    // check why stuff is erased for a bit. Editor state is being changed once per component load.
-    const [editorState, setEditorState]=useState();
-    useEffect(()=>{
-        if(props.prevState){
-            setEditorState(props.prevState)
-            props.setTempObj({
-                ...props.tempObj,
-                [props.inputIndex]: props.prevState
-            })
-        }
-    },[])
-    
+    const [editorState, setEditorState]=useState()
+
     useEffect(()=>{
         props.setTempObj({
             ...props.tempObj,
             [props.inputIndex]: editorState
         })
     },[editorState])
+
 
     function onChange(editorState) {
         const editorStateJSON = editorState.toJSON();
@@ -51,6 +42,7 @@ export function TextEditor(props) {
         }, [editor, onChange]);
         return null;
     }
+
 
     return (<>
         <div >
@@ -91,15 +83,15 @@ export function RichTextDisp(props){
         switch (eachChild.format){
             case 0:
             return(<>
-                {eachChild.text}{" "}&nbsp;
+                {eachChild.text}{" "}
                 </>)
             case 1:
             return(<>
-                <strong>{eachChild.text}</strong>&nbsp;
+                <strong>{eachChild.text}</strong>{" "}
                 </>)
             case 2:
             return(<>
-                <i>{eachChild.text}</i>&nbsp;
+                <i>{eachChild.text}</i>{" "}
                 </>)
         }
     }

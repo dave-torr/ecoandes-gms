@@ -26,6 +26,11 @@ import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArro
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import SaveIcon from '@mui/icons-material/Save';
 
+
+import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
+import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
+
+
 // Bitacora logo:
 // import TrackChangesIcon from '@mui/icons-material/TrackChanges';
 
@@ -353,7 +358,8 @@ let TourModel = {
         "notIncluded":[],
         "notes":[],
         "shortenedURL":nanoid(7),
-        "richText":true
+        "richText":true,
+        "dayDescription": JSON.stringify({"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"asdggs","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}} )
 
     }
 let dayModel = {
@@ -677,7 +683,6 @@ export default function PlaygroundPage(){
             </div>
             </>)
         }
-
         const dayArrAdder=()=>{
             if(aTour.dayByDay.length===0){
                 let tempDayArr = []
@@ -692,7 +697,6 @@ export default function PlaygroundPage(){
             }
             setItinMkrIndx(itinMakerIndex + 1)
         }
-
         const dayEditor=()=>{
             const mealsIncludedTool=()=>{
         
@@ -777,12 +781,13 @@ export default function PlaygroundPage(){
             {editDayTrig?<>
                 <div className={styles.spaceBetRow}>
                     {<h3>Edit Day {aTravelDay.dayIndex+1}</h3>}
-                    <div style={{cursor:"pointer"}} onClick={()=>{
+                    <div style={{cursor:"pointer", display: "flex" }} onClick={()=>{
                         let splicer = aTour.dayByDay.splice(aTravelDay.dayIndex, 1, aTravelDay);
                         setTour({...aTour});
                         setDayTrig(false)
-                    }}> <SaveIcon/> </div>
+                    }}> Save Day &nbsp;<SaveIcon/> </div>
                 </div>
+                <div className={styles.lineBreak} />
                 <div className={styles.spaceBetRow}>
                     <div style={{width:"48%"}}>
                         {anInputDisplayer("day Title", "dayTitle", "text", false, aTravelDay.dayTitle, aTravelDay, setTravelDay, undefined, undefined, "Day Main Activity")}
@@ -797,15 +802,21 @@ export default function PlaygroundPage(){
                         {mealsIncludedTool()}
                     </div>
                     <div style={{width:"48%"}}>
+                        <div className={styles.spaceBetRow}>
+                            <div className={styles.addFromRecordBTN} onClick={()=>{
+                                // set Autofill trigger
+                            }}> ADD AUTOFILL &nbsp; <PlaylistAddIcon/> </div>
+                            <div className={styles.addFromRecordBTN}  onClick={()=>{
+                                // set img trigger
+                            }}> ADD IMAGES &nbsp; <AddPhotoAlternateIcon/> </div>
+                        </div>
                         {inputToList("add to day", "dayInclusions", aTravelDay, setTravelDay, aTravelDay.dayInclusions, incluPlaceholder, setPlaceholder)}
                         {anInputDisplayer("Supplementary Information", "suppInfo", "text", false, aTravelDay.suppInfo, aTravelDay, setTravelDay, undefined, undefined, "Ex: Quito is at 2,800 meters above sea level")}
                         {anInputDisplayer("Driving distance", "drivingDistance", "number", false, aTravelDay.drivingDistance, aTravelDay, setTravelDay, 0, undefined, "Ex: 150 km")}
                     </div>
                 </div>
-
             </>:<>
             
-
             Edit Days:
             <div style={{ width:"100%", display:"flex", flexWrap:"wrap" }}>
                 {aTour.dayByDay.map((elem,i)=><React.Fragment key={i}>
@@ -819,11 +830,14 @@ export default function PlaygroundPage(){
                 </React.Fragment> )}
             </div>
                 
-            
-            
-
+            {/* save and Quit options, back btns opts */}
+                <div className={styles.spaceBetRow}>
+                    <div style={{display:"flex"}} onClick={()=>{
+                        // save and submit itin
+                    } }> Save & Quit &nbsp;<SaveIcon/></div>
+                    {itinMakerCounterFunct(itinMakerIndex,setItinMkrIndx )}
+                </div>
             </>}
-            
             </>)
         }
 
@@ -920,20 +934,15 @@ export default function PlaygroundPage(){
             </>)
         }
 
-
-        console.log(aTour)
-
         return(<>
             <dov className={styles.itinBuilderCont} >
-
                 {eachStepTemplate()}
-            
                 {anItinDisp()}
-
-
             </dov>
         </>)
     }
+
+
 
 
     // Providers
@@ -1100,16 +1109,25 @@ export default function PlaygroundPage(){
 
 
 
-                {/* <div style={{width: "340px"}}>
+                <div style={{width: "340px"}}>
                 <TextEditor 
                     tempObj={aTour}
                     setTempObj={setTour}
                     inputIndex={"dayDescription"}
                     // prevData={}
                 />
-                </div> */}
+                </div>
 
-                {newItineraryBuilder()}
+                <div style={{width: "340px"}}>
+                <TextEditor 
+                    tempObj={aTour}
+                    setTempObj={setTour}
+                    inputIndex={"dayDescription"}
+                    prevState={aTour.dayDescription}
+                />
+                </div>
+
+                {/* {newItineraryBuilder()} */}
 
 
 
@@ -1120,6 +1138,7 @@ export default function PlaygroundPage(){
                 <div style={{width: "340px"}}>
                 <RichTextDisp 
                     theValue={aTour.dayDescription}
+                    richTextCont={true}
                 />
                 </div>
 

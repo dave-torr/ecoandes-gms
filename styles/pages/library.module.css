@@ -12,7 +12,7 @@
 
 .libraryMain{
     display: flex;
-    width: 760px;
+    width: 600px;
 }
 
 .backBTN{
@@ -60,8 +60,9 @@
 }
 
 .aContactDisp{
-    padding-bottom: 12px;
+    padding-bottom: 9px;
     border-bottom: solid 1px black;
+    margin-bottom: 9px;
 }
 
 .removeContactBTN{
@@ -245,6 +246,27 @@
     min-height: 33px;
     margin-bottom: 30px;
     padding: 15px;
+}
+
+
+.inputLabel{
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.inputUserUI{
+    border: none;
+    border-left: solid 2px black;
+    border-bottom: solid 2px black;
+    padding: 6px 9px;
+    background-color: rgba(128, 254, 143, 0.273);
+    margin-top: 6px;
+    width: 100%;
+}
+
+.inputUserUI:focus{
+    background-color: unset;
 }
 
 @media (max-width: 700px) {

@@ -18,6 +18,7 @@ async function handler(req, res){
             client.close();
         } else {
             console.log(FetchedTemplates)
+            client.close();
         }
     }
 

@@ -119,6 +119,7 @@
     justify-content: space-between;
     align-items: center;
     text-transform: capitalize;
+    font-size: 0.8em;
 }
 
 .inputToListRow span{
@@ -297,7 +298,6 @@
 .theInputContainer{
     display: flex;
     flex-direction: column;
-    margin: 9px 0;
     width: 100%;
 }
 

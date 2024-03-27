@@ -149,11 +149,11 @@ export function GMSNavii(props){
             "pathname": "/gms/tourExplorer",
             "label": "tour Explorer"
         },
-        {
-            "pathname": "/gms/tourCreator",
-            "label": "Tour Creator",
-            "printDel": true
-        },
+        // {
+        //     "pathname": "/gms/tourCreator",
+        //     "label": "Tour Creator",
+        //     "printDel": true
+        // },
     ]
 
     if (props.user){

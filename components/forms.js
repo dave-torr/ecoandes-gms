@@ -1086,26 +1086,10 @@ export function DayByDayAdder(props){
 
     const [incluPlaceholder, setPlaceholder]=useState("")
     const [autofillTrig, setAutoFillTrig]=useState(false)
-    // const [autoFillData, setAutoFillData]=useState(false)
     const [locSelection, setLocSelection]=useState(false)
     const [autofillOpts, setAutofillOps]=useState()
     const [imageAddTrig, setImgTrig]=useState(false)
     const [mealPlaceholder, setMealPlaceholder]=useState("")
-
-    // FFD, Autofill will be pulled in Tour Creator home
-    // useEffect(()=>{
-    // (async ()=>{
-    //     if(!autoFillData){
-    //         const res = await fetch("/api/gms/dayByDayDB", {
-    //             method: "GET"
-    //         })
-    //         const docData = await res.json()
-    //         if(res.status===200){
-    //             setAutoFillData(docData)
-    //         }
-    //     }
-    //     })()
-    // },[])
 
 
     useEffect(()=>{
@@ -1125,6 +1109,8 @@ export function DayByDayAdder(props){
             setAutofillOps(sortedArr)
         }
     },[locSelection])
+
+    
     const autofillSelector=(theGeneralLocat)=>{
         let locArr = []
         if(theGeneralLocat){
@@ -1185,6 +1171,9 @@ export function DayByDayAdder(props){
             </Dialog>
         </>)
     }
+
+
+
     const imageSelector=()=>{
         return(<>
         <Dialog open={imageAddTrig} maxWidth="xl" onClose={()=>setImgTrig(false)}>

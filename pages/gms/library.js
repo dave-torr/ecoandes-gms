@@ -223,9 +223,9 @@ export const aContactDisplayer=(aContact, indx, editingTrig, theHotelObj, setThe
                 }} ><CancelPresentationIcon/></div>
             </>}
             <div style={{display:"flex", alignItems:"center"}}>
-                <h4>{aContact.firstName&& <>{aContact.firstName}</>}</h4>&nbsp;
-                <h4>{aContact.lastName&& <>{aContact.lastName}</>}</h4>
-                {aContact.role&& <>&nbsp; &nbsp; &nbsp; &nbsp;{aContact.role}</>}
+                <h4>{aContact.firstName&& <>{aContact.firstName}&nbsp;</>}</h4>
+                <h4>{aContact.lastName&& <>{aContact.lastName} &nbsp; &nbsp;</>}</h4>
+                {aContact.role&& <><strong style={{textTransform:"uppercase"}}>{aContact.role}</strong></>}
             </div>
             {editingTrig? <>
                 {aContact.email&& <>
@@ -399,21 +399,29 @@ function LibraryPage(){
         "interestArr": [],
         "notes":[],
     }
+    const roomSchema={
+        "breakfastInc":true,
+        "ivaInc": true,
+        "serviceChargeInc": true,
+        "includedInPrice": [],
+    }
 
-    const [library, setLibrary] = useState(sampleHotelSubmition)
+    const countryArr= ["",  "colombia", "ecuador", 'peru', "bolivia", "chile", "argentina",]
+
+    //////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////
+
+    const [library, setLibrary] = useState()
+    const [fetchedLibrary, setFetLib]= useState()
     const [libraryTab, setLibraryTab]=useState("main")
 
     const [clientSchema, setClientSchema] = useState(aClientSchema)
     const [hotelSchema, setHotelSchema]=useState(aHotelSchema)
     const [contactSchema, setContactSchema]=useState({})
     const [hotelAdderTrig, setHotelAddTrig]= useState(false)
-    const [roomPriceObj, setRoomPriceObj]=useState({
-        "breakfastInc":true,
-        "ivaInc": true,
-        "serviceChargeInc": true,
-        "includedInPrice": [],
-    })
-    const[interestTempArr, setInterestTempArr]=useState(interestOptArr)
+    const [roomPriceObj, setRoomPriceObj]=useState(roomSchema)
+    const [interestTempArr, setInterestTempArr]=useState(interestOptArr)
     const [addClientTrig, setAddClientTrig] = useState(false)
     const [editingServiceObj, setEditingService]=useState(additionalExpenseSchema)
     const [hotelSubmition, setHotelSub]=useState(false)
@@ -422,6 +430,11 @@ function LibraryPage(){
     const [inputPlaceholder3, setInputPlaceholder3] = useState("")
     const [inputPlaceholder4, setInputPlaceholder4] = useState("")
     const [inputPlaceholder5, setInputPlaceholder5] = useState("")
+    const [inputPlaceholder6, setInputPlaceholder6] = useState("")
+
+    const [locSelection, setLocSelection]=useState(false)
+
+
 
     const marks = [
         // {
@@ -453,11 +466,30 @@ function LibraryPage(){
             const posts = await res.json()
             if (res.status === 200){
                 setLibrary(posts)
+                setFetLib(posts)
             }
         }
-        // fetches itin autofill
         getAutofill()
     },[])
+
+    useEffect(()=>{
+        if(locSelection){
+            let filteringArr = fetchedLibrary.filter((elem=> elem.hotelCountry === locSelection))
+            let sortedArr = filteringArr.sort((a,b)=>{
+                const titleA = a.hotelName.toUpperCase()
+                const titleB = b.hotelName.toUpperCase()
+                if(titleA < titleB){
+                    return -1;
+                } 
+                if(titleA > titleB){
+                    return 1;
+                } 
+                return 0
+            })
+            setLibrary(sortedArr)
+        } 
+    },[locSelection])
+
 
     let providerType=["hotel", "transportCompany", "guide", "restaurant", "services", "yacht", "flotel", "ariline"]
 
@@ -541,7 +573,7 @@ function LibraryPage(){
                 phonoVal.value=''
                 let roleVal = document.getElementById("role")
                 roleVal.value=''
-            }}>
+            }}> <br/>
                 <div className={styles.addRecordBTN} > Add to Contacts </div>
             </span>
         </>)
@@ -569,33 +601,33 @@ function LibraryPage(){
 
                         }
 
-                    // IS OP, Tunr on for submition
-                    // let res = await fetch("/api/gms/library",{
-                    //     method: "POST",
-                    //     body: JSON.stringify(backEndHotelObj)
-                    // })
-                    // let submitHotel = await res.json()
-                    // if(res.status===200){
-                    //     window.alert("Hotel Added to Library!")
-                    //     let tempLibArr = [...library]
-                    //     tempLibArr.push(backEndHotelObj)
-                    //     setLibrary(tempLibArr)
-                    //     setHotelAddTrig(false)
-                    //     setHotelSub(false)
-                    // }
+                    ///////////////////////////////////////////
+                    let res = await fetch("/api/gms/library",{
+                        method: "POST",
+                        body: JSON.stringify(backEndHotelObj)
+                    })
+                    let submitHotel = await res.json()
+                    if(res.status===200){
+                        window.alert("Hotel Added to Library!")
+                        let tempLibArr = [...library]
+                        tempLibArr.push(backEndHotelObj)
+                        setLibrary(tempLibArr)
+                        setHotelAddTrig(false)
+                        setHotelSub(false)
+                    }
+                    ///////////////////////////////////////////
 
                     // TESTING
-                    window.alert("Hotel Added to Library!")
-                    let tempLibArr = [...library]
-                    tempLibArr.push(backEndHotelObj)
-                    setLibrary(tempLibArr)
-                    setHotelAddTrig(false)
-                    setHotelSub(false)
+                    // window.alert("Hotel Added to Library!")
+                    // let tempLibArr = [...library]
+                    // tempLibArr.push(backEndHotelObj)
+                    // setLibrary(tempLibArr)
+                    // setHotelAddTrig(false)
+                    // setHotelSub(false)
 
 
                     //////////////////////////////////////
                     //////////////////////////////////////
-
 
                 }}>
                 <h1>Add hotel to Database</h1>
@@ -649,7 +681,7 @@ function LibraryPage(){
                     </div>
                 </div>
                 <div className={styles.sectionDivider}> 
-                    Rates
+                    Rooms & Rates
                 </div>
                 <div className={styles.spaceBetRow}>
                     <div className={styles.dataColumn}>
@@ -730,48 +762,53 @@ function LibraryPage(){
                                 }} />} label="12% Iva Tax Included" />
                         </div>
                         {inputToList("Price Inclusions", "includedInPrice", roomPriceObj, setRoomPriceObj, roomPriceObj.includedInPrice, inputPlaceholder, setInputPlaceholder)}
-
+                        <br/>
                         <div className={styles.addRecordBTN} onClick={()=>{
                             let tempArr = hotelSchema.roomPriceArr.concat(roomPriceObj)
                             setHotelSchema({
                                 ...hotelSchema,
                                 "roomPriceArr": tempArr
                             })
-                            setRoomPriceObj({"breakfastInc":true})
+                            setRoomPriceObj(roomSchema)
                             let roomDescriptionVal = document.getElementById("roomDescription")
-                            roomDescriptionVal.value=''
+                            roomDescriptionVal.value=undefined
                             let roomAmountVal = document.getElementById("roomAmount")
-                            roomAmountVal.value=''
+                            roomAmountVal.value=undefined
                             if(roomPriceObj.roomAlias){
                                 let roomAliasVal = document.getElementById("roomAlias")
-                                roomAliasVal.value=''
+                                roomAliasVal.value=undefined
                             }
                             let rackRatesVal = document.getElementById("rackRates")
-                            rackRatesVal.value=0
+                            rackRatesVal.value=undefined
                             let ltcRatesVal = document.getElementById("ltcRates")
-                            ltcRatesVal.value=0
+                            ltcRatesVal.value=undefined
                             if(!roomPriceObj.breakfastInc){
                                 let breakfastPriceVal = document.getElementById("breakfastPrice")
-                                breakfastPriceVal.value=''
+                                breakfastPriceVal.value=undefined
                             }
                             if(roomPriceObj.additionalBed){
                                 let additionalBedVal = document.getElementById("additionalBed")
-                                additionalBedVal.value=''
+                                additionalBedVal.value=undefined
                             }
                         }} > Add room </div>
                     </div>
                     <div className={styles.dataColumn}>
-                        {hotelSchema.roomPriceArr?.length>0 && <>
+                        {hotelSchema.roomPriceArr?.length>0 ?<>
                             <h3>Registered Rooms</h3>
                             {hotelSchema.roomPriceArr.map((elem, i)=><React.Fragment key={i}>
                                 {aRoomRateDisp(elem, i, true, hotelSchema, setHotelSchema)}
                             </React.Fragment>)}
+                        </>:<>
+                        <h3> Please Add at least ONE room with rates  </h3>
                         </>}
                     </div>
                 </div>
+                <div className={styles.sectionDivider}> 
+                    Conditions, Gratuities, Special Remarks
+                </div>
                 <div className={styles.spaceBetRow}>
                     <div className={styles.dataColumn}>
-                        {inputToList("Add price Conditions", "priceConditions", hotelSchema, setHotelSchema, hotelSchema.priceConditions, inputPlaceholder, setInputPlaceholder)}
+                        {inputToList("Add price Conditions", "priceConditions", hotelSchema, setHotelSchema, hotelSchema.priceConditions, inputPlaceholder6, setInputPlaceholder6)}
                     </div>
                     <div className={styles.dataColumn}>
                         {inputToList("Add gratuities or discounts", "gratuitiesAndCond", hotelSchema, setHotelSchema, hotelSchema.gratuitiesAndCond, inputPlaceholder2, setInputPlaceholder2)}
@@ -787,8 +824,6 @@ function LibraryPage(){
                 </div>
                 <div className={styles.spaceBetRow}>
                 </div>
-                {/* add aditional services toggle */}
-
                 <div className={styles.sectionDivider}> 
                     Additional Services
                 </div>
@@ -960,17 +995,52 @@ function LibraryPage(){
         </Dialog>
         </>)
     }
+
+
+    // library / filters
     const libraryDisplayer=()=>{
+
+        const optonSelectorFilter=(libraryEntries)=>{
+            if(libraryEntries.length>0){
+                let locArr =[]
+                libraryEntries?.forEach(element => {
+                    const findCountry = locArr.find(elemental=> elemental === element.hotelCountry)
+                    if(element.hotelCountry && !findCountry){
+                        locArr.push(element.hotelCountry)
+                    }
+                })
+                return(<>
+                    {locArr.map((elem,i)=><React.Fragment key={i}>
+                    <option value={elem} style={{textTransform:"capitalize"}} > {elem} </option>
+                    </React.Fragment> )}
+                </>)
+            }
+        }
+
+
         return(<>
         <div className={styles.backBTN} onClick={()=>{
             setLibraryTab("main")
         }} ><ArrowBackIosNewIcon/> BACK </div>
-
             <div className={styles.libraryFilterUI}> 
-                Filter by:
-                
+                <label htmlFor="LocationDropdown" className={styles.inputLabel}>
+                    Select Country
+                </label>
+                <select id="LocationDropdown" className={styles.inputUserUI} onChange={(e)=>{
+                    if(e.target.value==="all"){
+                        setLocSelection()
+                        setLibrary(fetchedLibrary)
+                    } else {
+                        setLocSelection(`${e.target.value}`)
+                    }
+                }} >
+                    <option selected disabled >Select a location </option>
+                    <option value="all">All Countries</option>
+                    {optonSelectorFilter(fetchedLibrary)}
+
+                </select>
             </div>
-            {library.length>0 &&<>
+            {library?.length>0 &&<>
                 {library.map((elem, i)=><React.Fragment key={i}> 
                     {aHotelDisplayer(elem)}
                 </React.Fragment>  )}
@@ -994,7 +1064,7 @@ function LibraryPage(){
                     {/* Quick Links  */}
                     {/* yacht Anahi  */}
                     {/* Ikala UIO - GPS  */}
-                    {library.length>0 && <>
+                    {library?.length>0 && <>
                         <div className={styles.aQuickLink} onClick={()=>setLibraryTab("library")}>
                             Access Library
                         </div>

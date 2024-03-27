@@ -290,7 +290,8 @@
 /* Autofill */
 .autofillEntryCont{
     border: solid 1px black;
-    padding: 3px 6px;
+    padding: 12px;
+    max-width: 600px;
     width: 100%;
 }
 
@@ -300,6 +301,106 @@
     margin-bottom: 33px;
     overflow-x: hidden;
 }
+
+.inputLabel{
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.inputUserUI{
+    border: none;
+    border-left: solid 2px black;
+    border-bottom: solid 2px black;
+    padding: 6px 9px;
+    background-color: rgba(128, 254, 143, 0.273);
+    margin-top: 6px;
+    width: 100%;
+}
+
+.inputUserUI:focus{
+    background-color: unset;
+}
+
+
+/* Itin Builder */
+.itinBuilderCont{
+    width: 90%;
+    background-color: white;
+    min-height: 55px;
+}
+
+.itinToolkitContainer{
+    position: sticky;
+    top: 44px;
+    z-index: 2;
+}
+.creatorIndexBTNONLINE{
+    padding: 21px;
+    border-radius: 6px;
+    background-color: rgb(8, 92, 134);
+    color: white;
+    margin-top: 18px;
+    transition: all ease-in 0.3s;
+    cursor: pointer;
+}
+
+.creatorIndexBTNOFFLINE{
+    padding: 21px;
+    border-radius: 6px;
+    background-color: rgb(146, 180, 196);
+    color: white;
+    margin-top: 18px;
+    transition: all ease-in 0.3s;
+}
+
+.eachDayTab{
+    border: solid 1px black;
+    margin: 2px;
+    padding: 3px 6px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    max-width: 130px;
+    cursor: pointer;
+    transition: all ease 0.2s;
+}
+
+.eachDayTab:hover{
+    background-color: teal;
+    color: white;
+
+}
+
+.lineBreak{
+    width: 100%;
+    border-bottom: solid 1px black;
+    margin-top: 6px;
+    margin-bottom: 12px;
+}
+
+.addFromRecordBTN{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    border-bottom: solid 1px;
+    border-right: solid 1px;
+    padding:  3px 6px;
+    transition: all ease-in 0.2s;
+    font-size: 0.8em;
+}
+
+.addFromRecordBTN:hover{
+    color: white;
+    background-color: rgb(55, 62, 69);
+    cursor: pointer;
+}
+
+.dayAFDialog{
+    padding: 15px 21px;
+    display: flex;
+    flex-direction: column;
+}
+
 
 @media (max-width: 1100px)  {
     .eachTourDispl{
