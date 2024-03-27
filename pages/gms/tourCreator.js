@@ -12,7 +12,6 @@ import {
 import { SignInForm } from "../../components/authForms";
 import {TourDisplayer } from "../../components/tours"
 import { GMSNavii } from "../../components/navis";
-import { Select, Switch } from '@mantine/core';
 import {anImageDisp} from "../gms/pix"
 
 import Accordion from '@mui/material/Accordion';
@@ -132,11 +131,6 @@ let dayModel = {
     const [editEntryObj, setEntryObj] =useState()
     const [listPlaceholder, setListPlaceholder]=useState("Inclusions")
     const [loadingState, setLoading]=useState(false)
-
-
-
-
-
 
 
     // Image and Autofill fetchers

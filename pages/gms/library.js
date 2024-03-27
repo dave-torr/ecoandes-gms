@@ -461,7 +461,7 @@ function LibraryPage(){
         }
     ]
     useEffect(()=>{
-        const getAutofill=async()=>{
+        (async()=>{
             const res = await fetch("http://localhost:3000/api/gms/library", {
                 method: "GET"
             })
@@ -481,8 +481,7 @@ function LibraryPage(){
                 setLibrary(sortedArr)
                 setFetLib(sortedArr)
             }
-        }
-        getAutofill()
+        })()
     },[])
 
     useEffect(()=>{

@@ -1,11 +1,9 @@
 import {connectToDatabase} from "./../../../middleware/dbMiddleware"
-
 import { ObjectId } from 'mongodb';
 
 async function handler(req, res){
     
     const client = await connectToDatabase();
-    
     // //////////////////////////////////////////
     // //////////////////////////////////////////
     // // create provider OP
@@ -36,6 +34,9 @@ async function handler(req, res){
         const fetchProviders = await fetchLibrary
         if(fetchProviders){
             res.status(200).json(fetchProviders)
+            client.close();
+        } else {
+            console.log(fetchProviders)
             client.close();
         }
     }

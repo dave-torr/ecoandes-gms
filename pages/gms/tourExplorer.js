@@ -91,7 +91,6 @@ export default function TourExplorerPage(props){
     },[sortContr])
 
     useEffect(()=>{
-        console.log("Mauw wo")
         if(sortContr==="calendar"){ 
             sortOrder==="descending"?
                 setFilteredItins([...fetchedItinArr].sort((a,b)=> a.dateCreated - b.dateCreated).reverse())
