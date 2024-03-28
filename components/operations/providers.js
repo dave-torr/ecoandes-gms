@@ -44,7 +44,7 @@ export function aHotelDisplayer(aHotel){
         </>)} 
     }
 
-
+    let webIndicator = "http"
     if(aHotel){
     return(<>
         <div className={styles.aProviderCont}>
@@ -74,7 +74,12 @@ export function aHotelDisplayer(aHotel){
                         </div>
                         <span className={styles.hotelLinksDisp} >
                             {aHotel.hotelWebsite && <>
-                            <a target='_blank' href={`${aHotel.hotelWebsite}`}><LanguageIcon/></a></>}
+                                {(aHotel.hotelWebsite.search(webIndicator)===0)? <>
+                                    <a target='_blank' href={aHotel.hotelWebsite}><LanguageIcon/></a>
+                                </>:<>
+                                    <a target='_blank' href={`http://${aHotel.hotelWebsite}`}><LanguageIcon/></a>
+                                </>}
+                            </>}
                             {aHotel.gmapsLink && <>
                             <a target='_blank' href={aHotel.gmapsLink}><LocationOnIcon/></a></>}
                         </span>

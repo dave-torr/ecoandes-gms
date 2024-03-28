@@ -8,6 +8,7 @@
     background-color: var(--whitesmoke-background);
     overflow-x: hidden;
     transition: all ease-in 0.2s;
+    position: relative;
 }
 
 .libraryMain{
@@ -243,11 +244,9 @@
     box-shadow: var(--frst-box-shadow);
     background-color: white;
     width: 600px;
-    min-height: 33px;
-    margin-bottom: 30px;
+    margin-bottom: 21px;
     padding: 15px;
 }
-
 
 .inputLabel{
     font-weight: 600;
@@ -277,6 +276,10 @@
     .libraryMain{
         width: 100%;
         flex-direction: column;
+    }
+
+    .libraryFilterUI{
+        width: 96%;
     }
 
     .libQuickLinks{

@@ -1035,10 +1035,13 @@ function LibraryPage(){
             }
         }
 
+
+
         return(<>
         <div className={styles.backBTN} onClick={()=>{
             setLibraryTab("main")
         }} ><ArrowBackIosNewIcon/> BACK </div>
+
             <div className={styles.libraryFilterUI}> 
                 <label htmlFor="LocationDropdown" className={styles.inputLabel}>
                     Select Country
@@ -1063,7 +1066,6 @@ function LibraryPage(){
                 </React.Fragment>  )}
             </> }
         </>)
-
     }
 
 
@@ -1078,9 +1080,6 @@ function LibraryPage(){
             {libraryTab==="main"? <>
             <div className={styles.libraryMain}> 
                 <div className={styles.libWelcome} > 
-                    {/* Quick Links  */}
-                    {/* yacht Anahi  */}
-                    {/* Ikala UIO - GPS  */}
                     {library?.length>0 && <>
                         <div className={styles.aQuickLink} onClick={()=>setLibraryTab("library")}>
                             Access Library
@@ -1113,7 +1112,7 @@ function LibraryPage(){
                     </div> */}
                 </div>
             </div>
-            </> : libraryTab==="library"&& <> 
+            </> : libraryTab==="library"&& <>
                 {libraryDisplayer()}
             </>}
             {hotelAdderForm()}
