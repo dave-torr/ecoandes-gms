@@ -372,7 +372,7 @@
     border-top: solid 2px black;
     padding: 6px 9px;
     margin-right: 9px;
-    width: 110px;
+    max-width: 130px;
     font-size: 0.9em;
     display: flex;
     justify-content: space-between;

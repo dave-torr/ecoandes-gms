@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react'
+import Head from 'next/head'
 import {LexicalComposer} from '@lexical/react/LexicalComposer';
 
 import {OnChangePlugin} from '@lexical/react/LexicalOnChangePlugin';
@@ -11,6 +12,8 @@ import {useLexicalComposerContext} from '@lexical/react/LexicalComposerContext';
 import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary';
 
 import styles from "../styles/components/textEditor.module.css"
+import { $createParagraphNode, $createTextNode, $getRoot } from 'lexical';
+
 
 export function TextEditor(props) {
 
@@ -23,6 +26,22 @@ export function TextEditor(props) {
             [props.inputIndex]: editorState
         })
     },[editorState])
+
+    // Still cannot update and add content to days.
+    // useEffect(()=>{
+    //     ()=>{
+    //         const [editor] = useLexicalComposerContext();
+    //         editor.update(()=>{
+    //             const root = $getRoot();
+    //             const paragraphNode = $createParagraphNode();
+    //             const textNode = $createTextNode("cucu");
+    //             paragraphNode.append(textNode)
+    //             root.append(paragraphNode)
+
+    //         })
+    //     }
+
+    // },[props.addedText])
 
 
     function onChange(editorState) {
@@ -42,7 +61,6 @@ export function TextEditor(props) {
         }, [editor, onChange]);
         return null;
     }
-
 
     return (<>
         <div >
@@ -120,3 +138,5 @@ export function RichTextDisp(props){
         </div>
     </>)
 }
+
+

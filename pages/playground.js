@@ -50,11 +50,6 @@ let ecoAndesDestinations= [...LTCGenDAta.countryList, "galapagos", "atacama", "e
 let tourDiff =[1,2,3,4,5]
 let tourType=["historic", "nature", "360° itineraries", "climbing", "trekking"]
 
-
-
-
-
-
 let tempDep= {
     "itineraryID": "djoserNLJecga",
     "tourCode": "Vh Hitt",
@@ -1086,7 +1081,7 @@ export default function PlaygroundPage(){
         </>)
     }
 
-
+    const [addedText, setAddedText]=useState()
 
 
     return(<>
@@ -1107,7 +1102,7 @@ export default function PlaygroundPage(){
                 {/* ///////////////////////////// */}
                 {/* ///////////////////////////// */}
 
-
+                <div onClick={()=>setAddedText("Frixxit")}> Add </div>
 
                 <div style={{width: "340px"}}>
                 <TextEditor 
@@ -1115,6 +1110,7 @@ export default function PlaygroundPage(){
                     setTempObj={setTour}
                     inputIndex={"dayDescription"}
                     // prevData={}
+                    addedText={addedText}
                 />
                 </div>
 
@@ -1129,8 +1125,6 @@ export default function PlaygroundPage(){
 
                 {/* {newItineraryBuilder()} */}
 
-
-
                 <br/>
                 <br/>
                 <br/>
@@ -1141,6 +1135,9 @@ export default function PlaygroundPage(){
                     richTextCont={true}
                 />
                 </div>
+
+
+                
 
 
 

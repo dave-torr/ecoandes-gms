@@ -17,7 +17,7 @@
 .homeBTN{
     display: flex;
     flex-direction: column;
-    padding: 21PX 0;
+    padding: 21px 0;
     border: solid 2px black;
     border-radius: 5px;
     text-align: center;
@@ -204,9 +204,6 @@
 
 /* IMG PICKER STYLING */
 
-.imgSelectionCont{
-    width: 100%;
-}
 .eachImgDisp{
     margin: 9px 0;
     position: relative;
@@ -214,22 +211,22 @@
 }
 
 .imgPickerCont{
-    overflow-y: scroll;
     display: flex;
     flex-wrap: wrap;
     height: 450px;
     justify-content: space-between;
+    padding-right: 9px;
 }
 
 .imgSelectorBTN{
     border-radius: 50%;
-    width: 18px;
-    height: 18px;
+    width: 21px;
+    height: 21px;
     background-color: teal;
     color: white;
     position: absolute;
     top: -6px;
-    right: -6px;
+    right: -9px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -256,7 +253,7 @@
 
 .imgUIUtils{
     display: flex;
-    width: calc(94vw - 330px);;
+    width: 100%;
     align-items: center;
     flex-wrap: wrap;
     background-color: var(--whitesmoke-background);
@@ -322,10 +319,10 @@
     background-color: unset;
 }
 
-
 /* Itin Builder */
 .itinBuilderCont{
-    width: 90%;
+    margin-top: 12px;
+    width: 960px;
     background-color: white;
     min-height: 55px;
 }
@@ -360,7 +357,7 @@
     padding: 3px 6px;
     border-radius: 5px;
     font-size: 0.8em;
-    max-width: 130px;
+    max-width: 145px;
     cursor: pointer;
     transition: all ease 0.2s;
 }
@@ -402,8 +399,16 @@
 }
 
 
-@media (max-width: 1100px)  {
+@media (max-width: 1000px)  {
     .eachTourDispl{
         width: 100%
     }
+
+    .itinBuilderCont{
+        margin-top: 12px;
+        width: 98%;
+        background-color: white;
+        min-height: 55px;
+    }
+    
 }

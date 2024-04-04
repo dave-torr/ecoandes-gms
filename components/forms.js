@@ -118,7 +118,7 @@ export function multiOptPicker(theOptsArr, inputLabel, inputId, resultingList, a
                         [inputId]: tempListTwo
                     })
             }}> 
-                {elem} <HighlightOffIcon />
+                {elem} &nbsp; <HighlightOffIcon />
             </div>
         </React.Fragment>)
         

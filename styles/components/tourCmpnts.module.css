@@ -1132,6 +1132,7 @@
     justify-content: space-between;
     margin-top: 9px;
     margin-bottom: 21px;
+    text-align: center;
 }
 .tourCopyBTNSOFFLINE{
     width: 100%;
@@ -1142,28 +1143,28 @@
 }
 
 .tourCopyBTNS span{
-    width: 48%;
-    text-align: center;
+    width: 78px;
     border: solid 1px black;
-    padding: 9px 0;
+    padding: 9px 12px;
     cursor: pointer;
 }
 .tourCopyBTNSOFFLINE span{
     opacity: 0.5;
-    width: 48%;
-    text-align: center;
+    width: 78px;
     border: solid 1px black;
-    padding: 9px 0;
+    padding: 9px 12px;
     cursor: default;
 }
 
 .tourCopyBTNS span:nth-of-type(2){
     background-color: rgb(65, 65, 79);
     color: white;
+    margin-left: 6px;
 }
 .tourCopyBTNSOFFLINE span:nth-of-type(2){
     background-color: rgb(65, 65, 79);
     color: white;
+    margin-left: 6px;
 }
 
 
@@ -1196,14 +1197,14 @@
 .dayImgCont{
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
 .eachDayImg{
-    width: 46%;
+    width: fit-content;
     margin: 9px;
-    padding: 1px 4px;
+    padding: 4px 4px 2px 4px;
     box-shadow: var(--frst-box-shadow);
 }
 
@@ -1324,8 +1325,13 @@
         padding: 6px 9px;
     }
 
-    .eachDayImg{
-        width: 45%;
+}
+
+@media (max-width: 800px){
+    .tourDataCont{
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
     }
 }
 
