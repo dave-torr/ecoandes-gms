@@ -598,10 +598,50 @@ let dayModel = {
         const anAutofillEntry=(anEntry, indx)=>{
             return(<>
             <div className={styles.autofillEntryCont}>
-            <div className={styles.spaceBetRow}>
-                <strong> {anEntry.title}</strong>
-                <i> {anEntry.location}</i>
-            </div>
+                <div className={styles.spaceBetRow}>
+                    <strong> {anEntry.title}</strong>
+                    <i> {anEntry.location}</i>
+                </div>
+                <div className={styles.spaceBetRow}>
+                <span/>
+                {toolingOrUse==="tooling"?<>
+                    <span onClick={()=>{
+                        let dayInc;
+                        if(anEntry.dayInclusions){
+                            dayInc=anEntry.dayInclusions
+                        } else{
+                            dayInc = []
+                        }
+                        setEntryTrig({
+                            ...anEntry,
+                            "indx": indx
+                        })
+                        setEntryObj({
+                            "_id": anEntry._id,
+                            "dayInclusions":dayInc
+                        })
+                    }}> <EditIcon/></span>
+                </>:toolingOrUse==="use"&&<>
+                    <span onClick={()=>{
+
+                        let tempArr
+                        if(anEntry.dayInclusions?.length>0){
+                            tempArr = [...aTravelDay.dayInclusions, ...anEntry.dayInclusions]
+                        } else {
+                            tempArr=[...aTravelDay.dayInclusions]
+                        }
+                        setTravelDay({
+                            ...aTravelDay,
+                            "dayInclusions":tempArr,
+                            "dayDescription": anEntry.dayDescription,
+                            "dayTitle":anEntry.dayTitle,
+                        })
+                        setAFTrig(false)
+                    }}>
+                        <AddCircleIcon/>
+                    </span>
+                </>}
+                </div>
                 {anEntry.dayDescription?<>
                     <div style={{padding:"15px"}}>
                         <RichTextDisp
@@ -609,73 +649,6 @@ let dayModel = {
                             theValue={anEntry.dayDescription}
                         />
                     </div>
-                <div className={styles.spaceBetRow}>
-                <span/>
-                    {toolingOrUse==="tooling"?<>
-                        <span onClick={()=>{
-                            let dayInc;
-                            if(anEntry.dayInclusions){
-                                dayInc=anEntry.dayInclusions
-                            } else{
-                                dayInc = []
-                            }
-                            setEntryTrig({
-                                ...anEntry,
-                                "indx": indx
-                            })
-                            setEntryObj({
-                                "_id": anEntry._id,
-                                "dayInclusions":dayInc
-                            })
-                        }}> <EditIcon/></span>
-                    </>:toolingOrUse==="use"&&<>
-                        <span onClick={()=>{
-                            // add description to daily text, add inclusions to day list, close Dialog
-                            // if(aTravelDay?.dayDescription){
-
-                                // let parsedEntryDescr = JSON.parse(anEntry.dayDescription)
-                                // let tempTravDes= JSON.parse(aTravelDay.dayDescription)
-                                // let tempObj = {
-                                //     ...tempTravDes,
-                                //     "root":{
-                                //         ...tempTravDes.root,
-                                //         "children":[
-                                //             ...tempTravDes.root.children,
-                                //             ...parsedEntryDescr.root.children
-                                //         ]
-                                //     }
-                                // }
-                                // // text editor is not updating, help!
-                                // setTravelDay({
-                                //     ...aTravelDay,
-                                //     "dayDescription": JSON.stringify(tempObj)
-                                // })
-                                // setAFTrig(false)
-                            // } else {
-
-                                // setTravelDay({
-                                //     ...aTravelDay,
-                                //     "dayDescription": anEntry.dayDescription
-                                // })
-                                // setAFTrig(false)
-                            // }
-
-                            let tempArr
-                            if(anEntry.dayInclusions?.length>0){
-                                tempArr = [...aTravelDay.dayInclusions, ...anEntry.dayInclusions]
-                            } else {
-                                tempArr=[...aTravelDay.dayInclusions]
-                            }
-                            setTravelDay({
-                                ...aTravelDay,
-                                "dayInclusions":tempArr,
-                            })
-                            setAFTrig(false)
-                        }}>
-                            <AddCircleIcon/>
-                        </span>
-                    </>}
-                </div>
                 {anEntry.dayInclusions.length>0&&<>
                 <strong >INCLUSIONS:</strong>
                     {anEntry.dayInclusions.map((elem,i)=><React.Fragment key={i}>
@@ -946,9 +919,9 @@ let dayModel = {
 
                 <div className={styles.spaceBetRow} style={{alignItems:"flex-start"}}>
 
-
-
-
+                {useAFTrig===undefined && <>
+                    {localNav(setAFTrig, true, "AUTOFILL", <PlaylistAddIcon/>, 2)}
+                </>}
                 {useAFTrig===true?<>
                     {autofillTools(filteredAFEntries, autoFillData, "use")}
 
