@@ -4,7 +4,6 @@ import React, { useState, useEffect, useRef } from 'react'
 import Head from 'next/head'
 import {LexicalComposer} from '@lexical/react/LexicalComposer';
 
-import {OnChangePlugin} from '@lexical/react/LexicalOnChangePlugin';
 import {RichTextPlugin} from '@lexical/react/LexicalRichTextPlugin';
 import {ContentEditable} from '@lexical/react/LexicalContentEditable';
 import {HistoryPlugin} from '@lexical/react/LexicalHistoryPlugin';
@@ -12,14 +11,11 @@ import {useLexicalComposerContext} from '@lexical/react/LexicalComposerContext';
 import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary';
 
 import styles from "../styles/components/textEditor.module.css"
-import { $createParagraphNode, $createTextNode, $getRoot } from 'lexical';
-import Dialog from '@mui/material/Dialog';
 
 export function TextEditor(props) {
 
 
     const [editorState, setEditorState]=useState()
-    const [testerTrig, setTesterTrig]=useState(false)
 
     useEffect(()=>{
         props.setTempObj({
@@ -27,54 +23,6 @@ export function TextEditor(props) {
             [props.inputIndex]: editorState
         })
     },[editorState])
-
-    // Still cannot update and add content to days.
-    // useEffect(()=>{
-    //     ()=>{
-    //         const [editor] = useLexicalComposerContext();
-    //         editor.update(()=>{
-    //             const root = $getRoot();
-    //             const paragraphNode = $createParagraphNode();
-    //             const textNode = $createTextNode("cucu");
-    //             paragraphNode.append(textNode)
-    //             root.append(paragraphNode)
-
-    //         })
-    //     }
-
-    // },[props.addedText])
-
-    const aFEntryAdder=(daEntries)=>{
-        function addEntry(daEntry){
-            const [editor] = useLexicalComposerContext();
-            editor.update(()=>{
-                const root = $getRoot();
-                const paragraphNode = $createParagraphNode();
-                const textNode = $createTextNode(daEntry);
-                paragraphNode.append(textNode)
-                root.append(paragraphNode)
-            })
-        }
-        if(daEntries){
-            let filteredEntrie=daEntries.filter((elem)=> elem.dayDescription)
-            console.log(filteredEntrie, "filteredd")
-            return(<>
-                <div onClick={()=>setTesterTrig(true)}> OPEN</div>
-                <Dialog open={testerTrig} onClose={()=>setTesterTrig(false)}>
-                    {filteredEntrie.map((elem)=><><div style={{border:"solid 1px black", margin:"5px" }}>
-                        <div onClick={()=>{
-                                addEntry(elem.dayDescription)
-                                setTesterTrig(false)
-                        }}> ADD PLEASE GOD</div>
-                        <RichTextDisp
-                            richTextCont={true}
-                            theValue={elem.dayDescription}
-                        />
-                    </div> </>)}
-                </Dialog>
-            </>)
-        }
-    }
 
     function onChange(editorState) {
         const editorStateJSON = editorState.toJSON();
@@ -97,7 +45,6 @@ export function TextEditor(props) {
 
 
     return (<>
-        {aFEntryAdder(props.AFEntries)}
         <div >
         <div className={styles.spaceBetRow}> 
             <div className={styles.inputLabel}>

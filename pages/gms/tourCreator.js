@@ -98,7 +98,7 @@ let dayModel = {
     // tour model
     const [aTour, setTour]=useState(TourModel)
     const [editDayTrig, setDayTrig]= useState(false)
-    const [useAFTrig, setAFTrig]= useState(false)
+    const [useAFTrig, setAFTrig]= useState(undefined)
     const [aTravelDay, setTravelDay] = useState()
     const [itinMakerIndex, setItinMkrIndx]=useState(0)
     const [mealPlaceholder, setMealPlaceholder]=useState("")
@@ -587,18 +587,8 @@ let dayModel = {
     const tourCreatorHome=()=>{
         return(<>
             <div className={styles.spaceBetRow} style={{width:"500px", marginTop:"39px"}}>
-                <div className={styles.homeBTN} onClick={()=>setPageNavi("creator")}>
-                    <LuggageIcon/> <br/>
-                    <span>
-                        CREATE <br/> ITINERARY
-                    </span>
-                </div>
-                <div className={styles.homeBTN} onClick={()=>setPageNavi("autofill")}>
-                    <RateReviewIcon/> <br/>
-                    <span>
-                        AUTOFILL <br/> TOOLKIT
-                    </span>
-                </div>
+                {localNav(setPageNavi, "creator", "CREATE ITINERARY", <LuggageIcon/>, 2 )}
+                {localNav(setPageNavi, "autofill", "AUTOFILL TOOLKIT", <RateReviewIcon/>, 2 )}
             </div>
         </>)
     }
@@ -942,6 +932,8 @@ let dayModel = {
             <div style={{borderRadius:"5px", border:"solid 1px black", padding: "6px"}}>
                 <div className={styles.spaceBetRow}>
                     {<h3>Edit Day {aTravelDay.dayIndex+1}</h3>}
+
+
                     <div style={{cursor:"pointer", display: "flex" }} onClick={()=>{
                         let splicer = aTour.dayByDay.splice(aTravelDay.dayIndex, 1, aTravelDay);
                         setTour({...aTour});
@@ -949,7 +941,18 @@ let dayModel = {
                     }}> Save Day &nbsp;<SaveIcon/> </div>
                 </div>
                 <div className={styles.lineBreak} />
+
+
+
                 <div className={styles.spaceBetRow} style={{alignItems:"flex-start"}}>
+
+
+
+
+                {useAFTrig===true?<>
+                    {autofillTools(filteredAFEntries, autoFillData, "use")}
+
+                </> :useAFTrig!=undefined && <>
                     <div style={{width:"48%", height:"auto"}}>
                         {anInputDisplayer("day Title", "dayTitle", "text", false, aTravelDay.dayTitle, aTravelDay, setTravelDay, undefined, undefined, "Day Main Activity")}
                         <TextEditor
@@ -958,15 +961,11 @@ let dayModel = {
                             inputIndex="dayDescription"
                             inputLabel="Day Description"
                             prevState={aTravelDay.dayDescription}
-                            AFEntries={filteredAFEntries}
                         />
                         
                     </div>
                     <div style={{width:"48%"}}>
                         <div className={styles.spaceBetRow}>
-                            <div className={styles.addFromRecordBTN} onClick={()=>{
-                                setAFTrig(true)
-                            }}> ADD AUTOFILL &nbsp; <PlaylistAddIcon/> </div>
                             <div className={styles.addFromRecordBTN}  onClick={()=>{
                                 setDayImgTrig(true)
                             }}> ADD IMAGES &nbsp; <AddPhotoAlternateIcon/> </div>
@@ -977,6 +976,8 @@ let dayModel = {
                         {anInputDisplayer("Supplementary Information", "suppInfo", "text", false, aTravelDay.suppInfo, aTravelDay, setTravelDay, undefined, undefined, "Ex: Quito is at 2,800 meters above sea level")}
                         {anInputDisplayer("Driving distance", "drivingDistance", "number", false, aTravelDay.drivingDistance, aTravelDay, setTravelDay, 0, undefined, "Ex: 150 km")}
                     </div>
+                </>}
+
                 </div>
             </div>
             </>:<>
@@ -1105,6 +1106,25 @@ let dayModel = {
         </>)
     }
 
+    const localNav=(BTNFunc, BTNRes, BTNLabel, BTNIcon, BTNStyle )=>{
+        if(BTNStyle===1){
+            return(<>
+                <div className={styles.localNav}>
+                    <div className={styles.returnHomeBTN} onClick={()=>BTNFunc(BTNRes)}>{BTNIcon} {BTNLabel}</div>
+                </div>
+            </>)
+        } else if( BTNStyle===2){
+            return(<>
+                <div className={styles.homeBTN} onClick={()=>BTNFunc(BTNRes)}>
+                    {BTNIcon} <br/>
+                    <span>
+                        {BTNLabel}
+                    </span>
+                </div>
+            </>)
+        }
+    }
+
     return(<>
         <div className={styles.generalPageCont}>
             {session?<>
@@ -1116,9 +1136,7 @@ let dayModel = {
                 </div>
 
                 {pageNavigator!="home"&&<>
-                    <div className={styles.localNav}>
-                        <div className={styles.returnHomeBTN} onClick={()=>setPageNavi("home")}><HomeIcon/> Tour Creator Home</div>
-                    </div>
+                    {localNav(setPageNavi, "home", "Tour Creator Home", <HomeIcon/>, 1)}
                 </>}
                 {pageNavigator==="home"? <> 
                     {tourCreatorHome()}
