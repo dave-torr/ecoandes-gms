@@ -112,7 +112,7 @@ let dayModel = {
 
     const [fetchedImgArrs, setFetchedImgs]=useState([])
     const [filteredImgArr, setFilteredImgs]=useState([])
-    const [imgDestFilter, setImgFilter]=useState(0)
+    const [imgLocFilter, setImgFilter]=useState(0)
     const [submitionTrig, setSubmitTrig]=useState(false)
     const [incluPlaceholder, setPlaceholder]=useState("")
     
@@ -151,19 +151,6 @@ let dayModel = {
         if(locSelection){
             let filteringArr = autoFillData.filter((elem=> elem.location === locSelection))
             let sortedArr = filteringArr.sort((a,b)=>{
-                const titleA = a.title.toUpperCase()
-                const titleB = b.title.toUpperCase()
-                if(titleA < titleB){
-                    return -1;
-                } 
-                if(titleA > titleB){
-                    return 1;
-                } 
-                return 0
-            })
-            setFilteredEntries(sortedArr)
-        } else {
-            let sortedArr = autoFillData.sort((a,b)=>{
                 const titleA = a.title.toUpperCase()
                 const titleB = b.title.toUpperCase()
                 if(titleA < titleB){
@@ -227,29 +214,26 @@ let dayModel = {
     ]
 
     // Img picker utils
-    let imgCountry= ['all countries', "ecuador", 'peru', "chile", "argentina",]
     useEffect(()=>{
-        if(imgDestFilter){
-            if(imgDestFilter==='all countries'){
+        if(imgLocFilter){
+            if(imgLocFilter==='all'){
                 setFilteredImgs(fetchedImgArrs)
             } else {
-                let tempArr = fetchedImgArrs.filter(elem=>elem.imgCountry===imgDestFilter)
+                let tempArr = fetchedImgArrs.filter(elem=>elem.imgCountry===imgLocFilter)
                 setFilteredImgs(tempArr)
             }
-
-        } else if (!imgDestFilter){
+        } else if (!imgLocFilter){
             setFilteredImgs(fetchedImgArrs)
         }
-    },[imgDestFilter])
+    },[imgLocFilter])
 
     const imagePickers=(coverOrDay)=>{
         
-        // add to itin with or without complimentary data?
         // IMG Picker
         // Loading Bar
         // see all imgInstace
         // Filter imgaes
-
+        let imgLocArr=[]
         if (filteredImgArr) {
         let aPickerImg= filteredImgArr.map((elem, i)=>
         <React.Fragment key={i}>
@@ -287,10 +271,27 @@ let dayModel = {
             </div>
         </React.Fragment>)
 
+        fetchedImgArrs?.forEach(element=>{
+            const findImgLoc = imgLocArr.find(elemental=>elemental ===element.imgCountry)
+            if(!findImgLoc){
+                imgLocArr.push(element.imgCountry)
+            }
+        })
+
         return(<>
-            <div className={styles.spaceBetRow}>
-                <h3>COVER IMAGES</h3>
+            <div className={styles.spaceBetRow} style={{padding:"0 12px"}}>
+                <h2>Please choose cover images:</h2>
                 Images: {filteredImgArr.length} 
+            </div>
+            <div> 
+                <select onChange={(e)=>{
+                        setImgFilter(e.target.value)
+                    }}>
+                    <option value="all" > All Countries</option>
+                    {imgLocArr.map((elem,i)=><React.Fragment key={i}>
+                        <option value={elem} style={{textTransform:"capitalize"}}>{elem}</option>
+                    </React.Fragment>)}
+                </select>
             </div>
             <div className={styles.imgPickerCont} >
                 {aPickerImg}
@@ -298,17 +299,25 @@ let dayModel = {
         </>)
         }
     }
-    const imgPickerUIUitls=(imgArr)=>{
+    const imgPickerUIUitls=(imgArr, dayOrCover)=>{
         let eachSelectedImg=imgArr.map((elem, i)=><React.Fragment key={i}>
             <div style={{padding: "6px", width:"120px", position: "relative", marginRight:"9px"}}>
                 {anImageDisp(elem, 120, "LTCWide", elem.imgAlt)}
                 <div className={styles.imgSelectorBTN} onClick={()=>{
+
                         let tempList=[...imgArr];
                         tempList.splice(i, 1)
-                        setTour({
-                            ...aTour,
-                            "imgArr": tempList
-                        })
+                        if(dayOrCover==="cover"){
+                            setTour({
+                                ...aTour,
+                                "imgArr": tempList
+                            })
+                        } else if(dayOrCover==="day"){
+                            setTravelDay({
+                                ...aTravelDay,
+                                "imgArr": tempList
+                            })
+                        }
                         let secondList=filteredImgArr.concat({"src": elem})
                         setFilteredImgs(secondList)
                     }}> x </div>
@@ -916,13 +925,15 @@ let dayModel = {
             }
 
             const dayImgAdder=()=>{
-                return(<>
+                if(aTravelDay){return(<>
                     <Dialog open={addDayImgTrig} onClose={()=>setDayImgTrig(false)}>
+                        <div className={styles.closeDialogBTN} >CLOSE X</div>
                         <div style={{padding:"21px"}} >
+                        {imgPickerUIUitls(aTravelDay.imgArr, "day")}
                             {imagePickers("day")}
                         </div>
                     </Dialog>
-                </>)
+                </>)}
             }
 
             return(<>
@@ -947,6 +958,7 @@ let dayModel = {
                             inputIndex="dayDescription"
                             inputLabel="Day Description"
                             prevState={aTravelDay.dayDescription}
+                            AFEntries={filteredAFEntries}
                         />
                         
                     </div>
@@ -994,8 +1006,6 @@ let dayModel = {
             </>}
             </>)
         }
-
-
         const eachStepTemplate=()=>{
             return(<>
             <div className={styles.itinToolkitContainer} >
@@ -1057,7 +1067,7 @@ let dayModel = {
 
                 {itinMakerIndex===2&&<>
                     {aTour.imgArr.length>0 && <>
-                        {imgPickerUIUitls(aTour.imgArr)}
+                        {imgPickerUIUitls(aTour.imgArr, "cover")}
                         </>}
                     {imagePickers("cover")}
                 </>}

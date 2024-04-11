@@ -13,12 +13,13 @@ import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary';
 
 import styles from "../styles/components/textEditor.module.css"
 import { $createParagraphNode, $createTextNode, $getRoot } from 'lexical';
-
+import Dialog from '@mui/material/Dialog';
 
 export function TextEditor(props) {
 
 
     const [editorState, setEditorState]=useState()
+    const [testerTrig, setTesterTrig]=useState(false)
 
     useEffect(()=>{
         props.setTempObj({
@@ -43,6 +44,37 @@ export function TextEditor(props) {
 
     // },[props.addedText])
 
+    const aFEntryAdder=(daEntries)=>{
+        function addEntry(daEntry){
+            const [editor] = useLexicalComposerContext();
+            editor.update(()=>{
+                const root = $getRoot();
+                const paragraphNode = $createParagraphNode();
+                const textNode = $createTextNode(daEntry);
+                paragraphNode.append(textNode)
+                root.append(paragraphNode)
+            })
+        }
+        if(daEntries){
+            let filteredEntrie=daEntries.filter((elem)=> elem.dayDescription)
+            console.log(filteredEntrie, "filteredd")
+            return(<>
+                <div onClick={()=>setTesterTrig(true)}> OPEN</div>
+                <Dialog open={testerTrig} onClose={()=>setTesterTrig(false)}>
+                    {filteredEntrie.map((elem)=><><div style={{border:"solid 1px black", margin:"5px" }}>
+                        <div onClick={()=>{
+                                addEntry(elem.dayDescription)
+                                setTesterTrig(false)
+                        }}> ADD PLEASE GOD</div>
+                        <RichTextDisp
+                            richTextCont={true}
+                            theValue={elem.dayDescription}
+                        />
+                    </div> </>)}
+                </Dialog>
+            </>)
+        }
+    }
 
     function onChange(editorState) {
         const editorStateJSON = editorState.toJSON();
@@ -62,7 +94,10 @@ export function TextEditor(props) {
         return null;
     }
 
+
+
     return (<>
+        {aFEntryAdder(props.AFEntries)}
         <div >
         <div className={styles.spaceBetRow}> 
             <div className={styles.inputLabel}>

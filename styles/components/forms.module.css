@@ -342,10 +342,8 @@
 
 .aRow{
     display: flex;
-    align-items: center;
     flex-wrap: wrap;
     justify-content: space-between;
-
 }
 
 .listDisplayer{
@@ -353,7 +351,7 @@
 }
 
 .multiPickerOpt{
-    width: 44%;
+    width: 48%;
     border-left: solid 2px black;
     border-bottom: solid 2px black;
     padding: 6px 9px;
@@ -367,16 +365,15 @@
 
 .multiElemSelects{
     display: flex;
-    align-items: center;
     border-right: solid 2px black;
     border-top: solid 2px black;
     padding: 6px 9px;
-    margin-right: 9px;
+    margin: 3px;
     max-width: 130px;
     font-size: 0.9em;
     display: flex;
-    justify-content: space-between;
     text-transform: capitalize;
+    height: 35px;
 }
 
 

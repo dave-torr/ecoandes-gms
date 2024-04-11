@@ -405,30 +405,44 @@ export default function PlaygroundPage(){
     const [locObject, setTempObj]=useState(false)
     const [autofillOpts, setAutofillOps]=useState()
     const [aTour, setTour]=useState(TourModel)
-    const [editedTrig, setHasEditTrig]=useState(false)
+    const [filteredAFEntries, setFilteredEntries]=useState(false)
 
 
-    useEffect(()=>{
-        setAutofillOps()
-        const getDataz = async ()=>{
-            if(locObject){
-                const res = await fetch("/api/googleApi",{
-                    method: "POST",
-                    body: locObject
-                })
-                const locData = await res.json()
-                if(res.status===200){
-                    setAutofillOps(locData)
-                    return () => {};
-                }
-            }
-        }
-        getDataz()
-    },[locObject])
+    // useEffect(()=>{
+    //     setAutofillOps()
+    //     const getDataz = async ()=>{
+    //         if(locObject){
+    //             const res = await fetch("/api/googleApi",{
+    //                 method: "POST",
+    //                 body: locObject
+    //             })
+    //             const locData = await res.json()
+    //             if(res.status===200){
+    //                 setAutofillOps(locData)
+    //                 return () => {};
+    //             }
+    //         }
+    //     }
+    //     getDataz()
+    // },[locObject])
     
     // useEffect(()=>{
     //     console.log(autofillOpts)
     // },[autofillOpts])
+
+    useEffect(()=>{
+        (async ()=>{
+            const res = await fetch("/api/gms/dayByDayDB", {
+                method: "GET"
+            })
+
+            const docData = await res.json()
+            if(res.status===200){
+                setAutofillOps(docData)
+                setFilteredEntries(docData)
+            }
+        })()
+    },[])
 
     /////////////////////////////////////////////////////
     /////////////////////////////////////////////////////
@@ -643,301 +657,6 @@ export default function PlaygroundPage(){
         </>)
     }
 
-    const [itinMakerIndex, setItinMkrIndx]=useState(0)
-    const [destinationList, setDestList] = useState([...ecoAndesDestinations])
-    const [aTravelDay, setTravelDay] = useState()
-    const [editDayTrig, setDayTrig]= useState(false)
-    const [incluPlaceholder, setPlaceholder]=useState("")
-    const [mealPlaceholder, setMealPlaceholder]=useState("")
-
-    const newItineraryBuilder=(theNewItin, setNewItin)=>{
-
-        const itinMakerCounterFunct=(theCounter, setTeCounter, additonalFunct)=>{
-
-            return(<>
-            <div style={{display:"flex"}}>
-                {theCounter===0?<>
-                    <div className={styles.creatorIndexBTNOFFLINE}>
-                        <KeyboardDoubleArrowLeftIcon/>
-                    </div>
-                </>:theCounter>0&&<>
-                    <div className={styles.creatorIndexBTNONLINE} onClick={()=>{
-                        setTeCounter(theCounter - 1)
-                    }}>
-                        <KeyboardDoubleArrowLeftIcon/>
-                    </div>
-                </>}
-                
-                <div className={styles.creatorIndexBTNONLINE}
-                onClick={()=>{
-                    // day by Day
-                    theCounter===1 ? additonalFunct() : setTeCounter(theCounter + 1)
-                }}>
-                    <KeyboardDoubleArrowRightIcon/>
-                </div>
-            </div>
-            </>)
-        }
-        const dayArrAdder=()=>{
-            if(aTour.dayByDay.length===0){
-                let tempDayArr = []
-                for(let i = 0; i < aTour.duration; i++){
-                    tempDayArr.push(dayModel)
-                }
-                let theSplicer = aTour.dayByDay.splice(0,0, ...tempDayArr)
-                setTour({
-                    ...aTour,
-                    "dyByDay": aTour.dayByDay
-                })        
-            }
-            setItinMkrIndx(itinMakerIndex + 1)
-        }
-        const dayEditor=()=>{
-            const mealsIncludedTool=()=>{
-        
-                let mealOpts=[
-                    "breakfast",
-                    "breakfastBox",
-                    "brunch",
-                    "lunch",
-                    "lunchBox",
-                    "snack",
-                    "dinner",
-                    "other"
-                ]
-        
-                return(<>
-                    <label className={styles.inputLabel} htmlFor="mealInput" > Add Meals </label>
-                    <select className={styles.inputUserUI} id="mealInput" onChange={(e)=>{
-                        setMealPlaceholder({
-                            ...mealPlaceholder,
-                            "meal": e.target.value
-                        })
-                    }}>
-                        <option selected disabled >Choose a meal </option>
-                        {mealOpts.map((elem, i)=><React.Fragment key={i}>
-                            <option value={elem}>{elem} </option>
-                        </React.Fragment> )}
-                    </select>
-                    {mealPlaceholder?.meal && <>
-                        <label className={styles.inputLabel} htmlFor="mealInput" > add {mealPlaceholder?.meal} at: </label>
-                        <input className={styles.inputUserUI} type="text" placeholder="Location of Meal" onChange={(e)=>{
-                            setMealPlaceholder({
-                                ...mealPlaceholder,
-                                "location": e.target.value
-                            })
-                        }}/>
-                        <div className={styles.addFromRecordBTN} onClick={()=>{
-                            let tempArr
-                            if(aTravelDay.meals?.length>0){
-                                tempArr = aTravelDay.meals.concat(mealPlaceholder)
-                            } else {
-                                tempArr=[mealPlaceholder]
-                            }
-                            setTravelDay({
-                                ...aTravelDay,
-                                "meals": tempArr
-                            })
-                            setMealPlaceholder()
-                            let tempDoc = document.getElementById("mealInput")
-                            tempDoc.value=""
-                        }}> Add Meal +</div>
-                        <br/>
-                    </>}
-                    <br/>
-                    {aTravelDay.meals?.length>0 &&
-                    <>
-                        {aTravelDay.meals.map((elem,i)=><React.Fragment key={i}>
-                        <div className={styles.spaceBetRow} style={{textTransform:"capitalize", padding:"6px 0" }}> 
-                            <span >
-                            {elem.meal} {elem.location&&<> @ -{elem.location} </>}
-                            </span>
-                            <span onClick={()=>{
-                                if(aTravelDay.meals.length===1){
-                                    setTravelDay({
-                                        ...aTravelDay,
-                                        "meals": []
-                                    })
-                                } else {
-                                    let tempArr = aTravelDay.meals.splice(i, 1)
-                                    setTravelDay({
-                                        ...aTravelDay,
-                                        "meals": tempArr
-                                    })
-                                }
-                            }}><CancelIcon/> </span>
-                        </div>
-                        </React.Fragment> )}
-                    </>}
-                </>)
-            }
-            return(<>
-
-            {editDayTrig?<>
-                <div className={styles.spaceBetRow}>
-                    {<h3>Edit Day {aTravelDay.dayIndex+1}</h3>}
-                    <div style={{cursor:"pointer", display: "flex" }} onClick={()=>{
-                        let splicer = aTour.dayByDay.splice(aTravelDay.dayIndex, 1, aTravelDay);
-                        setTour({...aTour});
-                        setDayTrig(false)
-                    }}> Save Day &nbsp;<SaveIcon/> </div>
-                </div>
-                <div className={styles.lineBreak} />
-                <div className={styles.spaceBetRow}>
-                    <div style={{width:"48%"}}>
-                        {anInputDisplayer("day Title", "dayTitle", "text", false, aTravelDay.dayTitle, aTravelDay, setTravelDay, undefined, undefined, "Day Main Activity")}
-                        <TextEditor
-                            tempObj={aTravelDay}
-                            setTempObj={setTravelDay}
-                            inputIndex="dayDescription"
-                            inputLabel="Day Description"
-                            prevState={aTravelDay.dayDescription}
-                        />
-                        {anInputDisplayer("Overnight Property", "overnightProperty", "text", false, aTravelDay.overnightProperty, aTravelDay, setTravelDay, undefined, undefined, "Overnight Property")}
-                        {mealsIncludedTool()}
-                    </div>
-                    <div style={{width:"48%"}}>
-                        <div className={styles.spaceBetRow}>
-                            <div className={styles.addFromRecordBTN} onClick={()=>{
-                                // set Autofill trigger
-                            }}> ADD AUTOFILL &nbsp; <PlaylistAddIcon/> </div>
-                            <div className={styles.addFromRecordBTN}  onClick={()=>{
-                                // set img trigger
-                            }}> ADD IMAGES &nbsp; <AddPhotoAlternateIcon/> </div>
-                        </div>
-                        {inputToList("add to day", "dayInclusions", aTravelDay, setTravelDay, aTravelDay.dayInclusions, incluPlaceholder, setPlaceholder)}
-                        {anInputDisplayer("Supplementary Information", "suppInfo", "text", false, aTravelDay.suppInfo, aTravelDay, setTravelDay, undefined, undefined, "Ex: Quito is at 2,800 meters above sea level")}
-                        {anInputDisplayer("Driving distance", "drivingDistance", "number", false, aTravelDay.drivingDistance, aTravelDay, setTravelDay, 0, undefined, "Ex: 150 km")}
-                    </div>
-                </div>
-            </>:<>
-            
-            Edit Days:
-            <div style={{ width:"100%", display:"flex", flexWrap:"wrap" }}>
-                {aTour.dayByDay.map((elem,i)=><React.Fragment key={i}>
-                    <div className={styles.eachDayTab} onClick={()=>{
-                        setTravelDay({
-                            ...elem,
-                            "dayIndex": i
-                        })
-                        setDayTrig(true)
-                    }}> Day {i+1}{elem.dayTitle&& <>: {elem.dayTitle.substr(0, 10) + "\u2026" }</>}</div>
-                </React.Fragment> )}
-            </div>
-                
-            {/* save and Quit options, back btns opts */}
-                <div className={styles.spaceBetRow}>
-                    <div style={{display:"flex"}} onClick={()=>{
-                        // save and submit itin
-                    } }> Save & Quit &nbsp;<SaveIcon/></div>
-                    {itinMakerCounterFunct(itinMakerIndex,setItinMkrIndx )}
-                </div>
-            </>}
-            </>)
-        }
-
-        const eachStepTemplate=()=>{
-            return(<>
-            <div className={styles.itinToolkitContainer} >
-                <Accordion defaultExpanded={true} >
-                    <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" > 
-                        <h1>Edit Itinerary</h1>
-                    </AccordionSummary>
-                    <AccordionDetails> 
-
-                {itinMakerIndex===0&&<>
-                    <div className={styles.spaceBetRow}>
-
-                        {aSwitcher(aTour.LTCLogo, aTour, setTour, "LTCLogo", "ecoAndes", "Logo on itinerary?")}
-                        {aTour.LTCLogo&&<>
-                            {radioSelectors(logoSwitcherArr, "logoRadios", aTour, setTour, "LTCLogo")}
-                        </>}
-                    </div>
-                    <div className={styles.spaceBetRow}>
-                        <span style={{width:"65%"}}>
-                            {anInputDisplayer("Tour Name", "tripName", "text", true, undefined, aTour, setTour, undefined, undefined, "Tour Name" )}
-                        </span>
-                        <span style={{width:"30%"}}>
-
-                           {anInputDisplayer("Duration", "duration", "number", true, undefined, aTour, setTour, 1, undefined, "Tour Duration")}
-                        </span>
-                    </div>
-
-
-                    <div className={styles.spaceBetRow}>
-                        <span style={{width:"45%"}}>
-                            {aDropdownPicker(tourType, "tour type", "tourType", aTour, setTour)}
-                        </span>
-                        <span style={{width:"45%"}}>
-                            {aDropdownPicker(tourDiff, "Difficulty", "difficulty", aTour, setTour)}
-                        </span>
-                    </div>
-
-                    <div className={styles.spaceBetRow}>
-                        <span style={{width:"48%"}}>
-                            {anInputDisplayer("Starting City", "startingPlace", "text", false, undefined, aTour, setTour, undefined, undefined, "Example: Lima or Quito")}
-                        </span>
-
-                        {itinMakerCounterFunct(itinMakerIndex, setItinMkrIndx)}
-
-                    </div>
-
-                </>}
-
-                {itinMakerIndex===1&&<>
-                    <div className={styles.spaceBetRow}>
-                        <span style={{width:"45%"}}>
-                            {multiOptPicker(destinationList, "Destinations", "countryList", aTour.countryList, aTour, setTour, setDestList )}
-                        </span>
-                        <span style={{width:"45%"}}>
-                            {aDropdownPicker(LTCGenDAta.tourLanguages, "Language", "tripLang", aTour, setTour)}
-
-                            <TextEditor
-                                tempObj={aTour}
-                                setTempObj={setTour}
-                                inputIndex={"tourOverview"}
-                                inputLabel={"tour Overview"}
-                            />
-                            <br/>
-                            <br/>
-                            <br/>
-                            <div className={styles.spaceBetRow}>
-                                <span />
-                                {itinMakerCounterFunct(itinMakerIndex, setItinMkrIndx, dayArrAdder)}
-                            </div>
-                        </span>
-                    </div>
-                </>}
-
-                {itinMakerIndex===2&&<>
-                    {/* display list of days to left, with btns to edit each day, and every option that a day has*/}
-                    {dayEditor()}
-                </>}
-                    
-                        
-                    </AccordionDetails>
-                </Accordion>
-            </div>
-            </>)
-        }
-
-        const anItinDisp=()=>{
-            return(<>
-                <TourDisplayer 
-                    aTour={aTour}
-                />
-            </>)
-        }
-
-        return(<>
-            <dov className={styles.itinBuilderCont} >
-                {eachStepTemplate()}
-                {anItinDisp()}
-            </dov>
-        </>)
-    }
-
-
 
 
     // Providers
@@ -1089,45 +808,15 @@ export default function PlaygroundPage(){
             <GMSNavii  user={session.user} />
             <div className={styles.playgroundPage}>
 
-                {/* {aHotelDisplayer(sampleHotel)}
-                {aHotelDisplayer(testerObj)}
-                {hotelAdderForm(testerObj, setTester, locObject, setTempObj)} */}
-                {/* {aHotelDisplayer(sampleHotel)} */}
-                {/* {getOneDriveBTN()} */}
-
-
-                {/* ///////////////////////////// */}
-                {/* ///////////////////////////// */}
-                    {/* {expenseTable(expenseArr)} */}
-                {/* ///////////////////////////// */}
-                {/* ///////////////////////////// */}
-
-                <div onClick={()=>setAddedText("Frixxit")}> Add </div>
-
                 <div style={{width: "340px"}}>
                 <TextEditor 
                     tempObj={aTour}
                     setTempObj={setTour}
                     inputIndex={"dayDescription"}
-                    // prevData={}
                     addedText={addedText}
+                    AFEntries={filteredAFEntries}
                 />
                 </div>
-
-                <div style={{width: "340px"}}>
-                <TextEditor 
-                    tempObj={aTour}
-                    setTempObj={setTour}
-                    inputIndex={"dayDescription"}
-                    prevState={aTour.dayDescription}
-                />
-                </div>
-
-                {/* {newItineraryBuilder()} */}
-
-                <br/>
-                <br/>
-                <br/>
 
                 <div style={{width: "340px"}}>
                 <RichTextDisp 

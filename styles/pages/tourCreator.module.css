@@ -205,7 +205,7 @@
 /* IMG PICKER STYLING */
 
 .eachImgDisp{
-    margin: 9px 0;
+    margin: 9px 6px;
     position: relative;
     border-bottom: dotted  2px;
 }
@@ -283,6 +283,11 @@
     margin-top: 9px;
 }
 
+
+.closeDialogBTN{
+    cursor: pointer;    
+    
+}
 
 /* Autofill */
 .autofillEntryCont{
