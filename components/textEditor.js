@@ -43,7 +43,6 @@ export function TextEditor(props) {
     }
 
 
-
     return (<>
         <div >
         <div className={styles.spaceBetRow}> 

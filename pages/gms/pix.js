@@ -140,6 +140,7 @@ export const ImageEditor=(props)=>{
 }
 
 
+// add unsplash API for image search
 
 
 export default function PixPage(){

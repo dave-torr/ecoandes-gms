@@ -9,6 +9,7 @@ import {
     DayByDayAdder, 
     anInputDisplayer, multiOptPicker, aDropdownPicker, inputToList, aSwitcher, radioSelectors, multiLineTextInput
 } from "../../components/forms"
+import Switch from '@mui/material/Switch';
 import { SignInForm } from "../../components/authForms";
 import {TourDisplayer } from "../../components/tours"
 import { GMSNavii } from "../../components/navis";
@@ -34,7 +35,7 @@ import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArro
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
-
+import CalendarViewDayIcon from '@mui/icons-material/CalendarViewDay';
 
 // Data
 import LTCGenDAta from "../../data/dataAndTemplates.json"
@@ -98,7 +99,7 @@ let dayModel = {
     // tour model
     const [aTour, setTour]=useState(TourModel)
     const [editDayTrig, setDayTrig]= useState(false)
-    const [useAFTrig, setAFTrig]= useState(undefined)
+    const [useAFTrig, setAFTrig]= useState("start")
     const [aTravelDay, setTravelDay] = useState()
     const [itinMakerIndex, setItinMkrIndx]=useState(0)
     const [mealPlaceholder, setMealPlaceholder]=useState("")
@@ -115,6 +116,9 @@ let dayModel = {
     const [imgLocFilter, setImgFilter]=useState(0)
     const [submitionTrig, setSubmitTrig]=useState(false)
     const [incluPlaceholder, setPlaceholder]=useState("")
+    const [textPlaceholder, setTxtPlaceholder]=useState('')
+    const [textPlaceholder2, setTxtPlaceholder2]=useState('')
+    const [textPlaceholder3, setTxtPlaceholder3]=useState('')
     
     // autofill
     const [autoFillData, setAutoFillData]=useState([])
@@ -238,7 +242,7 @@ let dayModel = {
         let aPickerImg= filteredImgArr.map((elem, i)=>
         <React.Fragment key={i}>
             <div className={styles.eachImgDisp}>
-                {anImageDisp(elem.src, 150, "LTCWide", elem.imgAlt)}
+                {anImageDisp(elem.src, 150, "LTCWide", elem.imgName)}
                 <div className={styles.imgSelectorBTN} onClick={()=>{
                     if(coverOrDay==="cover"){
                         let tempImgArr = aTour.imgArr.concat(elem.src)
@@ -246,7 +250,6 @@ let dayModel = {
                             ...aTour,
                             "imgArr": tempImgArr
                         })
-
                         let tempList = [...filteredImgArr]
                         tempList.splice(i, 1)
                         setFilteredImgs(tempList)
@@ -304,7 +307,6 @@ let dayModel = {
             <div style={{padding: "6px", width:"120px", position: "relative", marginRight:"9px"}}>
                 {anImageDisp(elem, 120, "LTCWide", elem.imgAlt)}
                 <div className={styles.imgSelectorBTN} onClick={()=>{
-
                         let tempList=[...imgArr];
                         tempList.splice(i, 1)
                         if(dayOrCover==="cover"){
@@ -495,95 +497,10 @@ let dayModel = {
     //         </>}
     //     </>)
     // }
-    // const priceAndInclusionsAdder=()=>{
-    //     return(<>
-    //         {tourCreatorStep===3&&<> 
-    //             {inputToList("Included In Tour", "included", aTourModel, setTourModel, aTourModel.included, textPlaceholder, setTxtPlaceholder)}
-    //             {inputToList("Not Included In Tour", "notIncluded", aTourModel, setTourModel, aTourModel.notIncluded, textPlaceholder2, setTxtPlaceholder2)}
-    //             <br/>
-    //             <h3>Prices:</h3>
-    //             <Switch checked={priceFixedDep} onChange={(e)=>{priceFixedDep? setPriceFDTrig(false):setPriceFDTrig(true) }} label="Single Price" />
-    //             {priceFixedDep? <>
-    //                 <div className={styles.spaceBetRow}>
-    //                     {anInputDisplayer("F.D. Price", "price", "number", false, undefined, aTourModel, setTourModel, 0, undefined, "price per person")} &nbsp;&nbsp;
-    //                     {anInputDisplayer("S. Supp", "singleSupp", "number", false, undefined, aTourModel, setTourModel, 0, undefined, "Single Supplement" )}
-    //                 </div>
-    //                 <div className={styles.spaceBetRow}>
-    //                     {anInputDisplayer("Pax Min", "paxMin", "number", false, undefined, aTourModel, setTourModel, 0, undefined, "Pax Nimimum")} &nbsp;&nbsp;
-    //                     {anInputDisplayer("Pax Max", "paxMax", "number", false, undefined, aTourModel, setTourModel, 0, undefined, "Pax Number")}
-    //                 </div>
-    //             </>:<>
-    //                 <h4>ADD TO RANGE: </h4>
-    //                     {anInputDisplayer("Price", "pricePerPax", "number", false, undefined, priceRangeObj, setPriceObj, 0, undefined, "price per person")}
-    //                     {anInputDisplayer("Pax Max", "upperRange", "number", false, undefined, priceRangeObj, setPriceObj, 0, undefined, "Pax Number")}
-    //                     <div className={styles.addRangeBTN} onClick={()=>{
-    //                         if((priceRangeObj.upperRange && priceRangeObj.pricePerPax)){
-    //                             let tempArr = []
-    //                             if(aTourModel.price?.length>0){
-    //                                 tempArr= [...aTourModel.price]
-    //                                 tempArr.push(priceRangeObj)
-    //                                 setTourModel({
-    //                                     ...aTourModel,
-    //                                     "price": tempArr
-    //                                 })
-    //                                 let priceVal = document.getElementById("pricePerPax")
-    //                                 priceVal.value=undefined
-    //                                 let guestLimitVal = document.getElementById("upperRange")
-    //                                 guestLimitVal.value=undefined
-    //                             } else {
-    //                                 tempArr.push(priceRangeObj)
-    //                                 setTourModel({
-    //                                     ...aTourModel,
-    //                                     "price": tempArr
-    //                                 })
-    //                                 let priceVal = document.getElementById("pricePerPax")
-    //                                 priceVal.value=undefined
-    //                                 let guestLimitVal = document.getElementById("upperRange")
-    //                                 guestLimitVal.value=undefined
-    //                             }
-    //                         } else {
-    //                             window.alert("Please fill in Price and guest upper limit")
-    //                         }
-    //                     }}> Add to Price Range </div>
-    //                     <br/>
-    //                     {anInputDisplayer("S. Supp", "singleSupp", "number", false, undefined, aTourModel, setTourModel, 0, undefined, "Single Supplement" )}
 
-    //                     {aTourModel.price?.length>0 && <>
-    //                         <table className={styles.priceTable} >
-    //                             {aTourModel.price.map((elem,i)=><React.Fragment key={i} >
-    //                             <div className={styles.spaceBetRow}>
-    //                                 <tr>
-    //                                     <td>{elem.upperRange} Pax </td>
-    //                                     <td>${elem.pricePerPax}</td>
-    //                                 </tr>
-    //                                 <div onClick={()=>{
-    //                                     if(aTourModel.price.length>1){
-    //                                         let splicer = aTourModel.price.splice(i, 1)
-    //                                         setTourModel({
-    //                                             ...aTourModel,
-    //                                             "price": aTourModel.price
-    //                                         })
-    //                                     } else {
-    //                                         setTourModel({
-    //                                             ...aTourModel,
-    //                                             "price": undefined
-    //                                         })
-    //                                     }
-    //                                 }} ><CancelIcon/> </div>
-    //                             </div>
-    //                             </React.Fragment> )}
-    //                         </table>
-    //                     </>}
-    //             </>}
-    //             {/* Vendor notes here!!!! */}
-    //             {inputToList("Operational Notes", "notes", aTourModel, setTourModel, aTourModel.notes, textPlaceholder3, setTxtPlaceholder3)}
-    //         </>}
-    //     </>)
-    // }
 
-    ///////////////////////////////////////////////
-    // homeBTNS
-    
+
+
     const tourCreatorHome=()=>{
         return(<>
             <div className={styles.spaceBetRow} style={{width:"500px", marginTop:"39px"}}>
@@ -630,13 +547,14 @@ let dayModel = {
                         } else {
                             tempArr=[...aTravelDay.dayInclusions]
                         }
+
                         setTravelDay({
                             ...aTravelDay,
-                            "dayInclusions":tempArr,
                             "dayDescription": anEntry.dayDescription,
+                            "dayInclusions":tempArr,
                             "dayTitle":anEntry.dayTitle,
                         })
-                        setAFTrig(false)
+                        setAFTrig("off")
                     }}>
                         <AddCircleIcon/>
                     </span>
@@ -685,7 +603,6 @@ let dayModel = {
                                 setEntryObj()
                             }
                         }}>
-                            {/*display loading circle, when updating is happening  */}
                             <SaveIcon/>
                         </span>
                     </div>
@@ -720,7 +637,6 @@ let dayModel = {
                     locArr.push(element.location)
                 }
             })
-            
             const aFSelector=()=>{
                 return(<>
                 <label htmlFor="LocationDropdown" className={styles.inputLabel}>
@@ -742,7 +658,6 @@ let dayModel = {
                 <br/>
                 </>)
             }
-            
         return(<>
         {toolingOrUse==="tooling"? <>
             {aFSelector()}
@@ -751,7 +666,7 @@ let dayModel = {
             </React.Fragment> )}
             {editEntryDialog()}
         </>:toolingOrUse==="use"&&<>
-            <Dialog open={useAFTrig} onClose={()=>{setAFTrig(false)}}>
+            <Dialog open={useAFTrig==="autofill"? true : false} onClose={()=>{setAFTrig("off")}}>
                 <div className={styles.dayAFDialog}>
                 {aFSelector()}
                 {theEntries.map((elem,i)=><React.Fragment key={i}>
@@ -835,6 +750,7 @@ let dayModel = {
                         </React.Fragment> )}
                     </select>
                     {mealPlaceholder?.meal && <>
+                    <br/>
                         <label className={styles.inputLabel} htmlFor="mealInput" > add {mealPlaceholder?.meal} at: </label>
                         <input className={styles.inputUserUI} type="text" placeholder="Location of Meal" onChange={(e)=>{
                             setMealPlaceholder({
@@ -890,7 +806,7 @@ let dayModel = {
             const dayImgAdder=()=>{
                 if(aTravelDay){return(<>
                     <Dialog open={addDayImgTrig} onClose={()=>setDayImgTrig(false)}>
-                        <div className={styles.closeDialogBTN} >CLOSE X</div>
+                        <div className={styles.closeDialogBTN} onClick={()=>setDayImgTrig(false)}>CLOSE X</div>
                         <div style={{padding:"21px"}} >
                         {imgPickerUIUitls(aTravelDay.imgArr, "day")}
                             {imagePickers("day")}
@@ -905,52 +821,54 @@ let dayModel = {
             <div style={{borderRadius:"5px", border:"solid 1px black", padding: "6px"}}>
                 <div className={styles.spaceBetRow}>
                     {<h3>Edit Day {aTravelDay.dayIndex+1}</h3>}
-
-
-                    <div style={{cursor:"pointer", display: "flex" }} onClick={()=>{
+                    <div style={{cursor:"pointer", display: "flex", padding:"0 21px" }} onClick={()=>{
                         let splicer = aTour.dayByDay.splice(aTravelDay.dayIndex, 1, aTravelDay);
                         setTour({...aTour});
                         setDayTrig(false)
+                        setAFTrig("start")
                     }}> Save Day &nbsp;<SaveIcon/> </div>
                 </div>
                 <div className={styles.lineBreak} />
-
-
-
                 <div className={styles.spaceBetRow} style={{alignItems:"flex-start"}}>
 
-                {useAFTrig===undefined && <>
-                    {localNav(setAFTrig, true, "AUTOFILL", <PlaylistAddIcon/>, 2)}
-                </>}
-                {useAFTrig===true?<>
-                    {autofillTools(filteredAFEntries, autoFillData, "use")}
-
-                </> :useAFTrig!=undefined && <>
-                    <div style={{width:"48%", height:"auto"}}>
-                        {anInputDisplayer("day Title", "dayTitle", "text", false, aTravelDay.dayTitle, aTravelDay, setTravelDay, undefined, undefined, "Day Main Activity")}
-                        <TextEditor
-                            tempObj={aTravelDay}
-                            setTempObj={setTravelDay}
-                            inputIndex="dayDescription"
-                            inputLabel="Day Description"
-                            prevState={aTravelDay.dayDescription}
-                        />
-                        
-                    </div>
-                    <div style={{width:"48%"}}>
-                        <div className={styles.spaceBetRow}>
-                            <div className={styles.addFromRecordBTN}  onClick={()=>{
-                                setDayImgTrig(true)
-                            }}> ADD IMAGES &nbsp; <AddPhotoAlternateIcon/> </div>
+                    {useAFTrig==="start" && <>
+                        <div style={{ display:"flex", flexDirection:"row", width:"100%", justifyContent:"space-around", padding:"12px 0" }}> 
+                            {localNav(setAFTrig, "autofill", "AUTOFILL", <PlaylistAddIcon/>, 2)}
+                            {localNav(setAFTrig, "off", "New Day", <CalendarViewDayIcon/>, 2)}
                         </div>
-                        {anInputDisplayer("Overnight Property", "overnightProperty", "text", false, aTravelDay.overnightProperty, aTravelDay, setTravelDay, undefined, undefined, "Overnight Property")}
-                        {mealsIncludedTool()}
-                        {inputToList("add to day", "dayInclusions", aTravelDay, setTravelDay, aTravelDay.dayInclusions, incluPlaceholder, setPlaceholder)}
-                        {anInputDisplayer("Supplementary Information", "suppInfo", "text", false, aTravelDay.suppInfo, aTravelDay, setTravelDay, undefined, undefined, "Ex: Quito is at 2,800 meters above sea level")}
-                        {anInputDisplayer("Driving distance", "drivingDistance", "number", false, aTravelDay.drivingDistance, aTravelDay, setTravelDay, 0, undefined, "Ex: 150 km")}
-                    </div>
-                </>}
+                    </>}
+                    {useAFTrig==="autoFill"?<>
+                        {autofillTools(filteredAFEntries, autoFillData, "use")}
 
+                    </> : useAFTrig==="newDay" ? <>
+
+                        
+
+                    </> : useAFTrig==="off" && <>
+                        <div style={{width:"48%", height:"auto"}}>
+                            {anInputDisplayer("day Title", "dayTitle", "text", false, aTravelDay.dayTitle, aTravelDay, setTravelDay, undefined, undefined, "Day Main Activity")}
+                            <TextEditor
+                                tempObj={aTravelDay}
+                                setTempObj={setTravelDay}
+                                inputIndex="dayDescription"
+                                inputLabel="Day Description"
+                                prevState={aTravelDay.dayDescription}
+                            />
+                            
+                        </div>
+                        <div style={{width:"48%"}}>
+                            <div className={styles.spaceBetRow}>
+                                <div className={styles.addFromRecordBTN}  onClick={()=>{
+                                    setDayImgTrig(true)
+                                }}> ADD IMAGES &nbsp; <AddPhotoAlternateIcon/> </div>
+                            </div>
+                            {anInputDisplayer("Overnight Property", "overnightProperty", "text", false, aTravelDay.overnightProperty, aTravelDay, setTravelDay, undefined, undefined, "Overnight Property")}
+                            {mealsIncludedTool()}
+                            {inputToList("add to day", "dayInclusions", aTravelDay, setTravelDay, aTravelDay.dayInclusions, incluPlaceholder, setPlaceholder)}
+                            {anInputDisplayer("Supplementary Information", "suppInfo", "text", false, aTravelDay.suppInfo, aTravelDay, setTravelDay, undefined, undefined, "Ex: Quito is at 2,800 meters above sea level")}
+                            {anInputDisplayer("Driving distance", "drivingDistance", "number", false, aTravelDay.drivingDistance, aTravelDay, setTravelDay, 0, undefined, "Ex: 150 km")}
+                        </div>
+                    </>}
                 </div>
             </div>
             </>:<>
@@ -980,6 +898,106 @@ let dayModel = {
             </>}
             </>)
         }
+        const priceAndInclusionsAdder=()=>{
+            return(<>
+                <div className={styles.spaceBetRow}>
+                    <div style={{width:"48%"}}>
+                        {inputToList("Included In Tour", "included", aTour, setTour, aTour.included, textPlaceholder, setTxtPlaceholder)}
+                        {inputToList("Not Included In Tour", "notIncluded", aTour, setTour, aTour.notIncluded, textPlaceholder2, setTxtPlaceholder2)}
+                    </div>
+                    <div style={{width:"48%"}}>
+                        {inputToList("Operational Notes", "notes", aTour, setTour, aTour.notes, textPlaceholder3, setTxtPlaceholder3)}
+                    </div>
+                </div>
+                <br/>
+                <h3>Prices:</h3>
+                <div style={{display:"flex"}}>
+                    <Switch checked={priceFixedDep} onChange={(e)=>{priceFixedDep? setPriceFDTrig(false):setPriceFDTrig(true) }} label="Single Price" />
+                    <h4>Single Price?</h4>
+                </div>
+                {priceFixedDep? <>
+                    <div className={styles.spaceBetRow}>
+                        {anInputDisplayer("F.D. Price", "price", "number", false, undefined, aTour, setTour, 0, undefined, "price per person")} &nbsp;&nbsp;
+                        {anInputDisplayer("S. Supp", "singleSupp", "number", false, undefined, aTour, setTour, 0, undefined, "Single Supplement" )}
+                    </div>
+                    <div className={styles.spaceBetRow}>
+                        {anInputDisplayer("Pax Min", "paxMin", "number", false, undefined, aTour, setTour, 0, undefined, "Pax Nimimum")} &nbsp;&nbsp;
+                        {anInputDisplayer("Pax Max", "paxMax", "number", false, undefined, aTour, setTour, 0, undefined, "Pax Number")}
+                    </div>
+                </>:<>
+                    <h4>ADD TO RANGE: </h4>
+
+                        <div className={styles.spaceBetRow}>
+                            <div style={{width:"48%"}}>
+                                {anInputDisplayer("Price", "pricePerPax", "number", false, undefined, priceRangeObj, setPriceObj, 0, undefined, "price per person")}
+                                {anInputDisplayer("Pax Max", "upperRange", "number", false, undefined, priceRangeObj, setPriceObj, 0, undefined, "Pax Number")}
+                                <div className={styles.addRangeBTN} onClick={()=>{
+                                    if((priceRangeObj.upperRange && priceRangeObj.pricePerPax)){
+                                        let tempArr = []
+                                        if(aTour.price?.length>0){
+                                            tempArr= [...aTour.price]
+                                            tempArr.push(priceRangeObj)
+                                            setTour({
+                                                ...aTour,
+                                                "price": tempArr
+                                            })
+                                            let priceVal = document.getElementById("pricePerPax")
+                                            priceVal.value=undefined
+                                            let guestLimitVal = document.getElementById("upperRange")
+                                            guestLimitVal.value=undefined
+                                        } else {
+                                            tempArr.push(priceRangeObj)
+                                            setTour({
+                                                ...aTour,
+                                                "price": tempArr
+                                            })
+                                            let priceVal = document.getElementById("pricePerPax")
+                                            priceVal.value=undefined
+                                            let guestLimitVal = document.getElementById("upperRange")
+                                            guestLimitVal.value=undefined
+                                        }
+                                    } else {
+                                        window.alert("Please fill in Price and guest upper limit")
+                                    }
+                                }}> Add to Price Range </div>
+                            </div>
+                            <div style={{width:"48%"}}>
+                                {aTour.price?.length>0 && <>
+                                    <table className={styles.priceTable} >
+                                        {aTour.price.map((elem,i)=><React.Fragment key={i} >
+                                        <div className={styles.spaceBetRow}>
+                                            <tr>
+                                                <td>{elem.upperRange} Pax </td>
+                                                <td>${elem.pricePerPax}</td>
+                                            </tr>
+                                            <div onClick={()=>{
+                                                if(aTour.price.length>1){
+                                                    let splicer = aTour.price.splice(i, 1)
+                                                    setTour({
+                                                        ...aTour,
+                                                        "price": aTour.price
+                                                    })
+                                                } else {
+                                                    setTour({
+                                                        ...aTour,
+                                                        "price": undefined
+                                                    })
+                                                }
+                                            }} ><CancelIcon/> </div>
+                                        </div>
+                                        </React.Fragment> )}
+                                    </table>
+                                </>}
+                            </div>
+                        </div>
+
+
+                        <br/>
+                        {anInputDisplayer("S. Supp", "singleSupp", "number", false, undefined, aTour, setTour, 0, undefined, "Single Supplement" )}
+
+                </>}
+            </>)
+        }
         const eachStepTemplate=()=>{
             return(<>
             <div className={styles.itinToolkitContainer} >
@@ -990,72 +1008,78 @@ let dayModel = {
                 <AccordionDetails>
                 <div style={{maxHeight:"400px", overflowY:"auto"}}>
 
-                {itinMakerIndex===0&&<>
-                    
-                    <div className={styles.spaceBetRow}>
-                        <span style={{width:"48%"}}>
-                            {aSwitcher(aTour.LTCLogo, aTour, setTour, "LTCLogo", "ecoAndes", "Logo on itinerary?")}
-                            {aTour.LTCLogo&&<>
-                                {radioSelectors(logoSwitcherArr, "logoRadios", aTour, setTour, "LTCLogo")}
+                    {itinMakerIndex===0&&<>
+                        
+                        <div className={styles.spaceBetRow}>
+                            <span style={{width:"48%"}}>
+                                {aSwitcher(aTour.LTCLogo, aTour, setTour, "LTCLogo", "ecoAndes", "Logo on itinerary?")}
+                                {aTour.LTCLogo&&<>
+                                    {radioSelectors(logoSwitcherArr, "logoRadios", aTour, setTour, "LTCLogo")}
+                                </>}
+                                {anInputDisplayer("Tour Name", "tripName", "text", true, undefined, aTour, setTour, undefined, undefined, "Tour Name" )}
+                                {anInputDisplayer("Duration", "duration", "number", true, undefined, aTour, setTour, 1, undefined, "Tour Duration")}
+                            </span>
+                            <span style={{width:"48%"}}>
+                                {anInputDisplayer("Starting City", "startingPlace", "text", false, undefined, aTour, setTour, undefined, undefined, "Example: Lima or Quito")}
+                                {aDropdownPicker(tourType, "tour type", "tourType", aTour, setTour)}
+                                {aDropdownPicker(tourDiff, "Difficulty", "difficulty", aTour, setTour)}
+                            </span>
+                        </div>
+                        <div className={styles.spaceBetRow}>
+                            <span/>
+                            {itinMakerCounterFunct(itinMakerIndex, setItinMkrIndx)}
+                        </div>
+                    </>}
+
+                    {itinMakerIndex===1&&<>
+                        <div className={styles.spaceBetRow}>
+                            <span style={{width:"45%"}}>
+                                {multiOptPicker(destinationList, "Destinations", "countryList", aTour.countryList, aTour, setTour, setDestList )}
+                            </span>
+                            <span style={{width:"45%"}}>
+                                {aDropdownPicker(LTCGenDAta.tourLanguages, "Language", "tripLang", aTour, setTour)}
+
+                                <TextEditor
+                                    tempObj={aTour}
+                                    setTempObj={setTour}
+                                    inputIndex={"tourOverview"}
+                                    inputLabel={"tour Overview"}
+                                />
+                                <br/>
+                                <br/>
+                                <br/>
+                                <div className={styles.spaceBetRow}>
+                                    <span />
+                                    {itinMakerCounterFunct(itinMakerIndex, setItinMkrIndx, dayArrAdder)}
+                                </div>
+                            </span>
+                        </div>
+                    </>}
+
+
+                    {itinMakerIndex===2&&<>
+                        {aTour.imgArr.length>0 && <>
+                            {imgPickerUIUitls(aTour.imgArr, "cover")}
                             </>}
-                            {anInputDisplayer("Tour Name", "tripName", "text", true, undefined, aTour, setTour, undefined, undefined, "Tour Name" )}
-                            {anInputDisplayer("Duration", "duration", "number", true, undefined, aTour, setTour, 1, undefined, "Tour Duration")}
-                        </span>
-                        <span style={{width:"48%"}}>
-                            {anInputDisplayer("Starting City", "startingPlace", "text", false, undefined, aTour, setTour, undefined, undefined, "Example: Lima or Quito")}
-                            {aDropdownPicker(tourType, "tour type", "tourType", aTour, setTour)}
-                            {aDropdownPicker(tourDiff, "Difficulty", "difficulty", aTour, setTour)}
-                        </span>
-                    </div>
-                    <div className={styles.spaceBetRow}>
+                        {imagePickers("cover")}
+                    </>}
+                    {itinMakerIndex===3&&<>
+                        {/* display list of days to left, with btns to edit each day, and every option that a day has*/}
+                        {dayEditor()}
+                    </>}
+                    {itinMakerIndex===4&&<>
+                        {priceAndInclusionsAdder()}
+                    </>}
+                    
+
+
+                    
+                </div>
+                {itinMakerIndex===2&&<>
+                    <div className={styles.spaceBetRow} >
                         <span/>
                         {itinMakerCounterFunct(itinMakerIndex, setItinMkrIndx)}
                     </div>
-                </>}
-
-                {itinMakerIndex===1&&<>
-                    <div className={styles.spaceBetRow}>
-                        <span style={{width:"45%"}}>
-                            {multiOptPicker(destinationList, "Destinations", "countryList", aTour.countryList, aTour, setTour, setDestList )}
-                        </span>
-                        <span style={{width:"45%"}}>
-                            {aDropdownPicker(LTCGenDAta.tourLanguages, "Language", "tripLang", aTour, setTour)}
-
-                            <TextEditor
-                                tempObj={aTour}
-                                setTempObj={setTour}
-                                inputIndex={"tourOverview"}
-                                inputLabel={"tour Overview"}
-                            />
-                            <br/>
-                            <br/>
-                            <br/>
-                            <div className={styles.spaceBetRow}>
-                                <span />
-                                {itinMakerCounterFunct(itinMakerIndex, setItinMkrIndx, dayArrAdder)}
-                            </div>
-                        </span>
-                    </div>
-                </>}
-
-
-                {itinMakerIndex===2&&<>
-                    {aTour.imgArr.length>0 && <>
-                        {imgPickerUIUitls(aTour.imgArr, "cover")}
-                        </>}
-                    {imagePickers("cover")}
-                </>}
-                {itinMakerIndex===3&&<>
-                    {/* display list of days to left, with btns to edit each day, and every option that a day has*/}
-                    {dayEditor()}
-                </>}
-                    
-                </div>
-                {itinMakerIndex===2&&<>
-                <div className={styles.spaceBetRow} >
-                    <span/>
-                    {itinMakerCounterFunct(itinMakerIndex, setItinMkrIndx)}
-                </div>
                 </>}
 
                 </AccordionDetails>
@@ -1097,6 +1121,8 @@ let dayModel = {
             </>)
         }
     }
+
+    console.log(aTravelDay)
 
     return(<>
         <div className={styles.generalPageCont}>
