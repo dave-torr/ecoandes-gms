@@ -65,8 +65,6 @@ export async function getStaticPaths(){
     }
 }
 
-
-
 export async function getStaticProps({ params }){
     const client = await connectToDatabase();
     const FetchedUserItins = client
@@ -86,7 +84,7 @@ export async function getStaticProps({ params }){
         return{
             props: {
                 aTour: jsonStringTour,
-                revalidate: 30 }
+                revalidate: 10 }
         }
 
     }

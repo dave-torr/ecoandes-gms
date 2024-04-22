@@ -504,7 +504,7 @@
 
 .tourDataCont{
     display: flex;
-    padding: 21px 0;
+    padding-top: 21px;
     justify-content: space-between;
 }
 

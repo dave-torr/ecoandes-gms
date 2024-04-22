@@ -876,6 +876,7 @@ export function TourDisplayer(props){
         {(props.contactNavi && aTour?.user ) && <> 
             <br/>
             <br/>
+            <br/>
         </>}
         </>)
     }
