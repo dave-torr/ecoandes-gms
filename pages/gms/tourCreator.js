@@ -373,7 +373,7 @@ let dayModel = {
                 </div>  
             </>}
             {sendIndicator===2 && <> 
-                <div style={{display:"flex", cursor:"pointer"}} onClick={async()=>{sendToBE()}}>
+                <div className={styles.saveExitBTN} onClick={async()=>{sendToBE()}}>
                     {submitionTrig? <>
                         <CircularProgress />
                     </>:<>
@@ -573,7 +573,7 @@ let dayModel = {
                         - {elem}
                     </React.Fragment> )}
                 </>}
-                </>: <> 
+                </>:<> 
                     <div style={{padding:"6px", marginBottom:"21px"}}>{anEntry.description} </div>
                 </>}
             </div>
@@ -696,14 +696,18 @@ let dayModel = {
                         <KeyboardDoubleArrowLeftIcon/>
                     </div>
                 </>}
-                
-                <div className={styles.creatorIndexBTNONLINE}
-                onClick={()=>{
-                    // day by Day
-                    theCounter===1 ? additonalFunct() : setTeCounter(theCounter + 1)
-                }}>
-                    <KeyboardDoubleArrowRightIcon/>
-                </div>
+                {theCounter<4?<>
+                    <div className={styles.creatorIndexBTNONLINE}
+                    onClick={()=>{
+                        theCounter===1 ? additonalFunct() : setTeCounter(theCounter + 1)
+                    }}>
+                        <KeyboardDoubleArrowRightIcon/>
+                    </div>
+                </>:theCounter===4&&<>
+                    <div className={styles.creatorIndexBTNOFFLINE}>
+                        <KeyboardDoubleArrowRightIcon/>
+                    </div>
+                </>}
             </div>
             </>)
         }
@@ -840,10 +844,6 @@ let dayModel = {
                     {useAFTrig==="autoFill"?<>
                         {autofillTools(filteredAFEntries, autoFillData, "use")}
 
-                    </> : useAFTrig==="newDay" ? <>
-
-                        
-
                     </> : useAFTrig==="off" && <>
                         <div style={{width:"48%", height:"auto"}}>
                             {anInputDisplayer("day Title", "dayTitle", "text", false, aTravelDay.dayTitle, aTravelDay, setTravelDay, undefined, undefined, "Day Main Activity")}
@@ -887,9 +887,6 @@ let dayModel = {
                 
             {/* save and Quit options, back btns opts */}
                 <div className={styles.spaceBetRow}>
-                    {/* <div style={{display:"flex"}} onClick={()=>{
-                        // save and submit itin
-                    } }> Save & Quit &nbsp;<SaveIcon/></div> */}
 
                     {sendToBackEnd(aTour, session.user, 2)}
 
@@ -996,6 +993,11 @@ let dayModel = {
                         {anInputDisplayer("S. Supp", "singleSupp", "number", false, undefined, aTour, setTour, 0, undefined, "Single Supplement" )}
 
                 </>}
+                <br/>
+                <div className={styles.spaceBetRow}>
+                    {sendToBackEnd(aTour, session.user, 2)}
+                    {itinMakerCounterFunct(itinMakerIndex, setItinMkrIndx, dayArrAdder)}
+                </div>
             </>)
         }
         const eachStepTemplate=()=>{
@@ -1030,7 +1032,6 @@ let dayModel = {
                             {itinMakerCounterFunct(itinMakerIndex, setItinMkrIndx)}
                         </div>
                     </>}
-
                     {itinMakerIndex===1&&<>
                         <div className={styles.spaceBetRow}>
                             <span style={{width:"45%"}}>
@@ -1055,8 +1056,6 @@ let dayModel = {
                             </span>
                         </div>
                     </>}
-
-
                     {itinMakerIndex===2&&<>
                         {aTour.imgArr.length>0 && <>
                             {imgPickerUIUitls(aTour.imgArr, "cover")}
@@ -1070,10 +1069,6 @@ let dayModel = {
                     {itinMakerIndex===4&&<>
                         {priceAndInclusionsAdder()}
                     </>}
-                    
-
-
-                    
                 </div>
                 {itinMakerIndex===2&&<>
                     <div className={styles.spaceBetRow} >
@@ -1081,7 +1076,6 @@ let dayModel = {
                         {itinMakerCounterFunct(itinMakerIndex, setItinMkrIndx)}
                     </div>
                 </>}
-
                 </AccordionDetails>
                 </Accordion>
             </div>
@@ -1121,8 +1115,6 @@ let dayModel = {
             </>)
         }
     }
-
-    console.log(aTravelDay)
 
     return(<>
         <div className={styles.generalPageCont}>

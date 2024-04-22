@@ -345,9 +345,15 @@
     margin-top: 18px;
     transition: all ease-in 0.3s;
     cursor: pointer;
+    margin-left: 9px;
+}
+
+.creatorIndexBTNONLINE:hover{
+    background-color: black;
 }
 
 .creatorIndexBTNOFFLINE{
+    margin-left: 9px;
     padding: 21px;
     border-radius: 6px;
     background-color: rgb(146, 180, 196);
@@ -403,6 +409,21 @@
     flex-direction: column;
 }
 
+.saveExitBTN{
+    border: solid 2px black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all ease-in 0.3s;
+}
+
+.saveExitBTN:hover{
+    background-color: black;
+    color: white;
+}
 
 @media (max-width: 1000px)  {
     .eachTourDispl{
