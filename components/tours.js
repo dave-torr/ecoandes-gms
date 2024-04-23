@@ -910,7 +910,7 @@ export function TourDisplayer(props){
                 <span className={styles.printDEL}>
                     Find Rates:
                     <br/>
-                    <select onChange={(e)=>{
+                    <select style={{padding:"6px", textTransform: "uppercase", }} onChange={(e)=>{
                         let tempPrice = JSON.parse(e.target.value)
                         setItinPrices(tempPrice)
                     }}>

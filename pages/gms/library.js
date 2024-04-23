@@ -436,8 +436,6 @@ function LibraryPage(){
 
     const [locSelection, setLocSelection]=useState(false)
 
-
-
     const marks = [
         // {
         //     "value": 0,
@@ -462,7 +460,7 @@ function LibraryPage(){
     ]
     useEffect(()=>{
         (async()=>{
-            const res = await fetch("http://localhost:3000/api/gms/library", {
+            const res = await fetch("/api/gms/library", {
                 method: "GET"
             })
             const posts = await res.json()
@@ -515,7 +513,6 @@ function LibraryPage(){
             return 5;
         }
     }
-
 
     const aNumInput=(InputLabel, inputId, numberType)=>{
         return(<>
@@ -1013,7 +1010,6 @@ function LibraryPage(){
         </Dialog>
         </>)
     }
-
 
     // library 
     const libraryDisplayer=()=>{

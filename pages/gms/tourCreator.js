@@ -169,6 +169,7 @@ let dayModel = {
         }
     },[locSelection])
 
+    // FFD
     // utils
     const stepBTNs=(nextOrPrev)=>{
         if(nextOrPrev==="next"){
@@ -283,7 +284,7 @@ let dayModel = {
 
         return(<>
             <div className={styles.spaceBetRow} style={{padding:"0 12px"}}>
-                <h2>Please choose cover images:</h2>
+                <h2>Please choose {coverOrDay==="day"&&<>day</>}{coverOrDay==="cover"&&<>cover</>} images images:</h2>
                 Images: {filteredImgArr.length} 
             </div>
             <div> 
@@ -497,8 +498,6 @@ let dayModel = {
     //         </>}
     //     </>)
     // }
-
-
 
 
     const tourCreatorHome=()=>{
@@ -880,6 +879,9 @@ let dayModel = {
                             ...elem,
                             "dayIndex": i
                         })
+                        if(elem.dayTitle){
+                            setAFTrig("off")
+                        }
                         setDayTrig(true)
                     }}> Day {i+1}{elem.dayTitle&& <>: {elem.dayTitle.substr(0, 10) + "\u2026" }</>}</div>
                 </React.Fragment> )}
@@ -898,11 +900,11 @@ let dayModel = {
         const priceAndInclusionsAdder=()=>{
             return(<>
                 <div className={styles.spaceBetRow}>
-                    <div style={{width:"48%"}}>
+                    <div>
                         {inputToList("Included In Tour", "included", aTour, setTour, aTour.included, textPlaceholder, setTxtPlaceholder)}
                         {inputToList("Not Included In Tour", "notIncluded", aTour, setTour, aTour.notIncluded, textPlaceholder2, setTxtPlaceholder2)}
                     </div>
-                    <div style={{width:"48%"}}>
+                    <div>
                         {inputToList("Operational Notes", "notes", aTour, setTour, aTour.notes, textPlaceholder3, setTxtPlaceholder3)}
                     </div>
                 </div>
