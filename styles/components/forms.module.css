@@ -382,7 +382,7 @@
     padding: 6px 9px;
     border: solid 2px black;
     border-radius: 6px;
-    margin: 0 6px;
+    margin: 3px 6px;
     cursor: pointer;
 }
 
@@ -399,6 +399,7 @@
     margin: 6px 0;
     flex-wrap: wrap;
 }
+.editDayOpts
 
 .editDayBTN{
     border: solid 1px black;

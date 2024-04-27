@@ -10,6 +10,8 @@ import styles from "./../styles/components/tourCmpnts.module.css"
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
+
+// Icons
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ExploreIcon from '@mui/icons-material/Explore';
@@ -23,7 +25,6 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import ForestIcon from '@mui/icons-material/Forest';
 import StadiumIcon from '@mui/icons-material/Stadium';
 import WhereToVoteIcon from '@mui/icons-material/WhereToVote';
-
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import SportsGymnasticsIcon from '@mui/icons-material/SportsGymnastics';
@@ -31,23 +32,26 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import PriceCheckIcon from '@mui/icons-material/PriceCheck';
 import PlaceIcon from '@mui/icons-material/Place';
 import PanToolAltIcon from '@mui/icons-material/PanToolAlt';
-
 import Filter1Icon from '@mui/icons-material/Filter1';
 import Filter2Icon from '@mui/icons-material/Filter2';
 import Filter3Icon from '@mui/icons-material/Filter3';
 import Filter4Icon from '@mui/icons-material/Filter4';
 import Filter5Icon from '@mui/icons-material/Filter5';
+import PhoneIcon from '@mui/icons-material/Phone';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import CloseIcon from '@mui/icons-material/Close';
+
 
 import CircularProgress from '@mui/material/CircularProgress';
-import PhoneIcon from '@mui/icons-material/Phone';
 
-
+// Assets
 import LTCTypeface from "./../public/assets/logos/LTCTypeface.png"
 import EcoAndesLogoBLK from "./../public/assets/logos/ecoAndesBLK.png"
 import GalapagosElementsLogo from "./../public/assets/logos/galapagosElementsLogo.png"
 import YacumaLogo from "./../public/assets/logos/yacuma.png"
 import UnigpsLogo from "./../public/assets/logos/unigalapagos.png"
 import AndesAdventuresLogo from "./../public/assets/logos/andesAdventuresFull.png"
+
 
 import Dialog from '@mui/material/Dialog';
 
@@ -1431,7 +1435,10 @@ export function ItinEditor(props){
             case "LTCLogo":
                 return(<> 
                 {/* OP */}
-                {aSwitcher(editObjTemplate.editValue, editObjTemplate, setEditTemplate, "editValue", "ecoAndes" )}
+                <div style={{display:"flex", justifyContent:"center", alignItems: "center"  }}>
+                    <h2>Logo:</h2> &nbsp;
+                    {aSwitcher(editObjTemplate.editValue, editObjTemplate, setEditTemplate, "editValue", "ecoAndes" )}
+                </div> 
                 {editObjTemplate.editValue&& <> 
                     <div style={{display:"flex", width: "100%",flexDirection:"row"  }}> 
                         {radioSelectors(logoSwitcherArr, "logoSelect", editObjTemplate, setEditTemplate, "editValue")}
@@ -1578,12 +1585,33 @@ export function ItinEditor(props){
             </div>
         </>)
     }
+
     return(<>
-        <Dialog open={props.dialogTrig} maxWidth={"xl"} fullWidth 
+        <Dialog open={props.dialogTrig} maxWidth={"lg"}  
         onClose={()=>{
             setEditStep(0)
             props.setDialogTrig(false) 
             }}>
+            {editItinStep>0 &&<>
+                <div className={styles.backBTN} onClick={()=>{
+                    setEditStep(editItinStep-1)
+                    setEditTemplate({
+                        "editKey": 0,
+                        "editValue": undefined
+                    })
+                }}> <ArrowBackIcon/> &nbsp; Back </div>
+            </>}
+            {editItinStep===0 &&<>
+                <div className={styles.backBTN} onClick={()=>{
+                    props.setDialogTrig(false) 
+                    setEditStep(0)
+                    setEditTemplate({
+                        "editKey": 0,
+                        "editValue": undefined
+                    })
+                }}> <CloseIcon/> &nbsp; Cancel </div>
+            </>}
+
             <div className={styles.userUIDialogCont}>
                 <h2> Edit: <br/> {props.aTour?.tripName} </h2>
 

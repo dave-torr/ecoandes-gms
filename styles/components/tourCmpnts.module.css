@@ -650,9 +650,14 @@
 
 
 .backBTN{
-    width: 100%;
+    width: fit-content;
     display: flex;
     align-items: center;
+    margin: 9px 12px;
+    padding: 6px 9px;
+    border: solid 2px black;
+    border-radius: 5px;
+    text-transform: uppercase;
     cursor: pointer;
 }
 

@@ -762,9 +762,12 @@ export function EditDayByDay(props){
     return(<>
         {(dayIndex===false && addDayTrig===false) && <>
             <div className={styles.editDaysCont}> 
-                <div className={styles.editDayOpts} ><div style={{width: "100px", textAlign:"start" }}>Edit Day(s):</div>{selectDayBTNS}</div>
-                <div className={styles.editDayOpts} ><div style={{width: "100px", textAlign:"start" }}> Delete Day(s):</div>{deleteDayBTNS}</div>
-                <div className={styles.editDayOpts} ><div style={{width: "100px", textAlign:"start" }}> Add Day:</div> <span onClick={()=>setAddDayTrig(true)}> &nbsp;+&nbsp; </span></div>
+                <div className={styles.editDayOpts} ><div style={{width: "100px", textAlign:"start" }}>Edit Day:</div>
+                    {selectDayBTNS}</div>
+                <div className={styles.editDayOpts} ><div style={{width: "100px", textAlign:"start" }}> Delete Day(s):</div>
+                    {deleteDayBTNS}</div>
+                <div className={styles.editDayOpts} ><div style={{width: "100px", textAlign:"start" }}> Add Day:</div> <span onClick={()=>setAddDayTrig(true)}> 
+                    &nbsp;+&nbsp; </span></div>
             </div>
         </>}
 
@@ -832,8 +835,10 @@ export function EditDayByDay(props){
                     }} >
                     Save Day </div>
             </>}
-        
         </>}
+
+
+        {/* This might be the starting point */}
 
         {/* Add Day */}
         {addDayTrig&& <> 
