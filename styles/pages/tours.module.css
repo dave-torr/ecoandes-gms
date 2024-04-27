@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 .generalTourPage{
-    width: 100%;
+    width: 900px;
     min-height: 100vh;
     padding: 26px 0;
     position: absolute;
