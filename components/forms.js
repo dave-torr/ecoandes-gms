@@ -931,15 +931,13 @@ export function EditPrices(props){
 
 
     // Concat and splicer function with bugz
-    const eachPriceDispEdit=(priceArr)=>{
-        if(priceArr?.length>0){return(<>
-            <div className={styles.spaceBetRow}> 
-                <div style={{ width:"45%" }}>
-                    {anInputDisplayer("Price", "pricePerPax", "number", false, undefined, priceRangeObj, setPriceObj, 0, undefined, "price per person")}
-                </div>
-                <div style={{ width:"45%" }}>
-                    {anInputDisplayer("Pax Max", "upperRange", "number", false, undefined, priceRangeObj, setPriceObj, 0, undefined, "Pax Number")}
-                </div>
+    const eachPriceDispEdit=()=>{
+        return(<>
+            <div style={{ width:"45%" }}>
+                {anInputDisplayer("Price", "pricePerPax", "number", false, undefined, priceRangeObj, setPriceObj, 0, undefined, "price per person")}
+            </div>
+            <div style={{ width:"45%" }}>
+                {anInputDisplayer("Pax Max", "upperRange", "number", false, undefined, priceRangeObj, setPriceObj, 0, undefined, "Pax Number")}
             </div>
             <div className={styles.editPriceBTN} onClick={()=>{
                 if((priceRangeObj.upperRange && priceRangeObj.pricePerPax)){
@@ -947,6 +945,7 @@ export function EditPrices(props){
                     if(editingTour.price?.length>0){
                         tempArr= [...editingTour.price]
                         tempArr.push(priceRangeObj)
+                        console.log(tempArr, "TempArr")
                         setEditingPackage({
                             ...editingPackage,
                             "price": tempArr
@@ -973,33 +972,36 @@ export function EditPrices(props){
             <br/>
 
             <div className={styles.spaceBetRow }> 
-                <table className={styles.priceTable} >
-                    <div className={styles.inputLabel}>Current Prices </div>
-                    {editingPackage?.price?.map((elem,i)=><React.Fragment key={i} >
-                    <div className={styles.spaceBetRow}>
-                        <tr>
-                            <td>{elem.upperRange} Pax </td>
-                            <td>${elem.pricePerPax}</td>
-                        </tr>
-                        <div onClick={()=>{
-                            if(priceArr.length>1){
-                                let splicer = priceArr.splice(i, 1)
-                                setEditingPackage({
-                                    ...editingPackage,
-                                    "price": priceArr
-                                })
-                            } else {
-                                setEditingPackage({
-                                    ...editingPackage,
-                                    "price": undefined
-                                })
-                            }
-                        }} ><CancelIcon/> </div>
-                    </div>
-                    </React.Fragment> )}
+
+                {editingPackage?.price?.length>0 && <>
+                    <table className={styles.priceTable} >
+                        {editingPackage.price.map((elem,i)=><React.Fragment key={i} >
+                        <div className={styles.spaceBetRow}>
+                            <tr>
+                                <td>{elem.upperRange} Pax </td>
+                                <td>${elem.pricePerPax}</td>
+                            </tr>
+                            <div onClick={()=>{
+                                if(editingPackage.price.length>1){
+                                    let splicer = editingPackage.price.splice(i, 1)
+                                    setEditingPackage({
+                                        ...editingPackage,
+                                        "price": editingPackage.price
+                                    })
+                                } else {
+                                    setEditingPackage({
+                                        ...editingPackage,
+                                        "price": undefined
+                                    })
+                                }
+                            }} ><CancelIcon/> </div>
+                        </div>
+                        </React.Fragment> )}
 
 
-                </table>
+                    </table>
+                </>}
+
                 <span style={{width:"200px"}}> 
                     {anInputDisplayer("Single Supp", "singleSupp", "number", false, editingTour.singleSupp, editingPackage, setEditingPackage )}
                 </span>
@@ -1007,8 +1009,10 @@ export function EditPrices(props){
         <div className={styles.submitBTN} onClick={()=>{
             setEditIndex(1)
         }}> Edit Prices </div>
-        </>)}
+        </>)
     }
+
+    console.log(editingPackage, "editing")
     // display current pricing table or FD price
     return(<>
         {editIndex===0&&<>
