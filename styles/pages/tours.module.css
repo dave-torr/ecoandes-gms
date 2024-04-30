@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 .generalTourPage{
-    width: 900px;
+    width: 100%;
     min-height: 100vh;
     padding: 26px 0;
     position: absolute;
@@ -314,9 +314,11 @@
 
 .tourPageImageCont{
     width: 100%;
-    margin-top: 25vh;
+    height: calc(100vw * 0.59);
     display: flex;
     justify-content: center;
+    position: relative;
+    margin-top: 22vh;
 }
 
 .introArrowIcon{
@@ -366,10 +368,6 @@
 }
 
 @media (max-width: 1080px) {
-
-    .tourPageImageCont{
-        width: 100%;
-    }
 
     .UIBTNCont{
         width: 100%;
@@ -439,10 +437,6 @@
     .introTextIcon{
         font-size: 2.5em;
         padding-left: 12px;
-    }
-    .tourPageImageCont{
-        margin-top: 30vh;
-
     }
     .highlightCont{
         margin-top: 9px;
