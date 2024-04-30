@@ -30,6 +30,25 @@ import { inputToList } from "../../components/forms";
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
 
+
+// Tour Explorer:
+// fetch all tours, and categorize, filter and sort for users to find and use.
+// tour editor toolkits
+
+// need to revise:
+// - each edit option one by one. save sample itinerary now
+// - ssg for each pages
+// - operations
+
+
+
+
+
+
+
+
+
+
 export default function TourExplorerPage(props){
 
     // sesh

@@ -484,6 +484,11 @@ export function TourDateAdder(props){
     )
 }
 
+
+// used in Tour Creator, Export to Tours, here only templates for forms
+
+
+// NOT OP with days. upon edit, title or description gets erased, wtf
 export function EditDayByDay(props){
     let editingTour = {...props.aTour}
     const [aTravelDay, setTravelDay] = useState({
@@ -913,7 +918,8 @@ export function EditDayByDay(props){
         </>}
     </>)
 }
-
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
 export function EditPrices(props){
     let editingTour = {...props.aTour}
     const [editIndex, setEditIndex]=useState(0)
@@ -936,81 +942,80 @@ export function EditPrices(props){
 
     // Concat and splicer function with bugz
     const eachPriceDispEdit=()=>{
-        return(<>
-            <div style={{display:"flex"}}>
-                <Switch checked={priceFixedDep} onChange={(e)=>{priceFixedDep? setPriceFDTrig(false):setPriceFDTrig(true) }} />
-                <h4>Single Price?</h4>
-            </div>
-            {priceFixedDep? <>
-                    <div className={styles.spaceBetRow}>
-                        {anInputDisplayer("F.D. Price", "price", "number", false, undefined, editingPackage, setEditingPackage, 0, undefined, "price per person")} &nbsp;&nbsp;
+    return(<>
+        <div style={{display:"flex"}}>
+            <Switch checked={priceFixedDep} onChange={(e)=>{priceFixedDep? setPriceFDTrig(false):setPriceFDTrig(true) }} />
+            <h4>Single Price?</h4>
+        </div>
+        {priceFixedDep? <>
+                <div className={styles.spaceBetRow}>
+                    {anInputDisplayer("F.D. Price", "price", "number", false, undefined, editingPackage, setEditingPackage, 0, undefined, "price per person")} &nbsp;&nbsp;
+                    {anInputDisplayer("S. Supp", "singleSupp", "number", false, undefined, editingPackage, setEditingPackage, 0, undefined, "Single Supplement" )}
+                </div>
+                <div className={styles.spaceBetRow}>
+                    {anInputDisplayer("Pax Min", "paxMin", "number", false, undefined, editingPackage, setEditingPackage, 0, undefined, "Pax Nimimum")} &nbsp;&nbsp;
+                    {anInputDisplayer("Pax Max", "paxMax", "number", false, undefined, editingPackage, setEditingPackage, 0, undefined, "Pax Number")}
+                </div>
+            </>:<>
+                <h4>ADD TO RANGE: </h4>
+                <div className={styles.spaceBetRow}>
+                    <div style={{width:"48%"}}>
+                        {anInputDisplayer("Price", "pricePerPax", "number", false, undefined, priceRangeObj, setPriceObj, 0, undefined, "price per person")}
+                        {anInputDisplayer("Pax Max", "upperRange", "number", false, undefined, priceRangeObj, setPriceObj, 0, undefined, "Pax Number")}
+                        <div className={styles.editPriceBTN} onClick={()=>{
+                            if((priceRangeObj.upperRange && priceRangeObj.pricePerPax)){
+                                let tempArr = []
+                                if(editingPackage.price?.length>0){
+                                    tempArr= [...editingPackage.price]
+                                    tempArr.push(priceRangeObj)
+                                    setEditingPackage({
+                                        ...editingPackage,
+                                        "price": tempArr
+                                    })
+                                    let priceVal = document.getElementById("pricePerPax")
+                                    priceVal.value=undefined
+                                    let guestLimitVal = document.getElementById("upperRange")
+                                    guestLimitVal.value=undefined
+                                } else {
+                                    tempArr.push(priceRangeObj)
+                                    setEditingPackage({
+                                        ...editingPackage,
+                                        "price": tempArr
+                                    })
+                                    let priceVal = document.getElementById("pricePerPax")
+                                    priceVal.value=undefined
+                                    let guestLimitVal = document.getElementById("upperRange")
+                                    guestLimitVal.value=undefined
+                                }
+                            } else {
+                                window.alert("Please fill in Price and guest upper limit")
+                            }
+                        }}> Add to Price Range </div>
                         {anInputDisplayer("S. Supp", "singleSupp", "number", false, undefined, editingPackage, setEditingPackage, 0, undefined, "Single Supplement" )}
                     </div>
-                    <div className={styles.spaceBetRow}>
-                        {anInputDisplayer("Pax Min", "paxMin", "number", false, undefined, editingPackage, setEditingPackage, 0, undefined, "Pax Nimimum")} &nbsp;&nbsp;
-                        {anInputDisplayer("Pax Max", "paxMax", "number", false, undefined, editingPackage, setEditingPackage, 0, undefined, "Pax Number")}
+                    <div style={{width:"48%"}}>
+                        {editingPackage.price?.length>0 && <>
+                            <table className={styles.priceTable}>
+                                {editingPackage.price.map((elem,i)=><React.Fragment key={i} >
+                                    <tr style={{display:"flex"}} >
+                                    <td style={{width:"80px"}}>{elem.upperRange} Pax </td>
+                                    <td>${elem.pricePerPax}</td>
+                                    <div onClick={()=>{
+                                        // if(editingPackage.price.length>1){
+                                            let splicer = editingPackage.price.splice(i, 1)
+                                            setEditingPackage({
+                                                ...editingPackage,
+                                                "price": editingPackage.price
+                                            })
+
+                                    }} ><CancelIcon/> </div>
+                                    </tr>
+                                </React.Fragment> )}
+                            </table>
+                        </>}
                     </div>
-                </>:<>
-                    <h4>ADD TO RANGE: </h4>
-                    <div className={styles.spaceBetRow}>
-                        <div style={{width:"48%"}}>
-                            {anInputDisplayer("Price", "pricePerPax", "number", false, undefined, priceRangeObj, setPriceObj, 0, undefined, "price per person")}
-                            {anInputDisplayer("Pax Max", "upperRange", "number", false, undefined, priceRangeObj, setPriceObj, 0, undefined, "Pax Number")}
-                            <div className={styles.editPriceBTN} onClick={()=>{
-                                if((priceRangeObj.upperRange && priceRangeObj.pricePerPax)){
-                                    let tempArr = []
-                                    if(editingPackage.price?.length>0){
-                                        tempArr= [...editingPackage.price]
-                                        tempArr.push(priceRangeObj)
-                                        setEditingPackage({
-                                            ...editingPackage,
-                                            "price": tempArr
-                                        })
-                                        let priceVal = document.getElementById("pricePerPax")
-                                        priceVal.value=undefined
-                                        let guestLimitVal = document.getElementById("upperRange")
-                                        guestLimitVal.value=undefined
-                                    } else {
-                                        tempArr.push(priceRangeObj)
-                                        setEditingPackage({
-                                            ...editingPackage,
-                                            "price": tempArr
-                                        })
-                                        let priceVal = document.getElementById("pricePerPax")
-                                        priceVal.value=undefined
-                                        let guestLimitVal = document.getElementById("upperRange")
-                                        guestLimitVal.value=undefined
-                                    }
-                                } else {
-                                    window.alert("Please fill in Price and guest upper limit")
-                                }
-                            }}> Add to Price Range </div>
-                            {anInputDisplayer("S. Supp", "singleSupp", "number", false, undefined, editingPackage, setEditingPackage, 0, undefined, "Single Supplement" )}
-                        </div>
-                        <div style={{width:"48%"}}>
-                            {editingPackage.price?.length>0 && <>
-                                <table className={styles.priceTable}>
-                                    {editingPackage.price.map((elem,i)=><React.Fragment key={i} >
-                                        <tr style={{display:"flex"}} >
-                                        <td style={{width:"80px"}}>{elem.upperRange} Pax </td>
-                                        <td>${elem.pricePerPax}</td>
-                                        <div onClick={()=>{
-                                            // if(editingPackage.price.length>1){
-                                                let splicer = editingPackage.price.splice(i, 1)
-                                                setEditingPackage({
-                                                    ...editingPackage,
-                                                    "price": editingPackage.price
-                                                })
-
-                                        }} ><CancelIcon/> </div>
-                                        </tr>
-                                    </React.Fragment> )}
-                                </table>
-                            </>}
-
-                        </div>
-                    </div>                
-                </>}
+                </div>                
+            </>}
 
 
 
@@ -1018,88 +1023,87 @@ export function EditPrices(props){
 
 
 
-            {/* <div style={{ width:"45%" }}>
-                {anInputDisplayer("Price", "pricePerPax", "number", false, undefined, priceRangeObj, setPriceObj, 0, undefined, "price per person")}
-            </div>
-            <div style={{ width:"45%" }}>
-                {anInputDisplayer("Pax Max", "upperRange", "number", false, undefined, priceRangeObj, setPriceObj, 0, undefined, "Pax Number")}
-            </div>
-            <div className={styles.editPriceBTN} onClick={()=>{
-                if((priceRangeObj.upperRange && priceRangeObj.pricePerPax)){
-                    let tempArr = []
-                    if(editingTour.price?.length>0){
-                        tempArr= [...editingTour.price]
-                        tempArr.push(priceRangeObj)
-                        console.log(tempArr, "TempArr")
-                        setEditingPackage({
-                            ...editingPackage,
-                            "price": tempArr
-                        })
-                        let priceVal = document.getElementById("pricePerPax")
-                        priceVal.value=undefined
-                        let guestLimitVal = document.getElementById("upperRange")
-                        guestLimitVal.value=undefined
-                    } else {
-                        tempArr.push(priceRangeObj)
-                        setEditingPackage({
-                            ...editingPackage,
-                            "price": tempArr
-                        })
-                        let priceVal = document.getElementById("pricePerPax")
-                        priceVal.value=undefined
-                        let guestLimitVal = document.getElementById("upperRange")
-                        guestLimitVal.value=undefined
-                    }
+        {/* <div style={{ width:"45%" }}>
+            {anInputDisplayer("Price", "pricePerPax", "number", false, undefined, priceRangeObj, setPriceObj, 0, undefined, "price per person")}
+        </div>
+        <div style={{ width:"45%" }}>
+            {anInputDisplayer("Pax Max", "upperRange", "number", false, undefined, priceRangeObj, setPriceObj, 0, undefined, "Pax Number")}
+        </div>
+        <div className={styles.editPriceBTN} onClick={()=>{
+            if((priceRangeObj.upperRange && priceRangeObj.pricePerPax)){
+                let tempArr = []
+                if(editingTour.price?.length>0){
+                    tempArr= [...editingTour.price]
+                    tempArr.push(priceRangeObj)
+                    console.log(tempArr, "TempArr")
+                    setEditingPackage({
+                        ...editingPackage,
+                        "price": tempArr
+                    })
+                    let priceVal = document.getElementById("pricePerPax")
+                    priceVal.value=undefined
+                    let guestLimitVal = document.getElementById("upperRange")
+                    guestLimitVal.value=undefined
                 } else {
-                    window.alert("Please fill in Price and guest upper limit")
+                    tempArr.push(priceRangeObj)
+                    setEditingPackage({
+                        ...editingPackage,
+                        "price": tempArr
+                    })
+                    let priceVal = document.getElementById("pricePerPax")
+                    priceVal.value=undefined
+                    let guestLimitVal = document.getElementById("upperRange")
+                    guestLimitVal.value=undefined
                 }
-            }}> Add to Price Range </div>
-            <br/>
-            <div className={styles.spaceBetRow }> 
+            } else {
+                window.alert("Please fill in Price and guest upper limit")
+            }
+        }}> Add to Price Range </div>
+        <br/>
+        <div className={styles.spaceBetRow }> 
 
-                {editingPackage?.price?.length>0 && <>
-                    <table className={styles.priceTable} >
-                        {editingPackage.price.map((elem,i)=><React.Fragment key={i} >
-                        <div className={styles.spaceBetRow}>
-                            <tr>
-                                <td>{elem.upperRange} Pax </td>
-                                <td>${elem.pricePerPax}</td>
-                            </tr>
-                            <div onClick={()=>{
-                                if(editingPackage.price.length>1){
-                                    let splicer = editingPackage.price.splice(i, 1)
-                                    setEditingPackage({
-                                        ...editingPackage,
-                                        "price": editingPackage.price
-                                    })
-                                } else {
-                                    setEditingPackage({
-                                        ...editingPackage,
-                                        "price": undefined
-                                    })
-                                }
-                            }} ><CancelIcon/> </div>
-                        </div>
-                        </React.Fragment> )}
-
-
-                    </table>
-                </>}
-
-                <span style={{width:"200px"}}> 
-                    {anInputDisplayer("Single Supp", "singleSupp", "number", false, editingTour.singleSupp, editingPackage, setEditingPackage )}
-                </span>
-            </div> */}
+            {editingPackage?.price?.length>0 && <>
+                <table className={styles.priceTable} >
+                    {editingPackage.price.map((elem,i)=><React.Fragment key={i} >
+                    <div className={styles.spaceBetRow}>
+                        <tr>
+                            <td>{elem.upperRange} Pax </td>
+                            <td>${elem.pricePerPax}</td>
+                        </tr>
+                        <div onClick={()=>{
+                            if(editingPackage.price.length>1){
+                                let splicer = editingPackage.price.splice(i, 1)
+                                setEditingPackage({
+                                    ...editingPackage,
+                                    "price": editingPackage.price
+                                })
+                            } else {
+                                setEditingPackage({
+                                    ...editingPackage,
+                                    "price": undefined
+                                })
+                            }
+                        }} ><CancelIcon/> </div>
+                    </div>
+                    </React.Fragment> )}
 
 
+                </table>
+            </>}
+
+            <span style={{width:"200px"}}> 
+                {anInputDisplayer("Single Supp", "singleSupp", "number", false, editingTour.singleSupp, editingPackage, setEditingPackage )}
+            </span>
+        </div> */}
 
 
 
-        <div className={styles.submitBTN} onClick={()=>{
-            setEditIndex(1)
-        }}> Edit Prices </div>
-        </>)
-    }
+
+
+    <div className={styles.submitBTN} onClick={()=>{
+        setEditIndex(1)
+    }}> Edit Prices </div>
+    </>)}
 
     // display current pricing table or FD price
     return(<>
@@ -1174,11 +1178,6 @@ export function EditPrices(props){
 }
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
-
-
-//////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////
-// used in Tour Creator
 export function DayByDayAdder(props){
 
     // SEND TO OPERATIONS:
