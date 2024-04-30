@@ -1594,7 +1594,7 @@ export function ItinEditor(props){
             }}>
             {editItinStep>0 &&<>
                 <div className={styles.backBTN} onClick={()=>{
-                    setEditStep(editItinStep-1)
+                    setEditStep(0)
                     setEditTemplate({
                         "editKey": 0,
                         "editValue": undefined

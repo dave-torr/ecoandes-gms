@@ -399,7 +399,8 @@
     margin: 6px 0;
     flex-wrap: wrap;
 }
-.editDayOpts
+
+
 
 .editDayBTN{
     border: solid 1px black;
@@ -415,7 +416,7 @@
 .editPricesCont{
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 550px;
     justify-content: center;
     align-items: flex-start;
 }
@@ -432,32 +433,12 @@
     background-color: teal;
     color: white;
 }
-
-.priceTable{
-    margin-top: 21px;
-    border: solid 1px black;
-    padding: 9px 15px;
-}
-
-.priceTable .inputLabel{
-    margin-bottom: 12px;
-}
-.priceTable .spaceBetRow{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .priceTable td{
     border: solid 1px black;
-    width: 120px;
+    padding: 3px;
+    width: 65px; margin: 0 4px;
+    text-align: center;
 }
-
-.priceTable tr{
-    margin-right: 44px;
-    margin-top: 6px;
-}
-
 /* OLDIES */
 
 .eachAddiOpt{

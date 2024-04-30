@@ -900,11 +900,11 @@ let dayModel = {
         const priceAndInclusionsAdder=()=>{
             return(<>
                 <div className={styles.spaceBetRow}>
-                    <div>
+                    <div style={{width:"48%"}}>
                         {inputToList("Included In Tour", "included", aTour, setTour, aTour.included, textPlaceholder, setTxtPlaceholder)}
                         {inputToList("Not Included In Tour", "notIncluded", aTour, setTour, aTour.notIncluded, textPlaceholder2, setTxtPlaceholder2)}
                     </div>
-                    <div>
+                    <div style={{width:"48%"}}>
                         {inputToList("Operational Notes", "notes", aTour, setTour, aTour.notes, textPlaceholder3, setTxtPlaceholder3)}
                     </div>
                 </div>
@@ -924,70 +924,69 @@ let dayModel = {
                         {anInputDisplayer("Pax Max", "paxMax", "number", false, undefined, aTour, setTour, 0, undefined, "Pax Number")}
                     </div>
                 </>:<>
-                <h4>ADD TO RANGE: </h4>
-                <div className={styles.spaceBetRow}>
-                    <div style={{width:"48%"}}>
-                        {anInputDisplayer("Price", "pricePerPax", "number", false, undefined, priceRangeObj, setPriceObj, 0, undefined, "price per person")}
-                        {anInputDisplayer("Pax Max", "upperRange", "number", false, undefined, priceRangeObj, setPriceObj, 0, undefined, "Pax Number")}
-                        <div className={styles.addRangeBTN} onClick={()=>{
-                            if((priceRangeObj.upperRange && priceRangeObj.pricePerPax)){
-                                let tempArr = []
-                                if(aTour.price?.length>0){
-                                    tempArr= [...aTour.price]
-                                    tempArr.push(priceRangeObj)
-                                    setTour({
-                                        ...aTour,
-                                        "price": tempArr
-                                    })
-                                    let priceVal = document.getElementById("pricePerPax")
-                                    priceVal.value=undefined
-                                    let guestLimitVal = document.getElementById("upperRange")
-                                    guestLimitVal.value=undefined
+                    <h4>ADD TO RANGE: </h4>
+                    <div className={styles.spaceBetRow}>
+                        <div style={{width:"48%"}}>
+                            {anInputDisplayer("Price", "pricePerPax", "number", false, undefined, priceRangeObj, setPriceObj, 0, undefined, "price per person")}
+                            {anInputDisplayer("Pax Max", "upperRange", "number", false, undefined, priceRangeObj, setPriceObj, 0, undefined, "Pax Number")}
+                            <div className={styles.addRangeBTN} onClick={()=>{
+                                if((priceRangeObj.upperRange && priceRangeObj.pricePerPax)){
+                                    let tempArr = []
+                                    if(aTour.price?.length>0){
+                                        tempArr= [...aTour.price]
+                                        tempArr.push(priceRangeObj)
+                                        setTour({
+                                            ...aTour,
+                                            "price": tempArr
+                                        })
+                                        let priceVal = document.getElementById("pricePerPax")
+                                        priceVal.value=undefined
+                                        let guestLimitVal = document.getElementById("upperRange")
+                                        guestLimitVal.value=undefined
+                                    } else {
+                                        tempArr.push(priceRangeObj)
+                                        setTour({
+                                            ...aTour,
+                                            "price": tempArr
+                                        })
+                                        let priceVal = document.getElementById("pricePerPax")
+                                        priceVal.value=undefined
+                                        let guestLimitVal = document.getElementById("upperRange")
+                                        guestLimitVal.value=undefined
+                                    }
                                 } else {
-                                    tempArr.push(priceRangeObj)
-                                    setTour({
-                                        ...aTour,
-                                        "price": tempArr
-                                    })
-                                    let priceVal = document.getElementById("pricePerPax")
-                                    priceVal.value=undefined
-                                    let guestLimitVal = document.getElementById("upperRange")
-                                    guestLimitVal.value=undefined
+                                    window.alert("Please fill in Price and guest upper limit")
                                 }
-                            } else {
-                                window.alert("Please fill in Price and guest upper limit")
-                            }
-                        }}> Add to Price Range </div>
-                    </div>
-                    <div style={{width:"48%"}}>
-                        {aTour.price?.length>0 && <>
-                            <table className={styles.priceTable} >
-                                {aTour.price.map((elem,i)=><React.Fragment key={i} >
-                                    <tr style={{display:"flex"}} >
-                                    <td style={{width:"120px"}}>{elem.upperRange} Pax </td>
-                                    <td>${elem.pricePerPax}</td>
-                                    <div onClick={()=>{
-                                        if(aTour.price.length>1){
-                                            let splicer = aTour.price.splice(i, 1)
-                                            setTour({
-                                                ...aTour,
-                                                "price": aTour.price
-                                            })
-                                        } else {
-                                            setTour({
-                                                ...aTour,
-                                                "price": undefined
-                                            })
-                                        }
-                                    }} ><CancelIcon/> </div>
-                                    </tr>
-                                </React.Fragment> )}
-                            </table>
-                        </>}
-                    </div>
-                </div>
-                <br/>
-                {anInputDisplayer("S. Supp", "singleSupp", "number", false, undefined, aTour, setTour, 0, undefined, "Single Supplement" )}
+                            }}> Add to Price Range </div>
+                        </div>
+                        <div style={{width:"48%"}}>
+                            {aTour.price?.length>0 && <>
+                                <table className={styles.priceTable} >
+                                    {aTour.price.map((elem,i)=><React.Fragment key={i} >
+                                        <tr style={{display:"flex"}} >
+                                        <td style={{width:"120px"}}>{elem.upperRange} Pax </td>
+                                        <td>${elem.pricePerPax}</td>
+                                        <div onClick={()=>{
+                                            if(aTour.price.length>1){
+                                                let splicer = aTour.price.splice(i, 1)
+                                                setTour({
+                                                    ...aTour,
+                                                    "price": aTour.price
+                                                })
+                                            } else {
+                                                setTour({
+                                                    ...aTour,
+                                                    "price": undefined
+                                                })
+                                            }
+                                        }} ><CancelIcon/> </div>
+                                        </tr>
+                                    </React.Fragment> )}
+                                </table>
+                            </>}
+                            {anInputDisplayer("S. Supp", "singleSupp", "number", false, undefined, aTour, setTour, 0, undefined, "Single Supplement" )}
+                        </div>
+                    </div>                
                 </>}
                 <br/>
                 <div className={styles.spaceBetRow}>
