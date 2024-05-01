@@ -240,8 +240,8 @@
 
 .tourIntroCont{
     width: 100%;
-    max-width: 600px;
-    padding: 9px 39px;
+    max-width: 660px;
+    padding: 9px 30px;
     box-shadow: 0px 0px 0px black;
     font-size: 1.1em;
 }
@@ -381,7 +381,10 @@
     padding: 6px 12px;
     border-radius: 5px;
     width: 1080px;
+    height: 80vh;
+    position: relative;
 }
+
 
 .dialogImgCont h3{
     font-weight: 600;
@@ -1327,7 +1330,7 @@
         width: fit-content;
     }
     .dialogImgCont{
-        width: 100%;
+        width: 90%;
     }
     .highlightTourTitle{
         padding: 6px 9px;

@@ -623,7 +623,8 @@ export function TourDisplayer(props){
             <Image
                 src={props.imgData}
                 alt={aTour.tripName}      
-                layout="fill"
+                fill={true}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 blurDataURL={props.imgData}
                 placeholder="blur"                
             />
@@ -653,15 +654,17 @@ export function TourDisplayer(props){
                         <><Image
                             src={selectedImg.src}
                             alt={selectedImg.alt}
-                            width={2080}
-                            height={1125}
                             blurDataURL={selectedImg.src}
                             placeholder="blur" 
-                            layout="responsive"
+                            sizes="100vw"
+                            fill
+                            style={{
+                            objectFit: 'contain',
+                            }}
                         />
-                        <h3>{selectedImg.alt}</h3>
                     </>}
                 </div>
+                <h2>{selectedImg.alt}</h2>
             </div>
         </Dialog>
         </>)

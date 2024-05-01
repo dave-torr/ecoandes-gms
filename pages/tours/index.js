@@ -369,7 +369,10 @@ export default function TourPage(){
                     src={randomPic.src}
                     alt={randomPic.alt}
                     priority
-                    layout="responsive"
+                    fill
+                    style={{
+                    objectFit: 'contain',
+                    }}
                 />
             </div>
         </div>

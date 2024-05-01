@@ -63,13 +63,13 @@ export function GeneralDataBar(props){
                 <Image
                     src={CondorLogo}
                     alt="EcoAndes Condor Logo"
-                    layout="responsive"
+                    // layout="responsive"
                 /></div>
                 <div className={styles.naviLogo2}>
                 <Image
                     src={EcoAndesFontFace}
                     alt="EcoAndes Text Logo"
-                    layout="responsive"
+                    // layout="responsive"
                     priority={true}
                 /></div>
                 </div>
