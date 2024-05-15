@@ -13,10 +13,27 @@ import styles from "./../../styles/pages/pix.module.css"
 // Pix page
 // manage, organize and cataloge pictures. Images hosted on OneDrive, with 21.1 x 10 ratio
 
+
+// figure out img ratios with new pattern
+// onedrive graph API WTFFF???
+let newChileImgs=[
+    "https://onedrive.live.com/embed?resid=9D9D479F9BD32D9E%2158105&authkey=%21AAJvkDAtKoGgmes&width=4608&height=3456",
+    "https://onedrive.live.com/embed?resid=9D9D479F9BD32D9E%2158122&authkey=%21AGF-W4sqIZ8Aulg&width=4032&height=3024",
+    "https://onedrive.live.com/embed?resid=9D9D479F9BD32D9E%2158125&authkey=%21AF-Gs0DiBe1TAik&width=4032&height=3024",
+    "https://onedrive.live.com/embed?resid=9D9D479F9BD32D9E%2158126&authkey=%21ALFm16iiksc7i8c&width=3024&height=3024",
+    "",
+    "",
+    "",
+    "",
+]
+
+
 export const anImageDisp=(imgSrc, width, imgRatio, imgAlt)=>{
         // 'ltcWide' is the 21.1 x 10 widescreen ratio
         let theHeight
         if(imgRatio==="LTCWide"){theHeight = width * 0.575}
+        if(imgRatio==="3to4"){theHeight = width * 0.75}
+
         return(<>
             <div><Image
                 src={imgSrc}
@@ -279,6 +296,9 @@ export default function PixPage(){
                 {/* Displays IMG Spread */}
                 {theSpread(theImagesArr)}
 
+
+
+
             </>
             :batchSteps===1&& <>
                 <div className={styles.editImgFormCont}> 
@@ -303,6 +323,9 @@ export default function PixPage(){
         </>)
     }
 
+    const newImgAdder=()=>{
+
+    }
 
     return(<>
         {/* Add further session doors  */}
@@ -318,7 +341,10 @@ export default function PixPage(){
 
 
         {/* initial batch is proccesed, need to clean up repeats, install filter for img selection */}
-        {batchProcessSteps()}
+
+        {/* {batchProcessSteps()} */}
+
+
 
 
     </>)

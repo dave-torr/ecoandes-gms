@@ -52,7 +52,7 @@ export default function tourCreatorPage(props){
 const router = useRouter()
 
 // Import from Gen Tour Data
-let ecoAndesDestinations= [...LTCGenDAta.countryList, "galapagos", "atacama", "easter island", "patagonia", "amazon" ].sort()
+let ecoAndesDestinations= [...LTCGenDAta.countryList, "galapagos", "atacama", "easter island", "patagonia", "amazon", "machu Picchu" ].sort()
 let tourType=["historic", "nature", "360° itineraries", "climbing", "trekking"]
 let tourDiff =[1,2,3,4,5]
 let TourModel = {
@@ -288,7 +288,7 @@ let dayModel = {
                 Images: {filteredImgArr.length} 
             </div>
             <div> 
-                <select onChange={(e)=>{
+                <select className={styles.imgSelectionUI} onChange={(e)=>{
                         setImgFilter(e.target.value)
                     }}>
                     <option value="all" > All Countries</option>
@@ -811,7 +811,7 @@ let dayModel = {
                     <Dialog open={addDayImgTrig} onClose={()=>setDayImgTrig(false)}>
                         <div className={styles.closeDialogBTN} onClick={()=>setDayImgTrig(false)}>CLOSE X</div>
                         <div style={{padding:"21px"}} >
-                        {imgPickerUIUitls(aTravelDay.imgArr, "day")}
+                            {imgPickerUIUitls(aTravelDay.imgArr, "day")}
                             {imagePickers("day")}
                         </div>
                     </Dialog>
@@ -832,6 +832,9 @@ let dayModel = {
                     }}> Save Day &nbsp;<SaveIcon/> </div>
                 </div>
                 <div className={styles.lineBreak} />
+                {(useAFTrig==="off" && aTravelDay?.imgArr?.length>0 )&&<>
+                    {imgPickerUIUitls(aTravelDay.imgArr, "day")}
+                </>}
                 <div className={styles.spaceBetRow} style={{alignItems:"flex-start"}}>
 
                     {useAFTrig==="start" && <>
@@ -897,6 +900,11 @@ let dayModel = {
             </>}
             </>)
         }
+
+
+
+
+        
         const priceAndInclusionsAdder=()=>{
             return(<>
                 <div className={styles.spaceBetRow}>
@@ -1115,16 +1123,15 @@ let dayModel = {
         <div className={styles.generalPageCont}>
             {session?<>
                 <GMSNavii user={session.user}/>
-                <div className={styles.tourCreatorTitle}>
-                    <DesignServicesIcon fontSize="large" />
-                    <h2>Latin Travel Collection</h2>
-                    <h1>Tour Creator</h1>
-                </div>
-
                 {pageNavigator!="home"&&<>
                     {localNav(setPageNavi, "home", "Tour Creator Home", <HomeIcon/>, 1)}
                 </>}
                 {pageNavigator==="home"? <> 
+                    <div className={styles.tourCreatorTitle}>
+                        <DesignServicesIcon fontSize="large" />
+                        <h2>Latin Travel Collection</h2>
+                        <h1>Tour Creator</h1>
+                    </div>
                     {tourCreatorHome()}
                 </>: pageNavigator==="creator"?<>
 

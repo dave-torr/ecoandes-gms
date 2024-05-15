@@ -316,9 +316,9 @@
     width: 100%;
     height: calc(100vw * 0.59);
     display: flex;
-    justify-content: center;
     position: relative;
-    margin-top: 22vh;
+    margin-top: 18vh;
+    transform: translate(0, 22px);
 }
 
 .introArrowIcon{

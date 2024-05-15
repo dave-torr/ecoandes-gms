@@ -205,6 +205,12 @@
 
 /* IMG PICKER STYLING */
 
+.imgSelectionUI{
+    padding: 3px 6px;
+    margin: 3px 6px;
+    border: solid 1px black;
+}
+
 .eachImgDisp{
     margin: 9px 6px;
     position: relative;

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 
 import {TourDisplayer} from "../../components/tours"
 import {connectToDatabase} from "../../middleware/dbMiddleware"
@@ -23,10 +23,15 @@ const router = useRouter()
         </>)
     } else if(aTour){
 
+        const [fetchedTour, setTour]=useState(aTour)
+        useEffect(()=>{
+            setTour(aTour)
+        },[aTour])
+
     return(<>
     
         <div className={styles.theTourDisp}>
-            <TourDisplayer aTour={aTour} contactNavi={true} />
+            <TourDisplayer aTour={fetchedTour} contactNavi={true} />
         </div>
     </>)
     }

@@ -985,12 +985,14 @@ export function SquaredTourCard(props){
             <div className={styles.aSquaredCont}> 
                 <Image 
                     src={props.imgSrc}
-                    width={500}
-                    height={500}
+                    width={450}
+                    height={450}
                     alt={`${props.tripName}, by L.T.C.`}
                     blurDataURL={props.imgSrc}
                     placeholder="blur"
-                    layout="responsive"
+                    
+                    // style={{objectFit: "contain"}}
+                    // layout="responsive"
                 />
                 <div className={styles.highlightTourTitle}>
                     {props.tripName} 
@@ -1634,5 +1636,11 @@ export function ItinEditor(props){
                 <br/>
             </div>
         </Dialog>
+    </>)
+}
+
+export const dayByDayEditor=()=>{
+    return(<>
+
     </>)
 }

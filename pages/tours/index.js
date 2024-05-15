@@ -223,10 +223,10 @@ let homeImgArr=[
         "src": landingImg,
         "alt": "Huayhuash: A Trek Through the Peruvian Andes"
     },
-    {
-        "src": landingImg2,
-        "alt": "Galapagos: Explore Nature"
-    },
+    // {
+    //     "src": landingImg2,
+    //     "alt": "Galapagos: Explore Nature"
+    // },
     {
         "src": landingImg4,
         "alt": "Tiwanaku, birthplace of the Inca Empire"
@@ -246,16 +246,16 @@ export default function TourPage(){
 
 
     useEffect(()=>{
-            if(tourTypeFilter){
-                if (tourTypeFilter==="all types"){
-                    setFilteredTourArr(TourData)
-                } else {
-                    let workerTourArr = filteredTourArr.filter(elem => elem.tourType===tourTypeFilter)
-                    setFilteredTourArr(workerTourArr)
-                }
-            } else if (!tourTypeFilter){
+        if(tourTypeFilter){
+            if (tourTypeFilter==="all types"){
                 setFilteredTourArr(TourData)
+            } else {
+                let workerTourArr = filteredTourArr.filter(elem => elem.tourType===tourTypeFilter)
+                setFilteredTourArr(workerTourArr)
             }
+        } else if (!tourTypeFilter){
+            setFilteredTourArr(TourData)
+        }
     },[tourTypeFilter])
     useEffect(()=>{
         let tempTourArr =[]
@@ -386,9 +386,9 @@ export default function TourPage(){
                     <div className={styles.tourHighlightBar}>Experience South America </div>
                     <div className={styles.highlightCont}>
                         
+                        <SquaredTourCard tripName={TourData[16].tripName} imgSrc={TourData[16].sqrImg} id={TourData[16].id}/>
                         <SquaredTourCard tripName={TourData[13].tripName} imgSrc={TourData[13].sqrImg} id={TourData[13].id}/>
 
-                        <SquaredTourCard tripName={TourData[16].tripName} imgSrc={TourData[16].sqrImg} id={TourData[16].id}/>
 
                     </div>
 

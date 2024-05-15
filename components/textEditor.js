@@ -13,8 +13,6 @@ import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary';
 import styles from "../styles/components/textEditor.module.css"
 
 export function TextEditor(props) {
-
-
     const [editorState, setEditorState]=useState()
 
     useEffect(()=>{

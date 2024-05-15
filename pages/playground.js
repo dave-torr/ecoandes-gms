@@ -400,7 +400,7 @@ const logoSwitcherArr=[
 
 export default function PlaygroundPage(){
     const { data: session } = useSession()
-    const [tempData, setTempData]=useState()
+    const [tempData, setTempData]=useState(dayModel)
 
     const [locObject, setTempObj]=useState(false)
     const [autofillOpts, setAutofillOps]=useState()
@@ -800,9 +800,6 @@ export default function PlaygroundPage(){
         </>)
     }
 
-    const [addedText, setAddedText]=useState()
-
-
     return(<>
         {(session && session.user.name==="David Torres" ) &&<> 
             <GMSNavii  user={session.user} />
@@ -810,17 +807,19 @@ export default function PlaygroundPage(){
 
                 <div style={{width: "340px"}}>
                 <TextEditor 
-                    tempObj={aTour}
-                    setTempObj={setTour}
+                    tempObj={tempData}
+                    setTempObj={setTempData}
                     inputIndex={"dayDescription"}
-                    addedText={addedText}
+                    inputLabel="Text eddies"
                     AFEntries={filteredAFEntries}
                 />
+
+
                 </div>
 
                 <div style={{width: "340px"}}>
                 <RichTextDisp 
-                    theValue={aTour.dayDescription}
+                    theValue={tempData.dayDescription}
                     richTextCont={true}
                 />
                 </div>
