@@ -41,14 +41,6 @@ import { inputToList } from "../../components/forms";
 // - operations
 
 
-
-
-
-
-
-
-
-
 export default function TourExplorerPage(props){
 
     // sesh
@@ -75,18 +67,15 @@ export default function TourExplorerPage(props){
     const [sortOrder, setSortOrder]=useState("descending")
     
     // Filter Toolkit
-    // const [theFilterLabel, setFilterLabel]=useState("destinations")
-    // const [selectedFilter, setFilter]=useState("all countries")
-    // useEffect(()=>{
-    //     if(theFilterLabel==="destinations"){
-    //         if(selectedFilter==="all countries"){
-    //             setFilteredItins(LTCItineraries)
-    //         } else {
-    //             let tempArr =LTCItineraries.filter(elem=>elem.countryList[0]===selectedFilter)
-    //             setFilteredItins(tempArr)
-    //         }
-    //     }
-    // },[selectedFilter])
+    const [destinationFilter, setDestFilter]=useState("allCountries")
+    useEffect(()=>{
+        if(destinationFilter==="allCountries"){
+            setFilteredItins(fetchedItinArr)
+        } else {
+            let tempArr =fetchedItinArr.filter(elem=>elem.countryList[0]===destinationFilter)
+            setFilteredItins(tempArr)
+        }
+    },[destinationFilter])
 
     useEffect(()=>{
         if(fetchedItinArr.length>0){
@@ -128,18 +117,45 @@ export default function TourExplorerPage(props){
         window.scrollTo({top: 0})
     },[itinDispTrigger])
 
-    const LTCTourExplorar=(theItins, sortTrigger, itinSource, priceSortTrigger, cardType, setItin, setItinDispTrigger)=>{
+    const LTCTourExplorar=(theItins, sortTrigger, itinSource, countryFilter, cardType, setItin, setItinDispTrigger)=>{
 
         let eachTourCard = theItins.map((elem, i)=><React.Fragment key={i}>
             <div onClick={()=>{setItinIndex(i)}}>
                 <TextTourCard aTour={elem} type={cardType} setItin={setItin} setDialogTrigger={setItinDispTrigger} /></div>
         </React.Fragment> )
 
+        let destinationDropdown = []
+        if(countryFilter){
+            fetchedItinArr?.forEach(element=>{
+                const findDest = destinationDropdown.find(lemental => lemental === element.countryList[0])
+                if(!findDest){
+                    destinationDropdown.push(element.countryList[0])
+                }
+            })
+        }
+
         return<>
             <div className={styles.itinCardDisp}>
                 <h2> {itinSource} Itineraries</h2>
-                Tours: {theItins.length}
+                # of Tours: {theItins.length} <br/>
+
+                {countryFilter&&<>
+                <div style={{display:"flex", alignItems:"center", margin:"18px 12px 3px"}}>
+                    <div style={{fontWeight: "600"}}>Filter By: </div>
+                    <select style={{height:"35px", width:"220px", marginLeft:"12px"}} 
+                        onChange={(e)=>{
+                            setDestFilter(e.target.value)
+                        }}>
+                        <option selected value="allCountries"> 
+                        All countries</option>
+                        {destinationDropdown.map((elem, i)=><React.Fragment key={i}>
+                            <option value={elem} style={{textTransform:"capitalize"}} >{elem}</option>
+                        </React.Fragment> )}
+                    </select>
+                </div>
+                </>}
                 {/* update sorting function to filter out each user, sort by duration. */}
+                
                 {sortTrigger&&<> 
                     <SortingItinUI 
                         sortContr={sortContr} 

@@ -145,7 +145,13 @@ export function TextTourCard(props){
                     <HikingIcon /> {theTour.difficulty}/5</div></>}
 
                 </div>
-                    <div className={styles.tourCardTripName}> {theTour.tripName} </div>
+                    <div className={styles.tourCardTripName}> 
+                        {theTour.tripName.length >55 ? <>  
+                            {theTour.tripName.substr(0,55) + "\u2026" }
+                        </>: <>
+                            {theTour.tripName}
+                        </> }
+                    </div>
                     <div> {theTour.duration}D | {theTour.tourType} </div>
             </div>
         </Link>
@@ -170,7 +176,12 @@ export function TextTourCard(props){
                     <div style={{display:"flex", justifyContent:"center" }}>
                     <HikingIcon /> {theTour.difficulty}/5</div></>}
             </div>
-                <div className={styles.tourCardTripName}> {theTour.tripName} </div>
+                <div className={styles.tourCardTripName}>     
+                    {theTour.tripName.length >55 ? <>  
+                        {theTour.tripName.substr(0,55) + "\u2026" }
+                    </>: <>
+                        {theTour.tripName}
+                    </> } </div>
                 <div>{theTour.duration}D {theTour.tourType&&<>| {theTour.tourType}</>}</div>
         </div>
     </>)
@@ -1035,8 +1046,7 @@ export function RectangularTourCard(props){
 /////////////////////////////////////////////////////////////
 
 export function SortingItinUI(props){
-    // const [sortContr, setSortContr]=useState("duration")
-    // const [props.sortOrder, setSortOrder]=useState("ascending")
+
     return(<>
         <div className={styles.sortingUICont}>
             <div className={styles.sortBTNCont}>
@@ -1050,7 +1060,6 @@ export function SortingItinUI(props){
                     <div className={styles.sortOptionBTN} onClick={()=>{
                         props.setSortContr("duration")
                         }} ><AccessTimeIcon/></div>
-
 
                     {/* <div className={styles.sortOptionBTNOffline} onClick={()=>{
                         props.setSortContr("price")
@@ -1101,7 +1110,7 @@ export function SortingItinUI(props){
             </div>
             <div className={styles.orderBTNCont}>
                 <div className={styles.sortContrDispl}>
-                    {props.sortContr}:</div>
+                    {props.sortContr==="calendar"? <>Date Created</>:<>{props.sortContr}</>}:</div>
                 {props.sortOrder==="descending"?<>
                 <span>
                     <div className={styles.selectedOrderDisp}>
