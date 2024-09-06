@@ -46,11 +46,15 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 // Assets
 import LTCTypeface from "./../public/assets/logos/LTCTypeface.png"
+import LTCWhtTxt from "../public/assets/logos/LTCwhtTxt.png"
+import LTCfullLogo from "../public/assets/logos/ltcComplete.png"
 import EcoAndesLogoBLK from "./../public/assets/logos/ecoAndesBLK.png"
 import GalapagosElementsLogo from "./../public/assets/logos/galapagosElementsLogo.png"
 import YacumaLogo from "./../public/assets/logos/yacuma.png"
 import UnigpsLogo from "./../public/assets/logos/unigalapagos.png"
 import AndesAdventuresLogo from "./../public/assets/logos/andesAdventuresFull.png"
+
+import cuencaTester from "../public/assets/images/cuencaDomes.jpg"
 
 
 import Dialog from '@mui/material/Dialog';
@@ -58,6 +62,7 @@ import Dialog from '@mui/material/Dialog';
 import LTCGenData from "./../data/dataAndTemplates.json"
 import { nanoid } from "nanoid"
 import { RichTextDisp, TextEditor } from "./textEditor"
+
 // ///////////////////
     // v. ++: 
     // Save Local Likes!!!
@@ -1651,5 +1656,41 @@ export function ItinEditor(props){
 export const dayByDayEditor=()=>{
     return(<>
 
+    </>)
+}
+
+export const newTourDisplayer=(theTour)=>{
+
+    console.log(theTour)
+    return(<>
+        <div className={styles.tourIntroPage}>
+            <span>
+                <div className={styles.introColorGradient}>
+                    <div><Image src={LTCfullLogo} width={250} alt="LTC fullLogo"/></div>
+                </div>
+            </span>
+            <div className={styles.tourMainIMG}>
+                <Image src={cuencaTester}       
+                sizes="100vw"
+                style={{
+                    width: '100%',
+                    height: 'auto',
+                }} 
+                alt="Cuenca Home" />
+            </div>
+            <span>
+                <div className={styles.introColorGradient2}>
+                    <div className={styles.introTourName}> 
+                        {theTour.tripName}
+                    </div>
+                    <div className={styles.LTCSeparator} />
+                    <div className={styles.tourDuration} > {theTour.duration} Days | {theTour.duration-1} Nights </div>
+                </div>
+                <div className={styles.introlOGOFooter}><Image src={LTCWhtTxt} width={330} alt="LTC Text Logo"/></div>
+            </span>
+        </div>
+        <div className={styles.genTourDetailsPage}> 
+            Tutu
+        </div>
     </>)
 }

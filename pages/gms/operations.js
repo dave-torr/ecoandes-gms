@@ -95,9 +95,6 @@ const aDepModel={
 let toDate= new Date()
 
 
-
-
-
 export default function OperationsDashboard(){
     let WorldCountryList = []
 
@@ -1308,11 +1305,10 @@ export default function OperationsDashboard(){
                             <option disabled selected > Select Folder Operator </option>
                             <option value="Cristina Paez"> Cristina Paez </option>
                             <option value="Carolina Cruz"> Carolina Cruz </option>
-                            <option value="Carlos del Salto"> Carlos del Salto </option>
                         </select> &nbsp;
                     </div>
                 </div>
-                </> }
+                </>}
                 <div className={styles.spaceBetRow} >
                     <div style={{width: "47%" }}>
                         <div className={styles.inputLabel}>

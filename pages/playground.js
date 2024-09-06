@@ -4,36 +4,19 @@ import { nanoid } from 'nanoid'
 
 import {GMSNavii} from "./../components/navis"
 import styles from "./../styles/pages/playground.module.css"
-import { TourDisplayer } from '../components/tours'
+import { newTourDisplayer } from '../components/tours'
 
 import AddCommentIcon from '@mui/icons-material/AddComment';
 import CancelIcon from '@mui/icons-material/Cancel';
 import TextField from '@mui/material/TextField';
 import { Autocomplete } from '@mantine/core'
 
-
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
-import { TextEditor, RichTextDisp } from '../components/textEditor'
-import { aDropdownPicker, aSwitcher, anInputDisplayer, inputToList, multiOptPicker, radioSelectors } from '../components/forms'
-
 import LTCGenDAta from "../data/dataAndTemplates.json"
-import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
-import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
-import SaveIcon from '@mui/icons-material/Save';
 
-
-import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
-import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
-
+import ecoAndesFD from "../data/ecoAndesFixedDepartures.json"
 
 // Bitacora logo:
 // import TrackChangesIcon from '@mui/icons-material/TrackChanges';
-
 
 // temp Dep
 
@@ -45,10 +28,12 @@ import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 
 // duplicate this dep with slight changes and dep dates to see how planner can work.
 
-let ecoAndesDestinations= [...LTCGenDAta.countryList, "galapagos", "atacama", "easter island", "patagonia", "amazon" ].sort()
 
+
+
+let ecoAndesDestinations= [...LTCGenDAta.countryList, "galapagos", "atacama", "easter island", "patagonia", "amazon", "andes" ].sort()
 let tourDiff =[1,2,3,4,5]
-let tourType=["historic", "nature", "360° itineraries", "climbing", "trekking"]
+let tourType=["360° itineraries", "active", "special interest", "expedition cruises"]
 
 let tempDep= {
     "itineraryID": "djoserNLJecga",
@@ -367,34 +352,6 @@ let dayModel = {
     "imgArr":[],
 }
 
-const logoSwitcherArr=[
-    {
-        "radioKey": "LTC",
-        "radioVal": "ltc"
-    },
-    {
-        "radioKey": "EcoAndes Travel",
-        "radioVal": "ecoAndes"
-    },
-    {
-        "radioKey": "Galapagos Elements",
-        "radioVal": "galapagosElements"
-    },
-    {
-        "radioKey": "Yacuma EcoLodge",
-        "radioVal": "yacuma"
-    },
-    {
-        "radioKey": "Unigalapagos",
-        "radioVal": "unigalapagos"
-    },
-    {
-        "radioKey": "Andes Adventures",
-        "radioVal": "andesAdventures"
-    },
-]
-
-// MS graph api to get files from IMG folder
 // Hotel Database
 // provider Database
 
@@ -406,43 +363,6 @@ export default function PlaygroundPage(){
     const [autofillOpts, setAutofillOps]=useState()
     const [aTour, setTour]=useState(TourModel)
     const [filteredAFEntries, setFilteredEntries]=useState(false)
-
-
-    // useEffect(()=>{
-    //     setAutofillOps()
-    //     const getDataz = async ()=>{
-    //         if(locObject){
-    //             const res = await fetch("/api/googleApi",{
-    //                 method: "POST",
-    //                 body: locObject
-    //             })
-    //             const locData = await res.json()
-    //             if(res.status===200){
-    //                 setAutofillOps(locData)
-    //                 return () => {};
-    //             }
-    //         }
-    //     }
-    //     getDataz()
-    // },[locObject])
-    
-    // useEffect(()=>{
-    //     console.log(autofillOpts)
-    // },[autofillOpts])
-
-    useEffect(()=>{
-        (async ()=>{
-            const res = await fetch("/api/gms/dayByDayDB", {
-                method: "GET"
-            })
-
-            const docData = await res.json()
-            if(res.status===200){
-                setAutofillOps(docData)
-                setFilteredEntries(docData)
-            }
-        })()
-    },[])
 
     /////////////////////////////////////////////////////
     /////////////////////////////////////////////////////
@@ -802,36 +722,9 @@ export default function PlaygroundPage(){
 
     return(<>
         {(session && session.user.name==="David Torres" ) &&<> 
-            <GMSNavii  user={session.user} />
-            <div className={styles.playgroundPage}>
+               
+            {/* {newTourDisplayer(ecoAndesFD[0])} */}
 
-                <div style={{width: "340px"}}>
-                <TextEditor 
-                    tempObj={tempData}
-                    setTempObj={setTempData}
-                    inputIndex={"dayDescription"}
-                    inputLabel="Text eddies"
-                    AFEntries={filteredAFEntries}
-                />
-
-
-                </div>
-
-                <div style={{width: "340px"}}>
-                <RichTextDisp 
-                    theValue={tempData.dayDescription}
-                    richTextCont={true}
-                />
-                </div>
-
-
-                
-
-
-
-                {/* {newItineraryBuilder( )} */}
-
-            </div> 
         </>}
     </>)
 }

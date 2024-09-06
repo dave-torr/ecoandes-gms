@@ -27,7 +27,7 @@ export default function HotelPage(props){
         "province": "Pichincha",
         "submitionDate": toDate,
     })
-    const [hotelAdderContr, setHotelAdd]= useState(false)
+    const [hotelAdderContr, setHotelAdd]= useState(true)
     const [roomPriceObj, setRoomPriceObj]=useState({})
     const [roomCategorySwitcher, setRoomCat] = useState("standard")
     const [breakfastController, setBreakfastCont]=useState(true)
@@ -341,6 +341,9 @@ export default function HotelPage(props){
 // SWR for all other hotel DB data
 
     return(<>
+
+{hotelAdderForm()}
+
         <div className={styles.main}>
             <div className={styles.ratesNavBar}>
                 <div>LTC / hotels</div>

@@ -1244,6 +1244,85 @@
     font-size: 0.9em;
 }
 
+
+    /* vr. 2.0 itin displ */
+    .tourIntroPage{
+        break-after: page;
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .tourIntroPage span{
+        z-index: 2;
+        position: relative;
+        width: 100%;
+    }
+    .introColorGradient{
+        background-image: linear-gradient(white, white, white,  transparent);
+        min-height: 66px;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 12px 0;
+        padding-bottom: 33px;
+    }
+    
+    .introColorGradient2{
+        background-image: linear-gradient(transparent, rgb(41, 42, 42), black);
+        min-height: 66px;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 21px 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    .introTourName{
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-size: 4.5em;
+    }
+    .tourDuration{
+        font-size: 2em;
+        letter-spacing: 1px;
+    }
+
+    .LTCSeparator{
+        height: 4px;
+        margin: 28px;
+        background-color: var(--ltc-main);
+        border-radius: 5px;
+        width: 60%;
+    }
+
+    .introlOGOFooter{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        background-color: var(--ltc-main);
+        padding: 9px;
+    }
+
+    .tourMainIMG{
+        position: absolute;
+        width: 800px;
+        z-index: 0;
+        top: 80px;
+        overflow: hidden;
+
+    }
+
+
 @media (max-width: 1080px) {
 
 
@@ -1344,6 +1423,10 @@
     .tourDataCont{
         flex-direction: column;
         align-items: center;
+        width: 100%;
+    }
+
+    .tourMainIMG{
         width: 100%;
     }
 }
@@ -1458,6 +1541,8 @@
 }
 
 
+
+
 @media print{
     .aCard{
         box-shadow: none;
@@ -1500,6 +1585,15 @@
     }
     .tourInfoDescriptor{
         padding: 9px 33px;
+    }
+
+
+
+
+
+    
+    .genTourDetailsPage{
+        background-color: #072935;
     }
 
 }

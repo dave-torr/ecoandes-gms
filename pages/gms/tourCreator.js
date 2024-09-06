@@ -539,14 +539,12 @@ let dayModel = {
                     }}> <EditIcon/></span>
                 </>:toolingOrUse==="use"&&<>
                     <span onClick={()=>{
-
                         let tempArr
                         if(anEntry.dayInclusions?.length>0){
                             tempArr = [...aTravelDay.dayInclusions, ...anEntry.dayInclusions]
                         } else {
                             tempArr=[...aTravelDay.dayInclusions]
                         }
-
                         setTravelDay({
                             ...aTravelDay,
                             "dayDescription": anEntry.dayDescription,
@@ -630,37 +628,58 @@ let dayModel = {
         
         if(allEntries.length>0){
             let locArr = []
+            let entryArr =[]
+
+            let pendingArr = []
+
+
             allEntries?.forEach(element => {
-                const findContact = locArr.find(elemental=> elemental === element.location)
-                if(!findContact){
+                const findLocation = locArr.find(elemental=> elemental === element.location)
+                if(!findLocation && element.dayDescription){
                     locArr.push(element.location)
                 }
+                if(element.dayDescription){
+                    entryArr.push(element)
+                }
+                if(element.description && !element.dayDescription){
+                    pendingArr.push(element)
+                }
+
+
             })
             const aFSelector=()=>{
                 return(<>
-                <label htmlFor="LocationDropdown" className={styles.inputLabel}>
-                    Select General Location
-                </label>
-                <select id="LocationDropdown" onChange={(e)=>{
-                    if(e.target.value==="all"){
-                        setLocSelection()
-                    } else {
-                        setLocSelection(`${e.target.value}`)
-                    }
-                }} >
-                    <option selected disabled >Select a location </option>
-                    <option value="all">All Locations </option>
-                    {locArr.map((elem,i)=><React.Fragment key={i}>
-                    <option value={elem} > {elem} </option>
-                    </React.Fragment> )}
-                </select>
+                <div className={styles.spaceBetRow} style={{width:"600px"}}> 
+                    <span style={{display:"flex", flexDirection:"column" }}> 
+                        <label htmlFor="LocationDropdown" className={styles.inputLabel} style={{padding:"9px 0"}}>
+                            Select General Location
+                        </label>
+                        <select id="LocationDropdown" style={{padding:"9px 12px"}}
+                        onChange={(e)=>{
+                            if(e.target.value==="all"){
+                                setLocSelection()
+                            } else {
+                                setLocSelection(`${e.target.value}`)
+                            }
+                        }} >
+                            <option selected disabled >Select a location </option>
+                            <option value="all">All Locations </option>
+                            {locArr.map((elem,i)=><React.Fragment key={i}>
+                            <option value={elem} > {elem} </option>
+                            </React.Fragment> )}
+                        </select>
+                    </span>
+                    <div style={{cursor:"pointer"}} onClick={()=>{
+                        
+                    }}><AddCircleIcon/> </div>
+                </div>
                 <br/>
                 </>)
             }
         return(<>
         {toolingOrUse==="tooling"? <>
             {aFSelector()}
-            {theEntries.map((elem,i)=><React.Fragment key={i}>
+            {pendingArr.map((elem,i)=><React.Fragment key={i}>
                 {anAutofillEntry(elem, i)}
             </React.Fragment> )}
             {editEntryDialog()}

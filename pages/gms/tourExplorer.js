@@ -322,7 +322,6 @@ export default function TourExplorerPage(props){
                 <h1>Tour Explorer</h1>
             
                 {GMSItinFetcher()}
-                {LTCTourExplorar(LTCItineraries, false, "LTC Published", false, 1 )}
                 {LTCTourExplorar(EcoAndesFD, false, "EcoAndes Fixed Departure", false, 2, setPickedItin, setItinDispTrigger)}
 
             </>}
