@@ -77,19 +77,25 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 15px 9px;
+    padding: 3px 9px;
+    background-color: white;
 }
 
 .closeBTN:hover{
-    color: white;
-    background-color: rgb(55, 62, 69);
     cursor: pointer;
+    box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.201);
 }
 
 .expenseForm{
-    border: solid 1px black;
+    transition: all ease-in 0.2s;
     margin: 9px 0;
     padding: 15px ;
+}
+
+.expenseForm:hover{
+    background-color: white;
+    box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.201);
+
 }
 
 .autofillCont select{
@@ -141,7 +147,7 @@
 }
 
 .expensesContainer{
-    background-color: white;
+    background-color:whitesmoke;
     padding: 9px 12px;
     width: 700px;
 }
@@ -224,6 +230,21 @@
     margin-top: 6px;
     margin-bottom: 12px;
 }
+
+
+
+/* expense Adder Form */
+
+.expenseAdderBTN{
+    background-color: teal;
+    padding: 9px 15px;
+    border: none;
+    color: white;
+    font-weight: 500;
+    text-transform: uppercase;
+    
+}
+
 
 
 /*  // // // //  */

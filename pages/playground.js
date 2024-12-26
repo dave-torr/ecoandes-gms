@@ -9,11 +9,14 @@ import { newTourDisplayer } from '../components/tours'
 import AddCommentIcon from '@mui/icons-material/AddComment';
 import CancelIcon from '@mui/icons-material/Cancel';
 import TextField from '@mui/material/TextField';
-import { Autocomplete } from '@mantine/core'
+import GradingIcon from '@mui/icons-material/Grading';
+
+import { Autocomplete, NativeSelect, TextInput } from '@mantine/core'
 
 import LTCGenDAta from "../data/dataAndTemplates.json"
 
 import ecoAndesFD from "../data/ecoAndesFixedDepartures.json"
+import { aSwitcher } from '../components/forms'
 
 // Bitacora logo:
 // import TrackChangesIcon from '@mui/icons-material/TrackChanges';
@@ -462,11 +465,13 @@ export default function PlaygroundPage(){
         "currency": "usd",
         "amount": Number,
         "cardNum": String,
+        "isBusinessExpense": false,
     }
     const sampExpense ={
         "date": toDate,
         "event": "fitur",
         "method":"card",
+        "isBusinessExpense": false,
         "cardNum": "0920",
         "madeBy": ["David Torres", ],
         "expenseName": "Lunch Snack",
@@ -482,13 +487,16 @@ export default function PlaygroundPage(){
         "ATWS",
         "TAS"
     ]
+    const expenseTypeArr=[
+        "F&B", "accommodation", "promotionalMaterial", "funAndGames", "technology", "repairs", "clothing", "parts", "R&D"
+    ]
     const paymentMethods=[
         "Cash",
         "Debit Card",
         "Credit Card",
         "Transfer",
     ]
-    const cardEndings=[
+    const personalCardEndings=[
         "0920"
     ]
 
@@ -580,8 +588,20 @@ export default function PlaygroundPage(){
 
 
     // Providers
+
+
+
+    // Expemses
+    const currencyGrid=[
+        { value: 'eur', label: '🇪🇺 EUR' },
+        { value: 'usd', label: '🇺🇸 USD' },
+        { value: 'cad', label: '🇨🇦 CAD' },
+        { value: 'gbp', label: '🇬🇧 GBP' },
+        { value: 'aud', label: '🇦🇺 AUD' },
+    ]
+
     const [expenseArr, setExpArr]=useState([sampExpense])
-    const [expenseBuild, setExpenseBuild]=useState({})
+    const [expenseBuild, setExpenseBuild]=useState(expenseModel)
     const [expenseTrig, setExpTrig]= useState(false)
     const eachExpDisp=(theExp)=>{
         return(<>
@@ -660,6 +680,44 @@ export default function PlaygroundPage(){
                         }}
                     /></div> 
                 </>)
+            } else if (inptType===3){
+                const selectCurrency=(
+                    <NativeSelect
+                        data={currencyGrid}
+                        rightSectionWidth={28}
+                        onChange={(e)=>{
+                            setAnObject({
+                                ...anObject,
+                                "currency": e.target.value
+                            })
+                        }}
+                        styles={{
+                            input: {
+                            fontWeight: 500,
+                            borderTopLeftRadius: 0,
+                            borderBottomLeftRadius: 0,
+                            width: "90px",
+                            },
+                        }}
+                    />
+                )
+                return(<>
+                <div style={styleObj} >
+                    <TextInput
+                        type="number"
+                        placeholder={placeholder}
+                        label="Bill Total"
+                        rightSection={selectCurrency}
+                        rightSectionWidth={92}
+                        onChange={(e)=>{
+                            setAnObject({
+                                ...anObject,
+                                [inputID]: e.target.value
+                            })
+                        }}
+                    />
+                </div>
+                </>)
             }
         }
 
@@ -672,24 +730,70 @@ export default function PlaygroundPage(){
                     Close
                     <CancelIcon/>
                 </div>
+
+
+
+                {/* Expense adder form */}
                 <form className={styles.expenseForm}
                     onSubmit={(e)=>{
                     e.preventDefault();
-                    
+                    // Send to BackEnd
+                    // getAllExpenses() with swr
+                    // display, filter and sort AllExpenses
+                    // 
                 }}>
                     <h2>Add Expense:</h2>
-                    <div className={styles.spaceBetRow} style={{textTransform:"capitalize" }}> 
-                        {anInput("Event", "event", expenseBuild, setExpenseBuild,2, { width:"210px" }, fairArray )}
+                    <div className={styles.spaceBetRow} style={{textTransform:"capitalize" }}>
+
+                        <input type="date" 
+                            style={{ 
+                                padding:"8px 11px",
+                                borderRadius:"5px",
+                                border:"solid 1px grey",
+                            }} 
+                            onChange={(e)=>{
+                                setExpenseBuild({
+                                    ...expenseBuild,
+                                    "dateCreated": e.target.value
+                                })
+                            }}/>
+
+
+                        {aSwitcher(expenseBuild.isBusinessExpense, expenseBuild, setExpenseBuild,  "isBusinessExpense", "business", "Business?")}
+
+
+
+
+
+                    </div>
+
+                    
+                    <div className={styles.spaceBetRow} >
+
+                            {anInput("Event", "event", expenseBuild, setExpenseBuild,2, { width:"210px" }, fairArray )}
+                            {anInput("Expense Type", "expenseType", expenseBuild, setExpenseBuild,2, { width:"210px" }, expenseTypeArr )}
+
+                    </div>
+
+
+                        {/* {anInput("Event", "event", expenseBuild, setExpenseBuild,2, { width:"210px" }, fairArray )} */}
+
+
                         <span style={{display:"flex"}}>
+
                             {anInput("Payment Methods", "method", expenseBuild, setExpenseBuild,2, { width:"150px" }, paymentMethods )}
                             {(expenseBuild?.method==="Credit Card"||expenseBuild?.method==="Debit Card")&& <>
                                 &nbsp;
-                                {anInput("Card Num", "cardNum", expenseBuild, setExpenseBuild,2, { width:"130px" }, cardEndings )}
+                                {anInput("Card Num", "cardNum", expenseBuild, setExpenseBuild,2, { width:"150px" }, cardEndings )}
                             </>}
                             &nbsp;
                             {anInput("Amount $", "amount", expenseBuild, setExpenseBuild,2, { width:"130px" }, [] )}
                         </span>
+                    <div className={styles.spaceBetRow} >
+                        {anInput("100", "billTotal", expenseBuild, setExpenseBuild, 3, {width:"180px"},[] )}
                     </div>
+                    <input type="submit" className={styles.expenseAdderBTN} value="+ EXPENSE" />
+                    
                 </form>
             </>:<>
                 <div className={styles.addFromRecordBTN} 
@@ -725,6 +829,7 @@ export default function PlaygroundPage(){
                
             {/* {newTourDisplayer(ecoAndesFD[0])} */}
 
+            {expenseTable(expenseArr,)}
         </>}
     </>)
 }
