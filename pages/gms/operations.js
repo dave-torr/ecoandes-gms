@@ -25,6 +25,9 @@ import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import AddCommentIcon from '@mui/icons-material/AddComment';
 import ChecklistIcon from '@mui/icons-material/Checklist';
+import HomeIcon from '@mui/icons-material/Home';
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import HandshakeIcon from '@mui/icons-material/Handshake';
 
 import LTCLogoBLK from "../../public/assets/logos/ecoAndesBLK.png"
 import GalapagosElementsLogo from "../../public/assets/logos/galapagosElementsLogo.png"
@@ -93,7 +96,6 @@ const aDepModel={
 }
 
 let toDate= new Date()
-
 
 export default function OperationsDashboard(){
     let WorldCountryList = []
@@ -287,8 +289,17 @@ export default function OperationsDashboard(){
                         anotherTempArr.push(element)
                     }
                 })
-                setActiveDeps(theTempArr)
-                setUpcomingDeps(anotherTempArr)
+
+                setActiveDeps(theTempArr.sort((a,b)=>{
+                    if(a.startingDate< b.startingDate){return -1}
+                    if(a.startingDate> b.startingDate){return 1}
+                return 0
+                }))
+                setUpcomingDeps(anotherTempArr.sort((a,b)=>{
+                    if(a.startingDate< b.startingDate){return -1}
+                    if(a.startingDate> b.startingDate){return 1}
+                return 0
+                }))
                 setWeeklyPlanner([sndDayItins, trdDayItins, frthDayItins, fifthDayItins])
                 setLoadingTrig(false)
 
@@ -852,11 +863,15 @@ export default function OperationsDashboard(){
                 setTheDeparture(elem)
                 setTheItinerary(foundItin)
             }}>
-                <div className={styles.spaceBetRow}> 
-                    {elem.startingDate}
-                    <span>
-                        {elem.duration} D
-                    </span>
+                <div className={styles.spaceBetRow}>
+                    <div>
+                        {/* {console.log(elem)} */}
+                        {elem.tripRef && <>{elem.tripRef}</>}
+                    </div>
+
+                    <div >
+                        {elem.duration} days from {elem.startingDate}
+                    </div>
                 </div>
                 <strong style={{textTransform:"capitalize" }}> {elem.tripName} </strong>
             </div>
@@ -4643,34 +4658,40 @@ export default function OperationsDashboard(){
                     {saveIconDisp(saveDocSwitch, saveFunction, )}
                 </div> 
                 <div className={styles.spaceBetRow}>
-                    {fileDisplayKey!="checklist"?<> 
-                        <div onClick={()=>setFileKey("checklist")}>
-                        <ChecklistIcon/> </div></>:<><span/> </>}
-
+                    {fileDisplayKey==="intro"? <> <h1>Home</h1></>
+                        :fileDisplayKey==="checklist"?<><h1>Checklist</h1></>
+                        :fileDisplayKey==="rooming"?<><h1>Rooming</h1></>
+                        :fileDisplayKey==="providers"?<><h1>providers</h1></>
+                        :fileDisplayKey==="expenses"?<><h1>expenses</h1></>
+                        :fileDisplayKey==="dayByDay"?<><h1>Day By Day</h1></>
+                        :fileDisplayKey==="flights"&&<><h1>flights</h1></>}
 
                     <div className={styles.keySelectors}>        
+                        {fileDisplayKey!="intro"&&<> 
+                            <span onClick={()=>{setFileKey("intro"); changeTabGenFunct(); }}>
+                                <HomeIcon/> </span></>}
+                        {fileDisplayKey!="checklist"&&<> 
+                            <span onClick={()=>setFileKey("checklist")}>
+                            <ChecklistIcon/> </span></>}
+
                         {fileDisplayKey!="flights"&&<>
                             <span onClick={()=>{
                                 setFileKey("flights"); 
                                 setFlightObj({"target": "group"})
                                 setLang("english")
-                            }}> <FlightIcon/> </span>
-                        </>}
+                            }}> <FlightIcon/> </span></>}
 
                             {/* future cruise functionality */}
                             {/* {(fileDisplayKey!="cruises"&& theDep.roomingList.length>0) &&<>
                                 <span onClick={()=>{setFileKey("cruises")}}> <SailingIcon/> </span>
                             </>} */}
 
-                        {fileDisplayKey!="intro"&&<> 
-                            <span onClick={()=>{setFileKey("intro"); changeTabGenFunct(); }}>
-                                home </span></>}
                         {fileDisplayKey!="rooming"&&<> 
                             <span onClick={()=>{setFileKey("rooming"); changeTabGenFunct();}}>
-                                pax & rooming </span></>}
+                                <PeopleAltIcon/> </span></>}
                         {fileDisplayKey!="providers"&&<>
                             <span onClick={()=>{setFileKey("providers"); changeTabGenFunct() }}>
-                                providers </span></>}
+                                <HandshakeIcon/> </span></>}
                         {fileDisplayKey!="expenses"&&<> 
                             <span onClick={()=>{setFileKey("expenses"); changeTabGenFunct() }}>
                                 expenses</span></>}
@@ -4783,8 +4804,7 @@ export default function OperationsDashboard(){
             <GMSNavii user={session.user} />
             <div className={styles.titleBar}>
                 <HubIcon fontSize="large" />
-                <h2>Latin Travel Collection</h2>
-                <h1>Operations</h1>
+                <h1 style={{margin: "6px 0"}}>Operations</h1>
             </div>  
             {loadingTrigger? <>
                 {loadingScreen("Fetching Departure Data")}
@@ -4802,12 +4822,14 @@ export default function OperationsDashboard(){
                 </> : createdep ? <>
                     {departureCreator()}
                 </> : <>
-                    {/* display itineraries and select a dep for file */}
+                    {/* Home */}
                     <div className={styles.operPageHome}>
+                        {/* Dep Highlights */}
                         <div className={styles.verticalCont}>
                             {depDisplayer(activeDeps, "active Departures", true)}
                             {depDisplayer(upcomingDeps, "upcoming Departures", false)}
                         </div>
+                        {/* Home Side Bar */}
                         <div className={styles.verticalCont}>
                             <strong className={styles.printDEL} >{toDateDisplayer}</strong><br/>
                             {statsDisplayer(activeDeps, upcomingDeps)}

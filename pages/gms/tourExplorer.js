@@ -318,7 +318,6 @@ export default function TourExplorerPage(props){
                 <GMSNavii  user={session.user} />
                 <br></br>
                 <ExploreIcon fontSize="large" />
-                <h2>Latin Travel Collection</h2>
                 <h1>Tour Explorer</h1>
             
                 {GMSItinFetcher()}

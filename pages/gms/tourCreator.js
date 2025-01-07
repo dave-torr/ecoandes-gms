@@ -812,7 +812,7 @@ let dayModel = {
                                         "meals": []
                                     })
                                 } else {
-                                    let tempArr = aTravelDay.meals.splice(i, 1)
+                                    let tempArr = aTravelDay.meals.gi(i, 1)
                                     setTravelDay({
                                         ...aTravelDay,
                                         "meals": tempArr
@@ -1148,7 +1148,6 @@ let dayModel = {
                 {pageNavigator==="home"? <> 
                     <div className={styles.tourCreatorTitle}>
                         <DesignServicesIcon fontSize="large" />
-                        <h2>Latin Travel Collection</h2>
                         <h1>Tour Creator</h1>
                     </div>
                     {tourCreatorHome()}

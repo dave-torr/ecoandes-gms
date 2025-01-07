@@ -1070,7 +1070,6 @@ function LibraryPage(){
         <GMSNavii user={session.user} /> 
         <div className={styles.generalPageCont}> 
             <LocalLibraryIcon fontSize="large" />
-            <h2>Latin Travel Collection</h2>
             <h1>Library</h1>
 
             {libraryTab==="main"? <>

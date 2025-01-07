@@ -159,7 +159,6 @@ export default function AdminDash(){
                 </div>
             </>:<> 
             <AdminPanelSettingsIcon fontSize="large"  />
-            <h2>Latin Travel Collection</h2>
             <h1>Admin Dashboard</h1>
 
             <div className={styles.adminDashOptCont}> 

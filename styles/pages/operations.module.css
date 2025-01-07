@@ -21,6 +21,7 @@
     align-items: center;
     margin-bottom: 12px;
     cursor: pointer;
+    background-color: rgba(193, 193, 193, 0.705);
 }
 
 .aLineSeparator{
@@ -114,7 +115,7 @@
 
 .aDepCard:hover{
     background-color: white;
-    box-shadow: var(--frst-box-shadow);
+    border: solid 1px white;
 }
 
 /* DEPARTURES */
@@ -443,7 +444,7 @@
 .keySelectors span{
     width: fit-content;
     padding: 6px;
-    border: solid 3px black;
+    border: solid 2px black;
     border-radius: 5px;
     z-index: 0;
     transition: all ease-in 0.1s;
@@ -459,8 +460,12 @@
     cursor: pointer;
 }
 
+.keySelectors span:nth-of-type(1):hover{
+    background-color: red;
+}
 .keySelectors span:nth-of-type(2):hover{
-    background-color: bisque;
+    background-color: blue;
+    color: white;
 }
 
 .keySelectors span:nth-of-type(3):hover{
@@ -468,10 +473,14 @@
     color: white;
 }
 .keySelectors span:nth-of-type(4):hover{
-    background-color: rgba(255, 115, 8, 0.959);
+    background-color: rgb(255, 175, 47);
 }
 .keySelectors span:nth-of-type(5):hover{
     background-color: rgba(102, 13, 198, 0.959);
+    color: white;
+}
+.keySelectors span:nth-of-type(6):hover{
+    background-color: rgb(67, 66, 66);
     color: white;
 }
 
