@@ -28,6 +28,8 @@ import ChecklistIcon from '@mui/icons-material/Checklist';
 import HomeIcon from '@mui/icons-material/Home';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import HandshakeIcon from '@mui/icons-material/Handshake';
+import RequestQuoteIcon from '@mui/icons-material/RequestQuote';
+import DateRangeIcon from '@mui/icons-material/DateRange';
 
 import LTCLogoBLK from "../../public/assets/logos/ecoAndesBLK.png"
 import GalapagosElementsLogo from "../../public/assets/logos/galapagosElementsLogo.png"
@@ -4694,10 +4696,10 @@ export default function OperationsDashboard(){
                                 <HandshakeIcon/> </span></>}
                         {fileDisplayKey!="expenses"&&<> 
                             <span onClick={()=>{setFileKey("expenses"); changeTabGenFunct() }}>
-                                expenses</span></>}
+                                <RequestQuoteIcon/></span></>}
                         {fileDisplayKey!="dayByDay"&&<> 
                             <span onClick={()=>{setFileKey("dayByDay"); changeTabGenFunct() }}>
-                                day by day</span></>}
+                                <DateRangeIcon/></span></>}
                     </div>
                 </div>
             </div>
@@ -4743,7 +4745,6 @@ export default function OperationsDashboard(){
 
         {/* Expense Adder Dialog */}
         <Dialog open={expenseTrig}  maxWidth={"xl"} onClose={()=>setExpTrig(false)}>
-
             <div className={styles.aFileContainer}>
                 <h3>Add expense to day {dayIndex+1} </h3>
                 {optCataloger(thePriceChart)}

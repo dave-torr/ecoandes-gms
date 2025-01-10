@@ -171,6 +171,8 @@ export default function TourExplorerPage(props){
 
     const selectedItinDips=()=>{
         return(<>
+
+            {console.log(pickedItin)}
             {pickedItin&&<>
             {/* each itin UI BTNS */}
             <div className={styles.iconDialogCont}>
