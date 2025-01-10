@@ -402,7 +402,9 @@ export function TourDisplayer(props){
                 </React.Fragment>)
                 return(<><div style={{display:"flex", alignItems: "center"}}> 
                     <h4>Meals:</h4>
-                    {theInclusions}
+                    <div style={{display: "flex", flexDirection:"column", marginLeft:"24px" }}>
+                        {theInclusions}
+                    </div>
                 </div></>)
             }
         }
