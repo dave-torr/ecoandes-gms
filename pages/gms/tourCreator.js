@@ -923,9 +923,6 @@ let dayModel = {
             </>}
             </>)
         }
-
-
-        console.log(aTour)
         
         const priceAndInclusionsAdder=()=>{
             return(<>
