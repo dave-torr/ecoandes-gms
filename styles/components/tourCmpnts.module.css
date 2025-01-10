@@ -590,8 +590,10 @@
 
 .dayInclusionCont{
     border-top: solid 1px var(--pop-orange);
+    padding: 6px 0;
     text-transform: capitalize;
-    margin-bottom: 9px;
+    display: flex;
+    align-items: center;
 }
 
 .trekDataCont{

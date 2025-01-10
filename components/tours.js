@@ -385,9 +385,11 @@ export function TourDisplayer(props){
         const dayInclDisp=(dayIncl)=>{
             if(dayIncl?.length>0){
                 let theInclusions = dayIncl.map((elem, i)=><React.Fragment key={i}>{i>0&&<>, </>}{elem}</React.Fragment>)
-                return(<><div className={styles.dayInclusionCont}> 
+                return(<><div className={styles.dayInclusionCont}>
                     <h4>Includes:</h4>
-                    &nbsp; {theInclusions}
+                    <div style={{marginLeft: "12px"}}>
+                    {theInclusions}
+                    </div>
                 </div></>)
             }
         }
@@ -398,7 +400,7 @@ export function TourDisplayer(props){
                     - {elem.meal} {elem.location&&<>@ {elem.location}</>} 
                 </div>
                 </React.Fragment>)
-                return(<><div> 
+                return(<><div style={{display:"flex", alignItems: "center"}}> 
                     <h4>Meals:</h4>
                     {theInclusions}
                 </div></>)
