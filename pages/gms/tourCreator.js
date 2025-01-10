@@ -64,8 +64,12 @@ let TourModel = {
         "included":[],
         "notIncluded":[],
         "notes":[],
-        "shortenedURL":nanoid(7),
-        "richText": true
+        // "shortenedURL":nanoid(7),
+        "richText": true,
+        
+        // for adding FXDs
+        "ltcFxd25":true,
+
     }
 
 let dayModel = {
@@ -921,8 +925,7 @@ let dayModel = {
         }
 
 
-
-
+        console.log(aTour)
         
         const priceAndInclusionsAdder=()=>{
             return(<>
@@ -1031,9 +1034,7 @@ let dayModel = {
                 </AccordionSummary>
                 <AccordionDetails>
                 <div style={{maxHeight:"400px", overflowY:"auto"}}>
-
                     {itinMakerIndex===0&&<>
-                        
                         <div className={styles.spaceBetRow}>
                             <span style={{width:"48%"}}>
                                 {aSwitcher(aTour.LTCLogo, aTour, setTour, "LTCLogo", "ecoAndes", "Logo on itinerary?")}
@@ -1044,6 +1045,24 @@ let dayModel = {
                                 {anInputDisplayer("Duration", "duration", "number", true, undefined, aTour, setTour, 1, undefined, "Tour Duration")}
                             </span>
                             <span style={{width:"48%"}}>
+
+
+
+
+
+                            {/* for FXDs adding */}
+                                {anInputDisplayer("url", "shortenedURL", "text", false, undefined, aTour, setTour, undefined, undefined, "shortened-url")}
+                                {anInputDisplayer("We Travel Link", "weTravelURL", "text", false, undefined, aTour, setTour, undefined, undefined, "link bruh")}
+
+
+
+
+
+
+
+
+
+
                                 {anInputDisplayer("Starting City", "startingPlace", "text", false, undefined, aTour, setTour, undefined, undefined, "Example: Lima or Quito")}
                                 {aDropdownPicker(tourType, "tour type", "tourType", aTour, setTour)}
                                 {aDropdownPicker(tourDiff, "Difficulty", "difficulty", aTour, setTour)}

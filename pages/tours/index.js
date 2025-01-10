@@ -4,7 +4,6 @@ import Image from "next/image"
 import TourData from "../../data/LTCItinerary"
 import styles from "./../../styles/pages/tours.module.css"
 
-import tourPageIMGLanding from "./../../public/assets/images/bookingLanding1.png"
 import landingImg from "./../../public/assets/images/bookingLanding1.png"
 import landingImg2 from "../../public/assets/images/bookingLanding2.png"
 import landingImg4 from "../../public/assets/images/bookingLanding4.png"

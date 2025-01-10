@@ -789,11 +789,11 @@ export function TourDisplayer(props){
                         Book {aTour.tripName} experience</div></a>
 
                     {/* whatsAppCTA */}
-                    <a target='_blank' href="https://wa.me/593979469989"> <div className={styles.secondaryCTABTN}> 
+                    <a target='_blank' href="https://wa.me/17863767003"> <div className={styles.secondaryCTABTN}> 
                         <WhatsAppIcon/> </div>
                     </a>
                     {/* eMailCTA */}
-                    <a href={`mailto:info@ecoandestravel.com?cc=planificacion@ecoandestravel.com, david@latintravelcollection.com&subject=${aTour.tripName} Request&body=Hi, Im interested in ${aTour.tripName} for the following dates/season:`}><div className={styles.secondaryCTABTN}> 
+                    <a href={`mailto:info@latintravelcollection.com?cc=sales@latintravelcollection.com, anahi@latintravelcollection.com, david@latintravelcollection.com&subject=${aTour.tripName} Request&body=Hi, Im interested in ${aTour.tripName} for the following dates/season:`}><div className={styles.secondaryCTABTN}> 
                         <MailOutlineIcon/> </div>
                     </a>
                 </div>

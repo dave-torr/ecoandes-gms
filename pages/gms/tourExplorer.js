@@ -25,6 +25,8 @@ import Dialog from '@mui/material/Dialog';
 import styles from "../../styles/pages/tourExplorar.module.css"
 import { inputToList } from "../../components/forms";
 
+import FXDs from "../../data/LTCFXD2025.json"
+
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
@@ -48,6 +50,8 @@ export default function TourExplorerPage(props){
 
     // Tour Explorer Toolkit
     const [itinIndex, setItinIndex]=useState()
+
+    // reg
     const [pickedItin, setPickedItin] =useState()
     const [itinDispTrigger, setItinDispTrigger]=useState(false)
     const [copyItinTrig, setCopyTrig]=useState(false)
