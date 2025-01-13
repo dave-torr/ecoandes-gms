@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 
-import {aSwitcher, radioSelectors, anInputDisplayer, multiOptPicker, aDropdownPicker, EditDayByDay, inputToList, EditPrices } from "./../components/forms"
+import {aSwitcher, radioSelectors, anInputDisplayer, multiOptPicker, aDropdownPicker, EditDayByDay, inputToList, EditPrices, aTextArea } from "./../components/forms"
 import {ImageEditor, anImageDisp} from "./../pages/gms/pix"
 
 import styles from "./../styles/components/tourCmpnts.module.css"
@@ -128,7 +128,15 @@ export function ATourCard(props){
                     </div>
                     <span>
                         <div className={styles.tourCardTripName}> {theTour.tripName} </div>
-                        <div> {theTour.duration} day itinerary &nbsp;  | &nbsp; {theTour.tourType} </div>
+                        <div> {theTour.duration} day itinerary &nbsp;  
+                        | &nbsp; 
+                        
+                        {/* {theTour.tourType}  */}
+
+                        {/* next dep date */}
+                        {/* {theTour.departureDates[0]} */}
+                        {theTour.countryList[0]}
+                        </div>
                     </span>
                     <div className={styles.tourCardCTA}> see experience </div>
                 </div>

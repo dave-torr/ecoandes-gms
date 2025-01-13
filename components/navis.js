@@ -25,7 +25,7 @@ const contactNum1 = <><a target='_blank' href="tel:+17862963950"> <PhoneForwarde
 //  --> to DTorres US numb
 const contactNum2 = <>&nbsp;<a target='_blank' href="https://wa.me/17863767003"><WhatsAppIcon fontSize="inherit" /></a></> 
 //  --> to Juan Orozco EC Numb
-const contactEmail = <><a target='_blank' href="mailto:info@ecoandestravel.com"><MailOutlineIcon fontSize="inherit" /></a></>
+const contactEmail = <><a target='_blank' href="mailto: info@latintravelcollection.com?cc=sales@latintravelcollection.com, david@latintravelcollection.com &subject=South America Travel - Lets Go!"><MailOutlineIcon fontSize="inherit" /></a></>
 
 
 
