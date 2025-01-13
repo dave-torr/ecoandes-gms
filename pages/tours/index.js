@@ -212,6 +212,12 @@ let AmazonJungleSpotlight =     {
 //  // departure date?
 
 
+// v.2.alt - only FXDs:
+// -add signup box, with email checkup.
+// - sorting only of price, duration, dep date. 
+
+
+
 
 let tourTypes = ["all types", "historic", "nature", "360° itineraries", "climbing", "trekking" ]
 
@@ -235,13 +241,35 @@ let homeImgArr=[
 export default function TourPage(){
 
     const [tourTypeFilter, setTourTypeFilter]= useState(0)
-    const [filteredTourArr, setFilteredTourArr]= useState(TourData)
+    // op working v.2
+    // const [filteredTourArr, setFilteredTourArr]= useState(TourData)
+    const [filteredTourArr, setFilteredTourArr]= useState([])
     const [destinationList, setDestList] = useState([])
     const [fullscreenCont, setFullscreenCont]=useState(false)
 
     // work around filters:
     // currently destination filter works. if dest, filter by destination, else, filter all tours.
     // add filter reset BTN
+
+
+    useEffect(()=>{
+        (async ()=>{
+            const res2 = await fetch("/api/gms/itineraries",{
+                method: "GET"
+            })
+            let fetchedData2 = await res2.json()
+            if(fetchedData2){
+                // filter / sort functions
+                let tempArr = []
+                fetchedData2.forEach((e)=>{
+                    if(e.ltcFxd25){
+                        tempArr.push(e)
+                    }
+                })
+                setFilteredTourArr(tempArr)
+            }
+        })()
+    },[])
 
 
     useEffect(()=>{
@@ -452,19 +480,29 @@ export default function TourPage(){
 
             {tourPageImgDisplayer()}
 
-            {tourHighlightDisp()}
+            {/* {tourHighlightDisp()} */}
+            {/* {filtersUI()} */}
 
-            {filtersUI()}
 
-            <div className={styles.sortingUICont}>
+            {/* get from database filtered by fxd flag */}
+            {/* figure colombia pics embedding wtf */}
+            {/* add additional pics for welcome, with blur on */}
+
+            {tourdisplayer()}
+
+
+            {/* sorting element must sort for price, depDate, difficulty?,   */}
+
+
+
+            {/* <div className={styles.sortingUICont}>
                 <SortingItinUI 
                     sortContr={sortContr} 
                     setSortContr={setSortContr}
                     sortOrder={sortOrder}
                     setSortOrder={setSortOrder}
-                /></div>
+                /></div> */}
 
-            {tourdisplayer()}
 
             {/* Page Footer */}
             {fullscreenCont?<>

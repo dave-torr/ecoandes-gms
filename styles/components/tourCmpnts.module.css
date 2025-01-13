@@ -75,9 +75,10 @@
     text-transform: capitalize;
     color: var(--pop-orange);
     height: 20px;
-    font-size: 0.95em;
+    /* font-size: 0.95em; */
     text-transform: uppercase;
-    font-weight: 800;
+    font-weight: 800; 
+    padding-right: 12px;
 }
 
 .tourCardTripName{

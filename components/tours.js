@@ -98,7 +98,8 @@ export function ATourCard(props){
     let theTour = props.aTour
 
     return(<>
-        <Link href={`/tours/${theTour.id}`}>
+        <a target="_blank" rel="noreferrer noopener">
+        <Link href={`/ltc/${theTour.shortenedURL}`}>
             <div className={styles.tourCardCont} >
                 
                 <div className={styles.tourCardImageMobile}>
@@ -108,20 +109,24 @@ export function ATourCard(props){
                         height={240}
                         alt={`A tour image: ${theTour.tripName}`}
                         blurDataURL={theTour.imgArr[0]}
-                        placeholder="blur"
+                        // placeholder="blur"
                     />
                 </div>
 
                 <div className={styles.tourCardTextCont}>
-                    <div className={styles.difficultyDispCont}> 
-                        Difficulty: {theTour.difficulty}/5 </div>
-                    <span>
+
+                    {/* <div className={styles.difficultyDispCont}> 
+                        Difficulty: {theTour.difficulty}/5 </div> */}
+                    <div className={styles.spaceBetRow}>
+                        <div/>
                         {theTour.startingPlace? <>
                         <div className={styles.tourStartingPlace} > 
-                            from {theTour.startingPlace} </div>
+                            Starting from {theTour.startingPlace} </div>
                         </>: <>
                             <div className={styles.tourStartingPlace}/>
                         </>}
+                    </div>
+                    <span>
                         <div className={styles.tourCardTripName}> {theTour.tripName} </div>
                         <div> {theTour.duration} day itinerary &nbsp;  | &nbsp; {theTour.tourType} </div>
                     </span>
@@ -129,6 +134,7 @@ export function ATourCard(props){
                 </div>
             </div>
         </Link>
+        </a>
     </>)
 }
 //////////////////////////////////////////////////////////////
@@ -646,7 +652,7 @@ export function TourDisplayer(props){
                 fill={true}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 blurDataURL={props.imgData}
-                placeholder="blur"                
+                // placeholder="blur"                
             />
         </div>
         </>)
@@ -675,7 +681,7 @@ export function TourDisplayer(props){
                             src={selectedImg.src}
                             alt={selectedImg.alt}
                             blurDataURL={selectedImg.src}
-                            placeholder="blur" 
+                            // placeholder="blur" 
                             sizes="100vw"
                             fill
                             style={{
@@ -821,7 +827,7 @@ export function TourDisplayer(props){
                     width={2000}
                     alt="a Tour Image"
                     blurDataURL={aTour.imgArr[0]}
-                    placeholder="blur" 
+                    // placeholder="blur" 
                     layout="responsive"
                 />
             </div>
@@ -1009,7 +1015,7 @@ export function SquaredTourCard(props){
                     height={450}
                     alt={`${props.tripName}, by L.T.C.`}
                     blurDataURL={props.imgSrc}
-                    placeholder="blur"
+                    // placeholder="blur"
                     
                     // style={{objectFit: "contain"}}
                     // layout="responsive"
@@ -1038,7 +1044,7 @@ export function RectangularTourCard(props){
                 width={2000}
                 alt={`${props.tripName}, by L.T.C.`}
                 blurDataURL={props.imgSrc}
-                placeholder="blur"
+                // placeholder="blur"
                 layout="responsive"
             />
             <div className={styles.highlightTourTitle}>
