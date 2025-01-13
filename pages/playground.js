@@ -17,6 +17,9 @@ import LTCGenDAta from "../data/dataAndTemplates.json"
 
 import ecoAndesFD from "../data/ecoAndesFixedDepartures.json"
 import { aSwitcher } from '../components/forms'
+import Image from 'next/image'
+
+import colo1 from "../public/assets/images/fxdImgs/COL/col1.jpg"
 
 // Bitacora logo:
 // import TrackChangesIcon from '@mui/icons-material/TrackChanges';
@@ -824,12 +827,29 @@ export default function PlaygroundPage(){
         </>)
     }
 
+
+
+    
+    const anImgDisp=()=>{
+        let mappedPics = colombiaPics.map((e)=><>
+            <Image 
+                width={500}
+                height={250}
+                src={e}
+                alt="pic alt to"
+            />
+        </>)
+
+        return(<>{mappedPics}</>)
+    }
+
     return(<>
         {(session && session.user.name==="David Torres" ) &&<> 
                
             {/* {newTourDisplayer(ecoAndesFD[0])} */}
 
-            {expenseTable(expenseArr,)}
+            {/* {expenseTable(expenseArr,)} */}
+
         </>}
     </>)
 }

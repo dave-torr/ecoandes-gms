@@ -296,9 +296,6 @@ export default function PixPage(){
                 {/* Displays IMG Spread */}
                 {theSpread(theImagesArr)}
 
-
-
-
             </>
             :batchSteps===1&& <>
                 <div className={styles.editImgFormCont}> 
@@ -343,8 +340,6 @@ export default function PixPage(){
         {/* initial batch is proccesed, need to clean up repeats, install filter for img selection */}
 
         {/* {batchProcessSteps()} */}
-
-
 
 
     </>)

@@ -128,7 +128,7 @@ export function ATourCard(props){
                     </div>
                     <span>
                         <div className={styles.tourCardTripName}> {theTour.tripName} </div>
-                        <div> {theTour.duration} day itinerary &nbsp;  
+                        <div> {theTour.duration} days &nbsp;  
                         | &nbsp; 
                         
                         {/* {theTour.tourType}  */}
@@ -834,8 +834,6 @@ export function TourDisplayer(props){
                     height={1125}
                     width={2000}
                     alt="a Tour Image"
-                    blurDataURL={aTour.imgArr[0]}
-                    // placeholder="blur" 
                     layout="responsive"
                 />
             </div>
@@ -1053,7 +1051,7 @@ export function RectangularTourCard(props){
                 alt={`${props.tripName}, by L.T.C.`}
                 blurDataURL={props.imgSrc}
                 // placeholder="blur"
-                layout="responsive"
+                // layout="responsive"
             />
             <div className={styles.highlightTourTitle}>
                 {props.tripName} 
