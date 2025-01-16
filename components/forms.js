@@ -110,7 +110,6 @@ export function multiOptPicker(theOptsArr, inputLabel, inputId, resultingList, a
                 // remove from selectedElems, add to OptList
                 let tempList=theOptsArr.concat(elem)
                 setOptsArr(tempList)
-
                 let tempListTwo = [...resultingList];
                 tempListTwo.splice(i,1)
                 setAnObject({
@@ -121,7 +120,6 @@ export function multiOptPicker(theOptsArr, inputLabel, inputId, resultingList, a
                 {elem} &nbsp; <HighlightOffIcon />
             </div>
         </React.Fragment>)
-        
     return(<>
         <div className={styles.theInputContainer}>
             <div className={styles.anInputRow}>

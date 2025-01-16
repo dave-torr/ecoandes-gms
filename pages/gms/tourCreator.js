@@ -64,12 +64,9 @@ let TourModel = {
         "included":[],
         "notIncluded":[],
         "notes":[],
-        // "shortenedURL":nanoid(7),
+        "shortenedURL":nanoid(7),
         "richText": true,
         
-        // for adding FXDs
-        "ltcFxd25":true,
-
     }
 
 let dayModel = {
@@ -816,7 +813,8 @@ let dayModel = {
                                         "meals": []
                                     })
                                 } else {
-                                    let tempArr = aTravelDay.meals.gi(i, 1)
+                                    let tempArr = [...aTravelDay.meals]
+                                    tempArr.splice(i,1)
                                     setTravelDay({
                                         ...aTravelDay,
                                         "meals": tempArr

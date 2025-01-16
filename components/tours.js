@@ -966,7 +966,6 @@ export function TourDisplayer(props){
             </>)
         }
     }
-
     return(<>
         <article className={styles.generalTourPage}>
             {tourTitle()}
@@ -1295,6 +1294,8 @@ export function ItinDataDisp(props){
                     </div>
                 </>}
 
+                
+
             </div>
         </Dialog>
     </>)
@@ -1559,7 +1560,7 @@ export function ItinEditor(props){
                 return(<> 
                 {/* Included in Tour */}
                 {inputToList("Inclusions", "editValue", editObjTemplate, setEditTemplate, editObjTemplate.editValue, inputPlaceholder, setInputPlaceholder )}
-                </>)  
+                </>)
             case "notIncluded":
                 return(<> 
                 {/* Not Included */}

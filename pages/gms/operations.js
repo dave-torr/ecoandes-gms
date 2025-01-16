@@ -4568,7 +4568,7 @@ export default function OperationsDashboard(){
             </React.Fragment>)}
             </>}
             {checklistSwitch&&<> 
-                <div className={styles.spaceBetRow} style={{display:"flex", alignItems:"center", width:"60%" }}> 
+                <div className={styles.spaceBetRow} style={{display:"flex", alignItems:"flex-end", justifyContent:"center", width:"60%" }}> 
                 <input
                     type='text'
                     className={styles.inputUserUI}
@@ -4577,7 +4577,7 @@ export default function OperationsDashboard(){
                         setTempCheckList(e.target.value)
                     }}
                     id="checkboxInput"
-                /> <br/>
+                />
                 <span onClick={()=>{
                     if(theDeparture.theCheckList){
                         let tempObj = {
