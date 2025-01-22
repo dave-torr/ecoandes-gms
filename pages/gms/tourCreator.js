@@ -139,7 +139,13 @@ let dayModel = {
             const res2 = await fetch("/api/genToolkit/pixApi",{
                 method: "GET"
             })
-            const docData = await res.json()
+
+
+
+            // const docData = await res.json()
+            
+
+            
             const fetchedImages = await res2.json()
             if(res.status===200){
                 setAutoFillData(docData)

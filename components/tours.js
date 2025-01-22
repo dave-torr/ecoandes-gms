@@ -84,6 +84,31 @@ import { RichTextDisp, TextEditor } from "./textEditor"
 // guides, flights, cruises
 
 
+let langCardTourComp={
+    // each elem in objetc it an arr. 0 = englVal, 1 = spaVal
+    "tourDuration":["duration","duración",],
+    "days":["days", "dias"],
+    "tourType":["tour type","tipo de tour",],
+    "starting":["starting from ","programa inicia en ",],
+    "gallery":["browse ballery","explorar galeria",],
+    "overview":["overview","descripción general",],
+    "dayByDay":["day by day","dia por dia",],
+    "inclusions":["daily inclusions","inclusiones diarias",],
+    "tourIncExc":["tour Inclusions / Exclusions", "Incluidos / Excluidos en Tour"],
+    "tourInclusions":["included in tour", "incluidos en tour"],
+    "tourExclusions":["not included in tour", "No incluidos en tour"],
+    "accommodation":["overnight accommodation","alojamiento",],
+    "meals":["meals","comidas",],
+    "breakfast":["breakfast","desayuno",],
+    "acommodation":["overnight property", "alojamiento"],
+    "supplementaryData":["supplementary information", "informacion adicional"],
+    "driveDistance": ["approximate driving distance", "distancia aproximada de manejo"],
+    "trekTime": ["total trek time", 'tiempo total de caminata'],
+    "distance":["distance covered", "distancia de caminata"],
+    "flights": ["flight info", "informacion de vuelos"],
+    "guides":["guide info", "info de guias"],
+
+}
 
 
 let ecoAndesDestinations= LTCGenData.countryList
@@ -360,8 +385,14 @@ export function TourDisplayer(props){
     const [imgDialogContr, srtImgDialogcontr]=useState(false)
     const [selectedImg, setSelectedImg]=useState(false)
     const [itinPrices, setItinPrices]=useState()
+    const [dispLang,setDispLang]=useState()
 
     useEffect(()=>{
+        if(aTour.tripLang==="english" || !aTour.tripLang){
+            setDispLang(0)
+        } else if(aTour.tripLang==="español"){
+            setDispLang(1)
+        }
         if(aTour?.price?.length>0){
             let lastPrice = aTour?.price.length-1
             setItinPrices(aTour?.price[lastPrice])
@@ -391,16 +422,16 @@ export function TourDisplayer(props){
     }
     const incExcCont = <div className={styles.inclusionsExclusionsSec}> 
         {aTour?.included.length>0&&<> 
-            {incExcDisplayer(aTour?.included, "Included in Tour")} </>}
+            {incExcDisplayer(aTour?.included, langCardTourComp.tourInclusions[dispLang])} </>}
         {aTour?.notIncluded.length>0&&<>
-            {incExcDisplayer(aTour?.notIncluded, "Not included in Tour")} </>}
+            {incExcDisplayer(aTour?.notIncluded, langCardTourComp.tourExclusions[dispLang])} </>}
             </div>
     const dayByDaydisp=(tourDayByDay, openContr, aTravelDay)=>{
         const dayInclDisp=(dayIncl)=>{
             if(dayIncl?.length>0){
                 let theInclusions = dayIncl.map((elem, i)=><React.Fragment key={i}>{i>0&&<>, </>}{elem}</React.Fragment>)
                 return(<><div className={styles.dayInclusionCont}>
-                    <h4>Includes:</h4>
+                    <h4> {langCardTourComp.inclusions[dispLang]} </h4>
                     <div style={{marginLeft: "12px"}}>
                     {theInclusions}
                     </div>
@@ -415,7 +446,7 @@ export function TourDisplayer(props){
                 </div>
                 </React.Fragment>)
                 return(<><div style={{display:"flex", alignItems: "center"}}> 
-                    <h4>Meals:</h4>
+                    <h4>{langCardTourComp.meals[dispLang]}</h4>
                     <div style={{display: "flex", flexDirection:"column", marginLeft:"24px" }}>
                         {theInclusions}
                     </div>
@@ -425,7 +456,7 @@ export function TourDisplayer(props){
         const hotelDetailDisp=(overnightProperty)=>{
             if(overnightProperty){
                 return(<><div className={styles.dayInclusionCont}> 
-                    <h4>Overnight property:</h4>
+                    <h4>{langCardTourComp.acommodation[dispLang]}:</h4>
                     <span className={styles.suppDataDet}>&nbsp;- &nbsp; {overnightProperty}</span>
                 </div></>)
             }
@@ -433,13 +464,13 @@ export function TourDisplayer(props){
         const dayNotices=(theDayData)=>{
             return(<>
                 {theDayData.suppInfo&& <> 
-                    <h4>Supplementary Information:</h4>
+                    <h4>{langCardTourComp.supplementaryData[dispLang]}:</h4>
                     <span className={styles.suppDataDet}>
                         &nbsp;- &nbsp;{theDayData.suppInfo}
                     </span>
                 </>}
                 {theDayData.drivingDistance && <> 
-                    <h4>Approximate Driving Distance:</h4>
+                    <h4>{langCardTourComp.driveDistance[dispLang]}:</h4>
                     <span className={styles.suppDataDet}>
                         &nbsp;- &nbsp; {theDayData.drivingDistance} km &nbsp; || &nbsp; {theDayData.drivingDistance * 0.62} mi
                     </span>
@@ -453,13 +484,13 @@ export function TourDisplayer(props){
                     <h4>Daily Trekking Data:</h4>
                         {theTrekData.totalTrekTime&&<>
                             <div className={styles.trekDataCont}> 
-                                <div>total Trek time:</div> 
+                                <div>{langCardTourComp.trekTime[dispLang]}:</div> 
                                 {theTrekData.totalTrekTime} 
                             </div>
                         </>}
                         {theTrekData.distanceCovered&&<>
                             <div className={styles.trekDataCont}> 
-                                <div>Distance Covered:</div> 
+                                <div>{langCardTourComp.distance[dispLang]}:</div> 
                                 {theTrekData.distanceCovered} kms || {theTrekData.distanceCovered * 0.62} mi
                             </div>
                         </>}
@@ -522,7 +553,7 @@ export function TourDisplayer(props){
             return(<>
                 {flightData.length>0&&<> 
                     <div className={styles.dayInclusionCont}>
-                        <h4>flight info</h4>
+                        <h4>{langCardTourComp.flights[dispLang]}:</h4>
                         {multiFlightDataDisp}
                     </div>
                 </>}
@@ -543,7 +574,7 @@ export function TourDisplayer(props){
                 </React.Fragment> )
                 return(<>
                     <div className={styles.dayInclusionCont}>
-                        <h4>Guide info</h4>
+                        <h4>{langCardTourComp.guides[dispLang]}: </h4>
                         <div style={{padding:"0 40px"}}> 
                             {eachGuideData}
                         </div>
@@ -639,7 +670,7 @@ export function TourDisplayer(props){
             </>)
         } else if(aTour?.dayByDay.length>0) {
             return(<>
-                {accordionDisplayer("Day by Day", theDays, true)}
+                {accordionDisplayer(langCardTourComp.dayByDay[dispLang], theDays, true)}
                 <br/>
             </>)
         }
@@ -709,19 +740,19 @@ export function TourDisplayer(props){
                 <div className={styles.iconCont}>
                     <div>{theIcon} &nbsp; &nbsp; </div>
                     <div> 
-                        <strong>{theIconName}</strong>
+                        <strong>{theIconName}:</strong>
                         <div className={styles.iconContent}>{theIconContent}</div>
                     </div>
                 </div>
             </>)
         }
 
-        let daysContent=<>{aTour.duration} days</>
+        let daysContent=<>{aTour.duration} {langCardTourComp.days[dispLang]}</>
 
         return(<>
             <div className={styles.tourDetails}>
-                {aTour.duration&&<>{anIconRow(<AccessTimeIcon />, "duration:", daysContent)}</>}
-                {aTour.tourType&&<>{anIconRow(<ExploreIcon />, "tour type:", aTour.tourType )}</>}
+                {aTour.duration&&<>{anIconRow(<AccessTimeIcon />, langCardTourComp.tourDuration[dispLang], daysContent)}</>}
+                {aTour.tourType&&<>{anIconRow(<ExploreIcon />, langCardTourComp.tourType[dispLang], aTour.tourType )}</>}
             </div>
         </>)
     }
@@ -769,8 +800,12 @@ export function TourDisplayer(props){
             <div className={styles.tourIntroCont}>
                 {aTour.startingPlace&& <>
                 <div className={styles.startingplace}>
-                    Starting from {aTour.startingPlace}</div>
+                    {/* Starting from  */}
+                    {langCardTourComp.starting[dispLang]} 
+                    {aTour.startingPlace}</div>
                 </>}
+
+                {console.log(aTour)}
 
                 <RichTextDisp
                     richTextCont={aTour.richText}
@@ -978,7 +1013,9 @@ export function TourDisplayer(props){
             <div className={styles.tourDataCont}>
                 <div className={styles.tourData}>
                     {aTour.dayByDay?.length>0&&<>
-                        <div className={styles.sectionTitles}> &nbsp;Overview</div>
+                    <div className={styles.sectionTitles}> &nbsp;
+                    {langCardTourComp.overview[dispLang]}
+                        </div>
                     </>}
                     {dayByDaydisp(aTour.dayByDay, true)}
                     {props.aTravelDay&& <>
@@ -987,7 +1024,7 @@ export function TourDisplayer(props){
                     {aTour.included.length>0&&<>
                     <div className={styles.pageBreak}></div>
                     <div className={styles.sectionTitles}>&nbsp;additional information</div>
-                        {accordionDisplayer("Tour Inclusions / Exclusions", incExcCont, true)}
+                        {accordionDisplayer(langCardTourComp.tourIncExc[dispLang], incExcCont, true)}
                     </>}
                     {hotelList(aTour)}
                 </div>

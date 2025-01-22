@@ -257,6 +257,7 @@
 .startingplace{
     padding-bottom: 21px;
     font-weight: 600;
+    text-transform: capitalize;
 }
 
 .breadcrumbNaviCont{
