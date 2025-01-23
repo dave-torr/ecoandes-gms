@@ -21,12 +21,15 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import SportsGymnasticsIcon from '@mui/icons-material/SportsGymnastics';
 import PriceCheckIcon from '@mui/icons-material/PriceCheck';
+import CloseIcon from '@mui/icons-material/Close';
 import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
 import { MultiSelect, Select } from '@mantine/core';
+import { Dialog } from "@mui/material"
 
 
 import Head from "next/head"
+import { isWhiteSpaceLike } from "typescript"
 
 
 // CORRECT ITIN MOFOOO
@@ -252,6 +255,8 @@ export default function TourPage(){
     // add filter reset BTN
 
 
+
+
     useEffect(()=>{
         (async ()=>{
             const res2 = await fetch("/api/gms/itineraries",{
@@ -270,8 +275,6 @@ export default function TourPage(){
             }
         })()
     },[])
-
-
     useEffect(()=>{
         if(tourTypeFilter){
             if (tourTypeFilter==="all types"){
@@ -358,6 +361,7 @@ export default function TourPage(){
     // Sort Functions
     const [sortContr, setSortContr]=useState("duration")
     const [sortOrder, setSortOrder]=useState("ascending")
+    const [formSignup, setFormSignup]=useState(false)
 
     useEffect(()=>{
         // add conditional if selectedDestination => sort by all tourData, else by filtered tour data.
@@ -430,6 +434,22 @@ export default function TourPage(){
         </>)
         }
     }
+
+    useEffect(()=>{
+        const aTimer = setTimeout(()=>{
+           setFormSignup(true)
+        }, 5000)
+    },[])
+
+    const formsIframe=()=>{
+        return(<>
+            <Dialog open={formSignup} onClose={()=>setFormSignup(false)} fullScreen>
+                <div onClick={()=>setFormSignup(false)} style={{"color":"white", "position": "absolute", "display": "flex", "justifyContent":"center", "padding": "6px 9px", "border":"solid 2px white", "borderRadius":"5px", "textTransform":"uppercase", "cursor":"pointer" }}>Close <CloseIcon/> </div>
+                <iframe width="100%" height="100%" src="https://e2f2fea2.sibforms.com/serve/MUIFAO_E5I82auRvTaTq9E2MloaM5Zr1_NiZCWEDI-YQmPjvOEtjE-XM1k5aXPMGnZM-BFZmIsR0lNtAbSoMiXQ5Sp9LSIlisfIt2AXS3WAiPlHiZFBHmSOttRYcN9sCHAq6lczpIwahn9tHrhM4EIULC3E_G7gB3S1yxxhP3clH4ewwiIMfwToqK4xt-Ve5CTLDLjoHtg3o8iOB" frameborder="0" allowfullscreen style={{"display": "block", "marginLeft": "auto", "marginRight": "auto", "maxWidth": "100%"}}/>
+            </Dialog>
+        </>)
+    }
+
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
@@ -477,6 +497,9 @@ export default function TourPage(){
                 width={120}
                 height={60}
             /></div>
+
+
+            {formsIframe()}
 
             {tourPageImgDisplayer()}
 

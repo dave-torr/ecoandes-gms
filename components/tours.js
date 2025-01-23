@@ -92,7 +92,7 @@ let langCardTourComp={
     "starting":["starting from ","programa inicia en ",],
     "gallery":["browse ballery","explorar galeria",],
     "overview":["overview","descripción general",],
-    "dayByDay":["day by day","dia por dia",],
+    "dayByDay":["day by day","día por día",],
     "inclusions":["daily inclusions","inclusiones diarias",],
     "tourIncExc":["tour Inclusions / Exclusions", "Incluidos / Excluidos en Tour"],
     "tourInclusions":["included in tour", "incluidos en tour"],
@@ -107,6 +107,11 @@ let langCardTourComp={
     "distance":["distance covered", "distancia de caminata"],
     "flights": ["flight info", "informacion de vuelos"],
     "guides":["guide info", "info de guias"],
+    "difficulty":["activity level", "nivel de actividad",],
+    "pricesFrom":["prices from", "precios desde"],
+    "perPerson": ["per person", "por persona"],
+    "paxNumber":["passenger group", "participantes de grupo"],
+    "singleSupp": ["single supplement", "suplemento de sencillo"],
 
 }
 
@@ -431,7 +436,7 @@ export function TourDisplayer(props){
             if(dayIncl?.length>0){
                 let theInclusions = dayIncl.map((elem, i)=><React.Fragment key={i}>{i>0&&<>, </>}{elem}</React.Fragment>)
                 return(<><div className={styles.dayInclusionCont}>
-                    <h4> {langCardTourComp.inclusions[dispLang]} </h4>
+                    <h4> {langCardTourComp.inclusions[dispLang]}: </h4>
                     <div style={{marginLeft: "12px"}}>
                     {theInclusions}
                     </div>
@@ -442,11 +447,11 @@ export function TourDisplayer(props){
             if(theMeals?.length>0){
                 let theInclusions = theMeals.map((elem, i)=><React.Fragment key={i}> 
                 <div className={styles.eachMealDisp}>
-                    - {elem.meal} {elem.location&&<>@ {elem.location}</>} 
+                    {elem.meal} {elem.location&&<>@ {elem.location}</>} 
                 </div>
                 </React.Fragment>)
                 return(<><div style={{display:"flex", alignItems: "center"}}> 
-                    <h4>{langCardTourComp.meals[dispLang]}</h4>
+                    <h4>{langCardTourComp.meals[dispLang]}:</h4>
                     <div style={{display: "flex", flexDirection:"column", marginLeft:"24px" }}>
                         {theInclusions}
                     </div>
@@ -457,7 +462,7 @@ export function TourDisplayer(props){
             if(overnightProperty){
                 return(<><div className={styles.dayInclusionCont}> 
                     <h4>{langCardTourComp.acommodation[dispLang]}:</h4>
-                    <span className={styles.suppDataDet}>&nbsp;- &nbsp; {overnightProperty}</span>
+                    <span className={styles.suppDataDet}>&nbsp; {overnightProperty}</span>
                 </div></>)
             }
         }
@@ -958,26 +963,26 @@ export function TourDisplayer(props){
         if(Number.isInteger(thePrices)){
             return(<>
                 <div className={styles.aCard} style={{padding:"12px 18px"}}>
-                    <h3>Prices From:</h3>
+                    <h3>{langCardTourComp.pricesFrom[dispLang]}:</h3>
                     <h2>USD ${itinPrices}</h2>
-                    <strong>Per Person</strong>
+                    <strong>{langCardTourComp.perPerson[dispLang]}:</strong>
                     {aTour?.paxMax && <>
-                        <strong>For a {aTour?.paxMax} passenger group </strong>
+                        <strong>- {aTour?.paxMax} {langCardTourComp.paxNumber[dispLang]} </strong>
                     </> }
                     {aTour?.singleSupp &&<>
-                        &nbsp;&nbsp; + &nbsp; ${aTour.singleSupp} Single Supplement
+                        &nbsp;&nbsp; + &nbsp; ${aTour.singleSupp} {langCardTourComp.singleSupp[dispLang]}
                     </>} 
                 </div>
             </>)
         } else if(thePrices?.length>0){
             return(<>
             <div className={styles.aCard} style={{padding:"12px 18px"}}>
-                <h3>Prices From:</h3>
+                <h3>{langCardTourComp.pricesFrom[dispLang]}</h3>
                 <h2>USD ${itinPrices?.pricePerPax}</h2>
-                <strong>Per Person</strong>
-                <strong>For a {itinPrices?.upperRange} passenger group </strong>
+                <strong>{langCardTourComp.perPerson[dispLang]}</strong>
+                <strong>- {itinPrices?.upperRange} {langCardTourComp.paxNumber[dispLang]} </strong>
                 {aTour.singleSupp &&<>
-                    + ${aTour.singleSupp} Single Supplement
+                    + ${aTour.singleSupp} {langCardTourComp.singleSupp[dispLang]}
                 </>} 
                 <br/>
                 <span className={styles.orangeSeparator}/>
@@ -1031,6 +1036,8 @@ export function TourDisplayer(props){
                 <div className={styles.supportInfoCont}>
                     {priceDisplayer(aTour.price, aTour.prices)}
                     <br/>
+
+                    {/* spanish cards, wtf */}
                     <div className={styles.aCard}>
                         {(aTour.tourType || aTour.difficulty ) &&<>
                             {TourTypeCard(aTour.tourType)}
