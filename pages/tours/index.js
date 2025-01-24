@@ -274,11 +274,7 @@ export default function TourPage(){
                         tempArr.push(e)
                     }
                 })
-
-
-                // setFilteredTourArr(tempArr)
-
-
+                setFilteredTourArr(tempArr)
             }
         })()
     },[])
