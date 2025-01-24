@@ -1,5 +1,5 @@
 {
-    "countryList":["argentina", "bolivia", "chile", "colombia", "costa rica", "ecuador" , "peru" ],
+    "countryList":["argentina", "bolivia", "chile", "colombia", "ecuador" , "peru" ],
     "regionList":["galapagos", "patagonia", "amazon", "cusco", "uyuni", "andes", "easter island" ],
     "tourCategories": ["active", "family", "cruise", "expedition", "private", "voyage"],
     "phoneNumberTypes": ["office", "mobile" ],

@@ -241,8 +241,27 @@
     border: none;
     color: white;
     font-weight: 500;
+    text-transform: uppercase;    
+}
+
+
+
+/* Text Looper */
+
+.loopText{
     text-transform: uppercase;
-    
+    font-weight: 700;
+    padding: 0 0.25em;
+    animation: loopText 10s infinite linear;
+}
+
+@keyframes loopText {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
 }
 
 

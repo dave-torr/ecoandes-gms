@@ -36,7 +36,6 @@ import colo1 from "../public/assets/images/fxdImgs/COL/col1.jpg"
 
 
 
-
 let ecoAndesDestinations= [...LTCGenDAta.countryList, "galapagos", "atacama", "easter island", "patagonia", "amazon", "andes" ].sort()
 let tourDiff =[1,2,3,4,5]
 let tourType=["360° itineraries", "active", "special interest", "expedition cruises"]
@@ -825,11 +824,7 @@ export default function PlaygroundPage(){
                     </React.Fragment>)}
             </div>
         </>)
-    }
-
-
-
-    
+    }    
     const anImgDisp=()=>{
         let mappedPics = colombiaPics.map((e)=><>
             <Image 
@@ -843,12 +838,32 @@ export default function PlaygroundPage(){
         return(<>{mappedPics}</>)
     }
 
+
+
+    const loopingTextAnimation=(theText, textSize)=>{
+        return(<>
+            <div style={{ "position":"relative", "width":"100%", "overflow":"hidden", "whiteSpace":"nowrap", "height":"auto"  }} >  
+                <div className={styles.loopText}>
+                    Rawr, Miau, cucu, weee wee, fruu frruu
+                </div>
+            </div>
+        </>)
+    }
+
+
     return(<>
         {(session && session.user.name==="David Torres" ) &&<> 
                
             {/* {newTourDisplayer(ecoAndesFD[0])} */}
 
             {/* {expenseTable(expenseArr,)} */}
+
+
+
+            Cucu
+            {loopingTextAnimation()}
+
+
 
         </>}
     </>)

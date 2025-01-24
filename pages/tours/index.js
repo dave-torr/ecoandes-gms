@@ -3,6 +3,7 @@ import Image from "next/image"
 
 import TourData from "../../data/LTCItinerary"
 import styles from "./../../styles/pages/tours.module.css"
+import LTCGenDAta from "./../../data/dataAndTemplates.json"
 
 import landingImg from "./../../public/assets/images/bookingLanding1.png"
 import landingImg2 from "../../public/assets/images/bookingLanding2.png"
@@ -12,6 +13,8 @@ import LTCTypeface from "./../../public/assets/logos/LTCTypeface.png"
 
 import sunIcon from "./../../public/assets/icons/sunBW.png"
 import orangeSunIcon from "../../public/assets/icons/sunPopOrange.png"
+import { Loader } from '@mantine/core';
+
 
 import {LTCNaviBar} from "./../../components/navis"
 import {ATourCard, SquaredTourCard, RectangularTourCard, SortingItinUI } from "./../../components/tours"
@@ -29,8 +32,10 @@ import { Dialog } from "@mui/material"
 
 
 import Head from "next/head"
-import { isWhiteSpaceLike } from "typescript"
+import { loopingTextComponent } from "../../components/textComponents"
 
+
+let ecoAndesDestinations= [...LTCGenDAta.countryList, "galapagos", "atacama", "easter island", "patagonia", "amazon", "andes" ].sort()
 
 // CORRECT ITIN MOFOOO
 let AmazonJungleSpotlight =     {
@@ -255,8 +260,6 @@ export default function TourPage(){
     // add filter reset BTN
 
 
-
-
     useEffect(()=>{
         (async ()=>{
             const res2 = await fetch("/api/gms/itineraries",{
@@ -271,7 +274,11 @@ export default function TourPage(){
                         tempArr.push(e)
                     }
                 })
-                setFilteredTourArr(tempArr)
+
+
+                // setFilteredTourArr(tempArr)
+
+
             }
         })()
     },[])
@@ -314,8 +321,13 @@ export default function TourPage(){
                     </React.Fragment>)}
             </>:<>
                 <div className={styles.emptySearchResult}> 
-                    Oops! <br/>We do not have any scheduled trips available for your filters. 
-                    Get in contact with one of our team members to make your dream trip happen!
+                    {/* Oops!  */}
+                    {/* <br/ */}
+
+                    <Loader color="cyan" size="xl" />
+                    
+                    {/* >We do not have any scheduled trips available for your filters. 
+                    Get in contact with one of our team members to make your dream trip happen! */}
                     <br />
                     <br />
                     <a href="mailto:info@ecoandestravel.com?cc=planificacion@ecoandestravel.com, david@latintravelcollection.com"> <div className={styles.placeholderCTA}> Email our team </div></a>
@@ -510,7 +522,8 @@ export default function TourPage(){
             {/* get from database filtered by fxd flag */}
             {/* figure colombia pics embedding wtf */}
             {/* add additional pics for welcome, with blur on */}
-
+            <br/>
+            {loopingTextComponent(ecoAndesDestinations)}
             {tourdisplayer()}
 
 

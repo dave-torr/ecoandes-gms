@@ -1,0 +1,21 @@
+
+
+.loopText{
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 0 0.25em;
+    animation: loopText 20s infinite linear;
+    color: var(--pop-orange);
+    font-size: 1.5em;
+    background-color: white;
+    padding: 21px;
+}
+
+@keyframes loopText {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
