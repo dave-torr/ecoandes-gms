@@ -810,7 +810,7 @@ export function TourDisplayer(props){
                     {aTour.startingPlace}</div>
                 </>}
 
-                {console.log(aTour)}
+                {/* {console.log(aTour)} */}
 
                 <RichTextDisp
                     richTextCont={aTour.richText}
@@ -1722,7 +1722,7 @@ export const dayByDayEditor=()=>{
 
 export const newTourDisplayer=(theTour)=>{
 
-    console.log(theTour)
+    // console.log(theTour)
     return(<>
         <div className={styles.tourIntroPage}>
             <span>
