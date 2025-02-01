@@ -443,11 +443,11 @@ export default function TourPage(){
         }
     }
 
-    useEffect(()=>{
-        const aTimer = setTimeout(()=>{
-           setFormSignup(true)
-        }, 5000)
-    },[])
+    // useEffect(()=>{
+    //     const aTimer = setTimeout(()=>{
+    //        setFormSignup(true)
+    //     }, 5000)
+    // },[])
 
     const formsIframe=()=>{
         return(<>
