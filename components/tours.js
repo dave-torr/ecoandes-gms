@@ -844,7 +844,7 @@ export function TourDisplayer(props){
                 <div className={styles.aTourCTACont}> 
                     <a href={aTour.weTravelURL} target="_blank" rel="noopener noreferrer">
                     <div className={styles.contactNowBTN}>
-                        Book {aTour.tripName} experience</div></a>
+                        Book Now</div></a>
 
                     {/* whatsAppCTA */}
                     <a target='_blank' href="https://wa.me/17863767003"> <div className={styles.secondaryCTABTN}> 
