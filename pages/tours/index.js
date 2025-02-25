@@ -33,6 +33,7 @@ import { Dialog } from "@mui/material"
 
 import Head from "next/head"
 import { loopingTextComponent } from "../../components/textComponents"
+import { useRouter } from "next/router"
 
 
 let ecoAndesDestinations= [...LTCGenDAta.countryList, "galapagos", "atacama", "easter island", "patagonia", "amazon", "andes" ].sort()
@@ -261,6 +262,8 @@ export default function TourPage(){
 
 
     useEffect(()=>{
+
+
         (async ()=>{
             const res2 = await fetch("/api/gms/itineraries",{
                 method: "GET"

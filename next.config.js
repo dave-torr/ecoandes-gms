@@ -41,10 +41,10 @@ module.exports = {
     return [
       {
         source: '/',
-        destination: '/tours',
+        destination: 'https://www.latintravelcollection.com',
+        basePath: false,
         permanent: false,
       },
     ]
   }
-
 }

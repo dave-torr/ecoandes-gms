@@ -18,6 +18,7 @@ import IkalaGPSLogo from "../public/assets/logos/partners/ikalaGPS.png"
 import YacumaLogo from "../public/assets/logos/partners/yacuma.png"
 import GpsElemsLogo from "../public/assets/logos/partners/gpsElements.png"
 import UniGPSLogo from "../public/assets/logos/partners/unigalapagos.png"
+import { useRouter } from 'next/router';
 
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
@@ -33,6 +34,7 @@ import UniGPSLogo from "../public/assets/logos/partners/unigalapagos.png"
 export default function Home(){
   const [currentLang, setCurrentLang]=useState("engl")
   const [langContent, setLangCont]=useState(LanguageData.englCont)
+
 
   useEffect(()=>{
     if(currentLang==="span"){
