@@ -372,7 +372,7 @@ function LibraryPage(){
         "Antartica",
         ]
     let clientTypes=[
-        "fit",
+        "FIT",
         "agency",
         "media",
         "gov",
@@ -391,7 +391,7 @@ function LibraryPage(){
         "accomodationCategory":3
     }
     const aClientSchema = {
-        "clientType": "fit",
+        "clientType": "FIT",
         "createdBy":{},
         "submitionDate": toDate,
         "clientName": String,
@@ -408,7 +408,7 @@ function LibraryPage(){
         "includedInPrice": [],
     }
 
-    const countryArr= ["",  "colombia", "ecuador", 'peru', "bolivia", "chile", "argentina",]
+    const countryArr= ["",  "colombia", "ecuador", 'peru', "bolivia", "chile", "argentina", "brazil",]
 
     //////////////////////////////////////////////////////
     //////////////////////////////////////////////////////
@@ -421,12 +421,19 @@ function LibraryPage(){
     const [clientSchema, setClientSchema] = useState(aClientSchema)
     const [hotelSchema, setHotelSchema]=useState(aHotelSchema)
     const [contactSchema, setContactSchema]=useState({})
+
+    // dialog triggers
     const [hotelAdderTrig, setHotelAddTrig]= useState(false)
     const [roomPriceObj, setRoomPriceObj]=useState(roomSchema)
     const [interestTempArr, setInterestTempArr]=useState(interestOptArr)
     const [addClientTrig, setAddClientTrig] = useState(false)
     const [editingServiceObj, setEditingService]=useState(additionalExpenseSchema)
+
+    // backend submission triggers
     const [hotelSubmition, setHotelSub]=useState(false)
+    const [clientSubmition, setClientSub]=useState(false)
+
+
     const [inputPlaceholder, setInputPlaceholder] = useState("")
     const [inputPlaceholder2, setInputPlaceholder2] = useState("")
     const [inputPlaceholder3, setInputPlaceholder3] = useState("")
@@ -465,7 +472,14 @@ function LibraryPage(){
             })
             const posts = await res.json()
             if (res.status === 200){
-                let sortedArr = posts.sort((a,b)=>{
+
+                // filter by contacts, hotels 
+
+                console.log(posts, "posts")
+                let filteredHotelArr=posts.filter((elem)=>{
+                    return elem.hotelCategory
+                })
+                let sortedHotelArr = filteredHotelArr.sort((a,b)=>{
                     const titleA = a.hotelName.toUpperCase()
                     const titleB = b.hotelName.toUpperCase()
                     if(titleA < titleB){
@@ -476,8 +490,11 @@ function LibraryPage(){
                     } 
                     return 0
                 })
-                setLibrary(sortedArr)
-                setFetLib(sortedArr)
+
+                setLibrary(sortedHotelArr)
+                setFetLib(sortedHotelArr)
+
+
             }
         })()
     },[])
@@ -622,9 +639,9 @@ function LibraryPage(){
                         tempLibArr.push(backEndHotelObj)
                         setLibrary(tempLibArr)
                         setFetLib(tempLibArr)
-                        setHotelAddTrig(false)
-                        setHotelSub(false)
-                        setHotelSchema(aHotelSchema)
+                        setAddClientTrig(false)
+                        setClientSub(false)
+                        setClientSchema(aHotelSchema)
                     }
                     ////////////////////////////////////////
 
@@ -683,6 +700,7 @@ function LibraryPage(){
                         {contactAdder()}
                     </div>
                     <div className={styles.dataColumn}>
+
                         {hotelSchema.contactArr.length>0 ? <>
                             <h3>Registered Contacts</h3>
                             {hotelSchema.contactArr.map((elem, i)=><React.Fragment key={i}>
@@ -691,6 +709,9 @@ function LibraryPage(){
                         </>:<>
                             <h3> Please Add at least ONE Contact  </h3>
                         </>}
+
+
+                        
                     </div>
                 </div>
                 <div className={styles.sectionDivider}> 
@@ -977,15 +998,41 @@ function LibraryPage(){
     const clientAdderForm=()=>{
         return(<>
         <Dialog open={addClientTrig} onClose={()=>setAddClientTrig(false)} fullWidth maxWidth={"xl"} >
-            <form className={styles.hotelAdderForm} onSubmit={(e)=>{
+            <form className={styles.hotelAdderForm} onSubmit={async(e)=>{
                 e.preventDefault()
                 // Send package to Back end
 
-                // if package is sucessfully written, alert, erase ClientSchema
-                let tempObj = {
-                    "name": session.user.name,
-                    "email": session.user.email,
+                // submission trigger
+                setClientSub(true)
+                let backEndContactObj={
+                        ...clientSchema,
+                        "createdBy":{
+                            "name":session?.user.name,
+                            "email":session?.user.email,
+                            "phono":session?.user.phono,
+                            },
+                        "status": 1,
+
+                        }
+                let res = await fetch("/api/gms/library", {
+                    method: "POST",
+                    body: JSON.stringify(backEndContactObj)
+                })
+                let submitClient = await res.json()
+                if(res.status===200){
+                    window.alert("Hotel Added to Library!")
+                    let tempLibArr = [...fetchedLibrary]
+                    tempLibArr.push(backEndContactObj)
+                    setLibrary(tempLibArr)
+                    setFetLib(tempLibArr)
+                    setHotelAddTrig(false)
+                    setHotelSub(false)
+                    setHotelSchema(aClientSchema)
+                    console.log("look at you bid dawg")                    
                 }
+
+
+
 
             }} >
                 <h1>Add client to Database</h1>
@@ -1001,7 +1048,13 @@ function LibraryPage(){
                         {inputToList("Notes:", "notes", clientSchema, setClientSchema, clientSchema.notes, inputPlaceholder5, setInputPlaceholder5 )}
                     </div>
                     <div className={styles.clientColumn}>
+                        {clientSubmition? <>       
+                        <br/>
+                        <CircularProgress color="secondary" />
+                        <br/>
+                        </>  :  <>   
                         <input type="submit" className={styles.addRecordBTN} value="add client to Database +" style={{position:"sticky", top:"33px"}} />
+                        </>}
                         <br/>
                         {aClientDisplayer(clientSchema)}
                     </div>
@@ -1014,6 +1067,7 @@ function LibraryPage(){
     // library 
     const libraryDisplayer=()=>{
 
+        // filter by country, category, 
         const optonSelectorFilter=(libraryEntries)=>{
             if(libraryEntries.length>0){
                 let locArr =[]
@@ -1030,8 +1084,6 @@ function LibraryPage(){
                 </>)
             }
         }
-
-
 
         return(<>
         <div className={styles.backBTN} onClick={()=>{
@@ -1076,8 +1128,13 @@ function LibraryPage(){
             <div className={styles.libraryMain}> 
                 <div className={styles.libWelcome} > 
                     {library?.length>0 && <>
-                        <div className={styles.aQuickLink} onClick={()=>setLibraryTab("library")}>
-                            Access Library
+                        <div className={styles.aQuickLink} onClick={()=>setLibraryTab("hotelDatabase")}>
+                            Access Hotel Database
+                        </div>
+                    </>}
+                    {library?.length>0 && <>
+                        <div className={styles.aQuickLink} onClick={()=>setLibraryTab("clientDatabase")}>
+                            Access Client Database
                         </div>
                     </>}
                 </div>
@@ -1095,11 +1152,11 @@ function LibraryPage(){
                     </div>
 
                     {/* client form, non OP */}
-                    {/* {(session?.user?.name==="David Torres" || session?.user?.name==="Anahi Torres" )&&<>
+                    {(session?.user?.name==="David Torres" || session?.user?.name==="Anahi Torres" )&&<>
                         <div className={styles.aQuickLink} onClick={()=>setAddClientTrig(true)}>
                             Add Client to Library
                         </div>
-                    </> } */}
+                    </> }
 
 
                     {/* <div className={styles.aQuickLinkDES} >
@@ -1107,7 +1164,9 @@ function LibraryPage(){
                     </div> */}
                 </div>
             </div>
-            </> : libraryTab==="library"&& <>
+            </> : libraryTab==="hotelDatabase" ? <>
+                {libraryDisplayer()}
+            </> : libraryTab==="clientDatabase"&& <>
                 {libraryDisplayer()}
             </>}
             {hotelAdderForm()}

@@ -12,7 +12,6 @@ async function handler(req, res){
         const providerCreation = client
             .db('EcoAndesGMS')
             .collection("libraryDB");
-
         const createProvider = await providerCreation
             .insertOne(reqData)
         if(createProvider){

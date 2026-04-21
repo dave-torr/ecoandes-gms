@@ -20,6 +20,8 @@ import SpainFlagIcon from '../public/assets/logos/spainFlag.svg'
 import CloseIcon from '@mui/icons-material/Close';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
+import spectacledBearIcon from "./../public/assets/icons/spectacledBear.png"
+
 
 const contactNum1 = <><a target='_blank' href="tel:+17862963950"> <PhoneForwardedIcon fontSize="inherit" /></a> </> 
 //  --> to DTorres US numb
@@ -172,16 +174,22 @@ export function GMSNavii(props){
                     <span />
                 </div>
                 <div className={styles.gmsUserProfilePic}>
-                    {props.user.profilePic ? <> 
-                        <img 
+                    {props.user.profilePic === "spectacledBear" ? <>
+                        <Image 
+                            src={spectacledBearIcon}
+                            alt={`${props.user.name}'s profile pic`}
+                            width={55}
+                            height={55}
+                        />
+                    </>: props.user.profilePic ? <> </> : <>
+                        <Image 
                             src={props.user.profilePic}
                             alt={`${props.user.name}'s profile pic`}
                             width={55}
                             height={55}
                         />
-                    </>:<>
-                    
                     </> }
+                    
                 </div>
             </div>
         </div>

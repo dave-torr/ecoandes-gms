@@ -66,7 +66,6 @@ let TourModel = {
         "notes":[],
         "shortenedURL":nanoid(7),
         "richText": true,
-        
     }
 
 let dayModel = {
