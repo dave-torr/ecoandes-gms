@@ -1,0 +1,117 @@
+
+  .page {
+    /* background-color: black; */
+    min-height: 110vh;
+    width: fit-content;
+    padding: 15px;
+    margin-top: 33px;
+  }
+
+.aCashCell{
+  display: flex;
+  justify-content: space-between;
+  border: solid 1px black;
+  width: 81px;
+  padding: 6px;
+  font-size: 0.7em;
+  height: 25px;
+  /* round op to 2 decimal points */
+  /* enter comma after every 3 digits */
+}
+
+.aPaxCell{
+  font-size: 0.7em;
+  font-weight: bolder;
+  padding: 6px;
+  width: 81px;
+  background-color: var(--grey);
+  border: solid 1px black;
+  color: black;
+  text-align: end;
+  height: 25px;
+}
+.subTtlCell{
+  display: flex;
+  font-size: 0.7em;
+  justify-content: end;
+  align-items: center;
+  font-weight: bold;
+  padding: 6px;
+  width: 81px;
+  background-color: var(--olive);
+  border: solid 1px black;
+  color: black;
+  height: 25px;
+}
+
+.aCashCell::before{
+  content: "$";
+}
+
+.fillerCell{
+  width: 81px;
+  border: solid 1px transparent;
+  height: 25px;
+
+}
+
+.marginCell{
+  width: 81px;
+  border: solid 1px black;
+  background-color: var(--grey);
+  color: black;
+  font-size: 0.6em;
+  text-transform: uppercase;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  padding: 6px 3px;
+  font-weight: bold;
+}
+
+.doubleTextCell{
+  padding: 6px 3px;
+  height: 25px;
+  width: 162px;
+  border: solid 1px var(--grey);
+}
+
+.genItinData{
+  width: 250px;
+  padding: 0px 12px;
+  height: 81px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.genItinData div{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.genCostGrid{
+  display: flex;
+  flex-direction: column;
+  width: 1430px;
+  min-height: 50vh;
+}
+
+.daySeparator{
+  background-color: var(--grey);
+  margin-top: 9px;
+  padding: 4px 9px;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-top: solid 1px black;
+  border-left: solid 1px black;
+}
+
+
+@media (prefers-color-scheme: dark) {
+  .page {
+    /* background-color: black; */
+  }
+  
+}

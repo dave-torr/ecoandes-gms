@@ -94,13 +94,17 @@ h5{
 --whitesmoke-background:rgb(231, 227, 227);
 
 /* Fonts */
-
 --serif-Font: 'Roboto Slab', serif;
 
 --tester: #ffc800;
 
 --frst-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.348);
 
+--background: #0a0a0a;
+--foreground: #ededed;
+--ceramic: #b54848;
+--olive: #3aea6f;
+--grey: #b6b9b7;
 
 }
 
